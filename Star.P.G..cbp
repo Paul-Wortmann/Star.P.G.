@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Star.P.G." />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="default">
+				<Option output="Star" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-Wno-write-strings" />
+				</Compiler>
+				<Linker>
+					<Add option="-lstdc++" />
+					<Add library="mingw32" />
+					<Add library="SDLmain" />
+					<Add library="SDL" />
+					<Add library="opengl32" />
+					<Add library="sdl_mixer" />
+					<Add library="sdl_image" />
+					<Add library="glu32" />
+					<Add library="freetype" />
+					<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_image.lib" />
+					<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_mixer.lib" />
+					<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_net.lib" />
+					<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_ttf.lib" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wno-write-strings" />
+			<Add directory='&quot;C:\Program Files (x86)\CodeBlocks\MinGW\include&quot;' />
+		</Compiler>
+		<Linker>
+			<Add option="-lstdc++" />
+			<Add library="mingw32" />
+			<Add library="SDLmain" />
+			<Add library="SDL" />
+			<Add library="opengl32" />
+			<Add library="sdl_mixer" />
+			<Add library="sdl_image" />
+			<Add library="glu32" />
+			<Add library="freetype" />
+			<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_image.lib" />
+			<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_mixer.lib" />
+			<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_net.lib" />
+			<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_ttf.lib" />
+			<Add directory='&quot;C:\Program Files (x86)\CodeBlocks\MinGW\lib&quot;' />
+		</Linker>
+		<Unit filename="FreeType.cpp" />
+		<Unit filename="FreeType.h" />
+		<Unit filename="Star.P.G._private.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="config.cpp" />
+		<Unit filename="config.h" />
+		<Unit filename="font.cpp" />
+		<Unit filename="font.h" />
+		<Unit filename="game.cpp" />
+		<Unit filename="game.h" />
+		<Unit filename="graphics.cpp" />
+		<Unit filename="graphics.h" />
+		<Unit filename="levels.cpp" />
+		<Unit filename="levels.h" />
+		<Unit filename="main.cpp">
+			<Option compiler="gcc" use="0" buildCommand="-lstdc++" />
+		</Unit>
+		<Unit filename="main.h" />
+		<Unit filename="menu.cpp" />
+		<Unit filename="menu.h" />
+		<Unit filename="misc.cpp" />
+		<Unit filename="misc.h" />
+		<Unit filename="music.cpp" />
+		<Unit filename="music.h" />
+		<Unit filename="physics.cpp" />
+		<Unit filename="physics.h" />
+		<Unit filename="savegame.cpp" />
+		<Unit filename="savegame.h" />
+		<Unit filename="sounds.cpp" />
+		<Unit filename="sounds.h" />
+		<Unit filename="textures.cpp" />
+		<Unit filename="textures.h" />
+		<Unit filename="timer.cpp" />
+		<Unit filename="timer.h" />
+		<Unit filename="version.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<AutoVersioning>
+				<Scheme minor_max="100" build_max="0" rev_max="0" rev_rand_max="10" build_times_to_increment_minor="100" />
+				<Settings autoincrement="0" date_declarations="1" do_auto_increment="0" ask_to_increment="0" language="C++" svn="0" svn_directory="" header_path="version.h" />
+				<Changes_Log show_changes_editor="1" app_title="released version %M.%m.%b of %p" changeslog_path="ChangesLog.txt" />
+				<Code header_guard="VERSION_H" namespace="AutoVersion" prefix="" />
+			</AutoVersioning>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

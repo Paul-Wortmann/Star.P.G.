@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="default" />
+	<File name="FreeType.h" open="0" top="0" tabpos="1">
+		<Cursor position="64" topLine="0" />
+	</File>
+	<File name="Star.P.G._private.rc" open="0" top="0" tabpos="0">
+		<Cursor position="723" topLine="0" />
+	</File>
+	<File name="config.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="156" topLine="0" />
+	</File>
+	<File name="config.h" open="0" top="0" tabpos="0">
+		<Cursor position="373" topLine="0" />
+	</File>
+	<File name="font.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="321" topLine="0" />
+	</File>
+	<File name="font.h" open="0" top="0" tabpos="0">
+		<Cursor position="308" topLine="0" />
+	</File>
+	<File name="game.cpp" open="1" top="1" tabpos="3">
+		<Cursor position="25447" topLine="403" />
+	</File>
+	<File name="game.h" open="1" top="0" tabpos="4">
+		<Cursor position="3153" topLine="173" />
+	</File>
+	<File name="graphics.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="70" topLine="0" />
+	</File>
+	<File name="graphics.h" open="0" top="0" tabpos="4">
+		<Cursor position="100" topLine="0" />
+	</File>
+	<File name="levels.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="242" topLine="0" />
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="menu.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="87103" topLine="1644" />
+	</File>
+	<File name="menu.h" open="0" top="0" tabpos="0">
+		<Cursor position="352" topLine="0" />
+	</File>
+	<File name="music.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="music.h" open="0" top="0" tabpos="0">
+		<Cursor position="57" topLine="0" />
+	</File>
+	<File name="sounds.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1996" topLine="13" />
+	</File>
+	<File name="sounds.h" open="0" top="0" tabpos="2">
+		<Cursor position="28" topLine="0" />
+	</File>
+	<File name="textures.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="5134" topLine="290" />
+	</File>
+	<File name="textures.h" open="0" top="0" tabpos="0">
+		<Cursor position="20" topLine="0" />
+	</File>
+	<File name="timer.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="120" topLine="11" />
+	</File>
+	<File name="timer.h" open="0" top="0" tabpos="0">
+		<Cursor position="145" topLine="0" />
+	</File>
+	<File name="version.h" open="0" top="0" tabpos="4">
+		<Cursor position="838" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>

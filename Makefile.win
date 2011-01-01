@@ -1,0 +1,69 @@
+# Project: Star.P.G.
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = Star.P.G._private.res
+OBJ  = main.o textures.o config.o font.o FreeType.o game.o menu.o misc.o music.o physics.o sounds.o levels.o savegame.o $(RES)
+LINKOBJ  = main.o textures.o config.o font.o FreeType.o game.o menu.o misc.o music.o physics.o sounds.o levels.o savegame.o $(RES)
+LIBS =  -L"C:/Applications/wxDev-Cpp/Lib" -L"C:/MinGW/lib" -mwindows -lmingw32 -lSDLmain -lSDL -lopengl32  -lsdl_mixer -lsdl_image -lglu32 -lfreetype  
+INCS =  -I"C:/Applications/wxDev-Cpp/Include"  -I"C:/MinGW/include" 
+CXXINCS =  -I"C:/Applications/wxDev-Cpp/lib/gcc/mingw32/3.4.5/include"  -I"C:/Applications/wxDev-Cpp/include/c++/3.4.5/backward"  -I"C:/Applications/wxDev-Cpp/include/c++/3.4.5/mingw32"  -I"C:/Applications/wxDev-Cpp/include/c++/3.4.5"  -I"C:/Applications/wxDev-Cpp/include"  -I"C:/Applications/wxDev-Cpp/"  -I"C:/Applications/wxDev-Cpp/include/3rdparty/wx/plotctrl"  -I"C:/Applications/wxDev-Cpp/include/3rdparty/wx/sheet"  -I"C:/Applications/wxDev-Cpp/include/3rdparty/wx/treemultictrl"  -I"C:/Applications/wxDev-Cpp/include/3rdparty/wx/things"  -I"C:/Applications/wxDev-Cpp/include/3rdparty/wx"  -I"C:/Applications/wxDev-Cpp/include/3rdparty"  -I"C:/Applications/wxDev-Cpp/include/common/wx/msw"  -I"C:/Applications/wxDev-Cpp/include/common/wx/generic"  -I"C:/Applications/wxDev-Cpp/include/common/wx/fl"  -I"C:/Applications/wxDev-Cpp/include/common/wx/gizmos"  -I"C:/Applications/wxDev-Cpp/include/common/wx/html"  -I"C:/Applications/wxDev-Cpp/include/common/wx/mmedia"  -I"C:/Applications/wxDev-Cpp/include/common/wx/net"  -I"C:/Applications/wxDev-Cpp/include/common/wx/ogl"  -I"C:/Applications/wxDev-Cpp/include/common/wx/plot"  -I"C:/Applications/wxDev-Cpp/include/common/wx/protocol"  -I"C:/Applications/wxDev-Cpp/include/common/wx/stc"  -I"C:/Applications/wxDev-Cpp/include/common/wx/svg"  -I"C:/Applications/wxDev-Cpp/include/common/wx/xml"  -I"C:/Applications/wxDev-Cpp/include/common/wx/xrc"  -I"C:/Applications/wxDev-Cpp/include/common/wx"  -I"C:/Applications/wxDev-Cpp/include/common" 
+BIN  = Star.P.G..exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Star.P.G..exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Star.P.G..exe" $(LIBS)
+
+main.o: main.cpp C:/Applications/wxDev-Cpp/include/gl/gl.h misc.h   config.h sounds.h music.h textures.h menu.h game.h levels.h physics.h   font.h savegame.h
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+textures.o: textures.cpp C:/Applications/wxDev-Cpp/include/gl/gl.h   textures.h config.h
+	$(CPP) -c textures.cpp -o textures.o $(CXXFLAGS)
+
+config.o: config.cpp C:/Applications/wxDev-Cpp/include/c++/3.4.5/fstream   config.h
+	$(CPP) -c config.cpp -o config.o $(CXXFLAGS)
+
+font.o: font.cpp freetype.h C:/Applications/wxDev-Cpp/include/windows.h   C:/Applications/wxDev-Cpp/include/GL/gl.h   C:/Applications/wxDev-Cpp/include/GL/glu.h   C:/Applications/wxDev-Cpp/include/c++/3.4.5/vector   C:/Applications/wxDev-Cpp/include/c++/3.4.5/string   C:/Applications/wxDev-Cpp/include/gl/gl.h font.h
+	$(CPP) -c font.cpp -o font.o $(CXXFLAGS)
+
+FreeType.o: FreeType.cpp freetype.h   C:/Applications/wxDev-Cpp/include/windows.h   C:/Applications/wxDev-Cpp/include/GL/gl.h   C:/Applications/wxDev-Cpp/include/GL/glu.h   C:/Applications/wxDev-Cpp/include/c++/3.4.5/vector   C:/Applications/wxDev-Cpp/include/c++/3.4.5/string
+	$(CPP) -c FreeType.cpp -o FreeType.o $(CXXFLAGS)
+
+game.o: game.cpp C:/Applications/wxDev-Cpp/include/gl/gl.h game.h misc.h   config.h sounds.h music.h textures.h physics.h
+	$(CPP) -c game.cpp -o game.o $(CXXFLAGS)
+
+menu.o: menu.cpp C:/Applications/wxDev-Cpp/include/gl/gl.h menu.h game.h   config.h sounds.h music.h textures.h levels.h
+	$(CPP) -c menu.cpp -o menu.o $(CXXFLAGS)
+
+misc.o: misc.cpp C:/Applications/wxDev-Cpp/include/time.h   C:/Applications/wxDev-Cpp/include/_mingw.h   C:/Applications/wxDev-Cpp/lib/gcc/mingw32/3.4.5/include/stddef.h   C:/Applications/wxDev-Cpp/include/stdlib.h
+	$(CPP) -c misc.cpp -o misc.o $(CXXFLAGS)
+
+music.o: music.cpp music.h
+	$(CPP) -c music.cpp -o music.o $(CXXFLAGS)
+
+physics.o: physics.cpp physics.h
+	$(CPP) -c physics.cpp -o physics.o $(CXXFLAGS)
+
+sounds.o: sounds.cpp sounds.h
+	$(CPP) -c sounds.cpp -o sounds.o $(CXXFLAGS)
+
+levels.o: levels.cpp levels.h game.h
+	$(CPP) -c levels.cpp -o levels.o $(CXXFLAGS)
+
+savegame.o: savegame.cpp   C:/Applications/wxDev-Cpp/include/c++/3.4.5/fstream game.h savegame.h   levels.h
+	$(CPP) -c savegame.cpp -o savegame.o $(CXXFLAGS)
+
+Star.P.G._private.res: Star.P.G._private.rc 
+	$(WINDRES) -i Star.P.G._private.rc --input-format=rc -o Star.P.G._private.res -O coff 
