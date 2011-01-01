@@ -5,7 +5,7 @@ const int MAX_SHIELDS     = 5;
 const int MAX_THRUSTERS   = 4;
 const int MAX_BULLETS     = 96;
 const int MAX_EXPLOSIONS  = 32;
-const int MAX_ENEMYS      = 16;
+const int MAX_ENEMYS      = 32;
 const int MAX_BACKGROUNDS = 4;
 const int MAX_LEVELS      = 25;
 const int MAX_POWERUPS    = 8;
@@ -175,6 +175,12 @@ struct achivement_type
 
 struct game_type
 {
+   bool                 game_paused;
+   bool                 game_active;
+   bool                 game_resume;
+   bool                 menu_active;
+   bool                 pdie_active;
+   bool                 nlvl_active;
    int                  exp_rate;
    int                  FPS;
    int                  level_locked[MAX_LEVELS];
@@ -183,6 +189,12 @@ struct game_type
    bool                 level_boss_level;
    int                  score;
    int                  kills;
+   int                  level_kills;
+   int                  level_spawened;
+   int                  level_score;
+   int                  victory_kills;
+   int                  victory_spawened;
+   int                  victory_score;
    float                speed;
    int                  fw_rof_count;
    int                  sw_rof_count;
@@ -227,12 +239,13 @@ struct game_type
    fade_logo_type       p_weapon_level_up;
 };
 
-int init_game     (void);
-int process_game  (void);
-int process_ball  (void);
-int display_game  (void);
-int init_player   (void);
-int process_player(int command);
+int  init_game     (void);
+bool level_completed(void);
+int  process_game  (void);
+int  process_ball  (void);
+int  display_game  (void);
+int  init_player   (void);
+int  process_player(int command);
 
 int spawn_player_bullet_num(int player_bullet_num, int location);
 int spawn_player_bullet(int position);

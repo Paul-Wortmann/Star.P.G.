@@ -1624,11 +1624,11 @@ int diplay_menu (void)
       glEnd();
    }
 /*-----------------------------------------------------------------------------*/
-/*
-   if (menu.level == 8) //Next level screen
+   if (menu.level == 9) //Next level screen
    {
       int level_t = game.level + 1;
       if (level_t > 9) level_t = 9;
+/*
       glBindTexture( GL_TEXTURE_2D, texture[0].texture); //background
       glLoadIdentity();
       glBegin( GL_QUADS );
@@ -1637,7 +1637,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 0 );glVertex3f( 2.0f + menu.background_scroll.x_pos, 2.0f + menu.background_scroll.y_pos, 0.1f );
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll.x_pos,-2.0f + menu.background_scroll.y_pos, 0.1f );
       glEnd();
-
+*/
       glBindTexture( GL_TEXTURE_2D, texture[25].texture); //logo
       glLoadIdentity();
       glBegin( GL_QUADS );
@@ -1664,7 +1664,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.5f, 0.30f, 0.0f );
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.5f,-0.70f, 0.0f );
       glEnd();
-
+/*
       if (level[level_t].locked)
       {
          glBindTexture( GL_TEXTURE_2D, texture[147].texture); //level unlocked
@@ -1676,7 +1676,7 @@ int diplay_menu (void)
    	     glTexCoord2i( 1, 1 );glVertex3f( 0.4f, 0.35f, 0.0f );
          glEnd();
       }
-
+*/
       glBindTexture( GL_TEXTURE_2D, texture[152].texture); //Press any key to continue
       glLoadIdentity();
       glBegin( GL_QUADS );
@@ -1686,6 +1686,5 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.8f,-0.95f, 0.0f );
       glEnd();
    }
-*/
    return(0);
 };

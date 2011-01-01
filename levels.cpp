@@ -5,10 +5,14 @@ extern game_type  game;
 
 int init_game_level(int level_no)
 {
+   game.level_kills      = 0;
+   game.level_spawened   = 0;
+   game.level_score      = 0;
+
    if (level_no == 0)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 1;
+      game.level_npc_type                    = 0;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 66;
@@ -26,10 +30,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.045f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 5;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 1)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 1;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 66;
       game.background_scroll[1].image        = 66;
@@ -46,10 +55,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.050f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 2)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 2;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 66;
       game.background_scroll[1].image        = 66;
@@ -70,6 +84,8 @@ int init_game_level(int level_no)
    if (level_no == 3)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = true;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 65;
       game.background_scroll[1].image        = 65;
@@ -507,5 +523,6 @@ int init_game_level(int level_no)
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
    }
+   init_npcs(game.level_npc_type);
    return(0);
 };

@@ -34,12 +34,6 @@ Uint32                   colorkey;
 SDL_Surface             *App_Icon_Surface;
 Uint8                   *keys;
 SDL_Event                event;
-bool                     game_paused = false;
-bool                     game_active = false;
-bool                     game_resume = false;
-bool                     menu_active = true;
-bool                     pdie_active = false;
-bool                     nlvl_active = false;
 Uint8                   *keystate = SDL_GetKeyState(NULL);
 int                      menu_level_pos = 0;
 timer                    fps;
@@ -132,7 +126,7 @@ int main(int argc, char *argv[])
      fps.start();
      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 //****************************************** MENU *****************************************
-     if (menu_active)
+     if (game.menu_active)
      {
         play_music(0);
         glPushMatrix();
@@ -493,10 +487,10 @@ int main(int argc, char *argv[])
                                 Log_File(App_Logf,"Entering 'new game' menu.");
                              break;
                              case 1://resume game
-                                if (game_resume)
+                                if (game.game_resume)
                                 {
-                                   game_active = true;
-                                   menu_active = false;
+                                   game.game_active = true;
+                                   game.menu_active = false;
                                    Log_File(App_Logf,"Resuming game.");
                                 }
                              break;
@@ -540,16 +534,16 @@ int main(int argc, char *argv[])
                                 Log_File(App_Logf,"Entering 'customize starship' menu.");
                              break;
                              case 3://resume game
-                                if (game_resume)
+                                if (game.game_resume)
                                 {
                                    init_game_level(game.level);
-                                   game_active = true;
-                                   menu_active = false;
+                                   game.game_active = true;
+                                   game.menu_active = false;
                                    Log_File(App_Logf,"Resuming game");
                                 }
                              break;
                              case 4://save game
-                                if (game_resume)
+                                if (game.game_resume)
                                 {
                                    menu.possition = 0;
                                    menu.level = 5;
@@ -615,22 +609,22 @@ int main(int argc, char *argv[])
                              case 0://level x+0 select
                                 game.level = menu.level_no + 0;
                                 init_game_level(game.level);
-                                game_active = true;
-                                menu_active = false;
+                                game.game_active = true;
+                                game.menu_active = false;
                                 Log_File(App_Logf,"Starting level ");
                              break;
                              case 1://level x+1 select
                                 game.level = menu.level_no + 1;
                                 init_game_level(game.level);
-                                game_active = true;
-                                menu_active = false;
+                                game.game_active = true;
+                                game.menu_active = false;
                                 Log_File(App_Logf,"Starting level ");
                              break;
                              case 2://level x+2 select
                                 game.level = menu.level_no + 2;
                                 init_game_level(game.level);
-                                game_active = true;
-                                menu_active = false;
+                                game.game_active = true;
+                                game.menu_active = false;
                                 Log_File(App_Logf,"Starting level ");
                              break;
                              case 3://game menu
@@ -652,8 +646,8 @@ int main(int argc, char *argv[])
                                 menu.level = 1;
                                 menu.possition_max = 5;
                                 init_game_level(game.level);
-                                game_active = true;
-                                menu_active = false;
+                                game.game_active = true;
+                                game.menu_active = false;
                                 Log_File(App_Logf,"Resuming game");
                              break;
                              case 1://save to slot 1
@@ -664,8 +658,8 @@ int main(int argc, char *argv[])
                                 menu.level = 1;
                                 menu.possition_max = 5;
                                 init_game_level(game.level);
-                                game_active = true;
-                                menu_active = false;
+                                game.game_active = true;
+                                game.menu_active = false;
                                 Log_File(App_Logf,"Resuming game");
                              break;
                              case 2://save to slot 2
@@ -676,8 +670,8 @@ int main(int argc, char *argv[])
                                 menu.level = 1;
                                 menu.possition_max = 5;
                                 init_game_level(game.level);
-                                game_active = true;
-                                menu_active = false;
+                                game.game_active = true;
+                                game.menu_active = false;
                                 Log_File(App_Logf,"Resuming game");
                              break;
                              case 3://save to slot 3
@@ -688,8 +682,8 @@ int main(int argc, char *argv[])
                                 menu.level = 1;
                                 menu.possition_max = 5;
                                 init_game_level(game.level);
-                                game_active = true;
-                                menu_active = false;
+                                game.game_active = true;
+                                game.menu_active = false;
                                 Log_File(App_Logf,"Resuming game");
                              break;
                              case 4://save to slot 4
@@ -700,8 +694,8 @@ int main(int argc, char *argv[])
                                 menu.level = 1;
                                 menu.possition_max = 5;
                                 init_game_level(game.level);
-                                game_active = true;
-                                menu_active = false;
+                                game.game_active = true;
+                                game.menu_active = false;
                                 Log_File(App_Logf,"Resuming game");
                              break;
                              case 5://game menu
@@ -724,8 +718,8 @@ int main(int argc, char *argv[])
                                    menu.level = 1;
                                    menu.possition_max = 5;
                                    init_game_level(game.level);
-                                   game_active = true;
-                                   menu_active = false;
+                                   game.game_active = true;
+                                   game.menu_active = false;
                                    Log_File(App_Logf,"Resuming game");
                                 }
                                 else Log_File(App_Logf,"Error loadng from slot 0");
@@ -739,8 +733,8 @@ int main(int argc, char *argv[])
                                    menu.level = 1;
                                    menu.possition_max = 5;
                                    init_game_level(game.level);
-                                   game_active = true;
-                                   menu_active = false;
+                                   game.game_active = true;
+                                   game.menu_active = false;
                                    Log_File(App_Logf,"Resuming game");
                                 }
                                 else Log_File(App_Logf,"Error loadng from slot 1");
@@ -754,8 +748,8 @@ int main(int argc, char *argv[])
                                    menu.level = 1;
                                    menu.possition_max = 5;
                                    init_game_level(game.level);
-                                   game_active = true;
-                                   menu_active = false;
+                                   game.game_active = true;
+                                   game.menu_active = false;
                                    Log_File(App_Logf,"Resuming game");
                                 }
                                 else Log_File(App_Logf,"Error loadng from slot 2");
@@ -769,8 +763,8 @@ int main(int argc, char *argv[])
                                    menu.level = 1;
                                    menu.possition_max = 5;
                                    init_game_level(game.level);
-                                   game_active = true;
-                                   menu_active = false;
+                                   game.game_active = true;
+                                   game.menu_active = false;
                                    Log_File(App_Logf,"Resuming game");
                                 }
                                 else Log_File(App_Logf,"Error loadng from slot 3");
@@ -784,8 +778,8 @@ int main(int argc, char *argv[])
                                    menu.level = 1;
                                    menu.possition_max = 5;
                                    init_game_level(game.level);
-                                   game_active = true;
-                                   menu_active = false;
+                                   game.game_active = true;
+                                   game.menu_active = false;
                                    Log_File(App_Logf,"Resuming game");
                                 }
                                 else Log_File(App_Logf,"Error loadng from slot 4");
@@ -811,21 +805,6 @@ int main(int argc, char *argv[])
                     default:
                        play_sound(1);
                  }
-
-
-/*
-                 if ((menu.level == 4) && (menu.possition < 3))//level select <
-                 {
-                    if (!level[(menu.possition + (menu.level_no/2))].locked)
-                    {
-                       init_game();
-                       game.level = menu.possition + (menu.level_no/2);
-                       init_game_level(game.level);
-                       game_active = true;
-                       menu_active = false;
-                    }
-                 }
-*/
               }
            }
         }
@@ -884,31 +863,21 @@ int main(int argc, char *argv[])
 //        keys = SDL_GetKeyState(NULL);
        }
 //****************************************** GAME *****************************************
-        if (game_active)
+        if (game.game_active)
         {
-           game_resume = true;
+           game.game_resume = true;
            play_music(game.music_track);
            process_game();
            display_game();
            if (game.player.health < 0)
            {
               play_sound(1);
-              game_active = false;
-              game_resume = false;
-              pdie_active = true;
+              game.game_active = false;
+              game.game_resume = false;
+              game.pdie_active = true;
               menu.level = 8;
               Log_File(App_Logf,"User terminated due to insuficient health...better luck next time buddy!");
            }
-/*
-        if (game.player[0].score >= 3)
-        {
-           play_sound(0);
-           game_active = false;
-           nlvl_active = true;
-           menu.level = 4;
-           Log_File(App_Logf,"Well done proceed to next level! :D");
-        }
-*/
         //--- proccess keyboard events ---
         while ( SDL_PollEvent(&event) )
         {
@@ -918,17 +887,17 @@ int main(int argc, char *argv[])
               if ( event.key.keysym.sym == SDLK_ESCAPE )
               {
                  play_sound(1);
-                 game_active        = false;
+                 game.game_active        = false;
                  menu.level         = 1;
                  menu.possition     = 3;
                  menu.possition_max = 6;
-                 menu_active        = true;
+                 game.menu_active        = true;
               }
               if ( event.key.keysym.sym == SDLK_SPACE  ) {};
               if ( event.key.keysym.sym == SDLK_p      )
               {
-                 game_paused = true;
-                 game_active = false;
+                 game.game_paused = true;
+                 game.game_active = false;
                  spawn_paused();
               };
               if (event.key.keysym.sym == SDLK_1) spawn_powerup(1.0f,random_GLcoord(),1);//spawn health powerup
@@ -964,7 +933,7 @@ int main(int argc, char *argv[])
 //    keys = SDL_GetKeyState(NULL);
      }
 //*********************************** Game paused *****************************************
-     if (game_paused)
+     if (game.game_paused)
      {
         play_music(game.music_track);
         display_game();
@@ -976,19 +945,19 @@ int main(int argc, char *argv[])
            {
               if ((event.key.keysym.sym == SDLK_ESCAPE) || (event.key.keysym.sym == SDLK_RETURN) || (event.key.keysym.sym == SDLK_SPACE))
               {
-                 game_paused = false;
-                 game_active = true;
+                 game.game_paused = false;
+                 game.game_active = true;
               }
               if ( event.key.keysym.sym == SDLK_p      )
               {
-                 game_paused = false;
-                 game_active = true;
+                 game.game_paused = false;
+                 game.game_active = true;
               };
            }
         }
      }
 //*********************************** PLAYER DEATH SCREEN *****************************************
-     if (pdie_active)
+     if (game.pdie_active)
      {
         play_music(0);
         glPushMatrix();
@@ -1008,20 +977,21 @@ int main(int argc, char *argv[])
                  init_game();
                  menu.level = 0;
                  menu.possition = 0;
-                 menu_active = true;
-                 pdie_active = false;
+                 game.menu_active = true;
+                 game.pdie_active = false;
               }
            }
         }
      }
 //******************************* PLAYER NEXT LEVEL SCREEN *************************************
-     if (nlvl_active)
+     if (game.nlvl_active)
      {
-        play_music(0);
+        play_music  (0);
         glPushMatrix();
+        menu.level = 9;
         diplay_menu ();
         process_menu();
-        glPopMatrix();
+        glPopMatrix ();
         SDL_GL_SwapBuffers();
         //--- proccess keyboard events ---
         while (SDL_PollEvent(&event))
@@ -1029,17 +999,18 @@ int main(int argc, char *argv[])
            if ( event.type == SDL_QUIT ) quit = 1;
            if ( event.type == SDL_KEYDOWN )
            {
-              if ((event.key.keysym.sym == SDLK_RETURN) || (event.key.keysym.sym == SDLK_SPACE))
+              if (event.key.keysym.sym == SDLK_RETURN)
               {
                  play_sound(1);
                  init_game();
                  game.level++;
-                 if (game.level > 9) game.level = 9;
+                 if (game.level > 24) game.level = 24;
                  if (game.level_locked[game.level]) game.level_locked[game.level] = false;
                  init_game_level(game.level);
-                 menu.level = 0;
-                 game_active = true;
-                 nlvl_active = false;
+                 game.game_active = true;
+                 game.menu_active = false;
+                 game.nlvl_active = false;
+                 Log_File(App_Logf,"Victory conditions met, player proceeding to next level!");
               }
            }
         }
