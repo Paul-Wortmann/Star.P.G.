@@ -19,10 +19,10 @@
 	<File name="font.h" open="0" top="0" tabpos="0">
 		<Cursor position="308" topLine="0" />
 	</File>
-	<File name="game.cpp" open="1" top="1" tabpos="3">
-		<Cursor position="25447" topLine="403" />
+	<File name="game.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="1468" topLine="18" />
 	</File>
-	<File name="game.h" open="1" top="0" tabpos="4">
+	<File name="game.h" open="0" top="0" tabpos="4">
 		<Cursor position="3153" topLine="173" />
 	</File>
 	<File name="graphics.cpp" open="0" top="0" tabpos="3">
@@ -31,14 +31,14 @@
 	<File name="graphics.h" open="0" top="0" tabpos="4">
 		<Cursor position="100" topLine="0" />
 	</File>
-	<File name="levels.cpp" open="1" top="0" tabpos="2">
+	<File name="levels.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="242" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1">
+	<File name="main.cpp" open="1" top="1" tabpos="1">
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="menu.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="87103" topLine="1644" />
+		<Cursor position="82224" topLine="1542" />
 	</File>
 	<File name="menu.h" open="0" top="0" tabpos="0">
 		<Cursor position="352" topLine="0" />
@@ -56,7 +56,7 @@
 		<Cursor position="28" topLine="0" />
 	</File>
 	<File name="textures.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="5134" topLine="290" />
+		<Cursor position="6143" topLine="86" />
 	</File>
 	<File name="textures.h" open="0" top="0" tabpos="0">
 		<Cursor position="20" topLine="0" />

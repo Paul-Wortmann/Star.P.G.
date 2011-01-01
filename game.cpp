@@ -721,7 +721,7 @@ int proccess_npc_bullets(void)
             kill_npc_bullet(npc_count,bullet_count);
             play_sound(13);//player shield hit
             game.player.health -= 0.005f;//(game.enemy[game.npc[npc_count].type_npc].health / 1000.0f);
-            if (game.player.health < 0.0f) game.player.health = 0.0f; //*********************** DIE **********************************
+            //if (game.player.health < 0.0f) game.player.health = 0.0f; //*********************** DIE **********************************
          }
       }
    }

@@ -376,6 +376,10 @@ int load_textures(void)
    load_texture (327, "data/images/misc/vortex_thrusters.png");
    load_texture (328, "data/images/misc/weapon_level_up.png");
 
+   load_texture (329, "data/images/menu/game_over.png");
+   load_texture (330, "data/images/menu/logo_red.png");
+   load_texture (331, "data/images/menu/press_enter_for_the_main_menu.png");
+   load_texture (332, "data/images/misc/explosion_001.png");
    return(0);
 };
 

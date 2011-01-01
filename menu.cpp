@@ -1566,21 +1566,28 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f,-0.95f, 0.0f );
       glEnd();
    }
-
 /*-----------------------------------------------------------------------------*/
-/*
-   if (menu.level == 7) //Player death screen
+   if (menu.level == 8) //Player death screen
    {
-      glBindTexture( GL_TEXTURE_2D, texture[119].texture); //background
+      glBindTexture( GL_TEXTURE_2D, texture[84].texture); //background 01
       glLoadIdentity();
       glBegin( GL_QUADS );
-	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll.x_pos,-2.0f + menu.background_scroll.y_pos, 0.1f );
-	  glTexCoord2i( 0, 0 );glVertex3f(-2.0f + menu.background_scroll.x_pos, 2.0f + menu.background_scroll.y_pos, 0.1f );
-	  glTexCoord2i( 1, 0 );glVertex3f( 2.0f + menu.background_scroll.x_pos, 2.0f + menu.background_scroll.y_pos, 0.1f );
-	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll.x_pos,-2.0f + menu.background_scroll.y_pos, 0.1f );
+	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
+	  glTexCoord2i( 0, 0 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos, 2.0f + menu.background_scroll[0].y_pos, 0.15f );
+	  glTexCoord2i( 1, 0 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos, 2.0f + menu.background_scroll[0].y_pos, 0.15f );
+	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[25].texture); //logo
+      glBindTexture( GL_TEXTURE_2D, texture[73].texture); //background 02
+      glLoadIdentity();
+      glBegin( GL_QUADS );
+	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
+	  glTexCoord2i( 0, 0 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos, 2.0f + menu.background_scroll[1].y_pos, 0.1f );
+	  glTexCoord2i( 1, 0 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos, 2.0f + menu.background_scroll[1].y_pos, 0.1f );
+	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
+      glEnd();
+
+      glBindTexture( GL_TEXTURE_2D, texture[330].texture); //logo
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
@@ -1589,7 +1596,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[144].texture); //Game Over
+      glBindTexture( GL_TEXTURE_2D, texture[329].texture); //Game Over
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f, 0.55f, 0.0f );
@@ -1598,7 +1605,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f, 0.55f, 0.0f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[153].texture); //explosion
+      glBindTexture( GL_TEXTURE_2D, texture[332].texture); //explosion
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.6f,-0.70f, 0.0f );
@@ -1607,7 +1614,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.6f,-0.70f, 0.0f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[150].texture); //Press any key to return to the main menu
+      glBindTexture( GL_TEXTURE_2D, texture[331].texture); //Press any key to return to the main menu
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.8f,-0.95f, 0.0f );
@@ -1616,6 +1623,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.8f,-0.95f, 0.0f );
       glEnd();
    }
+/*-----------------------------------------------------------------------------*/
+/*
    if (menu.level == 8) //Next level screen
    {
       int level_t = game.level + 1;

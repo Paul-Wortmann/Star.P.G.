@@ -896,7 +896,7 @@ int main(int argc, char *argv[])
               game_active = false;
               game_resume = false;
               pdie_active = true;
-              menu.level = 3;
+              menu.level = 8;
               Log_File(App_Logf,"User terminated due to insuficient health...better luck next time buddy!");
            }
 /*
