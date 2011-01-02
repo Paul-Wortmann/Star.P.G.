@@ -1693,6 +1693,12 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.8f,-0.75f, 0.0f );
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.8f,-0.95f, 0.0f );
       glEnd();
+
+      font_print(128,128,192,-1.00f,-0.00f,"Level score - %1.0f", game.level_score);
+      font_print(128,128,192,-1.00f,-0.10f,"Total score - %1.0f", game.score);
+      font_print(128,128,192,-1.00f,-0.20f,"Level kills - %1.0f", game.level_kills);
+      font_print(128,128,192,-1.00f,-0.30f,"Total kills - %1.0f", game.kills);
+//      font_print(128,128,192,-1.00f,-0.40f,"Kill rate   - %1.0f %",((game.level_kills*100.0f)/(game.level_spawened*100.0f)));
    }
    return(0);
 };

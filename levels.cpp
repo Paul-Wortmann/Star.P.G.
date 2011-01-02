@@ -8,6 +8,7 @@ int init_game_level(int level_no)
    game.level_kills      = 0;
    game.level_spawened   = 0;
    game.level_score      = 0;
+   game.active_npc_count = 0;
 
    if (level_no == 0)
    {
@@ -30,8 +31,8 @@ int init_game_level(int level_no)
       game.speed                             = 0.045f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
-      game.victory_kills                     = 50;
-      game.victory_spawened                  = 60;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 11;
       game.victory_score                     = 0;
    }
    if (level_no == 1)
@@ -112,7 +113,7 @@ int init_game_level(int level_no)
    if (level_no == 4)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 4;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 67;
@@ -137,7 +138,7 @@ int init_game_level(int level_no)
    if (level_no == 5)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 5;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 67;
@@ -162,7 +163,7 @@ int init_game_level(int level_no)
    if (level_no == 6)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 6;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 67;
@@ -187,8 +188,8 @@ int init_game_level(int level_no)
    if (level_no == 7)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
-      game.level_boss_level                  = false;
+      game.level_npc_type                    = 7;
+      game.level_boss_level                  = true;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 64;
       game.background_scroll[1].image        = 64;
@@ -205,14 +206,14 @@ int init_game_level(int level_no)
       game.speed                             = 0.080f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
-      game.victory_kills                     = 10;
+      game.victory_kills                     = 1;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
    }
    if (level_no == 8)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 8;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 68;
@@ -237,7 +238,7 @@ int init_game_level(int level_no)
    if (level_no == 9)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 9;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 68;
@@ -262,7 +263,7 @@ int init_game_level(int level_no)
    if (level_no == 10)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 10;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 68;
@@ -287,7 +288,7 @@ int init_game_level(int level_no)
    if (level_no == 11)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 11;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 65;
@@ -312,7 +313,7 @@ int init_game_level(int level_no)
    if (level_no == 12)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 12;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 69;
@@ -337,7 +338,7 @@ int init_game_level(int level_no)
    if (level_no == 13)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 13;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 69;
@@ -362,7 +363,7 @@ int init_game_level(int level_no)
    if (level_no == 14)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 14;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 69;
@@ -387,7 +388,7 @@ int init_game_level(int level_no)
    if (level_no == 15)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 15;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 65;
@@ -412,7 +413,7 @@ int init_game_level(int level_no)
    if (level_no == 16)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 16;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 70;
@@ -437,7 +438,7 @@ int init_game_level(int level_no)
    if (level_no == 17)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 17;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 70;
@@ -462,7 +463,7 @@ int init_game_level(int level_no)
    if (level_no == 18)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 18;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 70;
@@ -487,7 +488,7 @@ int init_game_level(int level_no)
    if (level_no == 19)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 19;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 70;
@@ -512,7 +513,7 @@ int init_game_level(int level_no)
    if (level_no == 20)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 20;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 71;
@@ -537,7 +538,7 @@ int init_game_level(int level_no)
    if (level_no == 21)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 21;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 71;
@@ -562,7 +563,7 @@ int init_game_level(int level_no)
    if (level_no == 22)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 22;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 71;
@@ -587,7 +588,7 @@ int init_game_level(int level_no)
    if (level_no == 23)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 23;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 71;
@@ -612,7 +613,7 @@ int init_game_level(int level_no)
    if (level_no == 24)
    {
       game.level                             = level_no;
-      game.level_npc_type                    = 3;
+      game.level_npc_type                    = 24;
       game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 72;
