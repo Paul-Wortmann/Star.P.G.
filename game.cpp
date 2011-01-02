@@ -242,7 +242,7 @@ int init_game(void)
    game.shield[0].level            = 0;
    game.shield[0].experience       = 0;
    game.shield[0].image            = 217;
-   game.shield[0].absorption       = 0.001f;
+   game.shield[0].absorption       = 0.0005f;
    game.shield[1].name[0]          = 'I';
    game.shield[1].name[1]          = 'r';
    game.shield[1].name[2]          = 'i';
@@ -262,7 +262,7 @@ int init_game(void)
    game.shield[1].level            = 0;
    game.shield[1].experience       = 0;
    game.shield[1].image            = 218;
-   game.shield[1].absorption       = 0.002f;
+   game.shield[1].absorption       = 0.0010f;
    game.shield[2].name[0]          = 'R';
    game.shield[2].name[1]          = 'u';
    game.shield[2].name[2]          = 'b';
@@ -283,7 +283,7 @@ int init_game(void)
    game.shield[2].level            = 0;
    game.shield[2].experience       = 0;
    game.shield[2].image            = 219;
-   game.shield[2].absorption       = 0.003f;
+   game.shield[2].absorption       = 0.0015f;
    game.shield[3].name[0]          = 'T';
    game.shield[3].name[1]          = 'a';
    game.shield[3].name[2]          = 'n';
@@ -304,7 +304,7 @@ int init_game(void)
    game.shield[3].level            = 0;
    game.shield[3].experience       = 0;
    game.shield[3].image            = 220;
-   game.shield[3].absorption       = 0.004f;
+   game.shield[3].absorption       = 0.0020f;
    game.shield[4].name[0]          = 'A';
    game.shield[4].name[1]          = 'c';
    game.shield[4].name[2]          = 't';
@@ -325,7 +325,7 @@ int init_game(void)
    game.shield[4].level            = 0;
    game.shield[4].experience       = 0;
    game.shield[4].image            = 221;
-   game.shield[4].absorption       = 0.005f;
+   game.shield[4].absorption       = 0.0025f;
 
    game.thruster[0].name[0]        = 'M';
    game.thruster[0].name[1]        = 'a';
@@ -437,8 +437,8 @@ int init_game(void)
    game.enemy[0].movement    = 0;
    game.enemy[0].weapon      = 0;
    game.enemy[0].projectiles = 1;
-   game.enemy[0].size_h      = 0.2f;
-   game.enemy[0].size_w      = 0.2f;
+   game.enemy[0].size_h      = 0.15f;
+   game.enemy[0].size_w      = 0.15f;
    game.enemy[0].speed       = (game.projectile[game.enemy[0].weapon].speed/2);
    game.enemy[1].image       = 255;
    game.enemy[1].health      = 10.0f;
@@ -464,13 +464,61 @@ int init_game(void)
    game.enemy[3].size_h      = 0.8f;
    game.enemy[3].size_w      = 0.4f;
    game.enemy[3].speed       = (game.projectile[game.enemy[3].weapon].speed/2);
+   game.enemy[4].image       = 257;
+   game.enemy[4].health      = 100.0f;
+   game.enemy[4].movement    = 2;
+   game.enemy[4].weapon      = 0;
+   game.enemy[4].projectiles = 6;
+   game.enemy[4].size_h      = 0.8f;
+   game.enemy[4].size_w      = 0.4f;
+   game.enemy[4].speed       = (game.projectile[game.enemy[3].weapon].speed/2);
+   game.enemy[5].image       = 257;
+   game.enemy[5].health      = 100.0f;
+   game.enemy[5].movement    = 2;
+   game.enemy[5].weapon      = 0;
+   game.enemy[5].projectiles = 6;
+   game.enemy[5].size_h      = 0.8f;
+   game.enemy[5].size_w      = 0.4f;
+   game.enemy[5].speed       = (game.projectile[game.enemy[3].weapon].speed/2);
+   game.enemy[6].image       = 257;
+   game.enemy[6].health      = 100.0f;
+   game.enemy[6].movement    = 2;
+   game.enemy[6].weapon      = 0;
+   game.enemy[6].projectiles = 6;
+   game.enemy[6].size_h      = 0.8f;
+   game.enemy[6].size_w      = 0.4f;
+   game.enemy[6].speed       = (game.projectile[game.enemy[3].weapon].speed/2);
+   game.enemy[7].image       = 257;
+   game.enemy[7].health      = 100.0f;
+   game.enemy[7].movement    = 2;
+   game.enemy[7].weapon      = 0;
+   game.enemy[7].projectiles = 6;
+   game.enemy[7].size_h      = 0.8f;
+   game.enemy[7].size_w      = 0.4f;
+   game.enemy[7].speed       = (game.projectile[game.enemy[3].weapon].speed/2);
+   game.enemy[8].image       = 257;
+   game.enemy[8].health      = 100.0f;
+   game.enemy[8].movement    = 2;
+   game.enemy[8].weapon      = 0;
+   game.enemy[8].projectiles = 6;
+   game.enemy[8].size_h      = 0.8f;
+   game.enemy[8].size_w      = 0.4f;
+   game.enemy[8].speed       = (game.projectile[game.enemy[3].weapon].speed/2);
+   game.enemy[9].image       = 257;
+   game.enemy[9].health      = 100.0f;
+   game.enemy[9].movement    = 2;
+   game.enemy[9].weapon      = 0;
+   game.enemy[9].projectiles = 6;
+   game.enemy[9].size_h      = 0.8f;
+   game.enemy[9].size_w      = 0.4f;
+   game.enemy[9].speed       = (game.projectile[game.enemy[3].weapon].speed/2);
    init_powerups();
    init_npcs(0);
    game.active_npc_count = 0;
 
    for (int level_no_count = 0;level_no_count < (MAX_LEVELS+1); level_no_count++)
    {
-      game.level_locked[level_no_count] = false;  ///change me!!!!!! <<<<<<<<<<<<<<,
+      game.level_locked[level_no_count] = true;  ///change me!!!!!! <<<<<<<<<<<<<<,
    }
       game.level_locked[0] = false;
    return(0);
@@ -740,7 +788,7 @@ int proccess_npc_bullets(void)
             spawn_explosion(game.npc[npc_count].bullet[bullet_count].x_pos,game.npc[npc_count].bullet[bullet_count].y_pos,0.125f);
             kill_npc_bullet(npc_count,bullet_count);
             play_sound(13);//player shield hit
-            game.player.health -= 0.005f;//(game.enemy[game.npc[npc_count].type_npc].health / 1000.0f);
+            game.player.health -= (0.005f - game.shield[game.player.front_shield].absorption);//(game.enemy[game.npc[npc_count].type_npc].health / 1000.0f);
             //if (game.player.health < 0.0f) game.player.health = 0.0f; //*********************** DIE **********************************
          }
       }

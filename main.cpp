@@ -607,25 +607,34 @@ int main(int argc, char *argv[])
                        switch (menu.possition)
                           {
                              case 0://level x+0 select
-                                game.level = menu.level_no + 0;
-                                init_game_level(game.level);
-                                game.game_active = true;
-                                game.menu_active = false;
-                                Log_File(App_Logf,"Starting level ");
+                                if (!game.level_locked[menu.level_no + 0])
+                                {
+                                   game.level = menu.level_no + 0;
+                                   init_game_level(game.level);
+                                   game.game_active = true;
+                                   game.menu_active = false;
+                                   Log_File(App_Logf,"Starting level ");
+                                }
                              break;
                              case 1://level x+1 select
-                                game.level = menu.level_no + 1;
-                                init_game_level(game.level);
-                                game.game_active = true;
-                                game.menu_active = false;
-                                Log_File(App_Logf,"Starting level ");
+                                if (!game.level_locked[menu.level_no + 1])
+                                {
+                                   game.level = menu.level_no + 1;
+                                   init_game_level(game.level);
+                                   game.game_active = true;
+                                   game.menu_active = false;
+                                   Log_File(App_Logf,"Starting level ");
+                                }
                              break;
                              case 2://level x+2 select
-                                game.level = menu.level_no + 2;
-                                init_game_level(game.level);
-                                game.game_active = true;
-                                game.menu_active = false;
-                                Log_File(App_Logf,"Starting level ");
+                                if (!game.level_locked[menu.level_no + 2])
+                                {
+                                   game.level = menu.level_no + 2;
+                                   init_game_level(game.level);
+                                   game.game_active = true;
+                                   game.menu_active = false;
+                                   Log_File(App_Logf,"Starting level ");
+                                }
                              break;
                              case 3://game menu
                                 menu.possition = 1;
@@ -977,6 +986,7 @@ int main(int argc, char *argv[])
                  init_game();
                  menu.level = 0;
                  menu.possition = 0;
+                 menu.possition_max = 4;
                  game.menu_active = true;
                  game.pdie_active = false;
               }
@@ -1002,7 +1012,6 @@ int main(int argc, char *argv[])
               if (event.key.keysym.sym == SDLK_RETURN)
               {
                  play_sound(1);
-                 init_game();
                  game.level++;
                  if (game.level > 24) game.level = 24;
                  if (game.level_locked[game.level]) game.level_locked[game.level] = false;

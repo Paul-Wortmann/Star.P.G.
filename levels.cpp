@@ -30,8 +30,8 @@ int init_game_level(int level_no)
       game.speed                             = 0.045f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
-      game.victory_kills                     = 5;
-      game.victory_spawened                  = 0;
+      game.victory_kills                     = 50;
+      game.victory_spawened                  = 60;
       game.victory_score                     = 0;
    }
    if (level_no == 1)
@@ -80,6 +80,9 @@ int init_game_level(int level_no)
       game.speed                             = 0.055f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 3)
    {
@@ -102,10 +105,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.060f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 1;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 4)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 67;
       game.background_scroll[1].image        = 67;
@@ -122,10 +130,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.065f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 5)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 67;
       game.background_scroll[1].image        = 67;
@@ -142,10 +155,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.070f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 6)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 67;
       game.background_scroll[1].image        = 67;
@@ -162,10 +180,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.075f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 7)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 64;
       game.background_scroll[1].image        = 64;
@@ -182,10 +205,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.080f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 8)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 68;
       game.background_scroll[1].image        = 68;
@@ -202,10 +230,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.085f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 9)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 68;
       game.background_scroll[1].image        = 68;
@@ -222,10 +255,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.090f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 10)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 68;
       game.background_scroll[1].image        = 68;
@@ -242,10 +280,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.095f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 11)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 65;
       game.background_scroll[1].image        = 65;
@@ -262,10 +305,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.100f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 12)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 69;
       game.background_scroll[1].image        = 69;
@@ -282,10 +330,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.105f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 13)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 69;
       game.background_scroll[1].image        = 69;
@@ -302,10 +355,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.110f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 14)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 69;
       game.background_scroll[1].image        = 69;
@@ -322,10 +380,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.115f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 15)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 65;
       game.background_scroll[1].image        = 65;
@@ -342,10 +405,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.120f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 16)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 70;
       game.background_scroll[1].image        = 70;
@@ -362,10 +430,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.125f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 17)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 70;
       game.background_scroll[1].image        = 70;
@@ -382,10 +455,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.130f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 18)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 70;
       game.background_scroll[1].image        = 70;
@@ -402,10 +480,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.135f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 19)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 70;
       game.background_scroll[1].image        = 70;
@@ -422,10 +505,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.140f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 20)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 71;
       game.background_scroll[1].image        = 71;
@@ -442,10 +530,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.145f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 21)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 71;
       game.background_scroll[1].image        = 71;
@@ -462,10 +555,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.150f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 22)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 71;
       game.background_scroll[1].image        = 71;
@@ -482,10 +580,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.155f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 23)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 71;
       game.background_scroll[1].image        = 71;
@@ -502,10 +605,15 @@ int init_game_level(int level_no)
       game.speed                             = 0.160f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    if (level_no == 24)
    {
       game.level                             = level_no;
+      game.level_npc_type                    = 3;
+      game.level_boss_level                  = false;
       game.music_track                       = 1;
       game.background_scroll[0].image        = 72;
       game.background_scroll[1].image        = 72;
@@ -522,6 +630,9 @@ int init_game_level(int level_no)
       game.speed                             = 0.165f;
       game.npc_spawn_rate                    = 100;
       game.npc_projectile_spawn_rate         = 50;
+      game.victory_kills                     = 10;
+      game.victory_spawened                  = 0;
+      game.victory_score                     = 0;
    }
    init_npcs(game.level_npc_type);
    return(0);

@@ -380,6 +380,9 @@ int load_textures(void)
    load_texture (330, "data/images/menu/logo_red.png");
    load_texture (331, "data/images/menu/press_enter_for_the_main_menu.png");
    load_texture (332, "data/images/misc/explosion_001.png");
+   load_texture (333, "data/images/menu/level_completed.png");
+   load_texture (334, "data/images/menu/enter_for_next_level.png");
+   load_texture (335, "data/images/menu/new_level_unlocked.png");
    return(0);
 };
 
