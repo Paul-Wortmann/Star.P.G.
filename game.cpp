@@ -53,7 +53,7 @@ int init_game(void)
    game.player.health                     = 0.100f;
    game.player.health_regen_rate          = 0.00005f;
    game.player.max_health                 = 0.100f;
-   game.player.image                      = 253;
+   game.player.image                      = 278;
    game.player.front_weapon               = 0;
    game.player.side_weapon                = -1;
    game.player.front_shield               = -1;
@@ -349,8 +349,8 @@ int init_game(void)
    game.thruster[0].active         = false;
    game.thruster[0].level          = 0;
    game.thruster[0].experience     = 0;
-   game.thruster[0].image          = 278;
-   game.thruster[0].thrust         = 0.001f;
+   game.thruster[0].image          = 279;
+   game.thruster[0].thrust         = 0.002f;
    game.thruster[1].name[0]        = 'S';
    game.thruster[1].name[1]        = 'e';
    game.thruster[1].name[2]        = 'i';
@@ -371,8 +371,8 @@ int init_game(void)
    game.thruster[1].active         = false;
    game.thruster[1].level          = 0;
    game.thruster[1].experience     = 0;
-   game.thruster[1].image          = 279;
-   game.thruster[1].thrust         = 0.002f;
+   game.thruster[1].image          = 280;
+   game.thruster[1].thrust         = 0.004f;
    game.thruster[2].name[0]        = 'V';
    game.thruster[2].name[1]        = 'o';
    game.thruster[2].name[2]        = 'r';
@@ -392,8 +392,8 @@ int init_game(void)
    game.thruster[2].active         = false;
    game.thruster[2].level          = 0;
    game.thruster[2].experience     = 0;
-   game.thruster[2].image          = 280;
-   game.thruster[2].thrust         = 0.003f;
+   game.thruster[2].image          = 281;
+   game.thruster[2].thrust         = 0.006f;
    game.thruster[3].name[0]        = 'C';
    game.thruster[3].name[1]        = 'o';
    game.thruster[3].name[2]        = 'n';
@@ -418,8 +418,8 @@ int init_game(void)
    game.thruster[3].active         = false;
    game.thruster[3].level          = 0;
    game.thruster[3].experience     = 0;
-   game.thruster[3].image          = 281;
-   game.thruster[3].thrust         = 0.004f;
+   game.thruster[3].image          = 336;
+   game.thruster[3].thrust         = 0.008f;
 
    for (int count =0;count < MAX_EXPLOSIONS;count++)
    {
@@ -432,95 +432,228 @@ int init_game(void)
       game.explosion[count].width   = 0.25f;
       game.explosion[count].hight   = 0.25f;
    }
-   game.enemy[0].image       = 254;
-   game.enemy[0].health      = 05.0f;
-   game.enemy[0].movement    = 0;
-   game.enemy[0].weapon      = 0;
-   game.enemy[0].projectiles = 1;
-   game.enemy[0].size_h      = 0.15f;
-   game.enemy[0].size_w      = 0.15f;
-   game.enemy[0].speed       = (game.projectile[game.enemy[0].weapon].speed/2);
-   game.enemy[1].image       = 255;
-   game.enemy[1].health      = 10.0f;
-   game.enemy[1].movement    = 0;
-   game.enemy[1].weapon      = 0;
-   game.enemy[1].projectiles = 2;
-   game.enemy[1].size_h      = 0.2f;
-   game.enemy[1].size_w      = 0.2f;
-   game.enemy[1].speed       = (game.projectile[game.enemy[1].weapon].speed/2);
-   game.enemy[2].image       = 256;
-   game.enemy[2].health      = 15.0f;
-   game.enemy[2].movement    = 0;
-   game.enemy[2].weapon      = 0;
-   game.enemy[2].projectiles = 3;
-   game.enemy[2].size_h      = 0.2f;
-   game.enemy[2].size_w      = 0.2f;
-   game.enemy[2].speed       = (game.projectile[game.enemy[2].weapon].speed/2);
-   game.enemy[3].image       = 257;
-   game.enemy[3].health      = 100.0f;
-   game.enemy[3].movement    = 2;
-   game.enemy[3].weapon      = 0;
-   game.enemy[3].projectiles = 6;
-   game.enemy[3].size_h      = 0.8f;
-   game.enemy[3].size_w      = 0.4f;
-   game.enemy[3].speed       = (game.projectile[game.enemy[3].weapon].speed/2);
-   game.enemy[4].image       = 258;
-   game.enemy[4].health      = 50.0f;
-   game.enemy[4].movement    = 1;
-   game.enemy[4].weapon      = 1;
-   game.enemy[4].projectiles = 2;
-   game.enemy[4].size_h      = 0.2f;
-   game.enemy[4].size_w      = 0.2f;
-   game.enemy[4].speed       = (game.projectile[game.enemy[4].weapon].speed/2);
-   game.enemy[5].image       = 259;
-   game.enemy[5].health      = 60.0f;
-   game.enemy[5].movement    = 1;
-   game.enemy[5].weapon      = 1;
-   game.enemy[5].projectiles = 4;
-   game.enemy[5].size_h      = 0.2f;
-   game.enemy[5].size_w      = 0.2f;
-   game.enemy[5].speed       = (game.projectile[game.enemy[5].weapon].speed/2);
-   game.enemy[6].image       = 260;
-   game.enemy[6].health      = 70.0f;
-   game.enemy[6].movement    = 1;
-   game.enemy[6].weapon      = 1;
-   game.enemy[6].projectiles = 6;
-   game.enemy[6].size_h      = 0.2f;
-   game.enemy[6].size_w      = 0.2f;
-   game.enemy[6].speed       = (game.projectile[game.enemy[6].weapon].speed/2);
-   game.enemy[7].image       = 261;
-   game.enemy[7].health      = 500.0f;
-   game.enemy[7].movement    = 2;
-   game.enemy[7].weapon      = 1;
-   game.enemy[7].projectiles = 9;
-   game.enemy[7].size_h      = 0.8f;
-   game.enemy[7].size_w      = 0.4f;
-   game.enemy[7].speed       = (game.projectile[game.enemy[7].weapon].speed/2);
-   game.enemy[8].image       = 262;
-   game.enemy[8].health      = 80.0f;
-   game.enemy[8].movement    = 1;
-   game.enemy[8].weapon      = 2;
-   game.enemy[8].projectiles = 2;
-   game.enemy[8].size_h      = 0.2f;
-   game.enemy[8].size_w      = 0.2f;
-   game.enemy[8].speed       = (game.projectile[game.enemy[8].weapon].speed/2);
-   game.enemy[9].image       = 257;
-   game.enemy[9].health      = 100.0f;
-   game.enemy[9].movement    = 2;
-   game.enemy[9].weapon      = 0;
-   game.enemy[9].projectiles = 6;
-   game.enemy[9].size_h      = 0.118f;
-   game.enemy[9].size_w      = 0.114f;
-   game.enemy[9].speed       = (game.projectile[game.enemy[9].weapon].speed/2);
-   init_powerups();
-   init_npcs(0);
-   game.active_npc_count = 0;
+   game.enemy[0 ].image       = 253;
+   game.enemy[0 ].health      = 05.0f;
+   game.enemy[0 ].movement    = 0;
+   game.enemy[0 ].weapon      = 0;
+   game.enemy[0 ].projectiles = 1;
+   game.enemy[0 ].size_h      = 0.15f;
+   game.enemy[0 ].size_w      = 0.15f;
+   game.enemy[0 ].speed       = (game.projectile[game.enemy[0 ].weapon].speed/2);
+   game.enemy[1 ].image       = 254;
+   game.enemy[1 ].health      = 10.0f;
+   game.enemy[1 ].movement    = 0;
+   game.enemy[1 ].weapon      = 0;
+   game.enemy[1 ].projectiles = 2;
+   game.enemy[1 ].size_h      = 0.2f;
+   game.enemy[1 ].size_w      = 0.2f;
+   game.enemy[1 ].speed       = (game.projectile[game.enemy[1 ].weapon].speed/2);
+   game.enemy[2 ].image       = 255;
+   game.enemy[2 ].health      = 15.0f;
+   game.enemy[2 ].movement    = 0;
+   game.enemy[2 ].weapon      = 0;
+   game.enemy[2 ].projectiles = 3;
+   game.enemy[2 ].size_h      = 0.2f;
+   game.enemy[2 ].size_w      = 0.2f;
+   game.enemy[2 ].speed       = (game.projectile[game.enemy[2 ].weapon].speed/2);
+   game.enemy[3 ].image       = 256;
+   game.enemy[3 ].health      = 100.0f;
+   game.enemy[3 ].movement    = 2;
+   game.enemy[3 ].weapon      = 0;
+   game.enemy[3 ].projectiles = 6;
+   game.enemy[3 ].size_h      = 0.8f;
+   game.enemy[3 ].size_w      = 0.4f;
+   game.enemy[3 ].speed       = (game.projectile[game.enemy[3 ].weapon].speed/2);
+   game.enemy[4 ].image       = 257;
+   game.enemy[4 ].health      = 50.0f;
+   game.enemy[4 ].movement    = 1;
+   game.enemy[4 ].weapon      = 1;
+   game.enemy[4 ].projectiles = 2;
+   game.enemy[4 ].size_h      = 0.2f;
+   game.enemy[4 ].size_w      = 0.2f;
+   game.enemy[4 ].speed       = (game.projectile[game.enemy[4 ].weapon].speed/2);
+   game.enemy[5 ].image       = 258;
+   game.enemy[5 ].health      = 60.0f;
+   game.enemy[5 ].movement    = 1;
+   game.enemy[5 ].weapon      = 1;
+   game.enemy[5 ] .projectiles = 4;
+   game.enemy[5 ].size_h      = 0.2f;
+   game.enemy[5 ].size_w      = 0.2f;
+   game.enemy[5 ].speed       = (game.projectile[game.enemy[5 ].weapon].speed/2);
+   game.enemy[6 ].image       = 259;
+   game.enemy[6 ].health      = 70.0f;
+   game.enemy[6 ].movement    = 1;
+   game.enemy[6 ].weapon      = 1;
+   game.enemy[6 ].projectiles = 6;
+   game.enemy[6 ].size_h      = 0.2f;
+   game.enemy[6 ].size_w      = 0.2f;
+   game.enemy[6 ].speed       = (game.projectile[game.enemy[6 ].weapon].speed/2);
+   game.enemy[7 ].image       = 260;
+   game.enemy[7 ].health      = 500.0f;
+   game.enemy[7 ].movement    = 2;
+   game.enemy[7 ].weapon      = 1;
+   game.enemy[7 ].projectiles = 9;
+   game.enemy[7 ].size_h      = 0.8f;
+   game.enemy[7 ].size_w      = 0.4f;
+   game.enemy[7 ].speed       = (game.projectile[game.enemy[7 ].weapon].speed/2);
+   game.enemy[8 ].image       = 261;
+   game.enemy[8 ].health      = 80.0f;
+   game.enemy[8 ].movement    = 1;
+   game.enemy[8 ].weapon      = 2;
+   game.enemy[8 ].projectiles = 2;
+   game.enemy[8 ].size_h      = 0.2f;
+   game.enemy[8 ].size_w      = 0.2f;
+   game.enemy[8 ].speed       = (game.projectile[game.enemy[8 ].weapon].speed/2);
+   game.enemy[9 ].image       = 262;
+   game.enemy[9 ].health      = 100.0f;
+   game.enemy[9 ].movement    = 1;
+   game.enemy[9 ].weapon      = 2;
+   game.enemy[9 ].projectiles = 4;
+   game.enemy[9 ].size_h      = 0.2f;
+   game.enemy[9 ].size_w      = 0.2f;
+   game.enemy[9 ].speed       = (game.projectile[game.enemy[9 ].weapon].speed/2);
+   game.enemy[10].image       = 263;
+   game.enemy[10].health      = 100.0f;
+   game.enemy[10].movement    = 1;
+   game.enemy[10].weapon      = 2;
+   game.enemy[10].projectiles = 6;
+   game.enemy[10].size_h      = 0.2f;
+   game.enemy[10].size_w      = 0.2f;
+   game.enemy[10].speed       = (game.projectile[game.enemy[10].weapon].speed/2);
+   game.enemy[11].image       = 264;
+   game.enemy[11].health      = 2000.0f;
+   game.enemy[11].movement    = 2;
+   game.enemy[11].weapon      = 2;
+   game.enemy[11].projectiles = 9;
+   game.enemy[11].size_h      = 0.8f;
+   game.enemy[11].size_w      = 0.4f;
+   game.enemy[11].speed       = (game.projectile[game.enemy[11].weapon].speed/2);
+   game.enemy[12].image       = 265;
+   game.enemy[12].health      = 120.0f;
+   game.enemy[12].movement    = 1;
+   game.enemy[12].weapon      = 2;
+   game.enemy[12].projectiles = 2;
+   game.enemy[12].size_h      = 0.2f;
+   game.enemy[12].size_w      = 0.2f;
+   game.enemy[12].speed       = (game.projectile[game.enemy[12].weapon].speed/2);   init_powerups();
+   game.enemy[13].image       = 266;
+   game.enemy[13].health      = 120.0f;
+   game.enemy[13].movement    = 1;
+   game.enemy[13].weapon      = 2;
+   game.enemy[13].projectiles = 3;
+   game.enemy[13].size_h      = 0.2f;
+   game.enemy[13].size_w      = 0.2f;
+   game.enemy[13].speed       = (game.projectile[game.enemy[13].weapon].speed/2);   init_powerups();
+   game.enemy[14].image       = 267;
+   game.enemy[14].health      = 120.0f;
+   game.enemy[14].movement    = 1;
+   game.enemy[14].weapon      = 2;
+   game.enemy[14].projectiles = 5;
+   game.enemy[14].size_h      = 0.2f;
+   game.enemy[14].size_w      = 0.2f;
+   game.enemy[14].speed       = (game.projectile[game.enemy[14].weapon].speed/2);   init_powerups();
+   game.enemy[15].image       = 268;
+   game.enemy[15].health      = 2000.0f;
+   game.enemy[15].movement    = 2;
+   game.enemy[15].weapon      = 2;
+   game.enemy[15].projectiles = 9;
+   game.enemy[15].size_h      = 0.8f;
+   game.enemy[15].size_w      = 0.4f;
+   game.enemy[15].speed       = (game.projectile[game.enemy[15].weapon].speed/2);
+   game.enemy[16].image       = 269;
+   game.enemy[16].health      = 130.0f;
+   game.enemy[16].movement    = 1;
+   game.enemy[16].weapon      = 3;
+   game.enemy[16].projectiles = 2;
+   game.enemy[16].size_h      = 0.2f;
+   game.enemy[16].size_w      = 0.2f;
+   game.enemy[16].speed       = (game.projectile[game.enemy[16].weapon].speed/2);   init_powerups();
+   game.enemy[17].image       = 270;
+   game.enemy[17].health      = 140.0f;
+   game.enemy[17].movement    = 1;
+   game.enemy[17].weapon      = 3;
+   game.enemy[17].projectiles = 3;
+   game.enemy[17].size_h      = 0.2f;
+   game.enemy[17].size_w      = 0.2f;
+   game.enemy[17].speed       = (game.projectile[game.enemy[17].weapon].speed/2);   init_powerups();
+   game.enemy[18].image       = 271;
+   game.enemy[18].health      = 150.0f;
+   game.enemy[18].movement    = 1;
+   game.enemy[18].weapon      = 3;
+   game.enemy[18].projectiles = 5;
+   game.enemy[18].size_h      = 0.2f;
+   game.enemy[18].size_w      = 0.2f;
+   game.enemy[18].speed       = (game.projectile[game.enemy[18].weapon].speed/2);   init_powerups();
+   game.enemy[19].image       = 272;
+   game.enemy[19].health      = 3000.0f;
+   game.enemy[19].movement    = 2;
+   game.enemy[19].weapon      = 3;
+   game.enemy[19].projectiles = 9;
+   game.enemy[19].size_h      = 0.8f;
+   game.enemy[19].size_w      = 0.4f;
+   game.enemy[19].speed       = (game.projectile[game.enemy[19].weapon].speed/2);   init_npcs(0);
+   game.enemy[20].image       = 273;
+   game.enemy[20].health      = 150.0f;
+   game.enemy[20].movement    = 1;
+   game.enemy[20].weapon      = 4;
+   game.enemy[20].projectiles = 2;
+   game.enemy[20].size_h      = 0.2f;
+   game.enemy[20].size_w      = 0.2f;
+   game.enemy[20].speed       = (game.projectile[game.enemy[20].weapon].speed/2);   init_powerups();
+   game.enemy[21].image       = 274;
+   game.enemy[21].health      = 160.0f;
+   game.enemy[21].movement    = 1;
+   game.enemy[21].weapon      = 4;
+   game.enemy[21].projectiles = 3;
+   game.enemy[21].size_h      = 0.2f;
+   game.enemy[21].size_w      = 0.2f;
+   game.enemy[21].speed       = (game.projectile[game.enemy[21].weapon].speed/2);   init_powerups();
+   game.enemy[22].image       = 275;
+   game.enemy[22].health      = 170.0f;
+   game.enemy[22].movement    = 1;
+   game.enemy[22].weapon      = 4;
+   game.enemy[22].projectiles = 5;
+   game.enemy[22].size_h      = 0.2f;
+   game.enemy[22].size_w      = 0.2f;
+   game.enemy[22].speed       = (game.projectile[game.enemy[22].weapon].speed/2);   init_powerups();
+   game.enemy[23].image       = 276;
+   game.enemy[23].health      = 4000.0f;
+   game.enemy[23].movement    = 2;
+   game.enemy[23].weapon      = 4;
+   game.enemy[23].projectiles = 9;
+   game.enemy[23].size_h      = 0.8f;
+   game.enemy[23].size_w      = 0.4f;
+   game.enemy[23].speed       = (game.projectile[game.enemy[23].weapon].speed/2);   init_npcs(0);
+   game.enemy[24].image       = 277;
+   game.enemy[24].health      = 5000.0f;
+   game.enemy[24].movement    = 2;
+   game.enemy[24].weapon      = 5;
+   game.enemy[24].projectiles = 9;
+   game.enemy[24].size_h      = 1.2f;
+   game.enemy[24].size_w      = 0.8f;
+   game.enemy[24].speed       = (game.projectile[game.enemy[24].weapon].speed/2);   init_npcs(0);   game.active_npc_count = 0;
 
    for (int level_no_count = 0;level_no_count < (MAX_LEVELS+1); level_no_count++)
    {
       game.level_locked[level_no_count] = true;  ///change me!!!!!! <<<<<<<<<<<<<<,
    }
       game.level_locked[0] = false;
+   init_waves();
+   return(0);
+};
+/*----------------------------------------------------------------------------*/
+int  init_waves     (void)
+{
+   for(int wave_count = 0; wave_count < MAX_WAVES; wave_count++)
+   {
+      game.wave[wave_count].active         = false;
+      game.wave[wave_count].npc_type       = 0;
+      game.wave[wave_count].target_kills   = 0;
+      game.wave[wave_count].count_kills    = 0;
+      game.wave[wave_count].target_spawned = 0;
+      game.wave[wave_count].count_spawned  = 0;
+      game.wave[wave_count].spawn_pattern  = 0;
+   }
    return(0);
 };
 /*----------------------------------------------------------------------------*/
@@ -680,9 +813,12 @@ int proccess_npcs(void)
          if (game.npc[npc_count].movement == 2)// avoid player and stay far right
          {
             game.npc[npc_count].x_pos -= game.npc[npc_count].x_speed;
-            if (game.npc[npc_count].x_pos < ((1.0f)- (game.npc[npc_count].width/2))) game.npc[npc_count].x_pos = ((1.0f)- (game.npc[npc_count].width/2));
-            if (game.npc[npc_count].y_pos > game.player.y_pos) game.npc[npc_count].y_pos += game.npc[npc_count].y_speed;
-            if (game.npc[npc_count].y_pos < game.player.y_pos) game.npc[npc_count].y_pos -= game.npc[npc_count].y_speed;
+            if (game.npc[npc_count].x_pos < ((1.0f) - (game.npc[npc_count].width/2))) game.npc[npc_count].x_pos = ((1.0f)- (game.npc[npc_count].width/2));
+            if (((game.player.y_pos + (game.player.hight/2)) > (game.npc[npc_count].y_pos - (game.npc[npc_count].hight/2))) && ((game.player.y_pos - (game.player.hight/2)) < (game.npc[npc_count].y_pos + (game.npc[npc_count].hight/2))))
+            {
+               if (game.npc[npc_count].y_pos > game.player.y_pos) game.npc[npc_count].y_pos += game.npc[npc_count].y_speed;
+               if (game.npc[npc_count].y_pos < game.player.y_pos) game.npc[npc_count].y_pos -= game.npc[npc_count].y_speed;
+            }
             if ((game.npc[npc_count].y_pos - (game.npc[npc_count].hight/2)) < -1.0f) game.npc[npc_count].y_pos = ((-1.0f) + (game.npc[npc_count].hight/2));
             if ((game.npc[npc_count].y_pos + (game.npc[npc_count].hight/2)) >  1.0f) game.npc[npc_count].y_pos = (( 1.0f) - (game.npc[npc_count].hight/2));
          }
@@ -1265,7 +1401,11 @@ int proccess_player_bullets(void)
                if (box_collision(game.npc[npc_count].x_pos,game.npc[npc_count].y_pos,game.npc[npc_count].width,game.npc[npc_count].hight,game.player.bullet[player_bullet_num].x_pos,game.player.bullet[player_bullet_num].y_pos,game.player.bullet[player_bullet_num].width,game.player.bullet[player_bullet_num].hight))
                {
                   if (game.player.bullet[player_bullet_num].location < 3) game.npc[npc_count].health -= game.projectile[game.player.front_weapon].damage;
-                  else  game.npc[npc_count].health -= game.projectile[game.player.side_weapon].damage;
+                  else // hit npc ship, but not a kill
+                  {
+                      game.npc[npc_count].health -= game.projectile[game.player.side_weapon].damage;
+                      spawn_explosion(game.npc[npc_count].x_pos,game.npc[npc_count].y_pos,0.1250f);
+                  }
                   kill_player_bullet(player_bullet_num);
                   if (game.npc[npc_count].health <= 0)
                   {
@@ -1394,29 +1534,54 @@ int proccess_player_bullets(void)
    }
 }
 /*----------------------------------------------------------------------------*/
+float thruster_offset(void)
+{
+   if (game.player.thrusters < 0) return(0.0f);
+   else return(0.03f);
+};
+/*----------------------------------------------------------------------------*/
 int process_player(int command)
 {
    switch (command)
    {
       case 1://Up
-         game.player.y_pos += 0.025;
+         game.player.y_pos += (0.020 + game.thruster[game.player.thrusters].thrust);
          if (game.player.y_pos >  (1.0f -(game.player.hight/2))) game.player.y_pos = (1.0f -(game.player.hight/2));
       break;
       case 2://Down
-         game.player.y_pos -= 0.025;
+         game.player.y_pos -= (0.020 + game.thruster[game.player.thrusters].thrust);
          if (game.player.y_pos < -(1.0f -(game.player.hight/2))) game.player.y_pos = -(1.0f -(game.player.hight/2));
       break;
 
       case 3://right
-         game.player.x_pos += 0.025;
+         game.player.x_pos += (0.020 + game.thruster[game.player.thrusters].thrust);
          if (game.player.x_pos >  (1.0f -(game.player.width/2))) game.player.x_pos = (1.0f -(game.player.width/2));
       break;
       case 4://Left
-         game.player.x_pos -= 0.025;
-         if (game.player.x_pos < -(1.0f -(game.player.width/2))) game.player.x_pos = -(1.0f -(game.player.width/2));
+         game.player.x_pos -= (0.020 + game.thruster[game.player.thrusters].thrust);
+         if (game.player.x_pos < -(1.0f - (game.player.width/2) - thruster_offset())) game.player.x_pos = -(1.0f -(game.player.width/2) - thruster_offset());
       break;
       default:
       break;
+   }
+   for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+   {
+      if (box_collision(game.npc[npc_count].x_pos,game.npc[npc_count].y_pos,game.npc[npc_count].width,game.npc[npc_count].hight,game.player.x_pos,game.player.y_pos,game.player.width,game.player.hight))
+      {
+         play_sound(13);//player shield hit
+         game.npc[npc_count].health -= game.projectile[game.player.front_weapon].damage;
+         game.player.health -= ((game.enemy[game.npc[npc_count].type_npc].health / 1000.0f) - game.shield[game.player.front_shield].absorption);
+         if (game.npc[npc_count].health < 0)
+         {
+            spawn_explosion(game.npc[npc_count].x_pos,game.npc[npc_count].y_pos,0.50f);
+            kill_npc(npc_count);
+            game.score += (game.npc[npc_count].type_npc + 1) * 10;
+            game.level_score += (game.npc[npc_count].type_npc + 1) * 10;
+            game.kills += 1;
+            game.level_kills += 1;
+         }
+         else spawn_explosion(game.npc[npc_count].x_pos,game.npc[npc_count].y_pos,0.1250f);
+      }
    }
    return(0);
 };
@@ -1647,13 +1812,13 @@ int display_game(void)
 
    if (game.player.thrusters > -1)
    {
-      glBindTexture( GL_TEXTURE_2D, texture[game.thruster[game.player.thrusters].image].texture); //player starship shield
+      glBindTexture( GL_TEXTURE_2D, texture[game.thruster[game.player.thrusters].image].texture); //player thrusters
       glLoadIdentity();
       glBegin( GL_QUADS );
-      glTexCoord2i( 0, 0 );glVertex3f(game.player.x_pos+(game.player.width/2)-0.160f,game.player.y_pos-(game.player.hight/2), 0.035f );
-      glTexCoord2i( 1, 0 );glVertex3f(game.player.x_pos+(game.player.width/2)-0.160f,game.player.y_pos+(game.player.hight/2), 0.035f );
-      glTexCoord2i( 1, 1 );glVertex3f(game.player.x_pos-(game.player.width/2)-0.160f,game.player.y_pos+(game.player.hight/2), 0.035f );
-      glTexCoord2i( 0, 1 );glVertex3f(game.player.x_pos-(game.player.width/2)-0.160f,game.player.y_pos-(game.player.hight/2), 0.035f );
+      glTexCoord2i( 0, 0 );glVertex3f(game.player.x_pos+(game.player.width/2)-0.190f,game.player.y_pos-(game.player.hight/2), 0.035f );
+      glTexCoord2i( 1, 0 );glVertex3f(game.player.x_pos+(game.player.width/2)-0.190f,game.player.y_pos+(game.player.hight/2), 0.035f );
+      glTexCoord2i( 1, 1 );glVertex3f(game.player.x_pos-(game.player.width/2)-0.190f,game.player.y_pos+(game.player.hight/2), 0.035f );
+      glTexCoord2i( 0, 1 );glVertex3f(game.player.x_pos-(game.player.width/2)-0.190f,game.player.y_pos-(game.player.hight/2), 0.035f );
       glEnd();
    }
 

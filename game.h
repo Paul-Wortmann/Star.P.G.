@@ -8,7 +8,19 @@ const int MAX_EXPLOSIONS  = 32;
 const int MAX_ENEMYS      = 32;
 const int MAX_BACKGROUNDS = 4;
 const int MAX_LEVELS      = 25;
+const int MAX_WAVES       = 32;
 const int MAX_POWERUPS    = 8;
+
+struct wave_type
+{
+   bool  active;
+   int   npc_type;
+   int   target_kills;
+   int   count_kills;
+   int   target_spawned;
+   int   count_spawned;
+   int   spawn_pattern;
+};
 
 struct explosion_type
 {
@@ -201,6 +213,7 @@ struct game_type
    int                  npc_spawn_rate;
    int                  npc_projectile_spawn_rate;
    int                  music_track;
+   wave_type            wave[MAX_WAVES];
    player_type          player;
    enemy_type           enemy[MAX_ENEMYS];
    npc_type             npc[MAX_NPCS];
@@ -239,13 +252,15 @@ struct game_type
    fade_logo_type       p_weapon_level_up;
 };
 
-int  init_game     (void);
-bool level_completed(void);
-int  process_game  (void);
-int  process_ball  (void);
-int  display_game  (void);
-int  init_player   (void);
-int  process_player(int command);
+int   init_waves     (void);
+int   init_game      (void);
+bool  level_completed(void);
+int   process_game   (void);
+int   process_ball   (void);
+int   display_game   (void);
+int   init_player    (void);
+float thruster_offset(void);
+int   process_player (int command);
 
 int spawn_player_bullet_num(int player_bullet_num, int location);
 int spawn_player_bullet(int position);

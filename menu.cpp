@@ -1014,10 +1014,10 @@ int diplay_menu (void)
          glBindTexture( GL_TEXTURE_2D, texture[game.thruster[game.player.thrusters].image].texture); //player starship thrusters
          glLoadIdentity();
          glBegin( GL_QUADS );
-         glTexCoord2i( 0, 0 );glVertex3f(ship_pos_x+(game.player.width)-0.329f,ship_pos_y-(game.player.hight), 0.035f );
-         glTexCoord2i( 1, 0 );glVertex3f(ship_pos_x+(game.player.width)-0.329f,ship_pos_y+(game.player.hight), 0.035f );
-         glTexCoord2i( 1, 1 );glVertex3f(ship_pos_x-(game.player.width)-0.329f,ship_pos_y+(game.player.hight), 0.035f );
-         glTexCoord2i( 0, 1 );glVertex3f(ship_pos_x-(game.player.width)-0.329f,ship_pos_y-(game.player.hight), 0.035f );
+         glTexCoord2i( 0, 0 );glVertex3f(ship_pos_x+(game.player.width)-0.379f,ship_pos_y-(game.player.hight), 0.035f );
+         glTexCoord2i( 1, 0 );glVertex3f(ship_pos_x+(game.player.width)-0.379f,ship_pos_y+(game.player.hight), 0.035f );
+         glTexCoord2i( 1, 1 );glVertex3f(ship_pos_x-(game.player.width)-0.379f,ship_pos_y+(game.player.hight), 0.035f );
+         glTexCoord2i( 0, 1 );glVertex3f(ship_pos_x-(game.player.width)-0.379f,ship_pos_y-(game.player.hight), 0.035f );
          glEnd();
       }
 

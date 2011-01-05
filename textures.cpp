@@ -320,10 +320,9 @@ int load_textures(void)
    load_texture (277, "data/images/ships/ship_024.png");
    load_texture (278, "data/images/ships/ship_025.png");
 
-   load_texture (278, "data/images/thrusters/thruster_000.png");
-   load_texture (279, "data/images/thrusters/thruster_001.png");
-   load_texture (280, "data/images/thrusters/thruster_002.png");
-   load_texture (281, "data/images/thrusters/thruster_003.png");
+   load_texture (279, "data/images/thrusters/thruster_000.png");
+   load_texture (280, "data/images/thrusters/thruster_001.png");
+   load_texture (281, "data/images/thrusters/thruster_002.png");
 
    load_texture (282, "data/images/misc/selection_box.png");
    load_texture (283, "data/images/misc/none.png");
@@ -383,6 +382,7 @@ int load_textures(void)
    load_texture (333, "data/images/menu/level_completed.png");
    load_texture (334, "data/images/menu/enter_for_next_level.png");
    load_texture (335, "data/images/menu/new_level_unlocked.png");
+   load_texture (336, "data/images/thrusters/thruster_003.png");
    return(0);
 };
 
