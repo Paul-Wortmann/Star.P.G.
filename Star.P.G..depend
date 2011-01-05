@@ -185,7 +185,7 @@
 	"levels.h"
 	"game.h"
 
-1286109496 c:\paul\c++_game_projects\star.p.g\levels.h
+1294202863 c:\paul\c++_game_projects\star.p.g\levels.h
 
 1294199921 c:\paul\c++_game_projects\star.p.g\game.h
 
@@ -263,7 +263,7 @@
 1293445974 source:c:\paul\c++_game_projects\star.p.g\sounds.cpp
 	"sounds.h"
 
-1294199032 source:c:\paul\c++_game_projects\star.p.g\textures.cpp
+1294201092 source:c:\paul\c++_game_projects\star.p.g\textures.cpp
 	<gl/gl.h>
 	<SDL/SDL.h>
 	<SDL/SDL_image.h>
@@ -274,7 +274,7 @@
 	"SDL/SDL.h"
 	"timer.h"
 
-1294199032 source:c:\paul\c++_game_projects\star.p.g\game.cpp
+1294203700 source:c:\paul\c++_game_projects\star.p.g\game.cpp
 	<SDL/SDL.h>
 	"game.h"
 	"config.h"
