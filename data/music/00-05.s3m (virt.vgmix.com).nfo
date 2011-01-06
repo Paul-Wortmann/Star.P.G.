@@ -1,0 +1,85 @@
+-=/fx 2.0/=-
+a nes chiptune disk by virt
+-----------------
+
+it has been about two years since fx was released, and i've been introduced to a
+pretty active chiptune scene through it. there are a lot of really awesome
+people who are into this stuff.
+
+a student of film composition might, as part of his studies, practice re-scoring
+a whole film. that is, he cuts out the existing music track, and writes his own
+to replace it. i needed to go beyond the vaguely konami-style tunes of fx, and
+actually pretend that i had been hired to compose for specific konami nes games.
+
+so, here are 6 new tunes. they are in the genre/style of music from the original
+games, with my own style added and, in some cases, a lot of progressive metal
+influences. i got the baroque-ish castlevania-esque stuff out of my system last
+time - here i am concentrating on other games, action titles and shooters.
+
+please either listen in impulse tracker or xmplay, or download the mp3s from my
+site or wherever you got this zip. modplug and winamp butcher the tunes, ranging
+from not playing at all to missing the noise channel to messed up note bends. if
+you listen in a mod player the chances are good you're not hearing it correctly,
+and it may sound awful.
+
+	v-blast
+		blast off (gyruss): in the game, an absolutely brilliant
+		"konamization" of bach's toccata and fugue in dmin plays. this
+		is what i would do instead.
+
+	v-bogey
+		bogey at your 6 (top gun): a much more aggressive and frantic
+		tune than the original, with guitar solos, and the original dpcm
+		jet hum in the background. even trusty xmplay will mess up the
+		tempo of the intro, so check out the MP3 if you can't use
+		impulse tracker to listen.
+
+	v-falcon
+		vile red falcon (contra): this is the most sparse of all the
+		songs, but contra is one of the sparsest konami soundtracks,
+		too. i did some weird rhythmic stuff here.
+
+	v-ptime
+		pizza time (tmnt 1): starts out with my version of overworld
+		music, then sort of goes off on a huge tangent and skips to
+		later in the game, and inside later buildings, then bosses and
+		stuff. gets really progressive-wank later on.
+
+	v-option
+		option (gradius 2): traditional konami "shooter music" - a genre
+		that is completely exlusive to games, and immediately
+		recognizable.
+
+	v-shock
+		shell shock (tmnt 3): tmnt3 is my favorite nes soundtrack of all
+		time, and this is my attempt to pay homage to it. i love the
+		"HEY!" sample so, so much.
+
+
+shout outs, greets, thanks:
+
+.hally.memblers.nullsleep.naruto.h0l.
+.truestar.rs3.taezou.prozax.kae.kjh.
+.basehead.seffren.beek.aethra.beej.rv.
+.lasombra.skyline.ross.ubik.pyro.ne7.
+.zsazs.oman.k.gd.dr.deciblast.majesty.
+.vill.diablo.symbiote.cloak.crenton.
+.spencer.mellogear.mpollard.torex?.
+.mathew.nykad.wave.funkymuskrat.hunz.
+.everyone else.i'm.forgetting.
+
+
+!!!!!!!!!!! MML / MCK RULES !!!!!!!!!!!!
+near the end of my work on this disk, i started to get into using mck to
+actually write authentic nes music in nsf format, and i'm pretty sure that if i
+release more nes music it will be as nsfs or even as a .nes demo rom! mml is a
+scripting language popular in japan, used for everything from cellphones to
+midi, and using a tool called mck, you can compile it with a sound driver into
+working nes tunes! grab my english translation of the mck docs at
+http://virt.vgmix.com/mckc-e.txt and the tools at http://nesmusic.zophar.net and
+get started making your own REAL nes music!
+
+
+virt@vgmix.com
+http://virt.vgmix.com
+somebody get this freakin' duck away from me!
