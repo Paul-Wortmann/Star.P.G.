@@ -1,6 +1,6 @@
 #include <SDL/SDL_mixer.h>
 
-const int MAX_MUSIC = 16;
+const int MAX_MUSIC = 32;
 struct music_type
 {
    Mix_Music *music;

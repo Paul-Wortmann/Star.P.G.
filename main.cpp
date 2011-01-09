@@ -25,7 +25,7 @@ extern texture_type texture[MAX_TEXTURES];
 extern menu_type menu;
 extern game_type game;
 
-const char App_Name[] = ("Star.P.G V0.11 - www.physhexgames.co.nr");
+const char App_Name[] = ("Star.P.G V0.12 - www.physhexgames.co.nr");
 const char App_Icon[] = "data/icon.bmp";
 const char App_Conf[] = "Star.P.G..cfg";
 const char App_Logf[] = "Star.P.G..log";
@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
 {
   Init_Log_File(App_Logf);
   Log_File(App_Logf,"------------------");
-  Log_File(App_Logf,"| Star.P.G V0.11 |");
+  Log_File(App_Logf,"| Star.P.G V0.12 |");
   Log_File(App_Logf,"------------------\n");
   Log_File(App_Logf,"Booting up!");
   Log_File(App_Logf,"------------------\n");
@@ -128,7 +128,7 @@ int main(int argc, char *argv[])
 //****************************************** MENU *****************************************
      if (game.menu_active)
      {
-        play_music(0);
+        play_music(game.menu_music_track);
         glPushMatrix();
         diplay_menu ();
         process_menu();
@@ -968,7 +968,7 @@ int main(int argc, char *argv[])
 //*********************************** PLAYER DEATH SCREEN *****************************************
      if (game.pdie_active)
      {
-        play_music(0);
+        play_music(game.pdie_music_track);
         glPushMatrix();
         diplay_menu ();
         process_menu();
@@ -996,7 +996,7 @@ int main(int argc, char *argv[])
 //******************************* PLAYER NEXT LEVEL SCREEN *************************************
      if (game.nlvl_active)
      {
-        play_music  (0);
+        play_music  (game.nlvl_music_track);
         glPushMatrix();
         menu.level = 9;
         diplay_menu ();

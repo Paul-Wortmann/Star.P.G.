@@ -1,3 +1,11 @@
+level_00.s3m - v-blast.s3m
+level_01.s3m - v-bogey.s3m
+level_02.s3m - v-falcon.s3m
+level_03.s3m - v-ptime.s3m
+level_04.s3m - v-option.s3m
+level_05.s3m - v-shock.s3m
+----------------------------------------------------------------------------
+
 -=/fx 2.0/=-
 a nes chiptune disk by virt
 -----------------

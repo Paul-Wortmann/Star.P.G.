@@ -17,9 +17,26 @@ Keys:
 "ESC"	  ->    Menu, Quit.
 
 ---------------------------------------- Change log ---------------------------------------
-V0.11 - (xx-12-2010)
-Achievement system.
+V0.12 - (xx-xx-2011)
+Player death screen.
+End of level stats screen.
+Victory conditions.
+25/25 ships completed.
+30/30 projectiles completed (graphics and code).
+Thruster and shield systems intergrated.
+Many tweaks and bug fixes.
+LOC - 8015
+
+V0.11 - (01-01-2011)
 Improved starship custimization.
+FPS counter.
+More on-screen information.
+Many tweaks  and bug fixes.
+Achievement system implemented.
+All 25 levels completed.
+Multiple enemy movement modes.
+Menu and code improvements.
+LOC - 6201
 
 V0.10 - (10-10-2010)
 Customization of starship, experience based weapons.
@@ -27,7 +44,8 @@ Save and Load game implemented.
 System log implemented.
 Pause/Resume game implemented.
 Collision detection improved.
-Powerups implemented. v0.10
+Powerups implemented.
+LOC - 4828
 
 V0.03 - (23-09-2010)
 Fixed overlay texture rendering bug.
@@ -46,12 +64,11 @@ Menu system created.
 Parallax backgrounds.
 Sound and music system.
 
------------------------------------------ Credits -----------------------------------------
-The game source code is licensed under GPL General Public License. 
+------------------------------------- Credits / Info -----------------------------------------
 
---------------------------------------------
-  Design, programming and everything else...
---------------------------------------------
+---------------------------------------------------
+  Design, programming and almost everything else...
+---------------------------------------------------
 www.physhexgames.co.nr
 Paul Wortmann paul.wortmann@gmail.com / physhex@gmail.com
 
@@ -65,8 +82,8 @@ Cantide
   Graphics
 ---------------------
 Buttons generated with http://cooltext.com/
-Graphics were created and/or modified with GIMP.
-
+Most backgrounds were renderd with Genetica Viewer 3.51.2181 Copyright (c) 2006-2010 Spiral Graphics Inc.
+Many graphics were created and/or modified with GIMP. (http://www.gimp.org/)
 
 ---------
   Sound
@@ -75,24 +92,47 @@ Graphics were created and/or modified with GIMP.
 ---------
   Music
 ---------
+level_00.s3m from http://virt.vgmix.com (v-blast.s3m)
+level_01.s3m from http://virt.vgmix.com (v-bogey.s3m)
+level_02.s3m from http://virt.vgmix.com (v-falcon.s3m)
+level_03.s3m from http://virt.vgmix.com (v-ptime.s3m)
+level_04.s3m from http://virt.vgmix.com (v-option.s3m)
+level_05.s3m from http://virt.vgmix.com (v-shock.s3m)
+level_06.s3m from http://www.lpchip.com/home/ (JimTonic.s3m)
+level_07.it  from http://www.lpchip.com/home/ (baseline.it)
+level_08.s3m from http://modarchive.org (alpha_c_-_rat_race.it)
+level_09.s3m from http://modarchive.org (ko0x_alpha-c_-_march_of_the_ants.it)
+level_10.s3m from http://modarchive.org (alpha_c_-_the_martian_groove.it)
+level_11.s3m from http://modarchive.org (dear_daisy.it)
+level_12.mod from http://www.scene.org (SD10-Untitled_Chip4.mod)
+level_13.mod from http://www.scene.org (SD10-Untitled_Chip5.mod)
+level_14.mod from http://www.scene.org (SD10-Untitled_Chip6.mod)
+level_15.mod from http://www.scene.org (SD10-Untitled_Chip7.mod)
+level_16.mod from http://www.scene.org (AnarchyMenu1.mod)
+level_17.mod from http://www.scene.org (Beachhead_2.mod)
+level_18.mod from http://www.scene.org (4-Mats_Madness.mod)
+level_19.mod from http://www.scene.org (Menu_Loader.mod)
+level_20.mod from http://www.scene.org (FartingKippers_Ahoy.mod)
+level_21.mod from http://www.scene.org (LMM.mod)
+level_22.mod from http://www.scene.org (Madness.mod)
+level_23.mod from http://www.scene.org (Madness_2.mod)
+level_24.mod from http://www.scene.org (Dna-dream.mod)
+level_25.mod from http://www.scene.org (Electric_Revenge.mod)
+
+level_pd.mod from http://www.scene.org (Chip_Shop.mod)
+level_nl.mod from http://www.scene.org (Cardiaxx-HiScore.mod)
+menu_00.it   from http://www.lpchip.com/home/ (Wisdom of Purety - Looped.it)
 
 
 3rd party copyright notice.
 ---------------------------
 
 Some of the resources are derived from works found on the internet. 
-I cant remember exactly which sites I got these resources from, but to the best of my knowledge all were from sites offering them as royalty free items, if however I am in error, please contact me imediatly and I will either give you proper credit or remove the resource from this game.
+To the best of my knowledge these resources are either in the public domain, or have a licence permitting there use in such a project.
+If however I am in error, please contact me (paul.wortmann@gmail.com) and I will remove the resource from this game imidiatly!
 
-
--------------------------------------------------------------------------------
-http://cloc.sourceforge.net v 1.53  T=0.5 s (52.0 files/s, 11192.0 lines/s)
--------------------------------------------------------------------------------
-Language                     files          blank        comment           code
--------------------------------------------------------------------------------
-C++                             13            329            350           4487
-C/C++ Header                    13             63             26            341
--------------------------------------------------------------------------------
-SUM:                            26            392            376           4828 v0.10
--------------------------------------------------------------------------------
-
-1373loc 22.15% v0.11
+Legal
+-----
+This is an open-source, non-comercial application. (if you paid for it get a refund!)
+You are free to copy and share this application under the GPL v2.0 (the file gpl.txt has been included)
+Please note that the music was not created by me, not the included API's, and I do not hold the copyright to them.

@@ -34,7 +34,10 @@ int init_game(void)
    game.exp_rate                          = 3;
    game.FPS                               = 0.0f;
    game.paused.active                     = false;
-   game.music_track                       = 1;
+   game.music_track                       = 0;
+   game.menu_music_track                  = 26;
+   game.nlvl_music_track                  = 27;
+   game.pdie_music_track                  = 28;
    game.score                             = 0;
    game.kills                             = 0;
    game.level_kills                       = 0;
@@ -1235,7 +1238,7 @@ int init_game(void)
 
    for (int level_no_count = 0;level_no_count < (MAX_LEVELS+1); level_no_count++)
    {
-      game.level_locked[level_no_count] = true;  ///change me!!!!!! <<<<<<<<<<<<<<,
+      game.level_locked[level_no_count] = false;  ///change me!!!!!! <<<<<<<<<<<<<<,
    }
       game.level_locked[0] = false;
    init_waves();
