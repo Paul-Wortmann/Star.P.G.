@@ -1,8 +1,28 @@
+/* Copyright (C) 2011 Paul Wortmann, PhysHex Games.
+ * This file is part of Star.P.G.
+ *
+ * Star.P.G. is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Star.P.G. is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Star.P.G. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include <SDL/SDL.h>
+#include <SDL/SDL_main.h>
 #include <SDL/SDL_ttf.h>
+#include <SDL/SDL_net.h>
 #include <SDL/SDL_image.h>
 #include <SDL/SDL_opengl.h>
 #include <gl/gl.h>
+//#include <physfs.h>
 #include "misc.h"
 #include "main.h"
 #include "config.h"
@@ -16,6 +36,7 @@
 #include "font.h"
 #include "savegame.h"
 #include "timer.h"
+#include "network.h"
 #include "version.h"
 
 extern config_data_type config_data;
@@ -68,6 +89,10 @@ int main(int argc, char *argv[])
   Load_Default_Config();
   Log_File(App_Logf,"Loading config...");
   Load_Config_File(App_Conf);
+ //----------------------------------- Start the PhysicsFS ----------------------
+  //Log_File(App_Logf,"Starting PhysicsFS...");
+  //PHYSFS_init(argv[0]);
+  //PHYSFS_addToSearchPath("Star.P.G..spg", 1);
 //----------------------------------- SDL Video --------------------------------
   Log_File(App_Logf,"Starting SDL...");
   putenv("SDL_VIDEO_WINDOW_POS");
@@ -481,6 +506,7 @@ int main(int argc, char *argv[])
                        switch (menu.possition)
                           {
                              case 0://new game
+                                init_game();
                                 menu.possition = 0;
                                 menu.level = 1;
                                 menu.possition_max = 6;
@@ -654,7 +680,6 @@ int main(int argc, char *argv[])
                                 menu.possition = 3;
                                 menu.level = 1;
                                 menu.possition_max = 5;
-                                init_game_level(game.level);
                                 game.game_active = true;
                                 game.menu_active = false;
                                 Log_File(App_Logf,"Resuming game");
@@ -666,7 +691,6 @@ int main(int argc, char *argv[])
                                 menu.possition = 3;
                                 menu.level = 1;
                                 menu.possition_max = 5;
-                                init_game_level(game.level);
                                 game.game_active = true;
                                 game.menu_active = false;
                                 Log_File(App_Logf,"Resuming game");
@@ -678,7 +702,6 @@ int main(int argc, char *argv[])
                                 menu.possition = 3;
                                 menu.level = 1;
                                 menu.possition_max = 5;
-                                init_game_level(game.level);
                                 game.game_active = true;
                                 game.menu_active = false;
                                 Log_File(App_Logf,"Resuming game");
@@ -690,7 +713,6 @@ int main(int argc, char *argv[])
                                 menu.possition = 3;
                                 menu.level = 1;
                                 menu.possition_max = 5;
-                                init_game_level(game.level);
                                 game.game_active = true;
                                 game.menu_active = false;
                                 Log_File(App_Logf,"Resuming game");
@@ -702,7 +724,6 @@ int main(int argc, char *argv[])
                                 menu.possition = 3;
                                 menu.level = 1;
                                 menu.possition_max = 5;
-                                init_game_level(game.level);
                                 game.game_active = true;
                                 game.menu_active = false;
                                 Log_File(App_Logf,"Resuming game");
@@ -726,7 +747,6 @@ int main(int argc, char *argv[])
                                    menu.possition = 3;
                                    menu.level = 1;
                                    menu.possition_max = 5;
-                                   init_game_level(game.level);
                                    game.game_active = true;
                                    game.menu_active = false;
                                    Log_File(App_Logf,"Resuming game");
@@ -741,7 +761,6 @@ int main(int argc, char *argv[])
                                    menu.possition = 3;
                                    menu.level = 1;
                                    menu.possition_max = 5;
-                                   init_game_level(game.level);
                                    game.game_active = true;
                                    game.menu_active = false;
                                    Log_File(App_Logf,"Resuming game");
@@ -756,7 +775,6 @@ int main(int argc, char *argv[])
                                    menu.possition = 3;
                                    menu.level = 1;
                                    menu.possition_max = 5;
-                                   init_game_level(game.level);
                                    game.game_active = true;
                                    game.menu_active = false;
                                    Log_File(App_Logf,"Resuming game");
@@ -771,7 +789,6 @@ int main(int argc, char *argv[])
                                    menu.possition = 3;
                                    menu.level = 1;
                                    menu.possition_max = 5;
-                                   init_game_level(game.level);
                                    game.game_active = true;
                                    game.menu_active = false;
                                    Log_File(App_Logf,"Resuming game");
@@ -786,7 +803,6 @@ int main(int argc, char *argv[])
                                    menu.possition = 3;
                                    menu.level = 1;
                                    menu.possition_max = 5;
-                                   init_game_level(game.level);
                                    game.game_active = true;
                                    game.menu_active = false;
                                    Log_File(App_Logf,"Resuming game");
@@ -996,6 +1012,7 @@ int main(int argc, char *argv[])
 //******************************* PLAYER NEXT LEVEL SCREEN *************************************
      if (game.nlvl_active)
      {
+        bool outro_time = false;
         play_music  (game.nlvl_music_track);
         glPushMatrix();
         menu.level = 9;
@@ -1009,21 +1026,80 @@ int main(int argc, char *argv[])
            if ( event.type == SDL_QUIT ) quit = 1;
            if ( event.type == SDL_KEYDOWN )
            {
-              if (event.key.keysym.sym == SDLK_RETURN)
+              if ((event.key.keysym.sym == SDLK_ESCAPE) || (event.key.keysym.sym == SDLK_RETURN) || (event.key.keysym.sym == SDLK_SPACE))
               {
                  play_sound(1);
                  game.level++;
-                 if (game.level > 24) game.level = 24;
+                 if (game.level > 24) // killed last boss!
+                 {
+                     outro_time = true;
+                     game.level = 24;
+                     if (!game.completed)
+                     {
+                         for(int count = 0; count < MAX_ENEMYS; count++) //finished the game, now its twice as hard! ;)
+                         {
+                            game.enemy[count].health += game.enemy[count].health;
+                            if (game.enemy[count].health > 65535) game.enemy[count].health = 65535;
+                         }
+                         game.completed = true;
+                     }
+                 }
                  if (game.level_locked[game.level]) game.level_locked[game.level] = false;
                  init_game_level(game.level);
-                 game.game_active = true;
-                 game.menu_active = false;
-                 game.nlvl_active = false;
-                 Log_File(App_Logf,"Victory conditions met, player proceeding to next level!");
+                 if (outro_time)
+                 {
+                    game.outr_active = true;
+                    game.game_active = false;
+                    game.menu_active = false;
+                    game.nlvl_active = false;
+                    Log_File(App_Logf,"Player just completed the game, proceeding to Outro!");
+                 }
+                 else
+                 {
+                    game.game_active = true;
+                    game.menu_active = false;
+                    game.nlvl_active = false;
+                    Log_File(App_Logf,"Victory conditions met, player proceeding to next level!");
+                 }
               }
            }
         }
      }
+
+//******************************* OUTRO SCREEN *************************************************
+     if (game.outr_active)
+     {
+        play_music  (game.menu_music_track);
+        glPushMatrix();
+        menu.level = 10;
+        diplay_menu ();
+        process_menu();
+        glPopMatrix ();
+        SDL_GL_SwapBuffers();
+        //--- proccess keyboard events ---
+        while (SDL_PollEvent(&event))
+        {
+           if ( event.type == SDL_QUIT ) quit = 1;
+           if ( event.type == SDL_KEYDOWN )
+           {
+              if ((event.key.keysym.sym == SDLK_ESCAPE) || (event.key.keysym.sym == SDLK_RETURN) || (event.key.keysym.sym == SDLK_SPACE))
+              {
+                 play_sound(1);
+                 menu.level = 1;
+                 menu.possition = 0;
+                 menu.possition_max = 6;
+                 game.game_resume = false;
+                 game.pdie_active = false;
+                 game.outr_active = false;
+                 game.game_active = false;
+                 game.menu_active = true;
+                 game.nlvl_active = false;
+                 Log_File(App_Logf,"Outro finished, proceeding to main menu!");
+              }
+           }
+        }
+    }
+//---------------------------- code for end of main loop -----------------------
      game.FPS += fps.getticks();
      game.FPS  = 1000 - (game.FPS / 2);
      fps.stop();
@@ -1044,6 +1120,9 @@ int main(int argc, char *argv[])
   kill_music();
   Log_File(App_Logf,"Unloading sounds...");
   kill_sounds();
+//  Log_File(App_Logf,"PhysicsFS deinit...");
+//  PHYSFS_deinit();
+  Log_File(App_Logf,"SDL deinit...");
   SDL_Quit();
   return(0);
 }

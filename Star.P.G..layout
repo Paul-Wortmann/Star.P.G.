@@ -19,11 +19,11 @@
 	<File name="font.h" open="0" top="0" tabpos="0">
 		<Cursor position="308" topLine="0" />
 	</File>
-	<File name="game.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="1361" topLine="24" />
+	<File name="game.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="66782" topLine="1405" />
 	</File>
-	<File name="game.h" open="0" top="0" tabpos="4">
-		<Cursor position="4319" topLine="180" />
+	<File name="game.h" open="1" top="1" tabpos="3">
+		<Cursor position="5207" topLine="232" />
 	</File>
 	<File name="graphics.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="70" topLine="0" />
@@ -31,35 +31,44 @@
 	<File name="graphics.h" open="0" top="0" tabpos="4">
 		<Cursor position="100" topLine="0" />
 	</File>
-	<File name="levels.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="28851" topLine="588" />
+	<File name="levels.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="30395" topLine="594" />
 	</File>
 	<File name="levels.h" open="0" top="0" tabpos="0">
 		<Cursor position="42" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="0">
-		<Cursor position="45439" topLine="65" />
+	<File name="main.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="49959" topLine="1062" />
 	</File>
-	<File name="menu.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="49832" topLine="1000" />
+	<File name="menu.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="90573" topLine="1700" />
 	</File>
-	<File name="menu.h" open="0" top="0" tabpos="0">
+	<File name="menu.h" open="0" top="0" tabpos="4">
 		<Cursor position="226" topLine="0" />
 	</File>
+	<File name="misc.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="540" topLine="16" />
+	</File>
 	<File name="music.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="2088" topLine="6" />
+		<Cursor position="1957" topLine="6" />
 	</File>
 	<File name="music.h" open="0" top="0" tabpos="0">
 		<Cursor position="54" topLine="0" />
 	</File>
+	<File name="savegame.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="718" topLine="0" />
+	</File>
+	<File name="savegame.h" open="0" top="0" tabpos="0">
+		<Cursor position="318" topLine="0" />
+	</File>
 	<File name="sounds.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1996" topLine="13" />
+		<Cursor position="4754" topLine="41" />
 	</File>
 	<File name="sounds.h" open="0" top="0" tabpos="2">
-		<Cursor position="28" topLine="0" />
+		<Cursor position="55" topLine="0" />
 	</File>
-	<File name="textures.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="15678" topLine="254" />
+	<File name="textures.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="19735" topLine="311" />
 	</File>
 	<File name="textures.h" open="0" top="0" tabpos="0">
 		<Cursor position="20" topLine="0" />

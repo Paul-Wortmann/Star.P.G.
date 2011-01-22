@@ -3,18 +3,18 @@
 	<FileVersion major="1" minor="6" />
 	<Project>
 		<Option title="Star.P.G." />
-		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="default">
-				<Option output="Star" prefix_auto="1" extension_auto="1" />
+				<Option output="Star.P.G..exe" prefix_auto="0" extension_auto="0" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-Wno-write-strings" />
 				</Compiler>
 				<Linker>
-					<Add option="-lstdc++" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
 					<Add library="mingw32" />
 					<Add library="SDLmain" />
 					<Add library="SDL" />
@@ -23,10 +23,12 @@
 					<Add library="sdl_image" />
 					<Add library="glu32" />
 					<Add library="freetype" />
-					<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_image.lib" />
-					<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_mixer.lib" />
-					<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_net.lib" />
-					<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_ttf.lib" />
+					<Add library="SDL_image" />
+					<Add library="SDL_mixer" />
+					<Add library="SDL_net" />
+					<Add library="SDL_ttf" />
+					<Add library="libphysfs" />
+					<Add library="zlib" />
 				</Linker>
 			</Target>
 		</Build>
@@ -36,6 +38,7 @@
 		</Compiler>
 		<Linker>
 			<Add option="-lstdc++" />
+			<Add option="-static-libgcc" />
 			<Add library="mingw32" />
 			<Add library="SDLmain" />
 			<Add library="SDL" />
@@ -44,10 +47,10 @@
 			<Add library="sdl_image" />
 			<Add library="glu32" />
 			<Add library="freetype" />
-			<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_image.lib" />
-			<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_mixer.lib" />
-			<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_net.lib" />
-			<Add library="..\..\..\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_ttf.lib" />
+			<Add library="SDL_image" />
+			<Add library="SDL_mixer" />
+			<Add library="SDL_net" />
+			<Add library="SDL_ttf" />
 			<Add directory='&quot;C:\Program Files (x86)\CodeBlocks\MinGW\lib&quot;' />
 		</Linker>
 		<Unit filename="FreeType.cpp" />
@@ -75,6 +78,8 @@
 		<Unit filename="misc.h" />
 		<Unit filename="music.cpp" />
 		<Unit filename="music.h" />
+		<Unit filename="network.cpp" />
+		<Unit filename="network.h" />
 		<Unit filename="physics.cpp" />
 		<Unit filename="physics.h" />
 		<Unit filename="savegame.cpp" />

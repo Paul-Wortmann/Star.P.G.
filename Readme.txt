@@ -17,15 +17,23 @@ Keys:
 "ESC"	  ->    Menu, Quit.
 
 ---------------------------------------- Change log ---------------------------------------
-V0.12 - (xx-xx-2011)
+V0.13 - (xx-xx-2011)
+Fixed bug in save/load game 4.
+Many tweaks and bug fixes.
+Fixed background bug.
+Added spawn formations.
+LOC - 9131
+
+V0.12 - (09-01-2011)
 Player death screen.
 End of level stats screen.
 Victory conditions.
 25/25 ships completed.
-30/30 projectiles completed (graphics and code).
-Thruster and shield systems intergrated.
+30/30 projectiles completed.
+Thruster and shield systems integrated.
+Game music added, in-game and menu.
 Many tweaks and bug fixes.
-LOC - 8015
+LOC - 8049
 
 V0.11 - (01-01-2011)
 Improved starship custimization.
@@ -124,6 +132,17 @@ level_nl.mod from http://www.scene.org (Cardiaxx-HiScore.mod)
 menu_00.it   from http://www.lpchip.com/home/ (Wisdom of Purety - Looped.it)
 
 
+3rd party API's.
+---------------------------
+SDL         - http://www.libsdl.org/
+FreeType    - http://www.freetype.org/
+PhysicsFS   - http://icculus.org/physfs/
+
+Mikmod      - http://mikmod.raphnet.net/
+Libtiff     - http://www.libtiff.org/
+Libpng      - http://www.libpng.org/
+Smpeg       - http://www.lokigames.com/development/smpeg.php3
+
 3rd party copyright notice.
 ---------------------------
 
@@ -136,3 +155,20 @@ Legal
 This is an open-source, non-comercial application. (if you paid for it get a refund!)
 You are free to copy and share this application under the GPL v2.0 (the file gpl.txt has been included)
 Please note that the music was not created by me, not the included API's, and I do not hold the copyright to them.
+
+/* Copyright (C) 2011 PhysHex Games.
+ * This file is part of Star.P.G.
+ *
+ * Star.P.G. is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Star.P.G. is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Star.P.G. If not, see <http://www.gnu.org/licenses/>.
+ */

@@ -1,6 +1,6 @@
 #include <SDL/SDL_mixer.h>
 
-const int MAX_SOUNDS = 32;
+const int MAX_SOUNDS = 64;
 struct sound_type
 {
    bool active;

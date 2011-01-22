@@ -383,6 +383,9 @@ int load_textures(void)
    load_texture (334, "data/images/menu/enter_for_next_level.png");
    load_texture (335, "data/images/menu/new_level_unlocked.png");
    load_texture (336, "data/images/thrusters/thruster_003.png");
+   load_texture (337, "data/images/powerups/coin_powerup.png");
+   load_texture (338, "data/images/powerups/wexp_powerup.png");
+
    return(0);
 };
 

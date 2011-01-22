@@ -1700,5 +1700,46 @@ int diplay_menu (void)
       font_print(128,128,192,-1.00f,-0.30f,"Total kills - %1.0f", game.kills);
 //      font_print(128,128,192,-1.00f,-0.40f,"Kill rate   - %1.0f %",((game.level_kills*100.0f)/(game.level_spawened*100.0f)));
    }
+/*-----------------------------------------------------------------------------*/
+   if (menu.level == 10) //Outro screen
+   {
+      int level_t = game.level + 1;
+      if (level_t > 24) level_t = 24;
+      glBindTexture( GL_TEXTURE_2D, texture[63].texture); //background 01
+      glLoadIdentity();
+      glBegin( GL_QUADS );
+	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
+	  glTexCoord2i( 0, 0 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos, 2.0f + menu.background_scroll[0].y_pos, 0.15f );
+	  glTexCoord2i( 1, 0 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos, 2.0f + menu.background_scroll[0].y_pos, 0.15f );
+	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
+      glEnd();
+
+      glBindTexture( GL_TEXTURE_2D, texture[64].texture); //background 02
+      glLoadIdentity();
+      glBegin( GL_QUADS );
+	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
+	  glTexCoord2i( 0, 0 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos, 2.0f + menu.background_scroll[1].y_pos, 0.1f );
+	  glTexCoord2i( 1, 0 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos, 2.0f + menu.background_scroll[1].y_pos, 0.1f );
+	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
+      glEnd();
+
+      glBindTexture( GL_TEXTURE_2D, texture[30].texture); //logo
+      glLoadIdentity();
+      glBegin( GL_QUADS );
+	  glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
+	  glTexCoord2i( 0, 0 );glVertex3f(-0.9f, 1.0f, 0.0f );
+	  glTexCoord2i( 1, 0 );glVertex3f( 0.9f, 1.0f, 0.0f );
+	  glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
+      glEnd();
+
+      glBindTexture( GL_TEXTURE_2D, texture[334].texture); //Press any key to continue
+      glLoadIdentity();
+      glBegin( GL_QUADS );
+	  glTexCoord2i( 0, 1 );glVertex3f(-0.8f,-0.95f, 0.0f );
+	  glTexCoord2i( 0, 0 );glVertex3f(-0.8f,-0.75f, 0.0f );
+	  glTexCoord2i( 1, 0 );glVertex3f( 0.8f,-0.75f, 0.0f );
+	  glTexCoord2i( 1, 1 );glVertex3f( 0.8f,-0.95f, 0.0f );
+      glEnd();
+   }
    return(0);
 };

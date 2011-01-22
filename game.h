@@ -10,16 +10,19 @@ const int MAX_BACKGROUNDS = 4;
 const int MAX_LEVELS      = 25;
 const int MAX_WAVES       = 32;
 const int MAX_POWERUPS    = 8;
+const int MAX_COINS       = 32;
+const int MAX_WEXPS       = 32;
 
 struct wave_type
 {
-   bool  active;
-   int   npc_type;
-   int   target_kills;
-   int   count_kills;
-   int   target_spawned;
-   int   count_spawned;
-   int   spawn_pattern;
+   bool   active;
+   int    leader_num;
+   int    npc_type;
+   int    target_kills;
+   int    count_kills;
+   int    target_spawned;
+   int    count_spawned;
+   int    spawn_pattern;
 };
 
 struct explosion_type
@@ -46,6 +49,32 @@ struct powerup_type
    float hight;
    float speed;
    int   spawn_rate;
+};
+
+struct coin_type
+{
+   bool  active;
+   int   value;
+   int   image;
+   int   sound;
+   float x_pos;
+   float y_pos;
+   float width;
+   float hight;
+   float speed;
+};
+
+struct wexp_type
+{
+   bool  active;
+   int   value;
+   int   image;
+   int   sound;
+   float x_pos;
+   float y_pos;
+   float width;
+   float hight;
+   float speed;
 };
 
 struct bullet_type
@@ -193,10 +222,13 @@ struct game_type
    bool                 menu_active;
    bool                 pdie_active;
    bool                 nlvl_active;
+   bool                 outr_active;
    int                  exp_rate;
    int                  FPS;
    int                  level_locked[MAX_LEVELS];
    int                  level;
+   int                  level_waves;
+   bool                 wave_spawnable;
    int                  level_npc_type;
    bool                 level_boss_level;
    int                  score;
@@ -207,10 +239,22 @@ struct game_type
    int                  victory_kills;
    int                  victory_spawened;
    int                  victory_score;
+   int                  level_end_count;
+   int                  level_end_time_out;
+   bool                 level_end_time;
+   int                  level_end_phase;
+   bool                 level_end_display_active;
+   bool                 level_end_display_alpha;
+   bool                 level_end_display_count;
+   bool                 powerups_spawened;
+   bool                 completed;
    float                speed;
    int                  fw_rof_count;
    int                  sw_rof_count;
+   int                  coin_spawn_rate;
+   int                  wexp_spawn_rate;
    int                  npc_spawn_rate;
+   int                  npc_spawn_rate_count;
    int                  npc_projectile_spawn_rate;
    int                  music_track;
    int                  menu_music_track;
@@ -226,6 +270,8 @@ struct game_type
    explosion_type       explosion[MAX_EXPLOSIONS];
    bkground_scroll_type background_scroll[MAX_BACKGROUNDS];
    powerup_type         powerup[MAX_POWERUPS];
+   coin_type            coin[MAX_COINS];
+   wexp_type            wexp[MAX_WEXPS];
    int                  active_npc_count;
    active_npc_type      active_npc[MAX_NPCS];
    achivement_type      achivement;
@@ -255,20 +301,23 @@ struct game_type
    fade_logo_type       p_weapon_level_up;
 };
 
-int   init_waves     (void);
-int   init_game      (void);
-bool  level_completed(void);
-int   process_game   (void);
-int   process_ball   (void);
-int   display_game   (void);
-int   init_player    (void);
-float thruster_offset(void);
-int   process_player (int command);
+int   init_waves          (void);
+int   spawn_wave          (void);
+int   get_next_active_wave(void);
+int   process_waves       (void);
+int   init_game           (void);
+bool  level_completed     (void);
+int   process_game        (void);
+int   process_ball        (void);
+int   display_game        (void);
+int   init_player         (void);
+float thruster_offset     (void);
+int   process_player      (int command);
 
 int spawn_player_bullet_num(int player_bullet_num, int location);
-int spawn_player_bullet(int position);
-int kill_player_bullet(int player_bullet_num);
-int init_player_bullets(void);
+int spawn_player_bullet    (int position);
+int kill_player_bullet     (int player_bullet_num);
+int init_player_bullets    (void);
 int proccess_player_bullets(void);
 
 int spawn_explosion(float x_position, float y_position, float size);
@@ -276,10 +325,10 @@ int kill_explosion(int explosion_num);
 int init_explosions(void);
 int proccess_explosions(void);
 
-int spawn_npc(float x_position, float y_position, int type_npc);
-int kill_npc(int npc_num);
-int init_npcs(int type_npc);
-int proccess_npcs(void);
+int   spawn_npc(float x_position, float y_position, int type_npc);
+int   kill_npc(int npc_num);
+int   init_npcs(int type_npc);
+int   proccess_npcs(void);
 
 int spawn_npc_bullet_num(int npc_num, int npc_bullet_num, int location);
 int spawn_npc_bullet(int npc_num, int location);
@@ -310,8 +359,21 @@ int process_saved(void);
 
 int spawn_powerup(float x_position, float y_position, int type_powerup);
 int kill_powerup(int type_powerup);
+int kill_powerups(void);
 int init_powerups(void);
 int proccess_powerups(void);
+
+int spawn_coin(float x_position, float y_position, int coin_value);
+int kill_coin(int coin_num);
+int kill_coins(void);
+int init_coin(void);
+int proccess_coin(void);
+
+int spawn_wexp(float x_position, float y_position, int wexp_value);
+int kill_wexp(int wexp_num);
+int kill_wexps(void);
+int init_wexp(void);
+int proccess_wexp(void);
 
 int kill_a_score(void);
 int spawn_a_score(void);
@@ -417,3 +479,8 @@ int kill_p_weapon_level_up(void);
 int spawn_p_weapon_level_up(void);
 int display_p_weapon_level_up(void);
 int process_p_weapon_level_up(void);
+
+int kill_d_level_end(void);
+int spawn_d_level_end(void);
+int display_d_level_end(void);
+int process_d_level_end(void);
