@@ -1727,8 +1727,8 @@ int diplay_menu (void)
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
-	  glTexCoord2i( 0, 0 );glVertex3f(-0.9f, 1.0f, 0.0f );
-	  glTexCoord2i( 1, 0 );glVertex3f( 0.9f, 1.0f, 0.0f );
+	  glTexCoord2i( 0, 0 );glVertex3f(-0.9f, 1.0f,  0.0f );
+	  glTexCoord2i( 1, 0 );glVertex3f( 0.9f, 1.0f,  0.0f );
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
       glEnd();
 
@@ -1739,6 +1739,15 @@ int diplay_menu (void)
 	  glTexCoord2i( 0, 0 );glVertex3f(-0.8f,-0.75f, 0.0f );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.8f,-0.75f, 0.0f );
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.8f,-0.95f, 0.0f );
+      glEnd();
+
+      glBindTexture( GL_TEXTURE_2D, texture[339].texture); //credits
+      glLoadIdentity();
+      glBegin( GL_QUADS );
+	  glTexCoord2i( 0, 1 );glVertex3f(-1.0f,-1.0f, 0.0f );
+	  glTexCoord2i( 0, 0 );glVertex3f(-1.0f, 1.0f, 0.0f );
+	  glTexCoord2i( 1, 0 );glVertex3f( 1.0f, 1.0f, 0.0f );
+	  glTexCoord2i( 1, 1 );glVertex3f( 1.0f,-1.0f, 0.0f );
       glEnd();
    }
    return(0);

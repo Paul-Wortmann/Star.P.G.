@@ -1,4 +1,4 @@
-/* Copyright (C) 2011 Paul Wortmann, PhysHex Games.
+/* Copyright (C) 2011 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
  * This file is part of Star.P.G.
  *
  * Star.P.G. is free software: you can redistribute it and/or modify
@@ -46,7 +46,7 @@ extern texture_type texture[MAX_TEXTURES];
 extern menu_type menu;
 extern game_type game;
 
-const char App_Name[] = ("Star.P.G V0.12 - www.physhexgames.co.nr");
+const char App_Name[] = ("Star.P.G V0.13 - www.physhexgames.co.nr");
 const char App_Icon[] = "data/icon.bmp";
 const char App_Conf[] = "Star.P.G..cfg";
 const char App_Logf[] = "Star.P.G..log";
@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
 {
   Init_Log_File(App_Logf);
   Log_File(App_Logf,"------------------");
-  Log_File(App_Logf,"| Star.P.G V0.12 |");
+  Log_File(App_Logf,"| Star.P.G V0.13 |");
   Log_File(App_Logf,"------------------\n");
   Log_File(App_Logf,"Booting up!");
   Log_File(App_Logf,"------------------\n");
@@ -815,6 +815,9 @@ int main(int argc, char *argv[])
                                 menu.possition_max = 6;
                                 Log_File(App_Logf,"Entering 'game' menu.");
                              break;
+                             default:
+                             break;
+
                           }
                     case 7: // Achievements menu
                        switch (menu.possition)

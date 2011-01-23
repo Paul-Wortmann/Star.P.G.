@@ -45,9 +45,10 @@ int init_game_level(int level_no)
       game.npc_spawn_rate                    = 378;
       game.npc_spawn_rate_count              = 378;
       game.npc_projectile_spawn_rate         = 50;
-      game.victory_kills                     = 10;//128
+      game.victory_kills                     = 128;
       game.victory_spawened                  = 1;
       game.victory_score                     = 0;
+      game.wave[0].wave_size                 = 0.25f;
       game.wave[0].npc_type                  = 0;
       game.wave[0].spawn_pattern             = 0;
       game.level_waves                       = 0;
@@ -110,6 +111,7 @@ int init_game_level(int level_no)
       game.victory_kills                     = 256;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
+      game.wave[0].wave_size                 = 0.25f;
       game.wave[0].npc_type                  = 2;
       game.wave[0].spawn_pattern             = 2;
       game.wave[1].npc_type                  = 0;
@@ -171,6 +173,7 @@ int init_game_level(int level_no)
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
+      game.wave[0].wave_size                 = 0.5f;
       game.wave[0].npc_type                  = 4;
       game.wave[0].spawn_pattern             = 0;
       game.level_waves                       = 0;
@@ -200,6 +203,7 @@ int init_game_level(int level_no)
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
+      game.wave[0].wave_size                 = 0.3f;
       game.wave[0].npc_type                  = 4;
       game.wave[0].spawn_pattern             = 4;
       game.wave[1].npc_type                  = 5;
@@ -233,6 +237,7 @@ int init_game_level(int level_no)
       game.victory_score                     = 0;
       game.wave[0].npc_type                  = 6;
       game.wave[0].spawn_pattern             = 6;
+      game.wave[1].wave_size                 = 0.25f;
       game.wave[1].npc_type                  = 4;
       game.wave[1].spawn_pattern             = 4;
       game.wave[2].npc_type                  = 5;
@@ -350,6 +355,7 @@ int init_game_level(int level_no)
       game.victory_kills                     = 256;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
+      game.wave[0].wave_size                 = 0.15f;
       game.wave[0].npc_type                  = 10;
       game.wave[0].spawn_pattern             = 4;
       game.wave[1].npc_type                  = 9;
@@ -469,10 +475,12 @@ int init_game_level(int level_no)
       game.victory_kills                     = 256;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
+      game.wave[0].wave_size                 = 0.25f;
       game.wave[0].npc_type                  = 14;
       game.wave[0].spawn_pattern             = 4;
       game.wave[1].npc_type                  = 13;
       game.wave[1].spawn_pattern             = 0;
+      game.wave[2].wave_size                 = 0.35f;
       game.wave[2].npc_type                  = 14;
       game.wave[2].spawn_pattern             = 4;
       game.wave[3].npc_type                  = 12;
@@ -530,6 +538,7 @@ int init_game_level(int level_no)
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
+      game.wave[0].wave_size                 = 0.45f;
       game.wave[0].npc_type                  = 16;
       game.wave[0].spawn_pattern             = 8;
       game.level_waves                       = 0;
@@ -561,6 +570,7 @@ int init_game_level(int level_no)
       game.victory_score                     = 0;
       game.wave[0].npc_type                  = 17;
       game.wave[0].spawn_pattern             = 9;
+      game.wave[1].wave_size                 = 0.25f;
       game.wave[1].npc_type                  = 16;
       game.wave[1].spawn_pattern             = 8;
       game.level_waves                       = 1;
@@ -592,6 +602,7 @@ int init_game_level(int level_no)
       game.victory_score                     = 0;
       game.wave[0].npc_type                  = 18;
       game.wave[0].spawn_pattern             = 9;
+      game.wave[1].wave_size                 = 0.35f;
       game.wave[1].npc_type                  = 16;
       game.wave[1].spawn_pattern             = 10;
       game.wave[2].npc_type                  = 17;
@@ -680,14 +691,17 @@ int init_game_level(int level_no)
       game.victory_kills                     = 256;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
+      game.wave[0].wave_size                 = 0.35f;
       game.wave[0].npc_type                  = 21;
       game.wave[0].spawn_pattern             = 8;
       game.wave[1].npc_type                  = 20;
       game.wave[1].spawn_pattern             = 5;
+      game.wave[2].wave_size                 = 0.25f;
       game.wave[2].npc_type                  = 21;
       game.wave[2].spawn_pattern             = 7;
       game.wave[3].npc_type                  = 20;
       game.wave[3].spawn_pattern             = 8;
+      game.wave[4].wave_size                 = 0.15f;
       game.wave[4].npc_type                  = 21;
       game.wave[4].spawn_pattern             = 4;
       game.wave[5].npc_type                  = 20;
@@ -721,12 +735,14 @@ int init_game_level(int level_no)
       game.victory_score                     = 0;
       game.wave[ 0].npc_type                 = 22;
       game.wave[ 0].spawn_pattern            = 0;
+      game.wave[ 1].wave_size                = 0.25f;
       game.wave[ 1].npc_type                 = 21;
       game.wave[ 1].spawn_pattern            = 1;
       game.wave[ 2].npc_type                 = 20;
       game.wave[ 2].spawn_pattern            = 2;
       game.wave[ 3].npc_type                 = 22;
       game.wave[ 3].spawn_pattern            = 3;
+      game.wave[ 4].wave_size                = 0.25f;
       game.wave[ 4].npc_type                 = 21;
       game.wave[ 4].spawn_pattern            = 4;
       game.wave[ 5].npc_type                 = 20;
@@ -739,6 +755,7 @@ int init_game_level(int level_no)
       game.wave[ 8].spawn_pattern            = 8;
       game.wave[ 9].npc_type                 = 22;
       game.wave[ 9].spawn_pattern            = 9;
+      game.wave[10].wave_size                = 0.25f;
       game.wave[10].npc_type                 = 21;
       game.wave[10].spawn_pattern            = 10;
       game.wave[11].npc_type                 = 20;

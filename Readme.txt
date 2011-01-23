@@ -2,7 +2,7 @@ Star.P.G.
 ---------
 A clasic side scrolling shooter, with added RPG elements.
 www.physhexgames.co.nr
-paul.wortmann@gmail.com / physhex@gmail.com
+physhex@gmail.com
 
 
 Keys:
@@ -17,12 +17,15 @@ Keys:
 "ESC"	  ->    Menu, Quit.
 
 ---------------------------------------- Change log ---------------------------------------
-V0.13 - (xx-xx-2011)
-Fixed bug in save/load game 4.
-Many tweaks and bug fixes.
+V0.13 - (23-01-2011)
+End of level no longer ends abruptly.
+Fixed bug in save/load game slot 4.
 Fixed background bug.
+Fixed enemy projectile bugs.
 Added spawn formations.
-LOC - 9131
+Enemy movement types added and tweaked.
+Credits screen added.
+LOC - 9223
 
 V0.12 - (09-01-2011)
 Player death screen.
@@ -84,7 +87,7 @@ Paul Wortmann paul.wortmann@gmail.com / physhex@gmail.com
   Beta testers
 ---------------------
 Ded
-Cantide
+Kanchi
 
 ---------------------
   Graphics

@@ -23,6 +23,7 @@ struct wave_type
    int    target_spawned;
    int    count_spawned;
    int    spawn_pattern;
+   float  wave_size;
 };
 
 struct explosion_type
@@ -175,6 +176,13 @@ struct npc_type
    int   projectiles;
    float x_pos;
    float y_pos;
+   int   formation_wave_no;
+   float formation_wave_size;
+   float formation_wave_axis;
+   float formation_target;
+   int   formation_type;
+   float formation_ofset_x;
+   float formation_ofset_y;
    float health;
    float width;
    float hight;
@@ -325,10 +333,10 @@ int kill_explosion(int explosion_num);
 int init_explosions(void);
 int proccess_explosions(void);
 
-int   spawn_npc(float x_position, float y_position, int type_npc);
-int   kill_npc(int npc_num);
-int   init_npcs(int type_npc);
-int   proccess_npcs(void);
+int spawn_npc(float x_position, float y_position, int type_npc, int type_formation, float x_formation_ofset, float y_formation_ofset);
+int kill_npc(int npc_num);
+int init_npcs(int type_npc);
+int proccess_npcs(void);
 
 int spawn_npc_bullet_num(int npc_num, int npc_bullet_num, int location);
 int spawn_npc_bullet(int npc_num, int location);

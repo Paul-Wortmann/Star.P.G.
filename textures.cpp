@@ -385,6 +385,7 @@ int load_textures(void)
    load_texture (336, "data/images/thrusters/thruster_003.png");
    load_texture (337, "data/images/powerups/coin_powerup.png");
    load_texture (338, "data/images/powerups/wexp_powerup.png");
+   load_texture (339, "data/images/misc/credits_00.png");
 
    return(0);
 };
