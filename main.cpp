@@ -46,7 +46,7 @@ extern texture_type texture[MAX_TEXTURES];
 extern menu_type menu;
 extern game_type game;
 
-const char App_Name[] = ("Star.P.G V0.13 - www.physhexgames.co.nr");
+const char App_Name[] = ("Star.P.G V0.14 - www.physhexgames.co.nr");
 const char App_Icon[] = "data/icon.bmp";
 const char App_Conf[] = "Star.P.G..cfg";
 const char App_Logf[] = "Star.P.G..log";
@@ -81,11 +81,18 @@ int init_gl(void)
 int main(int argc, char *argv[])
 {
   Init_Log_File(App_Logf);
+  for (int count = 0; count < (argc+1); count++)
+  {
+     Log_File(App_Logf,argv[count]);
+     if (argv[count] == "cheat") game.cheats_enabled = true;
+  }
+  game.cheats_enabled = true; /// test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   Log_File(App_Logf,"------------------");
-  Log_File(App_Logf,"| Star.P.G V0.13 |");
+  Log_File(App_Logf,"| Star.P.G V0.14 |");
   Log_File(App_Logf,"------------------\n");
   Log_File(App_Logf,"Booting up!");
   Log_File(App_Logf,"------------------\n");
+  if (game.cheats_enabled) Log_File(App_Logf,"Cheating enabled!\n");
   Load_Default_Config();
   Log_File(App_Logf,"Loading config...");
   Load_Config_File(App_Conf);
@@ -928,13 +935,18 @@ int main(int argc, char *argv[])
                  game.game_active = false;
                  spawn_paused();
               };
-              if (event.key.keysym.sym == SDLK_1) spawn_powerup(1.0f,random_GLcoord(),1);//spawn health powerup
-              if (event.key.keysym.sym == SDLK_2) spawn_powerup(1.0f,random_GLcoord(),2);//spawn shield lvl powerup
-              if (event.key.keysym.sym == SDLK_3) spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new powerup
-              if (event.key.keysym.sym == SDLK_4) spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster lvl powerup
-              if (event.key.keysym.sym == SDLK_5) spawn_powerup(1.0f,random_GLcoord(),5);//spawn thruster new powerup
-              if (event.key.keysym.sym == SDLK_6) spawn_powerup(1.0f,random_GLcoord(),6);//spawn weapon lvl powerup
-              if (event.key.keysym.sym == SDLK_7) spawn_powerup(1.0f,random_GLcoord(),7);//spawn weapon new powerup
+              //if (game.cheats_enabled == true)
+              {
+                 if (event.key.keysym.sym == SDLK_1)    spawn_powerup(1.0f,random_GLcoord(),1);//spawn health powerup
+                 if (event.key.keysym.sym == SDLK_2)    spawn_powerup(1.0f,random_GLcoord(),2);//spawn shield lvl powerup
+                 if (event.key.keysym.sym == SDLK_3)    spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new powerup
+                 if (event.key.keysym.sym == SDLK_4)    spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster lvl powerup
+                 if (event.key.keysym.sym == SDLK_5)    spawn_powerup(1.0f,random_GLcoord(),5);//spawn thruster new powerup
+                 if (event.key.keysym.sym == SDLK_6)    spawn_powerup(1.0f,random_GLcoord(),6);//spawn weapon lvl powerup
+                 if (event.key.keysym.sym == SDLK_7)    spawn_powerup(1.0f,random_GLcoord(),7);//spawn weapon new powerup
+                 if (event.key.keysym.sym == SDLK_8)    unlock_levels();                       //unlock all levels
+                 if (event.key.keysym.sym == SDLK_0)    game.victory_kills = 0;                //complete level
+              }
            }
         }
         if (keystate[SDLK_SPACE])

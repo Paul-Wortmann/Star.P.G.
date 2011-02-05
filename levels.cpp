@@ -1,7 +1,33 @@
+/* Copyright (C) 2011 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
+ * This file is part of Star.P.G.
+ *
+ * Star.P.G. is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Star.P.G. is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Star.P.G. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "levels.h"
 #include "game.h"
 
 extern game_type  game;
+
+int unlock_levels(void)
+{
+   for (int level_no_count = 0;level_no_count < (MAX_LEVELS+1); level_no_count++)
+   {
+      game.level_locked[level_no_count] = false;
+   }
+   return(1);
+}
 
 int init_game_level(int level_no)
 {
@@ -37,21 +63,29 @@ int init_game_level(int level_no)
       game.background_scroll[1].scroll_rate  = 0.005f;
       game.background_scroll[2].scroll_rate  = 0.0025f;
       game.background_scroll[3].scroll_rate  = 0.0025f;
-      game.background_scroll[0].x_pos        =-0.0f;
+      game.background_scroll[0].x_pos        = 0.0f;
       game.background_scroll[1].x_pos        = 4.0f;
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.045f;
-      game.npc_spawn_rate                    = 378;
-      game.npc_spawn_rate_count              = 378;
+      game.npc_spawn_rate                    = 300;
+      game.npc_spawn_rate_count              = 300;
       game.npc_projectile_spawn_rate         = 50;
       game.victory_kills                     = 128;
       game.victory_spawened                  = 1;
       game.victory_score                     = 0;
-      game.wave[0].wave_size                 = 0.25f;
-      game.wave[0].npc_type                  = 0;
-      game.wave[0].spawn_pattern             = 0;
-      game.level_waves                       = 0;
+      game.wave[ 0].wave_size                = 0.25f;
+      game.wave[ 0].npc_type                 = 0;
+      game.wave[ 0].spawn_pattern            = 0;
+      game.wave[ 1].npc_type                 = 0;
+      game.wave[ 1].spawn_pattern            = 7;
+      game.wave[ 2].npc_type                 = 0;
+      game.wave[ 2].spawn_pattern            = 8;
+      game.wave[ 3].npc_type                 = 0;
+      game.wave[ 3].spawn_pattern            = 10;
+      game.wave[ 4].npc_type                 = 0;
+      game.wave[ 4].spawn_pattern            = 11;
+      game.level_waves                       = 4;
    }
    if (level_no == 1)
    {
@@ -72,19 +106,32 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.050f;
-      game.npc_spawn_rate                    = 420;
-      game.npc_spawn_rate_count              = 420;
+      game.npc_spawn_rate                    = 280;
+      game.npc_spawn_rate_count              = 280;
       game.npc_projectile_spawn_rate         = 50;
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
-      game.wave[0].npc_type                  = 0;
-      game.wave[0].spawn_pattern             = 1;
-      game.wave[1].npc_type                  = 1;
-      game.wave[1].spawn_pattern             = 0;
-      game.wave[2].npc_type                  = 0;
-      game.wave[2].spawn_pattern             = 0;
-      game.level_waves                       = 2;
+      game.wave[ 0].wave_size                = 0.25f;
+      game.wave[ 0].npc_type                 = 0;
+      game.wave[ 0].spawn_pattern            = 0;
+      game.wave[ 1].npc_type                 = 1;
+      game.wave[ 1].spawn_pattern            = 11;
+      game.wave[ 2].npc_type                 = 0;
+      game.wave[ 2].spawn_pattern            = 7;
+      game.wave[ 3].npc_type                 = 1;
+      game.wave[ 3].spawn_pattern            = 10;
+      game.wave[ 4].npc_type                 = 0;
+      game.wave[ 4].spawn_pattern            = 8;
+      game.wave[ 5].npc_type                 = 1;
+      game.wave[ 5].spawn_pattern            = 8;
+      game.wave[ 6].npc_type                 = 0;
+      game.wave[ 6].spawn_pattern            = 10;
+      game.wave[ 7].npc_type                 = 1;
+      game.wave[ 7].spawn_pattern            = 7;
+      game.wave[ 8].npc_type                 = 0;
+      game.wave[ 8].spawn_pattern            = 11;
+      game.level_waves                       = 8;
    }
    if (level_no == 2)
    {
@@ -105,22 +152,40 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.055f;
-      game.npc_spawn_rate                    = 420;
-      game.npc_spawn_rate_count              = 420;
+      game.npc_spawn_rate                    = 270;
+      game.npc_spawn_rate_count              = 270;
       game.npc_projectile_spawn_rate         = 50;
       game.victory_kills                     = 256;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
-      game.wave[0].wave_size                 = 0.25f;
-      game.wave[0].npc_type                  = 2;
-      game.wave[0].spawn_pattern             = 2;
-      game.wave[1].npc_type                  = 0;
-      game.wave[1].spawn_pattern             = 1;
-      game.wave[2].npc_type                  = 1;
-      game.wave[2].spawn_pattern             = 0;
-      game.wave[3].npc_type                  = 0;
-      game.wave[3].spawn_pattern             = 0;
-      game.level_waves                       = 3;
+      game.wave[ 0].wave_size                = 0.25f;
+      game.wave[ 0].npc_type                 = 0;
+      game.wave[ 0].spawn_pattern            = 0;
+      game.wave[ 1].npc_type                 = 1;
+      game.wave[ 1].spawn_pattern            = 11;
+      game.wave[ 2].npc_type                 = 2;
+      game.wave[ 2].spawn_pattern            = 2;
+      game.wave[ 3].npc_type                 = 0;
+      game.wave[ 3].spawn_pattern            = 7;
+      game.wave[ 4].npc_type                 = 1;
+      game.wave[ 4].spawn_pattern            = 10;
+      game.wave[ 5].npc_type                 = 2;
+      game.wave[ 5].spawn_pattern            = 7;
+      game.wave[ 6].npc_type                 = 0;
+      game.wave[ 6].spawn_pattern            = 8;
+      game.wave[ 7].npc_type                 = 1;
+      game.wave[ 7].spawn_pattern            = 8;
+      game.wave[ 8].npc_type                 = 2;
+      game.wave[ 8].spawn_pattern            = 11;
+      game.wave[ 9].npc_type                 = 0;
+      game.wave[ 9].spawn_pattern            = 10;
+      game.wave[10].npc_type                 = 1;
+      game.wave[10].spawn_pattern            = 7;
+      game.wave[11].npc_type                 = 2;
+      game.wave[11].spawn_pattern            = 10;
+      game.wave[12].npc_type                 = 0;
+      game.wave[12].spawn_pattern            = 11;
+      game.level_waves                       = 12;
    }
    if (level_no == 3)
    {
@@ -147,7 +212,7 @@ int init_game_level(int level_no)
       game.victory_kills                     = 1;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
-   }
+   } /// add / ballence game below !!!
    if (level_no == 4)
    {
       game.level                             = level_no;
@@ -167,8 +232,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.065f;
-      game.npc_spawn_rate                    = 420;
-      game.npc_spawn_rate_count              = 420;
+      game.npc_spawn_rate                    = 320;
+      game.npc_spawn_rate_count              = 320;
       game.npc_projectile_spawn_rate         = 125;
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
@@ -176,7 +241,10 @@ int init_game_level(int level_no)
       game.wave[0].wave_size                 = 0.5f;
       game.wave[0].npc_type                  = 4;
       game.wave[0].spawn_pattern             = 0;
-      game.level_waves                       = 0;
+      game.wave[1].wave_size                 = 0.45f;
+      game.wave[1].npc_type                  = 4;
+      game.wave[1].spawn_pattern             = 8;
+      game.level_waves                       = 1;
    }
    if (level_no == 5)
    {
@@ -197,8 +265,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.070f;
-      game.npc_spawn_rate                    = 420;
-      game.npc_spawn_rate_count              = 420;
+      game.npc_spawn_rate                    = 220;
+      game.npc_spawn_rate_count              = 220;
       game.npc_projectile_spawn_rate         = 125;
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
@@ -229,8 +297,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.075f;
-      game.npc_spawn_rate                    = 420;
-      game.npc_spawn_rate_count              = 420;
+      game.npc_spawn_rate                    = 220;
+      game.npc_spawn_rate_count              = 220;
       game.npc_projectile_spawn_rate         = 150;
       game.victory_kills                     = 256;
       game.victory_spawened                  = 0;
@@ -289,8 +357,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.085f;
-      game.npc_spawn_rate                    = 420;
-      game.npc_spawn_rate_count              = 420;
+      game.npc_spawn_rate                    = 220;
+      game.npc_spawn_rate_count              = 220;
       game.npc_projectile_spawn_rate         = 150;
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
@@ -318,8 +386,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.090f;
-      game.npc_spawn_rate                    = 420;
-      game.npc_spawn_rate_count              = 420;
+      game.npc_spawn_rate                    = 220;
+      game.npc_spawn_rate_count              = 220;
       game.npc_projectile_spawn_rate         = 150;
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
@@ -349,8 +417,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.095f;
-      game.npc_spawn_rate                    = 420;
-      game.npc_spawn_rate_count              = 420;
+      game.npc_spawn_rate                    = 220;
+      game.npc_spawn_rate_count              = 220;
       game.npc_projectile_spawn_rate         = 125;
       game.victory_kills                     = 256;
       game.victory_spawened                  = 0;
@@ -438,8 +506,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.110f;
-      game.npc_spawn_rate                    = 420;
-      game.npc_spawn_rate_count              = 420;
+      game.npc_spawn_rate                    = 220;
+      game.npc_spawn_rate_count              = 220;
       game.npc_projectile_spawn_rate         = 150;
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
@@ -469,8 +537,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.115f;
-      game.npc_spawn_rate                    = 420;
-      game.npc_spawn_rate_count              = 420;
+      game.npc_spawn_rate                    = 220;
+      game.npc_spawn_rate_count              = 220;
       game.npc_projectile_spawn_rate         = 150;
       game.victory_kills                     = 256;
       game.victory_spawened                  = 0;
@@ -532,8 +600,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.125f;
-      game.npc_spawn_rate                    = 320;
-      game.npc_spawn_rate_count              = 320;
+      game.npc_spawn_rate                    = 220;
+      game.npc_spawn_rate_count              = 220;
       game.npc_projectile_spawn_rate         = 150;
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
@@ -562,8 +630,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.130f;
-      game.npc_spawn_rate                    = 420;
-      game.npc_spawn_rate_count              = 420;
+      game.npc_spawn_rate                    = 220;
+      game.npc_spawn_rate_count              = 220;
       game.npc_projectile_spawn_rate         = 150;
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
@@ -594,8 +662,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.135f;
-      game.npc_spawn_rate                    = 420;
-      game.npc_spawn_rate_count              = 420;
+      game.npc_spawn_rate                    = 220;
+      game.npc_spawn_rate_count              = 220;
       game.npc_projectile_spawn_rate         = 150;
       game.victory_kills                     = 258;
       game.victory_spawened                  = 0;
@@ -654,8 +722,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.145f;
-      game.npc_spawn_rate                    = 420;
-      game.npc_spawn_rate_count              = 420;
+      game.npc_spawn_rate                    = 120;
+      game.npc_spawn_rate_count              = 120;
       game.npc_projectile_spawn_rate         = 150;
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
@@ -685,8 +753,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.150f;
-      game.npc_spawn_rate                    = 420;
-      game.npc_spawn_rate_count              = 420;
+      game.npc_spawn_rate                    = 120;
+      game.npc_spawn_rate_count              = 120;
       game.npc_projectile_spawn_rate         = 150;
       game.victory_kills                     = 256;
       game.victory_spawened                  = 0;
@@ -727,8 +795,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.155f;
-      game.npc_spawn_rate                    = 420;
-      game.npc_spawn_rate_count              = 420;
+      game.npc_spawn_rate                    = 120;
+      game.npc_spawn_rate_count              = 120;
       game.npc_projectile_spawn_rate         = 150;
       game.victory_kills                     = 512;
       game.victory_spawened                  = 0;

@@ -17,6 +17,12 @@ Keys:
 "ESC"	  ->    Menu, Quit.
 
 ---------------------------------------- Change log ---------------------------------------
+V0.14 - (xx-xx-2011)
+30-01-2011 Fixed Weapon level up display bug.
+31-01-2011 Improved vertical scrolling.
+05-02-2011 Added different movement types for bullets.
+LOC - 9484
+
 V0.13 - (23-01-2011)
 End of level no longer ends abruptly.
 Fixed bug in save/load game slot 4.

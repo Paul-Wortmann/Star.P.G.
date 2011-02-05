@@ -1,3 +1,20 @@
+/* Copyright (C) 2011 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
+ * This file is part of Star.P.G.
+ *
+ * Star.P.G. is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Star.P.G. is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Star.P.G. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include <gl/gl.h>
 #include "menu.h"
 #include "game.h"
@@ -1035,10 +1052,10 @@ int diplay_menu (void)
          glBindTexture( GL_TEXTURE_2D, texture[game.player.front_weapon+211].texture); //player starship front weapon
          glLoadIdentity();
          glBegin( GL_QUADS );
-         glTexCoord2i( 0, 0 );glVertex3f(ship_pos_x+(game.player.width/3)+0.124f,ship_pos_y-(game.player.hight/3), 0.025f );
-         glTexCoord2i( 1, 0 );glVertex3f(ship_pos_x+(game.player.width/3)+0.124f,ship_pos_y+(game.player.hight/3), 0.025f );
-         glTexCoord2i( 1, 1 );glVertex3f(ship_pos_x-(game.player.width/3)+0.174f,ship_pos_y+(game.player.hight/3), 0.025f );
-         glTexCoord2i( 0, 1 );glVertex3f(ship_pos_x-(game.player.width/3)+0.174f,ship_pos_y-(game.player.hight/3), 0.025f );
+         glTexCoord2i( 0, 0 );glVertex3f(ship_pos_x+(game.player.width/6)+0.134f,ship_pos_y-(game.player.hight/4), 0.025f );
+         glTexCoord2i( 1, 0 );glVertex3f(ship_pos_x+(game.player.width/6)+0.134f,ship_pos_y+(game.player.hight/4), 0.025f );
+         glTexCoord2i( 1, 1 );glVertex3f(ship_pos_x-(game.player.width/6)+0.150f,ship_pos_y+(game.player.hight/4), 0.025f );
+         glTexCoord2i( 0, 1 );glVertex3f(ship_pos_x-(game.player.width/6)+0.150f,ship_pos_y-(game.player.hight/4), 0.025f );
          glEnd();
       }
 
@@ -1047,8 +1064,8 @@ int diplay_menu (void)
          glBindTexture( GL_TEXTURE_2D, texture[game.player.side_weapon+211].texture); //player starship side weapons
          glLoadIdentity();
          glBegin( GL_QUADS );
-         glTexCoord2i( 0, 0 );glVertex3f(ship_pos_x+(game.player.width/3)+0.134f,ship_pos_y-(game.player.hight/3)+0.150f, 0.025f );
-         glTexCoord2i( 1, 0 );glVertex3f(ship_pos_x+(game.player.width/3)+0.134f,ship_pos_y+(game.player.hight/3)+0.150f, 0.025f );
+         glTexCoord2i( 0, 0 );glVertex3f(ship_pos_x+(game.player.width/3)+0.124f,ship_pos_y-(game.player.hight/3)+0.150f, 0.025f );
+         glTexCoord2i( 1, 0 );glVertex3f(ship_pos_x+(game.player.width/3)+0.124f,ship_pos_y+(game.player.hight/3)+0.150f, 0.025f );
          glTexCoord2i( 1, 1 );glVertex3f(ship_pos_x-(game.player.width/3)+0.134f,ship_pos_y+(game.player.hight/3)+0.150f, 0.025f );
          glTexCoord2i( 0, 1 );glVertex3f(ship_pos_x-(game.player.width/3)+0.134f,ship_pos_y-(game.player.hight/3)+0.150f, 0.025f );
          glEnd();
