@@ -5,99 +5,96 @@
 		<Cursor position="165" topLine="0" />
 	</File>
 	<File name="Star.P.G._private.rc" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="830" topLine="0" />
 	</File>
-	<File name="config.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+	<File name="config.cpp" open="0" top="0" tabpos="8">
+		<Cursor position="307" topLine="0" />
 	</File>
-	<File name="config.h" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+	<File name="config.h" open="0" top="0" tabpos="7">
+		<Cursor position="794" topLine="0" />
 	</File>
 	<File name="font.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="font.h" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
-	<File name="game.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="76" topLine="0" />
+	<File name="game.cpp" open="1" top="1" tabpos="3">
+		<Cursor position="63971" topLine="0" />
 	</File>
-	<File name="game.h" open="0" top="0" tabpos="3">
-		<Cursor position="2428" topLine="84" />
+	<File name="game.h" open="0" top="0" tabpos="4">
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="graphics.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="graphics.h" open="0" top="0" tabpos="4">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
-	<File name="levels.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="11360" topLine="210" />
+	<File name="levels.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="levels.h" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="48341" topLine="1029" />
+	<File name="main.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="1528" topLine="24" />
 	</File>
 	<File name="main.h" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="menu.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="51284" topLine="1123" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="menu.h" open="0" top="0" tabpos="4">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="misc.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="misc.h" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="music.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="music.h" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="network.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="network.h" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
-	</File>
-	<File name="physics.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="physics.h" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="savegame.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1740" topLine="16" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="savegame.h" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="sounds.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="sounds.h" open="0" top="0" tabpos="2">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="textures.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="textures.h" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="timer.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="timer.h" open="0" top="0" tabpos="0">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="version.h" open="0" top="0" tabpos="4">
-		<Cursor position="769" topLine="0" />
+		<Cursor position="307" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

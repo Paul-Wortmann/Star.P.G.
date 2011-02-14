@@ -3,7 +3,7 @@
  *
  * Star.P.G. is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
  * Star.P.G. is distributed in the hope that it will be useful,
@@ -16,18 +16,44 @@
  */
 
 #include "physics.h"
+#include <math.h>
 
-bool box_collision   (float a_x, float a_y, float a_w, float a_h, float b_x, float b_y, float b_w, float b_h)
+bool  cube_collision       (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2)
 {
-if (((a_x-(a_w/2) < b_x+(b_w/2)) && (b_x+(b_w/2) > a_x-(a_w/2))) && ((b_x-(b_w/2) < a_x+(a_w/2)) && (a_x+(a_w/2) > b_x-(b_w/2)))
- && ((a_y-(a_h/2) < b_y+(b_h/2)) && (b_y+(b_h/2) > a_y-(a_h/2))) && ((b_y-(b_h/2) < a_y+(a_h/2)) && (a_y+(a_h/2) > b_y-(b_h/2)))) return(true);
+if (((x1-(w1/2) < x2+(w2/2)) && (x2+(w2/2) > x1-(w1/2))) && ((x2-(w2/2) < x1+(w1/2)) && (x1+(w1/2) > x2-(w2/2)))
+ && ((y1-(h1/2) < y2+(h2/2)) && (y2+(h2/2) > y1-(h1/2))) && ((y2-(h2/2) < y1+(h1/2)) && (y1+(h1/2) > y2-(h2/2)))
+ && ((z1-(d1/2) < z2+(d2/2)) && (z2+(d2/2) > z1-(d1/2))) && ((z2-(d2/2) < z1+(d1/2)) && (z1+(d1/2) > z2-(d2/2)))) return(true);
 else return(false);
 }
 
-bool circle_collision(float a_x, float a_y, float a_r, float b_x, float b_y, float b_r)
+bool quadrangle_collision   (float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2)
 {
-   return(0);
-};
+if (((x1-(w1/2) < x2+(w2/2)) && (x2+(w2/2) > x1-(w1/2))) && ((x2-(w2/2) < x1+(w1/2)) && (x1+(w1/2) > x2-(w2/2)))
+ && ((y1-(h1/2) < y2+(h2/2)) && (y2+(h2/2) > y1-(h1/2))) && ((y2-(h2/2) < y1+(h1/2)) && (y1+(h1/2) > y2-(h2/2)))) return(true);
+else return(false);
+}
+
+bool circle_collision(float x1, float y1, float r1, float x2, float y2, float r2)
+{
+   if (((x2-x1)*(x2-x1))+((y2-y1)*(y2-y1)) < ((r1+r2)+(r1+r2))) return(true);
+   else return(false);
+}
+
+bool shere_collision(float x1, float y1, float z1, float r1, float x2, float y2, float z2, float r2)
+{
+   if ((((x2-x1)*(x2-x1))+((y2-y1)*(y2-y1))+((z2-z1)*(z2-z1))) < ((r1+r2)+(r1+r2))) return(true);
+   else return(false);
+}
+
+float distance_2D(float x1, float y1, float x2, float y2)
+{
+   return(sqrt(((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2))));
+}
+
+float distance_3D(float x1, float y1, float z1, float x2, float y2, float z2)
+{
+   return(sqrt(((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2))+((z1-z2)*(z1-z2))));
+}
 
 
 

@@ -157,16 +157,15 @@
 	<vector>
 	<string>
 
-1296524071 source:c:\paul\c++_game_projects\star.p.g\star.p.g._private.rc
-	<windows.h>
+1297655731 source:c:\paul\c++_game_projects\star.p.g\star.p.g._private.rc
 
-1296523846 source:c:\paul\c++_game_projects\star.p.g\config.cpp
+1297597812 source:c:\paul\c++_game_projects\star.p.g\config.cpp
 	<fstream>
 	"config.h"
 
 1296523958 c:\paul\c++_game_projects\star.p.g\config.h
 
-1296523861 source:c:\paul\c++_game_projects\star.p.g\font.cpp
+1297597812 source:c:\paul\c++_game_projects\star.p.g\font.cpp
 	"SDL/SDL_ttf.h"
 	"freetype.h"
 	"gl/gl.h"
@@ -174,22 +173,22 @@
 	"graphics.h"
 	"config.h"
 
-1296523976 c:\paul\c++_game_projects\star.p.g\font.h
+1297598020 c:\paul\c++_game_projects\star.p.g\font.h
 
-1296524023 c:\paul\c++_game_projects\star.p.g\graphics.h
+1297598020 c:\paul\c++_game_projects\star.p.g\graphics.h
 
-1296523888 source:c:\paul\c++_game_projects\star.p.g\graphics.cpp
+1297597812 source:c:\paul\c++_game_projects\star.p.g\graphics.cpp
 	"graphics.h"
 
-1296529251 source:c:\paul\c++_game_projects\star.p.g\levels.cpp
+1297575244 source:c:\paul\c++_game_projects\star.p.g\levels.cpp
 	"levels.h"
 	"game.h"
 
-1296524023 c:\paul\c++_game_projects\star.p.g\levels.h
+1297598020 c:\paul\c++_game_projects\star.p.g\levels.h
 
-1296912399 c:\paul\c++_game_projects\star.p.g\game.h
+1297597741 c:\paul\c++_game_projects\star.p.g\game.h
 
-1296525506 source:c:\paul\c++_game_projects\star.p.g\main.cpp
+1297575244 source:c:\paul\c++_game_projects\star.p.g\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -213,30 +212,30 @@
 	"network.h"
 	"version.h"
 
-1296524023 c:\paul\c++_game_projects\star.p.g\misc.h
+1297598020 c:\paul\c++_game_projects\star.p.g\misc.h
 
-1296524023 c:\paul\c++_game_projects\star.p.g\main.h
+1297598020 c:\paul\c++_game_projects\star.p.g\main.h
 
-1296524023 c:\paul\c++_game_projects\star.p.g\sounds.h
+1297598020 c:\paul\c++_game_projects\star.p.g\sounds.h
 	<SDL/SDL_mixer.h>
 
-1296524023 c:\paul\c++_game_projects\star.p.g\music.h
+1297598020 c:\paul\c++_game_projects\star.p.g\music.h
 	<SDL/SDL_mixer.h>
 
-1296524052 c:\paul\c++_game_projects\star.p.g\textures.h
+1297598020 c:\paul\c++_game_projects\star.p.g\textures.h
 	<gl/gl.h>
 
-1296524023 c:\paul\c++_game_projects\star.p.g\menu.h
+1297598020 c:\paul\c++_game_projects\star.p.g\menu.h
 
-1296524023 c:\paul\c++_game_projects\star.p.g\physics.h
+1297598020 c:\paul\c++_game_projects\star.p.g\physics.h
 
-1296524023 c:\paul\c++_game_projects\star.p.g\savegame.h
+1297598020 c:\paul\c++_game_projects\star.p.g\savegame.h
 
-1296524054 c:\paul\c++_game_projects\star.p.g\timer.h
+1297598020 c:\paul\c++_game_projects\star.p.g\timer.h
 
-1296524050 c:\paul\c++_game_projects\star.p.g\version.h
+1297598020 c:\paul\c++_game_projects\star.p.g\version.h
 
-1296565368 source:c:\paul\c++_game_projects\star.p.g\menu.cpp
+1297597812 source:c:\paul\c++_game_projects\star.p.g\menu.cpp
 	<gl/gl.h>
 	"menu.h"
 	"game.h"
@@ -247,37 +246,38 @@
 	"levels.h"
 	"font.h"
 
-1296523918 source:c:\paul\c++_game_projects\star.p.g\misc.cpp
+1297597812 source:c:\paul\c++_game_projects\star.p.g\misc.cpp
 	<time.h>
 	<stdlib.h>
 
-1296523909 source:c:\paul\c++_game_projects\star.p.g\music.cpp
+1297597812 source:c:\paul\c++_game_projects\star.p.g\music.cpp
 	"music.h"
 
-1296523882 source:c:\paul\c++_game_projects\star.p.g\physics.cpp
+1297582694 source:c:\paul\c++_game_projects\star.p.g\physics.cpp
 	"physics.h"
+	<math.h>
 
-1296523853 source:c:\paul\c++_game_projects\star.p.g\savegame.cpp
+1297597812 source:c:\paul\c++_game_projects\star.p.g\savegame.cpp
 	<fstream>
 	"game.h"
 	"savegame.h"
 	"levels.h"
 
-1296523869 source:c:\paul\c++_game_projects\star.p.g\sounds.cpp
+1297597812 source:c:\paul\c++_game_projects\star.p.g\sounds.cpp
 	"sounds.h"
 
-1296523838 source:c:\paul\c++_game_projects\star.p.g\textures.cpp
+1297597812 source:c:\paul\c++_game_projects\star.p.g\textures.cpp
 	<gl/gl.h>
 	<SDL/SDL.h>
 	<SDL/SDL_image.h>
 	"textures.h"
 	"config.h"
 
-1296523816 source:c:\paul\c++_game_projects\star.p.g\timer.cpp
+1297597812 source:c:\paul\c++_game_projects\star.p.g\timer.cpp
 	"SDL/SDL.h"
 	"timer.h"
 
-1296564752 source:c:\paul\c++_game_projects\star.p.g\game.cpp
+1297595817 source:c:\paul\c++_game_projects\star.p.g\game.cpp
 	<SDL/SDL.h>
 	"game.h"
 	"config.h"
@@ -288,8 +288,8 @@
 	"misc.h"
 	"font.h"
 
-1296524023 c:\paul\c++_game_projects\star.p.g\network.h
+1297598020 c:\paul\c++_game_projects\star.p.g\network.h
 
-1296523893 source:c:\paul\c++_game_projects\star.p.g\network.cpp
+1297597812 source:c:\paul\c++_game_projects\star.p.g\network.cpp
 	"network.h"
 

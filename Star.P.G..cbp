@@ -23,12 +23,12 @@
 					<Add library="sdl_image" />
 					<Add library="glu32" />
 					<Add library="freetype" />
-					<Add library="SDL_image" />
-					<Add library="SDL_mixer" />
 					<Add library="SDL_net" />
 					<Add library="SDL_ttf" />
 					<Add library="libphysfs" />
 					<Add library="zlib" />
+					<Add library="libstdc++" />
+					<Add library="libgcc" />
 				</Linker>
 			</Target>
 		</Build>
@@ -47,8 +47,6 @@
 			<Add library="sdl_image" />
 			<Add library="glu32" />
 			<Add library="freetype" />
-			<Add library="SDL_image" />
-			<Add library="SDL_mixer" />
 			<Add library="SDL_net" />
 			<Add library="SDL_ttf" />
 			<Add directory='&quot;C:\Program Files (x86)\CodeBlocks\MinGW\lib&quot;' />

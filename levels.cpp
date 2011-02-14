@@ -3,7 +3,7 @@
  *
  * Star.P.G. is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
  * Star.P.G. is distributed in the hope that it will be useful,
@@ -42,14 +42,16 @@ int init_game_level(int level_no)
    game.active_npc_count         = 0;
    game.player.x_pos             =-0.9f+thruster_offset();
    game.player.y_pos             = 0.0f;
+   kill_active_npcs();
    init_npcs(0);
    init_active_npcs();
    kill_powerups();
    kill_coins();
    kill_wexps();
+   init_waves();
    game.wave[0].active = true;
 
-   if (level_no == 0)
+   if (level_no == 0) // Taranis
    {
       game.level                             = level_no;
       game.level_npc_type                    = 0;
@@ -87,7 +89,7 @@ int init_game_level(int level_no)
       game.wave[ 4].spawn_pattern            = 11;
       game.level_waves                       = 4;
    }
-   if (level_no == 1)
+   if (level_no == 1) // Teutates
    {
       game.level                             = level_no;
       game.level_npc_type                    = 1;
@@ -133,7 +135,7 @@ int init_game_level(int level_no)
       game.wave[ 8].spawn_pattern            = 11;
       game.level_waves                       = 8;
    }
-   if (level_no == 2)
+   if (level_no == 2) // Esus
    {
       game.level                             = level_no;
       game.level_npc_type                    = 2;
@@ -187,7 +189,7 @@ int init_game_level(int level_no)
       game.wave[12].spawn_pattern            = 11;
       game.level_waves                       = 12;
    }
-   if (level_no == 3)
+   if (level_no == 3) // Cantidious - BOSS 1
    {
       game.level                             = level_no;
       game.level_npc_type                    = 3;
@@ -213,7 +215,7 @@ int init_game_level(int level_no)
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
    } /// add / ballence game below !!!
-   if (level_no == 4)
+   if (level_no == 4) // Vulcan
    {
       game.level                             = level_no;
       game.level_npc_type                    = 4;
@@ -232,9 +234,9 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.065f;
-      game.npc_spawn_rate                    = 320;
-      game.npc_spawn_rate_count              = 320;
-      game.npc_projectile_spawn_rate         = 125;
+      game.npc_spawn_rate                    = 480;
+      game.npc_spawn_rate_count              = 480;
+      game.npc_projectile_spawn_rate         = 270;
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
@@ -246,7 +248,7 @@ int init_game_level(int level_no)
       game.wave[1].spawn_pattern             = 8;
       game.level_waves                       = 1;
    }
-   if (level_no == 5)
+   if (level_no == 5) // Bacchus
    {
       game.level                             = level_no;
       game.level_npc_type                    = 5;
@@ -265,9 +267,9 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.070f;
-      game.npc_spawn_rate                    = 220;
-      game.npc_spawn_rate_count              = 220;
-      game.npc_projectile_spawn_rate         = 125;
+      game.npc_spawn_rate                    = 460;
+      game.npc_spawn_rate_count              = 460;
+      game.npc_projectile_spawn_rate         = 225;
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
@@ -278,7 +280,7 @@ int init_game_level(int level_no)
       game.wave[1].spawn_pattern             = 5;
       game.level_waves                       = 1;
    }
-   if (level_no == 6)
+   if (level_no == 6) // Janus
    {
       game.level                             = level_no;
       game.level_npc_type                    = 6;
@@ -297,9 +299,9 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.075f;
-      game.npc_spawn_rate                    = 220;
-      game.npc_spawn_rate_count              = 220;
-      game.npc_projectile_spawn_rate         = 150;
+      game.npc_spawn_rate                    = 420;
+      game.npc_spawn_rate_count              = 420;
+      game.npc_projectile_spawn_rate         = 250;
       game.victory_kills                     = 256;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
@@ -312,7 +314,7 @@ int init_game_level(int level_no)
       game.wave[2].spawn_pattern             = 5;
       game.level_waves                       = 2;
    }
-   if (level_no == 7)
+   if (level_no == 7) // Wrathorn - BOSS 2
    {
       game.level                             = level_no;
       game.level_npc_type                    = 7;
@@ -333,12 +335,12 @@ int init_game_level(int level_no)
       game.speed                             = 0.080f;
       game.npc_spawn_rate                    = 1;
       game.npc_spawn_rate_count              = 1;
-      game.npc_projectile_spawn_rate         = 150;
+      game.npc_projectile_spawn_rate         = 16;
       game.victory_kills                     = 1;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
    }
-   if (level_no == 8)
+   if (level_no == 8) // Tartarus
    {
       game.level                             = level_no;
       game.level_npc_type                    = 8;
@@ -357,8 +359,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.085f;
-      game.npc_spawn_rate                    = 220;
-      game.npc_spawn_rate_count              = 220;
+      game.npc_spawn_rate                    = 250;
+      game.npc_spawn_rate_count              = 250;
       game.npc_projectile_spawn_rate         = 150;
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
@@ -367,7 +369,7 @@ int init_game_level(int level_no)
       game.wave[0].spawn_pattern             = 4;
       game.level_waves                       = 0;
    }
-   if (level_no == 9)
+   if (level_no == 9) // Erebus
    {
       game.level                             = level_no;
       game.level_npc_type                    = 9;
@@ -386,8 +388,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.090f;
-      game.npc_spawn_rate                    = 220;
-      game.npc_spawn_rate_count              = 220;
+      game.npc_spawn_rate                    = 250;
+      game.npc_spawn_rate_count              = 250;
       game.npc_projectile_spawn_rate         = 150;
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
@@ -396,9 +398,15 @@ int init_game_level(int level_no)
       game.wave[0].spawn_pattern             = 6;
       game.wave[1].npc_type                  = 8;
       game.wave[1].spawn_pattern             = 7;
-      game.level_waves                       = 1;
+      game.wave[2].npc_type                  = 9;
+      game.wave[2].spawn_pattern             = 8;
+      game.wave[3].npc_type                  = 8;
+      game.wave[3].spawn_pattern             = 7;
+      game.wave[4].npc_type                  = 9;
+      game.wave[4].spawn_pattern             = 7;
+      game.level_waves                       = 4;
    }
-   if (level_no == 10)
+   if (level_no == 10) // Nyx
    {
       game.level                             = level_no;
       game.level_npc_type                    = 10;
@@ -417,8 +425,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.095f;
-      game.npc_spawn_rate                    = 220;
-      game.npc_spawn_rate_count              = 220;
+      game.npc_spawn_rate                    = 320;
+      game.npc_spawn_rate_count              = 320;
       game.npc_projectile_spawn_rate         = 125;
       game.victory_kills                     = 256;
       game.victory_spawened                  = 0;
@@ -432,7 +440,7 @@ int init_game_level(int level_no)
       game.wave[2].spawn_pattern             = 7;
       game.level_waves                       = 2;
    }
-   if (level_no == 11)
+   if (level_no == 11) // Dediun - BOSS 3
    {
       game.level                             = level_no;
       game.level_npc_type                    = 11;
@@ -453,12 +461,12 @@ int init_game_level(int level_no)
       game.speed                             = 0.100f;
       game.npc_spawn_rate                    = 1;
       game.npc_spawn_rate_count              = 1;
-      game.npc_projectile_spawn_rate         = 75;
+      game.npc_projectile_spawn_rate         = 15;
       game.victory_kills                     = 1;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
    }
-   if (level_no == 12)
+   if (level_no == 12) // Niflheim
    {
       game.level                             = level_no;
       game.level_npc_type                    = 12;
@@ -477,17 +485,18 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.105f;
-      game.npc_spawn_rate                    = 180;
-      game.npc_spawn_rate_count              = 180;
+      game.npc_spawn_rate                    = 280;
+      game.npc_spawn_rate_count              = 280;
       game.npc_projectile_spawn_rate         = 75;
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
       game.wave[0].npc_type                  = 12;
       game.wave[0].spawn_pattern             = 7;
+      game.wave[0].wave_size                 = 0.25f;
       game.level_waves                       = 0;
    }
-   if (level_no == 13)
+   if (level_no == 13) // Muspelhiem
    {
       game.level                             = level_no;
       game.level_npc_type                    = 13;
@@ -506,8 +515,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.110f;
-      game.npc_spawn_rate                    = 220;
-      game.npc_spawn_rate_count              = 220;
+      game.npc_spawn_rate                    = 420;
+      game.npc_spawn_rate_count              = 420;
       game.npc_projectile_spawn_rate         = 150;
       game.victory_kills                     = 128;
       game.victory_spawened                  = 0;
@@ -518,7 +527,7 @@ int init_game_level(int level_no)
       game.wave[1].spawn_pattern             = 1;
       game.level_waves                       = 1;
    }
-   if (level_no == 14)
+   if (level_no == 14) // Hel
    {
       game.level                             = level_no;
       game.level_npc_type                    = 14;
@@ -537,8 +546,8 @@ int init_game_level(int level_no)
       game.background_scroll[2].x_pos        = 0.0f;
       game.background_scroll[3].x_pos        = 4.0f;
       game.speed                             = 0.115f;
-      game.npc_spawn_rate                    = 220;
-      game.npc_spawn_rate_count              = 220;
+      game.npc_spawn_rate                    = 320;
+      game.npc_spawn_rate_count              = 320;
       game.npc_projectile_spawn_rate         = 150;
       game.victory_kills                     = 256;
       game.victory_spawened                  = 0;
@@ -555,7 +564,7 @@ int init_game_level(int level_no)
       game.wave[3].spawn_pattern             = 1;
       game.level_waves                       = 3;
    }
-   if (level_no == 15)
+   if (level_no == 15) // Paganite - BOSS 4
    {
       game.level                             = level_no;
       game.level_npc_type                    = 15;
@@ -576,12 +585,12 @@ int init_game_level(int level_no)
       game.speed                             = 0.120f;
       game.npc_spawn_rate                    = 1;
       game.npc_spawn_rate_count              = 1;
-      game.npc_projectile_spawn_rate         = 50;
+      game.npc_projectile_spawn_rate         = 15;
       game.victory_kills                     = 1;
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
    }
-   if (level_no == 16)
+   if (level_no == 16) // Pixiu
    {
       game.level                             = level_no;
       game.level_npc_type                    = 16;
@@ -611,7 +620,7 @@ int init_game_level(int level_no)
       game.wave[0].spawn_pattern             = 8;
       game.level_waves                       = 0;
    }
-   if (level_no == 17)
+   if (level_no == 17) // Xiao
    {
       game.level                             = level_no;
       game.level_npc_type                    = 17;
@@ -643,7 +652,7 @@ int init_game_level(int level_no)
       game.wave[1].spawn_pattern             = 8;
       game.level_waves                       = 1;
    }
-   if (level_no == 18)
+   if (level_no == 18) // Fuxi
    {
       game.level                             = level_no;
       game.level_npc_type                    = 18;
@@ -677,7 +686,7 @@ int init_game_level(int level_no)
       game.wave[2].spawn_pattern             = 11;
       game.level_waves                       = 2;
    }
-   if (level_no == 19)
+   if (level_no == 19) // Haxorific - BOSS 5
    {
       game.level                             = level_no;
       game.level_npc_type                    = 19;
@@ -703,7 +712,7 @@ int init_game_level(int level_no)
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
    }
-   if (level_no == 20)
+   if (level_no == 20) // Byakko
    {
       game.level                             = level_no;
       game.level_npc_type                    = 20;
@@ -734,7 +743,7 @@ int init_game_level(int level_no)
       game.wave[1].spawn_pattern             = 7;
       game.level_waves                       = 1;
    }
-   if (level_no == 21)
+   if (level_no == 21) // Enenra
    {
       game.level                             = level_no;
       game.level_npc_type                    = 21;
@@ -776,7 +785,7 @@ int init_game_level(int level_no)
       game.wave[5].spawn_pattern             = 7;
       game.level_waves                       = 5;
    }
-   if (level_no == 22)
+   if (level_no == 22) // Tengu
    {
       game.level                             = level_no;
       game.level_npc_type                    = 22;
@@ -830,7 +839,7 @@ int init_game_level(int level_no)
       game.wave[11].spawn_pattern            = 11;
       game.level_waves                       = 2;
    }
-   if (level_no == 23)
+   if (level_no == 23) // Robonoid - BOSS 6
    {
       game.level                             = level_no;
       game.level_npc_type                    = 23;
@@ -856,7 +865,7 @@ int init_game_level(int level_no)
       game.victory_spawened                  = 0;
       game.victory_score                     = 0;
    }
-   if (level_no == 24)
+   if (level_no == 24) // Oyabun - BOSS 7 (final)
    {
       game.level                             = level_no;
       game.level_npc_type                    = 24;

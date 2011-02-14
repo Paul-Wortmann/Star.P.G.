@@ -3,7 +3,7 @@
  *
  * Star.P.G. is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
  * Star.P.G. is distributed in the hope that it will be useful,
@@ -107,7 +107,8 @@ struct bullet_type
    float width;
    float hight;
    bool  straight;
-   bool  homeing;
+   bool  homeing_00;
+   bool  homeing_01;
    bool  wave;
    float wave_hight;
    float wave_count;
@@ -125,6 +126,7 @@ struct projectile_type
    float    level_2;
    float    level_3;
    int      image;
+   float    size;
    int      sound;
    float    damage;
    float    health;
@@ -167,6 +169,9 @@ struct shield_type
    char  name[24];
    bool  active;
    int   level;
+   float level_1;
+   float level_2;
+   float level_3;
    float experience;
    int   image;
    float absorption;
@@ -177,6 +182,9 @@ struct thruster_type
    char  name[24];
    bool  active;
    int   level;
+   float level_1;
+   float level_2;
+   float level_3;
    float experience;
    int   image;
    float thrust;
@@ -252,6 +260,8 @@ struct achivement_type
 struct game_type
 {
    bool                 cheats_enabled;
+   bool                 anc_enabled;
+   bool                 fps_enabled;
    bool                 game_paused;
    bool                 game_active;
    bool                 game_resume;
@@ -363,6 +373,7 @@ int proccess_explosions(void);
 
 int spawn_npc(float x_position, float y_position, int type_npc, int type_formation, float x_formation_ofset, float y_formation_ofset);
 int kill_npc(int npc_num);
+int kill_active_npcs(void);
 int init_npcs(int type_npc);
 int proccess_npcs(void);
 

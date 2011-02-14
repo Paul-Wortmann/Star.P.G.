@@ -1,6 +1,6 @@
 Star.P.G.
 ---------
-A clasic side scrolling shooter, with added RPG elements.
+A classic side scrolling shooter, with added RPG elements.
 www.physhexgames.co.nr
 physhex@gmail.com
 
@@ -17,11 +17,16 @@ Keys:
 "ESC"	  ->    Menu, Quit.
 
 ---------------------------------------- Change log ---------------------------------------
-V0.14 - (xx-xx-2011)
-30-01-2011 Fixed Weapon level up display bug.
-31-01-2011 Improved vertical scrolling.
-05-02-2011 Added different movement types for bullets.
-LOC - 9484
+V0.14 - (14-02-2011)
+Fixed Weapon level up display bug.
+Improved vertical scrolling.
+Added different movement types for bullets.
+Fixed wrong NPC's spawning when changing levels through the star map.
+Player projectiles now also have different movement types.
+Improved movement of players homing projectiles!
+Enabled and completed thruster and shield leveling and implementation!
+Many tweaks and and a few bug fixes.
+LOC - 10004
 
 V0.13 - (23-01-2011)
 End of level no longer ends abruptly.
@@ -45,7 +50,7 @@ Many tweaks and bug fixes.
 LOC - 8049
 
 V0.11 - (01-01-2011)
-Improved starship custimization.
+Improved starship customization.
 FPS counter.
 More on-screen information.
 Many tweaks  and bug fixes.
@@ -68,11 +73,13 @@ V0.03 - (23-09-2010)
 Fixed overlay texture rendering bug.
 Added stackable health bars for NPCs.
 Improved rendering system.
+LOC - 2981
 
 v0.02 - (21-09-2010)
 Game mechanics created.
 Weapon system and explosions created.
 Added NPCs and score.
+LOC - 2895
 
 v0.01 - (19-09-2010)
 Initial release.
@@ -80,6 +87,7 @@ Menu textures created.
 Menu system created.
 Parallax backgrounds.
 Sound and music system.
+LOC - 1941
 
 ------------------------------------- Credits / Info -----------------------------------------
 
@@ -98,8 +106,8 @@ Kanchi
 ---------------------
   Graphics
 ---------------------
-Buttons generated with http://cooltext.com/
-Most backgrounds were renderd with Genetica Viewer 3.51.2181 Copyright (c) 2006-2010 Spiral Graphics Inc.
+Buttons generated with CoolText (http://cooltext.com/)
+Most backgrounds were rendered with Genetica Viewer 3.51.2181 Copyright (c) 2006-2010 Spiral Graphics Inc. (http://www.spiralgraphics.biz)
 Many graphics were created and/or modified with GIMP. (http://www.gimp.org/)
 
 ---------
@@ -151,19 +159,20 @@ Mikmod      - http://mikmod.raphnet.net/
 Libtiff     - http://www.libtiff.org/
 Libpng      - http://www.libpng.org/
 Smpeg       - http://www.lokigames.com/development/smpeg.php3
+Zlib        - http://www.zlib.net/
 
 3rd party copyright notice.
 ---------------------------
 
-Some of the resources are derived from works found on the internet. 
-To the best of my knowledge these resources are either in the public domain, or have a licence permitting there use in such a project.
-If however I am in error, please contact me (paul.wortmann@gmail.com) and I will remove the resource from this game imidiatly!
+Some of the resources are derived from works found on the Internet. 
+To the best of my knowledge these resources are either in the public domain, or have a license permitting there use in such a project.
+If however I am in error, please contact me (paul.wortmann@gmail.com) and I will remove the resource from this game immediately!
 
 Legal
 -----
-This is an open-source, non-comercial application. (if you paid for it get a refund!)
+This is an open-source, non-commercial application. (if you paid for it get a refund!)
 You are free to copy and share this application under the GPL v2.0 (the file gpl.txt has been included)
-Please note that the music was not created by me, not the included API's, and I do not hold the copyright to them.
+Please note that the music was not created by me, nor the included 3rd party API's, and I do not hold the copyright to them.
 
 /* Copyright (C) 2011 PhysHex Games.
  * This file is part of Star.P.G.

@@ -3,7 +3,7 @@
  *
  * Star.P.G. is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
  * Star.P.G. is distributed in the hope that it will be useful,
@@ -1132,14 +1132,22 @@ int diplay_menu (void)
           font_print(128,128,192,-1.0f,-0.000f,game.shield[game.player.front_shield].name,0.0f);
           font_print(128,128,192,-1.0f,-0.075f,"Level            - %1.0f", game.shield[game.player.front_shield].level);
           font_print(128,128,192,-1.0f,-0.150f,"Experience  - %1.0f", game.shield[game.player.front_shield].experience);
-          font_print(128,128,192,-1.0f,-0.255f,"Absorption  - %1.0f", game.shield[game.player.front_shield].absorption);
+          if (game.shield[game.player.front_shield].level == 0) font_print(128,128,192,-1.0f,-0.225f,"Next level    - %1.0f", game.shield[game.player.front_shield].level_1);
+          if (game.shield[game.player.front_shield].level == 1) font_print(128,128,192,-1.0f,-0.225f,"Next level    - %1.0f", game.shield[game.player.front_shield].level_2);
+          if (game.shield[game.player.front_shield].level == 2) font_print(128,128,192,-1.0f,-0.225f,"Next level    - %1.0f", game.shield[game.player.front_shield].level_3);
+          if (game.shield[game.player.front_shield].level >= 3) font_print(128,128,192,-1.0f,-0.225f,"Next level    - Max", 0.0f);
+          font_print(128,128,192,-1.0f,-0.300f,"Absorption   - %1.0f", (10000*(game.shield[game.player.front_shield].absorption+(0.0001f*game.shield[game.player.front_shield].level))));
       }
       if ((menu.possition == 3) && (game.player.thrusters >= 0)) //thrusters
       {
           font_print(128,128,192,-1.0f,-0.00f,game.thruster[game.player.thrusters].name,0.0f);
           font_print(128,128,192,-1.0f,-0.075f,"Level            - %1.0f", game.thruster[game.player.thrusters].level);
           font_print(128,128,192,-1.0f,-0.150f,"Experience  - %1.0f", game.thruster[game.player.thrusters].experience);
-          font_print(128,128,192,-1.0f,-0.255f,"Thrust      - %1.0f", game.thruster[game.player.thrusters].thrust);
+          if (game.thruster[game.player.thrusters].level == 0) font_print(128,128,192,-1.0f,-0.225f,"Next level    - %1.0f", game.thruster[game.player.thrusters].level_1);
+          if (game.thruster[game.player.thrusters].level == 1) font_print(128,128,192,-1.0f,-0.225f,"Next level    - %1.0f", game.thruster[game.player.thrusters].level_2);
+          if (game.thruster[game.player.thrusters].level == 2) font_print(128,128,192,-1.0f,-0.225f,"Next level    - %1.0f", game.thruster[game.player.thrusters].level_3);
+          if (game.thruster[game.player.thrusters].level >= 3) font_print(128,128,192,-1.0f,-0.225f,"Next level    - Max", 0.0f);
+          font_print(128,128,192,-1.0f,-0.300f,"Thrust          - %1.0f", (10000*(game.thruster[game.player.thrusters].thrust+(0.0001f*game.thruster[game.player.thrusters].level))));
       }
    }
 /*-----------------------------------------------------------------------------*/
