@@ -159,7 +159,7 @@
 
 1297655731 source:c:\paul\c++_game_projects\star.p.g\star.p.g._private.rc
 
-1297597812 source:c:\paul\c++_game_projects\star.p.g\config.cpp
+1298786448 source:c:\paul\c++_game_projects\star.p.g\config.cpp
 	<fstream>
 	"config.h"
 
@@ -186,9 +186,9 @@
 
 1297598020 c:\paul\c++_game_projects\star.p.g\levels.h
 
-1297597741 c:\paul\c++_game_projects\star.p.g\game.h
+1298986034 c:\paul\c++_game_projects\star.p.g\game.h
 
-1297575244 source:c:\paul\c++_game_projects\star.p.g\main.cpp
+1298987955 source:c:\paul\c++_game_projects\star.p.g\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -235,7 +235,7 @@
 
 1297598020 c:\paul\c++_game_projects\star.p.g\version.h
 
-1297597812 source:c:\paul\c++_game_projects\star.p.g\menu.cpp
+1298160503 source:c:\paul\c++_game_projects\star.p.g\menu.cpp
 	<gl/gl.h>
 	"menu.h"
 	"game.h"
@@ -277,7 +277,7 @@
 	"SDL/SDL.h"
 	"timer.h"
 
-1297595817 source:c:\paul\c++_game_projects\star.p.g\game.cpp
+1298986093 source:c:\paul\c++_game_projects\star.p.g\game.cpp
 	<SDL/SDL.h>
 	"game.h"
 	"config.h"

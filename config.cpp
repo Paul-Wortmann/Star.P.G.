@@ -28,7 +28,7 @@ bool Load_Default_Config(void)
    config_data.Display_BPS          = 32;
    config_data.Display_Fullscreen   = false;
    config_data.Audio_Rate           = 44100;
-   config_data.Audio_Channels       = 16;
+   config_data.Audio_Channels       = 32;
    config_data.Audio_Buffers        = 2048;
    config_data.Audio_Music_Volume   = 32;
    config_data.Audio_Sound_Volume   = 64;

@@ -102,6 +102,8 @@ int init_menu   (void)
 
 int diplay_menu (void)
 {
+    glPushMatrix();
+    glDisable(GL_DEPTH_TEST);
 /*-----------------------------------------------------------------------------*/
    if (menu.level == 0) //main_menu
    {
@@ -1775,5 +1777,6 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 1.0f,-1.0f, 0.0f );
       glEnd();
    }
+   glPopMatrix();
    return(0);
 };

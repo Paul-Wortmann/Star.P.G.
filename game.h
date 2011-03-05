@@ -345,6 +345,15 @@ struct game_type
    fade_logo_type       p_thrusters_level_up;
    fade_logo_type       p_vortex_thrusters;
    fade_logo_type       p_weapon_level_up;
+   int                  joystick_sensitivity;
+   bool                 gamepad_button_0;
+   bool                 gamepad_button_1;
+   bool                 gamepad_button_2;
+   bool                 gamepad_button_3;
+   bool                 button_up;
+   bool                 button_down;
+   bool                 button_left;
+   bool                 button_right;
 };
 
 int   init_waves          (void);

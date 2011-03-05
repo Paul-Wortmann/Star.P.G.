@@ -42,6 +42,15 @@ int init_game(void)
       game.background_scroll[count].scroll_rate  = 0.0005f;
       game.background_scroll[count].image        = 119;
    }
+   game.joystick_sensitivity              = 6400;
+   game.gamepad_button_0                  = false;
+   game.gamepad_button_1                  = false;
+   game.gamepad_button_2                  = false;
+   game.gamepad_button_3                  = false;
+   game.button_up                         = false;
+   game.button_down                       = false;
+   game.button_left                       = false;
+   game.button_right                      = false;
    game.cheats_enabled                    = false;
    game.anc_enabled                       = false;
    game.fps_enabled                       = false;
@@ -1454,7 +1463,7 @@ int init_game(void)
 
    for (int level_no_count = 0;level_no_count < (MAX_LEVELS+1); level_no_count++)
    {
-      game.level_locked[level_no_count] = true; /// change me!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+      game.level_locked[level_no_count] = false; /// change me!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
    }
    game.level_locked[0] = false;
    init_waves();
@@ -3699,6 +3708,7 @@ int display_game(void)
    float z_pos = 0;
    float temp_val;
    glPushMatrix();
+   glDisable(GL_DEPTH_TEST);
  //---------------------------------- display backgrounds ---------------------------------------------------------------------
    if (game.background_scroll[3].x_pos > game.background_scroll[2].x_pos)
    {
@@ -3828,8 +3838,40 @@ int display_game(void)
          glEnd();
       }
    }
+   for (int count =0;count < MAX_BULLETS;count++) //player bullets
+   {
+      if (game.player.bullet[count].active)
+      {
+         z_pos = 0.05f + (0.001*count);
+         if (game.player.bullet[count].location < 3) glBindTexture( GL_TEXTURE_2D, texture[game.projectile[game.player.front_weapon].image].texture);
+         else glBindTexture( GL_TEXTURE_2D, texture[game.projectile[game.player.side_weapon].image].texture);
+         glLoadIdentity();
+         glBegin( GL_QUADS );
+         glTexCoord2i( 1, 0 );glVertex3f(game.player.bullet[count].x_pos+(game.player.bullet[count].width/2),game.player.bullet[count].y_pos-(game.player.bullet[count].hight/2), z_pos);
+         glTexCoord2i( 1, 1 );glVertex3f(game.player.bullet[count].x_pos+(game.player.bullet[count].width/2),game.player.bullet[count].y_pos+(game.player.bullet[count].hight/2), z_pos);
+         glTexCoord2i( 0, 1 );glVertex3f(game.player.bullet[count].x_pos-(game.player.bullet[count].width/2),game.player.bullet[count].y_pos+(game.player.bullet[count].hight/2), z_pos);
+         glTexCoord2i( 0, 0 );glVertex3f(game.player.bullet[count].x_pos-(game.player.bullet[count].width/2),game.player.bullet[count].y_pos-(game.player.bullet[count].hight/2), z_pos);
+         glEnd();
+      }
+   }
 
-   if (game.player.thrusters > -1)
+   for (int count =MAX_EXPLOSIONS;count >=0;count--)  // explosions
+   {
+      z_pos = 0.001f + (0.0001*count);
+      glBindTexture( GL_TEXTURE_2D, texture[(game.explosion[count].image + game.explosion[count].frame)].texture);
+      glLoadIdentity();
+      if (game.explosion[count].active)
+      {
+         glBegin( GL_QUADS );
+         glTexCoord2i( 1, 0 );glVertex3f(game.explosion[count].x_pos+(game.explosion[count].width/2),game.explosion[count].y_pos-(game.explosion[count].hight/2),z_pos);
+         glTexCoord2i( 1, 1 );glVertex3f(game.explosion[count].x_pos+(game.explosion[count].width/2),game.explosion[count].y_pos+(game.explosion[count].hight/2),z_pos);
+         glTexCoord2i( 0, 1 );glVertex3f(game.explosion[count].x_pos-(game.explosion[count].width/2),game.explosion[count].y_pos+(game.explosion[count].hight/2),z_pos);
+         glTexCoord2i( 0, 0 );glVertex3f(game.explosion[count].x_pos-(game.explosion[count].width/2),game.explosion[count].y_pos-(game.explosion[count].hight/2),z_pos);
+         glEnd();
+      }
+   }
+
+   if (game.player.thrusters > -1)//player starship
    {
       glBindTexture( GL_TEXTURE_2D, texture[game.thruster[game.player.thrusters].image].texture); //player thrusters
       glLoadIdentity();
@@ -3890,38 +3932,6 @@ int display_game(void)
       glTexCoord2i( 0, 1 );glVertex3f(game.player.x_pos-(game.player.width/1.5),game.player.y_pos+(game.player.hight/1.5), 0.02f );
       glTexCoord2i( 0, 0 );glVertex3f(game.player.x_pos-(game.player.width/1.5),game.player.y_pos-(game.player.hight/1.5), 0.02f );
       glEnd();
-   }
-   for (int count =0;count < MAX_BULLETS;count++) //player bullets
-   {
-      if (game.player.bullet[count].active)
-      {
-         z_pos = 0.05f + (0.001*count);
-         if (game.player.bullet[count].location < 3) glBindTexture( GL_TEXTURE_2D, texture[game.projectile[game.player.front_weapon].image].texture);
-         else glBindTexture( GL_TEXTURE_2D, texture[game.projectile[game.player.side_weapon].image].texture);
-         glLoadIdentity();
-         glBegin( GL_QUADS );
-         glTexCoord2i( 1, 0 );glVertex3f(game.player.bullet[count].x_pos+(game.player.bullet[count].width/2),game.player.bullet[count].y_pos-(game.player.bullet[count].hight/2), z_pos);
-         glTexCoord2i( 1, 1 );glVertex3f(game.player.bullet[count].x_pos+(game.player.bullet[count].width/2),game.player.bullet[count].y_pos+(game.player.bullet[count].hight/2), z_pos);
-         glTexCoord2i( 0, 1 );glVertex3f(game.player.bullet[count].x_pos-(game.player.bullet[count].width/2),game.player.bullet[count].y_pos+(game.player.bullet[count].hight/2), z_pos);
-         glTexCoord2i( 0, 0 );glVertex3f(game.player.bullet[count].x_pos-(game.player.bullet[count].width/2),game.player.bullet[count].y_pos-(game.player.bullet[count].hight/2), z_pos);
-         glEnd();
-      }
-   }
-
-   for (int count =MAX_EXPLOSIONS;count >=0;count--)  // explosions
-   {
-      z_pos = 0.001f + (0.0001*count);
-      glBindTexture( GL_TEXTURE_2D, texture[(game.explosion[count].image + game.explosion[count].frame)].texture);
-      glLoadIdentity();
-      if (game.explosion[count].active)
-      {
-         glBegin( GL_QUADS );
-         glTexCoord2i( 1, 0 );glVertex3f(game.explosion[count].x_pos+(game.explosion[count].width/2),game.explosion[count].y_pos-(game.explosion[count].hight/2),z_pos);
-         glTexCoord2i( 1, 1 );glVertex3f(game.explosion[count].x_pos+(game.explosion[count].width/2),game.explosion[count].y_pos+(game.explosion[count].hight/2),z_pos);
-         glTexCoord2i( 0, 1 );glVertex3f(game.explosion[count].x_pos-(game.explosion[count].width/2),game.explosion[count].y_pos+(game.explosion[count].hight/2),z_pos);
-         glTexCoord2i( 0, 0 );glVertex3f(game.explosion[count].x_pos-(game.explosion[count].width/2),game.explosion[count].y_pos-(game.explosion[count].hight/2),z_pos);
-         glEnd();
-      }
    }
    float  npc_num = 0.0f;
    for  (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)

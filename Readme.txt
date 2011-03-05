@@ -17,6 +17,12 @@ Keys:
 "ESC"	  ->    Menu, Quit.
 
 ---------------------------------------- Change log ---------------------------------------
+V0.15 - (05-03-2011)
+Inproved rendering system.
+Implemented initial gapmepad/joystick support, incomplete!
+Many tweaks and and a few bug fixes.
+LOC - 10166
+
 V0.14 - (14-02-2011)
 Fixed Weapon level up display bug.
 Improved vertical scrolling.

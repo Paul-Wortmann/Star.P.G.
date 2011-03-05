@@ -46,7 +46,7 @@ extern texture_type texture[MAX_TEXTURES];
 extern menu_type menu;
 extern game_type game;
 
-const char App_Name[] = ("Star.P.G V0.14 - www.physhexgames.co.nr");
+const char App_Name[] = ("Star.P.G V0.15 - www.physhexgames.co.nr");
 const char App_Icon[] = "data/icon.bmp";
 const char App_Conf[] = "Star.P.G..cfg";
 const char App_Logf[] = "Star.P.G..log";
@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
   }
   game.cheats_enabled = true; /// test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   Log_File(App_Logf,"------------------");
-  Log_File(App_Logf,"| Star.P.G V0.14 |");
+  Log_File(App_Logf,"| Star.P.G V0.15 |");
   Log_File(App_Logf,"------------------\n");
   Log_File(App_Logf,"Booting up!");
   Log_File(App_Logf,"------------------\n");
@@ -124,6 +124,12 @@ int main(int argc, char *argv[])
   Mix_OpenAudio(config_data.Audio_Rate, AUDIO_S16, 2, config_data.Audio_Buffers);
   Mix_Volume(-1,config_data.Audio_Sound_Volume);
   Mix_VolumeMusic(config_data.Audio_Music_Volume);
+  Log_File(App_Logf,"Initializing joystick / gamepad...");
+  SDL_Init(SDL_INIT_JOYSTICK);
+  SDL_Joystick *joystick;
+  SDL_JoystickEventState(SDL_ENABLE);
+  joystick = SDL_JoystickOpen(0);
+  game.joystick_sensitivity     = 6400;
   Log_File(App_Logf,"Loading fonts...");
   Init_Font();
   Log_File(App_Logf,"Loading sounds...");
@@ -163,9 +169,9 @@ int main(int argc, char *argv[])
         play_music(game.menu_music_track);
         glPushMatrix();
         diplay_menu ();
-        process_menu();
         glPopMatrix();
         SDL_GL_SwapBuffers();
+        process_menu();
         //--- proccess keyboard events ---
         while ( SDL_PollEvent(&event) )
         {
@@ -180,49 +186,49 @@ int main(int argc, char *argv[])
                     case 0://main menu
                        quit = 1;
                        Log_File(App_Logf,"User terminating game - used escape key!");
-                       break;
+                    break;
                     case 1://game menu
                        menu.possition = 0;
                        menu.level = 0;
                        menu.possition_max = 4;
                        Log_File(App_Logf,"Entering 'main' menu.");
-                       break;
+                    break;
                     case 2: // options menu
                        menu.possition = 3;
                        menu.level = 0;
                        menu.possition_max = 4;
                        Log_File(App_Logf,"Entering 'main' menu.");
-                       break;
+                    break;
                     case 3: // customize starship menu
                        menu.possition = 2;
                        menu.level = 1;
                        menu.possition_max = 6;
                        Log_File(App_Logf,"Entering 'new game' menu.");
-                       break;
+                    break;
                     case 4: // star map menu
                        menu.possition = 1;
                        menu.level = 1;
                        menu.possition_max = 6;
                        Log_File(App_Logf,"Entering 'new game' menu.");
-                       break;
+                    break;
                     case 5: // save game menu
                        menu.possition = 4;
                        menu.level = 1;
                        menu.possition_max = 6;
                        Log_File(App_Logf,"Entering 'new game' menu.");
-                       break;
+                    break;
                     case 6: // load game menu
                        menu.possition = 5;
                        menu.level = 1;
                        menu.possition_max = 6;
                        Log_File(App_Logf,"Entering 'new game' menu.");
-                       break;
+                    break;
                     case 7: // Achievements menu
                        menu.possition = 0;
                        menu.level = 1;
                        menu.possition_max = 6;
                        Log_File(App_Logf,"Entering 'new game' menu.");
-                       break;
+                    break;
                     default:
                        quit = 1;
                  }
@@ -916,17 +922,156 @@ int main(int argc, char *argv[])
         //--- proccess keyboard events ---
         while ( SDL_PollEvent(&event) )
         {
+    //-------------------------- joystick / gamepad events --------------------------------------------
+       if (event.type == SDL_JOYAXISMOTION)
+       {
+          if ((event.jaxis.value < (-1*(game.joystick_sensitivity))) || (event.jaxis.value > game.joystick_sensitivity))
+          {
+             if (event.jaxis.axis == 0)
+             {
+                if(event.jaxis.value < -(-1*(game.joystick_sensitivity)))
+                {
+                   game.button_left  = true;
+                   game.button_right = false;
+                }
+                if(event.jaxis.value > game.joystick_sensitivity)
+                {
+                   game.button_left  = false;
+                   game.button_right = true;
+                }
+             }
+             if (event.jaxis.axis == 1)
+             {
+                if(event.jaxis.value < -(-1*(game.joystick_sensitivity)))
+                {
+                   game.button_up    = true;
+                   game.button_down  = false;
+                }
+                if(event.jaxis.value > game.joystick_sensitivity)
+                {
+                   game.button_up    = false;
+                   game.button_down  = true;
+                }
+             }
+          }
+       }
+       if (event.type == SDL_JOYHATMOTION)
+       {
+          if (event.jhat.value & SDL_HAT_CENTERED)
+          {
+              game.button_up    = false;
+              game.button_down  = false;
+              game.button_left  = false;
+              game.button_right = false;
+          }
+          if (event.jhat.value & SDL_HAT_UP)
+          {
+              game.button_up    = true;
+              game.button_down  = false;
+              game.button_left  = false;
+              game.button_right = false;
+          }
+          if (event.jhat.value & SDL_HAT_DOWN)
+          {
+              game.button_up    = false;
+              game.button_down  = true;
+              game.button_left  = false;
+              game.button_right = false;
+          }
+          if (event.jhat.value & SDL_HAT_RIGHT)
+          {
+              game.button_up    = false;
+              game.button_down  = false;
+              game.button_left  = false;
+              game.button_right = true;
+          }
+          if (event.jhat.value & SDL_HAT_RIGHTUP)
+          {
+              game.button_up    = true;
+              game.button_down  = false;
+              game.button_left  = false;
+              game.button_right = true;
+          }
+          if (event.jhat.value & SDL_HAT_RIGHTDOWN)
+          {
+              game.button_up    = false;
+              game.button_down  = true;
+              game.button_left  = false;
+              game.button_right = true;
+          }
+          if (event.jhat.value & SDL_HAT_LEFT)
+          {
+              game.button_up    = false;
+              game.button_down  = false;
+              game.button_left  = true;
+              game.button_right = false;
+          }
+          if (event.jhat.value & SDL_HAT_LEFTUP)
+          {
+              game.button_up    = true;
+              game.button_down  = false;
+              game.button_left  = true;
+              game.button_right = false;
+          }
+          if (event.jhat.value & SDL_HAT_LEFTDOWN)
+          {
+              game.button_up    = false;
+              game.button_down  = true;
+              game.button_left  = true;
+              game.button_right = false;
+          }
+       }
+       if (event.type == SDL_JOYBUTTONDOWN)
+       {
+           switch(event.jbutton.button)
+           {
+              case 0:
+                game.gamepad_button_0 = true;
+              break;
+              case 1:
+                game.gamepad_button_1 = true;
+              break;
+              case 2:
+                game.gamepad_button_2 = true;
+              break;
+              case 3:
+                game.gamepad_button_3 = true;
+              break;
+              default:
+              break;
+           }
+       }
+       if (event.type == SDL_JOYBUTTONUP)
+       {
+           switch(event.jbutton.button)
+           {
+              case 0:
+                game.gamepad_button_0 = false;
+              break;
+              case 1:
+                game.gamepad_button_1 = false;
+              break;
+              case 2:
+                game.gamepad_button_2 = false;
+              break;
+              case 3:
+                game.gamepad_button_3 = false;
+              break;
+              default:
+              break;
+           }
+       }
            if ( event.type == SDL_QUIT ) quit = 1;
            if ( event.type == SDL_KEYDOWN )
            {
-              if ( event.key.keysym.sym == SDLK_ESCAPE )
+              if ((event.key.keysym.sym == SDLK_ESCAPE) || (game.gamepad_button_3))
               {
                  play_sound(1);
-                 game.game_active        = false;
+                 game.game_active   = false;
                  menu.level         = 1;
                  menu.possition     = 3;
                  menu.possition_max = 6;
-                 game.menu_active        = true;
+                 game.menu_active   = true;
               }
               if ( event.key.keysym.sym == SDLK_SPACE  ) {};
               if ( event.key.keysym.sym == SDLK_p      )
@@ -951,7 +1096,7 @@ int main(int argc, char *argv[])
               }
            }
         }
-        if (keystate[SDLK_SPACE])
+        if ((keystate[SDLK_SPACE]) || (game.gamepad_button_0))
         {
            if(game.fw_rof_count >= game.projectile[game.player.front_weapon].rate_of_fire)
            {
@@ -964,14 +1109,10 @@ int main(int argc, char *argv[])
               game.sw_rof_count = 0;
            }
         }
-        if ( keystate[SDLK_UP]   ) process_player(1);
-        if ( keystate[SDLK_w]    ) process_player(1);
-        if ( keystate[SDLK_DOWN] ) process_player(2);
-        if ( keystate[SDLK_s]    ) process_player(2);
-        if ( keystate[SDLK_RIGHT]) process_player(3);
-        if ( keystate[SDLK_d]    ) process_player(3);
-        if ( keystate[SDLK_LEFT] ) process_player(4);
-        if ( keystate[SDLK_a]    ) process_player(4);
+        if ((keystate[SDLK_UP]    || (keystate[SDLK_w]) || (game.button_up)))    process_player(1);
+        if ((keystate[SDLK_DOWN]  || (keystate[SDLK_s]) || (game.button_down)))  process_player(2);
+        if ((keystate[SDLK_RIGHT] || (keystate[SDLK_d]) || (game.button_right))) process_player(3);
+        if ((keystate[SDLK_LEFT]  || (keystate[SDLK_a]) || (game.button_left)))  process_player(4);
 //    keys = SDL_GetKeyState(NULL);
      }
 //*********************************** Game paused *****************************************
