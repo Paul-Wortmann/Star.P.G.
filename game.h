@@ -17,7 +17,7 @@
 
 
 const int MAX_NPCS        = 32;
-const int MAX_PROJECTILES = 32;
+const int MAX_PROJECTILES = 64;
 const int MAX_SHIELDS     = 5;
 const int MAX_THRUSTERS   = 4;
 const int MAX_BULLETS     = 96;
@@ -26,9 +26,10 @@ const int MAX_ENEMYS      = 32;
 const int MAX_BACKGROUNDS = 4;
 const int MAX_LEVELS      = 25;
 const int MAX_WAVES       = 32;
-const int MAX_POWERUPS    = 8;
+const int MAX_POWERUPS    = 13;
 const int MAX_COINS       = 32;
 const int MAX_WEXPS       = 32;
+const int MAX_SIDESHIPS   = 4;
 
 struct wave_type
 {
@@ -102,6 +103,8 @@ struct bullet_type
    int   location;
    float x_pos;
    float y_pos;
+   int   x_dir;
+   int   y_dir;
    float x_speed;
    float y_speed;
    float width;
@@ -135,6 +138,18 @@ struct projectile_type
    int      movement;
    float    wave_size;
    float    wave_velocity;
+};
+
+struct sideship_type
+{
+   int         rate_of_fire;
+   int         rate_of_fire_count;
+   bool        active;
+   int         level;
+   int         image;
+   float       width;
+   float       height;
+   bullet_type bullet[MAX_BULLETS];
 };
 
 struct bkground_scroll_type
@@ -206,6 +221,7 @@ struct enemy_type
 struct npc_type
 {
    bool  active;
+   int   damaged;
    int   type_npc;
    int   weapon;
    int   projectiles;
@@ -259,6 +275,7 @@ struct achivement_type
 
 struct game_type
 {
+   int                  npc_damage_duration;
    bool                 cheats_enabled;
    bool                 anc_enabled;
    bool                 fps_enabled;
@@ -308,6 +325,7 @@ struct game_type
    int                  nlvl_music_track;
    wave_type            wave[MAX_WAVES];
    player_type          player;
+   sideship_type        sideship[MAX_SIDESHIPS];
    enemy_type           enemy[MAX_ENEMYS];
    npc_type             npc[MAX_NPCS];
    projectile_type      projectile[MAX_PROJECTILES];
@@ -540,3 +558,7 @@ int kill_d_level_end(void);
 int spawn_d_level_end(void);
 int display_d_level_end(void);
 int process_d_level_end(void);
+
+int spawn_sideship_bullet(int sideship_count,int location, int direction_x, int direction_y);
+int initialize_sideships(void);
+int process_sideships(bool spawn_bullet);

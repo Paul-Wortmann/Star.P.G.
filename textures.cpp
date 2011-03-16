@@ -403,7 +403,16 @@ int load_textures(void)
    load_texture (337, "data/images/powerups/coin_powerup.png");
    load_texture (338, "data/images/powerups/wexp_powerup.png");
    load_texture (339, "data/images/misc/credits_00.png");
-
+   load_texture (340, "data/images/misc/level_progress_bar.png");
+   load_texture (341, "data/images/powerups/bomb_powerup.png");
+   load_texture (242, "data/images/ships/sideship_00.png");
+   load_texture (243, "data/images/ships/sideship_01.png");
+   load_texture (244, "data/images/ships/sideship_02.png");
+   load_texture (245, "data/images/ships/sideship_03.png");
+   load_texture (346, "data/images/powerups/powerup_sideship_00.png");
+   load_texture (347, "data/images/powerups/powerup_sideship_01.png");
+   load_texture (348, "data/images/powerups/powerup_sideship_02.png");
+   load_texture (349, "data/images/powerups/powerup_sideship_03.png");
    return(0);
 };
 

@@ -1082,22 +1082,28 @@ int main(int argc, char *argv[])
               };
               //if (game.cheats_enabled == true)
               {
-                 if (event.key.keysym.sym == SDLK_1)    spawn_powerup(1.0f,random_GLcoord(),1);//spawn health powerup
-                 if (event.key.keysym.sym == SDLK_2)    spawn_powerup(1.0f,random_GLcoord(),2);//spawn shield lvl powerup
-                 if (event.key.keysym.sym == SDLK_3)    spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new powerup
-                 if (event.key.keysym.sym == SDLK_4)    spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster lvl powerup
-                 if (event.key.keysym.sym == SDLK_5)    spawn_powerup(1.0f,random_GLcoord(),5);//spawn thruster new powerup
-                 if (event.key.keysym.sym == SDLK_6)    spawn_powerup(1.0f,random_GLcoord(),6);//spawn weapon lvl powerup
-                 if (event.key.keysym.sym == SDLK_7)    spawn_powerup(1.0f,random_GLcoord(),7);//spawn weapon new powerup
-                 if (event.key.keysym.sym == SDLK_8)    unlock_levels();                       //unlock all levels
-                 if (event.key.keysym.sym == SDLK_0)    game.victory_kills = 0;                //complete level
-                 if (event.key.keysym.sym == SDLK_a)    game.anc_enabled = !game.anc_enabled;  //toggle active NPC count display
-                 if (event.key.keysym.sym == SDLK_f)    game.fps_enabled = !game.fps_enabled;  //toggle active NPC count display
+                 if (event.key.keysym.sym == SDLK_b)    spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb powerup
+                 if (event.key.keysym.sym == SDLK_u)    spawn_powerup(1.0f,random_GLcoord(), 9);//spawn sideship 0 powerup
+                 if (event.key.keysym.sym == SDLK_i)    spawn_powerup(1.0f,random_GLcoord(),10);//spawn sideship 1 powerup
+                 if (event.key.keysym.sym == SDLK_o)    spawn_powerup(1.0f,random_GLcoord(),11);//spawn sideship 2 powerup
+                 if (event.key.keysym.sym == SDLK_p)    spawn_powerup(1.0f,random_GLcoord(),12);//spawn sideship 3 powerup
+                 if (event.key.keysym.sym == SDLK_1)    spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup
+                 if (event.key.keysym.sym == SDLK_2)    spawn_powerup(1.0f,random_GLcoord(), 2);//spawn shield lvl powerup
+                 if (event.key.keysym.sym == SDLK_3)    spawn_powerup(1.0f,random_GLcoord(), 3);//spawn shield new powerup
+                 if (event.key.keysym.sym == SDLK_4)    spawn_powerup(1.0f,random_GLcoord(), 4);//spawn thruster lvl powerup
+                 if (event.key.keysym.sym == SDLK_5)    spawn_powerup(1.0f,random_GLcoord(), 5);//spawn thruster new powerup
+                 if (event.key.keysym.sym == SDLK_6)    spawn_powerup(1.0f,random_GLcoord(), 6);//spawn weapon lvl powerup
+                 if (event.key.keysym.sym == SDLK_7)    spawn_powerup(1.0f,random_GLcoord(), 7);//spawn weapon new powerup
+                 if (event.key.keysym.sym == SDLK_8)    unlock_levels();                        //unlock all levels
+                 if (event.key.keysym.sym == SDLK_0)    game.victory_kills = game.level_kills;  //complete level
+                 if (event.key.keysym.sym == SDLK_a)    game.anc_enabled   = !game.anc_enabled; //toggle active NPC count display
+                 if (event.key.keysym.sym == SDLK_f)    game.fps_enabled   = !game.fps_enabled; //toggle active NPC count display
               }
            }
         }
         if ((keystate[SDLK_SPACE]) || (game.gamepad_button_0))
         {
+           process_sideships(true);
            if(game.fw_rof_count >= game.projectile[game.player.front_weapon].rate_of_fire)
            {
               spawn_player_bullet(0);
@@ -1108,6 +1114,10 @@ int main(int argc, char *argv[])
               spawn_player_bullet(1);
               game.sw_rof_count = 0;
            }
+        }
+        else
+        {
+            process_sideships(false);
         }
         if ((keystate[SDLK_UP]    || (keystate[SDLK_w]) || (game.button_up)))    process_player(1);
         if ((keystate[SDLK_DOWN]  || (keystate[SDLK_s]) || (game.button_down)))  process_player(2);

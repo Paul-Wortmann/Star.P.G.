@@ -17,6 +17,11 @@ Keys:
 "ESC"	  ->    Menu, Quit.
 
 ---------------------------------------- Change log ---------------------------------------
+V0.16 - (xx-xx-2011)
+Enemy ships flash when hit and not killed.
+Level progress bar added.
+LOC - 10166
+
 V0.15 - (05-03-2011)
 Inproved rendering system.
 Implemented initial gapmepad/joystick support, incomplete!

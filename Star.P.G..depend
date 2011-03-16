@@ -293,3 +293,154 @@
 1297597812 source:c:\paul\c++_game_projects\star.p.g\network.cpp
 	"network.h"
 
+1207584728 source:c:\_svn_\star.p.g\trunk\freetype.cpp
+	"freetype.h"
+
+1296524091 c:\_svn_\star.p.g\trunk\freetype.h
+	<ft2build.h>
+	<freetype/freetype.h>
+	<freetype/ftglyph.h>
+	<freetype/ftoutln.h>
+	<freetype/fttrigon.h>
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<vector>
+	<string>
+
+1297655731 source:c:\_svn_\star.p.g\trunk\star.p.g._private.rc
+
+1298786448 source:c:\_svn_\star.p.g\trunk\config.cpp
+	<fstream>
+	"config.h"
+
+1296523958 c:\_svn_\star.p.g\trunk\config.h
+
+1297597812 source:c:\_svn_\star.p.g\trunk\font.cpp
+	"SDL/SDL_ttf.h"
+	"freetype.h"
+	"gl/gl.h"
+	"font.h"
+	"graphics.h"
+	"config.h"
+
+1297598020 c:\_svn_\star.p.g\trunk\font.h
+
+1297598020 c:\_svn_\star.p.g\trunk\graphics.h
+
+1297597812 source:c:\_svn_\star.p.g\trunk\graphics.cpp
+	"graphics.h"
+
+1297575244 source:c:\_svn_\star.p.g\trunk\levels.cpp
+	"levels.h"
+	"game.h"
+
+1297598020 c:\_svn_\star.p.g\trunk\levels.h
+
+1300240975 c:\_svn_\star.p.g\trunk\game.h
+
+1300240252 source:c:\_svn_\star.p.g\trunk\main.cpp
+	<SDL/SDL.h>
+	<SDL/SDL_main.h>
+	<SDL/SDL_ttf.h>
+	<SDL/SDL_net.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_opengl.h>
+	<gl/gl.h>
+	"misc.h"
+	"main.h"
+	"config.h"
+	"sounds.h"
+	"music.h"
+	"textures.h"
+	"menu.h"
+	"game.h"
+	"levels.h"
+	"physics.h"
+	"font.h"
+	"savegame.h"
+	"timer.h"
+	"network.h"
+	"version.h"
+
+1297598020 c:\_svn_\star.p.g\trunk\misc.h
+
+1297598020 c:\_svn_\star.p.g\trunk\main.h
+
+1297598020 c:\_svn_\star.p.g\trunk\sounds.h
+	<SDL/SDL_mixer.h>
+
+1297598020 c:\_svn_\star.p.g\trunk\music.h
+	<SDL/SDL_mixer.h>
+
+1300067496 c:\_svn_\star.p.g\trunk\textures.h
+	<gl/gl.h>
+
+1297598020 c:\_svn_\star.p.g\trunk\menu.h
+
+1297598020 c:\_svn_\star.p.g\trunk\physics.h
+
+1297598020 c:\_svn_\star.p.g\trunk\savegame.h
+
+1297598020 c:\_svn_\star.p.g\trunk\timer.h
+
+1297598020 c:\_svn_\star.p.g\trunk\network.h
+
+1297598020 c:\_svn_\star.p.g\trunk\version.h
+
+1300069078 source:c:\_svn_\star.p.g\trunk\menu.cpp
+	<gl/gl.h>
+	"menu.h"
+	"game.h"
+	"config.h"
+	"sounds.h"
+	"music.h"
+	"textures.h"
+	"levels.h"
+	"font.h"
+
+1297597812 source:c:\_svn_\star.p.g\trunk\misc.cpp
+	<time.h>
+	<stdlib.h>
+
+1297597812 source:c:\_svn_\star.p.g\trunk\music.cpp
+	"music.h"
+
+1297597812 source:c:\_svn_\star.p.g\trunk\network.cpp
+	"network.h"
+
+1297582694 source:c:\_svn_\star.p.g\trunk\physics.cpp
+	"physics.h"
+	<math.h>
+
+1297597812 source:c:\_svn_\star.p.g\trunk\savegame.cpp
+	<fstream>
+	"game.h"
+	"savegame.h"
+	"levels.h"
+
+1300099688 source:c:\_svn_\star.p.g\trunk\sounds.cpp
+	"sounds.h"
+
+1300169656 source:c:\_svn_\star.p.g\trunk\textures.cpp
+	<gl/gl.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	"textures.h"
+	"config.h"
+
+1297597812 source:c:\_svn_\star.p.g\trunk\timer.cpp
+	"SDL/SDL.h"
+	"timer.h"
+
+1300100122 source:c:\_svn_\star.p.g\trunk\game.cpp
+	<SDL/SDL.h>
+	"game.h"
+	"config.h"
+	"sounds.h"
+	"music.h"
+	"textures.h"
+	"physics.h"
+	"misc.h"
+	"font.h"
+

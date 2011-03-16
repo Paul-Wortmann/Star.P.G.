@@ -17,7 +17,7 @@
 
 #include <gl/gl.h>
 
-const int MAX_TEXTURES = 340;
+const int MAX_TEXTURES = 350;
 struct texture_type
 {
    GLuint texture;

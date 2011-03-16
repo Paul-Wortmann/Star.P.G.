@@ -1725,7 +1725,7 @@ int diplay_menu (void)
       font_print(128,128,192,-1.00f,-0.10f,"Total score - %1.0f", game.score);
       font_print(128,128,192,-1.00f,-0.20f,"Level kills - %1.0f", game.level_kills);
       font_print(128,128,192,-1.00f,-0.30f,"Total kills - %1.0f", game.kills);
-//      font_print(128,128,192,-1.00f,-0.40f,"Kill rate   - %1.0f %",((game.level_kills*100.0f)/(game.level_spawened*100.0f)));
+      font_print(128,128,192,-1.00f,-0.40f,"Kill rate   - %1.0f./'",(((float)game.level_kills/(float)game.level_spawened)*100));
    }
 /*-----------------------------------------------------------------------------*/
    if (menu.level == 10) //Outro screen

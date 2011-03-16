@@ -26,10 +26,10 @@
 #include "font.h"
 
 extern config_data_type config_data;
-extern sound_type sound[MAX_SOUNDS];
-extern music_type music[MAX_MUSIC];
-extern texture_type texture[MAX_TEXTURES];
-game_type game;
+extern sound_type       sound[MAX_SOUNDS];
+extern music_type       music[MAX_MUSIC];
+extern texture_type     texture[MAX_TEXTURES];
+       game_type        game;
 
 int init_game(void)
 {
@@ -61,6 +61,7 @@ int init_game(void)
    game.menu_active                       = true;
    game.pdie_active                       = false;
    game.nlvl_active                       = false;
+   game.npc_damage_duration               = 10;
    game.exp_rate                          = 5;
    game.coin_spawn_rate                   = 16384;
    game.wexp_spawn_rate                   = 24576;
@@ -1466,6 +1467,7 @@ int init_game(void)
       game.level_locked[level_no_count] = false; /// change me!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
    }
    game.level_locked[0] = false;
+   initialize_sideships();
    init_waves();
    init_coin();
    init_wexp();
@@ -1740,6 +1742,7 @@ int spawn_npc(float x_position, float y_position, int type_npc, int type_formati
        if (!spawn_done and !game.npc[npc_num].active)
        {
           game.npc[npc_num].active              = true;
+          game.npc[npc_num].damaged             = 0;
           game.npc[npc_num].type_npc            = type_npc;
           game.npc[npc_num].x_pos               = x_position;
           game.npc[npc_num].y_pos               = y_position;
@@ -1790,6 +1793,7 @@ int init_npcs(int type_npc)
    for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
    {
       game.npc[npc_count].active              = false;
+      game.npc[npc_count].damaged             = 0;
       game.npc[npc_count].type_npc            = type_npc;
       game.npc[npc_count].x_pos               = -2.0f;
       game.npc[npc_count].y_pos               = -2.0f;
@@ -1817,6 +1821,8 @@ int proccess_npcs(void)
 {
    for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
    {
+      if  (game.npc[npc_count].damaged > 0) game.npc[npc_count].damaged--;
+      else game.npc[npc_count].damaged = 0;
       if (game.npc[npc_count].active)
       {
          if (game.npc[npc_count].movement == 0)//straight line from right to left
@@ -2208,21 +2214,36 @@ int init_powerups(void)
       game.powerup[count].speed      = 0.0025f;
       game.powerup[count].spawn_rate = 20000;
    }
-   game.powerup[1].image   = 291;//health
-   game.powerup[2].image   = 292;//shield lvl up
-   game.powerup[3].image   = 293;//shield new
-   game.powerup[4].image   = 294;//thruster lvl up
-   game.powerup[5].image   = 295;//thruster new
-   game.powerup[6].image   = 296;//weapon lvl up
-   game.powerup[7].image   = 297;//weapon new
+   game.powerup[1 ].image   = 291;//health
+   game.powerup[2 ].image   = 292;//shield lvl up
+   game.powerup[3 ].image   = 293;//shield new
+   game.powerup[4 ].image   = 294;//thruster lvl up
+   game.powerup[5 ].image   = 295;//thruster new
+   game.powerup[6 ].image   = 296;//weapon lvl up
+   game.powerup[7 ].image   = 297;//weapon new
+   game.powerup[8 ].image   = 341;//bomb
+   game.powerup[9 ].image   = 346;//side helper ship 0
+   game.powerup[10].image   = 347;//side helper ship 1
+   game.powerup[11].image   = 348;//side helper ship 2
+   game.powerup[12].image   = 349;//side helper ship 3
 
-   game.powerup[1].sound   = 14;//health
-   game.powerup[2].sound   = 15;//shield lvl up
-   game.powerup[3].sound   = 16;//shield new
-   game.powerup[4].sound   = 17;//thruster lvl up
-   game.powerup[5].sound   = 18;//thruster new
-   game.powerup[6].sound   = 19;//weapon lvl up
-   game.powerup[7].sound   = 20;//weapon new
+   game.powerup[1 ].sound   = 14;//health
+   game.powerup[2 ].sound   = 15;//shield lvl up
+   game.powerup[3 ].sound   = 16;//shield new
+   game.powerup[4 ].sound   = 17;//thruster lvl up
+   game.powerup[5 ].sound   = 18;//thruster new
+   game.powerup[6 ].sound   = 19;//weapon lvl up
+   game.powerup[7 ].sound   = 20;//weapon new
+   game.powerup[8 ].sound   = 14;//bomb
+   game.powerup[9 ].sound   = 18;//side helper ship 0
+   game.powerup[10].sound   = 18;//side helper ship 1
+   game.powerup[11].sound   = 18;//side helper ship 2
+   game.powerup[12].sound   = 18;//side helper ship 3
+
+   game.powerup[9 ].spawn_rate = 4000;//side helper ship 0
+   game.powerup[10].spawn_rate = 4000;//side helper ship 1
+   game.powerup[11].spawn_rate = 4000;//side helper ship 2
+   game.powerup[12].spawn_rate = 4000;//side helper ship 3
    return(0);
 };
 /*----------------------------------------------------------------------------*/
@@ -2244,8 +2265,8 @@ int proccess_powerups(void)
                     {
                        game.player.health = 0.100f;
                        spawn_p_health();
-                       break;
                     }
+                break;
                 case 2://shield lvl up
                     {
                        if (game.player.front_shield >= 0)
@@ -2256,8 +2277,8 @@ int proccess_powerups(void)
                              spawn_p_shield_level_up();
                           }
                        }
-                       break;
                     }
+                break;
                 case 3://get new shield
                     {
                        bool done = false;
@@ -2275,8 +2296,8 @@ int proccess_powerups(void)
                                if (game.player.front_shield == 4) spawn_p_actinium_shields();
                            }
                        }
-                       break;
                     }
+                break;
                 case 4://thrusters lvl up
                     {
                        if (game.player.thrusters >= 0)
@@ -2287,8 +2308,8 @@ int proccess_powerups(void)
                              spawn_p_thrusters_level_up();
                           }
                        }
-                       break;
                     }
+                break;
                 case 5://get new thrusters
                     {
                        bool done = false;
@@ -2305,8 +2326,8 @@ int proccess_powerups(void)
                                if (game.player.thrusters == 3) spawn_p_convolution_thrusters();
                            }
                        }
-                       break;
                     }
+                break;
                 case 6://weapon lvl up
                     {
                        game.projectile[game.player.front_weapon].level++;
@@ -2319,8 +2340,8 @@ int proccess_powerups(void)
                           game.projectile[game.player.side_weapon].experience = 0;
                        }
                        spawn_p_weapon_level_up();
-                       break;
                     }
+                break;
                 case 7://get new weapon
                     {
                        bool done = false;
@@ -2340,8 +2361,144 @@ int proccess_powerups(void)
                                if (game.player.front_weapon == 5) spawn_p_ion_cannons();
                            }
                        }
-                       break;
                     }
+                break;
+                case 8://get bomb
+                    {
+                       Mix_Volume(-1,(config_data.Audio_Sound_Volume/2));
+                       for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) //kill all npcs
+                       {
+                          play_sound(49);
+                          if (game.npc[npc_count].active)
+                           {
+                              int random_temp = random_int();
+                              if (random_temp <= game.coin_spawn_rate) //spawn coin
+                              {
+                                 spawn_coin(game.npc[npc_count].x_pos,game.npc[npc_count].y_pos,(game.npc[npc_count].type_npc+1+random_dec()));
+                              }
+                              if ((random_temp > game.coin_spawn_rate) && (random_temp <= game.wexp_spawn_rate)) //spawn wexp
+                              {
+                                 spawn_wexp(game.npc[npc_count].x_pos,game.npc[npc_count].y_pos,(game.npc[npc_count].type_npc+1+random_dec()));
+                              }
+                              if (random_temp > game.wexp_spawn_rate) //spawn null
+                              {
+                                 ;
+                              }
+                              game.score += (game.npc[npc_count].type_npc + 1) * 10;
+                              game.level_score += (game.npc[npc_count].type_npc + 1) * 10;
+                              spawn_explosion(game.npc[npc_count].x_pos,game.npc[npc_count].y_pos,0.50f);
+                              kill_npc(npc_count);
+                              game.kills++;
+                              game.level_kills++;
+
+                           }
+                       }
+                       for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)//kill all npc bullets
+                       {
+                          for (int bullet_count = 0; bullet_count < MAX_BULLETS; bullet_count++)
+                          {
+                             if (game.npc[npc_count].bullet[bullet_count].active)
+                             {
+                                spawn_explosion(game.npc[npc_count].bullet[bullet_count].x_pos,game.npc[npc_count].bullet[bullet_count].y_pos,0.125f);
+                                kill_npc_bullet(npc_count,bullet_count);
+                             }
+                          }
+                       }
+                    }
+                Mix_Volume(-1,config_data.Audio_Sound_Volume);
+                break;
+                case 9://sideship 0
+                    {
+                        if (game.sideship[0].active)
+                        {
+                            game.sideship[0].level++;
+                            if (game.sideship[0].level > 3) game.sideship[0].level = 3;
+                        }
+                        else
+                        {
+                           for (int count = 0;count < MAX_SIDESHIPS;count++)
+                           {
+                              game.sideship[count].active = false;
+                              game.sideship[count].level  = -1;
+                              for (int bullet_count = 0;bullet_count < MAX_BULLETS;bullet_count++)
+                              {
+                                 game.sideship[count].bullet[bullet_count].active = false;
+                              }
+                           }
+                           game.sideship[0].active = true;
+                           game.sideship[0].level  = 0;
+                        }
+                    }
+                break;
+                case 10://sideship 1
+                    {
+                        if (game.sideship[1].active)
+                        {
+                            game.sideship[1].level++;
+                            if (game.sideship[1].level > 3) game.sideship[1].level = 3;
+                        }
+                        else
+                        {
+                           for (int count = 0;count < MAX_SIDESHIPS;count++)
+                           {
+                              game.sideship[count].active = false;
+                              game.sideship[count].level  = -1;
+                              for (int bullet_count = 0;bullet_count < MAX_BULLETS;bullet_count++)
+                              {
+                                 game.sideship[count].bullet[bullet_count].active = false;
+                              }
+                           }
+                           game.sideship[1].active = true;
+                           game.sideship[1].level  = 0;
+                        }
+                    }
+                break;
+                case 11://sideship 2
+                    {
+                        if (game.sideship[2].active)
+                        {
+                            game.sideship[2].level++;
+                            if (game.sideship[2].level > 3) game.sideship[2].level = 3;
+                        }
+                        else
+                        {
+                           for (int count = 0;count < MAX_SIDESHIPS;count++)
+                           {
+                              game.sideship[count].active = false;
+                              game.sideship[count].level  = -1;
+                              for (int bullet_count = 0;bullet_count < MAX_BULLETS;bullet_count++)
+                              {
+                                 game.sideship[count].bullet[bullet_count].active = false;
+                              }
+                           }
+                           game.sideship[2].active = true;
+                           game.sideship[2].level  = 0;
+                        }
+                    }
+                break;
+                case 12://sideship 3
+                    {
+                        if (game.sideship[3].active)
+                        {
+                            game.sideship[3].level++;
+                            if (game.sideship[3].level > 3) game.sideship[3].level = 3;
+                        }
+                        else
+                        {
+                           for (int count = 0;count < MAX_SIDESHIPS;count++)
+                           {
+                              game.sideship[count].active = false;
+                              game.sideship[count].level  = -1;
+                              for (int bullet_count = 0;bullet_count < MAX_BULLETS;bullet_count++)
+                              {
+                                 game.sideship[count].bullet[bullet_count].active = false;
+                              }
+                           }
+                           game.sideship[3].active = true;
+                           game.sideship[3].level  = 0;
+                        }
+                    }
+                break;
             }
          }
       }
@@ -3030,6 +3187,7 @@ int proccess_player_bullets(void)
                   {
                       game.npc[npc_count].health -= game.projectile[game.player.side_weapon].damage;
                       spawn_explosion(game.npc[npc_count].x_pos,game.npc[npc_count].y_pos,0.1250f);
+                      if (game.npc[npc_count].damaged <= 0) game.npc[npc_count].damaged = game.npc_damage_duration;
                   }
                   kill_player_bullet(player_bullet_num);
                   if (game.npc[npc_count].health <= 0)
@@ -3469,7 +3627,12 @@ int process_game(void)
       game.game_active = false;
       game.nlvl_active = true;
    }
-   if (random(game.powerup[1].spawn_rate) <= 9) spawn_powerup(1.0f,random_GLcoord(),1);//spawn health powerup
+   if (random(game.powerup[1 ].spawn_rate) <= 9) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup
+   if (random(game.powerup[8 ].spawn_rate) <= 9) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb powerup
+   if (random(game.powerup[9 ].spawn_rate) <= 9) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn sideship 0 powerup
+   if (random(game.powerup[10].spawn_rate) <= 9) spawn_powerup(1.0f,random_GLcoord(),10);//spawn sideship 1 powerup
+   if (random(game.powerup[11].spawn_rate) <= 9) spawn_powerup(1.0f,random_GLcoord(),11);//spawn sideship 2 powerup
+   if (random(game.powerup[12].spawn_rate) <= 9) spawn_powerup(1.0f,random_GLcoord(),12);//spawn sideship 3 powerup
    if ((game.shield[game.player.front_shield].level  < 3) && (random(game.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),2);//spawn shield lvl powerup
    if ((game.thruster[game.player.thrusters].level   < 3) && (random(game.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster lvl powerup
    // if player missed boss weapon drops enable random spawning of powerups to keep consistancy
@@ -3588,7 +3751,7 @@ int process_game(void)
      game.player.health = 0.100f;
      for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) //kill all npcs
      {
-         play_sound(48);
+         play_sound(49);
          if (game.npc[npc_count].active)
          {
             spawn_explosion(game.npc[npc_count].x_pos,game.npc[npc_count].y_pos,0.50f);
@@ -3615,13 +3778,13 @@ int process_game(void)
         if (temp_r < 8000) //spawn explosion + coin
         {
            spawn_explosion(temp_x,temp_y,0.25f);
-           play_sound(48);
+           play_sound(49);
            spawn_coin(temp_x,temp_y,1.5f);
         }
         if ((temp_r > 8000) && (temp_r < 16000)) //spawn explosion + coin
         {
            spawn_explosion(temp_x,temp_y,0.25f);
-           play_sound(48);
+           play_sound(49);
            spawn_wexp(temp_x,temp_y,1.5f);
         }
      }
@@ -3826,16 +3989,18 @@ int display_game(void)
          }
       }
       z_pos = 0.04f + (0.0001*npc_count); // npc's
-      glBindTexture( GL_TEXTURE_2D, texture[game.enemy[game.npc[npc_count].type_npc].image].texture);
-      glLoadIdentity();
       if (game.npc[npc_count].active)
       {
+         if (game.npc[npc_count].damaged > (game.npc_damage_duration/5)) glColor4f(1.0f,0.0f,0.0f,0.6f);
+         glBindTexture( GL_TEXTURE_2D, texture[game.enemy[game.npc[npc_count].type_npc].image].texture);
+         glLoadIdentity();
          glBegin( GL_QUADS );
          glTexCoord2i( 1, 1 );glVertex3f(game.npc[npc_count].x_pos+(game.npc[npc_count].width/2),game.npc[npc_count].y_pos-(game.npc[npc_count].hight/2),z_pos);
          glTexCoord2i( 0, 1 );glVertex3f(game.npc[npc_count].x_pos+(game.npc[npc_count].width/2),game.npc[npc_count].y_pos+(game.npc[npc_count].hight/2),z_pos);
          glTexCoord2i( 0, 0 );glVertex3f(game.npc[npc_count].x_pos-(game.npc[npc_count].width/2),game.npc[npc_count].y_pos+(game.npc[npc_count].hight/2),z_pos);
          glTexCoord2i( 1, 0 );glVertex3f(game.npc[npc_count].x_pos-(game.npc[npc_count].width/2),game.npc[npc_count].y_pos-(game.npc[npc_count].hight/2),z_pos);
          glEnd();
+         glColor4f(1.0f,1.0f,1.0f,1.0f);
       }
    }
    for (int count =0;count < MAX_BULLETS;count++) //player bullets
@@ -3852,6 +4017,25 @@ int display_game(void)
          glTexCoord2i( 0, 1 );glVertex3f(game.player.bullet[count].x_pos-(game.player.bullet[count].width/2),game.player.bullet[count].y_pos+(game.player.bullet[count].hight/2), z_pos);
          glTexCoord2i( 0, 0 );glVertex3f(game.player.bullet[count].x_pos-(game.player.bullet[count].width/2),game.player.bullet[count].y_pos-(game.player.bullet[count].hight/2), z_pos);
          glEnd();
+      }
+   }
+
+   for (int sideship_count = 0;sideship_count < MAX_SIDESHIPS;sideship_count++)//display sideship bullets
+   {
+      for (int bullet_count = 0;bullet_count < MAX_BULLETS;bullet_count++)
+      {
+         if (game.sideship[sideship_count].bullet[bullet_count].active)
+         {
+            z_pos = 0.05f + (0.001*bullet_count);
+            glBindTexture( GL_TEXTURE_2D, texture[game.projectile[game.sideship[sideship_count].bullet[bullet_count].warhead].image].texture);
+            glLoadIdentity();
+            glBegin( GL_QUADS );
+            glTexCoord2i( 1, 0 );glVertex3f(game.sideship[sideship_count].bullet[bullet_count].x_pos+(game.sideship[sideship_count].bullet[bullet_count].width/2),game.sideship[sideship_count].bullet[bullet_count].y_pos-(game.sideship[sideship_count].bullet[bullet_count].hight/2), z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f(game.sideship[sideship_count].bullet[bullet_count].x_pos+(game.sideship[sideship_count].bullet[bullet_count].width/2),game.sideship[sideship_count].bullet[bullet_count].y_pos+(game.sideship[sideship_count].bullet[bullet_count].hight/2), z_pos);
+            glTexCoord2i( 0, 1 );glVertex3f(game.sideship[sideship_count].bullet[bullet_count].x_pos-(game.sideship[sideship_count].bullet[bullet_count].width/2),game.sideship[sideship_count].bullet[bullet_count].y_pos+(game.sideship[sideship_count].bullet[bullet_count].hight/2), z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f(game.sideship[sideship_count].bullet[bullet_count].x_pos-(game.sideship[sideship_count].bullet[bullet_count].width/2),game.sideship[sideship_count].bullet[bullet_count].y_pos-(game.sideship[sideship_count].bullet[bullet_count].hight/2), z_pos);
+            glEnd();
+         }
       }
    }
 
@@ -3891,6 +4075,27 @@ int display_game(void)
    glTexCoord2i( 1, 1 );glVertex3f(game.player.x_pos-(game.player.width/2),game.player.y_pos+(game.player.hight/2), 0.03f );
    glTexCoord2i( 0, 1 );glVertex3f(game.player.x_pos-(game.player.width/2),game.player.y_pos-(game.player.hight/2), 0.03f );
    glEnd();
+
+   for (int count = 0;count < MAX_SIDESHIPS;count++)
+   {
+      if (game.sideship[count].active)
+      {
+         glBindTexture( GL_TEXTURE_2D, texture[game.sideship[count].image].texture); //sideships
+         glLoadIdentity();
+         glBegin( GL_QUADS );//top
+         glTexCoord2i( 0, 0 );glVertex3f(game.player.x_pos-(game.player.width/4)+game.sideship[count].width,game.player.y_pos+(game.player.hight/2)+game.sideship[count].height, 0.001f);
+         glTexCoord2i( 1, 0 );glVertex3f(game.player.x_pos-(game.player.width/4)+game.sideship[count].width,game.player.y_pos+(game.player.hight/2)                            , 0.001f);
+         glTexCoord2i( 1, 1 );glVertex3f(game.player.x_pos-(game.player.width/4)                           ,game.player.y_pos+(game.player.hight/2)                            , 0.001f);
+         glTexCoord2i( 0, 1 );glVertex3f(game.player.x_pos-(game.player.width/4)                           ,game.player.y_pos+(game.player.hight/2)+game.sideship[count].height, 0.001f);
+         glEnd();
+         glBegin( GL_QUADS );//bottom
+         glTexCoord2i( 0, 0 );glVertex3f(game.player.x_pos-(game.player.width/4)+game.sideship[count].width,game.player.y_pos-(game.player.hight/2)-game.sideship[count].height, 0.001f);
+         glTexCoord2i( 1, 0 );glVertex3f(game.player.x_pos-(game.player.width/4)+game.sideship[count].width,game.player.y_pos-(game.player.hight/2)                            , 0.001f);
+         glTexCoord2i( 1, 1 );glVertex3f(game.player.x_pos-(game.player.width/4)                           ,game.player.y_pos-(game.player.hight/2)                            , 0.001f);
+         glTexCoord2i( 0, 1 );glVertex3f(game.player.x_pos-(game.player.width/4)                           ,game.player.y_pos-(game.player.hight/2)-game.sideship[count].height, 0.001f);
+         glEnd();
+      }
+   }
 
      if (game.player.front_weapon > -1)
       {
@@ -4056,6 +4261,17 @@ int display_game(void)
       glTexCoord2i( 1, 1 );glVertex3f( 0.0f          ,0.900f, 0.001f);
       glEnd();
    }
+
+   temp_val = (1.95f*((float)game.level_kills/(float)game.victory_kills));
+   glBindTexture( GL_TEXTURE_2D, texture[340].texture); //level progress bar
+   glLoadIdentity();
+   glBegin( GL_QUADS );
+   glTexCoord2i( 0, 1 );glVertex3f(-0.975f +temp_val,-0.950f, 0.001f);
+   glTexCoord2i( 0, 0 );glVertex3f(-0.975f +temp_val,-0.975f, 0.001f);
+   glTexCoord2i( 1, 0 );glVertex3f(-0.975f          ,-0.975f, 0.001f);
+   glTexCoord2i( 1, 1 );glVertex3f(-0.975f          ,-0.950f, 0.001f);
+   glEnd();
+
    if (game.paused.active)                   display_paused();
    if (game.loaded.active)                   display_loaded();
    if (game.saved.active)                    display_saved();
@@ -5093,3 +5309,187 @@ int process_d_level_end(void)
    }
    return(1);
 };
+
+int initialize_sideships(void)
+{
+   for (int sideship_count = 0;sideship_count < MAX_SIDESHIPS;sideship_count++)
+   {
+      game.sideship[sideship_count].rate_of_fire       = 5;
+      game.sideship[sideship_count].rate_of_fire_count = 0;
+      game.sideship[sideship_count].active             = false;
+      game.sideship[sideship_count].level              = -1;
+      game.sideship[sideship_count].image              = sideship_count+242;
+      game.sideship[sideship_count].width              = 0.075f;
+      game.sideship[sideship_count].height             = 0.075f;
+      for (int bullet_count = 0;bullet_count < MAX_BULLETS;bullet_count++)
+      {
+         game.sideship[sideship_count].bullet[bullet_count].active = false;
+         if (sideship_count == 0) game.sideship[sideship_count].bullet[bullet_count].warhead = 1;
+         if (sideship_count == 1) game.sideship[sideship_count].bullet[bullet_count].warhead = 2;
+         if (sideship_count == 2) game.sideship[sideship_count].bullet[bullet_count].warhead = 3;
+         if (sideship_count == 3) game.sideship[sideship_count].bullet[bullet_count].warhead = 4;
+      }
+   }
+   return(1);
+};
+
+int spawn_sideship_bullet(int sideship_count,int location, int direction_x, int direction_y)
+{
+   bool done = false;
+   for (int bullet_count = 0;bullet_count < MAX_BULLETS;bullet_count++)//spawn bullet
+   {
+       if ((!game.sideship[sideship_count].bullet[bullet_count].active) && (!done))
+       {
+          done = true;
+          game.sideship[sideship_count].bullet[bullet_count].active = true;
+          game.sideship[sideship_count].bullet[bullet_count].x_pos  = game.player.x_pos-(game.player.width/4)+game.sideship[sideship_count].width;
+          if (location  == 1) game.sideship[sideship_count].bullet[bullet_count].y_pos  = game.player.y_pos+(game.player.hight/2)+game.sideship[sideship_count].height;
+          if (location  == 0) game.sideship[sideship_count].bullet[bullet_count].y_pos  = game.player.y_pos-(game.player.hight/2)-game.sideship[sideship_count].height;
+          game.sideship[sideship_count].bullet[bullet_count].x_dir   = direction_x;
+          game.sideship[sideship_count].bullet[bullet_count].y_dir   = direction_y;
+          game.sideship[sideship_count].bullet[bullet_count].x_speed = game.projectile[game.sideship[sideship_count].bullet[bullet_count].warhead].speed;
+          game.sideship[sideship_count].bullet[bullet_count].y_speed = game.projectile[game.sideship[sideship_count].bullet[bullet_count].warhead].speed;
+          game.sideship[sideship_count].bullet[bullet_count].hight   = game.projectile[game.sideship[sideship_count].bullet[bullet_count].warhead].size;
+          game.sideship[sideship_count].bullet[bullet_count].width   = game.projectile[game.sideship[sideship_count].bullet[bullet_count].warhead].size;
+       }
+   }
+   if (done) return(1);
+   else return(0);
+};
+
+int process_sideships(bool spawn_bullet)
+{
+   for (int sideship_count = 0;sideship_count < MAX_SIDESHIPS;sideship_count++)
+   {
+      if (game.sideship[sideship_count].active)
+      {
+         if (game.sideship[sideship_count].rate_of_fire_count > game.sideship[sideship_count].rate_of_fire)//rof spawn bullets bullets
+         {
+            game.sideship[sideship_count].rate_of_fire_count = 0;
+            if ((game.sideship[sideship_count].level >= 0) && (spawn_bullet))
+            {
+               spawn_sideship_bullet(sideship_count,0,0,0);
+               spawn_sideship_bullet(sideship_count,1,1,1);
+            }
+            if ((game.sideship[sideship_count].level >= 1) && (spawn_bullet))
+            {
+               spawn_sideship_bullet(sideship_count,0,2,2);
+               spawn_sideship_bullet(sideship_count,1,3,3);
+            }
+            if ((game.sideship[sideship_count].level >= 2) && (spawn_bullet))
+            {
+               spawn_sideship_bullet(sideship_count,0,4,4);
+               spawn_sideship_bullet(sideship_count,1,5,5);
+            }
+         }
+         else game.sideship[sideship_count].rate_of_fire_count++;
+         for (int bullet_count = 0;bullet_count < MAX_BULLETS;bullet_count++)//process bullets
+         {
+          if (game.sideship[sideship_count].bullet[bullet_count].active)
+          {
+             if (game.sideship[sideship_count].bullet[bullet_count].x_dir == 0)
+             {
+                game.sideship[sideship_count].bullet[bullet_count].x_pos += game.sideship[sideship_count].bullet[bullet_count].x_speed;
+                if (game.sideship[sideship_count].bullet[bullet_count].x_pos > (1.0f+game.sideship[sideship_count].bullet[bullet_count].width/2))
+                {
+                    game.sideship[sideship_count].bullet[bullet_count].active = false;
+                }
+             }
+             if (game.sideship[sideship_count].bullet[bullet_count].x_dir == 2)
+             {
+                game.sideship[sideship_count].bullet[bullet_count].x_pos += (game.sideship[sideship_count].bullet[bullet_count].x_speed*2);
+                if (game.sideship[sideship_count].bullet[bullet_count].x_pos > (1.0f+game.sideship[sideship_count].bullet[bullet_count].width/2))
+                {
+                    game.sideship[sideship_count].bullet[bullet_count].active = false;
+                }
+             }
+             if (game.sideship[sideship_count].bullet[bullet_count].x_dir == 4)
+             {
+                game.sideship[sideship_count].bullet[bullet_count].x_pos += (game.sideship[sideship_count].bullet[bullet_count].x_speed*3);
+                if (game.sideship[sideship_count].bullet[bullet_count].x_pos > (1.0f+game.sideship[sideship_count].bullet[bullet_count].width/2))
+                {
+                    game.sideship[sideship_count].bullet[bullet_count].active = false;
+                }
+             }
+             if (game.sideship[sideship_count].bullet[bullet_count].x_dir == 1)
+             {
+                game.sideship[sideship_count].bullet[bullet_count].x_pos += game.sideship[sideship_count].bullet[bullet_count].x_speed;
+                if (game.sideship[sideship_count].bullet[bullet_count].x_pos > (1.0f+game.sideship[sideship_count].bullet[bullet_count].width/2))
+                {
+                    game.sideship[sideship_count].bullet[bullet_count].active = false;
+                }
+             }
+             if (game.sideship[sideship_count].bullet[bullet_count].x_dir == 3)
+             {
+                game.sideship[sideship_count].bullet[bullet_count].x_pos += game.sideship[sideship_count].bullet[bullet_count].x_speed*1.5f;
+                if (game.sideship[sideship_count].bullet[bullet_count].x_pos > (1.0f+game.sideship[sideship_count].bullet[bullet_count].width/2))
+                {
+                    game.sideship[sideship_count].bullet[bullet_count].active = false;
+                }
+             }
+             if (game.sideship[sideship_count].bullet[bullet_count].x_dir == 5)
+             {
+                game.sideship[sideship_count].bullet[bullet_count].x_pos += game.sideship[sideship_count].bullet[bullet_count].x_speed*1.75f;
+                if (game.sideship[sideship_count].bullet[bullet_count].x_pos > (1.0f+game.sideship[sideship_count].bullet[bullet_count].width/2))
+                {
+                    game.sideship[sideship_count].bullet[bullet_count].active = false;
+                }
+             }
+
+
+
+             if (game.sideship[sideship_count].bullet[bullet_count].y_dir == 0)
+             {
+                game.sideship[sideship_count].bullet[bullet_count].y_pos -= game.sideship[sideship_count].bullet[bullet_count].y_speed;
+                if (game.sideship[sideship_count].bullet[bullet_count].y_pos < (-1.0f-game.sideship[sideship_count].bullet[bullet_count].hight/2))
+                {
+                    game.sideship[sideship_count].bullet[bullet_count].active = false;
+                }
+             }
+             if (game.sideship[sideship_count].bullet[bullet_count].y_dir == 2)
+             {
+                game.sideship[sideship_count].bullet[bullet_count].y_pos -= game.sideship[sideship_count].bullet[bullet_count].y_speed*1.0f;
+                if (game.sideship[sideship_count].bullet[bullet_count].y_pos < (-1.0f-game.sideship[sideship_count].bullet[bullet_count].hight/2))
+                {
+                    game.sideship[sideship_count].bullet[bullet_count].active = false;
+                }
+             }
+             if (game.sideship[sideship_count].bullet[bullet_count].y_dir == 4)
+             {
+                game.sideship[sideship_count].bullet[bullet_count].y_pos -= game.sideship[sideship_count].bullet[bullet_count].y_speed*1.0f;
+                if (game.sideship[sideship_count].bullet[bullet_count].y_pos < (-1.0f-game.sideship[sideship_count].bullet[bullet_count].hight/2))
+                {
+                    game.sideship[sideship_count].bullet[bullet_count].active = false;
+                }
+             }
+             if (game.sideship[sideship_count].bullet[bullet_count].y_dir == 1)
+             {
+                game.sideship[sideship_count].bullet[bullet_count].y_pos += game.sideship[sideship_count].bullet[bullet_count].y_speed;
+                if (game.sideship[sideship_count].bullet[bullet_count].y_pos > (1.0f+game.sideship[sideship_count].bullet[bullet_count].hight/2))
+                {
+                    game.sideship[sideship_count].bullet[bullet_count].active = false;
+                }
+             }
+             if (game.sideship[sideship_count].bullet[bullet_count].y_dir == 3)
+             {
+                game.sideship[sideship_count].bullet[bullet_count].y_pos += game.sideship[sideship_count].bullet[bullet_count].y_speed*1.0f;
+                if (game.sideship[sideship_count].bullet[bullet_count].y_pos > (1.0f+game.sideship[sideship_count].bullet[bullet_count].hight/2))
+                {
+                    game.sideship[sideship_count].bullet[bullet_count].active = false;
+                }
+             }
+             if (game.sideship[sideship_count].bullet[bullet_count].y_dir == 5)
+             {
+                game.sideship[sideship_count].bullet[bullet_count].y_pos += game.sideship[sideship_count].bullet[bullet_count].y_speed*1.0f;
+                if (game.sideship[sideship_count].bullet[bullet_count].y_pos > (1.0f+game.sideship[sideship_count].bullet[bullet_count].hight/2))
+                {
+                    game.sideship[sideship_count].bullet[bullet_count].active = false;
+                }
+             }
+          }
+         }
+      }
+   }
+   return(1);
+};
+

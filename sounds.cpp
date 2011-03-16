@@ -86,6 +86,7 @@ int load_sounds(void)
     sound[47].active = true; sound[47].sound = Mix_LoadWAV("data/sound/projectile_030.wav");
 
     sound[48].active = true; sound[48].sound = Mix_LoadWAV("data/sound/explosion_004.wav");
+    sound[49].active = true; sound[49].sound = Mix_LoadWAV("data/sound/explosion_005.wav");
     return(0);
 };
 
