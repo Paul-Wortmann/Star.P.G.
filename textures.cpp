@@ -413,6 +413,8 @@ int load_textures(void)
    load_texture (347, "data/images/powerups/powerup_sideship_01.png");
    load_texture (348, "data/images/powerups/powerup_sideship_02.png");
    load_texture (349, "data/images/powerups/powerup_sideship_03.png");
+
+   load_texture (252, "data/images/projectiles/projectile_031.png");
    return(0);
 };
 

@@ -339,7 +339,7 @@
 
 1300240975 c:\_svn_\star.p.g\trunk\game.h
 
-1300240252 source:c:\_svn_\star.p.g\trunk\main.cpp
+1300411714 source:c:\_svn_\star.p.g\trunk\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -386,7 +386,7 @@
 
 1297598020 c:\_svn_\star.p.g\trunk\network.h
 
-1297598020 c:\_svn_\star.p.g\trunk\version.h
+1300411698 c:\_svn_\star.p.g\trunk\version.h
 
 1300069078 source:c:\_svn_\star.p.g\trunk\menu.cpp
 	<gl/gl.h>
@@ -422,7 +422,7 @@
 1300099688 source:c:\_svn_\star.p.g\trunk\sounds.cpp
 	"sounds.h"
 
-1300169656 source:c:\_svn_\star.p.g\trunk\textures.cpp
+1300413486 source:c:\_svn_\star.p.g\trunk\textures.cpp
 	<gl/gl.h>
 	<SDL/SDL.h>
 	<SDL/SDL_image.h>
@@ -433,7 +433,7 @@
 	"SDL/SDL.h"
 	"timer.h"
 
-1300100122 source:c:\_svn_\star.p.g\trunk\game.cpp
+1300411473 source:c:\_svn_\star.p.g\trunk\game.cpp
 	<SDL/SDL.h>
 	"game.h"
 	"config.h"

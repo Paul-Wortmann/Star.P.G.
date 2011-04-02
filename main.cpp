@@ -46,7 +46,7 @@ extern texture_type texture[MAX_TEXTURES];
 extern menu_type menu;
 extern game_type game;
 
-const char App_Name[] = ("Star.P.G V0.15 - www.physhexgames.co.nr");
+const char App_Name[] = ("Star.P.G V0.16 - www.physhexgames.co.nr");
 const char App_Icon[] = "data/icon.bmp";
 const char App_Conf[] = "Star.P.G..cfg";
 const char App_Logf[] = "Star.P.G..log";
@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
   }
   game.cheats_enabled = true; /// test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   Log_File(App_Logf,"------------------");
-  Log_File(App_Logf,"| Star.P.G V0.15 |");
+  Log_File(App_Logf,"| Star.P.G V0.16 |");
   Log_File(App_Logf,"------------------\n");
   Log_File(App_Logf,"Booting up!");
   Log_File(App_Logf,"------------------\n");

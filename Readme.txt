@@ -18,9 +18,11 @@ Keys:
 
 ---------------------------------------- Change log ---------------------------------------
 V0.16 - (xx-xx-2011)
+Sideship's Added, with pwerups.
+Bomb powerup added, kills everything on screen.
 Enemy ships flash when hit and not killed.
 Level progress bar added.
-LOC - 10166
+LOC - 10786
 
 V0.15 - (05-03-2011)
 Inproved rendering system.
@@ -119,7 +121,7 @@ Kanchi
 ---------------------
 Buttons generated with CoolText (http://cooltext.com/)
 Most backgrounds were rendered with Genetica Viewer 3.51.2181 Copyright (c) 2006-2010 Spiral Graphics Inc. (http://www.spiralgraphics.biz)
-Many graphics were created and/or modified with GIMP. (http://www.gimp.org/)
+Various graphics resources were created and/or modified with GIMP. (http://www.gimp.org/)
 
 ---------
   Sound
@@ -182,7 +184,7 @@ If however I am in error, please contact me (paul.wortmann@gmail.com) and I will
 Legal
 -----
 This is an open-source, non-commercial application. (if you paid for it get a refund!)
-You are free to copy and share this application under the GPL v2.0 (the file gpl.txt has been included)
+You are free to copy and share this application under the GPL v3.0 (the file gpl.txt has been included)
 Please note that the music was not created by me, nor the included 3rd party API's, and I do not hold the copyright to them.
 
 /* Copyright (C) 2011 PhysHex Games.
@@ -190,7 +192,7 @@ Please note that the music was not created by me, nor the included 3rd party API
  *
  * Star.P.G. is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
  * Star.P.G. is distributed in the hope that it will be useful,
