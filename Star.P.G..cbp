@@ -19,16 +19,15 @@
 					<Add library="SDLmain" />
 					<Add library="SDL" />
 					<Add library="opengl32" />
-					<Add library="sdl_mixer" />
-					<Add library="sdl_image" />
+					<Add library="SDL_mixer" />
+					<Add library="SDL_image" />
 					<Add library="glu32" />
 					<Add library="freetype" />
 					<Add library="SDL_net" />
 					<Add library="SDL_ttf" />
-					<Add library="libphysfs" />
-					<Add library="zlib" />
-					<Add library="libstdc++" />
-					<Add library="libgcc" />
+					<Add library="GL" />
+					<Add directory="\host\Program Files (x86)\CodeBlocks\MinGW\lib" />
+					<Add directory="\usr\lib" />
 				</Linker>
 			</Target>
 		</Build>
@@ -37,65 +36,65 @@
 			<Add directory='&quot;C:\Program Files (x86)\CodeBlocks\MinGW\include&quot;' />
 		</Compiler>
 		<Linker>
-			<Add option="-lstdc++" />
+			<Add option="-static-libstdc++" />
 			<Add option="-static-libgcc" />
 			<Add library="mingw32" />
 			<Add library="SDLmain" />
 			<Add library="SDL" />
 			<Add library="opengl32" />
-			<Add library="sdl_mixer" />
-			<Add library="sdl_image" />
+			<Add library="SDL_mixer" />
+			<Add library="SDL_image" />
 			<Add library="glu32" />
 			<Add library="freetype" />
 			<Add library="SDL_net" />
 			<Add library="SDL_ttf" />
+			<Add library="GL" />
 			<Add directory='&quot;C:\Program Files (x86)\CodeBlocks\MinGW\lib&quot;' />
 		</Linker>
-		<Unit filename="FreeType.cpp" />
-		<Unit filename="FreeType.h" />
-		<Unit filename="Star.P.G._private.rc">
+		<Unit filename="src\FreeType.cpp" />
+		<Unit filename="src\FreeType.h" />
+		<Unit filename="src\Star.P.G._private.h" />
+		<Unit filename="src\Star.P.G._private.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="config.cpp" />
-		<Unit filename="config.h" />
-		<Unit filename="font.cpp" />
-		<Unit filename="font.h" />
-		<Unit filename="game.cpp" />
-		<Unit filename="game.h" />
-		<Unit filename="graphics.cpp" />
-		<Unit filename="graphics.h" />
-		<Unit filename="levels.cpp" />
-		<Unit filename="levels.h" />
-		<Unit filename="main.cpp">
-			<Option compiler="gcc" use="0" buildCommand="-lstdc++" />
-		</Unit>
-		<Unit filename="main.h" />
-		<Unit filename="menu.cpp" />
-		<Unit filename="menu.h" />
-		<Unit filename="misc.cpp" />
-		<Unit filename="misc.h" />
-		<Unit filename="music.cpp" />
-		<Unit filename="music.h" />
-		<Unit filename="network.cpp" />
-		<Unit filename="network.h" />
-		<Unit filename="physics.cpp" />
-		<Unit filename="physics.h" />
-		<Unit filename="savegame.cpp" />
-		<Unit filename="savegame.h" />
-		<Unit filename="sounds.cpp" />
-		<Unit filename="sounds.h" />
-		<Unit filename="textures.cpp" />
-		<Unit filename="textures.h" />
-		<Unit filename="timer.cpp" />
-		<Unit filename="timer.h" />
-		<Unit filename="version.h" />
+		<Unit filename="src\config.cpp" />
+		<Unit filename="src\config.h" />
+		<Unit filename="src\font.cpp" />
+		<Unit filename="src\font.h" />
+		<Unit filename="src\game.cpp" />
+		<Unit filename="src\game.h" />
+		<Unit filename="src\graphics.cpp" />
+		<Unit filename="src\graphics.h" />
+		<Unit filename="src\levels.cpp" />
+		<Unit filename="src\levels.h" />
+		<Unit filename="src\main.cpp" />
+		<Unit filename="src\main.h" />
+		<Unit filename="src\menu.cpp" />
+		<Unit filename="src\menu.h" />
+		<Unit filename="src\misc.cpp" />
+		<Unit filename="src\misc.h" />
+		<Unit filename="src\music.cpp" />
+		<Unit filename="src\music.h" />
+		<Unit filename="src\network.cpp" />
+		<Unit filename="src\network.h" />
+		<Unit filename="src\physics.cpp" />
+		<Unit filename="src\physics.h" />
+		<Unit filename="src\savegame.cpp" />
+		<Unit filename="src\savegame.h" />
+		<Unit filename="src\sounds.cpp" />
+		<Unit filename="src\sounds.h" />
+		<Unit filename="src\textures.cpp" />
+		<Unit filename="src\textures.h" />
+		<Unit filename="src\timer.cpp" />
+		<Unit filename="src\timer.h" />
+		<Unit filename="src\version.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
 			<debugger />
 			<AutoVersioning>
 				<Scheme minor_max="100" build_max="0" rev_max="0" rev_rand_max="10" build_times_to_increment_minor="100" />
-				<Settings autoincrement="0" date_declarations="1" do_auto_increment="0" ask_to_increment="0" language="C++" svn="0" svn_directory="" header_path="version.h" />
+				<Settings autoincrement="0" date_declarations="1" update_manifest="1" do_auto_increment="0" ask_to_increment="0" language="C++" svn="0" svn_directory="" header_path="version.h" />
 				<Changes_Log show_changes_editor="1" app_title="released version %M.%m.%b of %p" changeslog_path="ChangesLog.txt" />
 				<Code header_guard="VERSION_H" namespace="AutoVersion" prefix="" />
 			</AutoVersioning>

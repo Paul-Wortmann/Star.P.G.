@@ -562,3 +562,5 @@ int process_d_level_end(void);
 int spawn_sideship_bullet(int sideship_count,int location, int direction_x, int direction_y);
 int initialize_sideships(void);
 int process_sideships(bool spawn_bullet);
+int kill_player_bullet(void);
+int kill_player_sideship_bullet(void);

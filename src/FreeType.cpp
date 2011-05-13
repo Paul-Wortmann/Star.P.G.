@@ -6,7 +6,7 @@
 
 
 //Include our header file.
-#include "freetype.h"
+#include "FreeType.h"
 
 namespace freetype {
 
@@ -57,13 +57,13 @@ void make_dlist ( FT_Face face, char ch, GLuint list_base, GLuint * tex_base ) {
 	//Notice that we are using two channel bitmap (one for
 	//luminocity and one for alpha), but we assign
 	//both luminocity and alpha to the value that we
-	//find in the FreeType bitmap. 
+	//find in the FreeType bitmap.
 	//We use the ?: operator so that value which we use
 	//will be 0 if we are in the padding zone, and whatever
 	//is the the Freetype bitmap otherwise.
 	for(int j=0; j <height;j++) {
 		for(int i=0; i < width; i++){
-			expanded_data[2*(i+j*width)]= expanded_data[2*(i+j*width)+1] = 
+			expanded_data[2*(i+j*width)]= expanded_data[2*(i+j*width)+1] =
 				(i>=bitmap.width || j>=bitmap.rows) ?
 				0 : bitmap.buffer[i + bitmap.width*j];
 		}
@@ -97,14 +97,14 @@ void make_dlist ( FT_Face face, char ch, GLuint list_base, GLuint * tex_base ) {
 	glTranslatef(bitmap_glyph->left,0,0);
 
 	//Now we move down a little in the case that the
-	//bitmap extends past the bottom of the line 
+	//bitmap extends past the bottom of the line
 	//(this is only true for characters like 'g' or 'y'.
 	glTranslatef(0,bitmap_glyph->top-bitmap.rows,0);
 
 	//Now we need to account for the fact that many of
 	//our textures are filled with empty padding space.
-	//We figure what portion of the texture is used by 
-	//the actual character and store that information in 
+	//We figure what portion of the texture is used by
+	//the actual character and store that information in
 	//the x and y variables, then when we draw the
 	//quad, we will only reference the parts of the texture
 	//that we contain the character itself.
@@ -112,7 +112,7 @@ void make_dlist ( FT_Face face, char ch, GLuint list_base, GLuint * tex_base ) {
 			y=(float)bitmap.rows / (float)height;
 
 	//Here we draw the texturemaped quads.
-	//The bitmap that we got from FreeType was not 
+	//The bitmap that we got from FreeType was not
 	//oriented quite like we would like it to be,
 	//so we need to link the texture to the quad
 	//so that the result will be properly aligned.
@@ -144,7 +144,7 @@ void font_data::init(const char * fname, unsigned int h) {
 
 	//Create and initilize a freetype font library.
 	FT_Library library;
-//	if (FT_Init_FreeType( &library )) 
+//	if (FT_Init_FreeType( &library ))
 //		throw std::runtime_error("FT_Init_FreeType failed");
 	FT_Init_FreeType( &library );
 
@@ -155,7 +155,7 @@ void font_data::init(const char * fname, unsigned int h) {
 	//This is where we load in the font information from the file.
 	//Of all the places where the code might die, this is the most likely,
 	//as FT_New_Face will die if the font file does not exist or is somehow broken.
-//	if (FT_New_Face( library, fname, 0, &face )) 
+//	if (FT_New_Face( library, fname, 0, &face ))
 //		throw std::runtime_error("FT_New_Face failed (there is probably a problem with your font file)");
 	FT_New_Face( library, fname, 0, &face );
 
@@ -167,7 +167,7 @@ void font_data::init(const char * fname, unsigned int h) {
 
 	//Here we ask opengl to allocate resources for
 	//all the textures and displays lists which we
-	//are about to create.  
+	//are about to create.
 	list_base=glGenLists(128);
 	glGenTextures( 128, textures );
 
@@ -190,7 +190,7 @@ void font_data::clean() {
 }
 
 /// A fairly straight forward function that pushes
-/// a projection matrix that will make object world 
+/// a projection matrix that will make object world
 /// coordinates identical to window coordinates.
 inline void pushScreenCoordinateMatrix() {
 	glPushAttrib(GL_TRANSFORM_BIT);
@@ -215,13 +215,13 @@ inline void pop_projection_matrix() {
 ///Much like Nehe's glPrint function, but modified to work
 ///with freetype fonts.
 void print(const font_data &ft_font, float x, float y, const char *fmt, ...)  {
-	
+
 	// We want a coordinate system where things coresponding to window pixels.
-	pushScreenCoordinateMatrix();					
-	
+	pushScreenCoordinateMatrix();
+
 	GLuint font=ft_font.list_base;
 	float h=ft_font.h/.63f;						//We make the height about 1.5* that of
-	
+
 	char		text[256];								// Holds Our String
 	va_list		ap;										// Pointer To List Of Arguments
 
@@ -236,7 +236,7 @@ void print(const font_data &ft_font, float x, float y, const char *fmt, ...)  {
 
 
 	//Here is some code to split the text that we have been
-	//given into a set of lines.  
+	//given into a set of lines.
 	//This could be made much neater by using
 	//a regular expression library such as the one avliable from
 	//boost.org (I've only done it out by hand to avoid complicating
@@ -258,17 +258,17 @@ void print(const font_data &ft_font, float x, float y, const char *fmt, ...)  {
 		lines.push_back(line);
 	}
 
-	glPushAttrib(GL_LIST_BIT | GL_CURRENT_BIT  | GL_ENABLE_BIT | GL_TRANSFORM_BIT);	
+	glPushAttrib(GL_LIST_BIT | GL_CURRENT_BIT  | GL_ENABLE_BIT | GL_TRANSFORM_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	glDisable(GL_LIGHTING);
 	glEnable(GL_TEXTURE_2D);
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);	
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glListBase(font);
 
-	float modelview_matrix[16];	
+	float modelview_matrix[16];
 	glGetFloatv(GL_MODELVIEW_MATRIX, modelview_matrix);
 
 	//This is where the text display actually happens.
@@ -277,9 +277,9 @@ void print(const font_data &ft_font, float x, float y, const char *fmt, ...)  {
 	//Notice that we need to reset the matrix, rather than just translating
 	//down by h. This is because when each character is
 	//draw it modifies the current matrix so that the next character
-	//will be drawn immediatly after it.  
+	//will be drawn immediatly after it.
 	for(int i=0;i<lines.size();i++) {
-		
+
 
 		glPushMatrix();
 		glLoadIdentity();
@@ -298,12 +298,12 @@ void print(const font_data &ft_font, float x, float y, const char *fmt, ...)  {
 
 		glPopMatrix();
 
-		
+
 
 	}
 
 
-	glPopAttrib();		
+	glPopAttrib();
 
 	pop_projection_matrix();
 }
