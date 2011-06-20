@@ -18,15 +18,15 @@ Keys:
 
 ---------------------------------------- Change log ---------------------------------------
 V0.16 - (xx-xx-2011)
-Sideship's Added, with pwerups.
-Bomb powerup added, kills everything on screen.
+Side-ships Added, with power-ups.
+Bomb power-up added, kills everything on screen.
 Enemy ships flash when hit and not killed.
 Level progress bar added.
 LOC - 10786
 
 V0.15 - (05-03-2011)
-Inproved rendering system.
-Implemented initial gapmepad/joystick support, incomplete!
+Improved rendering system.
+Implemented initial game-pad/joystick support, incomplete!
 Many tweaks and and a few bug fixes.
 LOC - 10166
 
@@ -79,7 +79,7 @@ Save and Load game implemented.
 System log implemented.
 Pause/Resume game implemented.
 Collision detection improved.
-Powerups implemented.
+Power-ups implemented.
 LOC - 4828
 
 V0.03 - (23-09-2010)
@@ -162,17 +162,22 @@ level_nl.mod from http://www.scene.org (Cardiaxx-HiScore.mod)
 menu_00.it   from http://www.lpchip.com/home/ (Wisdom of Purety - Looped.it)
 
 
-3rd party API's.
+3rd party API's*
 ---------------------------
 SDL         - http://www.libsdl.org/
+Mikmod      - http://mikmod.raphnet.net/
+Libpng      - http://www.libpng.org/
+
 FreeType    - http://www.freetype.org/
 PhysicsFS   - http://icculus.org/physfs/
-
-Mikmod      - http://mikmod.raphnet.net/
 Libtiff     - http://www.libtiff.org/
-Libpng      - http://www.libpng.org/
 Smpeg       - http://www.lokigames.com/development/smpeg.php3
 Zlib        - http://www.zlib.net/
+
+*As this is still a work in progress various 3rd party API's may differ.
+ Not all of these 3rd party API's may be utilized in the current version, 
+ they may have been used in previous versions, 
+ or are being considered for inclusion in future versions.
 
 3rd party copyright notice.
 ---------------------------
