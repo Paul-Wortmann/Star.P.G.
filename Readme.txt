@@ -4,7 +4,6 @@ A classic side scrolling shooter, with added RPG elements.
 www.physhexgames.co.nr
 physhex@gmail.com
 
-
 Keys:
 -----
 
