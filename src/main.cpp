@@ -575,10 +575,9 @@ int main(int argc, char *argv[])
                              case 3://resume game
                                 if (game.game_resume)
                                 {
-                                   init_game_level(game.level);
                                    game.game_active = true;
                                    game.menu_active = false;
-                                   Log_File(App_Logf,"Resuming game");
+                                   Log_File(App_Logf,"Resuming game.");
                                 }
                              break;
                              case 4://save game
