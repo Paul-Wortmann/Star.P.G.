@@ -63,8 +63,8 @@ int init_game(void)
    game.nlvl_active                       = false;
    game.npc_damage_duration               = 10;
    game.exp_rate                          = 5;
-   game.coin_spawn_rate                   = 16384;
-   game.wexp_spawn_rate                   = 24576;
+   game.coin_spawn_rate                   = 665.36 * 5;
+   game.wexp_spawn_rate                   = 665.36 * 10;
    game.npc_spawn_rate                    = 256;
    game.npc_spawn_rate_count              = 0;
    game.paused.active                     = false;
@@ -2516,8 +2516,8 @@ int spawn_coin(float x_position, float y_position, int coin_value)
          game.coin[count].active        = true;
          game.coin[count].x_pos         = x_position;
          game.coin[count].y_pos         = y_position;
-         game.coin[count].width         = (0.075f + (coin_value / 400.0f));
-         game.coin[count].hight         = (0.075f + (coin_value / 400.0f));
+         game.coin[count].width         = (0.055f + (coin_value / 750.0f));
+         game.coin[count].hight         = (0.055f + (coin_value / 750.0f));
          game.coin[count].sound         = 21;
          game.coin[count].speed         = 0.0025f;
          game.coin[count].value         = coin_value;
@@ -2605,8 +2605,8 @@ int spawn_wexp(float x_position, float y_position, int wexp_value)
          game.wexp[count].active        = true;
          game.wexp[count].x_pos         = x_position;
          game.wexp[count].y_pos         = y_position;
-         game.wexp[count].width         = (0.075f + (wexp_value / 400.f));
-         game.wexp[count].hight         = (0.075f + (wexp_value / 400.f));
+         game.wexp[count].width         = (0.055f + (wexp_value / 750.f));
+         game.wexp[count].hight         = (0.055f + (wexp_value / 750.f));
          game.wexp[count].value         = wexp_value;
          spawned = true;
       }
@@ -3627,12 +3627,14 @@ int process_game(void)
       game.game_active = false;
       game.nlvl_active = true;
    }
-   if (random(game.powerup[1 ].spawn_rate) <= 9) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup
-   if (random(game.powerup[8 ].spawn_rate) <= 9) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb powerup
-   if (random(game.powerup[9 ].spawn_rate) <= 9) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn sideship 0 powerup
-   if (random(game.powerup[10].spawn_rate) <= 9) spawn_powerup(1.0f,random_GLcoord(),10);//spawn sideship 1 powerup
-   if (random(game.powerup[11].spawn_rate) <= 9) spawn_powerup(1.0f,random_GLcoord(),11);//spawn sideship 2 powerup
-   if (random(game.powerup[12].spawn_rate) <= 9) spawn_powerup(1.0f,random_GLcoord(),12);//spawn sideship 3 powerup
+   if (random(game.powerup[1 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup
+   if (random(game.powerup[8 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb powerup
+
+   if ((game.level >=  4) && (random(game.powerup[9 ].spawn_rate) <= 3)) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn sideship 0 powerup
+   if ((game.level >=  7) && (random(game.powerup[10].spawn_rate) <= 3)) spawn_powerup(1.0f,random_GLcoord(),10);//spawn sideship 1 powerup
+   if ((game.level >= 11) && (random(game.powerup[11].spawn_rate) <= 3)) spawn_powerup(1.0f,random_GLcoord(),11);//spawn sideship 2 powerup
+   if ((game.level >= 15) && (random(game.powerup[12].spawn_rate) <= 3)) spawn_powerup(1.0f,random_GLcoord(),12);//spawn sideship 3 powerup
+
    if ((game.shield[game.player.front_shield].level  < 3) && (random(game.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),2);//spawn shield lvl powerup
    if ((game.thruster[game.player.thrusters].level   < 3) && (random(game.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster lvl powerup
    // if player missed boss weapon drops enable random spawning of powerups to keep consistancy

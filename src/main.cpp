@@ -206,7 +206,7 @@ int main(int argc, char *argv[])
                        Log_File(App_Logf,"Entering 'new game' menu.");
                     break;
                     case 4: // star map menu
-                       menu.possition = 1;
+                       menu.possition = 0;
                        menu.level = 1;
                        menu.possition_max = 6;
                        Log_File(App_Logf,"Entering 'new game' menu.");
@@ -224,7 +224,7 @@ int main(int argc, char *argv[])
                        Log_File(App_Logf,"Entering 'new game' menu.");
                     break;
                     case 7: // Achievements menu
-                       menu.possition = 0;
+                       menu.possition = 1;
                        menu.level = 1;
                        menu.possition_max = 6;
                        Log_File(App_Logf,"Entering 'new game' menu.");
@@ -554,17 +554,17 @@ int main(int argc, char *argv[])
                     case 1://game menu
                        switch (menu.possition)
                           {
-                             case 0://achievements
-                                menu.possition = 0;
-                                menu.level = 7;
-                                menu.possition_max = 0;
-                                Log_File(App_Logf,"Entering 'Achievements' menu.");
-                             break;
-                             case 1://starmap
+                             case 0://starmap
                                 menu.possition = 0;
                                 menu.level = 4;
                                 menu.possition_max = 3;
                                 Log_File(App_Logf,"Entering 'star map' menu.");
+                             break;
+                             case 1://achievements
+                                menu.possition = 0;
+                                menu.level = 7;
+                                menu.possition_max = 0;
+                                Log_File(App_Logf,"Entering 'Achievements' menu.");
                              break;
                              case 2://customize starship
                                 menu.possition = 0;
@@ -675,7 +675,7 @@ int main(int argc, char *argv[])
                                 }
                              break;
                              case 3://game menu
-                                menu.possition = 1;
+                                menu.possition = 0;
                                 menu.level = 1;
                                 menu.possition_max = 6;
                                 Log_File(App_Logf,"Entering 'game' menu.");
@@ -835,7 +835,7 @@ int main(int argc, char *argv[])
                        switch (menu.possition)
                           {
                              case 0://game menu
-                                menu.possition = 0;
+                                menu.possition = 1;
                                 menu.level = 1;
                                 menu.possition_max = 6;
                                 Log_File(App_Logf,"Entering 'game' menu.");

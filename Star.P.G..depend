@@ -630,7 +630,7 @@
 
 1308403545 c:\_git_\star.p.g\src\graphics.h
 
-1308549352 source:c:\_git_\star.p.g\src\game.cpp
+1309666046 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"game.h"
 	"config.h"
@@ -641,7 +641,7 @@
 	"misc.h"
 	"font.h"
 
-1308403545 c:\_git_\star.p.g\src\game.h
+1309671509 c:\_git_\star.p.g\src\game.h
 
 1308403545 c:\_git_\star.p.g\src\sounds.h
 	<SDL/SDL_mixer.h>
@@ -665,7 +665,7 @@
 
 1308403545 c:\_git_\star.p.g\src\levels.h
 
-1308567391 source:c:\_git_\star.p.g\src\main.cpp
+1309671969 source:c:\_git_\star.p.g\src\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -701,7 +701,7 @@
 
 1308403546 c:\_git_\star.p.g\src\version.h
 
-1308403545 source:c:\_git_\star.p.g\src\menu.cpp
+1309671867 source:c:\_git_\star.p.g\src\menu.cpp
 	<gl/gl.h>
 	"menu.h"
 	"game.h"

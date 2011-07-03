@@ -29,7 +29,7 @@ const int MAX_WAVES       = 32;
 const int MAX_POWERUPS    = 13;
 const int MAX_COINS       = 32;
 const int MAX_WEXPS       = 32;
-const int MAX_SIDESHIPS   = 4;
+const int MAX_SIDESHIPS   = 5;
 
 struct wave_type
 {

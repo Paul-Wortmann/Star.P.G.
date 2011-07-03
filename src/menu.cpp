@@ -215,8 +215,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
       glEnd();
 
-      if (menu.possition == 0) glBindTexture( GL_TEXTURE_2D, texture[299].texture); //achievements highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[298].texture); //achievements
+      if (menu.possition == 0) glBindTexture( GL_TEXTURE_2D, texture[60].texture); //starmap highlighted
+      else                    glBindTexture( GL_TEXTURE_2D, texture[59].texture); //starmap
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f, 0.55f, 0.0f );
@@ -225,8 +225,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f, 0.55f, 0.0f );
       glEnd();
 
-      if (menu.possition == 1) glBindTexture( GL_TEXTURE_2D, texture[60].texture); //starmap highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[59].texture); //starmap
+      if (menu.possition == 1) glBindTexture( GL_TEXTURE_2D, texture[299].texture); //achievements highlighted
+      else                    glBindTexture( GL_TEXTURE_2D, texture[298].texture); //achievements
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f, 0.3f, 0.0f );

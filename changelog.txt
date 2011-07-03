@@ -3,7 +3,8 @@ Side-ships Added, with power-ups.
 Bomb power-up added, kills everything on screen.
 Enemy ships flash when hit and not killed.
 Level progress bar added.
-LOC - 10786
+Many tweaks and and a few bug fixes.
+LOC - 11307
 
 V0.15 - (05-03-2011)
 Improved rendering system.
