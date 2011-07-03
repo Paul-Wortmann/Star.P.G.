@@ -1,0 +1,85 @@
+V0.16 - (xx-xx-2011)
+Side-ships Added, with power-ups.
+Bomb power-up added, kills everything on screen.
+Enemy ships flash when hit and not killed.
+Level progress bar added.
+LOC - 10786
+
+V0.15 - (05-03-2011)
+Improved rendering system.
+Implemented initial game-pad/joystick support, incomplete!
+Many tweaks and and a few bug fixes.
+LOC - 10166
+
+V0.14 - (14-02-2011)
+Fixed Weapon level up display bug.
+Improved vertical scrolling.
+Added different movement types for bullets.
+Fixed wrong NPC's spawning when changing levels through the star map.
+Player projectiles now also have different movement types.
+Improved movement of players homing projectiles!
+Enabled and completed thruster and shield leveling and implementation!
+Many tweaks and and a few bug fixes.
+LOC - 10004
+
+V0.13 - (23-01-2011)
+End of level no longer ends abruptly.
+Fixed bug in save/load game slot 4.
+Fixed background bug.
+Fixed enemy projectile bugs.
+Added spawn formations.
+Enemy movement types added and tweaked.
+Credits screen added.
+LOC - 9223
+
+V0.12 - (09-01-2011)
+Player death screen.
+End of level stats screen.
+Victory conditions.
+25/25 ships completed.
+30/30 projectiles completed.
+Thruster and shield systems integrated.
+Game music added, in-game and menu.
+Many tweaks and bug fixes.
+LOC - 8049
+
+V0.11 - (01-01-2011)
+Improved starship customization.
+FPS counter.
+More on-screen information.
+Many tweaks  and bug fixes.
+Achievement system implemented.
+All 25 levels completed.
+Multiple enemy movement modes.
+Menu and code improvements.
+LOC - 6201
+
+V0.10 - (10-10-2010)
+Customization of starship, experience based weapons.
+Save and Load game implemented.
+System log implemented.
+Pause/Resume game implemented.
+Collision detection improved.
+Power-ups implemented.
+LOC - 4828
+
+V0.03 - (23-09-2010)
+Fixed overlay texture rendering bug.
+Added stackable health bars for NPCs.
+Improved rendering system.
+LOC - 2981
+
+v0.02 - (21-09-2010)
+Game mechanics created.
+Weapon system and explosions created.
+Added NPCs and score.
+LOC - 2895
+
+v0.01 - (19-09-2010)
+Initial release.
+Menu textures created. 
+Menu system created.
+Parallax backgrounds.
+Sound and music system.
+LOC - 1941
+
