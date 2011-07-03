@@ -1,0 +1,11 @@
+ Summary
+    Mod Archive ID: 52296
+    MD5: 9dc702e4dc95028704bbabba595e3895
+    Format: MOD
+    Uncompressed Size: 309.03KB
+    Genre: Electronic - Dance
+    License: Public Domain license
+    Artist(s): m0d
+    Downloaded from: http://modarchive.org
+    Original file name: modmon.mod
+ 
