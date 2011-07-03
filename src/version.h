@@ -1,4 +1,5 @@
-/* Copyright (C) 2011 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
+/**
+ * Copyright (C) 2011 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
  * This file is part of Star.P.G.
  *
  * Star.P.G. is free software: you can redistribute it and/or modify
@@ -13,7 +14,11 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Star.P.G. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @author Paul Wortmann
+ * @license GPL
  */
+
 
 #ifndef VERSION_H
 #define VERSION_H
