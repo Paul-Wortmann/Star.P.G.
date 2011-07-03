@@ -51,7 +51,7 @@ extern texture_type texture[MAX_TEXTURES];
 extern menu_type menu;
 extern game_type game;
 
-const char App_Name[] = ("Star.P.G V0.16 - www.physhexgames.co.nr");
+const char App_Name[] = ("Star.P.G V0.17 - www.physhexgames.co.nr");
 const char App_Icon[] = "data/icon.bmp";
 const char App_Conf[] = "Star.P.G..cfg";
 const char App_Logf[] = "Star.P.G..log";
@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
   }
   game.cheats_enabled = true; /// test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   Log_File(App_Logf,"------------------");
-  Log_File(App_Logf,"| Star.P.G V0.16 |");
+  Log_File(App_Logf,"| Star.P.G V0.17 |");
   Log_File(App_Logf,"------------------\n");
   Log_File(App_Logf,"Booting up!");
   Log_File(App_Logf,"------------------\n");
@@ -958,16 +958,16 @@ int main(int argc, char *argv[])
                 }
              }
           }
+          else
+          {
+               game.button_up    = false;
+               game.button_down  = false;
+               game.button_left  = false;
+               game.button_right = false;
+          }
        }
        if (event.type == SDL_JOYHATMOTION)
        {
-          if (event.jhat.value & SDL_HAT_CENTERED)
-          {
-              game.button_up    = false;
-              game.button_down  = false;
-              game.button_left  = false;
-              game.button_right = false;
-          }
           if (event.jhat.value & SDL_HAT_UP)
           {
               game.button_up    = true;
@@ -1024,6 +1024,13 @@ int main(int argc, char *argv[])
               game.button_left  = true;
               game.button_right = false;
           }
+          if (event.jhat.value & SDL_HAT_CENTERED)
+          {
+              game.button_up    = false;
+              game.button_down  = false;
+              game.button_left  = false;
+              game.button_right = false;
+         }
        }
        if (event.type == SDL_JOYBUTTONDOWN)
        {
@@ -1241,7 +1248,7 @@ int main(int argc, char *argv[])
 //******************************* OUTRO SCREEN *************************************************
      if (game.outr_active)
      {
-        play_music  (game.menu_music_track);
+        play_music  (game.outro_music_track);
         glPushMatrix();
         menu.level = 10;
         diplay_menu ();

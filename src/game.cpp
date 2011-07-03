@@ -77,6 +77,7 @@ int init_game(void)
    game.menu_music_track                  = 26;
    game.nlvl_music_track                  = 27;
    game.pdie_music_track                  = 28;
+   game.outro_music_track                 = 29;
    game.score                             = 0;
    game.kills                             = 0;
    game.level_kills                       = 0;
@@ -97,6 +98,10 @@ int init_game(void)
    game.sw_rof_count                      = 0;
    game.player.x_pos                      =-0.9f;
    game.player.y_pos                      = 0.0f;
+   game.player.x_dir                      = 0.0f;
+   game.player.y_dir                      = 0.0f;
+   game.player.x_vel                      = 0.0f;
+   game.player.y_vel                      = 0.0f;
    game.player.width                      = 0.2f;
    game.player.hight                      = 0.2f;
    game.player.health                     = 0.100f;
@@ -3404,24 +3409,54 @@ int process_player(int command)
       switch (command)
       {
          case 1://Up
-            game.player.y_pos += (0.020 + game.thruster[game.player.thrusters].thrust + (0.0001f*game.thruster[game.player.thrusters].level));
-            if (game.player.y_pos >  (1.0f -(game.player.hight/2))) game.player.y_pos = (1.0f -(game.player.hight/2));
+             game.player.y_dir =  1;
+             game.player.y_vel += (0.01f + game.thruster[game.player.thrusters].thrust + (0.0001f*game.thruster[game.player.thrusters].level));
+             if (game.player.y_vel > MAX_VELOCITY) game.player.y_vel = MAX_VELOCITY;
          break;
          case 2://Down
-            game.player.y_pos -= (0.020 + game.thruster[game.player.thrusters].thrust + (0.0001f*game.thruster[game.player.thrusters].level));
-            if (game.player.y_pos < -(1.0f -(game.player.hight/2))) game.player.y_pos = -(1.0f -(game.player.hight/2));
+             game.player.y_dir = -1;
+             game.player.y_vel -= (0.01f + game.thruster[game.player.thrusters].thrust + (0.0001f*game.thruster[game.player.thrusters].level));
+             if (game.player.y_vel < (-1*MAX_VELOCITY)) game.player.y_vel = (-1*MAX_VELOCITY);
          break;
          case 3://right
-            game.player.x_pos += (0.020 + game.thruster[game.player.thrusters].thrust + (0.0001f*game.thruster[game.player.thrusters].level));
-            if (game.player.x_pos >  (1.0f -(game.player.width/2))) game.player.x_pos = (1.0f -(game.player.width/2));
+             game.player.x_dir =  1;
+             game.player.x_vel += (0.01f + game.thruster[game.player.thrusters].thrust + (0.0001f*game.thruster[game.player.thrusters].level));
+             if (game.player.x_vel > MAX_VELOCITY) game.player.x_vel = MAX_VELOCITY;
          break;
          case 4://Left
-            game.player.x_pos -= (0.020 + game.thruster[game.player.thrusters].thrust + (0.0001f*game.thruster[game.player.thrusters].level));
-            if (game.player.x_pos < -(1.0f - (game.player.width/2) - thruster_offset())) game.player.x_pos = -(1.0f -(game.player.width/2) - thruster_offset());
+             game.player.x_dir = -1;
+             game.player.x_vel -= (0.01f + game.thruster[game.player.thrusters].thrust + (0.0001f*game.thruster[game.player.thrusters].level));
+             if (game.player.x_vel < (-1*MAX_VELOCITY)) game.player.x_vel = (-1*MAX_VELOCITY);
          break;
          default:
          break;
       }
+         if (game.player.y_dir ==  1)
+         {
+             if (game.player.y_vel > 0.0f) game.player.y_vel -= 0.0005f;
+             if (game.player.y_vel < 0.0f) game.player.y_vel  = 0.0f;
+         };
+         if (game.player.y_dir == -1)
+         {
+             if (game.player.y_vel < 0.0f) game.player.y_vel += 0.0005f;
+             if (game.player.y_vel > 0.0f) game.player.y_vel  = 0.0f;
+         };
+         if (game.player.x_dir ==  1)
+         {
+             if (game.player.x_vel > 0.0f) game.player.x_vel -= 0.0005f;
+             if (game.player.x_vel < 0.0f) game.player.x_vel  = 0.0f;
+         };
+         if (game.player.x_dir == -1)
+         {
+             if (game.player.x_vel < 0.0f) game.player.x_vel += 0.0005f;
+             if (game.player.x_vel > 0.0f) game.player.x_vel  = 0.0f;
+         };
+         game.player.y_pos += game.player.y_vel;
+         if (game.player.y_pos >  (1.0f -(game.player.hight/2))) game.player.y_pos = (1.0f -(game.player.hight/2));
+         if (game.player.y_pos < -(1.0f -(game.player.hight/2))) game.player.y_pos = -(1.0f -(game.player.hight/2));
+         game.player.x_pos += game.player.x_vel;
+         if (game.player.x_pos >  (1.0f -(game.player.width/2))) game.player.x_pos = (1.0f -(game.player.width/2));
+         if (game.player.x_pos < -(1.0f - (game.player.width/2) - thruster_offset())) game.player.x_pos = -(1.0f -(game.player.width/2) - thruster_offset());
    }
    for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
    {
@@ -3473,6 +3508,12 @@ bool level_completed(void)
    }
    else return(false);
 }
+
+bool boss_level(void)
+{
+    if ((game.level ==  3) || (game.level ==  7) || (game.level == 11) || (game.level == 15) || (game.level == 19) || (game.level == 23) || (game.level == 24)) return (true);
+    else return (false);
+};
 
 /*----------------------------------------------------------------------------*/
 int process_game(void)
@@ -3632,8 +3673,8 @@ int process_game(void)
       game.game_active = false;
       game.nlvl_active = true;
    }
-   if (random(game.powerup[1 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup
-   if (random(game.powerup[8 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb powerup
+   if  (random(game.powerup[1 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup
+   if ((random(game.powerup[8 ].spawn_rate) <= 5)&& (!boss_level())) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb powerup
 
    if ((game.level >=  4) && (random(game.powerup[9 ].spawn_rate) <= 3)) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn sideship 0 powerup
    if ((game.level >=  7) && (random(game.powerup[10].spawn_rate) <= 3)) spawn_powerup(1.0f,random_GLcoord(),10);//spawn sideship 1 powerup
@@ -6218,3 +6259,4 @@ int kill_player_sideship_bullet(void)
     }
     return(1);
 };
+

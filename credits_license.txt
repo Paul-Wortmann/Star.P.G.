@@ -54,7 +54,7 @@ level_25.mod from http://www.scene.org (Electric_Revenge.mod)
 level_pd.mod from http://www.scene.org (Chip_Shop.mod)
 level_nl.mod from http://www.scene.org (Cardiaxx-HiScore.mod)
 menu_00.it   from http://www.lpchip.com/home/ (Wisdom of Purety - Looped.it)
-
+outro_00.mod from http://modarchive.org/ (modmon.mod)
 
 3rd party API's*
 ---------------------------

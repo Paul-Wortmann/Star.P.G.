@@ -67,6 +67,7 @@ int load_music(void)
     music[26].music = Mix_LoadMUS("data/music/menu_00.it");
     music[27].music = Mix_LoadMUS("data/music/level_nl.mod");
     music[28].music = Mix_LoadMUS("data/music/level_pd.mod");
+    music[29].music = Mix_LoadMUS("data/music/outro_00.mod");
     return(0);
 };
 

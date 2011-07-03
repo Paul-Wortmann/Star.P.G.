@@ -47,6 +47,10 @@ int init_game_level(int level_no)
    game.active_npc_count         = 0;
    game.player.x_pos             =-0.9f+thruster_offset();
    game.player.y_pos             = 0.0f;
+   game.player.x_dir             = 0.0f;
+   game.player.y_dir             = 0.0f;
+   game.player.x_vel             = 0.0f;
+   game.player.y_vel             = 0.0f;
    kill_active_npcs();
    init_npcs(0);
    init_active_npcs();

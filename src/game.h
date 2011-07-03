@@ -21,20 +21,21 @@
 
 
 
-const int MAX_NPCS        = 32;
-const int MAX_PROJECTILES = 64;
-const int MAX_SHIELDS     = 5;
-const int MAX_THRUSTERS   = 4;
-const int MAX_BULLETS     = 96;
-const int MAX_EXPLOSIONS  = 32;
-const int MAX_ENEMYS      = 32;
-const int MAX_BACKGROUNDS = 4;
-const int MAX_LEVELS      = 25;
-const int MAX_WAVES       = 32;
-const int MAX_POWERUPS    = 13;
-const int MAX_COINS       = 32;
-const int MAX_WEXPS       = 32;
-const int MAX_SIDESHIPS   = 5;
+const int   MAX_NPCS        = 32;
+const int   MAX_PROJECTILES = 64;
+const int   MAX_SHIELDS     = 5;
+const int   MAX_THRUSTERS   = 4;
+const int   MAX_BULLETS     = 96;
+const int   MAX_EXPLOSIONS  = 32;
+const int   MAX_ENEMYS      = 32;
+const int   MAX_BACKGROUNDS = 4;
+const int   MAX_LEVELS      = 25;
+const int   MAX_WAVES       = 32;
+const int   MAX_POWERUPS    = 13;
+const int   MAX_COINS       = 32;
+const int   MAX_WEXPS       = 32;
+const int   MAX_SIDESHIPS   = 5;
+const float MAX_VELOCITY    = 0.015f;
 
 struct wave_type
 {
@@ -175,6 +176,10 @@ struct player_type
    int   thrusters;
    float x_pos;
    float y_pos;
+   float x_dir;
+   float y_dir;
+   float x_vel;
+   float y_vel;
    float width;
    float hight;
    float health;
@@ -328,6 +333,7 @@ struct game_type
    int                  menu_music_track;
    int                  pdie_music_track;
    int                  nlvl_music_track;
+   int                  outro_music_track;
    wave_type            wave[MAX_WAVES];
    player_type          player;
    sideship_type        sideship[MAX_SIDESHIPS];
@@ -392,180 +398,181 @@ int   init_player         (void);
 float thruster_offset     (void);
 int   process_player      (int command);
 
-int spawn_player_bullet_num(int player_bullet_num, int location);
-int spawn_player_bullet    (int position);
-int kill_player_bullet     (int player_bullet_num);
-int init_player_bullets    (void);
-int proccess_player_bullets(void);
+int  spawn_player_bullet_num(int player_bullet_num, int location);
+int  spawn_player_bullet    (int position);
+int  kill_player_bullet     (int player_bullet_num);
+int  init_player_bullets    (void);
+int  proccess_player_bullets(void);
 
-int spawn_explosion(float x_position, float y_position, float size);
-int kill_explosion(int explosion_num);
-int init_explosions(void);
-int proccess_explosions(void);
+int  spawn_explosion(float x_position, float y_position, float size);
+int  kill_explosion(int explosion_num);
+int  init_explosions(void);
+int  proccess_explosions(void);
 
-int spawn_npc(float x_position, float y_position, int type_npc, int type_formation, float x_formation_ofset, float y_formation_ofset);
-int kill_npc(int npc_num);
-int kill_active_npcs(void);
-int init_npcs(int type_npc);
-int proccess_npcs(void);
+int  spawn_npc(float x_position, float y_position, int type_npc, int type_formation, float x_formation_ofset, float y_formation_ofset);
+int  kill_npc(int npc_num);
+int  kill_active_npcs(void);
+int  init_npcs(int type_npc);
+int  proccess_npcs(void);
 
-int spawn_npc_bullet_num(int npc_num, int npc_bullet_num, int location);
-int spawn_npc_bullet(int npc_num, int location);
-int kill_npc_bullet(int npc_num, int npc_bullet_num);
-int init_npc_bullets(void);
-int proccess_npc_bullets(void);
+int  spawn_npc_bullet_num(int npc_num, int npc_bullet_num, int location);
+int  spawn_npc_bullet(int npc_num, int location);
+int  kill_npc_bullet(int npc_num, int npc_bullet_num);
+int  init_npc_bullets(void);
+int  proccess_npc_bullets(void);
 
-int init_active_npcs(void);
-int check_active_npcs(void);
-int sort_active_npcs(void);
-int add_active_npc  (int npc_num);
-int del_active_npc  (int npc_num);
+int  init_active_npcs(void);
+int  check_active_npcs(void);
+int  sort_active_npcs(void);
+int  add_active_npc  (int npc_num);
+int  del_active_npc  (int npc_num);
 
-int kill_paused(void);
-int spawn_paused(void);
-int display_paused(void);
-int process_paused(void);
+int  kill_paused(void);
+int  spawn_paused(void);
+int  display_paused(void);
+int  process_paused(void);
 
-int kill_loaded(void);
-int spawn_loaded(void);
-int display_loaded(void);
-int process_loaded(void);
+int  kill_loaded(void);
+int  spawn_loaded(void);
+int  display_loaded(void);
+int  process_loaded(void);
 
-int kill_saved(void);
-int spawn_saved(void);
-int display_saved(void);
-int process_saved(void);
+int  kill_saved(void);
+int  spawn_saved(void);
+int  display_saved(void);
+int  process_saved(void);
 
-int spawn_powerup(float x_position, float y_position, int type_powerup);
-int kill_powerup(int type_powerup);
-int kill_powerups(void);
-int init_powerups(void);
-int proccess_powerups(void);
+int  spawn_powerup(float x_position, float y_position, int type_powerup);
+int  kill_powerup(int type_powerup);
+int  kill_powerups(void);
+int  init_powerups(void);
+int  proccess_powerups(void);
 
-int spawn_coin(float x_position, float y_position, int coin_value);
-int kill_coin(int coin_num);
-int kill_coins(void);
-int init_coin(void);
-int proccess_coin(void);
+int  spawn_coin(float x_position, float y_position, int coin_value);
+int  kill_coin(int coin_num);
+int  kill_coins(void);
+int  init_coin(void);
+int  proccess_coin(void);
 
-int spawn_wexp(float x_position, float y_position, int wexp_value);
-int kill_wexp(int wexp_num);
-int kill_wexps(void);
-int init_wexp(void);
-int proccess_wexp(void);
+int  spawn_wexp(float x_position, float y_position, int wexp_value);
+int  kill_wexp(int wexp_num);
+int  kill_wexps(void);
+int  init_wexp(void);
+int  proccess_wexp(void);
 
-int kill_a_score(void);
-int spawn_a_score(void);
-int display_a_score(void);
-int process_a_score(void);
+int  kill_a_score(void);
+int  spawn_a_score(void);
+int  display_a_score(void);
+int  process_a_score(void);
 
-int kill_a_kills(void);
-int spawn_a_kills(void);
-int display_a_kills(void);
-int process_a_kills(void);
+int  kill_a_kills(void);
+int  spawn_a_kills(void);
+int  display_a_kills(void);
+int  process_a_kills(void);
 
-int kill_p_actinium_shields(void);
-int spawn_p_actinium_shields(void);
-int display_p_actinium_shields(void);
-int process_p_actinium_shields(void);
+int  kill_p_actinium_shields(void);
+int  spawn_p_actinium_shields(void);
+int  display_p_actinium_shields(void);
+int  process_p_actinium_shields(void);
 
-int kill_p_blasters(void);
-int spawn_p_blasters(void);
-int display_p_blasters(void);
-int process_p_blasters(void);
+int  kill_p_blasters(void);
+int  spawn_p_blasters(void);
+int  display_p_blasters(void);
+int  process_p_blasters(void);
 
-int kill_p_burst_lasers(void);
-int spawn_p_burst_lasers(void);
-int display_p_burst_lasers(void);
-int process_p_burst_lasers(void);
+int  kill_p_burst_lasers(void);
+int  spawn_p_burst_lasers(void);
+int  display_p_burst_lasers(void);
+int  process_p_burst_lasers(void);
 
-int kill_p_chain_guns(void);
-int spawn_p_chain_guns(void);
-int display_p_chain_guns(void);
-int process_p_chain_guns(void);
+int  kill_p_chain_guns(void);
+int  spawn_p_chain_guns(void);
+int  display_p_chain_guns(void);
+int  process_p_chain_guns(void);
 
-int kill_p_convolution_thrusters(void);
-int spawn_p_convolution_thrusters(void);
-int display_p_convolution_thrusters(void);
-int process_p_convolution_thrusters(void);
+int  kill_p_convolution_thrusters(void);
+int  spawn_p_convolution_thrusters(void);
+int  display_p_convolution_thrusters(void);
+int  process_p_convolution_thrusters(void);
 
-int kill_p_health(void);
-int spawn_p_health(void);
-int display_p_health(void);
-int process_p_health(void);
+int  kill_p_health(void);
+int  spawn_p_health(void);
+int  display_p_health(void);
+int  process_p_health(void);
 
-int kill_p_ion_cannons(void);
-int spawn_p_ion_cannons(void);
-int display_p_ion_cannons(void);
-int process_p_ion_cannons(void);
+int  kill_p_ion_cannons(void);
+int  spawn_p_ion_cannons(void);
+int  display_p_ion_cannons(void);
+int  process_p_ion_cannons(void);
 
-int kill_p_iridium_shileds(void);
-int spawn_p_iridium_shileds(void);
-int display_p_iridium_shileds(void);
-int process_p_iridium_shileds(void);
+int  kill_p_iridium_shileds(void);
+int  spawn_p_iridium_shileds(void);
+int  display_p_iridium_shileds(void);
+int  process_p_iridium_shileds(void);
 
-int kill_p_maelstrom_thrusters(void);
-int spawn_p_maelstrom_thrusters(void);
-int display_p_maelstrom_thrusters(void);
-int process_p_maelstrom_thrusters(void);
+int  kill_p_maelstrom_thrusters(void);
+int  spawn_p_maelstrom_thrusters(void);
+int  display_p_maelstrom_thrusters(void);
+int  process_p_maelstrom_thrusters(void);
 
-int kill_p_plasma_rockets(void);
-int spawn_p_plasma_rockets(void);
-int display_p_plasma_rockets(void);
-int process_p_plasma_rockets(void);
+int  kill_p_plasma_rockets(void);
+int  spawn_p_plasma_rockets(void);
+int  display_p_plasma_rockets(void);
+int  process_p_plasma_rockets(void);
 
-int kill_p_rail_turrets(void);
-int spawn_p_rail_turrets(void);
-int display_p_rail_turrets(void);
-int process_p_rail_turrets(void);
+int  kill_p_rail_turrets(void);
+int  spawn_p_rail_turrets(void);
+int  display_p_rail_turrets(void);
+int  process_p_rail_turrets(void);
 
-int kill_p_rubidium_shields(void);
-int spawn_p_rubidium_shields(void);
-int display_p_rubidium_shields(void);
-int process_p_rubidium_shields(void);
+int  kill_p_rubidium_shields(void);
+int  spawn_p_rubidium_shields(void);
+int  display_p_rubidium_shields(void);
+int  process_p_rubidium_shields(void);
 
-int kill_p_seismic_thrusters(void);
-int spawn_p_seismic_thrusters(void);
-int display_p_seismic_thrusters(void);
-int process_p_seismic_thrusters(void);
+int  kill_p_seismic_thrusters(void);
+int  spawn_p_seismic_thrusters(void);
+int  display_p_seismic_thrusters(void);
+int  process_p_seismic_thrusters(void);
 
-int kill_p_shield_level_up(void);
-int spawn_p_shield_level_up(void);
-int display_p_shield_level_up(void);
-int process_p_shield_level_up(void);
+int  kill_p_shield_level_up(void);
+int  spawn_p_shield_level_up(void);
+int  display_p_shield_level_up(void);
+int  process_p_shield_level_up(void);
 
-int kill_p_tantalum_shields(void);
-int spawn_p_tantalum_shields(void);
-int display_p_tantalum_shields(void);
-int process_p_tantalum_shields(void);
+int  kill_p_tantalum_shields(void);
+int  spawn_p_tantalum_shields(void);
+int  display_p_tantalum_shields(void);
+int  process_p_tantalum_shields(void);
 
-int kill_p_terbium_shields(void);
-int spawn_p_terbium_shields(void);
-int display_p_terbium_shields(void);
-int process_p_terbium_shields(void);
+int  kill_p_terbium_shields(void);
+int  spawn_p_terbium_shields(void);
+int  display_p_terbium_shields(void);
+int  process_p_terbium_shields(void);
 
-int kill_p_thrusters_level_up(void);
-int spawn_p_thrusters_level_up(void);
-int display_p_thrusters_level_up(void);
-int process_p_thrusters_level_up(void);
+int  kill_p_thrusters_level_up(void);
+int  spawn_p_thrusters_level_up(void);
+int  display_p_thrusters_level_up(void);
+int  process_p_thrusters_level_up(void);
 
-int kill_p_vortex_thrusters(void);
-int spawn_p_vortex_thrusters(void);
-int display_p_vortex_thrusters(void);
-int process_p_vortex_thrusters(void);
+int  kill_p_vortex_thrusters(void);
+int  spawn_p_vortex_thrusters(void);
+int  display_p_vortex_thrusters(void);
+int  process_p_vortex_thrusters(void);
 
-int kill_p_weapon_level_up(void);
-int spawn_p_weapon_level_up(void);
-int display_p_weapon_level_up(void);
-int process_p_weapon_level_up(void);
+int  kill_p_weapon_level_up(void);
+int  spawn_p_weapon_level_up(void);
+int  display_p_weapon_level_up(void);
+int  process_p_weapon_level_up(void);
 
-int kill_d_level_end(void);
-int spawn_d_level_end(void);
-int display_d_level_end(void);
-int process_d_level_end(void);
+int  kill_d_level_end(void);
+int  spawn_d_level_end(void);
+int  display_d_level_end(void);
+int  process_d_level_end(void);
 
-int spawn_sideship_bullet(int sideship_count,int location, int direction_x, int direction_y);
-int initialize_sideships(void);
-int process_sideships(bool spawn_bullet);
-int kill_player_bullet(void);
-int kill_player_sideship_bullet(void);
+int  spawn_sideship_bullet(int sideship_count,int location, int direction_x, int direction_y);
+int  initialize_sideships(void);
+int  process_sideships(bool spawn_bullet);
+int  kill_player_bullet(void);
+int  kill_player_sideship_bullet(void);
+bool boss_level(void);

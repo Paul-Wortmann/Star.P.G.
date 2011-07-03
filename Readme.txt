@@ -25,7 +25,7 @@ Dev keys:
 "5"       ->    Spawn new thruster power-up.
 "6"       ->    Spawn weapon level-up power-up.
 "7"       ->    Spawn new weapon power-up.
-"8"       ->    Spawn power-up.
+"8"       ->    Spawn unlock all levels.
 "9"       ->    Spawn power-up.
 "B"       ->    Spawn bomb power-up.
 "U"       ->    Spawn side helper ship powerup - 1.
