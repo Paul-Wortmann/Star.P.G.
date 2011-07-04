@@ -19,6 +19,8 @@
  * @license GPL
  */
 
+#ifndef MUSIC_H
+#define MUSIC_H
 
 #include <SDL/SDL_mixer.h>
 
@@ -32,3 +34,5 @@ int init_music(void);
 int load_music(void);
 int kill_music(void);
 int play_music(int music_num);
+
+#endif //MUSIC_H

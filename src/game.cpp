@@ -47,16 +47,6 @@ int init_game(void)
       game.background_scroll[count].scroll_rate  = 0.0005f;
       game.background_scroll[count].image        = 119;
    }
-   game.joystick_sensitivity              = 6400;
-   game.gamepad_button_0                  = false;
-   game.gamepad_button_1                  = false;
-   game.gamepad_button_2                  = false;
-   game.gamepad_button_3                  = false;
-   game.button_up                         = false;
-   game.button_down                       = false;
-   game.button_left                       = false;
-   game.button_right                      = false;
-   game.cheats_enabled                    = false;
    game.anc_enabled                       = false;
    game.fps_enabled                       = false;
    game.game_paused                       = false;

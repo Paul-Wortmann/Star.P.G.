@@ -19,7 +19,8 @@
  * @license GPL
  */
 
-
+#ifndef NETWORK_H
+#define NETWORK_H
 
 struct network
 {
@@ -28,3 +29,5 @@ struct network
    bool server;
 };
 
+
+#endif //NETWORK_H

@@ -65,6 +65,8 @@
 		<Unit filename="src\game.h" />
 		<Unit filename="src\graphics.cpp" />
 		<Unit filename="src\graphics.h" />
+		<Unit filename="src\io.cpp" />
+		<Unit filename="src\io.hpp" />
 		<Unit filename="src\levels.cpp" />
 		<Unit filename="src\levels.h" />
 		<Unit filename="src\main.cpp" />

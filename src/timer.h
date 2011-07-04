@@ -19,6 +19,8 @@
  * @license GPL
  */
 
+#ifndef TIMER_H
+#define TIMER_H
 
 class timer
 {
@@ -32,3 +34,5 @@ private:
 	bool running;
 	int startticks;
 };
+
+#endif //TIMER_H

@@ -28,16 +28,23 @@ config_data_type config_data;
 
 bool Load_Default_Config(void)
 {
-   config_data.Display_resolution   = 0;
-   config_data.Display_X_Resolution = 640;
-   config_data.Display_Y_Resolution = 480;
-   config_data.Display_BPS          = 32;
-   config_data.Display_Fullscreen   = false;
-   config_data.Audio_Rate           = 44100;
-   config_data.Audio_Channels       = 32;
-   config_data.Audio_Buffers        = 2048;
-   config_data.Audio_Music_Volume   = 32;
-   config_data.Audio_Sound_Volume   = 64;
+    config_data.menu_delay           = 128;
+    config_data.menu_delay_count     = 0;
+    config_data.Display_resolution   = 0;
+    config_data.Display_X_Resolution = 640;
+    config_data.Display_Y_Resolution = 480;
+    config_data.Display_BPS          = 32;
+    config_data.Display_Fullscreen   = false;
+    config_data.Audio_Rate           = 44100;
+    config_data.Audio_Channels       = 32;
+    config_data.Audio_Buffers        = 2048;
+    config_data.Audio_Music_Volume   = 32;
+    config_data.Audio_Sound_Volume   = 64;
+    config_data.joystick_enabled     = false;
+    config_data.joystick_sensitivity = 6400;
+    config_data.joystick_no_buttons  = 0;
+    config_data.mouse_resolution_x   = config_data.Display_X_Resolution;
+    config_data.mouse_resolution_y   = config_data.Display_Y_Resolution;
    return(0);
 };
 
@@ -85,3 +92,4 @@ bool Log_File(const char *Log_File, const char error_string[])
   else return(1);
   return(0);
 };
+

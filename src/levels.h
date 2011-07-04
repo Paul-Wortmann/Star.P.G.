@@ -19,7 +19,11 @@
  * @license GPL
  */
 
+#ifndef LEVELS_H
+#define LEVELS_H
 
 int unlock_levels(void);
 int init_game_level(int level_no);
 
+
+#endif //LEVELS_H

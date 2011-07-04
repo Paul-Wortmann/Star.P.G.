@@ -19,7 +19,11 @@
  * @license GPL
  */
 
+#ifndef GAME_H
+#define GAME_H
 
+#include <SDL/SDL.h>
+#include "io.hpp"
 
 const int   MAX_NPCS        = 32;
 const int   MAX_PROJECTILES = 64;
@@ -285,6 +289,8 @@ struct achivement_type
 
 struct game_type
 {
+   io_type              io;
+   SDL_Event            event;
    int                  npc_damage_duration;
    bool                 cheats_enabled;
    bool                 anc_enabled;
@@ -296,6 +302,7 @@ struct game_type
    bool                 pdie_active;
    bool                 nlvl_active;
    bool                 outr_active;
+   bool                 status_quit_active;
    int                  exp_rate;
    int                  FPS;
    int                  level_locked[MAX_LEVELS];
@@ -374,15 +381,6 @@ struct game_type
    fade_logo_type       p_thrusters_level_up;
    fade_logo_type       p_vortex_thrusters;
    fade_logo_type       p_weapon_level_up;
-   int                  joystick_sensitivity;
-   bool                 gamepad_button_0;
-   bool                 gamepad_button_1;
-   bool                 gamepad_button_2;
-   bool                 gamepad_button_3;
-   bool                 button_up;
-   bool                 button_down;
-   bool                 button_left;
-   bool                 button_right;
 };
 
 int   init_waves          (void);
@@ -576,3 +574,5 @@ int  process_sideships(bool spawn_bullet);
 int  kill_player_bullet(void);
 int  kill_player_sideship_bullet(void);
 bool boss_level(void);
+
+#endif //GAME_H

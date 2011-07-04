@@ -19,6 +19,8 @@
  * @license GPL
  */
 
+#ifndef TEXTURES_H
+#define TEXTURES_H
 
 #include <gl/gl.h>
 
@@ -32,3 +34,5 @@ int init_textures(void);
 int load_texture (int texture_number, const char File_Name[]);
 int load_textures(void);
 int kill_textures(void);
+
+#endif //TEXTURES_H

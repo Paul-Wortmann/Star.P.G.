@@ -19,6 +19,8 @@
  * @license GPL
  */
 
+#ifndef SOUNDS_H
+#define SOUNDS_H
 
 #include <SDL/SDL_mixer.h>
 
@@ -34,3 +36,5 @@ int init_sounds(void);
 int load_sounds(void);
 int kill_sounds(void);
 int play_sound (int sound_num);
+
+#endif //SOUNDS_H

@@ -19,6 +19,8 @@
  * @license GPL
  */
 
+#ifndef SAVEGAME_H
+#define SAVEGAME_H
 
 const char Slot_00[] = "save/slot_00.sav";
 const char Slot_01[] = "save/slot_01.sav";
@@ -29,3 +31,5 @@ const char Slot_05[] = "save/slot_04.sav";
 
 int Save_Game(int slot);
 int Load_Game(int slot);
+
+#endif //SAVEGAME_H

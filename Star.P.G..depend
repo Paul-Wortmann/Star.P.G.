@@ -612,11 +612,11 @@
 
 1309675795 source:c:\_git_\star.p.g\src\star.p.g._private.rc
 
-1309675771 source:c:\_git_\star.p.g\src\config.cpp
+1309782917 source:c:\_git_\star.p.g\src\config.cpp
 	<fstream>
 	"config.h"
 
-1309675804 c:\_git_\star.p.g\src\config.h
+1309782914 c:\_git_\star.p.g\src\config.h
 
 1309675768 source:c:\_git_\star.p.g\src\font.cpp
 	"SDL/SDL_ttf.h"
@@ -626,11 +626,11 @@
 	"graphics.h"
 	"config.h"
 
-1309675804 c:\_git_\star.p.g\src\font.h
+1309768119 c:\_git_\star.p.g\src\font.h
 
-1309675872 c:\_git_\star.p.g\src\graphics.h
+1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1309698240 source:c:\_git_\star.p.g\src\game.cpp
+1309779686 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"game.h"
 	"config.h"
@@ -641,20 +641,22 @@
 	"misc.h"
 	"font.h"
 
-1309698486 c:\_git_\star.p.g\src\game.h
+1309779626 c:\_git_\star.p.g\src\game.h
+	<SDL/SDL.h>
+	"io.hpp"
 
-1309675871 c:\_git_\star.p.g\src\sounds.h
+1309767918 c:\_git_\star.p.g\src\sounds.h
 	<SDL/SDL_mixer.h>
 
-1309675872 c:\_git_\star.p.g\src\music.h
+1309767980 c:\_git_\star.p.g\src\music.h
 	<SDL/SDL_mixer.h>
 
-1309675871 c:\_git_\star.p.g\src\textures.h
+1309767900 c:\_git_\star.p.g\src\textures.h
 	<gl/gl.h>
 
-1309675871 c:\_git_\star.p.g\src\physics.h
+1309767975 c:\_git_\star.p.g\src\physics.h
 
-1309675872 c:\_git_\star.p.g\src\misc.h
+1309767983 c:\_git_\star.p.g\src\misc.h
 
 1309675769 source:c:\_git_\star.p.g\src\graphics.cpp
 	"graphics.h"
@@ -663,9 +665,9 @@
 	"levels.h"
 	"game.h"
 
-1309675872 c:\_git_\star.p.g\src\levels.h
+1309768119 c:\_git_\star.p.g\src\levels.h
 
-1309695415 source:c:\_git_\star.p.g\src\main.cpp
+1309784273 source:c:\_git_\star.p.g\src\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -688,16 +690,17 @@
 	"timer.h"
 	"network.h"
 	"version.h"
+	"io.h"
 
-1309675872 c:\_git_\star.p.g\src\main.h
+1309767843 c:\_git_\star.p.g\src\main.h
 
-1309675872 c:\_git_\star.p.g\src\menu.h
+1309767917 c:\_git_\star.p.g\src\menu.h
 
-1309675871 c:\_git_\star.p.g\src\savegame.h
+1309767918 c:\_git_\star.p.g\src\savegame.h
 
-1309675871 c:\_git_\star.p.g\src\timer.h
+1309767867 c:\_git_\star.p.g\src\timer.h
 
-1309675872 c:\_git_\star.p.g\src\network.h
+1309768119 c:\_git_\star.p.g\src\network.h
 
 1309675871 c:\_git_\star.p.g\src\version.h
 
@@ -745,4 +748,13 @@
 1309675771 source:c:\_git_\star.p.g\src\timer.cpp
 	"SDL/SDL.h"
 	"timer.h"
+
+1309782812 c:\_git_\star.p.g\src\io.hpp
+
+1309782812 source:c:\_git_\star.p.g\src\io.cpp
+	<SDL/SDL.h>
+	"game.h"
+	"config.h"
+	"io.h"
+	"graphics.h"
 

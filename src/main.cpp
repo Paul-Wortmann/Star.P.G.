@@ -43,6 +43,7 @@
 #include "timer.h"
 #include "network.h"
 #include "version.h"
+#include "io.h"
 
 extern config_data_type config_data;
 extern sound_type sound[MAX_SOUNDS];
@@ -58,9 +59,6 @@ const char App_Logf[] = "Star.P.G..log";
 
 Uint32                   colorkey;
 SDL_Surface             *App_Icon_Surface;
-Uint8                   *keys;
-SDL_Event                event;
-Uint8                   *keystate = SDL_GetKeyState(NULL);
 int                      menu_level_pos = 0;
 timer                    fps;
 
@@ -85,6 +83,7 @@ int init_gl(void)
 //----------------------------------- Main -------------------------------------
 int main(int argc, char *argv[])
 {
+  events_init();
   Init_Log_File(App_Logf);
   for (int count = 0; count < (argc+1); count++)
   {
@@ -92,6 +91,7 @@ int main(int argc, char *argv[])
      if (argv[count] == "cheat") game.cheats_enabled = true;
   }
   game.cheats_enabled = true; /// test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
   Log_File(App_Logf,"------------------");
   Log_File(App_Logf,"| Star.P.G V0.17 |");
   Log_File(App_Logf,"------------------\n");
@@ -134,7 +134,7 @@ int main(int argc, char *argv[])
   SDL_Joystick *joystick;
   SDL_JoystickEventState(SDL_ENABLE);
   joystick = SDL_JoystickOpen(0);
-  game.joystick_sensitivity     = 6400;
+  config_data.joystick_sensitivity     = 6400;
   Log_File(App_Logf,"Loading fonts...");
   Init_Font();
   Log_File(App_Logf,"Loading sounds...");
@@ -166,6 +166,7 @@ int main(int argc, char *argv[])
 //----------------------------------- Main loop --------------------------------
   for(int quit = 0; !quit;)
   {
+     events_process();
      fps.start();
      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 //****************************************** MENU *****************************************
@@ -177,14 +178,12 @@ int main(int argc, char *argv[])
         glPopMatrix();
         SDL_GL_SwapBuffers();
         process_menu();
-        //--- proccess keyboard events ---
-        while ( SDL_PollEvent(&event) )
-        {
-           if ( event.type == SDL_QUIT ) quit = 1;
-           if ( event.type == SDL_KEYDOWN )
-           {
-              if ( event.key.keysym.sym == SDLK_ESCAPE )
+        if (game.status_quit_active) quit = 1;
+        game.io.keyboard_delay_count++;
+        if (game.io.keyboard_delay_count > game.io.keyboard_delay) game.io.keyboard_delay_count = game.io.keyboard_delay;
+        if ((game.io.escape) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
               {
+                 game.io.keyboard_delay_count = 0;
                  play_sound(1);
                  switch (menu.level)
                  {
@@ -238,8 +237,9 @@ int main(int argc, char *argv[])
                        quit = 1;
                  }
               }
-              if ( event.key.keysym.sym == SDLK_UP     )
+        if ((game.io.up) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
               {
+                 game.io.keyboard_delay_count = 0;
                  if (menu.level == 0)//main menu
                  {
                  menu.possition--;
@@ -288,8 +288,9 @@ int main(int argc, char *argv[])
                  else play_sound(0);
                  }
               }
-              if ( event.key.keysym.sym == SDLK_DOWN   )
+        if ((game.io.down) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
               {
+                 game.io.keyboard_delay_count = 0;
                  if (menu.level == 0)//main menu
                  {
                  menu.possition++;
@@ -339,8 +340,35 @@ int main(int argc, char *argv[])
                  else play_sound(0);
                  }
               }
-              if ( event.key.keysym.sym == SDLK_LEFT   )
+        if (game.io.left)
+            {
+                 if ((menu.level == 2) and (menu.possition == 0))//decrease sound volume
               {
+                 config_data.Audio_Sound_Volume--;
+                 if (config_data.Audio_Sound_Volume < 0) config_data.Audio_Sound_Volume = 0;
+                 Mix_Volume(-1,config_data.Audio_Sound_Volume);
+              }
+              if ((menu.level == 2) and (menu.possition == 1))//decrease music volume
+              {
+                 config_data.Audio_Music_Volume--;
+                 if (config_data.Audio_Music_Volume < 0) config_data.Audio_Music_Volume = 0;
+                 Mix_VolumeMusic(config_data.Audio_Music_Volume);
+              }
+            }
+        if ((game.io.left) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
+            {
+                game.io.keyboard_delay_count = 0;
+              if ((menu.level == 2) and (menu.possition == 2))//disable fullscreen
+              {
+                 if (config_data.Display_Fullscreen == true)
+                 {
+                    kill_textures();
+                    SDL_SetVideoMode(config_data.Display_X_Resolution,config_data.Display_Y_Resolution,config_data.Display_BPS,SDL_OPENGL);
+                    init_gl();
+                    load_textures();
+                    config_data.Display_Fullscreen   = false;
+                  }
+              }
                  if ((menu.level == 2) && (menu.possition == 3) && (config_data.Display_resolution != 0))//resolution select <
                  {
                     config_data.Display_resolution--;
@@ -385,6 +413,8 @@ int main(int argc, char *argv[])
                        config_data.Display_X_Resolution = 1920;
                        config_data.Display_Y_Resolution = 1080;
                     }
+                    config_data.mouse_resolution_x   = config_data.Display_X_Resolution;
+                    config_data.mouse_resolution_y   = config_data.Display_Y_Resolution;
                     kill_textures();
                     if (config_data.Display_Fullscreen == true ) SDL_SetVideoMode(config_data.Display_X_Resolution,config_data.Display_Y_Resolution,config_data.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
                     if (config_data.Display_Fullscreen == false) SDL_SetVideoMode(config_data.Display_X_Resolution,config_data.Display_Y_Resolution,config_data.Display_BPS,SDL_OPENGL);
@@ -427,8 +457,35 @@ int main(int argc, char *argv[])
                  play_sound(0);
                  }
               }
-              if ( event.key.keysym.sym == SDLK_RIGHT   )
+        if (game.io.right)
               {
+                 if ((menu.level == 2) and (menu.possition == 0))//increase sound volume
+                 {
+                    config_data.Audio_Sound_Volume++;
+                    if (config_data.Audio_Sound_Volume > 128) config_data.Audio_Sound_Volume = 128;
+                    Mix_Volume(-1,config_data.Audio_Sound_Volume);
+                 }
+                 if ((menu.level == 2) and (menu.possition == 1))//increase music volume
+                 {
+                    config_data.Audio_Music_Volume++;
+                    if (config_data.Audio_Music_Volume > 128) config_data.Audio_Music_Volume = 128;
+                    Mix_VolumeMusic(config_data.Audio_Music_Volume);
+                 }
+              }
+        if ((game.io.right) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
+              {
+                game.io.keyboard_delay_count = 0;
+                 if ((menu.level == 2) and (menu.possition == 2))//enable fullscreen
+                 {
+                    if (config_data.Display_Fullscreen == false)
+                    {
+                       kill_textures();
+                       SDL_SetVideoMode(config_data.Display_X_Resolution,config_data.Display_Y_Resolution,config_data.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
+                       init_gl();
+                       load_textures();
+                       config_data.Display_Fullscreen   = true;
+                    }
+                 }
                  if ((menu.level == 2) && (menu.possition == 3) && (config_data.Display_resolution != 7))//resolution select <
                  {
                     config_data.Display_resolution++;
@@ -473,6 +530,8 @@ int main(int argc, char *argv[])
                        config_data.Display_X_Resolution = 1920;
                        config_data.Display_Y_Resolution = 1080;
                     }
+                    config_data.mouse_resolution_x   = config_data.Display_X_Resolution;
+                    config_data.mouse_resolution_y   = config_data.Display_Y_Resolution;
                     kill_textures();
                     if (config_data.Display_Fullscreen == true ) SDL_SetVideoMode(config_data.Display_X_Resolution,config_data.Display_Y_Resolution,config_data.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
                     if (config_data.Display_Fullscreen == false) SDL_SetVideoMode(config_data.Display_X_Resolution,config_data.Display_Y_Resolution,config_data.Display_BPS,SDL_OPENGL);
@@ -515,8 +574,9 @@ int main(int argc, char *argv[])
                  play_sound(0);
                  }
               }
-              if ((event.key.keysym.sym == SDLK_RETURN) || (event.key.keysym.sym == SDLK_SPACE))
+        if ((game.io.select) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
               {
+                 game.io.keyboard_delay_count = 0;
                  play_sound(1);
                  switch (menu.level)
                  {
@@ -851,61 +911,6 @@ int main(int argc, char *argv[])
                        play_sound(1);
                  }
               }
-           }
-        }
-        if (keystate[SDLK_LEFT])
-        {
-           if ((menu.level == 2) and (menu.possition == 0))//decrease sound volume
-           {
-              config_data.Audio_Sound_Volume--;
-              if (config_data.Audio_Sound_Volume < 0) config_data.Audio_Sound_Volume = 0;
-              Mix_Volume(-1,config_data.Audio_Sound_Volume);
-           }
-           if ((menu.level == 2) and (menu.possition == 1))//decrease music volume
-           {
-              config_data.Audio_Music_Volume--;
-              if (config_data.Audio_Music_Volume < 0) config_data.Audio_Music_Volume = 0;
-              Mix_VolumeMusic(config_data.Audio_Music_Volume);
-           }
-           if ((menu.level == 2) and (menu.possition == 2))//disable fullscreen
-           {
-              if (config_data.Display_Fullscreen == true)
-              {
-                 kill_textures();
-                 SDL_SetVideoMode(config_data.Display_X_Resolution,config_data.Display_Y_Resolution,config_data.Display_BPS,SDL_OPENGL);
-                 init_gl();
-                 load_textures();
-                 config_data.Display_Fullscreen   = false;
-              }
-            }
-        }
-        if (keystate[SDLK_RIGHT])
-        {
-           if ((menu.level == 2) and (menu.possition == 0))//increase sound volume
-           {
-              config_data.Audio_Sound_Volume++;
-              if (config_data.Audio_Sound_Volume > 128) config_data.Audio_Sound_Volume = 128;
-              Mix_Volume(-1,config_data.Audio_Sound_Volume);
-           }
-           if ((menu.level == 2) and (menu.possition == 1))//increase music volume
-           {
-              config_data.Audio_Music_Volume++;
-              if (config_data.Audio_Music_Volume > 128) config_data.Audio_Music_Volume = 128;
-              Mix_VolumeMusic(config_data.Audio_Music_Volume);
-           }
-           if ((menu.level == 2) and (menu.possition == 2))//enable fullscreen
-           {
-              if (config_data.Display_Fullscreen == false)
-              {
-                 kill_textures();
-                 SDL_SetVideoMode(config_data.Display_X_Resolution,config_data.Display_Y_Resolution,config_data.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
-                 init_gl();
-                 load_textures();
-                 config_data.Display_Fullscreen   = true;
-              }
-           }
-        }
-//        keys = SDL_GetKeyState(NULL);
        }
 //****************************************** GAME *****************************************
         if (game.game_active)
@@ -921,198 +926,55 @@ int main(int argc, char *argv[])
               game.game_resume = false;
               game.pdie_active = true;
               menu.level = 8;
+              config_data.menu_delay_count = 0;
               Log_File(App_Logf,"User terminated due to insuficient health...better luck next time buddy!");
            }
-        //--- proccess keyboard events ---
-        while ( SDL_PollEvent(&event) )
-        {
-    //-------------------------- joystick / gamepad events --------------------------------------------
-       if (event.type == SDL_JOYAXISMOTION)
-       {
-          if ((event.jaxis.value < (-1*(game.joystick_sensitivity))) || (event.jaxis.value > game.joystick_sensitivity))
-          {
-             if (event.jaxis.axis == 0)
-             {
-                if(event.jaxis.value < -(-1*(game.joystick_sensitivity)))
-                {
-                   game.button_left  = true;
-                   game.button_right = false;
-                }
-                if(event.jaxis.value > game.joystick_sensitivity)
-                {
-                   game.button_left  = false;
-                   game.button_right = true;
-                }
-             }
-             if (event.jaxis.axis == 1)
-             {
-                if(event.jaxis.value < -(-1*(game.joystick_sensitivity)))
-                {
-                   game.button_up    = true;
-                   game.button_down  = false;
-                }
-                if(event.jaxis.value > game.joystick_sensitivity)
-                {
-                   game.button_up    = false;
-                   game.button_down  = true;
-                }
-             }
-          }
-          else
-          {
-               game.button_up    = false;
-               game.button_down  = false;
-               game.button_left  = false;
-               game.button_right = false;
-          }
-       }
-       if (event.type == SDL_JOYHATMOTION)
-       {
-          if (event.jhat.value & SDL_HAT_UP)
-          {
-              game.button_up    = true;
-              game.button_down  = false;
-              game.button_left  = false;
-              game.button_right = false;
-          }
-          if (event.jhat.value & SDL_HAT_DOWN)
-          {
-              game.button_up    = false;
-              game.button_down  = true;
-              game.button_left  = false;
-              game.button_right = false;
-          }
-          if (event.jhat.value & SDL_HAT_RIGHT)
-          {
-              game.button_up    = false;
-              game.button_down  = false;
-              game.button_left  = false;
-              game.button_right = true;
-          }
-          if (event.jhat.value & SDL_HAT_RIGHTUP)
-          {
-              game.button_up    = true;
-              game.button_down  = false;
-              game.button_left  = false;
-              game.button_right = true;
-          }
-          if (event.jhat.value & SDL_HAT_RIGHTDOWN)
-          {
-              game.button_up    = false;
-              game.button_down  = true;
-              game.button_left  = false;
-              game.button_right = true;
-          }
-          if (event.jhat.value & SDL_HAT_LEFT)
-          {
-              game.button_up    = false;
-              game.button_down  = false;
-              game.button_left  = true;
-              game.button_right = false;
-          }
-          if (event.jhat.value & SDL_HAT_LEFTUP)
-          {
-              game.button_up    = true;
-              game.button_down  = false;
-              game.button_left  = true;
-              game.button_right = false;
-          }
-          if (event.jhat.value & SDL_HAT_LEFTDOWN)
-          {
-              game.button_up    = false;
-              game.button_down  = true;
-              game.button_left  = true;
-              game.button_right = false;
-          }
-          if (event.jhat.value & SDL_HAT_CENTERED)
-          {
-              game.button_up    = false;
-              game.button_down  = false;
-              game.button_left  = false;
-              game.button_right = false;
-         }
-       }
-       if (event.type == SDL_JOYBUTTONDOWN)
-       {
-           switch(event.jbutton.button)
-           {
-              case 0:
-                game.gamepad_button_0 = true;
-              break;
-              case 1:
-                game.gamepad_button_1 = true;
-              break;
-              case 2:
-                game.gamepad_button_2 = true;
-              break;
-              case 3:
-                game.gamepad_button_3 = true;
-              break;
-              default:
-              break;
-           }
-       }
-       if (event.type == SDL_JOYBUTTONUP)
-       {
-           switch(event.jbutton.button)
-           {
-              case 0:
-                game.gamepad_button_0 = false;
-              break;
-              case 1:
-                game.gamepad_button_1 = false;
-              break;
-              case 2:
-                game.gamepad_button_2 = false;
-              break;
-              case 3:
-                game.gamepad_button_3 = false;
-              break;
-              default:
-              break;
-           }
-       }
-           if ( event.type == SDL_QUIT ) quit = 1;
-           if ( event.type == SDL_KEYDOWN )
-           {
-              if ((event.key.keysym.sym == SDLK_ESCAPE) || (game.gamepad_button_3))
+
+        if (game.status_quit_active) quit = 1;
+        if (game.io.escape)
               {
                  play_sound(1);
-                 game.game_active   = false;
-                 menu.level         = 1;
-                 menu.possition     = 3;
-                 menu.possition_max = 6;
-                 game.menu_active   = true;
+                 game.game_active             = false;
+                 menu.level                   = 1;
+                 menu.possition               = 3;
+                 menu.possition_max           = 6;
+                 game.menu_active             = true;
+                 game.io.escape               = false;
+                 game.io.keyboard_delay_count = 0;
+                 config_data.menu_delay_count = 0;
+                 while (config_data.menu_delay_count < (config_data.menu_delay/2))
+                 {
+                    config_data.menu_delay_count++;
+                 }
               }
-              if ( event.key.keysym.sym == SDLK_SPACE  ) {};
-              if ( event.key.keysym.sym == SDLK_p      )
+        if (game.io.pause)
               {
                  game.game_paused = true;
                  game.game_active = false;
                  spawn_paused();
+                 game.io.pause    = false;
+                 game.io.keyboard_delay_count = 0;
               };
-              //if (game.cheats_enabled == true)
-              {
-                 if (event.key.keysym.sym == SDLK_b)    spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb powerup
-                 if (event.key.keysym.sym == SDLK_u)    spawn_powerup(1.0f,random_GLcoord(), 9);//spawn sideship 0 powerup
-                 if (event.key.keysym.sym == SDLK_i)    spawn_powerup(1.0f,random_GLcoord(),10);//spawn sideship 1 powerup
-                 if (event.key.keysym.sym == SDLK_o)    spawn_powerup(1.0f,random_GLcoord(),11);//spawn sideship 2 powerup
-                 if (event.key.keysym.sym == SDLK_p)    spawn_powerup(1.0f,random_GLcoord(),12);//spawn sideship 3 powerup
-                 if (event.key.keysym.sym == SDLK_1)    spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup
-                 if (event.key.keysym.sym == SDLK_2)    spawn_powerup(1.0f,random_GLcoord(), 2);//spawn shield lvl powerup
-                 if (event.key.keysym.sym == SDLK_3)    spawn_powerup(1.0f,random_GLcoord(), 3);//spawn shield new powerup
-                 if (event.key.keysym.sym == SDLK_4)    spawn_powerup(1.0f,random_GLcoord(), 4);//spawn thruster lvl powerup
-                 if (event.key.keysym.sym == SDLK_5)    spawn_powerup(1.0f,random_GLcoord(), 5);//spawn thruster new powerup
-                 if (event.key.keysym.sym == SDLK_6)    spawn_powerup(1.0f,random_GLcoord(), 6);//spawn weapon lvl powerup
-                 if (event.key.keysym.sym == SDLK_7)    spawn_powerup(1.0f,random_GLcoord(), 7);//spawn weapon new powerup
-                 if (event.key.keysym.sym == SDLK_8)    unlock_levels();                        //unlock all levels
-                 if (event.key.keysym.sym == SDLK_0)    game.victory_kills = game.level_kills;  //complete level
-                 if (event.key.keysym.sym == SDLK_a)    game.anc_enabled   = !game.anc_enabled; //toggle active NPC count display
-                 if (event.key.keysym.sym == SDLK_f)    game.fps_enabled   = !game.fps_enabled; //toggle active NPC count display
-              }
-           }
+        //if (game.cheats_enabled == true)
+        {
+          if (game.io.key_0) game.victory_kills = game.level_kills;  //complete level
+          if (game.io.key_1) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup
+          if (game.io.key_2) spawn_powerup(1.0f,random_GLcoord(), 2);//spawn shield lvl powerup
+          if (game.io.key_3) spawn_powerup(1.0f,random_GLcoord(), 3);//spawn shield new powerup
+          if (game.io.key_4) spawn_powerup(1.0f,random_GLcoord(), 4);//spawn thruster lvl powerup
+          if (game.io.key_5) spawn_powerup(1.0f,random_GLcoord(), 5);//spawn thruster new powerup
+          if (game.io.key_6) spawn_powerup(1.0f,random_GLcoord(), 6);//spawn weapon lvl powerup
+          if (game.io.key_7) spawn_powerup(1.0f,random_GLcoord(), 7);//spawn weapon new powerup
+          if (game.io.key_8) unlock_levels();                        //unlock all levels
+          if (game.io.key_9) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb powerup
+          if (game.io.key_a) game.anc_enabled   = !game.anc_enabled; //toggle active NPC count display
+          if (game.io.key_f) game.fps_enabled   = !game.fps_enabled; //toggle active NPC count display
+          if (game.io.key_q) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn sideship 0 powerup
+          if (game.io.key_w) spawn_powerup(1.0f,random_GLcoord(),10);//spawn sideship 1 powerup
+          if (game.io.key_e) spawn_powerup(1.0f,random_GLcoord(),11);//spawn sideship 2 powerup
+          if (game.io.key_r) spawn_powerup(1.0f,random_GLcoord(),12);//spawn sideship 3 powerup
         }
-        if ((keystate[SDLK_SPACE]) || (game.gamepad_button_0))
+        if (game.io.shoot)
         {
            process_sideships(true);
            if(game.fw_rof_count >= game.projectile[game.player.front_weapon].rate_of_fire)
@@ -1130,64 +992,60 @@ int main(int argc, char *argv[])
         {
             process_sideships(false);
         }
-        if ((keystate[SDLK_UP]    || (keystate[SDLK_w]) || (game.button_up)))    process_player(1);
-        if ((keystate[SDLK_DOWN]  || (keystate[SDLK_s]) || (game.button_down)))  process_player(2);
-        if ((keystate[SDLK_RIGHT] || (keystate[SDLK_d]) || (game.button_right))) process_player(3);
-        if ((keystate[SDLK_LEFT]  || (keystate[SDLK_a]) || (game.button_left)))  process_player(4);
-//    keys = SDL_GetKeyState(NULL);
+        if (game.io.up)    process_player(1);
+        if (game.io.down)  process_player(2);
+        if (game.io.right) process_player(3);
+        if (game.io.left)  process_player(4);
      }
 //*********************************** Game paused *****************************************
-     if (game.game_paused)
-     {
+    if (game.game_paused)
+    {
         play_music(game.music_track);
         display_game();
-        //--- proccess keyboard events ---
-        while (SDL_PollEvent(&event))
+        if (game.status_quit_active) quit = 1;
+        config_data.menu_delay_count++;
+        if (config_data.menu_delay_count >= config_data.menu_delay)
         {
-           if ( event.type == SDL_QUIT ) quit = 1;
-           if ( event.type == SDL_KEYDOWN )
-           {
-              if ((event.key.keysym.sym == SDLK_ESCAPE) || (event.key.keysym.sym == SDLK_RETURN) || (event.key.keysym.sym == SDLK_SPACE))
-              {
-                 game.game_paused = false;
-                 game.game_active = true;
-              }
-              if ( event.key.keysym.sym == SDLK_p      )
-              {
-                 game.game_paused = false;
-                 game.game_active = true;
-              };
-           }
+            config_data.menu_delay_count = config_data.menu_delay;
+            if (((game.io.escape) || (game.io.select)) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
+            {
+                game.io.keyboard_delay_count = 0;
+                game.game_paused = false;
+                game.game_active = true;
+                game.io.escape   = false;
+                game.io.select   = false;
+                game.io.pause    = false;
+            }
         }
-     }
+    }
 //*********************************** PLAYER DEATH SCREEN *****************************************
-     if (game.pdie_active)
-     {
+    if (game.pdie_active)
+    {
         play_music(game.pdie_music_track);
         glPushMatrix();
         diplay_menu ();
-        process_menu();
         glPopMatrix();
         SDL_GL_SwapBuffers();
-        //--- proccess keyboard events ---
-        while (SDL_PollEvent(&event))
+        process_menu();
+        if (game.status_quit_active) quit = 1;
+        config_data.menu_delay_count++;
+        if (config_data.menu_delay_count >= config_data.menu_delay)
         {
-           if ( event.type == SDL_QUIT ) quit = 1;
-           if ( event.type == SDL_KEYDOWN )
-           {
-              if ((event.key.keysym.sym == SDLK_ESCAPE) || (event.key.keysym.sym == SDLK_RETURN) || (event.key.keysym.sym == SDLK_SPACE))
-              {
-                 play_sound(1);
-                 init_game();
-                 menu.level = 0;
-                 menu.possition = 0;
-                 menu.possition_max = 4;
-                 game.menu_active = true;
-                 game.pdie_active = false;
-              }
-           }
+            config_data.menu_delay_count = config_data.menu_delay;
+            if ((game.io.escape) || (game.io.enter) || (game.io.space))
+            {
+                play_sound(1);
+                init_game();
+                menu.level = 0;
+                menu.possition = 0;
+                menu.possition_max = 4;
+                game.menu_active = true;
+                game.pdie_active = false;
+                game.io.keyboard_delay_count = 0;
+                game.io.escape   = false;
+            }
         }
-     }
+    }
 //******************************* PLAYER NEXT LEVEL SCREEN *************************************
      if (game.nlvl_active)
      {
@@ -1199,13 +1057,12 @@ int main(int argc, char *argv[])
         process_menu();
         glPopMatrix ();
         SDL_GL_SwapBuffers();
-        //--- proccess keyboard events ---
-        while (SDL_PollEvent(&event))
+        if (game.status_quit_active) quit = 1;
+        config_data.menu_delay_count++;
+        if (config_data.menu_delay_count >= config_data.menu_delay)
         {
-           if ( event.type == SDL_QUIT ) quit = 1;
-           if ( event.type == SDL_KEYDOWN )
-           {
-              if ((event.key.keysym.sym == SDLK_ESCAPE) || (event.key.keysym.sym == SDLK_RETURN) || (event.key.keysym.sym == SDLK_SPACE))
+            config_data.menu_delay_count = config_data.menu_delay;
+            if ((game.io.escape) || (game.io.enter) || (game.io.space))
               {
                  play_sound(1);
                  game.level++;
@@ -1232,6 +1089,7 @@ int main(int argc, char *argv[])
                     game.menu_active = false;
                     game.nlvl_active = false;
                     Log_File(App_Logf,"Player just completed the game, proceeding to Outro!");
+                    config_data.menu_delay_count = 0;
                  }
                  else
                  {
@@ -1239,9 +1097,11 @@ int main(int argc, char *argv[])
                     game.menu_active = false;
                     game.nlvl_active = false;
                     Log_File(App_Logf,"Victory conditions met, player proceeding to next level!");
+                    config_data.menu_delay_count = 0;
                  }
+              game.io.keyboard_delay_count = 0;
+              game.io.escape   = false;
               }
-           }
         }
      }
 
@@ -1255,13 +1115,12 @@ int main(int argc, char *argv[])
         process_menu();
         glPopMatrix ();
         SDL_GL_SwapBuffers();
-        //--- proccess keyboard events ---
-        while (SDL_PollEvent(&event))
+        if (game.status_quit_active) quit = 1;
+        config_data.menu_delay_count++;
+        if (config_data.menu_delay_count >= config_data.menu_delay)
         {
-           if ( event.type == SDL_QUIT ) quit = 1;
-           if ( event.type == SDL_KEYDOWN )
-           {
-              if ((event.key.keysym.sym == SDLK_ESCAPE) || (event.key.keysym.sym == SDLK_RETURN) || (event.key.keysym.sym == SDLK_SPACE))
+            config_data.menu_delay_count = config_data.menu_delay;
+            if ((game.io.escape) || (game.io.enter) || (game.io.space))
               {
                  play_sound(1);
                  menu.level = 1;
@@ -1274,8 +1133,9 @@ int main(int argc, char *argv[])
                  game.menu_active = true;
                  game.nlvl_active = false;
                  Log_File(App_Logf,"Outro finished, proceeding to main menu!");
+                 game.io.keyboard_delay_count = 0;
+                 game.io.escape   = false;
               }
-           }
         }
     }
 //---------------------------- code for end of main loop -----------------------
