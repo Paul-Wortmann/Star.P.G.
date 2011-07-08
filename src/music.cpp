@@ -20,7 +20,7 @@
  */
 
 
-#include "music.h"
+#include "music.hpp"
 
 music_type music[MAX_MUSIC];
 int current_track;

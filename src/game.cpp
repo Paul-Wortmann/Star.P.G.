@@ -21,14 +21,14 @@
 
 
 #include <SDL/SDL.h>
-#include "game.h"
-#include "config.h"
-#include "sounds.h"
-#include "music.h"
-#include "textures.h"
-#include "physics.h"
-#include "misc.h"
-#include "font.h"
+#include "game.hpp"
+#include "config.hpp"
+#include "sounds.hpp"
+#include "music.hpp"
+#include "textures.hpp"
+#include "physics.hpp"
+#include "misc.hpp"
+#include "font.hpp"
 
 extern config_data_type config_data;
 extern sound_type       sound[MAX_SOUNDS];
@@ -3400,22 +3400,22 @@ int process_player(int command)
       {
          case 1://Up
              game.player.y_dir =  1;
-             game.player.y_vel += (0.01f + game.thruster[game.player.thrusters].thrust + (0.0001f*game.thruster[game.player.thrusters].level));
+             game.player.y_vel += (0.0025f + game.thruster[game.player.thrusters].thrust + (0.0001f*game.thruster[game.player.thrusters].level));
              if (game.player.y_vel > MAX_VELOCITY) game.player.y_vel = MAX_VELOCITY;
          break;
          case 2://Down
              game.player.y_dir = -1;
-             game.player.y_vel -= (0.01f + game.thruster[game.player.thrusters].thrust + (0.0001f*game.thruster[game.player.thrusters].level));
+             game.player.y_vel -= (0.0025f + game.thruster[game.player.thrusters].thrust + (0.0001f*game.thruster[game.player.thrusters].level));
              if (game.player.y_vel < (-1*MAX_VELOCITY)) game.player.y_vel = (-1*MAX_VELOCITY);
          break;
          case 3://right
              game.player.x_dir =  1;
-             game.player.x_vel += (0.01f + game.thruster[game.player.thrusters].thrust + (0.0001f*game.thruster[game.player.thrusters].level));
+             game.player.x_vel += (0.0025f + game.thruster[game.player.thrusters].thrust + (0.0001f*game.thruster[game.player.thrusters].level));
              if (game.player.x_vel > MAX_VELOCITY) game.player.x_vel = MAX_VELOCITY;
          break;
          case 4://Left
              game.player.x_dir = -1;
-             game.player.x_vel -= (0.01f + game.thruster[game.player.thrusters].thrust + (0.0001f*game.thruster[game.player.thrusters].level));
+             game.player.x_vel -= (0.0025f + game.thruster[game.player.thrusters].thrust + (0.0001f*game.thruster[game.player.thrusters].level));
              if (game.player.x_vel < (-1*MAX_VELOCITY)) game.player.x_vel = (-1*MAX_VELOCITY);
          break;
          default:
@@ -3423,22 +3423,22 @@ int process_player(int command)
       }
          if (game.player.y_dir ==  1)
          {
-             if (game.player.y_vel > 0.0f) game.player.y_vel -= 0.0005f;
+             if (game.player.y_vel > 0.0f) game.player.y_vel -= 0.00025f;
              if (game.player.y_vel < 0.0f) game.player.y_vel  = 0.0f;
          };
          if (game.player.y_dir == -1)
          {
-             if (game.player.y_vel < 0.0f) game.player.y_vel += 0.0005f;
+             if (game.player.y_vel < 0.0f) game.player.y_vel += 0.00025f;
              if (game.player.y_vel > 0.0f) game.player.y_vel  = 0.0f;
          };
          if (game.player.x_dir ==  1)
          {
-             if (game.player.x_vel > 0.0f) game.player.x_vel -= 0.0005f;
+             if (game.player.x_vel > 0.0f) game.player.x_vel -= 0.00025f;
              if (game.player.x_vel < 0.0f) game.player.x_vel  = 0.0f;
          };
          if (game.player.x_dir == -1)
          {
-             if (game.player.x_vel < 0.0f) game.player.x_vel += 0.0005f;
+             if (game.player.x_vel < 0.0f) game.player.x_vel += 0.00025f;
              if (game.player.x_vel > 0.0f) game.player.x_vel  = 0.0f;
          };
          game.player.y_pos += game.player.y_vel;

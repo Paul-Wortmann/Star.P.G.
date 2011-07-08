@@ -20,7 +20,7 @@
  */
 
 
-#include "sounds.h"
+#include "sounds.hpp"
 
 sound_type sound[MAX_SOUNDS];
 

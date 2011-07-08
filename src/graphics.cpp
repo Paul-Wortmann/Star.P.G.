@@ -21,7 +21,7 @@
 
 
 
-#include "graphics.h"
+#include "graphics.hpp"
 
 int   gl_to_res(float gl_coord, int max_res)
 {

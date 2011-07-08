@@ -22,7 +22,7 @@
 
 
 #include <fstream>
-#include "config.h"
+#include "config.hpp"
 
 config_data_type config_data;
 

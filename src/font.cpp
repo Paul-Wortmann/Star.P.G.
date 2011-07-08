@@ -23,9 +23,9 @@
 #include "SDL/SDL_ttf.h"
 #include "freetype.h"
 #include "gl/gl.h"
-#include "font.h"
-#include "graphics.h"
-#include "config.h"
+#include "font.hpp"
+#include "graphics.hpp"
+#include "config.hpp"
 
 GLuint  base;
 GLfloat cnt1;

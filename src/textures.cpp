@@ -23,8 +23,8 @@
 #include <gl/gl.h>
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
-#include "textures.h"
-#include "config.h"
+#include "textures.hpp"
+#include "config.hpp"
 
 #define GL_BGR  0x80E0
 #define GL_BGRA 0x80E1

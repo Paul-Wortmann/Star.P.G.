@@ -21,14 +21,14 @@
 
 
 #include <gl/gl.h>
-#include "menu.h"
-#include "game.h"
-#include "config.h"
-#include "sounds.h"
-#include "music.h"
-#include "textures.h"
-#include "levels.h"
-#include "font.h"
+#include "menu.hpp"
+#include "game.hpp"
+#include "config.hpp"
+#include "sounds.hpp"
+#include "music.hpp"
+#include "textures.hpp"
+#include "levels.hpp"
+#include "font.hpp"
 
 extern config_data_type config_data;
 extern sound_type sound[MAX_SOUNDS];

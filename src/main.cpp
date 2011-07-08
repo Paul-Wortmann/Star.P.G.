@@ -28,22 +28,22 @@
 #include <SDL/SDL_opengl.h>
 #include <gl/gl.h>
 //#include <physfs.h>
-#include "misc.h"
-#include "main.h"
-#include "config.h"
-#include "sounds.h"
-#include "music.h"
-#include "textures.h"
-#include "menu.h"
-#include "game.h"
-#include "levels.h"
-#include "physics.h"
-#include "font.h"
-#include "savegame.h"
-#include "timer.h"
-#include "network.h"
+#include "misc.hpp"
+#include "main.hpp"
+#include "config.hpp"
+#include "sounds.hpp"
+#include "music.hpp"
+#include "textures.hpp"
+#include "menu.hpp"
+#include "game.hpp"
+#include "levels.hpp"
+#include "physics.hpp"
+#include "font.hpp"
+#include "savegame.hpp"
+#include "timer.hpp"
+#include "network.hpp"
 #include "version.h"
-#include "io.h"
+#include "io.hpp"
 
 extern config_data_type config_data;
 extern sound_type sound[MAX_SOUNDS];

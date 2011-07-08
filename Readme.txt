@@ -3,6 +3,11 @@ Star.P.G.
 A classic side scrolling shooter.
 
 
+During the development of this game, I am have learned a lot of lessons of how not to make games, so the code is not very neat and organized.
+I only placed Star.P.G. on the Internet in order to utilize the benefits of version control systems, and also in the unlikely event that it may be of use or interest to someone.
+I am not looking for help or contributions in the games development, but feel free to copy it and make your own game from it if you like.
+
+
 Keys:
 -----
 
@@ -27,6 +32,8 @@ Dev keys:
 "7"       ->    Spawn new weapon power-up.
 "8"       ->    Spawn unlock all levels.
 "9"       ->    Spawn power-up.
+"A"       ->    Display number of active NPCs.
+"F"       ->    Display frame-rate.
 "B"       ->    Spawn bomb power-up.
 "U"       ->    Spawn side helper ship powerup - 1.
 "I"       ->    Spawn side helper ship powerup - 2.

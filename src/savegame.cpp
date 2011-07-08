@@ -21,9 +21,9 @@
 
 
 #include <fstream>
-#include "game.h"
-#include "savegame.h"
-#include "levels.h"
+#include "game.hpp"
+#include "savegame.hpp"
+#include "levels.hpp"
 
 extern game_type game;
 

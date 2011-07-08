@@ -21,7 +21,7 @@
 
 
 #include "SDL/SDL.h"
-#include "timer.h"
+#include "timer.hpp"
 
 timer::timer()
 {

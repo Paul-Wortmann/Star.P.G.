@@ -20,10 +20,10 @@
  */
 
 #include <SDL/SDL.h>
-#include "game.h"
-#include "config.h"
-#include "io.h"
-#include "graphics.h"
+#include "game.hpp"
+#include "config.hpp"
+#include "io.hpp"
+#include "graphics.hpp"
 
 extern game_type          game;
 extern config_data_type   config_data;
@@ -68,65 +68,65 @@ bool events_init(void)
    game.io.joystick_button_9          = false;
    game.io.joystick_button_10         = false;
    game.io.joystick_button_11         = false;
-   game.io.mouse_button_left         = false;
-   game.io.mouse_button_middle       = false;
-   game.io.mouse_button_right        = false;
-   game.io.mouse_x                   = 0.0f;
-   game.io.mouse_y                   = 0.0f;
-   game.io.mouse_xrel                = 0.0f;
-   game.io.mouse_yrel                = 0.0f;
-   game.io.key_0                     = false;
-   game.io.key_1                     = false;
-   game.io.key_2                     = false;
-   game.io.key_3                     = false;
-   game.io.key_4                     = false;
-   game.io.key_5                     = false;
-   game.io.key_6                     = false;
-   game.io.key_7                     = false;
-   game.io.key_8                     = false;
-   game.io.key_9                     = false;
-   game.io.key_a                     = false;
-   game.io.key_b                     = false;
-   game.io.key_c                     = false;
-   game.io.key_d                     = false;
-   game.io.key_e                     = false;
-   game.io.key_f                     = false;
-   game.io.key_g                     = false;
-   game.io.key_h                     = false;
-   game.io.key_i                     = false;
-   game.io.key_j                     = false;
-   game.io.key_k                     = false;
-   game.io.key_l                     = false;
-   game.io.key_m                     = false;
-   game.io.key_n                     = false;
-   game.io.key_o                     = false;
-   game.io.key_p                     = false;
-   game.io.key_q                     = false;
-   game.io.key_r                     = false;
-   game.io.key_s                     = false;
-   game.io.key_t                     = false;
-   game.io.key_u                     = false;
-   game.io.key_v                     = false;
-   game.io.key_w                     = false;
-   game.io.key_x                     = false;
-   game.io.key_y                     = false;
-   game.io.key_z                     = false;
-   game.io.key_up                    = false;
-   game.io.key_down                  = false;
-   game.io.key_left                  = false;
-   game.io.key_right                 = false;
-   game.io.select                    = false;
-   game.io.escape                    = false;
-   game.io.pause                     = false;
-   game.io.plus                      = false;
-   game.io.minus                     = false;
-   game.io.space                     = false;
-   game.io.enter                     = false;
-   game.io.shoot                     = false;
-   game.io.up                        = false;
-   game.io.down                      = false;
-   game.io.left                      = false;
-   game.io.right                     = false;
+   game.io.mouse_button_left          = false;
+   game.io.mouse_button_middle        = false;
+   game.io.mouse_button_right         = false;
+   game.io.mouse_x                    = 0.0f;
+   game.io.mouse_y                    = 0.0f;
+   game.io.mouse_xrel                 = 0.0f;
+   game.io.mouse_yrel                 = 0.0f;
+   game.io.key_0                      = false;
+   game.io.key_1                      = false;
+   game.io.key_2                      = false;
+   game.io.key_3                      = false;
+   game.io.key_4                      = false;
+   game.io.key_5                      = false;
+   game.io.key_6                      = false;
+   game.io.key_7                      = false;
+   game.io.key_8                      = false;
+   game.io.key_9                      = false;
+   game.io.key_a                      = false;
+   game.io.key_b                      = false;
+   game.io.key_c                      = false;
+   game.io.key_d                      = false;
+   game.io.key_e                      = false;
+   game.io.key_f                      = false;
+   game.io.key_g                      = false;
+   game.io.key_h                      = false;
+   game.io.key_i                      = false;
+   game.io.key_j                      = false;
+   game.io.key_k                      = false;
+   game.io.key_l                      = false;
+   game.io.key_m                      = false;
+   game.io.key_n                      = false;
+   game.io.key_o                      = false;
+   game.io.key_p                      = false;
+   game.io.key_q                      = false;
+   game.io.key_r                      = false;
+   game.io.key_s                      = false;
+   game.io.key_t                      = false;
+   game.io.key_u                      = false;
+   game.io.key_v                      = false;
+   game.io.key_w                      = false;
+   game.io.key_x                      = false;
+   game.io.key_y                      = false;
+   game.io.key_z                      = false;
+   game.io.key_up                     = false;
+   game.io.key_down                   = false;
+   game.io.key_left                   = false;
+   game.io.key_right                  = false;
+   game.io.select                     = false;
+   game.io.escape                     = false;
+   game.io.pause                      = false;
+   game.io.plus                       = false;
+   game.io.minus                      = false;
+   game.io.space                      = false;
+   game.io.enter                      = false;
+   game.io.shoot                      = false;
+   game.io.up                         = false;
+   game.io.down                       = false;
+   game.io.left                       = false;
+   game.io.right                      = false;
    return(true);
 };
 
@@ -435,8 +435,8 @@ bool events_process(void)
        }
     }
     //---------------------------------------------------------------------------------------------
-    if ((game.io.joystick_button_0) || (game.io.space)  || (game.io.enter)) game.io.select = true; else game.io.select = false;
-    if ((game.io.joystick_button_1) || (game.io.space)) game.io.shoot   = true; else game.io.shoot  = false;
+    if ((game.io.joystick_button_0) || (game.io.space) || (game.io.enter)) game.io.select = true; else game.io.select = false;
+    if ((game.io.joystick_button_1) || (game.io.space) || (game.io.mouse_button_left)) game.io.shoot   = true; else game.io.shoot  = false;
     if ((game.io.joystick_button_2) || (game.io.key_p)) game.io.pause   = true; else game.io.pause  = false;
     if ((game.io.joystick_button_3) || (game.io.escape)) game.io.escape = true; else game.io.escape = false;
     if ((game.io.joystick_up)    || (game.io.key_up   )) game.io.up     = true; else game.io.up     = false;

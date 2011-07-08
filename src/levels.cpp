@@ -20,8 +20,8 @@
  */
 
 
-#include "levels.h"
-#include "game.h"
+#include "levels.hpp"
+#include "game.hpp"
 
 extern game_type  game;
 
