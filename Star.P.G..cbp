@@ -69,6 +69,8 @@
 		<Unit filename="src\io.hpp" />
 		<Unit filename="src\levels.cpp" />
 		<Unit filename="src\levels.hpp" />
+		<Unit filename="src\log.cpp" />
+		<Unit filename="src\log.hpp" />
 		<Unit filename="src\main.cpp" />
 		<Unit filename="src\main.hpp" />
 		<Unit filename="src\menu.cpp" />

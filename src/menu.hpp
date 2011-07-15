@@ -38,9 +38,12 @@ struct menu_type
   int possition_max;
   int level;
   int level_no;
+  int recall_position;
+  int recall_view;
 };
 
 int diplay_menu (void);
+int process_menu_background(void);
 int process_menu(void);
 int init_menu   (void);
 

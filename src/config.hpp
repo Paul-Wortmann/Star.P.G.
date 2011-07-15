@@ -48,7 +48,4 @@ bool Save_Config_File(const char *Config_File);
 bool Load_Config_File(const char *Config_File);
 bool Load_Default_Config(void);
 
-bool Init_Log_File(const char *Log_File);
-bool Log_File(const char *Log_File, const char error_string[]);
-
 #endif //CONFIG_H

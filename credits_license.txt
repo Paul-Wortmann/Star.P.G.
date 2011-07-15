@@ -2,7 +2,7 @@
   Design, programming and almost everything else...
 ---------------------------------------------------
 www.physhexgames.co.nr
-Paul Wortmann paul.wortmann@gmail.com / physhex@gmail.com
+physhex@gmail.com
 
 ---------------------
   Beta testers
@@ -72,6 +72,11 @@ Zlib        - http://www.zlib.net/
  Not all of these 3rd party API's may be utilized in the current version, 
  they may have been used in previous versions, 
  or are being considered for inclusion in future versions.
+
+Installer:
+----------
+Windows self insaller package created with the Bytessence InstallMaker.
+http://www.bytessence.com/bim.html
 
 3rd party copyright notice.
 ---------------------------

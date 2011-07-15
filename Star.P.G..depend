@@ -612,7 +612,7 @@
 
 1309675795 source:c:\_git_\star.p.g\src\star.p.g._private.rc
 
-1310047950 source:c:\_git_\star.p.g\src\config.cpp
+1310741089 source:c:\_git_\star.p.g\src\config.cpp
 	<fstream>
 	"config.hpp"
 
@@ -658,8 +658,10 @@
 
 1309767983 c:\_git_\star.p.g\src\misc.h
 
-1310047950 source:c:\_git_\star.p.g\src\graphics.cpp
+1310277218 source:c:\_git_\star.p.g\src\graphics.cpp
+	<GL/gl.h>
 	"graphics.hpp"
+	"config.hpp"
 
 1310047950 source:c:\_git_\star.p.g\src\levels.cpp
 	"levels.hpp"
@@ -667,7 +669,7 @@
 
 1309768119 c:\_git_\star.p.g\src\levels.h
 
-1310047965 source:c:\_git_\star.p.g\src\main.cpp
+1310742468 source:c:\_git_\star.p.g\src\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -675,9 +677,11 @@
 	<SDL/SDL_image.h>
 	<SDL/SDL_opengl.h>
 	<gl/gl.h>
+	"graphics.hpp"
 	"misc.hpp"
 	"main.hpp"
 	"config.hpp"
+	"log.hpp"
 	"sounds.hpp"
 	"music.hpp"
 	"textures.hpp"
@@ -704,11 +708,14 @@
 
 1309675871 c:\_git_\star.p.g\src\version.h
 
-1310047974 source:c:\_git_\star.p.g\src\menu.cpp
+1310742566 source:c:\_git_\star.p.g\src\menu.cpp
 	<gl/gl.h>
 	"menu.hpp"
+	"graphics.hpp"
+	"savegame.hpp"
 	"game.hpp"
 	"config.hpp"
+	"log.hpp"
 	"sounds.hpp"
 	"music.hpp"
 	"textures.hpp"
@@ -738,12 +745,13 @@
 1310047950 source:c:\_git_\star.p.g\src\sounds.cpp
 	"sounds.hpp"
 
-1310047950 source:c:\_git_\star.p.g\src\textures.cpp
+1310742672 source:c:\_git_\star.p.g\src\textures.cpp
 	<gl/gl.h>
 	<SDL/SDL.h>
 	<SDL/SDL_image.h>
 	"textures.hpp"
 	"config.hpp"
+	"log.hpp"
 
 1310047949 source:c:\_git_\star.p.g\src\timer.cpp
 	"SDL/SDL.h"
@@ -751,18 +759,18 @@
 
 1309782812 c:\_git_\star.p.g\src\io.hpp
 
-1310047950 source:c:\_git_\star.p.g\src\io.cpp
+1310048289 source:c:\_git_\star.p.g\src\io.cpp
 	<SDL/SDL.h>
 	"game.hpp"
 	"config.hpp"
 	"io.hpp"
 	"graphics.hpp"
 
-1309782914 c:\_git_\star.p.g\src\config.hpp
+1310741105 c:\_git_\star.p.g\src\config.hpp
 
 1309768119 c:\_git_\star.p.g\src\font.hpp
 
-1309768119 c:\_git_\star.p.g\src\graphics.hpp
+1310277195 c:\_git_\star.p.g\src\graphics.hpp
 
 1309789758 c:\_git_\star.p.g\src\game.hpp
 	<SDL/SDL.h>
@@ -785,11 +793,18 @@
 
 1309767843 c:\_git_\star.p.g\src\main.hpp
 
-1309767917 c:\_git_\star.p.g\src\menu.hpp
+1310279144 c:\_git_\star.p.g\src\menu.hpp
 
 1309767918 c:\_git_\star.p.g\src\savegame.hpp
 
 1309767867 c:\_git_\star.p.g\src\timer.hpp
 
 1309768119 c:\_git_\star.p.g\src\network.hpp
+
+1310742014 source:c:\_git_\star.p.g\src\log.cpp
+	<fstream>
+	"log.hpp"
+
+1310742014 c:\_git_\star.p.g\src\log.hpp
+	<string>
 

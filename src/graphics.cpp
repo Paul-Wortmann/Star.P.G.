@@ -19,18 +19,36 @@
  * @license GPL
  */
 
-
-
+#include <GL/gl.h>
 #include "graphics.hpp"
+#include "config.hpp"
+
+extern config_data_type config_data;
 
 int   gl_to_res(float gl_coord, int max_res)
 {
    return((gl_coord+1)*(max_res / 2));
 }
 
-
-
 float res_to_gl(int  res_coord, int max_res)
 {
    return(((res_coord / 2) / (max_res / 2)) -1);
+}
+
+int init_gl(void)
+{
+  glViewport(0, 0,config_data.Display_X_Resolution,config_data.Display_Y_Resolution);
+  glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+  glClearDepth(1.0);
+  glDepthFunc(GL_LESS);
+  glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+  glEnable(GL_BLEND);
+  glEnable(GL_DEPTH_TEST);
+  glShadeModel(GL_SMOOTH);
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
+  glEnable(GL_TEXTURE_2D);
+  return(0);
 }

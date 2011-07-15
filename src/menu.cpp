@@ -19,25 +19,28 @@
  * @license GPL
  */
 
-
 #include <gl/gl.h>
 #include "menu.hpp"
+#include "graphics.hpp"
+#include "savegame.hpp"
 #include "game.hpp"
 #include "config.hpp"
+#include "log.hpp"
 #include "sounds.hpp"
 #include "music.hpp"
 #include "textures.hpp"
 #include "levels.hpp"
 #include "font.hpp"
 
-extern config_data_type config_data;
-extern sound_type sound[MAX_SOUNDS];
-extern music_type music[MAX_MUSIC];
-extern texture_type texture[MAX_TEXTURES];
-extern game_type game;
-       menu_type menu;
+extern log_file_class    main_log;
+extern config_data_type  config_data;
+extern sound_type        sound[MAX_SOUNDS];
+extern music_type        music[MAX_MUSIC];
+extern texture_type      texture[MAX_TEXTURES];
+extern game_type         game;
+       menu_type         menu;
 
-int process_menu(void)
+int process_menu_background(void)
 {
 // -------------------------   background 0  -----------------------------------
    if (menu.background_scroll[0].x_dir == 0)
@@ -83,6 +86,745 @@ int process_menu(void)
       menu.background_scroll[1].y_pos += menu.background_scroll[1].scroll_rate;
       if (menu.background_scroll[1].y_pos > 0.75f) menu.background_scroll[1].y_dir = 0;
    }
+};
+
+   //---------------------------------------------------------------------------------------
+int process_menu(void)
+{
+    process_menu_background();
+        game.io.keyboard_delay_count++;
+        if (game.io.keyboard_delay_count > game.io.keyboard_delay) game.io.keyboard_delay_count = game.io.keyboard_delay;
+        if ((game.io.escape) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
+              {
+                 game.io.keyboard_delay_count = 0;
+                 play_sound(1);
+                 switch (menu.level)
+                 {
+                    case 0://main menu
+                       game.status_quit_active = true;
+                       main_log.File_Write("User terminating game - used escape key!");
+                    break;
+                    case 1://game menu
+                       menu.possition = 0;
+                       menu.level = 0;
+                       menu.possition_max = 4;
+                       main_log.File_Write("Entering 'main' menu.");
+                    break;
+                    case 2: // options menu
+                       menu.possition = 3;
+                       menu.level = 0;
+                       menu.possition_max = 4;
+                       main_log.File_Write("Entering 'main' menu.");
+                    break;
+                    case 3: // customize starship menu
+                       menu.possition = 2;
+                       menu.level = 1;
+                       menu.possition_max = 6;
+                       main_log.File_Write("Entering 'new game' menu.");
+                    break;
+                    case 4: // star map menu
+                       menu.possition = 0;
+                       menu.level = 1;
+                       menu.possition_max = 6;
+                       main_log.File_Write("Entering 'new game' menu.");
+                    break;
+                    case 5: // save game menu
+                       menu.possition = 4;
+                       menu.level = 1;
+                       menu.possition_max = 6;
+                       main_log.File_Write("Entering 'new game' menu.");
+                    break;
+                    case 6: // load game menu
+                       menu.possition = 5;
+                       menu.level = 1;
+                       menu.possition_max = 6;
+                       main_log.File_Write("Entering 'new game' menu.");
+                    break;
+                    case 7: // Achievements menu
+                       menu.possition = 1;
+                       menu.level = 1;
+                       menu.possition_max = 6;
+                       main_log.File_Write("Entering 'new game' menu.");
+                    break;
+                    default:
+                       main_log.File_Write("Undefined menu choice, quiting.");
+                       game.status_quit_active = true;
+                 }
+              }
+        if ((game.io.up) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
+              {
+                 game.io.keyboard_delay_count = 0;
+                 if (menu.level == 0)//main menu
+                 {
+                 menu.possition--;
+                 if (menu.possition < 0) menu.possition = 0;
+                 else play_sound(0);
+                 }
+                 if (menu.level == 1)//new game menu
+                 {
+                 menu.possition--;
+                 if (menu.possition < 0) menu.possition = 0;
+                 else play_sound(0);
+                 }
+                 if (menu.level == 2)//options menu
+                 {
+                 menu.possition--;
+                 if (menu.possition < 0) menu.possition = 0;
+                 else play_sound(0);
+                 }
+                 if (menu.level == 3)//customize starship menu
+                 {
+                 menu.possition--;
+                 if (menu.possition < 0) menu.possition = 0;
+                 else play_sound(0);
+                 }
+                 if ((menu.level == 4) && (menu.possition == 3))//star map menu
+                 {
+                    menu.possition = menu.recall_position;
+                    play_sound(0);
+                 }
+                 if (menu.level == 5)//save game menu
+                 {
+                    menu.possition--;
+                    if (menu.possition < 0) menu.possition = 0;
+                    else play_sound(0);
+                 }
+                 if (menu.level == 6)//load game menu
+                 {
+                 menu.possition--;
+                 if (menu.possition < 0) menu.possition = 0;
+                 else play_sound(0);
+                 }
+                 if (menu.level == 7)//Achievements menu
+                 {
+                 menu.possition--;
+                 if (menu.possition < 0) menu.possition = 0;
+                 else play_sound(0);
+                 }
+              }
+        if ((game.io.down) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
+              {
+                 game.io.keyboard_delay_count = 0;
+                 if (menu.level == 0)//main menu
+                 {
+                 menu.possition++;
+                 if (menu.possition > menu.possition_max) menu.possition = menu.possition_max;
+                 else play_sound(0);
+                 }
+                 if (menu.level == 1)//new game menu
+                 {
+                 menu.possition++;
+                 if (menu.possition > menu.possition_max) menu.possition = menu.possition_max;
+                 else play_sound(0);
+                 }
+                 if (menu.level == 2)//options menu
+                 {
+                 menu.possition++;
+                 if (menu.possition > menu.possition_max) menu.possition = menu.possition_max;
+                 else play_sound(0);
+                 }
+                 if (menu.level == 3)//customize starship menu
+                 {
+                 menu.possition++;
+                 if (menu.possition > menu.possition_max) menu.possition = menu.possition_max;
+                 else play_sound(0);
+                 }
+                 if ((menu.level == 4) && (menu.possition != 3))//star map menu
+                 {
+                    menu.recall_position = menu.possition;
+                    menu.possition = 3;
+                    play_sound(0);
+                 }
+                 if (menu.level == 5)//save game menu
+                 {
+                 menu.possition++;
+                 if (menu.possition > menu.possition_max) menu.possition = menu.possition_max;
+                 else play_sound(0);
+                 }
+                 if (menu.level == 6)//load menu
+                 {
+                 menu.possition++;
+                 if (menu.possition > menu.possition_max) menu.possition = menu.possition_max;
+                 else play_sound(0);
+                 }
+                 if (menu.level == 7)//Achievements menu
+                 {
+                 menu.possition++;
+                 if (menu.possition > menu.possition_max) menu.possition = menu.possition_max;
+                 else play_sound(0);
+                 }
+              }
+        if (game.io.left)
+            {
+                 if ((menu.level == 2) and (menu.possition == 0))//decrease sound volume
+              {
+                 config_data.Audio_Sound_Volume--;
+                 if (config_data.Audio_Sound_Volume < 0) config_data.Audio_Sound_Volume = 0;
+                 Mix_Volume(-1,config_data.Audio_Sound_Volume);
+              }
+              if ((menu.level == 2) and (menu.possition == 1))//decrease music volume
+              {
+                 config_data.Audio_Music_Volume--;
+                 if (config_data.Audio_Music_Volume < 0) config_data.Audio_Music_Volume = 0;
+                 Mix_VolumeMusic(config_data.Audio_Music_Volume);
+              }
+            }
+        if ((game.io.left) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
+            {
+                game.io.keyboard_delay_count = 0;
+              if ((menu.level == 2) and (menu.possition == 2))//disable fullscreen
+              {
+                 if (config_data.Display_Fullscreen == true)
+                 {
+                    kill_textures();
+                    SDL_SetVideoMode(config_data.Display_X_Resolution,config_data.Display_Y_Resolution,config_data.Display_BPS,SDL_OPENGL);
+                    init_gl();
+                    load_textures();
+                    config_data.Display_Fullscreen   = false;
+                  }
+              }
+                 if ((menu.level == 2) && (menu.possition == 3) && (config_data.Display_resolution != 0))//resolution select <
+                 {
+                    config_data.Display_resolution--;
+                    if (config_data.Display_resolution < 0) config_data.Display_resolution = 0;
+                    if (config_data.Display_resolution == 0)
+                    {
+                       config_data.Display_X_Resolution = 640;
+                       config_data.Display_Y_Resolution = 480;
+                    }
+                    if (config_data.Display_resolution == 1)
+                    {
+                       config_data.Display_X_Resolution = 800;
+                       config_data.Display_Y_Resolution = 600;
+                    }
+                    if (config_data.Display_resolution == 2)
+                    {
+                       config_data.Display_X_Resolution = 1024;
+                       config_data.Display_Y_Resolution = 768;
+                    }
+                    if (config_data.Display_resolution == 3)
+                    {
+                       config_data.Display_X_Resolution = 1280;
+                       config_data.Display_Y_Resolution = 1024;
+                    }
+                    if (config_data.Display_resolution == 4)
+                    {
+                       config_data.Display_X_Resolution = 1366;
+                       config_data.Display_Y_Resolution = 768;
+                    }
+                    if (config_data.Display_resolution == 5)
+                    {
+                       config_data.Display_X_Resolution = 1440;
+                       config_data.Display_Y_Resolution = 900;
+                    }
+                    if (config_data.Display_resolution == 6)
+                    {
+                       config_data.Display_X_Resolution = 1680;
+                       config_data.Display_Y_Resolution = 1050;
+                    }
+                    if (config_data.Display_resolution == 7)
+                    {
+                       config_data.Display_X_Resolution = 1920;
+                       config_data.Display_Y_Resolution = 1080;
+                    }
+                    config_data.mouse_resolution_x   = config_data.Display_X_Resolution;
+                    config_data.mouse_resolution_y   = config_data.Display_Y_Resolution;
+                    kill_textures();
+                    if (config_data.Display_Fullscreen == true ) SDL_SetVideoMode(config_data.Display_X_Resolution,config_data.Display_Y_Resolution,config_data.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
+                    if (config_data.Display_Fullscreen == false) SDL_SetVideoMode(config_data.Display_X_Resolution,config_data.Display_Y_Resolution,config_data.Display_BPS,SDL_OPENGL);
+                    init_gl();
+                    load_textures();
+                 }
+                 if ((menu.level == 4) && (menu.possition < 3))//star map level select <
+                 {
+                    if ((menu.possition == 0) && (menu.level_no > 0))
+                    {
+                       menu.level_no -= 1;
+                       if (menu.level_no < 0) menu.level_no = 0;
+                       play_sound(0);
+                    }
+                    menu.possition--;
+                    if (menu.possition < 0) menu.possition = 0;
+                    else play_sound(0);
+                 }
+                 if (menu.level == 3)//customize starship
+                 {
+                    switch (menu.possition)
+                    {
+                       case 0://front weapon select
+                       game.player.front_weapon--;
+                       if (game.player.front_weapon < -1) game.player.front_weapon = -1;
+                       break;
+                       case 1://side weapon select
+                       game.player.side_weapon--;
+                       if (game.player.side_weapon < -1) game.player.side_weapon = -1;
+                       break;
+                       case 2://shield select
+                       game.player.front_shield--;
+                       if (game.player.front_shield < -1) game.player.front_shield = -1;
+                       break;
+                       case 3://thrusters select
+                       game.player.thrusters--;
+                       if (game.player.thrusters < -1) game.player.thrusters = -1;
+                       break;
+                    }
+                 play_sound(0);
+                 }
+              }
+        if (game.io.right)
+              {
+                 if ((menu.level == 2) and (menu.possition == 0))//increase sound volume
+                 {
+                    config_data.Audio_Sound_Volume++;
+                    if (config_data.Audio_Sound_Volume > 128) config_data.Audio_Sound_Volume = 128;
+                    Mix_Volume(-1,config_data.Audio_Sound_Volume);
+                 }
+                 if ((menu.level == 2) and (menu.possition == 1))//increase music volume
+                 {
+                    config_data.Audio_Music_Volume++;
+                    if (config_data.Audio_Music_Volume > 128) config_data.Audio_Music_Volume = 128;
+                    Mix_VolumeMusic(config_data.Audio_Music_Volume);
+                 }
+              }
+        if ((game.io.right) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
+              {
+                game.io.keyboard_delay_count = 0;
+                 if ((menu.level == 2) and (menu.possition == 2))//enable fullscreen
+                 {
+                    if (config_data.Display_Fullscreen == false)
+                    {
+                       kill_textures();
+                       SDL_SetVideoMode(config_data.Display_X_Resolution,config_data.Display_Y_Resolution,config_data.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
+                       init_gl();
+                       load_textures();
+                       config_data.Display_Fullscreen   = true;
+                    }
+                 }
+                 if ((menu.level == 2) && (menu.possition == 3) && (config_data.Display_resolution != 7))//resolution select <
+                 {
+                    config_data.Display_resolution++;
+                    if (config_data.Display_resolution > 7) config_data.Display_resolution = 7;
+                    if (config_data.Display_resolution == 0)
+                    {
+                       config_data.Display_X_Resolution = 640;
+                       config_data.Display_Y_Resolution = 480;
+                    }
+                    if (config_data.Display_resolution == 1)
+                    {
+                       config_data.Display_X_Resolution = 800;
+                       config_data.Display_Y_Resolution = 600;
+                    }
+                    if (config_data.Display_resolution == 2)
+                    {
+                       config_data.Display_X_Resolution = 1024;
+                       config_data.Display_Y_Resolution = 768;
+                    }
+                    if (config_data.Display_resolution == 3)
+                    {
+                       config_data.Display_X_Resolution = 1280;
+                       config_data.Display_Y_Resolution = 1024;
+                    }
+                    if (config_data.Display_resolution == 4)
+                    {
+                       config_data.Display_X_Resolution = 1366;
+                       config_data.Display_Y_Resolution = 768;
+                    }
+                    if (config_data.Display_resolution == 5)
+                    {
+                       config_data.Display_X_Resolution = 1440;
+                       config_data.Display_Y_Resolution = 900;
+                    }
+                    if (config_data.Display_resolution == 6)
+                    {
+                       config_data.Display_X_Resolution = 1680;
+                       config_data.Display_Y_Resolution = 1050;
+                    }
+                    if (config_data.Display_resolution == 7)
+                    {
+                       config_data.Display_X_Resolution = 1920;
+                       config_data.Display_Y_Resolution = 1080;
+                    }
+                    config_data.mouse_resolution_x   = config_data.Display_X_Resolution;
+                    config_data.mouse_resolution_y   = config_data.Display_Y_Resolution;
+                    kill_textures();
+                    if (config_data.Display_Fullscreen == true ) SDL_SetVideoMode(config_data.Display_X_Resolution,config_data.Display_Y_Resolution,config_data.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
+                    if (config_data.Display_Fullscreen == false) SDL_SetVideoMode(config_data.Display_X_Resolution,config_data.Display_Y_Resolution,config_data.Display_BPS,SDL_OPENGL);
+                    init_gl();
+                    load_textures();
+                 }
+                 if ((menu.level == 4) && (menu.possition < 3))//star map level select <
+                 {
+                    if ((menu.possition == 2) && (menu.level_no < 22))
+                    {
+                       menu.level_no += 1;
+                       if (menu.level_no > 22) menu.level_no = 22;
+                       play_sound(0);
+                    }
+                    menu.possition++;
+                    if (menu.possition > 2) menu.possition = 2;
+                    else play_sound(0);
+                 }
+                 if (menu.level == 3)//customize starship
+                 {
+                    switch (menu.possition)
+                    {
+                       case 0://front weapon select
+                       if ((game.projectile[game.player.front_weapon+1].active) && (game.player.front_weapon < 6)) game.player.front_weapon++;
+                       if (game.player.front_weapon > 5) game.player.front_weapon = 5;
+                       break;
+                       case 1://side weapon select
+                       if ((game.projectile[game.player.side_weapon+1].active) && (game.player.side_weapon < 6)) game.player.side_weapon++;
+                       if (game.player.side_weapon > 5) game.player.side_weapon = 5;
+                       break;
+                       case 2://shield select
+                       if ((game.shield[game.player.front_shield+1].active) && (game.player.front_shield < 6)) game.player.front_shield++;
+                       if (game.player.front_shield > 4) game.player.front_shield = 4;
+                       break;
+                       case 3://thrusters select
+                       if ((game.thruster[game.player.thrusters+1].active) && (game.player.thrusters < 6)) game.player.thrusters++;
+                       if (game.player.thrusters > 2) game.player.thrusters = 2;
+                       break;
+                    }
+                 play_sound(0);
+                 }
+              }
+        if ((game.io.select) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
+              {
+                 game.io.keyboard_delay_count = 0;
+                 play_sound(1);
+                 switch (menu.level)
+                 {
+                    case 0://main menu
+                       switch (menu.possition)
+                          {
+                             case 0://new game
+                                init_game();
+                                menu.possition = 0;
+                                menu.level = 1;
+                                menu.possition_max = 6;
+                                main_log.File_Write("Entering 'new game' menu.");
+                             break;
+                             case 1://resume game
+                                if (game.game_resume)
+                                {
+                                   game.game_active = true;
+                                   game.menu_active = false;
+                                   main_log.File_Write("Resuming game.");
+                                }
+                             break;
+                             case 2://load game
+                                menu.possition = 0;
+                                menu.level = 6;
+                                menu.possition_max = 5;
+                                main_log.File_Write("Entering 'load game' menu.");
+                             break;
+                             case 3://options
+                                menu.possition = 0;
+                                menu.level = 2;
+                                menu.possition_max = 4;
+                                main_log.File_Write("Entering 'options game' menu.");
+                            break;
+                             case 4://quit game
+                                main_log.File_Write("User terminating game - via menu system.");
+                                game.status_quit_active = true;
+                             break;
+                          }
+                       break;
+                    case 1://game menu
+                       switch (menu.possition)
+                          {
+                             case 0://starmap
+                                menu.possition = 0;
+                                menu.level = 4;
+                                menu.possition_max = 3;
+                                main_log.File_Write("Entering 'star map' menu.");
+                             break;
+                             case 1://achievements
+                                menu.possition = 0;
+                                menu.level = 7;
+                                menu.possition_max = 0;
+                                main_log.File_Write("Entering 'Achievements' menu.");
+                             break;
+                             case 2://customize starship
+                                menu.possition = 0;
+                                menu.level = 3;
+                                menu.possition_max = 4;
+                                main_log.File_Write("Entering 'customize starship' menu.");
+                             break;
+                             case 3://resume game
+                                if (game.game_resume)
+                                {
+                                   game.game_active = true;
+                                   game.menu_active = false;
+                                   main_log.File_Write("Resuming game.");
+                                }
+                             break;
+                             case 4://save game
+                                if (game.game_resume)
+                                {
+                                   menu.possition = 0;
+                                   menu.level = 5;
+                                   menu.possition_max = 5;
+                                   main_log.File_Write("Entering 'save game' menu.");
+                                }
+                             break;
+                             case 5://load game
+                                menu.possition = 0;
+                                menu.level = 6;
+                                menu.possition_max = 5;
+                                main_log.File_Write("Entering 'load game' menu.");
+                             break;
+                             case 6://main menu
+                                menu.possition = 0;
+                                menu.level = 0;
+                                menu.possition_max = 4;
+                                main_log.File_Write("Entering 'main' menu.");
+                             break;
+                          }
+                       break;
+                    case 2: // options menu
+                       switch (menu.possition)
+                          {
+                             case 0://sound volume
+                             break;
+                             case 1://music volume
+                             break;
+                             case 2://full screen
+                             break;
+                             case 3://resolution
+                             break;
+                             case 4://main menu
+                                menu.possition = 0;
+                                menu.level = 0;
+                                menu.possition_max = 4;
+                                main_log.File_Write("Entering 'main' menu.");
+                             break;
+                          }
+                       break;
+                    case 3: // customize starship menu
+                       switch (menu.possition)
+                          {
+                             case 0:
+                             break;
+                             case 1:
+                             break;
+                             case 2:
+                             break;
+                             case 3:
+                             break;
+                             case 4://game menu
+                                menu.possition = 2;
+                                menu.level = 1;
+                                menu.possition_max = 6;
+                                main_log.File_Write("Entering 'game' menu.");
+                             break;
+                          }
+                       break;
+                    case 4: // star map menu
+                       switch (menu.possition)
+                          {
+                             case 0://level x+0 select
+                                if (!game.level_locked[menu.level_no + 0])
+                                {
+                                   game.level = menu.level_no + 0;
+                                   init_game_level(game.level);
+                                   game.game_active = true;
+                                   game.menu_active = false;
+                                   main_log.File_Write("Starting level ");
+                                }
+                             break;
+                             case 1://level x+1 select
+                                if (!game.level_locked[menu.level_no + 1])
+                                {
+                                   game.level = menu.level_no + 1;
+                                   init_game_level(game.level);
+                                   game.game_active = true;
+                                   game.menu_active = false;
+                                   main_log.File_Write("Starting level ");
+                                }
+                             break;
+                             case 2://level x+2 select
+                                if (!game.level_locked[menu.level_no + 2])
+                                {
+                                   game.level = menu.level_no + 2;
+                                   init_game_level(game.level);
+                                   game.game_active = true;
+                                   game.menu_active = false;
+                                   main_log.File_Write("Starting level ");
+                                }
+                             break;
+                             case 3://game menu
+                                menu.possition = 0;
+                                menu.level = 1;
+                                menu.possition_max = 6;
+                                main_log.File_Write("Entering 'game' menu.");
+                             break;
+                          }
+                        break;
+                    case 5: // save game menu
+                       switch (menu.possition)
+                          {
+                             case 0://save to slot 0
+                                Save_Game(0);
+                                main_log.File_Write("Saving to slot 0");
+                                spawn_saved();
+                                menu.possition = 3;
+                                menu.level = 1;
+                                menu.possition_max = 5;
+                                game.game_active = true;
+                                game.menu_active = false;
+                                main_log.File_Write("Resuming game");
+                             break;
+                             case 1://save to slot 1
+                                Save_Game(1);
+                                main_log.File_Write("Saving to slot 1");
+                                spawn_saved();
+                                menu.possition = 3;
+                                menu.level = 1;
+                                menu.possition_max = 5;
+                                game.game_active = true;
+                                game.menu_active = false;
+                                main_log.File_Write("Resuming game");
+                             break;
+                             case 2://save to slot 2
+                                Save_Game(2);
+                                main_log.File_Write("Saving to slot 2");
+                                spawn_saved();
+                                menu.possition = 3;
+                                menu.level = 1;
+                                menu.possition_max = 5;
+                                game.game_active = true;
+                                game.menu_active = false;
+                                main_log.File_Write("Resuming game");
+                             break;
+                             case 3://save to slot 3
+                                Save_Game(3);
+                                main_log.File_Write("Saving to slot 3");
+                                spawn_saved();
+                                menu.possition = 3;
+                                menu.level = 1;
+                                menu.possition_max = 5;
+                                game.game_active = true;
+                                game.menu_active = false;
+                                main_log.File_Write("Resuming game");
+                             break;
+                             case 4://save to slot 4
+                                Save_Game(4);
+                                main_log.File_Write("Saving to slot 4");
+                                spawn_saved();
+                                menu.possition = 3;
+                                menu.level = 1;
+                                menu.possition_max = 5;
+                                game.game_active = true;
+                                game.menu_active = false;
+                                main_log.File_Write("Resuming game");
+                             break;
+                             case 5://game menu
+                                menu.possition = 4;
+                                menu.level = 1;
+                                menu.possition_max = 6;
+                                main_log.File_Write("Entering 'game' menu.");
+                            break;
+                          }
+                       break;
+                    case 6: // load game menu
+                       switch (menu.possition)
+                          {
+                             case 0://load from slot 0
+                                if (Load_Game(0) == 0)
+                                {
+                                   main_log.File_Write("Loading from slot 0");
+                                   spawn_loaded();
+                                   menu.possition = 3;
+                                   menu.level = 1;
+                                   menu.possition_max = 5;
+                                   game.game_active = true;
+                                   game.menu_active = false;
+                                   main_log.File_Write("Resuming game");
+                                }
+                                else main_log.File_Write("Error loadng from slot 0");
+                             break;
+                             case 1://load from slot 1
+                                if (Load_Game(1) == 0)
+                                {
+                                   main_log.File_Write("Loading from slot 1");
+                                   spawn_loaded();
+                                   menu.possition = 3;
+                                   menu.level = 1;
+                                   menu.possition_max = 5;
+                                   game.game_active = true;
+                                   game.menu_active = false;
+                                   main_log.File_Write("Resuming game");
+                                }
+                                else main_log.File_Write("Error loadng from slot 1");
+                             break;
+                             case 2://load from slot 2
+                                if (Load_Game(2) == 0)
+                                {
+                                   main_log.File_Write("Loading from slot 2");
+                                   spawn_loaded();
+                                   menu.possition = 3;
+                                   menu.level = 1;
+                                   menu.possition_max = 5;
+                                   game.game_active = true;
+                                   game.menu_active = false;
+                                   main_log.File_Write("Resuming game");
+                                }
+                                else main_log.File_Write("Error loadng from slot 2");
+                             break;
+                             case 3://load from slot 3
+                                if (Load_Game(3) == 0)
+                                {
+                                   main_log.File_Write("Loading from slot 3");
+                                   spawn_loaded();
+                                   menu.possition = 3;
+                                   menu.level = 1;
+                                   menu.possition_max = 5;
+                                   game.game_active = true;
+                                   game.menu_active = false;
+                                   main_log.File_Write("Resuming game");
+                                }
+                                else main_log.File_Write("Error loadng from slot 3");
+                             break;
+                             case 4://load from slot 4
+                                if (Load_Game(4) == 0)
+                                {
+                                   main_log.File_Write("Loading from slot 4");
+                                   spawn_loaded();
+                                   menu.possition = 3;
+                                   menu.level = 1;
+                                   menu.possition_max = 5;
+                                   game.game_active = true;
+                                   game.menu_active = false;
+                                   main_log.File_Write("Resuming game");
+                                }
+                                else main_log.File_Write("Error loadng from slot 4");
+                             break;
+                             case 5://game menu
+                                menu.possition = 5;
+                                menu.level = 1;
+                                menu.possition_max = 6;
+                                main_log.File_Write("Entering 'game' menu.");
+                             break;
+                             default:
+                             break;
+
+                          }
+                    case 7: // Achievements menu
+                       switch (menu.possition)
+                          {
+                             case 0://game menu
+                                menu.possition = 1;
+                                menu.level = 1;
+                                menu.possition_max = 6;
+                                main_log.File_Write("Entering 'game' menu.");
+                             break;
+                          }
+                       break;
+                    default:
+                       play_sound(1);
+                 }
+              }
    return(0);
 };
 
@@ -92,6 +834,8 @@ int init_menu   (void)
    menu.possition                         = 0;
    menu.level                             = 0;
    menu.possition_max                     = 4;
+   menu.recall_position                   = 0;
+   menu.recall_view                       = 0;
    menu.background_scroll[0].x_dir        = 0;
    menu.background_scroll[0].y_dir        = 0;
    menu.background_scroll[0].x_pos        = 0.0f;
@@ -105,6 +849,7 @@ int init_menu   (void)
    return(0);
 };
 
+   //---------------------------------------------------------------------------------------
 int diplay_menu (void)
 {
     glPushMatrix();
