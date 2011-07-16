@@ -612,28 +612,28 @@
 
 1309675795 source:c:\_git_\star.p.g\src\star.p.g._private.rc
 
-1310741089 source:c:\_git_\star.p.g\src\config.cpp
+1310819170 source:c:\_git_\star.p.g\src\config.cpp
 	<fstream>
 	"config.hpp"
 
 1309782914 c:\_git_\star.p.g\src\config.h
 
-1310047950 source:c:\_git_\star.p.g\src\font.cpp
+1310829905 source:c:\_git_\star.p.g\src\font.cpp
 	"SDL/SDL_ttf.h"
+	"RAGE/rage.hpp"
 	"freetype.h"
 	"gl/gl.h"
 	"font.hpp"
 	"graphics.hpp"
-	"config.hpp"
 
 1309768119 c:\_git_\star.p.g\src\font.h
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1310047950 source:c:\_git_\star.p.g\src\game.cpp
+1310829241 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
+	"RAGE/rage.hpp"
 	"game.hpp"
-	"config.hpp"
 	"sounds.hpp"
 	"music.hpp"
 	"textures.hpp"
@@ -658,18 +658,18 @@
 
 1309767983 c:\_git_\star.p.g\src\misc.h
 
-1310277218 source:c:\_git_\star.p.g\src\graphics.cpp
+1310829316 source:c:\_git_\star.p.g\src\graphics.cpp
 	<GL/gl.h>
+	"RAGE/rage.hpp"
 	"graphics.hpp"
-	"config.hpp"
 
-1310047950 source:c:\_git_\star.p.g\src\levels.cpp
+1310817463 source:c:\_git_\star.p.g\src\levels.cpp
 	"levels.hpp"
 	"game.hpp"
 
 1309768119 c:\_git_\star.p.g\src\levels.h
 
-1310742468 source:c:\_git_\star.p.g\src\main.cpp
+1310829528 source:c:\_git_\star.p.g\src\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -677,11 +677,10 @@
 	<SDL/SDL_image.h>
 	<SDL/SDL_opengl.h>
 	<gl/gl.h>
+	"RAGE/rage.hpp"
 	"graphics.hpp"
 	"misc.hpp"
 	"main.hpp"
-	"config.hpp"
-	"log.hpp"
 	"sounds.hpp"
 	"music.hpp"
 	"textures.hpp"
@@ -708,14 +707,13 @@
 
 1309675871 c:\_git_\star.p.g\src\version.h
 
-1310742566 source:c:\_git_\star.p.g\src\menu.cpp
+1310829048 source:c:\_git_\star.p.g\src\menu.cpp
 	<gl/gl.h>
 	"menu.hpp"
 	"graphics.hpp"
 	"savegame.hpp"
 	"game.hpp"
-	"config.hpp"
-	"log.hpp"
+	"RAGE/rage.hpp"
 	"sounds.hpp"
 	"music.hpp"
 	"textures.hpp"
@@ -745,13 +743,12 @@
 1310047950 source:c:\_git_\star.p.g\src\sounds.cpp
 	"sounds.hpp"
 
-1310742672 source:c:\_git_\star.p.g\src\textures.cpp
+1310828667 source:c:\_git_\star.p.g\src\textures.cpp
 	<gl/gl.h>
 	<SDL/SDL.h>
 	<SDL/SDL_image.h>
 	"textures.hpp"
-	"config.hpp"
-	"log.hpp"
+	"RAGE/rage.hpp"
 
 1310047949 source:c:\_git_\star.p.g\src\timer.cpp
 	"SDL/SDL.h"
@@ -759,14 +756,14 @@
 
 1309782812 c:\_git_\star.p.g\src\io.hpp
 
-1310048289 source:c:\_git_\star.p.g\src\io.cpp
+1310829629 source:c:\_git_\star.p.g\src\io.cpp
 	<SDL/SDL.h>
+	"RAGE/rage.hpp"
 	"game.hpp"
-	"config.hpp"
 	"io.hpp"
 	"graphics.hpp"
 
-1310741105 c:\_git_\star.p.g\src\config.hpp
+1310815097 c:\_git_\star.p.g\src\config.hpp
 
 1309768119 c:\_git_\star.p.g\src\font.hpp
 
@@ -807,4 +804,28 @@
 
 1310742014 c:\_git_\star.p.g\src\log.hpp
 	<string>
+
+1310819161 source:c:\_git_\star.p.g\src\rage\log.cpp
+	<fstream>
+	<stdio.h>
+	"log.hpp"
+
+1310809275 c:\_git_\star.p.g\src\rage\log.hpp
+	<string>
+
+1310817926 source:c:\_git_\star.p.g\src\rage\rage.cpp
+	"rage.hpp"
+
+1310828566 c:\_git_\star.p.g\src\rage\rage.hpp
+	"log.hpp"
+	"config.hpp"
+
+1310832662 c:\_git_\star.p.g\src\rage\config.hpp
+	<string>
+
+1310835865 source:c:\_git_\star.p.g\src\rage\config.cpp
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	"config.hpp"
 

@@ -21,18 +21,19 @@
 
 
 #include "SDL/SDL_ttf.h"
+#include "RAGE/rage.hpp"
 #include "freetype.h"
 #include "gl/gl.h"
 #include "font.hpp"
 #include "graphics.hpp"
-#include "config.hpp"
+
+extern game_class game;
 
 GLuint  base;
 GLfloat cnt1;
 GLfloat cnt2;
 HDC     hDC = NULL;
 freetype::font_data our_font;
-extern config_data_type config_data;
 const char App_Font[] = "data/fonts/font_001.ttf";
 
 void Build_Font(void)								// Build Our Bitmap Font
@@ -98,7 +99,7 @@ void font_print(int color_r, int color_g, int color_b, float x_pos, float y_pos,
 	glLoadIdentity();
 	glColor3ub(color_r,color_g,color_b);
 	glScalef(0.8,0.8,1);
-    freetype::print(our_font,gl_to_res(x_pos, config_data.Display_X_Resolution),gl_to_res(y_pos, config_data.Display_Y_Resolution),font_string,var_data);
+    freetype::print(our_font,gl_to_res(x_pos, game.config.Display_X_Resolution),gl_to_res(y_pos, game.config.Display_Y_Resolution),font_string,var_data);
 	glColor3ub(255,255,255);
 	glPopMatrix();
 }

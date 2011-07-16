@@ -53,12 +53,16 @@
 		</Linker>
 		<Unit filename="src\FreeType.cpp" />
 		<Unit filename="src\FreeType.h" />
+		<Unit filename="src\RAGE\config.cpp" />
+		<Unit filename="src\RAGE\config.hpp" />
+		<Unit filename="src\RAGE\log.cpp" />
+		<Unit filename="src\RAGE\log.hpp" />
+		<Unit filename="src\RAGE\rage.cpp" />
+		<Unit filename="src\RAGE\rage.hpp" />
 		<Unit filename="src\Star.P.G._private.h" />
 		<Unit filename="src\Star.P.G._private.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="src\config.cpp" />
-		<Unit filename="src\config.hpp" />
 		<Unit filename="src\font.cpp" />
 		<Unit filename="src\font.hpp" />
 		<Unit filename="src\game.cpp" />
@@ -69,8 +73,6 @@
 		<Unit filename="src\io.hpp" />
 		<Unit filename="src\levels.cpp" />
 		<Unit filename="src\levels.hpp" />
-		<Unit filename="src\log.cpp" />
-		<Unit filename="src\log.hpp" />
 		<Unit filename="src\main.cpp" />
 		<Unit filename="src\main.hpp" />
 		<Unit filename="src\menu.cpp" />

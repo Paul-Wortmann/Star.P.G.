@@ -23,14 +23,13 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 #include "textures.hpp"
-#include "config.hpp"
-#include "log.hpp"
+#include "RAGE/rage.hpp"
 
 #define GL_BGR  0x80E0
 #define GL_BGRA 0x80E1
 
+extern game_class        game;
 texture_type texture[MAX_TEXTURES];
-extern log_file_class    main_log;
 
 int init_textures(void)
 {
@@ -445,7 +444,7 @@ int load_texture (int texture_number, const char File_Name[])
          if (surface->format->Rmask == 0x000000ff) texture_format = GL_RGB;
          else texture_format = GL_BGR;
       }
-      else   main_log.File_Write("warning: the image is not truecolor..  this will probably break");
+      else   game.log.File_Write("warning: the image is not truecolor..  this will probably break");
       glGenTextures( 1, &texture[texture_number].texture);
       glBindTexture( GL_TEXTURE_2D, texture[texture_number].texture);
       glEnable(GL_BLEND);
@@ -456,7 +455,7 @@ int load_texture (int texture_number, const char File_Name[])
    }
    else
    {
-      main_log.File_Write("SDL could not load image.",File_Name);
+      game.log.File_Write("SDL could not load image.",File_Name);
       SDL_Quit();
       return 1;
    }

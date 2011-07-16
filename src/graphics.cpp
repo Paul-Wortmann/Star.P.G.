@@ -20,10 +20,10 @@
  */
 
 #include <GL/gl.h>
+#include "RAGE/rage.hpp"
 #include "graphics.hpp"
-#include "config.hpp"
 
-extern config_data_type config_data;
+extern game_class game;
 
 int   gl_to_res(float gl_coord, int max_res)
 {
@@ -37,7 +37,7 @@ float res_to_gl(int  res_coord, int max_res)
 
 int init_gl(void)
 {
-  glViewport(0, 0,config_data.Display_X_Resolution,config_data.Display_Y_Resolution);
+  glViewport(0, 0,game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
   glClearDepth(1.0);
   glDepthFunc(GL_LESS);
