@@ -32,7 +32,6 @@
 #include "load_resources.hpp"
 #include "misc.hpp"
 #include "main.hpp"
-#include "textures.hpp"
 #include "menu.hpp"
 #include "game.hpp"
 #include "levels.hpp"
@@ -43,7 +42,7 @@
 
 extern sound_type        sound;
 extern music_type        music;
-extern texture_type      texture[MAX_TEXTURES];
+extern texture_type      texture;
 extern menu_type         menu;
 extern game_type         game_o;
 extern game_class        game;
@@ -114,9 +113,6 @@ int main(int argc, char *argv[])
   Init_Font();
   game.log.File_Write("Loading resources...");
   load_resources();
-  game.log.File_Write("Loading textures...");
-  init_textures();
-  load_textures();
   game.log.File_Write("Initializing menu system...");
   init_menu();
   game.log.File_Write("Initializing game system...");
@@ -433,8 +429,6 @@ int main(int argc, char *argv[])
   game.log.File_Write("---------------\n");
   game.log.File_Write("Saving config...");
   game.config.File_Write();
-  game.log.File_Write("Unloading textures...");
-  kill_textures();
   game.log.File_Write("Unloading fonts...");
   Kill_Font();
   game.log.File_Write("Shuting down audio system...");

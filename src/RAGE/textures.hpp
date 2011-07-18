@@ -23,16 +23,16 @@
 #define TEXTURES_H
 
 #include <gl/gl.h>
+#include <string>
 
-const int MAX_TEXTURES = 350;
-struct texture_type
+class texture_class
 {
-   GLuint texture;
+    private:
+    public:
+    GLuint texture_data;
+    texture_class();
+   ~texture_class();
+    void load(std::string file_name);
 };
-
-int init_textures(void);
-int load_texture (int texture_number, const char File_Name[]);
-int load_textures(void);
-int kill_textures(void);
 
 #endif //TEXTURES_H

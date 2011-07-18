@@ -25,14 +25,13 @@
 #include "game.hpp"
 #include "RAGE/rage.hpp"
 #include "load_resources.hpp"
-#include "textures.hpp"
 #include "levels.hpp"
 #include "font.hpp"
 
 extern game_class        game;
 extern sound_type        sound;
 extern music_type        music;
-extern texture_type      texture[MAX_TEXTURES];
+extern texture_type      texture;
 extern game_type         game_o;
        menu_type         menu;
 
@@ -272,7 +271,7 @@ int process_menu(void)
               {
                  if (game.config.Display_Fullscreen == true)
                  {
-                    kill_textures();
+                    //kill_textures();
                     SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL);
                     game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
                     load_textures();
@@ -325,7 +324,7 @@ int process_menu(void)
                     }
                     game.config.mouse_resolution_x   = game.config.Display_X_Resolution;
                     game.config.mouse_resolution_y   = game.config.Display_Y_Resolution;
-                    kill_textures();
+                    //kill_textures();
                     if (game.config.Display_Fullscreen == true ) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
                     if (game.config.Display_Fullscreen == false) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL);
                     game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
@@ -389,7 +388,7 @@ int process_menu(void)
                  {
                     if (game.config.Display_Fullscreen == false)
                     {
-                       kill_textures();
+                       //kill_textures();
                        SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
                        game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
                        load_textures();
@@ -442,7 +441,7 @@ int process_menu(void)
                     }
                     game.config.mouse_resolution_x   = game.config.Display_X_Resolution;
                     game.config.mouse_resolution_y   = game.config.Display_Y_Resolution;
-                    kill_textures();
+                    //kill_textures();
                     if (game.config.Display_Fullscreen == true ) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
                     if (game.config.Display_Fullscreen == false) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL);
                     game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
@@ -869,7 +868,7 @@ int diplay_menu (void)
 /*-----------------------------------------------------------------------------*/
    if (menu.level == 0) //main_menu
    {
-      glBindTexture( GL_TEXTURE_2D, texture[63].texture); //background 01
+      bind_texture(63); //background 01
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
@@ -878,7 +877,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[64].texture); //background 02
+      bind_texture(64); //background 02
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
@@ -887,7 +886,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[30].texture); //logo
+      bind_texture(30); //logo
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
@@ -896,8 +895,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
       glEnd();
 
-      if (menu.possition == 0) glBindTexture( GL_TEXTURE_2D, texture[36].texture); //new game highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[35].texture); //new game
+      if (menu.possition == 0) bind_texture(36); //new game highlighted
+      else                    bind_texture(35); //new game
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f, 0.4f, 0.0f );
@@ -906,8 +905,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f, 0.4f, 0.0f );
       glEnd();
 
-      if (menu.possition == 1) glBindTexture( GL_TEXTURE_2D, texture[50].texture); //resume game highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[49].texture); //resume game
+      if (menu.possition == 1) bind_texture(50); //resume game highlighted
+      else                    bind_texture(49); //resume game
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.4f, 0.15f, 0.0f );
@@ -916,8 +915,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f, 0.15f, 0.0f );
       glEnd();
 
-      if (menu.possition == 2) glBindTexture( GL_TEXTURE_2D, texture[29].texture); //load game highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[28].texture); //load game
+      if (menu.possition == 2) bind_texture(29); //load game highlighted
+      else                    bind_texture(28); //load game
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.1f, 0.0f );
@@ -926,8 +925,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f,-0.1f, 0.0f );
       glEnd();
 
-      if (menu.possition == 3) glBindTexture( GL_TEXTURE_2D, texture[44].texture); //options highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[43].texture); //options
+      if (menu.possition == 3) bind_texture(44); //options highlighted
+      else                    bind_texture(43); //options
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.35f, 0.0f );
@@ -936,8 +935,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f,-0.35f, 0.0f );
       glEnd();
 
-      if (menu.possition == 4) glBindTexture( GL_TEXTURE_2D, texture[46].texture); //quit highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[45].texture); //quit
+      if (menu.possition == 4) bind_texture(46); //quit highlighted
+      else                    bind_texture(45); //quit
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.85f, 0.0f );
@@ -950,7 +949,7 @@ int diplay_menu (void)
 
    if (menu.level == 1) //game_menu
    {
-      glBindTexture( GL_TEXTURE_2D, texture[63].texture); //background 01
+      bind_texture(63); //background 01
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
@@ -959,7 +958,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[64].texture); //background 02
+      bind_texture(64); //background 02
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
@@ -968,7 +967,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[27].texture); //logo - game menu
+      bind_texture(27); //logo - game menu
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
@@ -977,8 +976,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
       glEnd();
 
-      if (menu.possition == 0) glBindTexture( GL_TEXTURE_2D, texture[60].texture); //starmap highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[59].texture); //starmap
+      if (menu.possition == 0) bind_texture(60); //starmap highlighted
+      else                    bind_texture(59); //starmap
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f, 0.55f, 0.0f );
@@ -987,8 +986,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f, 0.55f, 0.0f );
       glEnd();
 
-      if (menu.possition == 1) glBindTexture( GL_TEXTURE_2D, texture[299].texture); //achievements highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[298].texture); //achievements
+      if (menu.possition == 1) bind_texture(299); //achievements highlighted
+      else                    bind_texture(298); //achievements
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f, 0.3f, 0.0f );
@@ -997,8 +996,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f, 0.3f, 0.0f );
       glEnd();
 
-      if (menu.possition == 2) glBindTexture( GL_TEXTURE_2D, texture[21].texture); //customize starship highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[20].texture); //customize starship
+      if (menu.possition == 2) bind_texture(21); //customize starship highlighted
+      else                    bind_texture(20); //customize starship
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.4f, 0.05f, 0.0f );
@@ -1007,8 +1006,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f, 0.05f, 0.0f );
       glEnd();
 
-      if (menu.possition == 3) glBindTexture( GL_TEXTURE_2D, texture[50].texture); //resume game highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[49].texture); //resume game
+      if (menu.possition == 3) bind_texture(50); //resume game highlighted
+      else                    bind_texture(49); //resume game
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.2f, 0.0f );
@@ -1017,8 +1016,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f,-0.2f, 0.0f );
       glEnd();
 
-      if (menu.possition == 4) glBindTexture( GL_TEXTURE_2D, texture[52].texture); //save game highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[51].texture); //save game
+      if (menu.possition == 4) bind_texture(52); //save game highlighted
+      else                    bind_texture(51); //save game
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.45f, 0.0f );
@@ -1027,8 +1026,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f,-0.45f, 0.0f );
       glEnd();
 
-      if (menu.possition == 5) glBindTexture( GL_TEXTURE_2D, texture[29].texture); //load game highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[28].texture); //load game
+      if (menu.possition == 5) bind_texture(29); //load game highlighted
+      else                    bind_texture(28); //load game
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.7f, 0.0f );
@@ -1037,8 +1036,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f,-0.7f, 0.0f );
       glEnd();
 
-      if (menu.possition == 6) glBindTexture( GL_TEXTURE_2D, texture[32].texture); //main menu highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[31].texture); //main menu
+      if (menu.possition == 6) bind_texture(32); //main menu highlighted
+      else                    bind_texture(31); //main menu
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.95f, 0.0f );
@@ -1051,7 +1050,7 @@ int diplay_menu (void)
 
    if (menu.level == 2) //options_menu
    {
-      glBindTexture( GL_TEXTURE_2D, texture[63].texture); //background 01
+      bind_texture(63); //background 01
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
@@ -1060,7 +1059,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[64].texture); //background 02
+      bind_texture(64); //background 02
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
@@ -1069,7 +1068,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[44].texture); //logo
+      bind_texture(44); //logo
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
@@ -1078,8 +1077,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
       glEnd();
 
-      if (menu.possition == 0) glBindTexture( GL_TEXTURE_2D, texture[58].texture); //Sound Volume highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[57].texture); //Sound Volume
+      if (menu.possition == 0) bind_texture(58); //Sound Volume highlighted
+      else                    bind_texture(57); //Sound Volume
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.8f, 0.55f, 0.0f );
@@ -1088,8 +1087,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.0f, 0.55f, 0.0f );
       glEnd();
 
-      if (menu.possition == 0) glBindTexture( GL_TEXTURE_2D, texture[17].texture); //Sound Volume bar highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[16].texture); //Sound Volume bar
+      if (menu.possition == 0) bind_texture(17); //Sound Volume bar highlighted
+      else                    bind_texture(16); //Sound Volume bar
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f((game.config.Audio_Sound_Volume / 160.0f), 0.55f, 0.0f );
@@ -1098,8 +1097,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.0f, 0.55f, 0.0f );
       glEnd();
 
-      if (menu.possition == 1) glBindTexture( GL_TEXTURE_2D, texture[34].texture); //Music Volume highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[33].texture); //Music Volume
+      if (menu.possition == 1) bind_texture(34); //Music Volume highlighted
+      else                    bind_texture(33); //Music Volume
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.8f, 0.30f, 0.0f );
@@ -1108,8 +1107,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.0f, 0.30f, 0.0f );
       glEnd();
 
-      if (menu.possition == 1) glBindTexture( GL_TEXTURE_2D, texture[17].texture); //Music Volume bar highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[16].texture); //Music Volume bar
+      if (menu.possition == 1) bind_texture(17); //Music Volume bar highlighted
+      else                    bind_texture(16); //Music Volume bar
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f((game.config.Audio_Music_Volume / 160.0f), 0.30f, 0.0f );
@@ -1118,8 +1117,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.0f, 0.30f, 0.0f );
       glEnd();
 
-      if (menu.possition == 2) glBindTexture( GL_TEXTURE_2D, texture[25].texture); //Fullscreen highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[24].texture); //Fullscreen
+      if (menu.possition == 2) bind_texture(25); //Fullscreen highlighted
+      else                    bind_texture(24); //Fullscreen
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.8f, 0.05f, 0.0f );
@@ -1128,8 +1127,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.0f, 0.05f, 0.0f );
       glEnd();
 
-      if ((menu.possition == 2) && (game.config.Display_Fullscreen == false)) glBindTexture( GL_TEXTURE_2D, texture[38].texture); //Fullscreen off highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[37].texture); //Fullscreen off
+      if ((menu.possition == 2) && (game.config.Display_Fullscreen == false)) bind_texture(38); //Fullscreen off highlighted
+      else                    bind_texture(37); //Fullscreen off
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f( 0.0f, 0.05f, 0.0f );
@@ -1138,8 +1137,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f, 0.05f, 0.0f );
       glEnd();
 
-      if ((menu.possition == 2) && (game.config.Display_Fullscreen == true)) glBindTexture( GL_TEXTURE_2D, texture[40].texture); //Fullscreen on highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[39].texture); //Fullscreen on
+      if ((menu.possition == 2) && (game.config.Display_Fullscreen == true)) bind_texture(40); //Fullscreen on highlighted
+      else                    bind_texture(39); //Fullscreen on
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f( 0.4f, 0.05f, 0.0f );
@@ -1148,8 +1147,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.8f, 0.05f, 0.0f );
       glEnd();
 
-      if (menu.possition == 3) glBindTexture( GL_TEXTURE_2D, texture[48].texture); //Resolution highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[47].texture); //Resolution
+      if (menu.possition == 3) bind_texture(48); //Resolution highlighted
+      else                    bind_texture(47); //Resolution
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.8f,-0.20f, 0.0f );
@@ -1158,22 +1157,22 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.0f,-0.20f, 0.0f );
       glEnd();
 
-      if ((menu.possition == 3) && (game.config.Display_resolution == 0)) glBindTexture( GL_TEXTURE_2D, texture[13].texture); //640x480 highlighted
-      if ((menu.possition != 3) && (game.config.Display_resolution == 0)) glBindTexture( GL_TEXTURE_2D, texture[12].texture); //640x480 Resolution
-      if ((menu.possition == 3) && (game.config.Display_resolution == 1)) glBindTexture( GL_TEXTURE_2D, texture[15].texture); //800x600 highlighted
-      if ((menu.possition != 3) && (game.config.Display_resolution == 1)) glBindTexture( GL_TEXTURE_2D, texture[14].texture); //800x600 Resolution
-      if ((menu.possition == 3) && (game.config.Display_resolution == 2)) glBindTexture( GL_TEXTURE_2D, texture[1].texture); //1024x768 highlighted
-      if ((menu.possition != 3) && (game.config.Display_resolution == 2)) glBindTexture( GL_TEXTURE_2D, texture[0].texture); //1024x768 Resolution
-      if ((menu.possition == 3) && (game.config.Display_resolution == 3)) glBindTexture( GL_TEXTURE_2D, texture[3].texture); //1280x1024 highlighted
-      if ((menu.possition != 3) && (game.config.Display_resolution == 3)) glBindTexture( GL_TEXTURE_2D, texture[2].texture); //1280x1024 Resolution
-      if ((menu.possition == 3) && (game.config.Display_resolution == 4)) glBindTexture( GL_TEXTURE_2D, texture[5].texture); //1366x768 highlighted
-      if ((menu.possition != 3) && (game.config.Display_resolution == 4)) glBindTexture( GL_TEXTURE_2D, texture[4].texture); //1366x768 Resolution
-      if ((menu.possition == 3) && (game.config.Display_resolution == 5)) glBindTexture( GL_TEXTURE_2D, texture[7].texture); //1440x900 highlighted
-      if ((menu.possition != 3) && (game.config.Display_resolution == 5)) glBindTexture( GL_TEXTURE_2D, texture[6].texture); //1440x900 Resolution
-      if ((menu.possition == 3) && (game.config.Display_resolution == 6)) glBindTexture( GL_TEXTURE_2D, texture[9].texture); //1680x1050 highlighted
-      if ((menu.possition != 3) && (game.config.Display_resolution == 6)) glBindTexture( GL_TEXTURE_2D, texture[8].texture); //1680x1050 Resolution
-      if ((menu.possition == 3) && (game.config.Display_resolution == 7)) glBindTexture( GL_TEXTURE_2D, texture[11].texture); //1920x1080 highlighted
-      if ((menu.possition != 3) && (game.config.Display_resolution == 7)) glBindTexture( GL_TEXTURE_2D, texture[10].texture); //1920x1080 Resolution
+      if ((menu.possition == 3) && (game.config.Display_resolution == 0)) bind_texture(13); //640x480 highlighted
+      if ((menu.possition != 3) && (game.config.Display_resolution == 0)) bind_texture(12); //640x480 Resolution
+      if ((menu.possition == 3) && (game.config.Display_resolution == 1)) bind_texture(15); //800x600 highlighted
+      if ((menu.possition != 3) && (game.config.Display_resolution == 1)) bind_texture(14); //800x600 Resolution
+      if ((menu.possition == 3) && (game.config.Display_resolution == 2)) bind_texture(1); //1024x768 highlighted
+      if ((menu.possition != 3) && (game.config.Display_resolution == 2)) bind_texture(0); //1024x768 Resolution
+      if ((menu.possition == 3) && (game.config.Display_resolution == 3)) bind_texture(3); //1280x1024 highlighted
+      if ((menu.possition != 3) && (game.config.Display_resolution == 3)) bind_texture(2); //1280x1024 Resolution
+      if ((menu.possition == 3) && (game.config.Display_resolution == 4)) bind_texture(5); //1366x768 highlighted
+      if ((menu.possition != 3) && (game.config.Display_resolution == 4)) bind_texture(4); //1366x768 Resolution
+      if ((menu.possition == 3) && (game.config.Display_resolution == 5)) bind_texture(7); //1440x900 highlighted
+      if ((menu.possition != 3) && (game.config.Display_resolution == 5)) bind_texture(6); //1440x900 Resolution
+      if ((menu.possition == 3) && (game.config.Display_resolution == 6)) bind_texture(9); //1680x1050 highlighted
+      if ((menu.possition != 3) && (game.config.Display_resolution == 6)) bind_texture(8); //1680x1050 Resolution
+      if ((menu.possition == 3) && (game.config.Display_resolution == 7)) bind_texture(11); //1920x1080 highlighted
+      if ((menu.possition != 3) && (game.config.Display_resolution == 7)) bind_texture(10); //1920x1080 Resolution
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f( 0.0f,-0.20f, 0.0f );
@@ -1182,8 +1181,8 @@ int diplay_menu (void)
       glTexCoord2i( 1, 1 );glVertex3f( 0.8f,-0.20f, 0.0f );
       glEnd();
 
-      if (menu.possition == 4) glBindTexture( GL_TEXTURE_2D, texture[32].texture); //main menu highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[31].texture); //main menu
+      if (menu.possition == 4) bind_texture(32); //main menu highlighted
+      else                    bind_texture(31); //main menu
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.95f, 0.0f );
@@ -1199,7 +1198,7 @@ int diplay_menu (void)
       float ship_pos_x =  0.0f;
       float ship_pos_y = -0.5f;
 
-      glBindTexture( GL_TEXTURE_2D, texture[63].texture); //background 01
+      bind_texture(63); //background 01
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
@@ -1208,7 +1207,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[64].texture); //background 02
+      bind_texture(64); //background 02
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
@@ -1217,7 +1216,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[21].texture); //logo - customize startship menu
+      bind_texture(21); //logo - customize startship menu
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.05f );
@@ -1226,8 +1225,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.05f );
       glEnd();
 
-      if (menu.possition == 0) glBindTexture( GL_TEXTURE_2D, texture[23].texture); //front weapon highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[22].texture); //front weapon
+      if (menu.possition == 0) bind_texture(23); //front weapon highlighted
+      else                    bind_texture(22); //front weapon
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-1.0f, 0.65f, 0.05f );
@@ -1236,7 +1235,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f(-0.4f, 0.65f, 0.05f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[283].texture); //weapon none
+      bind_texture(283); //weapon none
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f(-0.2f, 0.65f, 0.05f );
@@ -1247,7 +1246,7 @@ int diplay_menu (void)
 
       if (game_o.player.front_weapon == -1)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //weapon none highlighted
+         bind_texture(282); //weapon none highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f(-0.2f, 0.65f, 0.04f );
@@ -1257,8 +1256,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.projectile[0].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.projectile[0].image].texture); //weapon 0
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.projectile[0].active) bind_texture(game_o.projectile[0].image); //weapon 0
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f(-0.05f, 0.65f, 0.05f );
@@ -1269,7 +1268,7 @@ int diplay_menu (void)
 
       if (game_o.player.front_weapon == 0)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //weapon 0 highlighted
+         bind_texture(282); //weapon 0 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f(-0.05f, 0.65f, 0.04f );
@@ -1279,8 +1278,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.projectile[1].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.projectile[1].image].texture); //weapon 1
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.projectile[1].active) bind_texture(game_o.projectile[1].image); //weapon 1
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.10f, 0.65f, 0.05f );
@@ -1291,7 +1290,7 @@ int diplay_menu (void)
 
       if (game_o.player.front_weapon == 1)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //weapon 1 highlighted
+         bind_texture(282); //weapon 1 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
    	     glTexCoord2i( 1, 0 );glVertex3f( 0.10f, 0.65f, 0.04f );
@@ -1301,8 +1300,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.projectile[2].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.projectile[2].image].texture); //weapon 2
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.projectile[2].active) bind_texture(game_o.projectile[2].image); //weapon 2
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.25f, 0.65f, 0.05f );
@@ -1313,7 +1312,7 @@ int diplay_menu (void)
 
       if (game_o.player.front_weapon == 2)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //weapon 2 highlighted
+         bind_texture(282); //weapon 2 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f( 0.25f, 0.65f, 0.04f );
@@ -1323,8 +1322,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.projectile[3].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.projectile[3].image].texture); //weapon 3
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.projectile[3].active) bind_texture(game_o.projectile[3].image); //weapon 3
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.40f, 0.65f, 0.05f );
@@ -1335,7 +1334,7 @@ int diplay_menu (void)
 
       if (game_o.player.front_weapon == 3)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //weapon 3 highlighted
+         bind_texture(282); //weapon 3 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f( 0.40f, 0.65f, 0.04f );
@@ -1345,8 +1344,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.projectile[4].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.projectile[4].image].texture); //weapon 4
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.projectile[4].active) bind_texture(game_o.projectile[4].image); //weapon 4
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.55f, 0.65f, 0.05f );
@@ -1357,7 +1356,7 @@ int diplay_menu (void)
 
       if (game_o.player.front_weapon == 4)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //weapon 4 highlighted
+         bind_texture(282); //weapon 4 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f( 0.55f, 0.65f, 0.04f );
@@ -1367,8 +1366,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.projectile[5].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.projectile[5].image].texture); //weapon 5
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.projectile[5].active) bind_texture(game_o.projectile[5].image); //weapon 5
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.70f, 0.65f, 0.05f );
@@ -1379,7 +1378,7 @@ int diplay_menu (void)
 
       if (game_o.player.front_weapon == 5)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //weapon 5 highlighted
+         bind_texture(282); //weapon 5 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f( 0.70f, 0.65f, 0.04f );
@@ -1389,8 +1388,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (menu.possition == 1) glBindTexture( GL_TEXTURE_2D, texture[56].texture); //side weapon highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[55].texture); //side weapon
+      if (menu.possition == 1) bind_texture(56); //side weapon highlighted
+      else                    bind_texture(55); //side weapon
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-1.0f, 0.50f, 0.05f );
@@ -1399,7 +1398,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f(-0.4f, 0.50f, 0.05f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[283].texture); //weapon none
+      bind_texture(283); //weapon none
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f(-0.2f, 0.50f, 0.05f );
@@ -1410,7 +1409,7 @@ int diplay_menu (void)
 
       if (game_o.player.side_weapon == -1)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //weapon none highlighted
+         bind_texture(282); //weapon none highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f(-0.2f, 0.50f, 0.04f );
@@ -1420,8 +1419,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.projectile[0].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.projectile[0].image].texture); //weapon 0
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.projectile[0].active) bind_texture(game_o.projectile[0].image); //weapon 0
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f(-0.05f, 0.50f, 0.05f );
@@ -1432,7 +1431,7 @@ int diplay_menu (void)
 
       if (game_o.player.side_weapon == 0)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //weapon 0 highlighted
+         bind_texture(282); //weapon 0 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f(-0.05f, 0.50f, 0.04f );
@@ -1442,8 +1441,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.projectile[1].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.projectile[1].image].texture); //weapon 1
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.projectile[1].active) bind_texture(game_o.projectile[1].image); //weapon 1
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.10f, 0.50f, 0.05f );
@@ -1454,7 +1453,7 @@ int diplay_menu (void)
 
       if (game_o.player.side_weapon == 1)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //weapon 1 highlighted
+         bind_texture(282); //weapon 1 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f( 0.10f, 0.50f, 0.04f );
@@ -1464,8 +1463,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.projectile[2].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.projectile[2].image].texture); //weapon 2
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.projectile[2].active) bind_texture(game_o.projectile[2].image); //weapon 2
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.25f, 0.50f, 0.05f );
@@ -1476,7 +1475,7 @@ int diplay_menu (void)
 
       if (game_o.player.side_weapon == 2)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //weapon 2 highlighted
+         bind_texture(282); //weapon 2 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f( 0.25f, 0.50f, 0.04f );
@@ -1486,8 +1485,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.projectile[3].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.projectile[3].image].texture); //weapon 3
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.projectile[3].active) bind_texture(game_o.projectile[3].image); //weapon 3
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.40f, 0.50f, 0.05f );
@@ -1498,7 +1497,7 @@ int diplay_menu (void)
 
       if (game_o.player.side_weapon == 3)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //weapon 3 highlighted
+         bind_texture(282); //weapon 3 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f( 0.40f, 0.50f, 0.04f );
@@ -1508,8 +1507,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.projectile[4].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.projectile[4].image].texture); //weapon 4
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.projectile[4].active) bind_texture(game_o.projectile[4].image); //weapon 4
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.55f, 0.50f, 0.05f );
@@ -1520,7 +1519,7 @@ int diplay_menu (void)
 
       if (game_o.player.side_weapon == 4)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //weapon 4 highlighted
+         bind_texture(282); //weapon 4 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f( 0.55f, 0.50f, 0.04f );
@@ -1530,8 +1529,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.projectile[5].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.projectile[5].image].texture); //weapon 5
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.projectile[5].active) bind_texture(game_o.projectile[5].image); //weapon 5
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.70f, 0.50f, 0.05f );
@@ -1542,7 +1541,7 @@ int diplay_menu (void)
 
       if (game_o.player.side_weapon == 5)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //weapon 5 highlighted
+         bind_texture(282); //weapon 5 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f( 0.70f, 0.50f, 0.04f );
@@ -1552,8 +1551,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (menu.possition == 2) glBindTexture( GL_TEXTURE_2D, texture[54].texture); //shield highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[53].texture); //shield
+      if (menu.possition == 2) bind_texture(54); //shield highlighted
+      else                    bind_texture(53); //shield
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-1.0f, 0.35f, 0.05f );
@@ -1562,7 +1561,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f(-0.4f, 0.35f, 0.05f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[283].texture); //shield none
+      bind_texture(283); //shield none
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f(-0.2f, 0.35f, 0.05f );
@@ -1573,7 +1572,7 @@ int diplay_menu (void)
 
       if (game_o.player.front_shield == -1)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //shield none highlighted
+         bind_texture(282); //shield none highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f(-0.2f, 0.35f, 0.04f );
@@ -1583,8 +1582,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.shield[0].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.shield[0].image].texture); //shield 0
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.shield[0].active) bind_texture(game_o.shield[0].image); //shield 0
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f(-0.05f, 0.35f, 0.05f );
@@ -1595,7 +1594,7 @@ int diplay_menu (void)
 
       if (game_o.player.front_shield == 0)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //shield 0 highlighted
+         bind_texture(282); //shield 0 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f(-0.05f, 0.35f, 0.04f );
@@ -1605,8 +1604,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.shield[1].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.shield[1].image].texture); //shield 1
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.shield[1].active) bind_texture(game_o.shield[1].image); //shield 1
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.10f, 0.35f, 0.05f );
@@ -1617,7 +1616,7 @@ int diplay_menu (void)
 
       if (game_o.player.front_shield == 1)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //shield 1 highlighted
+         bind_texture(282); //shield 1 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f( 0.10f, 0.35f, 0.04f );
@@ -1627,8 +1626,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.shield[2].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.shield[2].image].texture); //shield 2
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.shield[2].active) bind_texture(game_o.shield[2].image); //shield 2
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.25f, 0.35f, 0.05f );
@@ -1639,7 +1638,7 @@ int diplay_menu (void)
 
       if (game_o.player.front_shield == 2)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //shield 2 highlighted
+         bind_texture(282); //shield 2 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
          glTexCoord2i( 1, 0 );glVertex3f( 0.25f, 0.35f, 0.04f );
@@ -1649,8 +1648,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.shield[3].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.shield[3].image].texture); //shield 3
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.shield[3].active) bind_texture(game_o.shield[3].image); //shield 3
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.40f, 0.35f, 0.05f );
@@ -1661,7 +1660,7 @@ int diplay_menu (void)
 
       if (game_o.player.front_shield == 3)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //shield 3 highlighted
+         bind_texture(282); //shield 3 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f( 0.40f, 0.35f, 0.04f );
@@ -1671,8 +1670,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.shield[4].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.shield[4].image].texture); //shield 4
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.shield[4].active) bind_texture(game_o.shield[4].image); //shield 4
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.55f, 0.35f, 0.05f );
@@ -1683,7 +1682,7 @@ int diplay_menu (void)
 
       if (game_o.player.front_shield == 4)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //shield 4 highlighted
+         bind_texture(282); //shield 4 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f( 0.55f, 0.35f, 0.04f );
@@ -1693,8 +1692,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (menu.possition == 3) glBindTexture( GL_TEXTURE_2D, texture[62].texture); //thrusters highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[61].texture); //thrusters
+      if (menu.possition == 3) bind_texture(62); //thrusters highlighted
+      else                    bind_texture(61); //thrusters
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-1.0f, 0.20f, 0.05f );
@@ -1703,7 +1702,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f(-0.4f, 0.20f, 0.05f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[283].texture); //thrusters none
+      bind_texture(283); //thrusters none
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f(-0.2f, 0.20f, 0.05f );
@@ -1714,7 +1713,7 @@ int diplay_menu (void)
 
       if (game_o.player.thrusters == -1)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //thrusters none highlighted
+         bind_texture(282); //thrusters none highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 1, 0 );glVertex3f(-0.2f, 0.20f, 0.04f );
@@ -1724,8 +1723,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.thruster[0].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.thruster[0].image].texture); //thrusters 0
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.thruster[0].active) bind_texture(game_o.thruster[0].image); //thrusters 0
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f(-0.05f, 0.20f, 0.05f );
@@ -1736,7 +1735,7 @@ int diplay_menu (void)
 
       if (game_o.player.thrusters == 0)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //thrusters 0 highlighted
+         bind_texture(282); //thrusters 0 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 0, 0 );glVertex3f(-0.05f, 0.20f, 0.04f );
@@ -1746,8 +1745,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.thruster[1].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.thruster[1].image].texture); //thrusters 1
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.thruster[1].active) bind_texture(game_o.thruster[1].image); //thrusters 1
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.10f, 0.20f, 0.05f );
@@ -1758,7 +1757,7 @@ int diplay_menu (void)
 
       if (game_o.player.thrusters == 1)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //thrusters 1 highlighted
+         bind_texture(282); //thrusters 1 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 0, 0 );glVertex3f( 0.10f, 0.20f, 0.04f );
@@ -1768,8 +1767,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (game_o.thruster[2].active) glBindTexture( GL_TEXTURE_2D, texture[game_o.thruster[2].image].texture); //thrusters 2
-      else glBindTexture( GL_TEXTURE_2D, texture[284].texture);
+      if (game_o.thruster[2].active) bind_texture(game_o.thruster[2].image); //thrusters 2
+      else bind_texture(284);
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.251f, 0.20f, 0.05f );
@@ -1780,7 +1779,7 @@ int diplay_menu (void)
 
       if (game_o.player.thrusters == 2)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[282].texture); //thrusters 2 highlighted
+         bind_texture(282); //thrusters 2 highlighted
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 0, 0 );glVertex3f( 0.25f, 0.20f, 0.04f );
@@ -1792,7 +1791,7 @@ int diplay_menu (void)
 
       if (game_o.player.thrusters > -1)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[game_o.thruster[game_o.player.thrusters].image].texture); //player starship thrusters
+         bind_texture(game_o.thruster[game_o.player.thrusters].image); //player starship thrusters
          glLoadIdentity();
          glBegin( GL_QUADS );
          glTexCoord2i( 0, 0 );glVertex3f(ship_pos_x+(game_o.player.width)-0.379f,ship_pos_y-(game_o.player.hight), 0.035f );
@@ -1802,7 +1801,7 @@ int diplay_menu (void)
          glEnd();
       }
 
-      glBindTexture( GL_TEXTURE_2D, texture[game_o.player.image].texture); //player starship
+      bind_texture(game_o.player.image); //player starship
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 0 );glVertex3f(ship_pos_x+(game_o.player.width),ship_pos_y-(game_o.player.hight), 0.03f );
@@ -1813,7 +1812,7 @@ int diplay_menu (void)
 
       if (game_o.player.front_weapon > -1)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[game_o.player.front_weapon+211].texture); //player starship front weapon
+         bind_texture(game_o.player.front_weapon+211); //player starship front weapon
          glLoadIdentity();
          glBegin( GL_QUADS );
          glTexCoord2i( 0, 0 );glVertex3f(ship_pos_x+(game_o.player.width/6)+0.134f,ship_pos_y-(game_o.player.hight/4), 0.025f );
@@ -1825,7 +1824,7 @@ int diplay_menu (void)
 
       if (game_o.player.side_weapon > -1)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[game_o.player.side_weapon+211].texture); //player starship side weapons
+         bind_texture(game_o.player.side_weapon+211); //player starship side weapons
          glLoadIdentity();
          glBegin( GL_QUADS );
          glTexCoord2i( 0, 0 );glVertex3f(ship_pos_x+(game_o.player.width/3)+0.124f,ship_pos_y-(game_o.player.hight/3)+0.150f, 0.025f );
@@ -1843,7 +1842,7 @@ int diplay_menu (void)
 
       if (game_o.player.front_shield > -1)
       {
-         glBindTexture( GL_TEXTURE_2D, texture[game_o.shield[game_o.player.front_shield].image].texture); //player starship shield
+         bind_texture(game_o.shield[game_o.player.front_shield].image); //player starship shield
          glLoadIdentity();
          glBegin( GL_QUADS );
          glTexCoord2i( 1, 0 );glVertex3f(ship_pos_x+(game_o.player.width*1.5),ship_pos_y-(game_o.player.hight*1.5), 0.02f );
@@ -1853,8 +1852,8 @@ int diplay_menu (void)
          glEnd();
       }
 
-      if (menu.possition == 4) glBindTexture( GL_TEXTURE_2D, texture[27].texture); //game menu highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[26].texture); //game menu
+      if (menu.possition == 4) bind_texture(27); //game menu highlighted
+      else                    bind_texture(26); //game menu
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-1.0f, 0.05f );
@@ -1918,7 +1917,7 @@ int diplay_menu (void)
 
    if (menu.level == 4) //starmap_menu
    {
-      glBindTexture( GL_TEXTURE_2D, texture[63].texture); //background 01
+      bind_texture(63); //background 01
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
@@ -1927,7 +1926,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[64].texture); //background 02
+      bind_texture(64); //background 02
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
@@ -1936,7 +1935,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[60].texture); //logo - star map menu
+      bind_texture(60); //logo - star map menu
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
@@ -1945,8 +1944,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
       glEnd();
 
-      if (menu.possition == 0) glBindTexture( GL_TEXTURE_2D, texture[122+menu.level_no].texture); //level choice 0 highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[97+menu.level_no].texture); //level choice 0
+      if (menu.possition == 0) bind_texture(122+menu.level_no); //level choice 0 highlighted
+      else                    bind_texture(97+menu.level_no); //level choice 0
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.95f, 0.4f, 0.0f );
@@ -1955,8 +1954,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f(-0.35f, 0.4f, 0.0f );
       glEnd();
 
-      if (game_o.level_locked[menu.level_no]) glBindTexture( GL_TEXTURE_2D, texture[172].texture); //level choice 0 game screen preview
-      else glBindTexture( GL_TEXTURE_2D, texture[147+menu.level_no].texture); //level choice 0 game screen preview
+      if (game_o.level_locked[menu.level_no]) bind_texture(172); //level choice 0 game screen preview
+      else bind_texture(147+menu.level_no); //level choice 0 game screen preview
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f(-0.35f, 0.3f, 0.0f );
@@ -1965,8 +1964,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 0, 0 );glVertex3f(-0.95f, 0.3f, 0.0f );
       glEnd();
 
-      if (menu.possition == 1) glBindTexture( GL_TEXTURE_2D, texture[123+menu.level_no].texture); //level choice 1 highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[98+menu.level_no].texture); //level choice 1
+      if (menu.possition == 1) bind_texture(123+menu.level_no); //level choice 1 highlighted
+      else                    bind_texture(98+menu.level_no); //level choice 1
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.3f, 0.4f, 0.0f );
@@ -1975,8 +1974,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.3f, 0.4f, 0.0f );
       glEnd();
 
-      if (game_o.level_locked[menu.level_no+1]) glBindTexture( GL_TEXTURE_2D, texture[172].texture); //level choice 1 game screen preview
-      else glBindTexture( GL_TEXTURE_2D, texture[148+menu.level_no].texture); //level choice 1 game screen preview
+      if (game_o.level_locked[menu.level_no+1]) bind_texture(172); //level choice 1 game screen preview
+      else bind_texture(148+menu.level_no); //level choice 1 game screen preview
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.30f, 0.3f, 0.0f );
@@ -1985,8 +1984,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 0, 0 );glVertex3f(-0.30f, 0.3f, 0.0f );
       glEnd();
 
-      if (menu.possition == 2) glBindTexture( GL_TEXTURE_2D, texture[124+menu.level_no].texture); //level choice 2 highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[99+menu.level_no].texture); //level choice 2
+      if (menu.possition == 2) bind_texture(124+menu.level_no); //level choice 2 highlighted
+      else                    bind_texture(99+menu.level_no); //level choice 2
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f( 0.35f, 0.4f, 0.0f );
@@ -1995,8 +1994,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.95f, 0.4f, 0.0f );
       glEnd();
 
-      if (game_o.level_locked[menu.level_no+2]) glBindTexture( GL_TEXTURE_2D, texture[172].texture); //level choice 2 game screen preview
-      else glBindTexture( GL_TEXTURE_2D, texture[149+menu.level_no].texture); //level choice 2 game screen preview
+      if (game_o.level_locked[menu.level_no+2]) bind_texture(172); //level choice 2 game screen preview
+      else bind_texture(149+menu.level_no); //level choice 2 game screen preview
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.95f, 0.3f, 0.0f );
@@ -2005,8 +2004,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 0, 0 );glVertex3f( 0.35f, 0.3f, 0.0f );
       glEnd();
 
-      if (menu.possition == 3) glBindTexture( GL_TEXTURE_2D, texture[27].texture); //game menu highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[26].texture); //game menu
+      if (menu.possition == 3) bind_texture(27); //game menu highlighted
+      else                    bind_texture(26); //game menu
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.85f, 0.0f );
@@ -2019,7 +2018,7 @@ int diplay_menu (void)
 /*-----------------------------------------------------------------------------*/
    if (menu.level == 5) //Save Game
    {
-      glBindTexture( GL_TEXTURE_2D, texture[63].texture); //background 01
+      bind_texture(63); //background 01
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
@@ -2028,7 +2027,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[64].texture); //background 02
+      bind_texture(64); //background 02
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
@@ -2037,7 +2036,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[52].texture); //logo - save game menu
+      bind_texture(52); //logo - save game menu
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
@@ -2046,8 +2045,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
       glEnd();
 
-      if (menu.possition == 0) glBindTexture( GL_TEXTURE_2D, texture[179].texture); //game 0 highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[173].texture); //game 0
+      if (menu.possition == 0) bind_texture(179); //game 0 highlighted
+      else                    bind_texture(173); //game 0
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f, 0.4f, 0.0f );
@@ -2056,8 +2055,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f, 0.4f, 0.0f );
       glEnd();
 
-      if (menu.possition == 1) glBindTexture( GL_TEXTURE_2D, texture[180].texture); //game 1 highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[174].texture); //game 1
+      if (menu.possition == 1) bind_texture(180); //game 1 highlighted
+      else                    bind_texture(174); //game 1
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.4f, 0.15f, 0.0f );
@@ -2066,8 +2065,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f, 0.15f, 0.0f );
       glEnd();
 
-      if (menu.possition == 2) glBindTexture( GL_TEXTURE_2D, texture[181].texture); //game 2 highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[175].texture); //game 2
+      if (menu.possition == 2) bind_texture(181); //game 2 highlighted
+      else                    bind_texture(175); //game 2
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.1f, 0.0f );
@@ -2076,8 +2075,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f,-0.1f, 0.0f );
       glEnd();
 
-      if (menu.possition == 3) glBindTexture( GL_TEXTURE_2D, texture[182].texture); //game 3 highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[176].texture); //game 3
+      if (menu.possition == 3) bind_texture(182); //game 3 highlighted
+      else                    bind_texture(176); //game 3
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.35f, 0.0f );
@@ -2086,8 +2085,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f,-0.35f, 0.0f );
       glEnd();
 
-      if (menu.possition == 4) glBindTexture( GL_TEXTURE_2D, texture[183].texture); //game 4 highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[177].texture); //game 4
+      if (menu.possition == 4) bind_texture(183); //game 4 highlighted
+      else                    bind_texture(177); //game 4
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.6f, 0.0f );
@@ -2096,8 +2095,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f,-0.6f, 0.0f );
       glEnd();
 
-      if (menu.possition == 5) glBindTexture( GL_TEXTURE_2D, texture[27].texture); //game menu highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[26].texture); //game menu
+      if (menu.possition == 5) bind_texture(27); //game menu highlighted
+      else                    bind_texture(26); //game menu
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.85f, 0.0f );
@@ -2110,7 +2109,7 @@ int diplay_menu (void)
 /*-----------------------------------------------------------------------------*/
    if (menu.level == 6) //Load Game
    {
-      glBindTexture( GL_TEXTURE_2D, texture[63].texture); //background 01
+      bind_texture(63); //background 01
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
@@ -2119,7 +2118,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[64].texture); //background 02
+      bind_texture(64); //background 02
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
@@ -2128,7 +2127,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[29].texture); //logo - load game menu
+      bind_texture(29); //logo - load game menu
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
@@ -2137,8 +2136,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
       glEnd();
 
-      if (menu.possition == 0) glBindTexture( GL_TEXTURE_2D, texture[179].texture); //game 0 highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[173].texture); //game 0
+      if (menu.possition == 0) bind_texture(179); //game 0 highlighted
+      else                    bind_texture(173); //game 0
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f, 0.4f, 0.0f );
@@ -2147,8 +2146,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f, 0.4f, 0.0f );
       glEnd();
 
-      if (menu.possition == 1) glBindTexture( GL_TEXTURE_2D, texture[180].texture); //game 1 highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[174].texture); //game 1
+      if (menu.possition == 1) bind_texture(180); //game 1 highlighted
+      else                    bind_texture(174); //game 1
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.4f, 0.15f, 0.0f );
@@ -2157,8 +2156,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f, 0.15f, 0.0f );
       glEnd();
 
-      if (menu.possition == 2) glBindTexture( GL_TEXTURE_2D, texture[181].texture); //game 2 highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[175].texture); //game 2
+      if (menu.possition == 2) bind_texture(181); //game 2 highlighted
+      else                    bind_texture(175); //game 2
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.1f, 0.0f );
@@ -2167,8 +2166,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f,-0.1f, 0.0f );
       glEnd();
 
-      if (menu.possition == 3) glBindTexture( GL_TEXTURE_2D, texture[182].texture); //game 3 highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[176].texture); //game 3
+      if (menu.possition == 3) bind_texture(182); //game 3 highlighted
+      else                    bind_texture(176); //game 3
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.35f, 0.0f );
@@ -2177,8 +2176,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f,-0.35f, 0.0f );
       glEnd();
 
-      if (menu.possition == 4) glBindTexture( GL_TEXTURE_2D, texture[183].texture); //game 4 highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[177].texture); //game 4
+      if (menu.possition == 4) bind_texture(183); //game 4 highlighted
+      else                    bind_texture(177); //game 4
       glLoadIdentity();
       glBegin( GL_QUADS );
       glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.6f, 0.0f );
@@ -2187,8 +2186,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f,-0.6f, 0.0f );
       glEnd();
 
-      if (menu.possition == 5) glBindTexture( GL_TEXTURE_2D, texture[27].texture); //game menu highlighted
-      else                    glBindTexture( GL_TEXTURE_2D, texture[26].texture); //game menu
+      if (menu.possition == 5) bind_texture(27); //game menu highlighted
+      else                    bind_texture(26); //game menu
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.85f, 0.0f );
@@ -2200,7 +2199,7 @@ int diplay_menu (void)
 /*-----------------------------------------------------------------------------*/
    if (menu.level == 7) //Achievements
    {
-      glBindTexture( GL_TEXTURE_2D, texture[63].texture); //background 01
+      bind_texture(63); //background 01
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
@@ -2209,7 +2208,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[64].texture); //background 02
+      bind_texture(64); //background 02
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
@@ -2218,7 +2217,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[299].texture); //logo - Achievements
+      bind_texture(299); //logo - Achievements
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
@@ -2227,7 +2226,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[301].texture); //score
+      bind_texture(301); //score
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.95f, 0.55f, 0.0f );
@@ -2236,8 +2235,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f(-0.25f, 0.55f, 0.0f );
       glEnd();
 
-      if (game_o.achivement.score >= 1) glBindTexture( GL_TEXTURE_2D, texture[305].texture); //score - star 1 (bronze)
-      else                            glBindTexture( GL_TEXTURE_2D, texture[304].texture); //score - star 1 (grey)
+      if (game_o.achivement.score >= 1) bind_texture(305); //score - star 1 (bronze)
+      else                            bind_texture(304); //score - star 1 (grey)
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.25f, 0.55f, 0.0f );
@@ -2246,8 +2245,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f(-0.05f, 0.55f, 0.0f );
       glEnd();
 
-      if (game_o.achivement.score >= 2) glBindTexture( GL_TEXTURE_2D, texture[306].texture); //score - star 2 (silver)
-      else                            glBindTexture( GL_TEXTURE_2D, texture[304].texture); //score - star 2 (grey)
+      if (game_o.achivement.score >= 2) bind_texture(306); //score - star 2 (silver)
+      else                            bind_texture(304); //score - star 2 (grey)
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f( 0.00f, 0.55f, 0.0f );
@@ -2256,8 +2255,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.20f, 0.55f, 0.0f );
       glEnd();
 
-      if (game_o.achivement.score >= 3) glBindTexture( GL_TEXTURE_2D, texture[307].texture); //score - star 3 (gold)
-      else                            glBindTexture( GL_TEXTURE_2D, texture[304].texture); //score - star 3 (grey)
+      if (game_o.achivement.score >= 3) bind_texture(307); //score - star 3 (gold)
+      else                            bind_texture(304); //score - star 3 (grey)
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f( 0.25f, 0.55f, 0.0f );
@@ -2266,8 +2265,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.45f, 0.55f, 0.0f );
       glEnd();
 
-      if (game_o.achivement.score >= 4) glBindTexture( GL_TEXTURE_2D, texture[307].texture); //score - star 4 (gold)
-      else                            glBindTexture( GL_TEXTURE_2D, texture[304].texture); //score - star 4 (grey)
+      if (game_o.achivement.score >= 4) bind_texture(307); //score - star 4 (gold)
+      else                            bind_texture(304); //score - star 4 (grey)
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f( 0.50f, 0.55f, 0.0f );
@@ -2276,8 +2275,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.70f, 0.55f, 0.0f );
       glEnd();
 
-      if (game_o.achivement.score >= 5) glBindTexture( GL_TEXTURE_2D, texture[307].texture); //score - star 5 (gold)
-      else                            glBindTexture( GL_TEXTURE_2D, texture[304].texture); //score - star 5 (grey)
+      if (game_o.achivement.score >= 5) bind_texture(307); //score - star 5 (gold)
+      else                            bind_texture(304); //score - star 5 (grey)
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f( 0.75f, 0.55f, 0.0f );
@@ -2286,7 +2285,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.95f, 0.55f, 0.0f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[303].texture); //kills
+      bind_texture(303); //kills
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.95f, 0.10f, 0.0f );
@@ -2295,8 +2294,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f(-0.25f, 0.10f, 0.0f );
       glEnd();
 
-      if (game_o.achivement.kills >= 1) glBindTexture( GL_TEXTURE_2D, texture[305].texture); //score - star 1 (bronze)
-      else                            glBindTexture( GL_TEXTURE_2D, texture[304].texture); //score - star 1 (grey)
+      if (game_o.achivement.kills >= 1) bind_texture(305); //score - star 1 (bronze)
+      else                            bind_texture(304); //score - star 1 (grey)
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.25f, 0.10f, 0.0f );
@@ -2305,8 +2304,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f(-0.05f, 0.10f, 0.0f );
       glEnd();
 
-      if (game_o.achivement.kills >= 2) glBindTexture( GL_TEXTURE_2D, texture[306].texture); //score - star 2 (silver)
-      else                            glBindTexture( GL_TEXTURE_2D, texture[304].texture); //score - star 2 (grey)
+      if (game_o.achivement.kills >= 2) bind_texture(306); //score - star 2 (silver)
+      else                            bind_texture(304); //score - star 2 (grey)
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f( 0.00f, 0.10f, 0.0f );
@@ -2315,8 +2314,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.20f, 0.10f, 0.0f );
       glEnd();
 
-      if (game_o.achivement.kills >= 3) glBindTexture( GL_TEXTURE_2D, texture[307].texture); //score - star 3 (gold)
-      else                            glBindTexture( GL_TEXTURE_2D, texture[304].texture); //score - star 3 (grey)
+      if (game_o.achivement.kills >= 3) bind_texture(307); //score - star 3 (gold)
+      else                            bind_texture(304); //score - star 3 (grey)
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f( 0.25f, 0.10f, 0.0f );
@@ -2325,8 +2324,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.45f, 0.10f, 0.0f );
       glEnd();
 
-      if (game_o.achivement.kills >= 4) glBindTexture( GL_TEXTURE_2D, texture[307].texture); //score - star 4 (gold)
-      else                            glBindTexture( GL_TEXTURE_2D, texture[304].texture); //score - star 4 (grey)
+      if (game_o.achivement.kills >= 4) bind_texture(307); //score - star 4 (gold)
+      else                            bind_texture(304); //score - star 4 (grey)
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f( 0.50f, 0.10f, 0.0f );
@@ -2335,8 +2334,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.70f, 0.10f, 0.0f );
       glEnd();
 
-      if (game_o.achivement.kills >= 5) glBindTexture( GL_TEXTURE_2D, texture[307].texture); //score - star 5 (gold)
-      else                            glBindTexture( GL_TEXTURE_2D, texture[304].texture); //score - star 5 (grey)
+      if (game_o.achivement.kills >= 5) bind_texture(307); //score - star 5 (gold)
+      else                            bind_texture(304); //score - star 5 (grey)
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f( 0.75f, 0.10f, 0.0f );
@@ -2345,8 +2344,8 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.95f, 0.10f, 0.0f );
       glEnd();
 
-      if (menu.possition == 0) glBindTexture( GL_TEXTURE_2D, texture[27].texture); //game menu highlighted
-      else                     glBindTexture( GL_TEXTURE_2D, texture[26].texture); //game menu
+      if (menu.possition == 0) bind_texture(27); //game menu highlighted
+      else                     bind_texture(26); //game menu
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f,-0.95f, 0.0f );
@@ -2358,7 +2357,7 @@ int diplay_menu (void)
 /*-----------------------------------------------------------------------------*/
    if (menu.level == 8) //Player death screen
    {
-      glBindTexture( GL_TEXTURE_2D, texture[84].texture); //background 01
+      bind_texture(84); //background 01
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
@@ -2367,7 +2366,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[73].texture); //background 02
+      bind_texture(73); //background 02
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
@@ -2376,7 +2375,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[330].texture); //logo
+      bind_texture(330); //logo
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
@@ -2385,7 +2384,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[329].texture); //Game Over
+      bind_texture(329); //Game Over
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f, 0.55f, 0.0f );
@@ -2394,7 +2393,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f, 0.55f, 0.0f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[332].texture); //explosion
+      bind_texture(332); //explosion
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.6f,-0.70f, 0.0f );
@@ -2403,7 +2402,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.6f,-0.70f, 0.0f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[331].texture); //Press any key to return to the main menu
+      bind_texture(331); //Press any key to return to the main menu
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.8f,-0.95f, 0.0f );
@@ -2417,7 +2416,7 @@ int diplay_menu (void)
    {
       int level_t = game_o.level + 1;
       if (level_t > 24) level_t = 24;
-      glBindTexture( GL_TEXTURE_2D, texture[63].texture); //background 01
+      bind_texture(63); //background 01
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
@@ -2426,7 +2425,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[64].texture); //background 02
+      bind_texture(64); //background 02
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
@@ -2435,7 +2434,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[30].texture); //logo
+      bind_texture(30); //logo
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
@@ -2444,7 +2443,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[333].texture); //Congratulations
+      bind_texture(333); //Congratulations
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.5f, 0.55f, 0.0f );
@@ -2455,7 +2454,7 @@ int diplay_menu (void)
 
       if (game_o.level_locked[level_t])
       {
-         glBindTexture( GL_TEXTURE_2D, texture[335].texture); //level unlocked
+         bind_texture(335); //level unlocked
          glLoadIdentity();
          glBegin( GL_QUADS );
 	     glTexCoord2i( 0, 1 );glVertex3f(-0.5f, 0.35f, 0.0f );
@@ -2465,7 +2464,7 @@ int diplay_menu (void)
          glEnd();
       }
 
-      glBindTexture( GL_TEXTURE_2D, texture[147+level_t].texture); //next level game screen preview
+      bind_texture(147+level_t); //next level game screen preview
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.5f,-0.70f, 0.0f );
@@ -2474,7 +2473,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.5f,-0.70f, 0.0f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[334].texture); //Press any key to continue
+      bind_texture(334); //Press any key to continue
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.8f,-0.95f, 0.0f );
@@ -2494,7 +2493,7 @@ int diplay_menu (void)
    {
       int level_t = game_o.level + 1;
       if (level_t > 24) level_t = 24;
-      glBindTexture( GL_TEXTURE_2D, texture[63].texture); //background 01
+      bind_texture(63); //background 01
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
@@ -2503,7 +2502,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[64].texture); //background 02
+      bind_texture(64); //background 02
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
@@ -2512,7 +2511,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[30].texture); //logo
+      bind_texture(30); //logo
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
@@ -2521,7 +2520,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[334].texture); //Press any key to continue
+      bind_texture(334); //Press any key to continue
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-0.8f,-0.95f, 0.0f );
@@ -2530,7 +2529,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.8f,-0.95f, 0.0f );
       glEnd();
 
-      glBindTexture( GL_TEXTURE_2D, texture[339].texture); //credits
+      bind_texture(339); //credits
       glLoadIdentity();
       glBegin( GL_QUADS );
 	  glTexCoord2i( 0, 1 );glVertex3f(-1.0f,-1.0f, 0.0f );

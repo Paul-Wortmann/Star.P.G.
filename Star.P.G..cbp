@@ -69,6 +69,8 @@
 		<Unit filename="src\RAGE\rage.hpp" />
 		<Unit filename="src\RAGE\sound.cpp" />
 		<Unit filename="src\RAGE\sound.hpp" />
+		<Unit filename="src\RAGE\textures.cpp" />
+		<Unit filename="src\RAGE\textures.hpp" />
 		<Unit filename="src\RAGE\timer.cpp" />
 		<Unit filename="src\RAGE\timer.hpp" />
 		<Unit filename="src\Star.P.G._private.h" />
@@ -93,8 +95,6 @@
 		<Unit filename="src\misc.hpp" />
 		<Unit filename="src\savegame.cpp" />
 		<Unit filename="src\savegame.hpp" />
-		<Unit filename="src\textures.cpp" />
-		<Unit filename="src\textures.hpp" />
 		<Unit filename="src\version.h" />
 		<Extensions>
 			<code_completion />
