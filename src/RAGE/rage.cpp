@@ -26,7 +26,9 @@ game_class        game;
 
 game_class::game_class(void)
 {
-    FPS = 0;
+    FPS              = 0;
+    music_track      = -1;
+    music_next_track = true;
 
 };
 

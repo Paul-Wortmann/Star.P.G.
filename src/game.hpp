@@ -335,11 +335,6 @@ struct game_type
    int                  npc_spawn_rate;
    int                  npc_spawn_rate_count;
    int                  npc_projectile_spawn_rate;
-   int                  music_track;
-   int                  menu_music_track;
-   int                  pdie_music_track;
-   int                  nlvl_music_track;
-   int                  outro_music_track;
    wave_type            wave[MAX_WAVES];
    player_type          player;
    sideship_type        sideship[MAX_SIDESHIPS];

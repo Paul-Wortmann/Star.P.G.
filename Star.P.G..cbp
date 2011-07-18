@@ -59,6 +59,8 @@
 		<Unit filename="src\RAGE\graphics.hpp" />
 		<Unit filename="src\RAGE\log.cpp" />
 		<Unit filename="src\RAGE\log.hpp" />
+		<Unit filename="src\RAGE\music.cpp" />
+		<Unit filename="src\RAGE\music.hpp" />
 		<Unit filename="src\RAGE\network.cpp" />
 		<Unit filename="src\RAGE\network.hpp" />
 		<Unit filename="src\RAGE\physics.cpp" />
@@ -89,8 +91,6 @@
 		<Unit filename="src\menu.hpp" />
 		<Unit filename="src\misc.cpp" />
 		<Unit filename="src\misc.hpp" />
-		<Unit filename="src\music.cpp" />
-		<Unit filename="src\music.hpp" />
 		<Unit filename="src\savegame.cpp" />
 		<Unit filename="src\savegame.hpp" />
 		<Unit filename="src\textures.cpp" />

@@ -19,20 +19,28 @@
  * @license GPL
  */
 
-#ifndef MUSIC_H
-#define MUSIC_H
 
-#include <SDL/SDL_mixer.h>
+#include "music.hpp"
 
-const int MAX_MUSIC = 32;
-struct music_type
+music_class::music_class()
 {
-   Mix_Music *music;
+    music_data = NULL;
 };
 
-int init_music(void);
-int load_music(void);
-int kill_music(void);
-int play_music(int music_num);
+music_class::~music_class()
+{
+    Mix_HaltMusic();
+    Mix_FreeMusic(music_data);
+};
 
-#endif //MUSIC_H
+void music_class::play(void)
+{
+    Mix_PlayMusic(music_data,-1);
+};
+
+void music_class::load(std::string file_name)
+{
+    music_data = Mix_LoadMUS(file_name.c_str());
+};
+
+

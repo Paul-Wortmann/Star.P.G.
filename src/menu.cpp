@@ -25,14 +25,13 @@
 #include "game.hpp"
 #include "RAGE/rage.hpp"
 #include "load_resources.hpp"
-#include "music.hpp"
 #include "textures.hpp"
 #include "levels.hpp"
 #include "font.hpp"
 
 extern game_class        game;
 extern sound_type        sound;
-extern music_type        music[MAX_MUSIC];
+extern music_type        music;
 extern texture_type      texture[MAX_TEXTURES];
 extern game_type         game_o;
        menu_type         menu;
@@ -496,6 +495,7 @@ int process_menu(void)
                           {
                              case 0://new game
                                 init_game();
+                                game.music_next_track = true;
                                 menu.possition = 0;
                                 menu.level = 1;
                                 menu.possition_max = 6;
@@ -504,8 +504,9 @@ int process_menu(void)
                              case 1://resume game
                                 if (game_o.game_resume)
                                 {
-                                   game_o.game_active = true;
-                                   game_o.menu_active = false;
+                                   game.music_next_track = true;
+                                   game_o.game_active    = true;
+                                   game_o.menu_active    = false;
                                    game.log.File_Write("Resuming game_o.");
                                 }
                              break;
@@ -551,8 +552,9 @@ int process_menu(void)
                              case 3://resume game
                                 if (game_o.game_resume)
                                 {
-                                   game_o.game_active = true;
-                                   game_o.menu_active = false;
+                                   game.music_next_track = true;
+                                   game_o.game_active    = true;
+                                   game_o.menu_active    = false;
                                    game.log.File_Write("Resuming game_o.");
                                 }
                              break;
@@ -623,6 +625,7 @@ int process_menu(void)
                              case 0://level x+0 select
                                 if (!game_o.level_locked[menu.level_no + 0])
                                 {
+                                   game.music_next_track = true;
                                    game_o.level = menu.level_no + 0;
                                    init_game_level(game_o.level);
                                    game_o.game_active = true;
@@ -633,6 +636,7 @@ int process_menu(void)
                              case 1://level x+1 select
                                 if (!game_o.level_locked[menu.level_no + 1])
                                 {
+                                   game.music_next_track = true;
                                    game_o.level = menu.level_no + 1;
                                    init_game_level(game_o.level);
                                    game_o.game_active = true;
@@ -643,6 +647,7 @@ int process_menu(void)
                              case 2://level x+2 select
                                 if (!game_o.level_locked[menu.level_no + 2])
                                 {
+                                   game.music_next_track = true;
                                    game_o.level = menu.level_no + 2;
                                    init_game_level(game_o.level);
                                    game_o.game_active = true;
@@ -671,6 +676,7 @@ int process_menu(void)
                                 game_o.game_active = true;
                                 game_o.menu_active = false;
                                 game.log.File_Write("Resuming game");
+                                game.music_next_track = true;
                              break;
                              case 1://save to slot 1
                                 Save_Game(1);
@@ -682,6 +688,7 @@ int process_menu(void)
                                 game_o.game_active = true;
                                 game_o.menu_active = false;
                                 game.log.File_Write("Resuming game");
+                                game.music_next_track = true;
                              break;
                              case 2://save to slot 2
                                 Save_Game(2);
@@ -693,6 +700,7 @@ int process_menu(void)
                                 game_o.game_active = true;
                                 game_o.menu_active = false;
                                 game.log.File_Write("Resuming game");
+                                game.music_next_track = true;
                              break;
                              case 3://save to slot 3
                                 Save_Game(3);
@@ -704,6 +712,7 @@ int process_menu(void)
                                 game_o.game_active = true;
                                 game_o.menu_active = false;
                                 game.log.File_Write("Resuming game");
+                                game.music_next_track = true;
                              break;
                              case 4://save to slot 4
                                 Save_Game(4);
@@ -715,6 +724,7 @@ int process_menu(void)
                                 game_o.game_active = true;
                                 game_o.menu_active = false;
                                 game.log.File_Write("Resuming game");
+                                game.music_next_track = true;
                              break;
                              case 5://game menu
                                 menu.possition = 4;
@@ -738,6 +748,7 @@ int process_menu(void)
                                    game_o.game_active = true;
                                    game_o.menu_active = false;
                                    game.log.File_Write("Resuming game");
+                                   game.music_next_track = true;
                                 }
                                 else game.log.File_Write("Error loadng from slot 0");
                              break;
@@ -752,6 +763,7 @@ int process_menu(void)
                                    game_o.game_active = true;
                                    game_o.menu_active = false;
                                    game.log.File_Write("Resuming game");
+                                   game.music_next_track = true;
                                 }
                                 else game.log.File_Write("Error loadng from slot 1");
                              break;
@@ -766,6 +778,7 @@ int process_menu(void)
                                    game_o.game_active = true;
                                    game_o.menu_active = false;
                                    game.log.File_Write("Resuming game");
+                                   game.music_next_track = true;
                                 }
                                 else game.log.File_Write("Error loadng from slot 2");
                              break;
@@ -780,6 +793,7 @@ int process_menu(void)
                                    game_o.game_active = true;
                                    game_o.menu_active = false;
                                    game.log.File_Write("Resuming game");
+                                   game.music_next_track = true;
                                 }
                                 else game.log.File_Write("Error loadng from slot 3");
                              break;
@@ -794,6 +808,7 @@ int process_menu(void)
                                    game_o.game_active = true;
                                    game_o.menu_active = false;
                                    game.log.File_Write("Resuming game");
+                                   game.music_next_track = true;
                                 }
                                 else game.log.File_Write("Error loadng from slot 4");
                              break;

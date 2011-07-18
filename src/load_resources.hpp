@@ -25,6 +25,7 @@
 
 #include "RAGE/rage.hpp"
 #include "RAGE/sound.hpp"
+#include "RAGE/music.hpp"
 
 struct sound_type
 {
@@ -79,19 +80,51 @@ struct sound_type
     sound_class coin_00;
     sound_class wexp_00;
 };
+
+struct music_type
+{
+    music_class level_00;
+    music_class level_01;
+    music_class level_02;
+    music_class level_03;
+    music_class level_04;
+    music_class level_05;
+    music_class level_06;
+    music_class level_07;
+    music_class level_08;
+    music_class level_09;
+    music_class level_10;
+    music_class level_11;
+    music_class level_12;
+    music_class level_13;
+    music_class level_14;
+    music_class level_15;
+    music_class level_16;
+    music_class level_17;
+    music_class level_18;
+    music_class level_19;
+    music_class level_20;
+    music_class level_21;
+    music_class level_22;
+    music_class level_23;
+    music_class level_24;
+    music_class level_25;
+    music_class menu_00;
+    music_class level_nl;
+    music_class level_pd;
+    music_class outro_00;
+};
+
 /*
 struct texture_type
 {
 };
-/*
-/*
-struct music_type
-{
-};
 */
+
+
 bool load_resources(void);
 bool load_sounds(void);
-//bool load_music(void);
+bool load_music(void);
 //bool load_textures(void);
 
 #endif // LOAD_RESOURCES_H

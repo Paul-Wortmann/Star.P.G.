@@ -24,13 +24,12 @@
 #include "RAGE/rage.hpp"
 #include "load_resources.hpp"
 #include "game.hpp"
-#include "music.hpp"
 #include "textures.hpp"
 #include "misc.hpp"
 #include "font.hpp"
 
 extern sound_type       sound;
-extern music_type       music[MAX_MUSIC];
+extern music_type       music;
 extern texture_type     texture[MAX_TEXTURES];
 extern game_class       game;
        game_type        game_o;
@@ -62,11 +61,6 @@ int init_game(void)
    game_o.npc_spawn_rate                    = 256;
    game_o.npc_spawn_rate_count              = 0;
    game_o.paused.active                     = false;
-   game_o.music_track                       = 0;
-   game_o.menu_music_track                  = 26;
-   game_o.nlvl_music_track                  = 27;
-   game_o.pdie_music_track                  = 28;
-   game_o.outro_music_track                 = 29;
    game_o.score                             = 0;
    game_o.kills                             = 0;
    game_o.level_kills                       = 0;
@@ -3727,6 +3721,7 @@ int process_game(void)
    {
       game_o.game_active = false;
       game_o.nlvl_active = true;
+      game.music_next_track = true;
    }
    if  (random(game_o.powerup[1 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup
    if ((random(game_o.powerup[8 ].spawn_rate) <= 5)&& (!boss_level())) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb powerup
