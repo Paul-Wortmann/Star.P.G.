@@ -19,33 +19,16 @@
  * @license GPL
  */
 
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef GRAPHICS_H
+#define GRAPHICS_H
 
-struct config_data_type
+class graphics_class
 {
-    int   menu_delay;
-    int   menu_delay_count;
-    int   mouse_resolution_x;
-    int   mouse_resolution_y;
-    int   joystick_sensitivity;
-    bool  joystick_enabled;
-    int   joystick_no_buttons;
-    int   Display_resolution;
-    int   Display_X_Resolution;
-    int   Display_Y_Resolution;
-    int   Display_BPS;
-    bool  Display_Fullscreen;
-    int   Audio_Rate;
-    int   Audio_Channels;
-    int   Audio_Buffers;
-    int   Audio_Music_Volume;
-    int   Audio_Sound_Volume;
-
+    private:
+    public:
+        int   gl_to_res(float gl_coord, int max_res);
+        float res_to_gl(int  res_coord, int max_res);
+        int   init_gl(int x_res, int y_res);
 };
 
-bool Save_Config_File(const char *Config_File);
-bool Load_Config_File(const char *Config_File);
-bool Load_Default_Config(void);
-
-#endif //CONFIG_H
+#endif //GRAPHICS_H

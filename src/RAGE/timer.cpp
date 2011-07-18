@@ -19,15 +19,41 @@
  * @license GPL
  */
 
-#ifndef NETWORK_H
-#define NETWORK_H
 
-struct network
+#include "SDL/SDL.h"
+#include "timer.hpp"
+
+timer_class::timer_class()
 {
-   int  enabled;
-   int  port;
-   bool server;
-};
+	running = false;
+	startticks = 0;
+}
 
+timer_class::~timer_class()
+{
+}
 
-#endif //NETWORK_H
+int timer_class::start()
+{
+	if(running == false)
+	{
+		running = true;
+		startticks = SDL_GetTicks();
+	}
+	return 0;
+}
+int timer_class::stop()
+{
+	if(running == true)
+	{
+		running = false;
+	}
+	return 0;
+}
+
+int timer_class::getticks()
+{
+    if (running == true) return SDL_GetTicks() - startticks;
+    else return 0;
+}
+

@@ -22,11 +22,16 @@
 #ifndef PHYSICS_H
 #define PHYSICS_H
 
-bool  cube_collision       (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2);
-bool  quadrangle_collision (float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2);
-bool  circle_collision     (float a_x, float a_y, float a_r, float b_x, float b_y, float b_r);
-bool  shere_collision      (float x1, float y1, float z1, float r1, float x2, float y2, float z2, float r2);
-float distance_2D          (float x1, float y1, float x2, float y2);
-float distance_3D          (float x1, float y1, float z1, float x2, float y2, float z2);
+class physics_class
+{
+    private:
+    public:
+        bool  cube_collision       (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2);
+        bool  quadrangle_collision (float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2);
+        bool  circle_collision     (float a_x, float a_y, float a_r, float b_x, float b_y, float b_r);
+        bool  shere_collision      (float x1, float y1, float z1, float r1, float x2, float y2, float z2, float r2);
+        float distance_2D          (float x1, float y1, float x2, float y2);
+        float distance_3D          (float x1, float y1, float z1, float x2, float y2, float z2);
+};
 
 #endif //PHYSICS_H

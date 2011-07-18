@@ -1,36 +1,38 @@
 /**
  * Copyright (C) 2011 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
- * This file is part of R.A.G.E. (RoboPaul's Adaptable Game Engine)
+ * This file is part of "Outcast Island!"
  *
- * R.A.G.E. (RoboPaul's Adaptable Game Engine) is free software: you can redistribute it and/or modify
+ * "Outcast Island!" is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * R.A.G.E. (RoboPaul's Adaptable Game Engine) is distributed in the hope that it will be useful,
+ * "Outcast Island!" is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with R.A.G.E. (RoboPaul's Adaptable Game Engine) If not, see <http://www.gnu.org/licenses/>.
+ * along with "Outcast Island!" If not, see <http://www.gnu.org/licenses/>.
  *
  * @author Paul Wortmann
  * @license GPL
- * @date 2011-07-17
  */
+#ifndef SOUND_H
+#define SOUND_H
 
-#include "rage.hpp"
+#include <SDL/SDL_mixer.h>
+#include <string>
 
-game_class        game;
-
-game_class::game_class(void)
+class sound_class
 {
-    FPS = 0;
-
+    int        sound_channel;
+    Mix_Chunk *sound_data;
+    public:
+    sound_class();
+   ~sound_class();
+    void play(void);
+    void load(std::string file_name);
 };
 
-game_class::~game_class(void)
-{
-
-};
+#endif

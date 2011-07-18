@@ -19,20 +19,17 @@
  * @license GPL
  */
 
-#ifndef TIMER_H
-#define TIMER_H
+#ifndef NETWORK_H
+#define NETWORK_H
 
-class timer
+class network_class
 {
-public:
-	timer();
-	~timer();
-	int start();
-	int stop();
-	int getticks();
-private:
-	bool running;
-	int startticks;
+    private:
+    public:
+        int  enabled;
+        int  port;
+        bool server;
 };
 
-#endif //TIMER_H
+
+#endif //NETWORK_H

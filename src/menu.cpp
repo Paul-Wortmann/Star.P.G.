@@ -21,18 +21,17 @@
 
 #include <gl/gl.h>
 #include "menu.hpp"
-#include "graphics.hpp"
 #include "savegame.hpp"
 #include "game.hpp"
 #include "RAGE/rage.hpp"
-#include "sounds.hpp"
+#include "load_resources.hpp"
 #include "music.hpp"
 #include "textures.hpp"
 #include "levels.hpp"
 #include "font.hpp"
 
 extern game_class        game;
-extern sound_type        sound[MAX_SOUNDS];
+extern sound_type        sound;
 extern music_type        music[MAX_MUSIC];
 extern texture_type      texture[MAX_TEXTURES];
 extern game_type         game_o;
@@ -95,7 +94,7 @@ int process_menu(void)
         if ((game_o.io.escape) && (game_o.io.keyboard_delay_count >= game_o.io.keyboard_delay))
               {
                  game_o.io.keyboard_delay_count = 0;
-                 play_sound(1);
+                 sound.menu_select.play();
                  switch (menu.level)
                  {
                     case 0://main menu
@@ -156,48 +155,48 @@ int process_menu(void)
                  {
                  menu.possition--;
                  if (menu.possition < 0) menu.possition = 0;
-                 else play_sound(0);
+                 else sound.menu_move.play();
                  }
                  if (menu.level == 1)//new game menu
                  {
                  menu.possition--;
                  if (menu.possition < 0) menu.possition = 0;
-                 else play_sound(0);
+                 else sound.menu_move.play();
                  }
                  if (menu.level == 2)//options menu
                  {
                  menu.possition--;
                  if (menu.possition < 0) menu.possition = 0;
-                 else play_sound(0);
+                 else sound.menu_move.play();
                  }
                  if (menu.level == 3)//customize starship menu
                  {
                  menu.possition--;
                  if (menu.possition < 0) menu.possition = 0;
-                 else play_sound(0);
+                 else sound.menu_move.play();
                  }
                  if ((menu.level == 4) && (menu.possition == 3))//star map menu
                  {
                     menu.possition = menu.recall_position;
-                    play_sound(0);
+                    sound.menu_move.play();
                  }
                  if (menu.level == 5)//save game menu
                  {
                     menu.possition--;
                     if (menu.possition < 0) menu.possition = 0;
-                    else play_sound(0);
+                    else sound.menu_move.play();
                  }
                  if (menu.level == 6)//load game menu
                  {
                  menu.possition--;
                  if (menu.possition < 0) menu.possition = 0;
-                 else play_sound(0);
+                 else sound.menu_move.play();
                  }
                  if (menu.level == 7)//Achievements menu
                  {
                  menu.possition--;
                  if (menu.possition < 0) menu.possition = 0;
-                 else play_sound(0);
+                 else sound.menu_move.play();
                  }
               }
         if ((game_o.io.down) && (game_o.io.keyboard_delay_count >= game_o.io.keyboard_delay))
@@ -207,49 +206,49 @@ int process_menu(void)
                  {
                  menu.possition++;
                  if (menu.possition > menu.possition_max) menu.possition = menu.possition_max;
-                 else play_sound(0);
+                 else sound.menu_move.play();
                  }
                  if (menu.level == 1)//new game menu
                  {
                  menu.possition++;
                  if (menu.possition > menu.possition_max) menu.possition = menu.possition_max;
-                 else play_sound(0);
+                 else sound.menu_move.play();
                  }
                  if (menu.level == 2)//options menu
                  {
                  menu.possition++;
                  if (menu.possition > menu.possition_max) menu.possition = menu.possition_max;
-                 else play_sound(0);
+                 else sound.menu_move.play();
                  }
                  if (menu.level == 3)//customize starship menu
                  {
                  menu.possition++;
                  if (menu.possition > menu.possition_max) menu.possition = menu.possition_max;
-                 else play_sound(0);
+                 else sound.menu_move.play();
                  }
                  if ((menu.level == 4) && (menu.possition != 3))//star map menu
                  {
                     menu.recall_position = menu.possition;
                     menu.possition = 3;
-                    play_sound(0);
+                    sound.menu_move.play();
                  }
                  if (menu.level == 5)//save game menu
                  {
                  menu.possition++;
                  if (menu.possition > menu.possition_max) menu.possition = menu.possition_max;
-                 else play_sound(0);
+                 else sound.menu_move.play();
                  }
                  if (menu.level == 6)//load menu
                  {
                  menu.possition++;
                  if (menu.possition > menu.possition_max) menu.possition = menu.possition_max;
-                 else play_sound(0);
+                 else sound.menu_move.play();
                  }
                  if (menu.level == 7)//Achievements menu
                  {
                  menu.possition++;
                  if (menu.possition > menu.possition_max) menu.possition = menu.possition_max;
-                 else play_sound(0);
+                 else sound.menu_move.play();
                  }
               }
         if (game_o.io.left)
@@ -276,7 +275,7 @@ int process_menu(void)
                  {
                     kill_textures();
                     SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL);
-                    init_gl();
+                    game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
                     load_textures();
                     game.config.Display_Fullscreen   = false;
                   }
@@ -330,7 +329,7 @@ int process_menu(void)
                     kill_textures();
                     if (game.config.Display_Fullscreen == true ) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
                     if (game.config.Display_Fullscreen == false) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL);
-                    init_gl();
+                    game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
                     load_textures();
                  }
                  if ((menu.level == 4) && (menu.possition < 3))//star map level select <
@@ -339,11 +338,11 @@ int process_menu(void)
                     {
                        menu.level_no -= 1;
                        if (menu.level_no < 0) menu.level_no = 0;
-                       play_sound(0);
+                       sound.menu_move.play();
                     }
                     menu.possition--;
                     if (menu.possition < 0) menu.possition = 0;
-                    else play_sound(0);
+                    else sound.menu_move.play();
                  }
                  if (menu.level == 3)//customize starship
                  {
@@ -366,7 +365,7 @@ int process_menu(void)
                        if (game_o.player.thrusters < -1) game_o.player.thrusters = -1;
                        break;
                     }
-                 play_sound(0);
+                 sound.menu_move.play();
                  }
               }
         if (game_o.io.right)
@@ -393,7 +392,7 @@ int process_menu(void)
                     {
                        kill_textures();
                        SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
-                       init_gl();
+                       game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
                        load_textures();
                        game.config.Display_Fullscreen   = true;
                     }
@@ -447,7 +446,7 @@ int process_menu(void)
                     kill_textures();
                     if (game.config.Display_Fullscreen == true ) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
                     if (game.config.Display_Fullscreen == false) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL);
-                    init_gl();
+                    game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
                     load_textures();
                  }
                  if ((menu.level == 4) && (menu.possition < 3))//star map level select <
@@ -456,11 +455,11 @@ int process_menu(void)
                     {
                        menu.level_no += 1;
                        if (menu.level_no > 22) menu.level_no = 22;
-                       play_sound(0);
+                       sound.menu_move.play();
                     }
                     menu.possition++;
                     if (menu.possition > 2) menu.possition = 2;
-                    else play_sound(0);
+                    else sound.menu_move.play();
                  }
                  if (menu.level == 3)//customize starship
                  {
@@ -483,13 +482,13 @@ int process_menu(void)
                        if (game_o.player.thrusters > 2) game_o.player.thrusters = 2;
                        break;
                     }
-                 play_sound(0);
+                 sound.menu_move.play();
                  }
               }
         if ((game_o.io.select) && (game_o.io.keyboard_delay_count >= game_o.io.keyboard_delay))
               {
                  game_o.io.keyboard_delay_count = 0;
-                 play_sound(1);
+                 sound.menu_select.play();
                  switch (menu.level)
                  {
                     case 0://main menu
@@ -820,7 +819,7 @@ int process_menu(void)
                           }
                        break;
                     default:
-                       play_sound(1);
+                       sound.menu_select.play();
                  }
               }
    return(0);

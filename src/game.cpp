@@ -22,15 +22,14 @@
 
 #include <SDL/SDL.h>
 #include "RAGE/rage.hpp"
+#include "load_resources.hpp"
 #include "game.hpp"
-#include "sounds.hpp"
 #include "music.hpp"
 #include "textures.hpp"
-#include "physics.hpp"
 #include "misc.hpp"
 #include "font.hpp"
 
-extern sound_type       sound[MAX_SOUNDS];
+extern sound_type       sound;
 extern music_type       music[MAX_MUSIC];
 extern texture_type     texture[MAX_TEXTURES];
 extern game_class       game;
@@ -2115,11 +2114,11 @@ int proccess_npc_bullets(void)
          }
          if (game_o.npc[npc_count].bullet[bullet_count].x_pos < (-1.0f - game_o.npc[npc_count].bullet[bullet_count].width)) kill_npc_bullet(npc_count,bullet_count);
          // check player starship / npc bullet collisions...
-         if (quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].hight))
+         if (game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].hight))
          {
             spawn_explosion(game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,0.125f);
             kill_npc_bullet(npc_count,bullet_count);
-            play_sound(13);//player shield hit
+            sound.shield_hit.play();//player shield hit
             game_o.player.health -= (0.005f+game_o.shield[game_o.player.front_shield].absorption+(0.0001f*game_o.shield[game_o.player.front_shield].level));
             if ((game_o.shield[game_o.player.front_shield].level <= 2) && (game_o.player.front_shield >= 0))
             {
@@ -2255,9 +2254,15 @@ int proccess_powerups(void)
       {
          game_o.powerup[count].x_pos -= game_o.powerup[count].speed;
          if (game_o.powerup[count].x_pos <= (-1.0f - game_o.powerup[count].width)) kill_powerup(count);
-         if (quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight,game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,game_o.powerup[count].width,game_o.powerup[count].hight))
+         if (game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight,game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,game_o.powerup[count].width,game_o.powerup[count].hight))
          {
-            play_sound(game_o.powerup[count].sound);
+            if (count == 1) sound.powerup_01.play();
+            if (count == 2) sound.powerup_02.play();
+            if (count == 3) sound.powerup_03.play();
+            if (count == 4) sound.powerup_04.play();
+            if (count == 5) sound.powerup_05.play();
+            if (count == 6) sound.powerup_06.play();
+            if (count == 7) sound.powerup_07.play();
             kill_powerup(count);
             switch (count)
             {
@@ -2368,7 +2373,7 @@ int proccess_powerups(void)
                        Mix_Volume(-1,(game.config.Audio_Sound_Volume/2));
                        for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) //kill all npcs
                        {
-                          play_sound(49);
+                          sound.explosion_005.play();
                           if (game_o.npc[npc_count].active)
                            {
                               int random_temp = random_int();
@@ -2583,12 +2588,12 @@ int proccess_coin(void)
       {
          game_o.coin[count].x_pos -= game_o.coin[count].speed;
          if (game_o.coin[count].x_pos <= (-1.0f - game_o.coin[count].width)) kill_coin(count);
-         if (quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight,game_o.coin[count].x_pos,game_o.coin[count].y_pos,game_o.coin[count].width,game_o.coin[count].hight))
+         if (game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight,game_o.coin[count].x_pos,game_o.coin[count].y_pos,game_o.coin[count].width,game_o.coin[count].hight))
          {
             game_o.score += game_o.coin[count].value;
             game_o.level_score += game_o.coin[count].value;
             kill_coin(count);
-            play_sound(game_o.coin[count].sound);
+            sound.coin_00.play();
          }
       }
    }
@@ -2670,7 +2675,7 @@ int proccess_wexp(void)
       {
          game_o.wexp[count].x_pos -= game_o.wexp[count].speed;
          if (game_o.wexp[count].x_pos <= (-1.0f - game_o.wexp[count].width)) kill_wexp(count);
-         if (quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight,game_o.wexp[count].x_pos,game_o.wexp[count].y_pos,game_o.wexp[count].width,game_o.wexp[count].hight))
+         if (game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight,game_o.wexp[count].x_pos,game_o.wexp[count].y_pos,game_o.wexp[count].width,game_o.wexp[count].hight))
          {
             //level up our front weapon!
             game_o.projectile[game_o.player.front_weapon].experience += game_o.wexp[count].value*game_o.exp_rate;
@@ -2725,7 +2730,7 @@ int proccess_wexp(void)
                game_o.projectile[game_o.player.side_weapon].experience = game_o.projectile[game_o.player.side_weapon].level_3;
             }
             kill_wexp(count);
-            play_sound(game_o.wexp[count].sound);
+            sound.wexp_00.play();
          }
       }
    }
@@ -2846,7 +2851,37 @@ int spawn_player_bullet(int position)
    {
       if (position == 0)//front weapon
       {
-         play_sound(game_o.projectile[game_o.player.front_weapon].sound);
+         if (game_o.player.front_weapon ==  0) sound.projectile_000.play();
+         if (game_o.player.front_weapon ==  1) sound.projectile_001.play();
+         if (game_o.player.front_weapon ==  2) sound.projectile_002.play();
+         if (game_o.player.front_weapon ==  3) sound.projectile_003.play();
+         if (game_o.player.front_weapon ==  4) sound.projectile_004.play();
+         if (game_o.player.front_weapon ==  5) sound.projectile_005.play();
+         if (game_o.player.front_weapon ==  6) sound.projectile_006.play();
+         if (game_o.player.front_weapon ==  7) sound.projectile_007.play();
+         if (game_o.player.front_weapon ==  8) sound.projectile_008.play();
+         if (game_o.player.front_weapon ==  9) sound.projectile_009.play();
+         if (game_o.player.front_weapon == 10) sound.projectile_010.play();
+         if (game_o.player.front_weapon == 11) sound.projectile_011.play();
+         if (game_o.player.front_weapon == 12) sound.projectile_012.play();
+         if (game_o.player.front_weapon == 13) sound.projectile_013.play();
+         if (game_o.player.front_weapon == 14) sound.projectile_014.play();
+         if (game_o.player.front_weapon == 15) sound.projectile_015.play();
+         if (game_o.player.front_weapon == 16) sound.projectile_016.play();
+         if (game_o.player.front_weapon == 17) sound.projectile_017.play();
+         if (game_o.player.front_weapon == 18) sound.projectile_018.play();
+         if (game_o.player.front_weapon == 19) sound.projectile_019.play();
+         if (game_o.player.front_weapon == 20) sound.projectile_020.play();
+         if (game_o.player.front_weapon == 21) sound.projectile_021.play();
+         if (game_o.player.front_weapon == 22) sound.projectile_022.play();
+         if (game_o.player.front_weapon == 23) sound.projectile_023.play();
+         if (game_o.player.front_weapon == 24) sound.projectile_024.play();
+         if (game_o.player.front_weapon == 25) sound.projectile_025.play();
+         if (game_o.player.front_weapon == 26) sound.projectile_026.play();
+         if (game_o.player.front_weapon == 27) sound.projectile_027.play();
+         if (game_o.player.front_weapon == 28) sound.projectile_028.play();
+         if (game_o.player.front_weapon == 29) sound.projectile_029.play();
+         if (game_o.player.front_weapon == 30) sound.projectile_030.play();
          if (game_o.projectile[game_o.player.front_weapon].level == 0)
          {
             spawn_done = 0;
@@ -2913,7 +2948,37 @@ int spawn_player_bullet(int position)
       }
       if (position == 1)//side weapon
       {
-         play_sound(game_o.projectile[game_o.player.side_weapon].sound);
+         if (game_o.player.side_weapon ==  0) sound.projectile_000.play();
+         if (game_o.player.side_weapon ==  1) sound.projectile_001.play();
+         if (game_o.player.side_weapon ==  2) sound.projectile_002.play();
+         if (game_o.player.side_weapon ==  3) sound.projectile_003.play();
+         if (game_o.player.side_weapon ==  4) sound.projectile_004.play();
+         if (game_o.player.side_weapon ==  5) sound.projectile_005.play();
+         if (game_o.player.side_weapon ==  6) sound.projectile_006.play();
+         if (game_o.player.side_weapon ==  7) sound.projectile_007.play();
+         if (game_o.player.side_weapon ==  8) sound.projectile_008.play();
+         if (game_o.player.side_weapon ==  9) sound.projectile_009.play();
+         if (game_o.player.side_weapon == 10) sound.projectile_010.play();
+         if (game_o.player.side_weapon == 11) sound.projectile_011.play();
+         if (game_o.player.side_weapon == 12) sound.projectile_012.play();
+         if (game_o.player.side_weapon == 13) sound.projectile_013.play();
+         if (game_o.player.side_weapon == 14) sound.projectile_014.play();
+         if (game_o.player.side_weapon == 15) sound.projectile_015.play();
+         if (game_o.player.side_weapon == 16) sound.projectile_016.play();
+         if (game_o.player.side_weapon == 17) sound.projectile_017.play();
+         if (game_o.player.side_weapon == 18) sound.projectile_018.play();
+         if (game_o.player.side_weapon == 19) sound.projectile_019.play();
+         if (game_o.player.side_weapon == 20) sound.projectile_020.play();
+         if (game_o.player.side_weapon == 21) sound.projectile_021.play();
+         if (game_o.player.side_weapon == 22) sound.projectile_022.play();
+         if (game_o.player.side_weapon == 23) sound.projectile_023.play();
+         if (game_o.player.side_weapon == 24) sound.projectile_024.play();
+         if (game_o.player.side_weapon == 25) sound.projectile_025.play();
+         if (game_o.player.side_weapon == 26) sound.projectile_026.play();
+         if (game_o.player.side_weapon == 27) sound.projectile_027.play();
+         if (game_o.player.side_weapon == 28) sound.projectile_028.play();
+         if (game_o.player.side_weapon == 29) sound.projectile_029.play();
+         if (game_o.player.side_weapon == 30) sound.projectile_030.play();
          if (game_o.projectile[game_o.player.side_weapon].level == 0)
          {
             spawn_done = 0;
@@ -3081,7 +3146,7 @@ int proccess_player_bullets(void)
                {
                   if (game_o.npc[npc_count].active)// find closest enemy
                   {
-                     temp_distance = distance_2D(game_o.player.x_pos,game_o.player.y_pos,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos);
+                     temp_distance = game.physics.distance_2D(game_o.player.x_pos,game_o.player.y_pos,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos);
                      if (target_distance > temp_distance)
                      {
                         target_distance = temp_distance;
@@ -3180,7 +3245,7 @@ int proccess_player_bullets(void)
          {
             if (game_o.npc[npc_count].active)// check player bullets / npc collisions...
             {
-               if (quadrangle_collision(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].hight,game_o.player.bullet[player_bullet_num].x_pos,game_o.player.bullet[player_bullet_num].y_pos,game_o.player.bullet[player_bullet_num].width,game_o.player.bullet[player_bullet_num].hight))
+               if (game.physics.quadrangle_collision(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].hight,game_o.player.bullet[player_bullet_num].x_pos,game_o.player.bullet[player_bullet_num].y_pos,game_o.player.bullet[player_bullet_num].width,game_o.player.bullet[player_bullet_num].hight))
                {
                   if (game_o.player.bullet[player_bullet_num].location < 3) game_o.npc[npc_count].health -= game_o.projectile[game_o.player.front_weapon].damage;
                   else // hit npc ship, but not a kill
@@ -3262,20 +3327,20 @@ int proccess_player_bullets(void)
                         ;
                      }
                      spawn_explosion(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,0.50f);
-                     play_sound(4);
+                     sound.explosion_001.play();
                      kill_npc(npc_count);
                      game_o.score += (game_o.npc[npc_count].type_npc + 1) * 10;
                      game_o.level_score += (game_o.npc[npc_count].type_npc + 1) * 10;
                      game_o.kills += 1;
                      game_o.level_kills += 1;
                   }
-               else play_sound(0);
+                 else sound.menu_move.play();
                }
                for (int npc_bullet_num =0;npc_bullet_num < MAX_BULLETS;npc_bullet_num++) // check player bullets / npc bullet collisions...
                {
                   if(game_o.npc[npc_count].bullet[npc_bullet_num].active)
                   {
-                     if (quadrangle_collision(game_o.npc[npc_count].bullet[npc_bullet_num].x_pos,game_o.npc[npc_count].bullet[npc_bullet_num].y_pos,game_o.npc[npc_count].bullet[npc_bullet_num].width,game_o.npc[npc_count].bullet[npc_bullet_num].hight,game_o.player.bullet[player_bullet_num].x_pos,game_o.player.bullet[player_bullet_num].y_pos,game_o.player.bullet[player_bullet_num].width,game_o.player.bullet[player_bullet_num].hight))
+                     if (game.physics.quadrangle_collision(game_o.npc[npc_count].bullet[npc_bullet_num].x_pos,game_o.npc[npc_count].bullet[npc_bullet_num].y_pos,game_o.npc[npc_count].bullet[npc_bullet_num].width,game_o.npc[npc_count].bullet[npc_bullet_num].hight,game_o.player.bullet[player_bullet_num].x_pos,game_o.player.bullet[player_bullet_num].y_pos,game_o.player.bullet[player_bullet_num].width,game_o.player.bullet[player_bullet_num].hight))
                      {
                      if (game_o.player.bullet[player_bullet_num].location < 3) //level up our front weapon!
                      {
@@ -3334,7 +3399,7 @@ int proccess_player_bullets(void)
                         }
                      }
                         spawn_explosion(game_o.npc[npc_count].bullet[npc_bullet_num].x_pos,game_o.npc[npc_count].bullet[npc_bullet_num].y_pos,0.25f);
-                        play_sound(4);
+                        sound.explosion_001.play();
                         kill_player_bullet(player_bullet_num);
                         kill_npc_bullet(npc_count,npc_bullet_num);
                         game_o.score += game_o.npc[npc_count].type_npc + 1;
@@ -3450,9 +3515,9 @@ int process_player(int command)
    }
    for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
    {
-      if (quadrangle_collision(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].hight,game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight))
+      if (game.physics.quadrangle_collision(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].hight,game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight))
       {
-         play_sound(13);//player shield hit
+         sound.shield_hit.play();//player shield hit
          game_o.npc[npc_count].health -= game_o.projectile[game_o.player.front_weapon].damage;
          game_o.player.health -= ((game_o.enemy[game_o.npc[npc_count].type_npc].health / 1000.0f) - game_o.shield[game_o.player.front_shield].absorption);
          if (game_o.npc[npc_count].health < 0)
@@ -3779,7 +3844,37 @@ int process_game(void)
                spawn_npc_bullet(npc_count,7);
                spawn_npc_bullet(npc_count,8);
             }
-            play_sound(game_o.projectile[game_o.npc[npc_count].bullet[0].warhead].sound);
+         if (game_o.npc[npc_count].bullet[0].warhead ==  0) sound.projectile_000.play();
+         if (game_o.npc[npc_count].bullet[0].warhead ==  1) sound.projectile_001.play();
+         if (game_o.npc[npc_count].bullet[0].warhead ==  2) sound.projectile_002.play();
+         if (game_o.npc[npc_count].bullet[0].warhead ==  3) sound.projectile_003.play();
+         if (game_o.npc[npc_count].bullet[0].warhead ==  4) sound.projectile_004.play();
+         if (game_o.npc[npc_count].bullet[0].warhead ==  5) sound.projectile_005.play();
+         if (game_o.npc[npc_count].bullet[0].warhead ==  6) sound.projectile_006.play();
+         if (game_o.npc[npc_count].bullet[0].warhead ==  7) sound.projectile_007.play();
+         if (game_o.npc[npc_count].bullet[0].warhead ==  8) sound.projectile_008.play();
+         if (game_o.npc[npc_count].bullet[0].warhead ==  9) sound.projectile_009.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 10) sound.projectile_010.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 11) sound.projectile_011.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 12) sound.projectile_012.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 13) sound.projectile_013.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 14) sound.projectile_014.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 15) sound.projectile_015.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 16) sound.projectile_016.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 17) sound.projectile_017.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 18) sound.projectile_018.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 19) sound.projectile_019.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 20) sound.projectile_020.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 21) sound.projectile_021.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 22) sound.projectile_022.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 23) sound.projectile_023.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 24) sound.projectile_024.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 25) sound.projectile_025.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 26) sound.projectile_026.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 27) sound.projectile_027.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 28) sound.projectile_028.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 29) sound.projectile_029.play();
+         if (game_o.npc[npc_count].bullet[0].warhead == 30) sound.projectile_030.play();
          }
       }
    }
@@ -3789,7 +3884,7 @@ int process_game(void)
      game_o.player.health = 0.100f;
      for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) //kill all npcs
      {
-         play_sound(49);
+         sound.explosion_005.play();
          if (game_o.npc[npc_count].active)
          {
             spawn_explosion(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,0.50f);
@@ -3816,13 +3911,13 @@ int process_game(void)
         if (temp_r < 8000) //spawn explosion + coin
         {
            spawn_explosion(temp_x,temp_y,0.25f);
-           play_sound(49);
+           sound.explosion_005.play();
            spawn_coin(temp_x,temp_y,1.5f);
         }
         if ((temp_r > 8000) && (temp_r < 16000)) //spawn explosion + coin
         {
            spawn_explosion(temp_x,temp_y,0.25f);
-           play_sound(49);
+           sound.explosion_005.play();
            spawn_wexp(temp_x,temp_y,1.5f);
         }
      }
@@ -4339,8 +4434,8 @@ int display_game(void)
    font_print(128,128,192,-1.00f, 0.95f,"Score - %1.0f", game_o.score);
    font_print(128,128,192,-1.00f, 0.90f,"Kills - %1.0f", game_o.kills);
    if (game_o.anc_enabled) font_print(128,128,192, 0.40f, 0.95f,"Active NPCs - %1.0f",  game_o.active_npc_count);
-   if (game_o.fps_enabled &&  game_o.anc_enabled) font_print(128,128,192, 0.40f, 0.90f,"FPS - %1.0f",  game_o.FPS);
-   if (game_o.fps_enabled && !game_o.anc_enabled) font_print(128,128,192, 0.40f, 0.95f,"FPS - %1.0f",  game_o.FPS);
+   if (game_o.fps_enabled &&  game_o.anc_enabled) font_print(128,128,192, 0.40f, 0.90f,"FPS - %1.0f",  game.FPS);
+   if (game_o.fps_enabled && !game_o.anc_enabled) font_print(128,128,192, 0.40f, 0.95f,"FPS - %1.0f",  game.FPS);
    glPopMatrix();
    SDL_GL_SwapBuffers();
    return(1);
@@ -6163,7 +6258,7 @@ int process_sideships(bool spawn_bullet)
             {
                if ((game_o.npc[npc_count].active) and (game_o.sideship[sideship_count].bullet[bullet_count].active))// check player sideship bullets / npc collisions...
                {
-                  if (quadrangle_collision(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].hight,game_o.sideship[sideship_count].bullet[bullet_count].x_pos,game_o.sideship[sideship_count].bullet[bullet_count].y_pos,game_o.sideship[sideship_count].bullet[bullet_count].width,game_o.sideship[sideship_count].bullet[bullet_count].hight))
+                  if (game.physics.quadrangle_collision(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].hight,game_o.sideship[sideship_count].bullet[bullet_count].x_pos,game_o.sideship[sideship_count].bullet[bullet_count].y_pos,game_o.sideship[sideship_count].bullet[bullet_count].width,game_o.sideship[sideship_count].bullet[bullet_count].hight))
                   {
                      game_o.npc[npc_count].health -= game_o.projectile[game_o.sideship[sideship_count].bullet[bullet_count].warhead].damage;
                      if (game_o.npc[npc_count].health <= 0)
@@ -6182,7 +6277,7 @@ int process_sideships(bool spawn_bullet)
                            ;
                         }
                         spawn_explosion(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,0.50f);
-                        play_sound(4);
+                        sound.explosion_001.play();
                         kill_npc(npc_count);
                         game_o.score += (game_o.npc[npc_count].type_npc + 1) * 10;
                         game_o.level_score += (game_o.npc[npc_count].type_npc + 1) * 10;
@@ -6199,7 +6294,7 @@ int process_sideships(bool spawn_bullet)
                          game_o.sideship[sideship_count].bullet[bullet_count].active = false;
                          game_o.sideship[sideship_count].bullet[bullet_count].x_pos  = 2.0f;
                          game_o.sideship[sideship_count].bullet[bullet_count].y_pos  = 2.0f;
-                         play_sound(0);
+                         sound.menu_move.play();
                      }
                   }
                }
@@ -6207,10 +6302,10 @@ int process_sideships(bool spawn_bullet)
                {
                     if ((game_o.npc[npc_count].bullet[npc_bullet_num].active) and (game_o.sideship[sideship_count].bullet[bullet_count].active))
                     {
-                        if (quadrangle_collision(game_o.npc[npc_count].bullet[npc_bullet_num].x_pos,game_o.npc[npc_count].bullet[npc_bullet_num].y_pos,game_o.npc[npc_count].bullet[npc_bullet_num].width,game_o.npc[npc_count].bullet[npc_bullet_num].hight,game_o.sideship[sideship_count].bullet[bullet_count].x_pos,game_o.sideship[sideship_count].bullet[bullet_count].y_pos,game_o.sideship[sideship_count].bullet[bullet_count].width,game_o.sideship[sideship_count].bullet[bullet_count].hight))
+                        if (game.physics.quadrangle_collision(game_o.npc[npc_count].bullet[npc_bullet_num].x_pos,game_o.npc[npc_count].bullet[npc_bullet_num].y_pos,game_o.npc[npc_count].bullet[npc_bullet_num].width,game_o.npc[npc_count].bullet[npc_bullet_num].hight,game_o.sideship[sideship_count].bullet[bullet_count].x_pos,game_o.sideship[sideship_count].bullet[bullet_count].y_pos,game_o.sideship[sideship_count].bullet[bullet_count].width,game_o.sideship[sideship_count].bullet[bullet_count].hight))
                         {
                             spawn_explosion(game_o.npc[npc_count].bullet[npc_bullet_num].x_pos,game_o.npc[npc_count].bullet[npc_bullet_num].y_pos,0.25f);
-                            play_sound(4);
+                            sound.explosion_001.play();
                             game_o.sideship[sideship_count].bullet[bullet_count].active = false;
                             game_o.sideship[sideship_count].bullet[bullet_count].x_pos  = 2.0f;
                             game_o.sideship[sideship_count].bullet[bullet_count].y_pos  = 2.0f;

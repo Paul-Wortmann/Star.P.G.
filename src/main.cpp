@@ -29,24 +29,20 @@
 #include <gl/gl.h>
 //#include <physfs.h>
 #include "RAGE/rage.hpp"
-#include "graphics.hpp"
+#include "load_resources.hpp"
 #include "misc.hpp"
 #include "main.hpp"
-#include "sounds.hpp"
 #include "music.hpp"
 #include "textures.hpp"
 #include "menu.hpp"
 #include "game.hpp"
 #include "levels.hpp"
-#include "physics.hpp"
 #include "font.hpp"
 #include "savegame.hpp"
-#include "timer.hpp"
-#include "network.hpp"
 #include "version.h"
 #include "io.hpp"
 
-extern sound_type        sound[MAX_SOUNDS];
+extern sound_type        sound;
 extern music_type        music[MAX_MUSIC];
 extern texture_type      texture[MAX_TEXTURES];
 extern menu_type         menu;
@@ -58,7 +54,6 @@ const char App_Icon[] = "data/icon.bmp";
 
 Uint32                   colorkey;
 SDL_Surface             *App_Icon_Surface;
-timer                    fps;
 
 //----------------------------------- Main -------------------------------------
 int main(int argc, char *argv[])
@@ -116,12 +111,10 @@ int main(int argc, char *argv[])
   SDL_Joystick *joystick;
   SDL_JoystickEventState(SDL_ENABLE);
   joystick = SDL_JoystickOpen(0);
-  game.config.joystick_sensitivity     = 6400;
   game.log.File_Write("Loading fonts...");
   Init_Font();
   game.log.File_Write("Loading sounds...");
-  init_sounds();
-  load_sounds();
+  load_resources();
   game.log.File_Write("Loading music...");
   init_music();
   load_music();
@@ -141,7 +134,7 @@ int main(int argc, char *argv[])
   init_npc_bullets();
   init_npcs(0);
   game_o.level = 0;
-  init_gl();
+  game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
   seed_rand();
   game.log.File_Write("Starting game_o...");
   game.log.File_Write("---------------\n");
@@ -150,7 +143,7 @@ int main(int argc, char *argv[])
   {
      if (game_o.status_quit_active) quit = 1;
      events_process();
-     fps.start();
+     game.timer.start();
      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 //****************************************** MENU *****************************************
      if (game_o.menu_active)
@@ -171,7 +164,7 @@ int main(int argc, char *argv[])
            display_game();
            if (game_o.player.health < 0)
            {
-              play_sound(1);
+              sound.menu_select.play();
               game_o.game_active = false;
               game_o.game_resume = false;
               game_o.pdie_active = true;
@@ -181,7 +174,7 @@ int main(int argc, char *argv[])
            }
         if (game_o.io.escape)
               {
-                 play_sound(1);
+                 sound.menu_select.play();
                  game_o.game_active             = false;
                  menu.level                   = 1;
                  menu.possition               = 3;
@@ -280,7 +273,7 @@ int main(int argc, char *argv[])
             game.config.menu_delay_count = game.config.menu_delay;
             if ((game_o.io.escape) || (game_o.io.enter) || (game_o.io.space))
             {
-                play_sound(1);
+                sound.menu_select.play();
                 init_game();
                 menu.level = 0;
                 menu.possition = 0;
@@ -309,7 +302,7 @@ int main(int argc, char *argv[])
             game.config.menu_delay_count = game.config.menu_delay;
             if ((game_o.io.escape) || (game_o.io.enter) || (game_o.io.space))
               {
-                 play_sound(1);
+                 sound.menu_select.play();
                  game_o.level++;
                  if (game_o.level > 24) // killed last boss!
                  {
@@ -366,7 +359,7 @@ int main(int argc, char *argv[])
             game.config.menu_delay_count = game.config.menu_delay;
             if ((game_o.io.escape) || (game_o.io.enter) || (game_o.io.space))
               {
-                 play_sound(1);
+                 sound.menu_select.play();
                  menu.level = 1;
                  menu.possition = 0;
                  menu.possition_max = 6;
@@ -383,9 +376,9 @@ int main(int argc, char *argv[])
         }
     }
 //---------------------------- code for end of main loop -----------------------
-     game_o.FPS += fps.getticks();
-     game_o.FPS  = 1000 - (game_o.FPS / 2);
-     fps.stop();
+     game.FPS += game.timer.getticks();
+     game.FPS  = 1000 - (game.FPS / 2);
+     game.timer.stop();
 //----------------------------------- Exit -------------------------------------
   }
   game.log.File_Write("\n");
@@ -401,8 +394,6 @@ int main(int argc, char *argv[])
   Mix_CloseAudio();
   game.log.File_Write("Unloading music...");
   kill_music();
-  game.log.File_Write("Unloading sounds...");
-  kill_sounds();
 //  game.log.File_Write("PhysicsFS deinit...");
 //  PHYSFS_deinit();
   game.log.File_Write("SDL deinit...");

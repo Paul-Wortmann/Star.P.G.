@@ -25,7 +25,6 @@
 #include "freetype.h"
 #include "gl/gl.h"
 #include "font.hpp"
-#include "graphics.hpp"
 
 extern game_class game;
 
@@ -99,7 +98,7 @@ void font_print(int color_r, int color_g, int color_b, float x_pos, float y_pos,
 	glLoadIdentity();
 	glColor3ub(color_r,color_g,color_b);
 	glScalef(0.8,0.8,1);
-    freetype::print(our_font,gl_to_res(x_pos, game.config.Display_X_Resolution),gl_to_res(y_pos, game.config.Display_Y_Resolution),font_string,var_data);
+    freetype::print(our_font,game.graphics.gl_to_res(x_pos, game.config.Display_X_Resolution),game.graphics.gl_to_res(y_pos, game.config.Display_Y_Resolution),font_string,var_data);
 	glColor3ub(255,255,255);
 	glPopMatrix();
 }

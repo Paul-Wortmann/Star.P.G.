@@ -25,13 +25,25 @@
 
 #include "log.hpp"
 #include "config.hpp"
+#include "graphics.hpp"
+#include "physics.hpp"
+#include "network.hpp"
+#include "timer.hpp"
+#include "sound.hpp"
 
 class game_class
 {
     public:
         int               GAME_VERSION;
+        int               FPS;
         log_file_class    log;
         config_file_class config;
+        graphics_class    graphics;
+        physics_class     physics;
+        network_class     network;
+        timer_class       timer;
+         game_class(void);
+        ~game_class(void);
 };
 
 

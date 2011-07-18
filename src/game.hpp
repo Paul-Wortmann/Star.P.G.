@@ -304,7 +304,6 @@ struct game_type
    bool                 outr_active;
    bool                 status_quit_active;
    int                  exp_rate;
-   int                  FPS;
    int                  level_locked[MAX_LEVELS];
    int                  level;
    int                  level_waves;

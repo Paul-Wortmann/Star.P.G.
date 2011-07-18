@@ -23,7 +23,6 @@
 #include "RAGE/rage.hpp"
 #include "game.hpp"
 #include "io.hpp"
-#include "graphics.hpp"
 
 extern game_type          game_o;
 extern game_class         game;
@@ -143,10 +142,10 @@ bool events_process(void)
     //-------------------- Mouse events-------------------------------
        if (game_o.event.type == SDL_MOUSEMOTION)
        {
-           game_o.io.mouse_x      = res_to_gl(game_o.event.motion.x,game.config.mouse_resolution_x);
-           game_o.io.mouse_y      = res_to_gl(game_o.event.motion.y,game.config.mouse_resolution_y);
-           game_o.io.mouse_xrel   = res_to_gl(game_o.event.motion.xrel,game.config.mouse_resolution_x);
-           game_o.io.mouse_yrel   = res_to_gl(game_o.event.motion.yrel,game.config.mouse_resolution_y);
+           game_o.io.mouse_x      = game.graphics.res_to_gl(game_o.event.motion.x,game.config.mouse_resolution_x);
+           game_o.io.mouse_y      = game.graphics.res_to_gl(game_o.event.motion.y,game.config.mouse_resolution_y);
+           game_o.io.mouse_xrel   = game.graphics.res_to_gl(game_o.event.motion.xrel,game.config.mouse_resolution_x);
+           game_o.io.mouse_yrel   = game.graphics.res_to_gl(game_o.event.motion.yrel,game.config.mouse_resolution_y);
            game_o.io.mouse_y *= -1;
        }
        if (game_o.event.type == SDL_MOUSEBUTTONUP)

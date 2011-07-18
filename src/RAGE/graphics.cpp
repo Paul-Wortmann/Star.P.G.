@@ -19,22 +19,34 @@
  * @license GPL
  */
 
-#ifndef SOUNDS_H
-#define SOUNDS_H
+#include <GL/gl.h>
+#include "rage.hpp"
+#include "graphics.hpp"
 
-#include <SDL/SDL_mixer.h>
-
-const int MAX_SOUNDS = 64;
-struct sound_type
+int   graphics_class::gl_to_res(float gl_coord, int max_res)
 {
-   bool active;
-   int channel;
-   Mix_Chunk *sound;
-};
+   return((gl_coord+1)*(max_res / 2));
+}
 
-int init_sounds(void);
-int load_sounds(void);
-int kill_sounds(void);
-int play_sound (int sound_num);
+float graphics_class::res_to_gl(int  res_coord, int max_res)
+{
+   return(((res_coord / 2) / (max_res / 2)) -1);
+}
 
-#endif //SOUNDS_H
+int   graphics_class::init_gl(int x_res, int y_res)
+{
+  glViewport(0, 0,x_res,y_res);
+  glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+  glClearDepth(1.0);
+  glDepthFunc(GL_LESS);
+  glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+  glEnable(GL_BLEND);
+  glEnable(GL_DEPTH_TEST);
+  glShadeModel(GL_SMOOTH);
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
+  glEnable(GL_TEXTURE_2D);
+  return(0);
+}

@@ -19,11 +19,20 @@
  * @license GPL
  */
 
-#ifndef GRAPHICS_H
-#define GRAPHICS_H
+#ifndef TIMER_H
+#define TIMER_H
 
-int   gl_to_res(float gl_coord, int max_res);
-float res_to_gl(int  res_coord, int max_res);
-int   init_gl(void);
+class timer_class
+{
+    private:
+	    bool running;
+	    int startticks;
+    public:
+	    timer_class();
+	    ~timer_class();
+	    int start();
+	    int stop();
+	    int getticks();
+};
 
-#endif //GRAPHICS_H
+#endif //TIMER_H
