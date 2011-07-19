@@ -598,13 +598,12 @@
 1310897251 source:c:\_git_\star.p.g\src\freetype.cpp
 	"FreeType.h"
 
-1310897251 c:\_git_\star.p.g\src\freetype.h
+1311044868 c:\_git_\star.p.g\src\freetype.h
 	<ft2build.h>
 	<freetype/freetype.h>
 	<freetype/ftglyph.h>
 	<freetype/ftoutln.h>
 	<freetype/fttrigon.h>
-	<windows.h>
 	<GL/gl.h>
 	<GL/glu.h>
 	<vector>
@@ -618,18 +617,19 @@
 
 1309782914 c:\_git_\star.p.g\src\config.h
 
-1310910483 source:c:\_git_\star.p.g\src\font.cpp
+1311045027 source:c:\_git_\star.p.g\src\font.cpp
 	"SDL/SDL_ttf.h"
 	"RAGE/rage.hpp"
 	"freetype.h"
 	"gl/gl.h"
 	"font.hpp"
+	<windows.h>
 
 1309768119 c:\_git_\star.p.g\src\font.h
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1310977227 source:c:\_git_\star.p.g\src\game.cpp
+1311077629 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"RAGE/rage.hpp"
 	"load_resources.hpp"
@@ -666,7 +666,7 @@
 
 1309768119 c:\_git_\star.p.g\src\levels.h
 
-1311042319 source:c:\_git_\star.p.g\src\main.cpp
+1311077524 source:c:\_git_\star.p.g\src\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -682,7 +682,6 @@
 	"game.hpp"
 	"levels.hpp"
 	"font.hpp"
-	"savegame.hpp"
 	"version.h"
 	"io.hpp"
 
@@ -698,10 +697,9 @@
 
 1310897251 c:\_git_\star.p.g\src\version.h
 
-1310978024 source:c:\_git_\star.p.g\src\menu.cpp
+1311078068 source:c:\_git_\star.p.g\src\menu.cpp
 	<gl/gl.h>
 	"menu.hpp"
-	"savegame.hpp"
 	"game.hpp"
 	"RAGE/rage.hpp"
 	"load_resources.hpp"
@@ -804,7 +802,7 @@
 1310964269 source:c:\_git_\star.p.g\src\rage\rage.cpp
 	"rage.hpp"
 
-1310964001 c:\_git_\star.p.g\src\rage\rage.hpp
+1311077315 c:\_git_\star.p.g\src\rage\rage.hpp
 	"log.hpp"
 	"config.hpp"
 	"graphics.hpp"
@@ -812,11 +810,12 @@
 	"network.hpp"
 	"timer.hpp"
 	"sound.hpp"
+	"savegame.hpp"
 
 1311039207 c:\_git_\star.p.g\src\rage\config.hpp
 	<string>
 
-1311039227 source:c:\_git_\star.p.g\src\rage\config.cpp
+1311044503 source:c:\_git_\star.p.g\src\rage\config.cpp
 	<fstream>
 	<stdio.h>
 	<stdlib.h>
@@ -854,7 +853,7 @@
 	"rage.hpp"
 	"sound.hpp"
 
-1311042452 source:c:\_git_\star.p.g\src\load_resources.cpp
+1311042574 source:c:\_git_\star.p.g\src\load_resources.cpp
 	<SDL/SDL.h>
 	"load_resources.hpp"
 	"RAGE/rage.hpp"
@@ -882,4 +881,10 @@
 	<SDL/SDL_image.h>
 	"textures.hpp"
 	"rage.hpp"
+
+1311076529 source:c:\_git_\star.p.g\src\rage\savegame.cpp
+	<fstream>
+	"savegame.hpp"
+
+1311076499 c:\_git_\star.p.g\src\rage\savegame.hpp
 

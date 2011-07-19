@@ -57,7 +57,6 @@ bool config_file_class::File_Set(std::string file_name)
     return(true);
 };
 
-
 bool  config_file_class::Set_Defaults (void)
 {
     config_file_class::menu_delay           = 128;
@@ -78,7 +77,6 @@ bool  config_file_class::Set_Defaults (void)
     config_file_class::mouse_resolution_x   = config_file_class::Display_X_Resolution;
     config_file_class::mouse_resolution_y   = config_file_class::Display_Y_Resolution;
 };
-
 
 bool config_file_class::File_Clear(void)
 {

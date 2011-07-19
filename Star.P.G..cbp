@@ -67,6 +67,8 @@
 		<Unit filename="src\RAGE\physics.hpp" />
 		<Unit filename="src\RAGE\rage.cpp" />
 		<Unit filename="src\RAGE\rage.hpp" />
+		<Unit filename="src\RAGE\savegame.cpp" />
+		<Unit filename="src\RAGE\savegame.hpp" />
 		<Unit filename="src\RAGE\sound.cpp" />
 		<Unit filename="src\RAGE\sound.hpp" />
 		<Unit filename="src\RAGE\textures.cpp" />
@@ -93,8 +95,6 @@
 		<Unit filename="src\menu.hpp" />
 		<Unit filename="src\misc.cpp" />
 		<Unit filename="src\misc.hpp" />
-		<Unit filename="src\savegame.cpp" />
-		<Unit filename="src\savegame.hpp" />
 		<Unit filename="src\version.h" />
 		<Extensions>
 			<code_completion />

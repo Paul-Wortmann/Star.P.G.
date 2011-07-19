@@ -30,6 +30,7 @@
 #include "network.hpp"
 #include "timer.hpp"
 #include "sound.hpp"
+#include "savegame.hpp"
 
 class game_class
 {

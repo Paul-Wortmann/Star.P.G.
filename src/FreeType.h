@@ -15,7 +15,6 @@
 #include <freetype/fttrigon.h>
 
 //OpenGL Headers
-#include <windows.h>		//(the GL headers need it)
 #include <GL/gl.h>
 #include <GL/glu.h>
 

@@ -36,7 +36,6 @@
 #include "game.hpp"
 #include "levels.hpp"
 #include "font.hpp"
-#include "savegame.hpp"
 #include "version.h"
 #include "io.hpp"
 
@@ -52,6 +51,7 @@ const char App_Icon[] = "data/icon.bmp";
 
 Uint32                   colorkey;
 SDL_Surface             *App_Icon_Surface;
+
 
 //----------------------------------- Main -------------------------------------
 int main(int argc, char *argv[])

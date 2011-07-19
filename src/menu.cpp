@@ -21,19 +21,24 @@
 
 #include <gl/gl.h>
 #include "menu.hpp"
-#include "savegame.hpp"
 #include "game.hpp"
 #include "RAGE/rage.hpp"
 #include "load_resources.hpp"
 #include "levels.hpp"
 #include "font.hpp"
 
-extern game_class        game;
-extern sound_type        sound;
-extern music_type        music;
-extern texture_type      texture;
-extern game_type         game_o;
-       menu_type         menu;
+extern  game_class               game;
+extern  sound_type               sound;
+extern  music_type               music;
+extern  texture_type             texture;
+extern  game_type                game_o;
+extern  save_game_class          save_00;
+extern  save_game_class          save_01;
+extern  save_game_class          save_02;
+extern  save_game_class          save_03;
+extern  save_game_class          save_04;
+extern  save_game_class          save_05;
+        menu_type                menu;
 
 int process_menu_background(void)
 {
@@ -666,7 +671,7 @@ int process_menu(void)
                        switch (menu.possition)
                           {
                              case 0://save to slot 0
-                                Save_Game(0);
+                                save_00.Save();
                                 game.log.File_Write("Saving to slot 0");
                                 spawn_saved();
                                 menu.possition = 3;
@@ -678,7 +683,7 @@ int process_menu(void)
                                 game.music_next_track = true;
                              break;
                              case 1://save to slot 1
-                                Save_Game(1);
+                                save_01.Save();
                                 game.log.File_Write("Saving to slot 1");
                                 spawn_saved();
                                 menu.possition = 3;
@@ -690,7 +695,7 @@ int process_menu(void)
                                 game.music_next_track = true;
                              break;
                              case 2://save to slot 2
-                                Save_Game(2);
+                                save_02.Save();
                                 game.log.File_Write("Saving to slot 2");
                                 spawn_saved();
                                 menu.possition = 3;
@@ -702,7 +707,7 @@ int process_menu(void)
                                 game.music_next_track = true;
                              break;
                              case 3://save to slot 3
-                                Save_Game(3);
+                                save_03.Save();
                                 game.log.File_Write("Saving to slot 3");
                                 spawn_saved();
                                 menu.possition = 3;
@@ -714,7 +719,7 @@ int process_menu(void)
                                 game.music_next_track = true;
                              break;
                              case 4://save to slot 4
-                                Save_Game(4);
+                                save_04.Save();
                                 game.log.File_Write("Saving to slot 4");
                                 spawn_saved();
                                 menu.possition = 3;
@@ -737,7 +742,7 @@ int process_menu(void)
                        switch (menu.possition)
                           {
                              case 0://load from slot 0
-                                if (Load_Game(0) == 0)
+                                if (save_00.Load())
                                 {
                                    game.log.File_Write("Loading from slot 0");
                                    spawn_loaded();
@@ -752,7 +757,7 @@ int process_menu(void)
                                 else game.log.File_Write("Error loadng from slot 0");
                              break;
                              case 1://load from slot 1
-                                if (Load_Game(1) == 0)
+                                if (save_01.Load())
                                 {
                                    game.log.File_Write("Loading from slot 1");
                                    spawn_loaded();
@@ -767,7 +772,7 @@ int process_menu(void)
                                 else game.log.File_Write("Error loadng from slot 1");
                              break;
                              case 2://load from slot 2
-                                if (Load_Game(2) == 0)
+                                if (save_02.Load())
                                 {
                                    game.log.File_Write("Loading from slot 2");
                                    spawn_loaded();
@@ -782,7 +787,7 @@ int process_menu(void)
                                 else game.log.File_Write("Error loadng from slot 2");
                              break;
                              case 3://load from slot 3
-                                if (Load_Game(3) == 0)
+                                if (save_03.Load())
                                 {
                                    game.log.File_Write("Loading from slot 3");
                                    spawn_loaded();
@@ -797,7 +802,7 @@ int process_menu(void)
                                 else game.log.File_Write("Error loadng from slot 3");
                              break;
                              case 4://load from slot 4
-                                if (Load_Game(4) == 0)
+                                if (save_04.Load())
                                 {
                                    game.log.File_Write("Loading from slot 4");
                                    spawn_loaded();

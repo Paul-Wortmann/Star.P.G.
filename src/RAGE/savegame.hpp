@@ -22,14 +22,17 @@
 #ifndef SAVEGAME_H
 #define SAVEGAME_H
 
-const char Slot_00[] = "save/slot_00.sav";
-const char Slot_01[] = "save/slot_01.sav";
-const char Slot_02[] = "save/slot_02.sav";
-const char Slot_03[] = "save/slot_03.sav";
-const char Slot_04[] = "save/slot_04.sav";
-const char Slot_05[] = "save/slot_04.sav";
-
-int Save_Game(int slot);
-int Load_Game(int slot);
+class save_game_class
+{
+    private:
+        std::string save_file_name;
+    public:
+              save_game_class(void);
+             ~save_game_class(void);
+        bool  Assign_File(std::string file_name);
+        bool  Save(void);
+        bool  Load(void);
+        bool  Delete(void);
+};
 
 #endif //SAVEGAME_H
