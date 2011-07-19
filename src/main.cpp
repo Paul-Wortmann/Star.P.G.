@@ -109,10 +109,6 @@ int main(int argc, char *argv[])
   SDL_Joystick *joystick;
   SDL_JoystickEventState(SDL_ENABLE);
   joystick = SDL_JoystickOpen(0);
-  game.log.File_Write("Loading fonts...");
-  Init_Font();
-  game.log.File_Write("Loading resources...");
-  load_resources();
   game.log.File_Write("Initializing menu system...");
   init_menu();
   game.log.File_Write("Initializing game system...");
@@ -128,9 +124,15 @@ int main(int argc, char *argv[])
   game_o.level = 0;
   game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
   seed_rand();
+  game.log.File_Write("Loading fonts...");
+  Init_Font();
+  game.log.File_Write("Loading resources...");
+  loading_screen_display("data/textures/misc/loading_screen.png");
+  load_resources();
   game.log.File_Write("Starting game_o...");
   game.log.File_Write("---------------\n");
 //----------------------------------- Main loop --------------------------------
+
   for(int quit = 0; !quit;)
   {
      if (game_o.status_quit_active) quit = 1;
@@ -150,7 +152,7 @@ int main(int argc, char *argv[])
         glPopMatrix();
         SDL_GL_SwapBuffers();
         process_menu();
-     }
+       }
 //****************************************** GAME *****************************************
         if (game_o.game_active)
         {

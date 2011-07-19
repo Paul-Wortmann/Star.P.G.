@@ -493,5 +493,24 @@ bool load_sounds(void);
 bool load_music(void);
 bool load_textures(void);
 bool bind_texture(int texture_number);
+bool bind_texture(texture_class bind_me);
+
+bool loading_screen_display(std::string file_name);
 
 #endif // LOAD_RESOURCES_H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

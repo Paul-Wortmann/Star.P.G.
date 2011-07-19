@@ -51,7 +51,7 @@ config_file_class::~config_file_class(void)
 
 };
 
-bool config_file_class::File_Set(const char *Config_File)
+bool config_file_class::File_Set(std::string file_name)
 {
     config_file_class::Config_File = Config_File;
     return(true);

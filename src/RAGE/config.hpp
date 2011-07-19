@@ -50,7 +50,7 @@ class config_file_class
 
               config_file_class(void);
              ~config_file_class(void);
-        bool  File_Set         (const char *Config_File);
+        bool  File_Set         (std::string file_name);
         bool  Set_Defaults     (void);
         bool  File_Clear       (void);
         bool  File_Delete      (void);
