@@ -25,7 +25,6 @@
 #include "load_resources.hpp"
 #include "game.hpp"
 #include "misc.hpp"
-#include "font.hpp"
 
 extern  sound_type       sound;
 extern  music_type       music;
@@ -1468,7 +1467,7 @@ int init_game(void)
 
    for (int level_no_count = 0;level_no_count < (MAX_LEVELS+1); level_no_count++)
    {
-      game_o.level_locked[level_no_count] = false; /// change me!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+      game_o.level_locked[level_no_count] = true; /// change me!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
    }
    game_o.level_locked[0] = false;
    initialize_sideships();
@@ -4437,11 +4436,11 @@ int display_game(void)
    if (game_o.p_weapon_level_up.active)        display_p_weapon_level_up();
    if (game_o.level_end_display_active)        display_d_level_end();
 
-   font_print(128,128,192,-1.00f, 0.95f,"Score - %1.0f", game_o.score);
-   font_print(128,128,192,-1.00f, 0.90f,"Kills - %1.0f", game_o.kills);
-   if (game_o.anc_enabled) font_print(128,128,192, 0.40f, 0.95f,"Active NPCs - %1.0f",  game_o.active_npc_count);
-   if (game_o.fps_enabled &&  game_o.anc_enabled) font_print(128,128,192, 0.40f, 0.90f,"FPS - %1.0f",  game.FPS);
-   if (game_o.fps_enabled && !game_o.anc_enabled) font_print(128,128,192, 0.40f, 0.95f,"FPS - %1.0f",  game.FPS);
+   font_print(255,255,255,64,-0.98f,-0.95f,"Score - ", game_o.score);
+   font_print(255,255,255,64,-0.98f,-0.91f,"Kills - ", game_o.kills);
+   if (game_o.anc_enabled) font_print(255,255,255,64, 0.40f, 0.95f,"Active NPCs - ",  game_o.active_npc_count);
+   if (game_o.fps_enabled &&  game_o.anc_enabled) font_print(255,255,255,64, 0.40f, 0.90f,"FPS - ",  game.FPS);
+   if (game_o.fps_enabled && !game_o.anc_enabled) font_print(255,255,255,64, 0.40f, 0.95f,"FPS - ",  game.FPS);
    glPopMatrix();
    SDL_GL_SwapBuffers();
    return(1);

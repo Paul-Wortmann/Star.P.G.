@@ -1,31 +1,28 @@
 /**
  * Copyright (C) 2011 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
- * This file is part of Star.P.G.
+ * This file is part of R.A.G.E. (RoboPaul's Adaptable Game Engine)
  *
- * Star.P.G. is free software: you can redistribute it and/or modify
+ * R.A.G.E. (RoboPaul's Adaptable Game Engine) is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Star.P.G. is distributed in the hope that it will be useful,
+ * R.A.G.E. (RoboPaul's Adaptable Game Engine) is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Star.P.G. If not, see <http://www.gnu.org/licenses/>.
+ * along with R.A.G.E. (RoboPaul's Adaptable Game Engine) If not, see <http://www.gnu.org/licenses/>.
  *
  * @author Paul Wortmann
  * @license GPL
+ * @date 2011-07-17
  */
 
 #ifndef FONT_H
 #define FONT_H
 
-void Build_Font(void);
-void Init_Font(void);
-void Kill_Font(void);
-void glPrint(const char *fmt, ...);
-void font_print(int color_r, int color_g, int color_b, float x_pos, float y_pos, char font_string[255], GLfloat var_data);
+int font_print(int r,int g,int b,int a,float x,float y,std::string text,int int_data);
 
 #endif //FONT_H

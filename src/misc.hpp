@@ -22,12 +22,19 @@
 #ifndef MISC_H
 #define MISC_H
 
-int seed_rand(void);
-double random_double(void);
-int    random(int range);
-int    random_dec(void);
-int    random_cen(void);
-int    random_int(void);
-float  random_GLcoord(void);
+int         seed_rand(void);
+double      random_double(void);
+int         random(int range);
+int         random_dec(void);
+int         random_cen(void);
+int         random_int(void);
+float       random_GLcoord(void);
+std::string const_char_to_string(const char *const_char_in);
+std::string int_to_string(int int_in);
+bool        file_exists(const char* file_name);
+int         round_double(double x);
+int         nextpoweroftwo(int x);
 
 #endif //MISC_H
+
+

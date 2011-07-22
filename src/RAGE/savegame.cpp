@@ -22,7 +22,11 @@
 
 #include <fstream>
 #include "savegame.hpp"
+#include "rage.hpp"
+#include "../save_data.hpp"
 
+extern game_class game;
+extern save_data_type save_data;
 
 save_game_class::save_game_class(void)
 {
@@ -41,10 +45,11 @@ bool save_game_class::Assign_File(std::string file_name)
 
 bool save_game_class::Save(void)
 {
+    update_save_data();
     std::fstream savegamefile(save_game_class::save_file_name.c_str(),std::ios::out|std::ios::binary|std::ios::trunc);
     if (savegamefile.is_open())
     {
-//        savegamefile.write(reinterpret_cast<char*>(&game), sizeof(game_type));
+        savegamefile.write(reinterpret_cast<char*>(&save_data), sizeof(save_data));
         savegamefile.close();
     }
     else return(false);
@@ -56,8 +61,9 @@ bool save_game_class::Load(void)
     std::fstream savegamefile(save_game_class::save_file_name.c_str(),std::ios::in|std::ios::binary);
     if (savegamefile.is_open())
     {
-//        savegamefile.read(reinterpret_cast<char*>(&game), sizeof(game_type));
+        savegamefile.read(reinterpret_cast<char*>(&save_data), sizeof(save_data));
         savegamefile.close();
+        update_game_data();
     }
     else return(false);
     return(true);

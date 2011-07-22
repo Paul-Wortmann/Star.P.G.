@@ -51,10 +51,10 @@
 			<Add library="GL" />
 			<Add directory='&quot;C:\Program Files (x86)\CodeBlocks\MinGW\lib&quot;' />
 		</Linker>
-		<Unit filename="src\FreeType.cpp" />
-		<Unit filename="src\FreeType.h" />
 		<Unit filename="src\RAGE\config.cpp" />
 		<Unit filename="src\RAGE\config.hpp" />
+		<Unit filename="src\RAGE\font.cpp" />
+		<Unit filename="src\RAGE\font.hpp" />
 		<Unit filename="src\RAGE\graphics.cpp" />
 		<Unit filename="src\RAGE\graphics.hpp" />
 		<Unit filename="src\RAGE\log.cpp" />
@@ -79,8 +79,6 @@
 		<Unit filename="src\Star.P.G._private.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="src\font.cpp" />
-		<Unit filename="src\font.hpp" />
 		<Unit filename="src\game.cpp" />
 		<Unit filename="src\game.hpp" />
 		<Unit filename="src\io.cpp" />
@@ -95,6 +93,8 @@
 		<Unit filename="src\menu.hpp" />
 		<Unit filename="src\misc.cpp" />
 		<Unit filename="src\misc.hpp" />
+		<Unit filename="src\save_data.cpp" />
+		<Unit filename="src\save_data.hpp" />
 		<Unit filename="src\version.h" />
 		<Extensions>
 			<code_completion />

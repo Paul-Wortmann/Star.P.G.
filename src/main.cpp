@@ -35,7 +35,6 @@
 #include "menu.hpp"
 #include "game.hpp"
 #include "levels.hpp"
-#include "font.hpp"
 #include "version.h"
 #include "io.hpp"
 
@@ -45,6 +44,7 @@ extern texture_type      texture;
 extern menu_type         menu;
 extern game_type         game_o;
 extern game_class        game;
+extern TTF_Font         *font;
 
 const char App_Name[] = ("Star.P.G V0.17 - www.physhexgames.co.nr");
 const char App_Icon[] = "data/icon.bmp";
@@ -125,7 +125,8 @@ int main(int argc, char *argv[])
   game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
   seed_rand();
   game.log.File_Write("Loading fonts...");
-  Init_Font();
+  TTF_Init();
+  font = TTF_OpenFont("data/fonts/font_001.ttf", 12);
   game.log.File_Write("Loading resources...");
   loading_screen_display("data/textures/misc/loading_screen.png");
   load_resources();
@@ -430,9 +431,12 @@ int main(int argc, char *argv[])
   game.log.File_Write("Shuting down...");
   game.log.File_Write("---------------\n");
   game.log.File_Write("Saving config...");
+  game.config.File_Set("Star.P.G..cfg");
+  game.config.File_Clear();
   game.config.File_Write();
   game.log.File_Write("Unloading fonts...");
-  Kill_Font();
+  TTF_Quit();
+  TTF_CloseFont(font);
   game.log.File_Write("Shuting down audio system...");
   Mix_CloseAudio();
 //  game.log.File_Write("PhysicsFS deinit...");

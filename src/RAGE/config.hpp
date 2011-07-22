@@ -55,7 +55,7 @@ class config_file_class
         bool  File_Clear       (void);
         bool  File_Delete      (void);
         bool  File_Write_Data  (std::string config_comment);
-        bool  File_Write_Data  (std::string config_key, int config_data_int);
+        bool  File_Write_Data  (std::string config_key, int  config_data_int);
         bool  File_Write_Data  (std::string config_key, bool config_data_bool);
         bool  File_Write       (void);
         bool  Process_Data     (std::string data_line);

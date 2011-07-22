@@ -20,35 +20,19 @@
  * @date 2011-07-17
  */
 
-#ifndef RAGE_H
-#define RAGE_H
+#ifndef SAVE_DATA_H
+#define SAVE_DATA_H
 
-#include "log.hpp"
-#include "config.hpp"
-#include "graphics.hpp"
-#include "physics.hpp"
-#include "network.hpp"
-#include "timer.hpp"
-#include "sound.hpp"
-#include "savegame.hpp"
-#include "font.hpp"
+#include "RAGE/rage.hpp"
+#include "RAGE/savegame.hpp"
 
-class game_class
+struct save_data_type
 {
-    public:
-        int               GAME_VERSION;
-        int               FPS;
-        int               music_track;
-        bool              music_next_track;
-        log_file_class    log;
-        config_file_class config;
-        graphics_class    graphics;
-        physics_class     physics;
-        network_class     network;
-        timer_class       timer;
-         game_class(void);
-        ~game_class(void);
+    int save_version;
 };
 
+void update_save_data(void);
+void update_game_data(void);
 
-#endif //RAGE_H
+#endif // SAVE_DATA_H
+

@@ -19,15 +19,19 @@
  * @license GPL
  */
 
-
 #include <time.h>
 #include <stdlib.h>
-
+#include <math.h>
+#include <string>
+#include <sstream>
+#include <fstream>
+#include "misc.hpp"
 
 int seed_rand(void)
 {
    srand(time(0));
-}
+   return(1);
+};
 
 double random_double(void)
 {
@@ -75,9 +79,38 @@ float   random_GLcoord(void)
        return temp_f;
 }
 
-
-int convert_res_to_gl (int pos_x,int pos_y,int res_x,int res_y)
+std::string int_to_string(int int_in)
 {
-   float gl_x = ((pos_x / res_x) * 2) - 1;
-   float gl_y = ((pos_y / res_y) * 2) - 1;
+    std::stringstream string_out;
+    string_out << int_in;
+    return(string_out.str());
 }
+
+std::string const_char_to_string(const char *const_char_in)
+{
+    std::stringstream string_out;
+    string_out << const_char_in;
+    return(string_out.str());
+}
+
+bool file_exists(const char* file_name)
+{
+    std::fstream testfile(file_name,std::ios::in|std::ios::binary);
+    if (testfile.is_open())
+    {
+        testfile.close();
+    }
+    else return(false);
+    return(true);
+};
+
+int round_double(double x)
+{
+	return (int)(x + 0.5);
+};
+
+int nextpoweroftwo(int x)
+{
+	double logbase2 = log(x) / log(2);
+	return round(pow(2,ceil(logbase2)));
+};
