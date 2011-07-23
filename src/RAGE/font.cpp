@@ -30,10 +30,24 @@
 #define GL_BGR  0x80E0
 #define GL_BGRA 0x80E1
 
-       TTF_Font   *font;
 extern game_class  game;
 
-int font_print(int r,int g,int b,int a,float x,float y,std::string text,int int_data)
+font_class::font_class(void)
+{
+
+};
+
+font_class::~font_class(void)
+{
+    TTF_CloseFont(font_class::font_data);
+};
+
+bool font_class::Set_File(std::string filename)
+{
+    font_class::font_data = TTF_OpenFont(filename.c_str(), 12);
+};
+
+bool font_class::Write(int r,int g,int b,int a,float x,float y,std::string text,int int_data)
 {
     GLuint texture_data;
     GLenum texture_format;
@@ -46,7 +60,7 @@ int font_print(int r,int g,int b,int a,float x,float y,std::string text,int int_
     text = text + temp_string.str();
     write_data = text.c_str();
     SDL_Color font_color = {r,g,b,a};
-    SDL_Surface *font_string = TTF_RenderText_Blended( font,write_data,font_color);
+    SDL_Surface *font_string = TTF_RenderText_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
     width  = (((font_string->w / 2) / (game.config.Display_X_Resolution / 2)) -1);
@@ -76,8 +90,6 @@ int font_print(int r,int g,int b,int a,float x,float y,std::string text,int int_
     glPopMatrix();
     glDeleteTextures(1, &texture_data);
     SDL_FreeSurface(font_string);
-    return(0);
+    return(true);
 };
-
-
 

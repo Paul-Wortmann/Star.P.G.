@@ -27,6 +27,7 @@
 #include "RAGE/sound.hpp"
 #include "RAGE/music.hpp"
 #include "RAGE/textures.hpp"
+#include "RAGE/font.hpp"
 
 struct sound_type
 {
@@ -488,12 +489,18 @@ struct texture_type
    texture_class powerup_sideship_03;
 };
 
+struct font_type
+{
+    font_class font_1;
+};
+
 bool load_resources(void);
 bool load_sounds(void);
 bool load_music(void);
 bool load_textures(void);
 bool bind_texture(int texture_number);
 bool bind_texture(texture_class bind_me);
+bool load_fonts(void);
 
 bool loading_screen_display(std::string file_name);
 

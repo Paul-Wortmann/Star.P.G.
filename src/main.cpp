@@ -26,7 +26,7 @@
 #include <SDL/SDL_net.h>
 #include <SDL/SDL_image.h>
 #include <SDL/SDL_opengl.h>
-#include <gl/gl.h>
+#include <GL/gl.h>
 //#include <physfs.h>
 #include "RAGE/rage.hpp"
 #include "load_resources.hpp"
@@ -124,21 +124,21 @@ int main(int argc, char *argv[])
   game_o.level = 0;
   game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
   seed_rand();
-  game.log.File_Write("Loading fonts...");
   TTF_Init();
-  font = TTF_OpenFont("data/fonts/font_001.ttf", 12);
   game.log.File_Write("Loading resources...");
+  #if _WIN32
   loading_screen_display("data/textures/misc/loading_screen.png");
+  #endif
   load_resources();
   game.log.File_Write("Starting game_o...");
   game.log.File_Write("---------------\n");
 //----------------------------------- Main loop --------------------------------
-
+  game.timer.start();
+  game.LastTicks = game.timer.getticks();
   for(int quit = 0; !quit;)
   {
      if (game_o.status_quit_active) quit = 1;
      events_process();
-     game.timer.start();
      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 //****************************************** MENU *****************************************
      if (game_o.menu_active)
@@ -152,7 +152,7 @@ int main(int argc, char *argv[])
         diplay_menu ();
         glPopMatrix();
         SDL_GL_SwapBuffers();
-        process_menu();
+        if (game.process_ready) process_menu();
        }
 //****************************************** GAME *****************************************
         if (game_o.game_active)
@@ -188,7 +188,7 @@ int main(int argc, char *argv[])
                 if (game.music_track == 25) music.level_25.play();
             }
            game_o.game_resume = true;
-           process_game();
+           if (game.process_ready) process_game();
            display_game();
            if (game_o.player.health < 0)
            {
@@ -298,11 +298,11 @@ int main(int argc, char *argv[])
         }
         glPushMatrix();
         diplay_menu ();
-        process_menu_background();
+        if (game.process_ready) process_menu_background();
         glPopMatrix();
         SDL_GL_SwapBuffers();
         game.config.menu_delay_count++;
-        if (game.config.menu_delay_count >= game.config.menu_delay)
+        if ((game.config.menu_delay_count >= game.config.menu_delay) && (game.process_ready))
         {
             game.config.menu_delay_count = game.config.menu_delay;
             if ((game_o.io.escape) || (game_o.io.enter) || (game_o.io.space))
@@ -332,11 +332,11 @@ int main(int argc, char *argv[])
         glPushMatrix();
         menu.level = 9;
         diplay_menu ();
-        process_menu_background();
+        if (game.process_ready) process_menu_background();
         glPopMatrix ();
         SDL_GL_SwapBuffers();
         game.config.menu_delay_count++;
-        if (game.config.menu_delay_count >= game.config.menu_delay)
+        if ((game.config.menu_delay_count >= game.config.menu_delay) && (game.process_ready))
         {
             game.config.menu_delay_count = game.config.menu_delay;
             if ((game_o.io.escape) || (game_o.io.enter) || (game_o.io.space))
@@ -395,11 +395,11 @@ int main(int argc, char *argv[])
         glPushMatrix();
         menu.level = 10;
         diplay_menu ();
-        process_menu_background();
+        if (game.process_ready) process_menu_background();
         glPopMatrix ();
         SDL_GL_SwapBuffers();
         game.config.menu_delay_count++;
-        if (game.config.menu_delay_count >= game.config.menu_delay)
+        if ((game.config.menu_delay_count >= game.config.menu_delay) && (game.process_ready))
         {
             game.config.menu_delay_count = game.config.menu_delay;
             if ((game_o.io.escape) || (game_o.io.enter) || (game_o.io.space))
@@ -422,27 +422,31 @@ int main(int argc, char *argv[])
         }
     }
 //---------------------------- code for end of main loop -----------------------
-     game.FPS += game.timer.getticks();
-     game.FPS  = 1000 - (game.FPS / 2);
-     game.timer.stop();
+    game.FPS = (game.timer.getticks() - game.LastTicks);
+    if ((game.timer.getticks() - game.LastTicks) >= 1000/90)
+    {
+        game.LastTicks = game.timer.getticks();
+        game.process_ready = true;
+    }
+    else game.process_ready = false;
+    //if (game.process_ready) game.timer.stop();
+    }
 //----------------------------------- Exit -------------------------------------
-  }
-  game.log.File_Write("\n");
-  game.log.File_Write("Shuting down...");
-  game.log.File_Write("---------------\n");
-  game.log.File_Write("Saving config...");
-  game.config.File_Set("Star.P.G..cfg");
-  game.config.File_Clear();
-  game.config.File_Write();
-  game.log.File_Write("Unloading fonts...");
-  TTF_Quit();
-  TTF_CloseFont(font);
-  game.log.File_Write("Shuting down audio system...");
-  Mix_CloseAudio();
-//  game.log.File_Write("PhysicsFS deinit...");
-//  PHYSFS_deinit();
-  game.log.File_Write("SDL deinit...");
-  SDL_Quit();
-  return(0);
+    game.log.File_Write("\n");
+    game.log.File_Write("Shuting down...");
+    game.log.File_Write("---------------\n");
+    game.log.File_Write("Saving config...");
+    game.config.File_Set("Star.P.G..cfg");
+    game.config.File_Clear();
+    game.config.File_Write();
+    game.log.File_Write("Unloading fonts...");
+    TTF_Quit();
+    game.log.File_Write("Shuting down audio system...");
+    Mix_CloseAudio();
+//    game.log.File_Write("PhysicsFS deinit...");
+//    PHYSFS_deinit();
+    game.log.File_Write("SDL deinit...");
+    SDL_Quit();
+    return(0);
 }
 

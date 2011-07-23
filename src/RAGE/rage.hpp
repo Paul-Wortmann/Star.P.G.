@@ -38,6 +38,8 @@ class game_class
     public:
         int               GAME_VERSION;
         int               FPS;
+        int               LastTicks;
+        bool              process_ready;
         int               music_track;
         bool              music_next_track;
         log_file_class    log;

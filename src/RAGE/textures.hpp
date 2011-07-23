@@ -22,7 +22,7 @@
 #ifndef TEXTURES_H
 #define TEXTURES_H
 
-#include <gl/gl.h>
+#include <GL/gl.h>
 #include <string>
 
 class texture_class

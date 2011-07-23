@@ -29,6 +29,7 @@
 extern  sound_type       sound;
 extern  music_type       music;
 extern  texture_type     texture;
+extern  font_type        font;
 extern  game_class       game;
         save_game_class          save_00;
         save_game_class          save_01;
@@ -4436,11 +4437,11 @@ int display_game(void)
    if (game_o.p_weapon_level_up.active)        display_p_weapon_level_up();
    if (game_o.level_end_display_active)        display_d_level_end();
 
-   font_print(255,255,255,64,-0.98f,-0.95f,"Score - ", game_o.score);
-   font_print(255,255,255,64,-0.98f,-0.91f,"Kills - ", game_o.kills);
-   if (game_o.anc_enabled) font_print(255,255,255,64, 0.40f, 0.95f,"Active NPCs - ",  game_o.active_npc_count);
-   if (game_o.fps_enabled &&  game_o.anc_enabled) font_print(255,255,255,64, 0.40f, 0.90f,"FPS - ",  game.FPS);
-   if (game_o.fps_enabled && !game_o.anc_enabled) font_print(255,255,255,64, 0.40f, 0.95f,"FPS - ",  game.FPS);
+   font.font_1.Write(255,255,255,64,-0.98f,-0.95f,"Score - ", game_o.score);
+   font.font_1.Write(255,255,255,64,-0.98f,-0.91f,"Kills - ", game_o.kills);
+   if (game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.40f, 0.95f,"Active NPCs - ",  game_o.active_npc_count);
+   if (game_o.fps_enabled &&  game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.40f, 0.90f,"FPS - ",  game.FPS);
+   if (game_o.fps_enabled && !game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.40f, 0.95f,"FPS - ",  game.FPS);
    glPopMatrix();
    SDL_GL_SwapBuffers();
    return(1);

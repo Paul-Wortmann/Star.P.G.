@@ -28,12 +28,14 @@ extern game_class        game;
        sound_type        sound;
        music_type        music;
        texture_type      texture;
+       font_type         font;
 
 bool load_resources(void)
 {
     load_sounds();
     load_music();
     load_textures();
+    load_fonts();
     return(true);
 };
 
@@ -91,7 +93,7 @@ bool load_sounds(void)
     sound.coin_00.load("data/sounds/coin_00.wav");sfx_count++;
     sound.wexp_00.load("data/sounds/wexp_00.wav");sfx_count++;
 
-    game.log.File_Write("Sound files loaded -> ",sfx_count-1);
+    game.log.File_Write("Sound files loaded -> ",sfx_count);
     return(true);
 };
 
@@ -131,7 +133,7 @@ bool load_music(void)
     music.level_pd.load("data/music/level_pd.mod");music_count++;
     music.outro_00.load("data/music/outro_00.mod");music_count++;
 
-    game.log.File_Write("Music files loaded -> ",music_count-1);
+    game.log.File_Write("Music files loaded -> ",music_count);
     return(true);
 };
 
@@ -510,7 +512,7 @@ bool load_textures(void)
 
     texture.projectile_031.load("data/textures/projectiles/projectile_031.png");texture_count++;
 
-    game.log.File_Write("Texture files loaded -> ",texture_count-1);
+    game.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
 };
 
@@ -891,14 +893,23 @@ bool bind_texture(int texture_number)
 bool bind_texture(texture_class bind_me)
 {
     glBindTexture( GL_TEXTURE_2D, bind_me.texture_data);
+    return(true);
 };
 
+bool load_fonts(void)
+{
+    int font_count = 0;
+    font.font_1.Set_File("data/fonts/font_001.ttf");font_count++;
+
+    game.log.File_Write("Font files loaded -> ",font_count);
+    return(true);
+};
 
 bool loading_screen_display(std::string file_name)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     SDL_GL_SwapBuffers();
-    texture_class     loading_screen;
+    texture_class loading_screen;
     loading_screen.load(file_name);
     glPushMatrix();
     glBindTexture( GL_TEXTURE_2D, loading_screen.texture_data);
@@ -911,6 +922,7 @@ bool loading_screen_display(std::string file_name)
     glEnd();
     glPopMatrix();
     SDL_GL_SwapBuffers();
+    return(true);
 };
 
 

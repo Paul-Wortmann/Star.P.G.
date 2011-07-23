@@ -19,7 +19,7 @@
  * @license GPL
  */
 
-#include <gl/gl.h>
+#include <GL/gl.h>
 #include "menu.hpp"
 #include "game.hpp"
 #include "RAGE/rage.hpp"
@@ -30,6 +30,7 @@ extern  game_class               game;
 extern  sound_type               sound;
 extern  music_type               music;
 extern  texture_type             texture;
+extern  font_type                font;
 extern  game_type                game_o;
 extern  save_game_class          save_00;
 extern  save_game_class          save_01;
@@ -1868,53 +1869,53 @@ int diplay_menu (void)
 
       if ((menu.possition == 0) && (game_o.player.front_weapon >= 0)) //front weapon
       {
-          font_print(255,255,255,64,-1.0f,-0.000f,game_o.projectile[game_o.player.front_weapon].name,0.0f);
-          font_print(255,255,255,64,-1.0f,-0.075f,"Level            - ", game_o.projectile[game_o.player.front_weapon].level);
-          font_print(255,255,255,64,-1.0f,-0.150f,"Experience  - ", game_o.projectile[game_o.player.front_weapon].experience);
-          if (game_o.projectile[game_o.player.front_weapon].level == 0) font_print(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.projectile[game_o.player.front_weapon].level_1);
-          if (game_o.projectile[game_o.player.front_weapon].level == 1) font_print(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.projectile[game_o.player.front_weapon].level_2);
-          if (game_o.projectile[game_o.player.front_weapon].level == 2) font_print(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.projectile[game_o.player.front_weapon].level_3);
-          if (game_o.projectile[game_o.player.front_weapon].level >= 3) font_print(255,255,255,64,-1.0f,-0.225f,"Next level    - Max", 0.0f);
-          font_print(255,255,255,64,-1.0f,-0.300f,"Damage       - ", game_o.projectile[game_o.player.front_weapon].damage);
-          font_print(255,255,255,64,-1.0f,-0.375f,"Speed          - ", game_o.projectile[game_o.player.front_weapon].speed);
-          font_print(255,255,255,64,-1.0f,-0.450f,"Health         - ", game_o.projectile[game_o.player.front_weapon].health);
-          font_print(255,255,255,64,-1.0f,-0.525f,"Rate of Fire - ", game_o.projectile[game_o.player.front_weapon].rate_of_fire);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.000f,game_o.projectile[game_o.player.front_weapon].name,0.0f);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.075f,"Level            - ", game_o.projectile[game_o.player.front_weapon].level);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.150f,"Experience  - ", game_o.projectile[game_o.player.front_weapon].experience);
+          if (game_o.projectile[game_o.player.front_weapon].level == 0) font.font_1.Write(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.projectile[game_o.player.front_weapon].level_1);
+          if (game_o.projectile[game_o.player.front_weapon].level == 1) font.font_1.Write(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.projectile[game_o.player.front_weapon].level_2);
+          if (game_o.projectile[game_o.player.front_weapon].level == 2) font.font_1.Write(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.projectile[game_o.player.front_weapon].level_3);
+          if (game_o.projectile[game_o.player.front_weapon].level >= 3) font.font_1.Write(255,255,255,64,-1.0f,-0.225f,"Next level    - Max", 0.0f);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.300f,"Damage       - ", game_o.projectile[game_o.player.front_weapon].damage);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.375f,"Speed          - ", game_o.projectile[game_o.player.front_weapon].speed);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.450f,"Health         - ", game_o.projectile[game_o.player.front_weapon].health);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.525f,"Rate of Fire - ", game_o.projectile[game_o.player.front_weapon].rate_of_fire);
       }
       if ((menu.possition == 1) && (game_o.player.side_weapon >= 0)) //side weapon
       {
-          font_print(255,255,255,64,-1.0f,-0.000f,game_o.projectile[game_o.player.side_weapon].name,0.0f);
-          font_print(255,255,255,64,-1.0f,-0.075f,"Level            - ", game_o.projectile[game_o.player.side_weapon].level);
-          font_print(255,255,255,64,-1.0f,-0.150f,"Experience  - ", game_o.projectile[game_o.player.side_weapon].experience);
-          if (game_o.projectile[game_o.player.side_weapon].level == 0) font_print(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.projectile[game_o.player.side_weapon].level_1);
-          if (game_o.projectile[game_o.player.side_weapon].level == 1) font_print(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.projectile[game_o.player.side_weapon].level_2);
-          if (game_o.projectile[game_o.player.side_weapon].level == 2) font_print(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.projectile[game_o.player.side_weapon].level_3);
-          if (game_o.projectile[game_o.player.side_weapon].level >= 3) font_print(255,255,255,64,-1.0f,-0.225f,"Next level    - Max", 0.0f);
-          font_print(255,255,255,64,-1.0f,-0.300f,"Damage       - ", game_o.projectile[game_o.player.side_weapon].damage);
-          font_print(255,255,255,64,-1.0f,-0.375f,"Speed          - ", game_o.projectile[game_o.player.side_weapon].speed);
-          font_print(255,255,255,64,-1.0f,-0.450f,"Health         - ", game_o.projectile[game_o.player.side_weapon].health);
-          font_print(255,255,255,64,-1.0f,-0.525f,"Rate of Fire - ", game_o.projectile[game_o.player.side_weapon].rate_of_fire);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.000f,game_o.projectile[game_o.player.side_weapon].name,0.0f);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.075f,"Level            - ", game_o.projectile[game_o.player.side_weapon].level);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.150f,"Experience  - ", game_o.projectile[game_o.player.side_weapon].experience);
+          if (game_o.projectile[game_o.player.side_weapon].level == 0) font.font_1.Write(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.projectile[game_o.player.side_weapon].level_1);
+          if (game_o.projectile[game_o.player.side_weapon].level == 1) font.font_1.Write(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.projectile[game_o.player.side_weapon].level_2);
+          if (game_o.projectile[game_o.player.side_weapon].level == 2) font.font_1.Write(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.projectile[game_o.player.side_weapon].level_3);
+          if (game_o.projectile[game_o.player.side_weapon].level >= 3) font.font_1.Write(255,255,255,64,-1.0f,-0.225f,"Next level    - Max", 0.0f);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.300f,"Damage       - ", game_o.projectile[game_o.player.side_weapon].damage);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.375f,"Speed          - ", game_o.projectile[game_o.player.side_weapon].speed);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.450f,"Health         - ", game_o.projectile[game_o.player.side_weapon].health);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.525f,"Rate of Fire - ", game_o.projectile[game_o.player.side_weapon].rate_of_fire);
       }
       if ((menu.possition == 2) && (game_o.player.front_shield >= 0)) //front shield
       {
-          font_print(255,255,255,64,-1.0f,-0.000f,game_o.shield[game_o.player.front_shield].name,0.0f);
-          font_print(255,255,255,64,-1.0f,-0.075f,"Level            - ", game_o.shield[game_o.player.front_shield].level);
-          font_print(255,255,255,64,-1.0f,-0.150f,"Experience  - ", game_o.shield[game_o.player.front_shield].experience);
-          if (game_o.shield[game_o.player.front_shield].level == 0) font_print(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.shield[game_o.player.front_shield].level_1);
-          if (game_o.shield[game_o.player.front_shield].level == 1) font_print(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.shield[game_o.player.front_shield].level_2);
-          if (game_o.shield[game_o.player.front_shield].level == 2) font_print(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.shield[game_o.player.front_shield].level_3);
-          if (game_o.shield[game_o.player.front_shield].level >= 3) font_print(255,255,255,64,-1.0f,-0.225f,"Next level    - Max", 0.0f);
-          font_print(255,255,255,64,-1.0f,-0.300f,"Absorption   - ", (10000*(game_o.shield[game_o.player.front_shield].absorption+(0.0001f*game_o.shield[game_o.player.front_shield].level))));
+          font.font_1.Write(255,255,255,64,-1.0f,-0.000f,game_o.shield[game_o.player.front_shield].name,0.0f);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.075f,"Level            - ", game_o.shield[game_o.player.front_shield].level);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.150f,"Experience  - ", game_o.shield[game_o.player.front_shield].experience);
+          if (game_o.shield[game_o.player.front_shield].level == 0) font.font_1.Write(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.shield[game_o.player.front_shield].level_1);
+          if (game_o.shield[game_o.player.front_shield].level == 1) font.font_1.Write(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.shield[game_o.player.front_shield].level_2);
+          if (game_o.shield[game_o.player.front_shield].level == 2) font.font_1.Write(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.shield[game_o.player.front_shield].level_3);
+          if (game_o.shield[game_o.player.front_shield].level >= 3) font.font_1.Write(255,255,255,64,-1.0f,-0.225f,"Next level    - Max", 0.0f);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.300f,"Absorption   - ", (10000*(game_o.shield[game_o.player.front_shield].absorption+(0.0001f*game_o.shield[game_o.player.front_shield].level))));
       }
       if ((menu.possition == 3) && (game_o.player.thrusters >= 0)) //thrusters
       {
-          font_print(255,255,255,64,-1.0f,-0.00f,game_o.thruster[game_o.player.thrusters].name,0.0f);
-          font_print(255,255,255,64,-1.0f,-0.075f,"Level            - ", game_o.thruster[game_o.player.thrusters].level);
-          font_print(255,255,255,64,-1.0f,-0.150f,"Experience  - ", game_o.thruster[game_o.player.thrusters].experience);
-          if (game_o.thruster[game_o.player.thrusters].level == 0) font_print(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.thruster[game_o.player.thrusters].level_1);
-          if (game_o.thruster[game_o.player.thrusters].level == 1) font_print(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.thruster[game_o.player.thrusters].level_2);
-          if (game_o.thruster[game_o.player.thrusters].level == 2) font_print(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.thruster[game_o.player.thrusters].level_3);
-          if (game_o.thruster[game_o.player.thrusters].level >= 3) font_print(255,255,255,64,-1.0f,-0.225f,"Next level    - Max", 0.0f);
-          font_print(255,255,255,64,-1.0f,-0.300f,"Thrust          - ", (10000*(game_o.thruster[game_o.player.thrusters].thrust+(0.0001f*game_o.thruster[game_o.player.thrusters].level))));
+          font.font_1.Write(255,255,255,64,-1.0f,-0.00f,game_o.thruster[game_o.player.thrusters].name,0.0f);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.075f,"Level            - ", game_o.thruster[game_o.player.thrusters].level);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.150f,"Experience  - ", game_o.thruster[game_o.player.thrusters].experience);
+          if (game_o.thruster[game_o.player.thrusters].level == 0) font.font_1.Write(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.thruster[game_o.player.thrusters].level_1);
+          if (game_o.thruster[game_o.player.thrusters].level == 1) font.font_1.Write(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.thruster[game_o.player.thrusters].level_2);
+          if (game_o.thruster[game_o.player.thrusters].level == 2) font.font_1.Write(255,255,255,64,-1.0f,-0.225f,"Next level    - ", game_o.thruster[game_o.player.thrusters].level_3);
+          if (game_o.thruster[game_o.player.thrusters].level >= 3) font.font_1.Write(255,255,255,64,-1.0f,-0.225f,"Next level    - Max", 0.0f);
+          font.font_1.Write(255,255,255,64,-1.0f,-0.300f,"Thrust          - ", (10000*(game_o.thruster[game_o.player.thrusters].thrust+(0.0001f*game_o.thruster[game_o.player.thrusters].level))));
       }
    }
 /*-----------------------------------------------------------------------------*/
@@ -2486,11 +2487,11 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.8f,-0.95f, 0.0f );
       glEnd();
 
-      font_print(255,255,255,64,-1.00f,-0.00f,"Level score - ", game_o.level_score);
-      font_print(255,255,255,64,-1.00f,-0.10f,"Total score - ", game_o.score);
-      font_print(255,255,255,64,-1.00f,-0.20f,"Level kills - ", game_o.level_kills);
-      font_print(255,255,255,64,-1.00f,-0.30f,"Total kills - ", game_o.kills);
-      font_print(255,255,255,64,-1.00f,-0.40f,"Kill rate   - ./'",(((float)game_o.level_kills/(float)game_o.level_spawened)*100));
+      font.font_1.Write(255,255,255,64,-1.00f,-0.00f,"Level score - ", game_o.level_score);
+      font.font_1.Write(255,255,255,64,-1.00f,-0.10f,"Total score - ", game_o.score);
+      font.font_1.Write(255,255,255,64,-1.00f,-0.20f,"Level kills - ", game_o.level_kills);
+      font.font_1.Write(255,255,255,64,-1.00f,-0.30f,"Total kills - ", game_o.kills);
+      font.font_1.Write(255,255,255,64,-1.00f,-0.40f,"Kill rate   - ./'",(((float)game_o.level_kills/(float)game_o.level_spawened)*100));
    }
 /*-----------------------------------------------------------------------------*/
    if (menu.level == 10) //Outro screen

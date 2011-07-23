@@ -20,9 +20,26 @@
  * @date 2011-07-17
  */
 
+#include <SDL/SDL_ttf.h>
+
 #ifndef FONT_H
 #define FONT_H
+
+class font_class
+{
+    private:
+        TTF_Font   *font_data;
+    public:
+        font_class(void);
+       ~font_class(void);
+        bool Set_File(std::string filename);
+        bool Write(int r,int g,int b,int a,float x,float y,std::string text,int int_data);
+};
 
 int font_print(int r,int g,int b,int a,float x,float y,std::string text,int int_data);
 
 #endif //FONT_H
+
+
+
+

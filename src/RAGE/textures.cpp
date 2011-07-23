@@ -19,7 +19,7 @@
  * @license GPL
  */
 
-#include <gl/gl.h>
+#include <GL/gl.h>
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 #include "textures.hpp"
