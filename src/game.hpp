@@ -40,6 +40,7 @@ const int   MAX_COINS       = 32;
 const int   MAX_WEXPS       = 32;
 const int   MAX_SIDESHIPS   = 5;
 const float MAX_VELOCITY    = 0.01f;
+const int   MAX_BOMBS       = 6;
 
 struct wave_type
 {
@@ -293,6 +294,9 @@ struct game_type
    SDL_Event            event;
    int                  npc_damage_duration;
    bool                 cheats_enabled;
+   int                  number_bombs;
+   int                  bomb_delay;
+   int                  bomb_delay_count;
    bool                 anc_enabled;
    bool                 fps_enabled;
    bool                 game_paused;
@@ -439,6 +443,7 @@ int  kill_powerup(int type_powerup);
 int  kill_powerups(void);
 int  init_powerups(void);
 int  proccess_powerups(void);
+int  use_bomb_powerup(void);
 
 int  spawn_coin(float x_position, float y_position, int coin_value);
 int  kill_coin(int coin_num);

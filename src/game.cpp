@@ -72,6 +72,9 @@ int init_game(void)
    game_o.npc_spawn_rate                    = 256;
    game_o.npc_spawn_rate_count              = 0;
    game_o.paused.active                     = false;
+   game_o.number_bombs                      = 0;
+   game_o.bomb_delay                        = 32;
+   game_o.bomb_delay_count                  = 0;
    game_o.score                             = 0;
    game_o.kills                             = 0;
    game_o.level_kills                       = 0;
@@ -2375,47 +2378,9 @@ int proccess_powerups(void)
                 break;
                 case 8://get bomb
                     {
-                       Mix_Volume(-1,(game.config.Audio_Sound_Volume/2));
-                       for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) //kill all npcs
-                       {
-                          sound.explosion_005.play();
-                          if (game_o.npc[npc_count].active)
-                           {
-                              int random_temp = random_int();
-                              if (random_temp <= game_o.coin_spawn_rate) //spawn coin
-                              {
-                                 spawn_coin(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,(game_o.npc[npc_count].type_npc+1+random_dec()));
-                              }
-                              if ((random_temp > game_o.coin_spawn_rate) && (random_temp <= game_o.wexp_spawn_rate)) //spawn wexp
-                              {
-                                 spawn_wexp(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,(game_o.npc[npc_count].type_npc+1+random_dec()));
-                              }
-                              if (random_temp > game_o.wexp_spawn_rate) //spawn null
-                              {
-                                 ;
-                              }
-                              game_o.score += (game_o.npc[npc_count].type_npc + 1) * 10;
-                              game_o.level_score += (game_o.npc[npc_count].type_npc + 1) * 10;
-                              spawn_explosion(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,0.50f);
-                              kill_npc(npc_count);
-                              game_o.kills++;
-                              game_o.level_kills++;
-
-                           }
-                       }
-                       for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)//kill all npc bullets
-                       {
-                          for (int bullet_count = 0; bullet_count < MAX_BULLETS-1; bullet_count++)
-                          {
-                             if (game_o.npc[npc_count].bullet[bullet_count].active)
-                             {
-                                spawn_explosion(game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,0.125f);
-                                kill_npc_bullet(npc_count,bullet_count);
-                             }
-                          }
-                       }
+                        game_o.number_bombs++;
+                        if(game_o.number_bombs > MAX_BOMBS) game_o.number_bombs = MAX_BOMBS;
                     }
-                Mix_Volume(-1,game.config.Audio_Sound_Volume);
                 break;
                 case 9://sideship 0
                     {
@@ -2515,6 +2480,71 @@ int proccess_powerups(void)
    }
    return(0);
 };
+
+/*----------------------------------------------------------------------------*/
+int  use_bomb_powerup(void)
+{
+    Mix_Volume(-1,(game.config.Audio_Sound_Volume/2));
+    if (!boss_level())
+    {
+        for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) //kill all npcs
+        {
+            sound.explosion_005.play();
+            if (game_o.npc[npc_count].active)
+            {
+                int random_temp = random_int();
+                if (random_temp <= game_o.coin_spawn_rate) //spawn coin
+                {
+                    spawn_coin(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,(game_o.npc[npc_count].type_npc+1+random_dec()));
+                }
+                if ((random_temp > game_o.coin_spawn_rate) && (random_temp <= game_o.wexp_spawn_rate)) //spawn wexp
+                {
+                    spawn_wexp(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,(game_o.npc[npc_count].type_npc+1+random_dec()));
+                }
+                if (random_temp > game_o.wexp_spawn_rate) //spawn null
+                {
+                    ;
+                }
+                game_o.score += (game_o.npc[npc_count].type_npc + 1) * 10;
+                game_o.level_score += (game_o.npc[npc_count].type_npc + 1) * 10;
+                spawn_explosion(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,0.50f);
+                kill_npc(npc_count);
+                game_o.kills++;
+                game_o.level_kills++;
+            }
+        }
+    }
+    if (boss_level())
+    {
+        for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) //dammage all npcs
+        {
+            sound.explosion_005.play();
+            if (game_o.npc[npc_count].active)
+            {
+                game_o.npc[npc_count].health -= (game_o.enemy[game_o.npc[npc_count].type_npc].health/10);
+                if (game_o.npc[npc_count].health <= 0)
+                {
+                    kill_npc(npc_count);
+                    game_o.kills++;
+                    game_o.level_kills++;
+                }
+            }
+        }
+    }
+    for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)//kill all npc bullets
+    {
+        for (int bullet_count = 0; bullet_count < MAX_BULLETS-1; bullet_count++)
+        {
+            if (game_o.npc[npc_count].bullet[bullet_count].active)
+            {
+                spawn_explosion(game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,0.125f);
+                kill_npc_bullet(npc_count,bullet_count);
+            }
+        }
+    }
+    Mix_Volume(-1,game.config.Audio_Sound_Volume);
+};
+
 /*----------------------------------------------------------------------------*/
 int spawn_coin(float x_position, float y_position, int coin_value)
 {
@@ -4295,15 +4325,6 @@ int display_game(void)
        }
    }
 
-   bind_texture(210); //player health bar
-   glLoadIdentity();
-   glBegin( GL_QUADS );
-   glTexCoord2i( 0, 1 );glVertex3f(-0.6f +((game_o.player.health/game_o.player.max_health)/5),0.900f, 0.001f);
-   glTexCoord2i( 0, 0 );glVertex3f(-0.6f +((game_o.player.health/game_o.player.max_health)/5),0.975f, 0.001f);
-   glTexCoord2i( 1, 0 );glVertex3f(-0.6f                                                 ,0.975f, 0.001f);
-   glTexCoord2i( 1, 1 );glVertex3f(-0.6f                                                 ,0.900f, 0.001f);
-   glEnd();
-
    for (int count = MAX_POWERUPS;count >=1;count--)  // powerups
    {
       z_pos = 0.002f + (0.0002*count);
@@ -4351,6 +4372,83 @@ int display_game(void)
          glEnd();
       }
    }
+
+   bind_texture(210); //player health bar
+   glLoadIdentity();
+   glBegin( GL_QUADS );
+   glTexCoord2i( 0, 1 );glVertex3f(-0.6f +((game_o.player.health/game_o.player.max_health)/5),0.900f, 0.001f);
+   glTexCoord2i( 0, 0 );glVertex3f(-0.6f +((game_o.player.health/game_o.player.max_health)/5),0.975f, 0.001f);
+   glTexCoord2i( 1, 0 );glVertex3f(-0.6f                                                 ,0.975f, 0.001f);
+   glTexCoord2i( 1, 1 );glVertex3f(-0.6f                                                 ,0.900f, 0.001f);
+   glEnd();
+
+    if (game_o.number_bombs > 0) //bomb icons
+    {
+        bind_texture(341);
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f(-0.995f,0.900f, 0.001f);
+        glTexCoord2i( 0, 0 );glVertex3f(-0.995f,0.975f, 0.001f);
+        glTexCoord2i( 1, 0 );glVertex3f(-0.945f,0.975f, 0.001f);
+        glTexCoord2i( 1, 1 );glVertex3f(-0.945f,0.900f, 0.001f);
+        glEnd();
+    }
+    if (game_o.number_bombs > 1)
+    {
+        bind_texture(341);
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f(-0.935f,0.900f, 0.001f);
+        glTexCoord2i( 0, 0 );glVertex3f(-0.935f,0.975f, 0.001f);
+        glTexCoord2i( 1, 0 );glVertex3f(-0.885f,0.975f, 0.001f);
+        glTexCoord2i( 1, 1 );glVertex3f(-0.885f,0.900f, 0.001f);
+        glEnd();
+    }
+    if (game_o.number_bombs > 2)
+    {
+        bind_texture(341);
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f(-0.875f,0.900f, 0.001f);
+        glTexCoord2i( 0, 0 );glVertex3f(-0.875f,0.975f, 0.001f);
+        glTexCoord2i( 1, 0 );glVertex3f(-0.825f,0.975f, 0.001f);
+        glTexCoord2i( 1, 1 );glVertex3f(-0.825f,0.900f, 0.001f);
+        glEnd();
+    }
+    if (game_o.number_bombs > 3)
+    {
+        bind_texture(341);
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f(-0.815f,0.900f, 0.001f);
+        glTexCoord2i( 0, 0 );glVertex3f(-0.815f,0.975f, 0.001f);
+        glTexCoord2i( 1, 0 );glVertex3f(-0.765f,0.975f, 0.001f);
+        glTexCoord2i( 1, 1 );glVertex3f(-0.765f,0.900f, 0.001f);
+        glEnd();
+    }
+    if (game_o.number_bombs > 4)
+    {
+        bind_texture(341);
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f(-0.755f,0.900f, 0.001f);
+        glTexCoord2i( 0, 0 );glVertex3f(-0.755f,0.975f, 0.001f);
+        glTexCoord2i( 1, 0 );glVertex3f(-0.705f,0.975f, 0.001f);
+        glTexCoord2i( 1, 1 );glVertex3f(-0.705f,0.900f, 0.001f);
+        glEnd();
+    }
+    if (game_o.number_bombs > 5)
+    {
+        bind_texture(341);
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f(-0.695f,0.900f, 0.001f);
+        glTexCoord2i( 0, 0 );glVertex3f(-0.695f,0.975f, 0.001f);
+        glTexCoord2i( 1, 0 );glVertex3f(-0.645f,0.975f, 0.001f);
+        glTexCoord2i( 1, 1 );glVertex3f(-0.645f,0.900f, 0.001f);
+        glEnd();
+    }
+
    if (game_o.player.front_weapon > -1)
    {
       bind_texture(game_o.projectile[game_o.player.front_weapon].image);// front weapon pic next to the exp bar

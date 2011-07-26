@@ -202,22 +202,37 @@ int main(int argc, char *argv[])
               game.log.File_Write("User terminated due to insuficient health...better luck next time buddy!");
            }
         if (game_o.io.escape)
-              {
-                 sound.menu_select.play();
-                 game.music_next_track          = true;
-                 game_o.game_active             = false;
-                 menu.level                     = 1;
-                 menu.possition                 = 3;
-                 menu.possition_max             = 6;
-                 game_o.menu_active             = true;
-                 game_o.io.escape               = false;
-                 game_o.io.keyboard_delay_count = 0;
-                 game.config.menu_delay_count = 0;
-                 while (game.config.menu_delay_count < (game.config.menu_delay/2))
-                 {
-                    game.config.menu_delay_count++;
-                 }
-              }
+        {
+            sound.menu_select.play();
+            game.music_next_track          = true;
+            game_o.game_active             = false;
+            menu.level                     = 1;
+            menu.possition                 = 3;
+            menu.possition_max             = 6;
+            game_o.menu_active             = true;
+            game_o.io.escape               = false;
+            game_o.io.keyboard_delay_count = 0;
+            game.config.menu_delay_count = 0;
+            while (game.config.menu_delay_count < (game.config.menu_delay/2))
+            {
+                game.config.menu_delay_count++;
+            }
+        }
+
+        if (game_o.bomb_delay_count < game_o.bomb_delay)//bomb delay counter
+        {
+            game_o.bomb_delay_count++;
+            if (game_o.bomb_delay_count > game_o.bomb_delay) game_o.bomb_delay_count = game_o.bomb_delay;
+        }
+        if (game_o.io.key_b)//user pressed "b" for bomb
+        {
+            if ((game_o.number_bombs > 0) && (game_o.bomb_delay_count >= game_o.bomb_delay))
+            {
+                game_o.number_bombs--;
+                use_bomb_powerup();
+                game_o.bomb_delay_count = 0;
+            }
+        }
         if (game_o.io.pause)
               {
                  game_o.game_paused = true;
