@@ -297,6 +297,10 @@ struct game_type
    int                  number_bombs;
    int                  bomb_delay;
    int                  bomb_delay_count;
+   bool                 immune;
+   int                  immunity_state;
+   int                  immunity_delay;
+   int                  immunity_delay_count;
    bool                 anc_enabled;
    bool                 fps_enabled;
    bool                 game_paused;

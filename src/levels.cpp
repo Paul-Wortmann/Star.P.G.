@@ -37,6 +37,12 @@ int unlock_levels(void)
 
 int init_game_level(int level_no)
 {
+   game_o.number_bombs             = 0;
+   game_o.bomb_delay_count         = 0;
+   game_o.immune                   = true;
+   game_o.immunity_state           = 0;
+   game_o.immunity_delay_count     = 0;
+   game_o.immune                   = true;
    game_o.level_end_time           = false;
    game_o.level_end_count          = 0;
    game_o.level_end_phase          = 0;

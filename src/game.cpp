@@ -75,6 +75,10 @@ int init_game(void)
    game_o.number_bombs                      = 0;
    game_o.bomb_delay                        = 32;
    game_o.bomb_delay_count                  = 0;
+   game_o.immune                            = true;
+   game_o.immunity_state                    = 0;
+   game_o.immunity_delay                    = 256;
+   game_o.immunity_delay_count              = 0;
    game_o.score                             = 0;
    game_o.kills                             = 0;
    game_o.level_kills                       = 0;
@@ -2122,7 +2126,7 @@ int proccess_npc_bullets(void)
          }
          if (game_o.npc[npc_count].bullet[bullet_count].x_pos < (-1.0f - game_o.npc[npc_count].bullet[bullet_count].width)) kill_npc_bullet(npc_count,bullet_count);
          // check player starship / npc bullet collisions...
-         if (game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].hight))
+         if ((game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].hight)) && (!game_o.immune))
          {
             spawn_explosion(game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,0.125f);
             kill_npc_bullet(npc_count,bullet_count);
@@ -2264,13 +2268,18 @@ int proccess_powerups(void)
          if (game_o.powerup[count].x_pos <= (-1.0f - game_o.powerup[count].width)) kill_powerup(count);
          if (game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight,game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,game_o.powerup[count].width,game_o.powerup[count].hight))
          {
-            if (count == 1) sound.powerup_01.play();
-            if (count == 2) sound.powerup_02.play();
-            if (count == 3) sound.powerup_03.play();
-            if (count == 4) sound.powerup_04.play();
-            if (count == 5) sound.powerup_05.play();
-            if (count == 6) sound.powerup_06.play();
-            if (count == 7) sound.powerup_07.play();
+            if (count ==  1) sound.powerup_01.play();
+            if (count ==  2) sound.powerup_02.play();
+            if (count ==  3) sound.powerup_03.play();
+            if (count ==  4) sound.powerup_04.play();
+            if (count ==  5) sound.powerup_05.play();
+            if (count ==  6) sound.powerup_06.play();
+            if (count ==  7) sound.powerup_07.play();
+            if (count ==  8) sound.powerup_07.play();
+            if (count ==  9) sound.powerup_07.play();
+            if (count == 10) sound.powerup_07.play();
+            if (count == 11) sound.powerup_07.play();
+            if (count == 12) sound.powerup_07.play();
             kill_powerup(count);
             switch (count)
             {
@@ -3456,6 +3465,31 @@ float thruster_offset(void)
 /*----------------------------------------------------------------------------*/
 int process_player(int command)
 {
+   game_o.immunity_delay_count++;
+   if (game_o.immunity_delay_count < game_o.immunity_delay)
+   {
+       if ((game_o.immunity_delay_count >   0) && (game_o.immunity_delay_count <  16)) game_o.immunity_state = 0;
+       if ((game_o.immunity_delay_count >  16) && (game_o.immunity_delay_count <  32)) game_o.immunity_state = 1;
+       if ((game_o.immunity_delay_count >  32) && (game_o.immunity_delay_count <  48)) game_o.immunity_state = 0;
+       if ((game_o.immunity_delay_count >  48) && (game_o.immunity_delay_count <  64)) game_o.immunity_state = 1;
+       if ((game_o.immunity_delay_count >  64) && (game_o.immunity_delay_count <  80)) game_o.immunity_state = 0;
+       if ((game_o.immunity_delay_count >  80) && (game_o.immunity_delay_count <  96)) game_o.immunity_state = 1;
+       if ((game_o.immunity_delay_count >  96) && (game_o.immunity_delay_count < 112)) game_o.immunity_state = 0;
+       if ((game_o.immunity_delay_count > 112) && (game_o.immunity_delay_count < 128)) game_o.immunity_state = 1;
+       if ((game_o.immunity_delay_count > 128) && (game_o.immunity_delay_count < 144)) game_o.immunity_state = 0;
+       if ((game_o.immunity_delay_count > 144) && (game_o.immunity_delay_count < 160)) game_o.immunity_state = 1;
+       if ((game_o.immunity_delay_count > 160) && (game_o.immunity_delay_count < 176)) game_o.immunity_state = 0;
+       if ((game_o.immunity_delay_count > 176) && (game_o.immunity_delay_count < 192)) game_o.immunity_state = 1;
+       if ((game_o.immunity_delay_count > 192) && (game_o.immunity_delay_count < 208)) game_o.immunity_state = 0;
+       if ((game_o.immunity_delay_count > 208) && (game_o.immunity_delay_count < 224)) game_o.immunity_state = 1;
+       if ((game_o.immunity_delay_count > 224) && (game_o.immunity_delay_count < 240)) game_o.immunity_state = 0;
+       if ((game_o.immunity_delay_count > 240) && (game_o.immunity_delay_count < 256)) game_o.immunity_state = 1;
+   }
+   if (game_o.immunity_delay_count > game_o.immunity_delay)
+       {
+            game_o.immunity_delay_count = game_o.immunity_delay;
+            game_o.immune = false;
+       }
    //level up our trusters, only if used! :)
    if ((command == 3) && (game_o.thruster[game_o.player.thrusters].level <= 2) && (game_o.player.thrusters >= 0))
    {
@@ -3548,25 +3582,28 @@ int process_player(int command)
          if (game_o.player.x_pos >  (1.0f -(game_o.player.width/2))) game_o.player.x_pos = (1.0f -(game_o.player.width/2));
          if (game_o.player.x_pos < -(1.0f - (game_o.player.width/2) - thruster_offset())) game_o.player.x_pos = -(1.0f -(game_o.player.width/2) - thruster_offset());
    }
-   for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+   if (!game_o.immune)
    {
-      if (game.physics.quadrangle_collision(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].hight,game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight))
-      {
-         sound.shield_hit.play();//player shield hit
-         game_o.npc[npc_count].health -= game_o.projectile[game_o.player.front_weapon].damage;
-         game_o.player.health -= ((game_o.enemy[game_o.npc[npc_count].type_npc].health / 1000.0f) - game_o.shield[game_o.player.front_shield].absorption);
-         if (game_o.npc[npc_count].health < 0)
-         {
-            spawn_explosion(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,0.50f);
-            kill_npc(npc_count);
-            game_o.score += (game_o.npc[npc_count].type_npc + 1) * 10;
-            game_o.level_score += (game_o.npc[npc_count].type_npc + 1) * 10;
-            game_o.kills += 1;
-            game_o.level_kills += 1;
-         }
-         else spawn_explosion(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,0.1250f);
-      }
-   }
+        for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) // player npc collision?
+        {
+            if (game.physics.quadrangle_collision(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].hight,game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight))
+            {
+                sound.shield_hit.play();//player shield hit
+                game_o.npc[npc_count].health -= game_o.projectile[game_o.player.front_weapon].damage;
+                game_o.player.health -= ((game_o.enemy[game_o.npc[npc_count].type_npc].health / 5000.0f) - game_o.shield[game_o.player.front_shield].absorption);
+                if (game_o.npc[npc_count].health < 0)
+                {
+                    spawn_explosion(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,0.50f);
+                    kill_npc(npc_count);
+                    game_o.score += (game_o.npc[npc_count].type_npc + 1) * 10;
+                    game_o.level_score += (game_o.npc[npc_count].type_npc + 1) * 10;
+                    game_o.kills += 1;
+                    game_o.level_kills += 1;
+                }
+                else spawn_explosion(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,0.1250f);
+            }
+        }
+    }
    return(0);
 };
 /*----------------------------------------------------------------------------*/
@@ -4224,7 +4261,8 @@ int display_game(void)
          glEnd();
       }
    }
-
+//----------------------------------------------------------------------------------------
+   if ((game_o.immune) && (game_o.immunity_state == 0)) glColor4f(1.0f,0.0f,0.0f,0.6f);
    if (game_o.player.thrusters > -1)//player starship
    {
       bind_texture(game_o.thruster[game_o.player.thrusters].image); //player thrusters
@@ -4296,7 +4334,7 @@ int display_game(void)
          glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.hight/6)-0.075f, 0.025f );
          glEnd();
       }
-
+    glColor4f(1.0f,1.0f,1.0f,1.0f);//------------------------------------------------
    if (game_o.player.front_shield > -1)
    {
       bind_texture(game_o.shield[game_o.player.front_shield].image); //player starship shield
