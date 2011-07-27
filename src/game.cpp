@@ -2179,7 +2179,6 @@ int spawn_powerup(float x_position, float y_position, int type_powerup)
       game_o.powerup[type_powerup].width      = 0.10f;
       game_o.powerup[type_powerup].hight      = 0.10f;
       game_o.powerup[type_powerup].speed      = 0.0025f;
-      game_o.powerup[type_powerup].spawn_rate = 20000;
    }
    return(0);
 };
@@ -2192,7 +2191,6 @@ int kill_powerup(int type_powerup)
    game_o.powerup[type_powerup].width      = 0.10f;
    game_o.powerup[type_powerup].hight      = 0.10f;
    game_o.powerup[type_powerup].speed      = 0.0025f;
-   game_o.powerup[type_powerup].spawn_rate = 20000;
    return(0);
 };
 /*----------------------------------------------------------------------------*/
@@ -2206,7 +2204,6 @@ int kill_powerups(void)
       game_o.powerup[count].width      = 0.10f;
       game_o.powerup[count].hight      = 0.10f;
       game_o.powerup[count].speed      = 0.0025f;
-      game_o.powerup[count].spawn_rate = 20000;
    }
    return(0);
 };
@@ -2251,10 +2248,10 @@ int init_powerups(void)
    game_o.powerup[11].sound   = 18;//side helper ship 2
    game_o.powerup[12].sound   = 18;//side helper ship 3
 
-   game_o.powerup[9 ].spawn_rate = 4000;//side helper ship 0
-   game_o.powerup[10].spawn_rate = 4000;//side helper ship 1
-   game_o.powerup[11].spawn_rate = 4000;//side helper ship 2
-   game_o.powerup[12].spawn_rate = 4000;//side helper ship 3
+   game_o.powerup[9 ].spawn_rate = 40000;//side helper ship 0
+   game_o.powerup[10].spawn_rate = 40000;//side helper ship 1
+   game_o.powerup[11].spawn_rate = 40000;//side helper ship 2
+   game_o.powerup[12].spawn_rate = 40000;//side helper ship 3
    return(0);
 };
 /*----------------------------------------------------------------------------*/
@@ -2275,11 +2272,11 @@ int proccess_powerups(void)
             if (count ==  5) sound.powerup_05.play();
             if (count ==  6) sound.powerup_06.play();
             if (count ==  7) sound.powerup_07.play();
-            if (count ==  8) sound.powerup_07.play();
-            if (count ==  9) sound.powerup_07.play();
-            if (count == 10) sound.powerup_07.play();
-            if (count == 11) sound.powerup_07.play();
-            if (count == 12) sound.powerup_07.play();
+            if (count ==  8) sound.powerup_08.play();
+            if (count ==  9) sound.powerup_09.play();
+            if (count == 10) sound.powerup_10.play();
+            if (count == 11) sound.powerup_11.play();
+            if (count == 12) sound.powerup_12.play();
             kill_powerup(count);
             switch (count)
             {

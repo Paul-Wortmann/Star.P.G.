@@ -79,6 +79,11 @@ struct sound_type
     sound_class powerup_05;
     sound_class powerup_06;
     sound_class powerup_07;
+    sound_class powerup_08;
+    sound_class powerup_09;
+    sound_class powerup_10;
+    sound_class powerup_11;
+    sound_class powerup_12;
     sound_class coin_00;
     sound_class wexp_00;
 };

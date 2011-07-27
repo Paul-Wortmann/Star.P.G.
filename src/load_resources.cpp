@@ -90,6 +90,11 @@ bool load_sounds(void)
     sound.powerup_05.load("data/sounds/powerup_05.wav");sfx_count++;
     sound.powerup_06.load("data/sounds/powerup_06.wav");sfx_count++;
     sound.powerup_07.load("data/sounds/powerup_07.wav");sfx_count++;
+    sound.powerup_08.load("data/sounds/powerup_08.wav");sfx_count++;
+    sound.powerup_09.load("data/sounds/powerup_09.wav");sfx_count++;
+    sound.powerup_10.load("data/sounds/powerup_10.wav");sfx_count++;
+    sound.powerup_11.load("data/sounds/powerup_11.wav");sfx_count++;
+    sound.powerup_12.load("data/sounds/powerup_12.wav");sfx_count++;
     sound.coin_00.load("data/sounds/coin_00.wav");sfx_count++;
     sound.wexp_00.load("data/sounds/wexp_00.wav");sfx_count++;
 
