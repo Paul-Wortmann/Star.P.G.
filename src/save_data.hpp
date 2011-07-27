@@ -25,10 +25,78 @@
 
 #include "RAGE/rage.hpp"
 #include "RAGE/savegame.hpp"
+#include "game.hpp"
 
 struct save_data_type
 {
     int save_version;
+   int                  npc_damage_duration;
+   bool                 cheats_enabled;
+   int                  number_bombs;
+   int                  bomb_delay;
+   int                  bomb_delay_count;
+   bool                 immune;
+   int                  immunity_state;
+   int                  immunity_delay;
+   int                  immunity_delay_count;
+   bool                 anc_enabled;
+   bool                 fps_enabled;
+   bool                 game_paused;
+   bool                 game_active;
+   bool                 game_resume;
+   bool                 menu_active;
+   bool                 pdie_active;
+   bool                 nlvl_active;
+   bool                 outr_active;
+   bool                 status_quit_active;
+   int                  exp_rate;
+   int                  level_locked[MAX_LEVELS];
+   int                  level;
+   int                  level_waves;
+   bool                 wave_spawnable;
+   int                  level_npc_type;
+   bool                 level_boss_level;
+   int                  score;
+   int                  kills;
+   int                  level_kills;
+   int                  level_spawened;
+   int                  level_score;
+   int                  victory_kills;
+   int                  victory_spawened;
+   int                  victory_score;
+   int                  level_end_count;
+   int                  level_end_time_out;
+   bool                 level_end_time;
+   int                  level_end_phase;
+   bool                 level_end_display_active;
+   bool                 level_end_display_alpha;
+   bool                 level_end_display_count;
+   bool                 powerups_spawened;
+   bool                 completed;
+   float                speed;
+   int                  fw_rof_count;
+   int                  sw_rof_count;
+   int                  coin_spawn_rate;
+   int                  wexp_spawn_rate;
+   int                  npc_spawn_rate;
+   int                  npc_spawn_rate_count;
+   int                  npc_projectile_spawn_rate;
+   wave_type            wave[MAX_WAVES];
+   player_type          player;
+   sideship_type        sideship[MAX_SIDESHIPS];
+   enemy_type           enemy[MAX_ENEMYS];
+   npc_type             npc[MAX_NPCS];
+   projectile_type      projectile[MAX_PROJECTILES];
+   shield_type          shield[MAX_SHIELDS];
+   thruster_type        thruster[MAX_THRUSTERS];
+   explosion_type       explosion[MAX_EXPLOSIONS];
+   bkground_scroll_type background_scroll[MAX_BACKGROUNDS];
+   powerup_type         powerup[MAX_POWERUPS];
+   coin_type            coin[MAX_COINS];
+   wexp_type            wexp[MAX_WEXPS];
+   int                  active_npc_count;
+   active_npc_type      active_npc[MAX_NPCS];
+   achivement_type      achivement;
 };
 
 void update_save_data(void);

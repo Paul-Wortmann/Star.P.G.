@@ -3647,7 +3647,7 @@ int process_game(void)
    int   temp_r            = 0;
    game_o.player.health += game_o.player.health_regen_rate;
    if (game_o.player.health > game_o.player.max_health) game_o.player.health = game_o.player.max_health;
-   for (int count = 0;count < MAX_BACKGROUNDS+1;count++)//process backgrounds
+   for (int count = 0;count < MAX_BACKGROUNDS;count++)//process backgrounds
    {
       game_o.background_scroll[count].x_pos -= game_o.background_scroll[count].scroll_rate;
       if (game_o.background_scroll[count].x_pos <= -4.0f) game_o.background_scroll[count].x_pos = 4.0f;
@@ -3801,10 +3801,10 @@ int process_game(void)
    if  (random(game_o.powerup[1 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup
    if ((random(game_o.powerup[8 ].spawn_rate) <= 5)&& (!boss_level())) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb powerup
 
-   if ((game_o.level >=  4) && (random(game_o.powerup[9 ].spawn_rate) <= 3)) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn sideship 0 powerup
-   if ((game_o.level >=  7) && (random(game_o.powerup[10].spawn_rate) <= 3)) spawn_powerup(1.0f,random_GLcoord(),10);//spawn sideship 1 powerup
-   if ((game_o.level >= 11) && (random(game_o.powerup[11].spawn_rate) <= 3)) spawn_powerup(1.0f,random_GLcoord(),11);//spawn sideship 2 powerup
-   if ((game_o.level >= 15) && (random(game_o.powerup[12].spawn_rate) <= 3)) spawn_powerup(1.0f,random_GLcoord(),12);//spawn sideship 3 powerup
+   if ((game_o.level >=  4) && (random(game_o.powerup[9 ].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn sideship 0 powerup
+   if ((game_o.level >=  7) && (random(game_o.powerup[10].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),10);//spawn sideship 1 powerup
+   if ((game_o.level >= 11) && (random(game_o.powerup[11].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),11);//spawn sideship 2 powerup
+   if ((game_o.level >= 15) && (random(game_o.powerup[12].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),12);//spawn sideship 3 powerup
 
    if ((game_o.shield[game_o.player.front_shield].level  < 3) && (random(game_o.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),2);//spawn shield lvl powerup
    if ((game_o.thruster[game_o.player.thrusters].level   < 3) && (random(game_o.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster lvl powerup
@@ -4076,7 +4076,7 @@ int display_game(void)
    glPushMatrix();
    glDisable(GL_DEPTH_TEST);
  //---------------------------------- display backgrounds ---------------------------------------------------------------------
-   if (game_o.background_scroll[3].x_pos > game_o.background_scroll[2].x_pos)
+   if (game_o.background_scroll[3].x_pos >= game_o.background_scroll[2].x_pos)
    {
        z_pos = 0.16f;
        bind_texture(game_o.background_scroll[3].image);
@@ -4100,7 +4100,7 @@ int display_game(void)
        glTexCoord2i( 1, 1 );glVertex3f(-2.000f + game_o.background_scroll[2].x_pos,-2.000f + game_o.background_scroll[3].y_pos,z_pos);
        glEnd();
    }
-   if (game_o.background_scroll[2].x_pos > game_o.background_scroll[3].x_pos)
+   if (game_o.background_scroll[2].x_pos >= game_o.background_scroll[3].x_pos)
    {
        z_pos = 0.16f;
        bind_texture(game_o.background_scroll[2].image);
@@ -4125,7 +4125,7 @@ int display_game(void)
        glEnd();
    }
 //------------------------------------------- display effects layer ------------------------------------------------------
-   if (game_o.background_scroll[1].x_pos > game_o.background_scroll[0].x_pos)
+   if (game_o.background_scroll[1].x_pos >= game_o.background_scroll[0].x_pos)
    {
        z_pos = 0.15f;
        bind_texture(game_o.background_scroll[1].image);
@@ -4149,7 +4149,7 @@ int display_game(void)
        glTexCoord2i( 1, 1 );glVertex3f(-2.000f + game_o.background_scroll[0].x_pos,-2.000f + game_o.background_scroll[1].y_pos,z_pos);
        glEnd();
    }
-   if (game_o.background_scroll[0].x_pos > game_o.background_scroll[1].x_pos)
+   if (game_o.background_scroll[0].x_pos >= game_o.background_scroll[1].x_pos)
    {
        z_pos = 0.15f;
        bind_texture(game_o.background_scroll[0].image);
