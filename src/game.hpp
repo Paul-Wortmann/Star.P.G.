@@ -23,7 +23,6 @@
 #define GAME_H
 
 #include <SDL/SDL.h>
-#include "io.hpp"
 
 const int   MAX_NPCS        = 32;
 const int   MAX_PROJECTILES = 64;
@@ -290,8 +289,6 @@ struct achivement_type
 
 struct game_type
 {
-   io_type              io;
-   SDL_Event            event;
    int                  npc_damage_duration;
    bool                 cheats_enabled;
    int                  number_bombs;

@@ -92,11 +92,11 @@ int process_menu_background(void)
 int process_menu(void)
 {
     process_menu_background();
-        game_o.io.keyboard_delay_count++;
-        if (game_o.io.keyboard_delay_count > game_o.io.keyboard_delay) game_o.io.keyboard_delay_count = game_o.io.keyboard_delay;
-        if ((game_o.io.escape) && (game_o.io.keyboard_delay_count >= game_o.io.keyboard_delay))
+        game.io.keyboard_delay_count++;
+        if (game.io.keyboard_delay_count > game.io.keyboard_delay) game.io.keyboard_delay_count = game.io.keyboard_delay;
+        if ((game.io.escape) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
               {
-                 game_o.io.keyboard_delay_count = 0;
+                 game.io.keyboard_delay_count = 0;
                  sound.menu_select.play();
                  switch (menu.level)
                  {
@@ -151,9 +151,9 @@ int process_menu(void)
                        game_o.status_quit_active = true;
                  }
               }
-        if ((game_o.io.up) && (game_o.io.keyboard_delay_count >= game_o.io.keyboard_delay))
+        if ((game.io.up) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
               {
-                 game_o.io.keyboard_delay_count = 0;
+                 game.io.keyboard_delay_count = 0;
                  if (menu.level == 0)//main menu
                  {
                  menu.possition--;
@@ -202,9 +202,9 @@ int process_menu(void)
                  else sound.menu_move.play();
                  }
               }
-        if ((game_o.io.down) && (game_o.io.keyboard_delay_count >= game_o.io.keyboard_delay))
+        if ((game.io.down) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
               {
-                 game_o.io.keyboard_delay_count = 0;
+                 game.io.keyboard_delay_count = 0;
                  if (menu.level == 0)//main menu
                  {
                  menu.possition++;
@@ -254,7 +254,7 @@ int process_menu(void)
                  else sound.menu_move.play();
                  }
               }
-        if (game_o.io.left)
+        if (game.io.left)
             {
                  if ((menu.level == 2) and (menu.possition == 0))//decrease sound volume
               {
@@ -269,9 +269,9 @@ int process_menu(void)
                  Mix_VolumeMusic(game.config.Audio_Music_Volume);
               }
             }
-        if ((game_o.io.left) && (game_o.io.keyboard_delay_count >= game_o.io.keyboard_delay))
+        if ((game.io.left) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
             {
-                game_o.io.keyboard_delay_count = 0;
+                game.io.keyboard_delay_count = 0;
               if ((menu.level == 2) and (menu.possition == 2))//disable fullscreen
               {
                  if (game.config.Display_Fullscreen == true)
@@ -371,7 +371,7 @@ int process_menu(void)
                  sound.menu_move.play();
                  }
               }
-        if (game_o.io.right)
+        if (game.io.right)
               {
                  if ((menu.level == 2) and (menu.possition == 0))//increase sound volume
                  {
@@ -386,9 +386,9 @@ int process_menu(void)
                     Mix_VolumeMusic(game.config.Audio_Music_Volume);
                  }
               }
-        if ((game_o.io.right) && (game_o.io.keyboard_delay_count >= game_o.io.keyboard_delay))
+        if ((game.io.right) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
               {
-                game_o.io.keyboard_delay_count = 0;
+                game.io.keyboard_delay_count = 0;
                  if ((menu.level == 2) and (menu.possition == 2))//enable fullscreen
                  {
                     if (game.config.Display_Fullscreen == false)
@@ -488,9 +488,9 @@ int process_menu(void)
                  sound.menu_move.play();
                  }
               }
-        if ((game_o.io.select) && (game_o.io.keyboard_delay_count >= game_o.io.keyboard_delay))
+        if ((game.io.select) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
               {
-                 game_o.io.keyboard_delay_count = 0;
+                 game.io.keyboard_delay_count = 0;
                  sound.menu_select.play();
                  switch (menu.level)
                  {

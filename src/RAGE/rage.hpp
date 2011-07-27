@@ -32,6 +32,7 @@
 #include "sound.hpp"
 #include "savegame.hpp"
 #include "font.hpp"
+#include "io.hpp"
 
 class game_class
 {
@@ -42,6 +43,8 @@ class game_class
         bool              process_ready;
         int               music_track;
         bool              music_next_track;
+        io_type           io;
+        SDL_Event         event;
         log_file_class    log;
         config_file_class config;
         graphics_class    graphics;

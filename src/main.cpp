@@ -36,7 +36,6 @@
 #include "game.hpp"
 #include "levels.hpp"
 #include "version.h"
-#include "io.hpp"
 
 extern sound_type        sound;
 extern music_type        music;
@@ -199,7 +198,7 @@ int main(int argc, char *argv[])
               game.config.menu_delay_count = 0;
               game.log.File_Write("User terminated due to insuficient health...better luck next time buddy!");
            }
-        if (game_o.io.escape)
+        if (game.io.escape)
         {
             sound.menu_select.play();
             game.music_next_track          = true;
@@ -208,8 +207,8 @@ int main(int argc, char *argv[])
             menu.possition                 = 3;
             menu.possition_max             = 6;
             game_o.menu_active             = true;
-            game_o.io.escape               = false;
-            game_o.io.keyboard_delay_count = 0;
+            game.io.escape               = false;
+            game.io.keyboard_delay_count = 0;
             game.config.menu_delay_count = 0;
             while (game.config.menu_delay_count < (game.config.menu_delay/2))
             {
@@ -222,7 +221,7 @@ int main(int argc, char *argv[])
             game_o.bomb_delay_count++;
             if (game_o.bomb_delay_count > game_o.bomb_delay) game_o.bomb_delay_count = game_o.bomb_delay;
         }
-        if (game_o.io.key_b)//user pressed "b" for bomb
+        if (game.io.key_b)//user pressed "b" for bomb
         {
             if ((game_o.number_bombs > 0) && (game_o.bomb_delay_count >= game_o.bomb_delay))
             {
@@ -231,34 +230,34 @@ int main(int argc, char *argv[])
                 game_o.bomb_delay_count = 0;
             }
         }
-        if (game_o.io.pause)
+        if (game.io.pause)
               {
                  game_o.game_paused = true;
                  game_o.game_active = false;
                  spawn_paused();
-                 game_o.io.pause    = false;
-                 game_o.io.keyboard_delay_count = 0;
+                 game.io.pause    = false;
+                 game.io.keyboard_delay_count = 0;
               };
         //if (game_o.cheats_enabled == true)
         {
-          if (game_o.io.key_0) game_o.victory_kills = game_o.level_kills;  //complete level
-          if (game_o.io.key_1) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup
-          if (game_o.io.key_2) spawn_powerup(1.0f,random_GLcoord(), 2);//spawn shield lvl powerup
-          if (game_o.io.key_3) spawn_powerup(1.0f,random_GLcoord(), 3);//spawn shield new powerup
-          if (game_o.io.key_4) spawn_powerup(1.0f,random_GLcoord(), 4);//spawn thruster lvl powerup
-          if (game_o.io.key_5) spawn_powerup(1.0f,random_GLcoord(), 5);//spawn thruster new powerup
-          if (game_o.io.key_6) spawn_powerup(1.0f,random_GLcoord(), 6);//spawn weapon lvl powerup
-          if (game_o.io.key_7) spawn_powerup(1.0f,random_GLcoord(), 7);//spawn weapon new powerup
-          if (game_o.io.key_8) unlock_levels();                        //unlock all levels
-          if (game_o.io.key_9) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb powerup
-          if (game_o.io.key_a) game_o.anc_enabled   = !game_o.anc_enabled; //toggle active NPC count display
-          if (game_o.io.key_f) game_o.fps_enabled   = !game_o.fps_enabled; //toggle active NPC count display
-          if (game_o.io.key_q) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn sideship 0 powerup
-          if (game_o.io.key_w) spawn_powerup(1.0f,random_GLcoord(),10);//spawn sideship 1 powerup
-          if (game_o.io.key_e) spawn_powerup(1.0f,random_GLcoord(),11);//spawn sideship 2 powerup
-          if (game_o.io.key_r) spawn_powerup(1.0f,random_GLcoord(),12);//spawn sideship 3 powerup
+          if (game.io.key_0) game_o.victory_kills = game_o.level_kills;  //complete level
+          if (game.io.key_1) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup
+          if (game.io.key_2) spawn_powerup(1.0f,random_GLcoord(), 2);//spawn shield lvl powerup
+          if (game.io.key_3) spawn_powerup(1.0f,random_GLcoord(), 3);//spawn shield new powerup
+          if (game.io.key_4) spawn_powerup(1.0f,random_GLcoord(), 4);//spawn thruster lvl powerup
+          if (game.io.key_5) spawn_powerup(1.0f,random_GLcoord(), 5);//spawn thruster new powerup
+          if (game.io.key_6) spawn_powerup(1.0f,random_GLcoord(), 6);//spawn weapon lvl powerup
+          if (game.io.key_7) spawn_powerup(1.0f,random_GLcoord(), 7);//spawn weapon new powerup
+          if (game.io.key_8) unlock_levels();                        //unlock all levels
+          if (game.io.key_9) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb powerup
+          if (game.io.key_a) game_o.anc_enabled   = !game_o.anc_enabled; //toggle active NPC count display
+          if (game.io.key_f) game_o.fps_enabled   = !game_o.fps_enabled; //toggle active NPC count display
+          if (game.io.key_q) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn sideship 0 powerup
+          if (game.io.key_w) spawn_powerup(1.0f,random_GLcoord(),10);//spawn sideship 1 powerup
+          if (game.io.key_e) spawn_powerup(1.0f,random_GLcoord(),11);//spawn sideship 2 powerup
+          if (game.io.key_r) spawn_powerup(1.0f,random_GLcoord(),12);//spawn sideship 3 powerup
         }
-        if (game_o.io.shoot)
+        if (game.io.shoot)
         {
            process_sideships(true);
            if(game_o.fw_rof_count >= game_o.projectile[game_o.player.front_weapon].rate_of_fire)
@@ -276,10 +275,10 @@ int main(int argc, char *argv[])
         {
             process_sideships(false);
         }
-        if (game_o.io.up)    process_player(1);
-        if (game_o.io.down)  process_player(2);
-        if (game_o.io.right) process_player(3);
-        if (game_o.io.left)  process_player(4);
+        if (game.io.up)    process_player(1);
+        if (game.io.down)  process_player(2);
+        if (game.io.right) process_player(3);
+        if (game.io.left)  process_player(4);
      }
 //*********************************** Game paused *****************************************
     if (game_o.game_paused)
@@ -289,14 +288,14 @@ int main(int argc, char *argv[])
         if (game.config.menu_delay_count >= game.config.menu_delay)
         {
             game.config.menu_delay_count = game.config.menu_delay;
-            if (((game_o.io.escape) || (game_o.io.select)) && (game_o.io.keyboard_delay_count >= game_o.io.keyboard_delay))
+            if (((game.io.escape) || (game.io.select)) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
             {
-                game_o.io.keyboard_delay_count = 0;
+                game.io.keyboard_delay_count = 0;
                 game_o.game_paused    = false;
                 game_o.game_active    = true;
-                game_o.io.escape      = false;
-                game_o.io.select      = false;
-                game_o.io.pause       = false;
+                game.io.escape      = false;
+                game.io.select      = false;
+                game.io.pause       = false;
                 game.music_next_track = true;
             }
         }
@@ -318,7 +317,7 @@ int main(int argc, char *argv[])
         if ((game.config.menu_delay_count >= game.config.menu_delay) && (game.process_ready))
         {
             game.config.menu_delay_count = game.config.menu_delay;
-            if ((game_o.io.escape) || (game_o.io.enter) || (game_o.io.space))
+            if ((game.io.escape) || (game.io.enter) || (game.io.space))
             {
                 sound.menu_select.play();
                 init_game();
@@ -327,8 +326,8 @@ int main(int argc, char *argv[])
                 menu.possition_max             = 4;
                 game_o.menu_active             = true;
                 game_o.pdie_active             = false;
-                game_o.io.keyboard_delay_count = 0;
-                game_o.io.escape               = false;
+                game.io.keyboard_delay_count = 0;
+                game.io.escape               = false;
                 game.music_next_track          = true;
             }
         }
@@ -352,7 +351,7 @@ int main(int argc, char *argv[])
         if ((game.config.menu_delay_count >= game.config.menu_delay) && (game.process_ready))
         {
             game.config.menu_delay_count = game.config.menu_delay;
-            if ((game_o.io.escape) || (game_o.io.enter) || (game_o.io.space))
+            if ((game.io.escape) || (game.io.enter) || (game.io.space))
               {
                  sound.menu_select.play();
                  game_o.level++;
@@ -391,8 +390,8 @@ int main(int argc, char *argv[])
                     game.log.File_Write("Victory conditions met, player proceeding to next level!");
                     game.config.menu_delay_count = 0;
                  }
-              game_o.io.keyboard_delay_count = 0;
-              game_o.io.escape   = false;
+              game.io.keyboard_delay_count = 0;
+              game.io.escape   = false;
               }
         }
      }
@@ -415,7 +414,7 @@ int main(int argc, char *argv[])
         if ((game.config.menu_delay_count >= game.config.menu_delay) && (game.process_ready))
         {
             game.config.menu_delay_count = game.config.menu_delay;
-            if ((game_o.io.escape) || (game_o.io.enter) || (game_o.io.space))
+            if ((game.io.escape) || (game.io.enter) || (game.io.space))
               {
                  sound.menu_select.play();
                  menu.level            = 1;
@@ -428,8 +427,8 @@ int main(int argc, char *argv[])
                  game_o.menu_active    = true;
                  game_o.nlvl_active    = false;
                  game.log.File_Write("Outro finished, proceeding to main menu!");
-                 game_o.io.keyboard_delay_count = 0;
-                 game_o.io.escape      = false;
+                 game.io.keyboard_delay_count = 0;
+                 game.io.escape      = false;
                  game.music_next_track = true;
               }
         }
