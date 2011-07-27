@@ -73,7 +73,7 @@ bool  config_file_class::Set_Defaults (void)
     config_file_class::Audio_Channels       = 32;
     config_file_class::Audio_Buffers        = 2048;
     config_file_class::Audio_Music_Volume   = 32;
-    config_file_class::Audio_Sound_Volume   = 64;
+    config_file_class::Audio_Sound_Volume   = 32;
     config_file_class::mouse_resolution_x   = config_file_class::Display_X_Resolution;
     config_file_class::mouse_resolution_y   = config_file_class::Display_Y_Resolution;
 };

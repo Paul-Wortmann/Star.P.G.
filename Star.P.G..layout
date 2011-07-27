@@ -7,10 +7,10 @@
 	<File name="src\RAGE\config.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1497" topLine="28" />
 	</File>
-	<File name="src\RAGE\font.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="152" topLine="0" />
+	<File name="src\RAGE\font.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="1108" topLine="0" />
 	</File>
-	<File name="src\RAGE\font.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\RAGE\font.hpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1075" topLine="8" />
 	</File>
 	<File name="src\RAGE\graphics.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -68,7 +68,7 @@
 		<Cursor1 position="821" topLine="0" />
 	</File>
 	<File name="src\game.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="241139" topLine="4244" />
+		<Cursor1 position="2989" topLine="63" />
 	</File>
 	<File name="src\game.hpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="5988" topLine="282" />
@@ -79,8 +79,8 @@
 	<File name="src\io.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="895" topLine="78" />
 	</File>
-	<File name="src\levels.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1215" topLine="21" />
+	<File name="src\levels.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="1215" topLine="30" />
 	</File>
 	<File name="src\load_resources.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="74551" topLine="875" />
