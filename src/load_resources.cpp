@@ -905,6 +905,7 @@ bool load_fonts(void)
 {
     int font_count = 0;
     font.font_1.Set_File("data/fonts/font_001.ttf");font_count++;
+    font.font_2.Set_File("data/fonts/font_002.ttf");font_count++;
 
     game.log.File_Write("Font files loaded -> ",font_count);
     return(true);

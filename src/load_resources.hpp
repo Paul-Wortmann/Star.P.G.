@@ -497,6 +497,7 @@ struct texture_type
 struct font_type
 {
     font_class font_1;
+    font_class font_2;
 };
 
 bool load_resources(void);

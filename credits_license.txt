@@ -56,6 +56,14 @@ level_nl.mod from http://www.scene.org (Cardiaxx-HiScore.mod)
 menu_00.it   from http://www.lpchip.com/home/ (Wisdom of Purety - Looped.it)
 outro_00.mod from http://modarchive.org/ (modmon.mod)
 
+---------
+  Fonts
+---------
+
+Font_001 from ? (Arial)
+Font_002 from http://cooltext.com (Battlestar.ttf)
+
+---------------------------
 3rd party API's*
 ---------------------------
 SDL         - http://www.libsdl.org/

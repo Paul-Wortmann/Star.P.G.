@@ -80,7 +80,7 @@ bool  config_file_class::Set_Defaults (void)
 
 bool config_file_class::File_Clear(void)
 {
-    std::fstream configfile(config_file_class::Config_File,std::ios::out|std::ios::trunc);
+    std::fstream configfile(config_file_class::Config_File,std::ios::out|std::ios::binary|std::ios::trunc);
     if (configfile.is_open()) configfile.close();
     else return(false);
     return(true);
@@ -245,8 +245,8 @@ bool config_file_class::File_Read(void)
         {
             getline(configfile,input_line);
             config_file_class::Process_Data(input_line);
-            configfile.close();
         }
+        configfile.close();
     }
     else return(false);
     return(true);

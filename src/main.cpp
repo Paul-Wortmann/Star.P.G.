@@ -126,9 +126,7 @@ int main(int argc, char *argv[])
   seed_rand();
   TTF_Init();
   game.log.File_Write("Loading resources...");
-  #if _WIN32
   loading_screen_display("data/textures/misc/loading_screen.png");
-  #endif
   load_resources();
   game.log.File_Write("Starting game_o...");
   game.log.File_Write("---------------\n");
@@ -444,16 +442,15 @@ int main(int argc, char *argv[])
         game.process_ready = true;
     }
     else game.process_ready = false;
-    //if (game.process_ready) game.timer.stop();
     }
 //----------------------------------- Exit -------------------------------------
-    game.log.File_Write("\n");
-    game.log.File_Write("Shuting down...");
-    game.log.File_Write("---------------\n");
     game.log.File_Write("Saving config...");
     game.config.File_Set("Star.P.G..cfg");
     game.config.File_Clear();
     game.config.File_Write();
+    game.log.File_Write("\n");
+    game.log.File_Write("Shuting down...");
+    game.log.File_Write("---------------\n");
     game.log.File_Write("Unloading fonts...");
     TTF_Quit();
     game.log.File_Write("Shuting down audio system...");
