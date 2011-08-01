@@ -2789,10 +2789,12 @@ int spawn_explosion(float x_position, float y_position, float size)
        {
            game_o.explosion[explosion_num].image     = 185;
            game_o.explosion[explosion_num].animation = 0;
-           if ((temp_type >=   0) && (temp_type <  50)) game_o.explosion[explosion_num].animation = 0;
-           if ((temp_type >=  50) && (temp_type < 101)) game_o.explosion[explosion_num].animation = 1;
+           if ((temp_type >=   0) && (temp_type <  33)) game_o.explosion[explosion_num].animation = 0;
+           if ((temp_type >=  34) && (temp_type <  66)) game_o.explosion[explosion_num].animation = 1;
+           if ((temp_type >=  67) && (temp_type < 101)) game_o.explosion[explosion_num].animation = 2;
            if (game_o.explosion[explosion_num].animation == 0) game_o.explosion[explosion_num].image = 185;
            if (game_o.explosion[explosion_num].animation == 1) game_o.explosion[explosion_num].image = 352;
+           if (game_o.explosion[explosion_num].animation == 2) game_o.explosion[explosion_num].image = 364;
            game_o.explosion[explosion_num].active  = true;
            game_o.explosion[explosion_num].frame   = 0;
            game_o.explosion[explosion_num].sound   = 4;
@@ -2850,6 +2852,11 @@ int proccess_explosions(void)
             game_o.explosion[count].frame   = 0;
          }
          if ((game_o.explosion[count].animation == 1) && (game_o.explosion[count].frame > 23))
+         {
+            game_o.explosion[count].active  = false;
+            game_o.explosion[count].frame   = 0;
+         }
+         if ((game_o.explosion[count].animation == 2) && (game_o.explosion[count].frame > 29))
          {
             game_o.explosion[count].active  = false;
             game_o.explosion[count].frame   = 0;

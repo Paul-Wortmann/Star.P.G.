@@ -518,6 +518,37 @@ struct texture_type
    texture_class explosion_122;
    texture_class explosion_123;
    texture_class explosion_124;
+
+   texture_class explosion_201;
+   texture_class explosion_202;
+   texture_class explosion_203;
+   texture_class explosion_204;
+   texture_class explosion_205;
+   texture_class explosion_206;
+   texture_class explosion_207;
+   texture_class explosion_208;
+   texture_class explosion_209;
+   texture_class explosion_210;
+   texture_class explosion_211;
+   texture_class explosion_212;
+   texture_class explosion_213;
+   texture_class explosion_214;
+   texture_class explosion_215;
+   texture_class explosion_216;
+   texture_class explosion_217;
+   texture_class explosion_218;
+   texture_class explosion_219;
+   texture_class explosion_220;
+   texture_class explosion_221;
+   texture_class explosion_222;
+   texture_class explosion_223;
+   texture_class explosion_224;
+   texture_class explosion_225;
+   texture_class explosion_226;
+   texture_class explosion_227;
+   texture_class explosion_228;
+   texture_class explosion_229;
+   texture_class explosion_230;
 };
 
 struct font_type
