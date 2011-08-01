@@ -37,6 +37,7 @@ config_file_class::config_file_class(void)
     config_file_class::Display_Y_Resolution = 480;
     config_file_class::Display_BPS          = 32;
     config_file_class::Display_Fullscreen   = false;
+    config_file_class::Display_Touchscreen  = false;
     config_file_class::Audio_Rate           = 44100;
     config_file_class::Audio_Channels       = 32;
     config_file_class::Audio_Buffers        = 2048;
@@ -69,6 +70,7 @@ bool  config_file_class::Set_Defaults (void)
     config_file_class::Display_Y_Resolution = 480;
     config_file_class::Display_BPS          = 32;
     config_file_class::Display_Fullscreen   = false;
+    config_file_class::Display_Touchscreen  = false;
     config_file_class::Audio_Rate           = 44100;
     config_file_class::Audio_Channels       = 32;
     config_file_class::Audio_Buffers        = 2048;
@@ -143,6 +145,7 @@ bool  config_file_class::File_Write   (void)
     config_file_class::File_Write_Data("-----------------------");
     config_file_class::File_Write_Data("Joystick_Sensitivity",config_file_class::joystick_sensitivity);
     config_file_class::File_Write_Data("Display_Fullscreen  ",config_file_class::Display_Fullscreen);
+    config_file_class::File_Write_Data("Display_Touchscreen ",config_file_class::Display_Touchscreen);
     config_file_class::File_Write_Data("Display_X_Resolution",config_file_class::Display_X_Resolution);
     config_file_class::File_Write_Data("Display_Y_Resolution",config_file_class::Display_Y_Resolution);
     config_file_class::File_Write_Data("Display_BPS         ",config_file_class::Display_BPS);
@@ -193,6 +196,11 @@ bool config_file_class::Process_Data(std::string data_line)
         if (temp_string_key == "Joystick_Sensitivity")
         {
             config_file_class::joystick_sensitivity = temp_int;
+        }
+        if (temp_string_key == "Display_Touchscreen")
+        {
+            if (temp_int == 1) config_file_class::Display_Touchscreen = true;
+            else config_file_class::Display_Touchscreen = false;
         }
         if (temp_string_key == "Display_Fullscreen")
         {

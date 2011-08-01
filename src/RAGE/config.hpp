@@ -42,6 +42,7 @@ class config_file_class
         int   Display_Y_Resolution;
         int   Display_BPS;
         bool  Display_Fullscreen;
+        bool  Display_Touchscreen;
         int   Audio_Rate;
         int   Audio_Channels;
         int   Audio_Buffers;

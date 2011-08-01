@@ -492,6 +492,8 @@ struct texture_type
    texture_class powerup_sideship_01;
    texture_class powerup_sideship_02;
    texture_class powerup_sideship_03;
+   texture_class touchscreen_arrow;
+   texture_class touchscreen_button;
 };
 
 struct font_type

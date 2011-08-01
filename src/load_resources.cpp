@@ -514,8 +514,10 @@ bool load_textures(void)
     texture.powerup_sideship_01.load("data/textures/powerups/powerup_sideship_01.png");texture_count++;
     texture.powerup_sideship_02.load("data/textures/powerups/powerup_sideship_02.png");texture_count++;
     texture.powerup_sideship_03.load("data/textures/powerups/powerup_sideship_03.png");texture_count++;
-
     texture.projectile_031.load("data/textures/projectiles/projectile_031.png");texture_count++;
+    texture.touchscreen_arrow.load("data/textures/misc/touchscreen_arrow.png");texture_count++;
+    texture.touchscreen_button.load("data/textures/misc/touchscreen_button.png");texture_count++;
+
 
     game.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
@@ -890,8 +892,9 @@ bool bind_texture(int texture_number)
     if (texture_number == 347) glBindTexture( GL_TEXTURE_2D, texture.powerup_sideship_01.texture_data);
     if (texture_number == 348) glBindTexture( GL_TEXTURE_2D, texture.powerup_sideship_02.texture_data);
     if (texture_number == 349) glBindTexture( GL_TEXTURE_2D, texture.powerup_sideship_03.texture_data);
-
     if (texture_number == 252) glBindTexture( GL_TEXTURE_2D, texture.projectile_031.texture_data);
+    if (texture_number == 350) glBindTexture( GL_TEXTURE_2D, texture.touchscreen_arrow.texture_data);
+    if (texture_number == 351) glBindTexture( GL_TEXTURE_2D, texture.touchscreen_button.texture_data);
     return(true);
 };
 
