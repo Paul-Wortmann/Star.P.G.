@@ -45,6 +45,16 @@ config_file_class::config_file_class(void)
     config_file_class::Audio_Sound_Volume   = 64;
     config_file_class::mouse_resolution_x   = config_file_class::Display_X_Resolution;
     config_file_class::mouse_resolution_y   = config_file_class::Display_Y_Resolution;
+    if ((config_file_class::Display_X_Resolution ==  640) && (config_file_class::Display_Y_Resolution ==  480)) config_file_class::Display_resolution = 0;
+    if ((config_file_class::Display_X_Resolution ==  800) && (config_file_class::Display_Y_Resolution ==  600)) config_file_class::Display_resolution = 1;
+    if ((config_file_class::Display_X_Resolution == 1024) && (config_file_class::Display_Y_Resolution ==  768)) config_file_class::Display_resolution = 2;
+    if ((config_file_class::Display_X_Resolution == 1280) && (config_file_class::Display_Y_Resolution == 1024)) config_file_class::Display_resolution = 3;
+    if ((config_file_class::Display_X_Resolution == 1366) && (config_file_class::Display_Y_Resolution ==  768)) config_file_class::Display_resolution = 4;
+    if ((config_file_class::Display_X_Resolution == 1440) && (config_file_class::Display_Y_Resolution ==  900)) config_file_class::Display_resolution = 5;
+    if ((config_file_class::Display_X_Resolution == 1680) && (config_file_class::Display_Y_Resolution == 1050)) config_file_class::Display_resolution = 6;
+    if ((config_file_class::Display_X_Resolution == 1920) && (config_file_class::Display_Y_Resolution == 1080)) config_file_class::Display_resolution = 7;
+    config_file_class::mouse_resolution_x   = config_file_class::Display_X_Resolution;
+    config_file_class::mouse_resolution_y   = config_file_class::Display_Y_Resolution;
 };
 
 config_file_class::~config_file_class(void)
@@ -76,6 +86,14 @@ bool  config_file_class::Set_Defaults (void)
     config_file_class::Audio_Buffers        = 2048;
     config_file_class::Audio_Music_Volume   = 32;
     config_file_class::Audio_Sound_Volume   = 32;
+    if ((config_file_class::Display_X_Resolution ==  640) && (config_file_class::Display_Y_Resolution ==  480)) config_file_class::Display_resolution = 0;
+    if ((config_file_class::Display_X_Resolution ==  800) && (config_file_class::Display_Y_Resolution ==  600)) config_file_class::Display_resolution = 1;
+    if ((config_file_class::Display_X_Resolution == 1024) && (config_file_class::Display_Y_Resolution ==  768)) config_file_class::Display_resolution = 2;
+    if ((config_file_class::Display_X_Resolution == 1280) && (config_file_class::Display_Y_Resolution == 1024)) config_file_class::Display_resolution = 3;
+    if ((config_file_class::Display_X_Resolution == 1366) && (config_file_class::Display_Y_Resolution ==  768)) config_file_class::Display_resolution = 4;
+    if ((config_file_class::Display_X_Resolution == 1440) && (config_file_class::Display_Y_Resolution ==  900)) config_file_class::Display_resolution = 5;
+    if ((config_file_class::Display_X_Resolution == 1680) && (config_file_class::Display_Y_Resolution == 1050)) config_file_class::Display_resolution = 6;
+    if ((config_file_class::Display_X_Resolution == 1920) && (config_file_class::Display_Y_Resolution == 1080)) config_file_class::Display_resolution = 7;
     config_file_class::mouse_resolution_x   = config_file_class::Display_X_Resolution;
     config_file_class::mouse_resolution_y   = config_file_class::Display_Y_Resolution;
 };

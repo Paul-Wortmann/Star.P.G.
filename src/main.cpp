@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
   SDL_SetColorKey(App_Icon_Surface, SDL_SRCCOLORKEY, colorkey);
   SDL_WM_SetIcon(App_Icon_Surface,NULL);
   SDL_WM_SetCaption(App_Name, 0);
-  SDL_ShowCursor(SDL_DISABLE);
+  //SDL_ShowCursor(SDL_DISABLE);
 //----------------------------------- SDL Audio --------------------------------
   game.log.File_Write("Starting sound system...");
   SDL_Init(SDL_INIT_AUDIO);
@@ -185,20 +185,30 @@ int main(int argc, char *argv[])
                 if (game.music_track == 24) music.level_24.play();
                 if (game.music_track == 25) music.level_25.play();
             }
-           game.game_resume = true;
-           if (game.process_ready) process_game();
-           display_game();
-           if (game_o.player.health < 0)
-           {
-              sound.menu_select.play();
-              game.music_next_track = true;
-              game.game_active    = false;
-              game.game_resume    = false;
-              game.pdie_active    = true;
-              menu.level = 8;
-              game.config.menu_delay_count = 0;
-              game.log.File_Write("User terminated due to insuficient health...better luck next time buddy!");
-           }
+            game.game_resume = true;
+            if (game.process_ready) process_game();
+            display_game();
+            if(game.config.Display_Touchscreen)
+            {
+                if(game.physics.point_in_quadrangle(-0.875f,0.2f,-0.550f,0.2f,game.io.mouse_x,game.io.mouse_y)) game.io.left = true;
+                if(game.physics.point_in_quadrangle(-0.475f,0.2f,-0.550f,0.2f,game.io.mouse_x,game.io.mouse_y)) game.io.right = true;
+                if(game.physics.point_in_quadrangle(-0.675f,0.2f,-0.350f,0.2f,game.io.mouse_x,game.io.mouse_y)) game.io.up = true;
+                if(game.physics.point_in_quadrangle(-0.675f,0.2f,-0.750f,0.2f,game.io.mouse_x,game.io.mouse_y)) game.io.down = true;
+                if(game.physics.point_in_quadrangle( 0.875f,0.2f,-0.750f,0.2f,game.io.mouse_x,game.io.mouse_y)) game.io.shoot = true;
+                if(game.physics.point_in_quadrangle( 0.575f,0.2f,-0.750f,0.2f,game.io.mouse_x,game.io.mouse_y)) game.io.key_b = true;
+                if(game.physics.point_in_quadrangle( 0.875f,0.2f, 0.750f,0.2f,game.io.mouse_x,game.io.mouse_y)) game.io.escape = true;
+            }
+            if (game_o.player.health < 0)
+            {
+                sound.menu_select.play();
+                game.music_next_track = true;
+                game.game_active    = false;
+                game.game_resume    = false;
+                game.pdie_active    = true;
+                menu.level = 8;
+                game.config.menu_delay_count = 0;
+                game.log.File_Write("User terminated due to insuficient health...better luck next time buddy!");
+            }
         if (game.io.escape)
         {
             sound.menu_select.play();

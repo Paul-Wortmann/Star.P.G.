@@ -60,5 +60,23 @@ float physics_class::distance_3D(float x1, float y1, float z1, float x2, float y
    return(sqrt(((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2))+((z1-z2)*(z1-z2))));
 }
 
+bool  physics_class::point_in_quadrangle  (float qx, float qw, float qy, float qh, float px, float py) //rectangle!
+{
+    if ((px > (qx-(qw/2))) && (px < (qx+(qw/2))) && (py > (qy-(qh/2))) && (py < (qy+(qh/2)))) return(true);
+    else return(false);
+};
+
+bool  physics_class::point_in_diamond     (float dx, float dw, float dws, float dy, float dh, float dhs, float px, float py)
+{
+    float tx = 0.0f;
+    float ty = 0.0f;
+    if (px > dx) tx = (px-dx);
+    if (px < dx) tx = (dx-px);
+    if (py > dy) ty = (py-dy);
+    if (py < dy) ty = (dy-py);
+    if  ((px > (dx - (dw/(dws*2))+ty)) && (px < (dx + (dw/(dws*2))-ty)) &&
+         (py > (dy - (dh/(dhs*2))+tx)) && (py < (dy + (dh/(dhs*2))-tx))) return(true);
+    else return(false);
+};
 
 

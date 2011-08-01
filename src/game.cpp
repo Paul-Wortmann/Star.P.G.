@@ -4531,89 +4531,149 @@ int display_game(void)
       glTexCoord2i( 0, 0 );glVertex3f( 0.0f +temp_val,0.975f, 0.001f);
       glTexCoord2i( 1, 0 );glVertex3f( 0.0f          ,0.975f, 0.001f);
       glTexCoord2i( 1, 1 );glVertex3f( 0.0f          ,0.900f, 0.001f);
-      glEnd();
-   }
+        glEnd();
+    }
 
-   temp_val = (1.95f*((float)game_o.level_kills/(float)game_o.victory_kills));
-   bind_texture(340); //level progress bar
-   glLoadIdentity();
-   glBegin( GL_QUADS );
-   glTexCoord2i( 0, 1 );glVertex3f(-0.975f +temp_val,-0.950f, 0.001f);
-   glTexCoord2i( 0, 0 );glVertex3f(-0.975f +temp_val,-0.975f, 0.001f);
-   glTexCoord2i( 1, 0 );glVertex3f(-0.975f          ,-0.975f, 0.001f);
-   glTexCoord2i( 1, 1 );glVertex3f(-0.975f          ,-0.950f, 0.001f);
-   glEnd();
+    temp_val = (1.95f*((float)game_o.level_kills/(float)game_o.victory_kills));
+    bind_texture(340); //level progress bar
+    glLoadIdentity();
+    glBegin( GL_QUADS );
+    glTexCoord2i( 0, 1 );glVertex3f(-0.975f +temp_val,-0.950f, 0.001f);
+    glTexCoord2i( 0, 0 );glVertex3f(-0.975f +temp_val,-0.975f, 0.001f);
+    glTexCoord2i( 1, 0 );glVertex3f(-0.975f          ,-0.975f, 0.001f);
+    glTexCoord2i( 1, 1 );glVertex3f(-0.975f          ,-0.950f, 0.001f);
+    glEnd();
+    //--------------------------- Touch screen controls ------------------------------------------------------------------------------------
+    if(game.config.Display_Touchscreen)
+    {
+        bind_texture(350); // Left button
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 1, 1 );glVertex3f(-0.775f ,-0.450f, 0.001f);
+        glTexCoord2i( 0, 1 );glVertex3f(-0.775f ,-0.650f, 0.001f);
+        glTexCoord2i( 0, 0 );glVertex3f(-0.975f ,-0.650f, 0.001f);
+        glTexCoord2i( 1, 0 );glVertex3f(-0.975f ,-0.450f, 0.001f);
+        glEnd();
+        bind_texture(350); // Right button
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 0 );glVertex3f(-0.375f ,-0.450f, 0.001f);
+        glTexCoord2i( 1, 0 );glVertex3f(-0.375f ,-0.650f, 0.001f);
+        glTexCoord2i( 1, 1 );glVertex3f(-0.575f ,-0.650f, 0.001f);
+        glTexCoord2i( 0, 1 );glVertex3f(-0.575f ,-0.450f, 0.001f);
+        glEnd();
+        bind_texture(350); // Up button
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 1, 0 );glVertex3f(-0.575f ,-0.250f, 0.001f);
+        glTexCoord2i( 1, 1 );glVertex3f(-0.575f ,-0.450f, 0.001f);
+        glTexCoord2i( 0, 1 );glVertex3f(-0.775f ,-0.450f, 0.001f);
+        glTexCoord2i( 0, 0 );glVertex3f(-0.775f ,-0.250f, 0.001f);
+        glEnd();
+        bind_texture(350); // Down button
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f(-0.575f ,-0.650f, 0.001f);
+        glTexCoord2i( 0, 0 );glVertex3f(-0.575f ,-0.850f, 0.001f);
+        glTexCoord2i( 1, 0 );glVertex3f(-0.775f ,-0.850f, 0.001f);
+        glTexCoord2i( 1, 1 );glVertex3f(-0.775f ,-0.650f, 0.001f);
+        glEnd();
+        bind_texture(351); // Fire button
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f( 0.775f ,-0.650f, 0.001f);
+        glTexCoord2i( 0, 0 );glVertex3f( 0.775f ,-0.850f, 0.001f);
+        glTexCoord2i( 1, 0 );glVertex3f( 0.975f ,-0.850f, 0.001f);
+        glTexCoord2i( 1, 1 );glVertex3f( 0.975f ,-0.650f, 0.001f);
+        glEnd();
+        bind_texture(351); // Bomb button
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f( 0.475f ,-0.650f, 0.001f);
+        glTexCoord2i( 0, 0 );glVertex3f( 0.475f ,-0.850f, 0.001f);
+        glTexCoord2i( 1, 0 );glVertex3f( 0.675f ,-0.850f, 0.001f);
+        glTexCoord2i( 1, 1 );glVertex3f( 0.675f ,-0.650f, 0.001f);
+        glEnd();
+        bind_texture(351); // Menu button
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f( 0.775f , 0.650f, 0.001f);
+        glTexCoord2i( 0, 0 );glVertex3f( 0.775f , 0.850f, 0.001f);
+        glTexCoord2i( 1, 0 );glVertex3f( 0.975f , 0.850f, 0.001f);
+        glTexCoord2i( 1, 1 );glVertex3f( 0.975f , 0.650f, 0.001f);
+        glEnd();
+    }
+    //--------------------------------------------------------------------------------------------------------------------------------------
+    if (game_o.paused.active)                   display_paused();
+    if (game_o.loaded.active)                   display_loaded();
+    if (game_o.saved.active)                    display_saved();
+    if (game_o.a_score.active)                  display_a_score();
+    if (game_o.a_kills.active)                  display_a_kills();
+    if (game_o.p_actinium_shields.active)       display_p_actinium_shields();
+    if (game_o.p_blasters.active)               display_p_blasters();
+    if (game_o.p_burst_lasers.active)           display_p_burst_lasers();
+    if (game_o.p_chain_guns.active)             display_p_chain_guns();
+    if (game_o.p_convolution_thrusters.active)  display_p_convolution_thrusters();
+    if (game_o.p_health.active)                 display_p_health();
+    if (game_o.p_ion_cannons.active)            display_p_ion_cannons();
+    if (game_o.p_iridium_shileds.active)        display_p_iridium_shileds();
+    if (game_o.p_maelstrom_thrusters.active)    display_p_maelstrom_thrusters();
+    if (game_o.p_plasma_rockets.active)         display_p_plasma_rockets();
+    if (game_o.p_rail_turrets.active)           display_p_rail_turrets();
+    if (game_o.p_rubidium_shields.active)       display_p_rubidium_shields();
+    if (game_o.p_seismic_thrusters.active)      display_p_seismic_thrusters();
+    if (game_o.p_shield_level_up.active)        display_p_shield_level_up();
+    if (game_o.p_tantalum_shields.active)       display_p_tantalum_shields();
+    if (game_o.p_terbium_shields.active)        display_p_terbium_shields();
+    if (game_o.p_thrusters_level_up.active)     display_p_thrusters_level_up();
+    if (game_o.p_vortex_thrusters.active)       display_p_vortex_thrusters();
+    if (game_o.p_weapon_level_up.active)        display_p_weapon_level_up();
+    if (game_o.level_end_display_active)        display_d_level_end();
 
-   if (game_o.paused.active)                   display_paused();
-   if (game_o.loaded.active)                   display_loaded();
-   if (game_o.saved.active)                    display_saved();
-   if (game_o.a_score.active)                  display_a_score();
-   if (game_o.a_kills.active)                  display_a_kills();
-   if (game_o.p_actinium_shields.active)       display_p_actinium_shields();
-   if (game_o.p_blasters.active)               display_p_blasters();
-   if (game_o.p_burst_lasers.active)           display_p_burst_lasers();
-   if (game_o.p_chain_guns.active)             display_p_chain_guns();
-   if (game_o.p_convolution_thrusters.active)  display_p_convolution_thrusters();
-   if (game_o.p_health.active)                 display_p_health();
-   if (game_o.p_ion_cannons.active)            display_p_ion_cannons();
-   if (game_o.p_iridium_shileds.active)        display_p_iridium_shileds();
-   if (game_o.p_maelstrom_thrusters.active)    display_p_maelstrom_thrusters();
-   if (game_o.p_plasma_rockets.active)         display_p_plasma_rockets();
-   if (game_o.p_rail_turrets.active)           display_p_rail_turrets();
-   if (game_o.p_rubidium_shields.active)       display_p_rubidium_shields();
-   if (game_o.p_seismic_thrusters.active)      display_p_seismic_thrusters();
-   if (game_o.p_shield_level_up.active)        display_p_shield_level_up();
-   if (game_o.p_tantalum_shields.active)       display_p_tantalum_shields();
-   if (game_o.p_terbium_shields.active)        display_p_terbium_shields();
-   if (game_o.p_thrusters_level_up.active)     display_p_thrusters_level_up();
-   if (game_o.p_vortex_thrusters.active)       display_p_vortex_thrusters();
-   if (game_o.p_weapon_level_up.active)        display_p_weapon_level_up();
-   if (game_o.level_end_display_active)        display_d_level_end();
-
-   font.font_1.Write(255,255,255,64,-0.98f,-0.95f,"Score - ", game_o.score);
-   font.font_1.Write(255,255,255,64,-0.98f,-0.91f,"Kills - ", game_o.kills);
-   if (game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.40f, 0.95f,"Active NPCs - ",  game_o.active_npc_count);
-   if (game_o.fps_enabled &&  game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.40f, 0.90f,"FPS - ",  game.FPS);
-   if (game_o.fps_enabled && !game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.40f, 0.95f,"FPS - ",  game.FPS);
-   glPopMatrix();
-   SDL_GL_SwapBuffers();
-   return(1);
+    font.font_1.Write(255,255,255,64,-0.98f,-0.95f,"Score - ", game_o.score);
+    font.font_1.Write(255,255,255,64,-0.98f,-0.91f,"Kills - ", game_o.kills);
+    if (game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.40f, 0.95f,"Active NPCs - ",  game_o.active_npc_count);
+    if (game_o.fps_enabled &&  game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.40f, 0.90f,"FPS - ",  game.FPS);
+    if (game_o.fps_enabled && !game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.40f, 0.95f,"FPS - ",  game.FPS);
+    glPopMatrix();
+    SDL_GL_SwapBuffers();
+    return(1);
 };
 
 int kill_paused(void)
 {
-   game_o.paused.active = false;
-   return(1);
+    game_o.paused.active = false;
+    return(1);
 };
 
 int spawn_paused(void)
 {
-   game_o.paused.active = true;
-   game_o.paused.alpha  = 2.0f;
-   return(1);
+    game_o.paused.active = true;
+    game_o.paused.alpha  = 2.0f;
+    return(1);
 };
 
 int display_paused(void)
 {
-   bind_texture(288); //display paused logo
-   glLoadIdentity();
-   glBegin( GL_QUADS );
-   glColor4f (1.0f, 1.0f, 1.0f,game_o.paused.alpha);
-   glTexCoord2i( 0, 1 );glVertex3f(-0.5f,-0.250f, 0.0001f);
-   glTexCoord2i( 0, 0 );glVertex3f(-0.5f, 0.250f, 0.0001f);
-   glTexCoord2i( 1, 0 );glVertex3f( 0.5f, 0.250f, 0.0001f);
-   glTexCoord2i( 1, 1 );glVertex3f( 0.5f,-0.250f, 0.0001f);
-   glColor4f (1.0f, 1.0f, 1.0f,1.0f);
-   glEnd();
-   return(1);
+    bind_texture(288); //display paused logo
+    glLoadIdentity();
+    glBegin( GL_QUADS );
+    glColor4f (1.0f, 1.0f, 1.0f,game_o.paused.alpha);
+    glTexCoord2i( 0, 1 );glVertex3f(-0.5f,-0.250f, 0.0001f);
+    glTexCoord2i( 0, 0 );glVertex3f(-0.5f, 0.250f, 0.0001f);
+    glTexCoord2i( 1, 0 );glVertex3f( 0.5f, 0.250f, 0.0001f);
+    glTexCoord2i( 1, 1 );glVertex3f( 0.5f,-0.250f, 0.0001f);
+    glColor4f (1.0f, 1.0f, 1.0f,1.0f);
+    glEnd();
+    return(1);
 };
 
 int process_paused(void)
 {
    if (game_o.paused.active)
    {
-      game_o.paused.alpha  -= 0.025f;
-      if (game_o.paused.alpha <= 0) kill_paused();
+        game_o.paused.alpha  -= 0.025f;
+        if (game_o.paused.alpha <= 0) kill_paused();
    }
    return(1);
 };

@@ -443,7 +443,7 @@ bool events_process(void)
     if ((game.io.joystick_down)  || (game.io.key_down )) game.io.down   = true; else game.io.down   = false;
     if ((game.io.joystick_left)  || (game.io.key_left )) game.io.left   = true; else game.io.left   = false;
     if ((game.io.joystick_right) || (game.io.key_right)) game.io.right  = true; else game.io.right  = false;
-   return(true);
+    return(true);
 }
 
 

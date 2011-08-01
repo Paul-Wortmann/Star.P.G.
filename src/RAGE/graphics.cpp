@@ -30,7 +30,7 @@ int   graphics_class::gl_to_res(float gl_coord, int max_res)
 
 float graphics_class::res_to_gl(int  res_coord, int max_res)
 {
-   return(((res_coord / 2) / (max_res / 2)) -1);
+   return((((float) res_coord / (float) max_res) *2) -1);
 }
 
 int   graphics_class::init_gl(int x_res, int y_res)
