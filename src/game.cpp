@@ -2780,15 +2780,21 @@ int proccess_wexp(void)
 /*----------------------------------------------------------------------------*/
 int spawn_explosion(float x_position, float y_position, float size)
 {
-   bool spawn_done = 0;
-   int  explosion_num;
-   for  (explosion_num = 0; explosion_num < MAX_EXPLOSIONS;explosion_num++)
+    int  temp_type  = random_cen();
+    bool spawn_done = 0;
+    int  explosion_num;
+    for  (explosion_num = 0; explosion_num < MAX_EXPLOSIONS;explosion_num++)
    {
        if (!spawn_done and !game_o.explosion[explosion_num].active)
        {
+           game_o.explosion[explosion_num].image     = 185;
+           game_o.explosion[explosion_num].animation = 0;
+           if ((temp_type >=   0) && (temp_type <  50)) game_o.explosion[explosion_num].animation = 0;
+           if ((temp_type >=  50) && (temp_type < 101)) game_o.explosion[explosion_num].animation = 1;
+           if (game_o.explosion[explosion_num].animation == 0) game_o.explosion[explosion_num].image = 185;
+           if (game_o.explosion[explosion_num].animation == 1) game_o.explosion[explosion_num].image = 352;
            game_o.explosion[explosion_num].active  = true;
            game_o.explosion[explosion_num].frame   = 0;
-           game_o.explosion[explosion_num].image   = 185;
            game_o.explosion[explosion_num].sound   = 4;
            game_o.explosion[explosion_num].size    = size;
            game_o.explosion[explosion_num].width   = size/2;
@@ -2803,13 +2809,14 @@ int spawn_explosion(float x_position, float y_position, float size)
 /*----------------------------------------------------------------------------*/
 int kill_explosion(int explosion_num)
 {
-   game_o.explosion[explosion_num].active  = false;
-   game_o.explosion[explosion_num].frame   = 0;
-   game_o.explosion[explosion_num].image   = 185;
-   game_o.explosion[explosion_num].sound   = 4;
-   game_o.explosion[explosion_num].x_pos   = 0.0f;
-   game_o.explosion[explosion_num].y_pos   = 0.0f;
-   game_o.explosion[explosion_num].size    = 0.0f;
+   game_o.explosion[explosion_num].animation = 0;
+   game_o.explosion[explosion_num].active    = false;
+   game_o.explosion[explosion_num].frame     = 0;
+   game_o.explosion[explosion_num].image     = 185;
+   game_o.explosion[explosion_num].sound     = 4;
+   game_o.explosion[explosion_num].x_pos     = 0.0f;
+   game_o.explosion[explosion_num].y_pos     = 0.0f;
+   game_o.explosion[explosion_num].size      = 0.0f;
    return(0);
 }
 /*----------------------------------------------------------------------------*/
@@ -2817,13 +2824,14 @@ int init_explosions(void)
 {
    for (int count =0;count < MAX_EXPLOSIONS;count++)
    {
-      game_o.explosion[count].active  = false;
-      game_o.explosion[count].frame   = 0;
-      game_o.explosion[count].image   = 185;
-      game_o.explosion[count].sound   = 4;
-      game_o.explosion[count].x_pos   = 0.0f;
-      game_o.explosion[count].y_pos   = 0.0f;
-      game_o.explosion[count].size    = 0.0f;
+      game_o.explosion[count].animation = 0;
+      game_o.explosion[count].active    = false;
+      game_o.explosion[count].frame     = 0;
+      game_o.explosion[count].image     = 185;
+      game_o.explosion[count].sound     = 4;
+      game_o.explosion[count].x_pos     = 0.0f;
+      game_o.explosion[count].y_pos     = 0.0f;
+      game_o.explosion[count].size      = 0.0f;
    }
    return(0);
 }
@@ -2836,9 +2844,14 @@ int proccess_explosions(void)
       {
          game_o.explosion[count].x_pos -= (game_o.background_scroll[0].scroll_rate*2);
          game_o.explosion[count].frame++;
-         if (game_o.explosion[count].frame > 24)
+         if ((game_o.explosion[count].animation == 0) && (game_o.explosion[count].frame > 24))
          {
-            game_o.explosion[count].active = false;
+            game_o.explosion[count].active  = false;
+            game_o.explosion[count].frame   = 0;
+         }
+         if ((game_o.explosion[count].animation == 1) && (game_o.explosion[count].frame > 23))
+         {
+            game_o.explosion[count].active  = false;
             game_o.explosion[count].frame   = 0;
          }
       }

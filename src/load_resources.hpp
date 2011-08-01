@@ -506,6 +506,18 @@ struct texture_type
    texture_class explosion_110;
    texture_class explosion_111;
    texture_class explosion_112;
+   texture_class explosion_113;
+   texture_class explosion_114;
+   texture_class explosion_115;
+   texture_class explosion_116;
+   texture_class explosion_117;
+   texture_class explosion_118;
+   texture_class explosion_119;
+   texture_class explosion_120;
+   texture_class explosion_121;
+   texture_class explosion_122;
+   texture_class explosion_123;
+   texture_class explosion_124;
 };
 
 struct font_type

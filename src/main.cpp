@@ -128,7 +128,7 @@ int main(int argc, char *argv[])
   game.log.File_Write("Loading resources...");
   loading_screen_display("data/textures/misc/loading_screen.png");
   load_resources();
-  game.log.File_Write("Starting game_o...");
+  game.log.File_Write("Starting game...");
   game.log.File_Write("---------------\n");
 //----------------------------------- Main loop --------------------------------
   game.timer.start();

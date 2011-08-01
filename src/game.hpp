@@ -56,15 +56,16 @@ struct wave_type
 
 struct explosion_type
 {
-   bool  active;
-   int   frame;
-   int   image;
-   int   sound;
-   float x_pos;
-   float y_pos;
-   float width;
-   float hight;
-   float size;
+    int   animation;
+    bool  active;
+    int   frame;
+    int   image;
+    int   sound;
+    float x_pos;
+    float y_pos;
+    float width;
+    float hight;
+    float size;
 };
 
 struct powerup_type

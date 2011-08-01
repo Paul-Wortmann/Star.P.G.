@@ -530,7 +530,18 @@ bool load_textures(void)
     texture.explosion_110.load("data/textures/explosions/explosion_01/explosion_10.png");texture_count++;
     texture.explosion_111.load("data/textures/explosions/explosion_01/explosion_11.png");texture_count++;
     texture.explosion_112.load("data/textures/explosions/explosion_01/explosion_12.png");texture_count++;
-
+    texture.explosion_113.load("data/textures/explosions/explosion_01/explosion_13.png");texture_count++;
+    texture.explosion_114.load("data/textures/explosions/explosion_01/explosion_14.png");texture_count++;
+    texture.explosion_115.load("data/textures/explosions/explosion_01/explosion_15.png");texture_count++;
+    texture.explosion_116.load("data/textures/explosions/explosion_01/explosion_16.png");texture_count++;
+    texture.explosion_117.load("data/textures/explosions/explosion_01/explosion_17.png");texture_count++;
+    texture.explosion_118.load("data/textures/explosions/explosion_01/explosion_18.png");texture_count++;
+    texture.explosion_119.load("data/textures/explosions/explosion_01/explosion_19.png");texture_count++;
+    texture.explosion_120.load("data/textures/explosions/explosion_01/explosion_20.png");texture_count++;
+    texture.explosion_121.load("data/textures/explosions/explosion_01/explosion_21.png");texture_count++;
+    texture.explosion_122.load("data/textures/explosions/explosion_01/explosion_22.png");texture_count++;
+    texture.explosion_123.load("data/textures/explosions/explosion_01/explosion_23.png");texture_count++;
+    texture.explosion_124.load("data/textures/explosions/explosion_01/explosion_24.png");texture_count++;
 
     game.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
