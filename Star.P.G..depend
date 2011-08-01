@@ -641,7 +641,7 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1311738058 source:c:\_git_\star.p.g\src\game.cpp
+1312176458 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"RAGE/rage.hpp"
 	"load_resources.hpp"
@@ -679,7 +679,7 @@
 
 1309768119 c:\_git_\star.p.g\src\levels.h
 
-1311782361 source:c:\_git_\star.p.g\src\main.cpp
+1312178918 source:c:\_git_\star.p.g\src\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -835,7 +835,7 @@
 1311253142 c:\_git_\star.p.g\src\rage\config.hpp
 	<string>
 
-1311755194 source:c:\_git_\star.p.g\src\rage\config.cpp
+1312178416 source:c:\_git_\star.p.g\src\rage\config.cpp
 	<fstream>
 	<stdio.h>
 	<stdlib.h>

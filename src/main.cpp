@@ -74,6 +74,7 @@ int main(int argc, char *argv[])
   game.config.File_Set("Star.P.G..cfg");
   game.config.Set_Defaults();
   game.log.File_Write("Loading config...");
+  game.config.File_Set("Star.P.G..cfg");
   game.config.File_Read();
  //----------------------------------- Start the PhysicsFS ----------------------
   //game.log.File_Write("Starting PhysicsFS...");

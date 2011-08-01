@@ -4314,35 +4314,35 @@ int display_game(void)
          glEnd();
       }
 
-      if (game_o.player.side_weapon > -1)
-      {
-         bind_texture(game_o.player.side_weapon+211); //player starship side weapons
-         glLoadIdentity();
-         glBegin( GL_QUADS );
-         glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.hight/6)+0.075f, 0.025f );
-         glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/6)+0.067f,game_o.player.y_pos+(game_o.player.hight/6)+0.075f, 0.025f );
-         glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos+(game_o.player.hight/6)+0.075f, 0.025f );
-         glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.hight/6)+0.075f, 0.025f );
-         glEnd();
-         glBegin( GL_QUADS );
-         glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.hight/6)-0.075f, 0.025f );
-         glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/6)+0.067f,game_o.player.y_pos+(game_o.player.hight/6)-0.075f, 0.025f );
-         glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos+(game_o.player.hight/6)-0.075f, 0.025f );
-         glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.hight/6)-0.075f, 0.025f );
-         glEnd();
-      }
+    if (game_o.player.side_weapon > -1)
+    {
+        bind_texture(game_o.player.side_weapon+211); //player starship side weapons
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.hight/6)+0.075f, 0.025f );
+        glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/6)+0.067f,game_o.player.y_pos+(game_o.player.hight/6)+0.075f, 0.025f );
+        glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos+(game_o.player.hight/6)+0.075f, 0.025f );
+        glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.hight/6)+0.075f, 0.025f );
+        glEnd();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.hight/6)-0.075f, 0.025f );
+        glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/6)+0.067f,game_o.player.y_pos+(game_o.player.hight/6)-0.075f, 0.025f );
+        glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos+(game_o.player.hight/6)-0.075f, 0.025f );
+        glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.hight/6)-0.075f, 0.025f );
+        glEnd();
+    }
+    if (game_o.player.front_shield > -1)
+    {
+        bind_texture(game_o.shield[game_o.player.front_shield].image); //player starship shield
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/1.5),game_o.player.y_pos-(game_o.player.hight/1.5), 0.02f );
+        glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos+(game_o.player.width/1.5),game_o.player.y_pos+(game_o.player.hight/1.5), 0.02f );
+        glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/1.5),game_o.player.y_pos+(game_o.player.hight/1.5), 0.02f );
+        glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos-(game_o.player.width/1.5),game_o.player.y_pos-(game_o.player.hight/1.5), 0.02f );
+        glEnd();
+    }
     glColor4f(1.0f,1.0f,1.0f,1.0f);//------------------------------------------------
-   if (game_o.player.front_shield > -1)
-   {
-      bind_texture(game_o.shield[game_o.player.front_shield].image); //player starship shield
-      glLoadIdentity();
-      glBegin( GL_QUADS );
-      glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/1.5),game_o.player.y_pos-(game_o.player.hight/1.5), 0.02f );
-      glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos+(game_o.player.width/1.5),game_o.player.y_pos+(game_o.player.hight/1.5), 0.02f );
-      glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/1.5),game_o.player.y_pos+(game_o.player.hight/1.5), 0.02f );
-      glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos-(game_o.player.width/1.5),game_o.player.y_pos-(game_o.player.hight/1.5), 0.02f );
-      glEnd();
-   }
    float  npc_num = 0.0f;
    for  (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
    {
