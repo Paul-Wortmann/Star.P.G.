@@ -135,11 +135,11 @@ int main(int argc, char *argv[])
   game.LastTicks = game.timer.getticks();
   for(int quit = 0; !quit;)
   {
-     if (game_o.status_quit_active) quit = 1;
+     if (game.status_quit_active) quit = 1;
      events_process();
      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 //****************************************** MENU *****************************************
-     if (game_o.menu_active)
+     if (game.menu_active)
      {
         if (game.music_next_track)
         {
@@ -153,7 +153,7 @@ int main(int argc, char *argv[])
         if (game.process_ready) process_menu();
        }
 //****************************************** GAME *****************************************
-        if (game_o.game_active)
+        if (game.game_active)
         {
             if (game.music_next_track)
             {
@@ -185,16 +185,16 @@ int main(int argc, char *argv[])
                 if (game.music_track == 24) music.level_24.play();
                 if (game.music_track == 25) music.level_25.play();
             }
-           game_o.game_resume = true;
+           game.game_resume = true;
            if (game.process_ready) process_game();
            display_game();
            if (game_o.player.health < 0)
            {
               sound.menu_select.play();
               game.music_next_track = true;
-              game_o.game_active    = false;
-              game_o.game_resume    = false;
-              game_o.pdie_active    = true;
+              game.game_active    = false;
+              game.game_resume    = false;
+              game.pdie_active    = true;
               menu.level = 8;
               game.config.menu_delay_count = 0;
               game.log.File_Write("User terminated due to insuficient health...better luck next time buddy!");
@@ -203,11 +203,11 @@ int main(int argc, char *argv[])
         {
             sound.menu_select.play();
             game.music_next_track          = true;
-            game_o.game_active             = false;
+            game.game_active             = false;
             menu.level                     = 1;
             menu.possition                 = 3;
             menu.possition_max             = 6;
-            game_o.menu_active             = true;
+            game.menu_active             = true;
             game.io.escape               = false;
             game.io.keyboard_delay_count = 0;
             game.config.menu_delay_count = 0;
@@ -233,8 +233,8 @@ int main(int argc, char *argv[])
         }
         if (game.io.pause)
               {
-                 game_o.game_paused = true;
-                 game_o.game_active = false;
+                 game.game_paused = true;
+                 game.game_active = false;
                  spawn_paused();
                  game.io.pause    = false;
                  game.io.keyboard_delay_count = 0;
@@ -282,7 +282,7 @@ int main(int argc, char *argv[])
         if (game.io.left)  process_player(4);
      }
 //*********************************** Game paused *****************************************
-    if (game_o.game_paused)
+    if (game.game_paused)
     {
         display_game();
         game.config.menu_delay_count++;
@@ -292,8 +292,8 @@ int main(int argc, char *argv[])
             if (((game.io.escape) || (game.io.select)) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
             {
                 game.io.keyboard_delay_count = 0;
-                game_o.game_paused    = false;
-                game_o.game_active    = true;
+                game.game_paused    = false;
+                game.game_active    = true;
                 game.io.escape      = false;
                 game.io.select      = false;
                 game.io.pause       = false;
@@ -302,7 +302,7 @@ int main(int argc, char *argv[])
         }
     }
 //*********************************** PLAYER DEATH SCREEN *****************************************
-    if (game_o.pdie_active)
+    if (game.pdie_active)
     {
         if (game.music_next_track)
         {
@@ -325,8 +325,8 @@ int main(int argc, char *argv[])
                 menu.level                     = 0;
                 menu.possition                 = 0;
                 menu.possition_max             = 4;
-                game_o.menu_active             = true;
-                game_o.pdie_active             = false;
+                game.menu_active             = true;
+                game.pdie_active             = false;
                 game.io.keyboard_delay_count = 0;
                 game.io.escape               = false;
                 game.music_next_track          = true;
@@ -334,7 +334,7 @@ int main(int argc, char *argv[])
         }
     }
 //******************************* PLAYER NEXT LEVEL SCREEN *************************************
-     if (game_o.nlvl_active)
+     if (game.nlvl_active)
      {
         if (game.music_next_track)
         {
@@ -375,19 +375,19 @@ int main(int argc, char *argv[])
                  if (outro_time)
                  {
                     game.music_next_track = true;
-                    game_o.outr_active    = true;
-                    game_o.game_active    = false;
-                    game_o.menu_active    = false;
-                    game_o.nlvl_active    = false;
+                    game.outr_active    = true;
+                    game.game_active    = false;
+                    game.menu_active    = false;
+                    game.nlvl_active    = false;
                     game.log.File_Write("Player just completed the game, proceeding to Outro!");
                     game.config.menu_delay_count = 0;
                  }
                  else
                  {
                     game.music_next_track = true;
-                    game_o.game_active    = true;
-                    game_o.menu_active    = false;
-                    game_o.nlvl_active    = false;
+                    game.game_active    = true;
+                    game.menu_active    = false;
+                    game.nlvl_active    = false;
                     game.log.File_Write("Victory conditions met, player proceeding to next level!");
                     game.config.menu_delay_count = 0;
                  }
@@ -398,7 +398,7 @@ int main(int argc, char *argv[])
      }
 
 //******************************* OUTRO SCREEN *************************************************
-     if (game_o.outr_active)
+     if (game.outr_active)
      {
         if (game.music_next_track)
         {
@@ -421,12 +421,12 @@ int main(int argc, char *argv[])
                  menu.level            = 1;
                  menu.possition        = 0;
                  menu.possition_max    = 6;
-                 game_o.game_resume    = false;
-                 game_o.pdie_active    = false;
-                 game_o.outr_active    = false;
-                 game_o.game_active    = false;
-                 game_o.menu_active    = true;
-                 game_o.nlvl_active    = false;
+                 game.game_resume    = false;
+                 game.pdie_active    = false;
+                 game.outr_active    = false;
+                 game.game_active    = false;
+                 game.menu_active    = true;
+                 game.nlvl_active    = false;
                  game.log.File_Write("Outro finished, proceeding to main menu!");
                  game.io.keyboard_delay_count = 0;
                  game.io.escape      = false;

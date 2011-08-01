@@ -101,7 +101,7 @@ int process_menu(void)
                  switch (menu.level)
                  {
                     case 0://main menu
-                       game_o.status_quit_active = true;
+                       game.status_quit_active = true;
                        game.log.File_Write("User terminating game - used escape key!");
                     break;
                     case 1://game menu
@@ -148,7 +148,7 @@ int process_menu(void)
                     break;
                     default:
                        game.log.File_Write("Undefined menu choice, quiting.");
-                       game_o.status_quit_active = true;
+                       game.status_quit_active = true;
                  }
               }
         if ((game.io.up) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
@@ -506,11 +506,11 @@ int process_menu(void)
                                 game.log.File_Write("Entering 'new game' menu.");
                              break;
                              case 1://resume game
-                                if (game_o.game_resume)
+                                if (game.game_resume)
                                 {
                                    game.music_next_track = true;
-                                   game_o.game_active    = true;
-                                   game_o.menu_active    = false;
+                                   game.game_active    = true;
+                                   game.menu_active    = false;
                                    game.log.File_Write("Resuming game_o.");
                                 }
                              break;
@@ -528,7 +528,7 @@ int process_menu(void)
                             break;
                              case 4://quit game
                                 game.log.File_Write("User terminating game - via menu system.");
-                                game_o.status_quit_active = true;
+                                game.status_quit_active = true;
                              break;
                           }
                        break;
@@ -554,16 +554,16 @@ int process_menu(void)
                                 game.log.File_Write("Entering 'customize starship' menu.");
                              break;
                              case 3://resume game
-                                if (game_o.game_resume)
+                                if (game.game_resume)
                                 {
                                    game.music_next_track = true;
-                                   game_o.game_active    = true;
-                                   game_o.menu_active    = false;
+                                   game.game_active    = true;
+                                   game.menu_active    = false;
                                    game.log.File_Write("Resuming game_o.");
                                 }
                              break;
                              case 4://save game
-                                if (game_o.game_resume)
+                                if (game.game_resume)
                                 {
                                    menu.possition = 0;
                                    menu.level = 5;
@@ -632,8 +632,8 @@ int process_menu(void)
                                    game.music_next_track = true;
                                    game_o.level = menu.level_no + 0;
                                    init_game_level(game_o.level);
-                                   game_o.game_active = true;
-                                   game_o.menu_active = false;
+                                   game.game_active = true;
+                                   game.menu_active = false;
                                    game.log.File_Write("Starting level ");
                                 }
                              break;
@@ -643,8 +643,8 @@ int process_menu(void)
                                    game.music_next_track = true;
                                    game_o.level = menu.level_no + 1;
                                    init_game_level(game_o.level);
-                                   game_o.game_active = true;
-                                   game_o.menu_active = false;
+                                   game.game_active = true;
+                                   game.menu_active = false;
                                    game.log.File_Write("Starting level ");
                                 }
                              break;
@@ -654,8 +654,8 @@ int process_menu(void)
                                    game.music_next_track = true;
                                    game_o.level = menu.level_no + 2;
                                    init_game_level(game_o.level);
-                                   game_o.game_active = true;
-                                   game_o.menu_active = false;
+                                   game.game_active = true;
+                                   game.menu_active = false;
                                    game.log.File_Write("Starting level ");
                                 }
                              break;
@@ -677,8 +677,8 @@ int process_menu(void)
                                 menu.possition = 3;
                                 menu.level = 1;
                                 menu.possition_max = 5;
-                                game_o.game_active = true;
-                                game_o.menu_active = false;
+                                game.game_active = true;
+                                game.menu_active = false;
                                 game.log.File_Write("Resuming game");
                                 game.music_next_track = true;
                              break;
@@ -689,8 +689,8 @@ int process_menu(void)
                                 menu.possition = 3;
                                 menu.level = 1;
                                 menu.possition_max = 5;
-                                game_o.game_active = true;
-                                game_o.menu_active = false;
+                                game.game_active = true;
+                                game.menu_active = false;
                                 game.log.File_Write("Resuming game");
                                 game.music_next_track = true;
                              break;
@@ -701,8 +701,8 @@ int process_menu(void)
                                 menu.possition = 3;
                                 menu.level = 1;
                                 menu.possition_max = 5;
-                                game_o.game_active = true;
-                                game_o.menu_active = false;
+                                game.game_active = true;
+                                game.menu_active = false;
                                 game.log.File_Write("Resuming game");
                                 game.music_next_track = true;
                              break;
@@ -713,8 +713,8 @@ int process_menu(void)
                                 menu.possition = 3;
                                 menu.level = 1;
                                 menu.possition_max = 5;
-                                game_o.game_active = true;
-                                game_o.menu_active = false;
+                                game.game_active = true;
+                                game.menu_active = false;
                                 game.log.File_Write("Resuming game");
                                 game.music_next_track = true;
                              break;
@@ -725,8 +725,8 @@ int process_menu(void)
                                 menu.possition = 3;
                                 menu.level = 1;
                                 menu.possition_max = 5;
-                                game_o.game_active = true;
-                                game_o.menu_active = false;
+                                game.game_active = true;
+                                game.menu_active = false;
                                 game.log.File_Write("Resuming game");
                                 game.music_next_track = true;
                              break;
@@ -749,8 +749,8 @@ int process_menu(void)
                                    menu.possition = 3;
                                    menu.level = 1;
                                    menu.possition_max = 5;
-                                   game_o.game_active = true;
-                                   game_o.menu_active = false;
+                                   game.game_active = true;
+                                   game.menu_active = false;
                                    game.log.File_Write("Resuming game");
                                    game.music_next_track = true;
                                 }
@@ -764,8 +764,8 @@ int process_menu(void)
                                    menu.possition = 3;
                                    menu.level = 1;
                                    menu.possition_max = 5;
-                                   game_o.game_active = true;
-                                   game_o.menu_active = false;
+                                   game.game_active = true;
+                                   game.menu_active = false;
                                    game.log.File_Write("Resuming game");
                                    game.music_next_track = true;
                                 }
@@ -779,8 +779,8 @@ int process_menu(void)
                                    menu.possition = 3;
                                    menu.level = 1;
                                    menu.possition_max = 5;
-                                   game_o.game_active = true;
-                                   game_o.menu_active = false;
+                                   game.game_active = true;
+                                   game.menu_active = false;
                                    game.log.File_Write("Resuming game");
                                    game.music_next_track = true;
                                 }
@@ -794,8 +794,8 @@ int process_menu(void)
                                    menu.possition = 3;
                                    menu.level = 1;
                                    menu.possition_max = 5;
-                                   game_o.game_active = true;
-                                   game_o.menu_active = false;
+                                   game.game_active = true;
+                                   game.menu_active = false;
                                    game.log.File_Write("Resuming game");
                                    game.music_next_track = true;
                                 }
@@ -809,8 +809,8 @@ int process_menu(void)
                                    menu.possition = 3;
                                    menu.level = 1;
                                    menu.possition_max = 5;
-                                   game_o.game_active = true;
-                                   game_o.menu_active = false;
+                                   game.game_active = true;
+                                   game.menu_active = false;
                                    game.log.File_Write("Resuming game");
                                    game.music_next_track = true;
                                 }

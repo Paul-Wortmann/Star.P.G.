@@ -43,6 +43,14 @@ class game_class
         bool              process_ready;
         int               music_track;
         bool              music_next_track;
+        bool              game_paused;
+        bool              game_active;
+        bool              game_resume;
+        bool              menu_active;
+        bool              pdie_active;
+        bool              nlvl_active;
+        bool              outr_active;
+        bool              status_quit_active;
         io_type           io;
         SDL_Event         event;
         log_file_class    log;

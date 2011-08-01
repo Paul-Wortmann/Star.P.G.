@@ -336,7 +336,7 @@ bool events_process(void)
            if (game.event.jbutton.button == 11) game.io.joystick_button_11 = false;
        }
        //------------------ keybord events ------------------------------------------------------
-       if (game.event.type == SDL_QUIT) game_o.status_quit_active = true;
+       if (game.event.type == SDL_QUIT) game.status_quit_active = true;
        if (game.event.type == SDL_KEYDOWN)
        {
           if (game.event.key.keysym.sym == SDLK_ESCAPE) game.io.escape     = true;

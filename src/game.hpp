@@ -300,14 +300,6 @@ struct game_type
    int                  immunity_delay_count;
    bool                 anc_enabled;
    bool                 fps_enabled;
-   bool                 game_paused;
-   bool                 game_active;
-   bool                 game_resume;
-   bool                 menu_active;
-   bool                 pdie_active;
-   bool                 nlvl_active;
-   bool                 outr_active;
-   bool                 status_quit_active;
    int                  exp_rate;
    int                  level_locked[MAX_LEVELS];
    int                  level;

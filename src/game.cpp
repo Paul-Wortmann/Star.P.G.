@@ -58,13 +58,13 @@ int init_game(void)
    }
    game_o.anc_enabled                       = false;
    game_o.fps_enabled                       = false;
-   game_o.game_paused                       = false;
-   game_o.game_active                       = false;
-   game_o.game_resume                       = false;
-   game_o.outr_active                       = false;
-   game_o.menu_active                       = true;
-   game_o.pdie_active                       = false;
-   game_o.nlvl_active                       = false;
+   game.game_paused                       = false;
+   game.game_active                       = false;
+   game.game_resume                       = false;
+   game.outr_active                       = false;
+   game.menu_active                       = true;
+   game.pdie_active                       = false;
+   game.nlvl_active                       = false;
    game_o.npc_damage_duration               = 10;
    game_o.exp_rate                          = 5;
    game_o.coin_spawn_rate                   = 665.36 * 5;
@@ -3794,8 +3794,8 @@ int process_game(void)
    proccess_wexp();
    if (level_completed())
    {
-      game_o.game_active = false;
-      game_o.nlvl_active = true;
+      game.game_active = false;
+      game.nlvl_active = true;
       game.music_next_track = true;
    }
    if  (random(game_o.powerup[1 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup

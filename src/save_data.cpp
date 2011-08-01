@@ -24,6 +24,7 @@
 #include "RAGE/rage.hpp"
 #include "game.hpp"
 
+extern game_class     game;
 extern game_type      game_o;
        save_data_type save_data;
 
@@ -41,14 +42,14 @@ void update_save_data(void)
     save_data.immunity_delay_count = game_o.immunity_delay_count;
     save_data.anc_enabled = game_o.anc_enabled;
     save_data.fps_enabled = game_o.fps_enabled;
-    save_data.game_paused = game_o.game_paused;
-    save_data.game_active = game_o.game_active;
-    save_data.game_resume = game_o.game_resume;
-    save_data.menu_active = game_o.menu_active;
-    save_data.pdie_active = game_o.pdie_active;
-    save_data.nlvl_active = game_o.nlvl_active;
-    save_data.outr_active = game_o.outr_active;
-    save_data.status_quit_active = game_o.status_quit_active;
+    save_data.game_paused = game.game_paused;
+    save_data.game_active = game.game_active;
+    save_data.game_resume = game.game_resume;
+    save_data.menu_active = game.menu_active;
+    save_data.pdie_active = game.pdie_active;
+    save_data.nlvl_active = game.nlvl_active;
+    save_data.outr_active = game.outr_active;
+    save_data.status_quit_active = game.status_quit_active;
     save_data.exp_rate = game_o.exp_rate;
     save_data.level = game_o.level;
     save_data.level_waves = game_o.level_waves;
@@ -156,14 +157,14 @@ void update_game_data(void)
     game_o.immunity_delay_count = save_data.immunity_delay_count;
     game_o.anc_enabled = save_data.anc_enabled;
     game_o.fps_enabled = save_data.fps_enabled;
-    game_o.game_paused = save_data.game_paused;
-    game_o.game_active = save_data.game_active;
-    game_o.game_resume = save_data.game_resume;
-    game_o.menu_active = save_data.menu_active;
-    game_o.pdie_active = save_data.pdie_active;
-    game_o.nlvl_active = save_data.nlvl_active;
-    game_o.outr_active = save_data.outr_active;
-    game_o.status_quit_active = save_data.status_quit_active;
+    game.game_paused = save_data.game_paused;
+    game.game_active = save_data.game_active;
+    game.game_resume = save_data.game_resume;
+    game.menu_active = save_data.menu_active;
+    game.pdie_active = save_data.pdie_active;
+    game.nlvl_active = save_data.nlvl_active;
+    game.outr_active = save_data.outr_active;
+    game.status_quit_active = save_data.status_quit_active;
     game_o.exp_rate = save_data.exp_rate;
     game_o.level = save_data.level;
     game_o.level_waves = save_data.level_waves;
