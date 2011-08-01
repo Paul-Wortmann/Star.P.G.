@@ -1,6 +1,14 @@
-V0.17 - (xx-xx-2011)
+V0.17 - (02-08-2011)
+Touchscreen support, with on screen controls.
+Bomb power-ups now a stackable, usable item.
+Ship flashes and is immune briefly, on starting a level.
+Created a new backend framework. (RAGE)
+Improved IO, config, log, save/load, texture, sound and music systems.
+Re-wrote font system, now uses SDL_ttf.
+Star.P.G. now compiles and runs on Linux.
+Larger variety of explosions added.
 Many tweaks and and a few bug fixes.
-LOC - 13101
+LOC - 13691
 
 V0.16 - (03-07-2011)
 Side-ships Added, with power-ups.
