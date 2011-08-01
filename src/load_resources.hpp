@@ -494,6 +494,18 @@ struct texture_type
    texture_class powerup_sideship_03;
    texture_class touchscreen_arrow;
    texture_class touchscreen_button;
+   texture_class explosion_101;
+   texture_class explosion_102;
+   texture_class explosion_103;
+   texture_class explosion_104;
+   texture_class explosion_105;
+   texture_class explosion_106;
+   texture_class explosion_107;
+   texture_class explosion_108;
+   texture_class explosion_109;
+   texture_class explosion_110;
+   texture_class explosion_111;
+   texture_class explosion_112;
 };
 
 struct font_type

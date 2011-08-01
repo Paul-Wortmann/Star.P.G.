@@ -336,31 +336,31 @@ bool load_textures(void)
     texture.save_game_highlighted_04.load("data/textures/menu/save_game_highlighted_04.png");texture_count++;
     texture.save_game_highlighted_05.load("data/textures/menu/save_game_highlighted_05.png");texture_count++;
 
-    texture.explosion_00.load("data/textures/explosions/explosion_00.png");texture_count++;
-    texture.explosion_01.load("data/textures/explosions/explosion_01.png");texture_count++;
-    texture.explosion_02.load("data/textures/explosions/explosion_02.png");texture_count++;
-    texture.explosion_03.load("data/textures/explosions/explosion_03.png");texture_count++;
-    texture.explosion_04.load("data/textures/explosions/explosion_04.png");texture_count++;
-    texture.explosion_05.load("data/textures/explosions/explosion_05.png");texture_count++;
-    texture.explosion_06.load("data/textures/explosions/explosion_06.png");texture_count++;
-    texture.explosion_07.load("data/textures/explosions/explosion_07.png");texture_count++;
-    texture.explosion_08.load("data/textures/explosions/explosion_08.png");texture_count++;
-    texture.explosion_09.load("data/textures/explosions/explosion_09.png");texture_count++;
-    texture.explosion_10.load("data/textures/explosions/explosion_10.png");texture_count++;
-    texture.explosion_11.load("data/textures/explosions/explosion_11.png");texture_count++;
-    texture.explosion_12.load("data/textures/explosions/explosion_12.png");texture_count++;
-    texture.explosion_13.load("data/textures/explosions/explosion_13.png");texture_count++;
-    texture.explosion_14.load("data/textures/explosions/explosion_14.png");texture_count++;
-    texture.explosion_15.load("data/textures/explosions/explosion_15.png");texture_count++;
-    texture.explosion_16.load("data/textures/explosions/explosion_16.png");texture_count++;
-    texture.explosion_17.load("data/textures/explosions/explosion_17.png");texture_count++;
-    texture.explosion_18.load("data/textures/explosions/explosion_18.png");texture_count++;
-    texture.explosion_19.load("data/textures/explosions/explosion_19.png");texture_count++;
-    texture.explosion_20.load("data/textures/explosions/explosion_20.png");texture_count++;
-    texture.explosion_21.load("data/textures/explosions/explosion_21.png");texture_count++;
-    texture.explosion_22.load("data/textures/explosions/explosion_22.png");texture_count++;
-    texture.explosion_23.load("data/textures/explosions/explosion_23.png");texture_count++;
-    texture.explosion_24.load("data/textures/explosions/explosion_24.png");texture_count++;
+    texture.explosion_00.load("data/textures/explosions/explosion_00/explosion_00.png");texture_count++;
+    texture.explosion_01.load("data/textures/explosions/explosion_00/explosion_01.png");texture_count++;
+    texture.explosion_02.load("data/textures/explosions/explosion_00/explosion_02.png");texture_count++;
+    texture.explosion_03.load("data/textures/explosions/explosion_00/explosion_03.png");texture_count++;
+    texture.explosion_04.load("data/textures/explosions/explosion_00/explosion_04.png");texture_count++;
+    texture.explosion_05.load("data/textures/explosions/explosion_00/explosion_05.png");texture_count++;
+    texture.explosion_06.load("data/textures/explosions/explosion_00/explosion_06.png");texture_count++;
+    texture.explosion_07.load("data/textures/explosions/explosion_00/explosion_07.png");texture_count++;
+    texture.explosion_08.load("data/textures/explosions/explosion_00/explosion_08.png");texture_count++;
+    texture.explosion_09.load("data/textures/explosions/explosion_00/explosion_09.png");texture_count++;
+    texture.explosion_10.load("data/textures/explosions/explosion_00/explosion_10.png");texture_count++;
+    texture.explosion_11.load("data/textures/explosions/explosion_00/explosion_11.png");texture_count++;
+    texture.explosion_12.load("data/textures/explosions/explosion_00/explosion_12.png");texture_count++;
+    texture.explosion_13.load("data/textures/explosions/explosion_00/explosion_13.png");texture_count++;
+    texture.explosion_14.load("data/textures/explosions/explosion_00/explosion_14.png");texture_count++;
+    texture.explosion_15.load("data/textures/explosions/explosion_00/explosion_15.png");texture_count++;
+    texture.explosion_16.load("data/textures/explosions/explosion_00/explosion_16.png");texture_count++;
+    texture.explosion_17.load("data/textures/explosions/explosion_00/explosion_17.png");texture_count++;
+    texture.explosion_18.load("data/textures/explosions/explosion_00/explosion_18.png");texture_count++;
+    texture.explosion_19.load("data/textures/explosions/explosion_00/explosion_19.png");texture_count++;
+    texture.explosion_20.load("data/textures/explosions/explosion_00/explosion_20.png");texture_count++;
+    texture.explosion_21.load("data/textures/explosions/explosion_00/explosion_21.png");texture_count++;
+    texture.explosion_22.load("data/textures/explosions/explosion_00/explosion_22.png");texture_count++;
+    texture.explosion_23.load("data/textures/explosions/explosion_00/explosion_23.png");texture_count++;
+    texture.explosion_24.load("data/textures/explosions/explosion_00/explosion_24.png");texture_count++;
 
     texture.health_bar.load("data/textures/misc/health_bar.png");texture_count++;
 
@@ -517,6 +517,19 @@ bool load_textures(void)
     texture.projectile_031.load("data/textures/projectiles/projectile_031.png");texture_count++;
     texture.touchscreen_arrow.load("data/textures/misc/touchscreen_arrow.png");texture_count++;
     texture.touchscreen_button.load("data/textures/misc/touchscreen_button.png");texture_count++;
+
+    texture.explosion_101.load("data/textures/explosions/explosion_01/explosion_01.png");texture_count++;
+    texture.explosion_102.load("data/textures/explosions/explosion_01/explosion_02.png");texture_count++;
+    texture.explosion_103.load("data/textures/explosions/explosion_01/explosion_03.png");texture_count++;
+    texture.explosion_104.load("data/textures/explosions/explosion_01/explosion_04.png");texture_count++;
+    texture.explosion_105.load("data/textures/explosions/explosion_01/explosion_05.png");texture_count++;
+    texture.explosion_106.load("data/textures/explosions/explosion_01/explosion_06.png");texture_count++;
+    texture.explosion_107.load("data/textures/explosions/explosion_01/explosion_07.png");texture_count++;
+    texture.explosion_108.load("data/textures/explosions/explosion_01/explosion_08.png");texture_count++;
+    texture.explosion_109.load("data/textures/explosions/explosion_01/explosion_09.png");texture_count++;
+    texture.explosion_110.load("data/textures/explosions/explosion_01/explosion_10.png");texture_count++;
+    texture.explosion_111.load("data/textures/explosions/explosion_01/explosion_11.png");texture_count++;
+    texture.explosion_112.load("data/textures/explosions/explosion_01/explosion_12.png");texture_count++;
 
 
     game.log.File_Write("Texture files loaded -> ",texture_count);
@@ -895,6 +908,19 @@ bool bind_texture(int texture_number)
     if (texture_number == 252) glBindTexture( GL_TEXTURE_2D, texture.projectile_031.texture_data);
     if (texture_number == 350) glBindTexture( GL_TEXTURE_2D, texture.touchscreen_arrow.texture_data);
     if (texture_number == 351) glBindTexture( GL_TEXTURE_2D, texture.touchscreen_button.texture_data);
+
+    if (texture_number == 352) glBindTexture( GL_TEXTURE_2D, texture.explosion_101.texture_data);
+    if (texture_number == 353) glBindTexture( GL_TEXTURE_2D, texture.explosion_102.texture_data);
+    if (texture_number == 354) glBindTexture( GL_TEXTURE_2D, texture.explosion_103.texture_data);
+    if (texture_number == 355) glBindTexture( GL_TEXTURE_2D, texture.explosion_104.texture_data);
+    if (texture_number == 356) glBindTexture( GL_TEXTURE_2D, texture.explosion_105.texture_data);
+    if (texture_number == 357) glBindTexture( GL_TEXTURE_2D, texture.explosion_106.texture_data);
+    if (texture_number == 358) glBindTexture( GL_TEXTURE_2D, texture.explosion_107.texture_data);
+    if (texture_number == 359) glBindTexture( GL_TEXTURE_2D, texture.explosion_108.texture_data);
+    if (texture_number == 360) glBindTexture( GL_TEXTURE_2D, texture.explosion_109.texture_data);
+    if (texture_number == 361) glBindTexture( GL_TEXTURE_2D, texture.explosion_110.texture_data);
+    if (texture_number == 362) glBindTexture( GL_TEXTURE_2D, texture.explosion_111.texture_data);
+    if (texture_number == 363) glBindTexture( GL_TEXTURE_2D, texture.explosion_112.texture_data);
     return(true);
 };
 
