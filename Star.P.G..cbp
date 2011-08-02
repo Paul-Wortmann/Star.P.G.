@@ -7,7 +7,7 @@
 		<Build>
 			<Target title="Windows">
 				<Option platforms="Windows;" />
-				<Option output="Star.P.G" prefix_auto="1" extension_auto="1" />
+				<Option output="Star.P" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -33,7 +33,7 @@
 			</Target>
 			<Target title="Linux">
 				<Option platforms="Unix;" />
-				<Option output="Star.P" prefix_auto="1" extension_auto="1" />
+				<Option output="Star" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Linker>
@@ -73,6 +73,8 @@
 		<Unit filename="src\RAGE\io.hpp" />
 		<Unit filename="src\RAGE\log.cpp" />
 		<Unit filename="src\RAGE\log.hpp" />
+		<Unit filename="src\RAGE\menu.cpp" />
+		<Unit filename="src\RAGE\menu.hpp" />
 		<Unit filename="src\RAGE\music.cpp" />
 		<Unit filename="src\RAGE\music.hpp" />
 		<Unit filename="src\RAGE\network.cpp" />
@@ -101,8 +103,8 @@
 		<Unit filename="src\load_resources.hpp" />
 		<Unit filename="src\main.cpp" />
 		<Unit filename="src\main.hpp" />
-		<Unit filename="src\menu.cpp" />
-		<Unit filename="src\menu.hpp" />
+		<Unit filename="src\menu_system.cpp" />
+		<Unit filename="src\menu_system.hpp" />
 		<Unit filename="src\misc.cpp" />
 		<Unit filename="src\misc.hpp" />
 		<Unit filename="src\save_data.cpp" />

@@ -19,8 +19,8 @@
  * @license GPL
  */
 
-#ifndef MENU_H
-#define MENU_H
+#ifndef MENU_SYSTEM_H
+#define MENU_SYSTEM_H
 
 struct background_scroll_type
 {
@@ -48,4 +48,4 @@ int process_menu(void);
 int init_menu   (void);
 
 
-#endif //MENU_H
+#endif //MENU_SYSTEM_H

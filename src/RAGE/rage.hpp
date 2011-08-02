@@ -32,6 +32,7 @@
 #include "sound.hpp"
 #include "savegame.hpp"
 #include "font.hpp"
+#include "menu.hpp"
 #include "io.hpp"
 
 class game_class

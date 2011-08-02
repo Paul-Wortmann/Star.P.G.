@@ -32,7 +32,7 @@
 #include "load_resources.hpp"
 #include "misc.hpp"
 #include "main.hpp"
-#include "menu.hpp"
+#include "menu_system.hpp"
 #include "game.hpp"
 #include "levels.hpp"
 #include "version.h"
@@ -45,7 +45,7 @@ extern game_type         game_o;
 extern game_class        game;
 extern TTF_Font         *font;
 
-const char App_Name[] = ("Star.P.G V0.17 - www.physhexgames.co.nr");
+const char App_Name[] = ("Star.P.G V0.18 - www.physhexgames.co.nr");
 const char App_Icon[] = "data/icon.bmp";
 
 Uint32                   colorkey;
@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
   game_o.cheats_enabled = true; /// test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   game.log.File_Write("------------------");
-  game.log.File_Write("| Star.P.G V0.17 |");
+  game.log.File_Write("| Star.P.G V0.18 |");
   game.log.File_Write("------------------\n");
   game.log.File_Write("Booting up!");
   game.log.File_Write("------------------\n");
