@@ -38,6 +38,7 @@ class button_class
         float       zoom_size;
         float       pos_x;
         float       pos_y;
+        float       pos_z;
         float       height;
         float       width;
         std::string label;
@@ -57,7 +58,7 @@ class button_class
     public:
         button_class(void);
        ~button_class(void);
-        void set_pos(float x, float y);
+        void set_pos(float x, float y, float z);
         void set_size(float w, float h);
         void set_label(std::string text);
         void set_color_normal(int r, int g, int b, int a);
@@ -67,10 +68,10 @@ class button_class
         void set_image_normal(int image);
         void set_image_disabled(int image);
         void set_image_highlighted(int image);
-        void set_enabled(void);
-        void set_highlighted(void);
-        bool mouse_over(float mx, float my);
-        bool mouse_clicked(float mx, float my, bool mlb);
+        void set_enabled(bool bool_value);
+        void set_highlighted(bool bool_value);
+        bool mouse_over(void);
+        bool mouse_clicked(void);
 };
 
 class menu_class

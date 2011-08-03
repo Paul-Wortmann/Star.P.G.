@@ -31,11 +31,11 @@
 	<File name="src\RAGE\log.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1901" topLine="13" />
 	</File>
-	<File name="src\RAGE\menu.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1169" topLine="12" />
+	<File name="src\RAGE\menu.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="1063" topLine="9" />
 	</File>
-	<File name="src\RAGE\menu.hpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1330" topLine="26" />
+	<File name="src\RAGE\menu.hpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="1413" topLine="27" />
 	</File>
 	<File name="src\RAGE\music.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1031" topLine="18" />
@@ -47,7 +47,7 @@
 		<Cursor1 position="1586" topLine="2" />
 	</File>
 	<File name="src\RAGE\rage.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1113" topLine="20" />
+		<Cursor1 position="1001" topLine="3" />
 	</File>
 	<File name="src\RAGE\rage.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1216" topLine="18" />
@@ -65,10 +65,10 @@
 		<Cursor1 position="932" topLine="12" />
 	</File>
 	<File name="src\RAGE\textures.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="833" topLine="18" />
+		<Cursor1 position="819" topLine="20" />
 	</File>
 	<File name="src\RAGE\textures.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="875" topLine="1" />
+		<Cursor1 position="861" topLine="12" />
 	</File>
 	<File name="src\RAGE\timer.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1319" topLine="22" />
@@ -80,7 +80,7 @@
 		<Cursor1 position="821" topLine="0" />
 	</File>
 	<File name="src\game.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="263846" topLine="4246" />
+		<Cursor1 position="253994" topLine="4435" />
 	</File>
 	<File name="src\game.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="2054" topLine="43" />
@@ -89,10 +89,10 @@
 		<Cursor1 position="1180" topLine="33" />
 	</File>
 	<File name="src\load_resources.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="46850" topLine="539" />
+		<Cursor1 position="1000" topLine="0" />
 	</File>
 	<File name="src\load_resources.hpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="17577" topLine="520" />
+		<Cursor1 position="17656" topLine="0" />
 	</File>
 	<File name="src\main.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1365" topLine="26" />
