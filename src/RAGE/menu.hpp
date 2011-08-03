@@ -28,18 +28,49 @@
 class button_class
 {
     private:
+        int         image_normal;
+        int         image_highlighted;
+        int         image_disabled;
+        bool        highlighted;
+        bool        enabled;
+        bool        glow;
+        bool        zoom;
+        float       zoom_size;
         float       pos_x;
         float       pos_y;
         float       height;
         float       width;
         std::string label;
+        int         normal_color_r;
+        int         normal_color_g;
+        int         normal_color_b;
+        int         normal_color_a;
+        int         highlighted_color_r;
+        int         highlighted_color_g;
+        int         highlighted_color_b;
+        int         highlighted_color_a;
+        int         disabled_color_r;
+        int         disabled_color_g;
+        int         disabled_color_b;
+        int         disabled_color_a;
+
     public:
         button_class(void);
        ~button_class(void);
         void set_pos(float x, float y);
         void set_size(float w, float h);
         void set_label(std::string text);
-
+        void set_color_normal(int r, int g, int b, int a);
+        void set_color_highlighted(int r, int g, int b, int a);
+        void set_color_disabled(int r, int g, int b, int a);
+        void draw(void);
+        void set_image_normal(int image);
+        void set_image_disabled(int image);
+        void set_image_highlighted(int image);
+        void set_enabled(void);
+        void set_highlighted(void);
+        bool mouse_over(float mx, float my);
+        bool mouse_clicked(float mx, float my, bool mlb);
 };
 
 class menu_class
