@@ -24,7 +24,7 @@
 #define MENU_H
 
 #include <string>
-
+//-------------------------- button -------------------------------
 class button_class
 {
     private:
@@ -57,6 +57,7 @@ class button_class
 
     public:
         button_class(void);
+        button_class(float x, float y, float z, float w, float h, int in, int ih, int id, bool hl, bool en, bool gl, bool zm, float zs, int nr, int ng, int nb, int na, int hr, int hg, int hb, int ha, int dr, int dg, int db, int da, std::string lb);
        ~button_class(void);
         void set_pos(float x, float y, float z);
         void set_size(float w, float h);
@@ -72,11 +73,42 @@ class button_class
         void set_highlighted(bool bool_value);
         bool mouse_over(void);
         bool mouse_clicked(void);
+        bool button_pressed(void);
 };
 
+//-------------------------- menu -------------------------------
 class menu_class
 {
     private:
+        float       pos_x;
+        float       pos_y;
+        float       pos_z;
+        int         image_background;
+        int         button_image_normal;
+        int         button_image_highlighted;
+        int         button_image_disabled;
+        bool        enabled;
+        bool        glow;
+        bool        zoom;
+        float       zoom_size;
+        float       height;
+        float       width;
+        float       button_height;
+        float       button_width;
+        std::string title;
+        std::string status;
+        int         normal_color_r;
+        int         normal_color_g;
+        int         normal_color_b;
+        int         normal_color_a;
+        int         highlighted_color_r;
+        int         highlighted_color_g;
+        int         highlighted_color_b;
+        int         highlighted_color_a;
+        int         disabled_color_r;
+        int         disabled_color_g;
+        int         disabled_color_b;
+        int         disabled_color_a;
 
     public:
         int   menu_delay;

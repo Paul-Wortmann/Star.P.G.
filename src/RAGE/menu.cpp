@@ -174,7 +174,25 @@ void button_class::draw(void)
     }
 };
 
+bool button_class::button_pressed(void)
+{
+    if ((game.io.select) && (button_class::highlighted)) return (true);
+    else return (false);
+};
 
+button_class::button_class(float x, float y, float z, float w, float h, int in, int ih, int id, bool hl, bool en, bool gl, bool zm, float zs, int nr, int ng, int nb, int na, int hr, int hg, int hb, int ha, int dr, int dg, int db, int da, std::string lb)
+{
+    button_class::pos_x = x;
+    button_class::pos_y = y;
+    button_class::pos_z = z;
+    button_class::width  = w;
+    button_class::height = h;
+    button_class::image_normal = in;
+    button_class::image_highlighted = ih;
+    button_class::image_disabled = id;
+
+
+};
 
 
 

@@ -79,4 +79,8 @@ bool  physics_class::point_in_diamond     (float dx, float dw, float dws, float 
     else return(false);
 };
 
+float physics_class::line_slope_2D(float x1, float y1, float x2, float y2)
+{
+    return((y2-y1)/(x2-x1));
+};
 
