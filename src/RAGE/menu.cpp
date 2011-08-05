@@ -56,6 +56,36 @@ button_class::button_class(void)
     button_class::disabled_color_a    = 255;
 };
 
+button_class::button_class(float x, float y, float z, float w, float h, int in, int ih, int id, bool hl, bool en, bool gl, bool zm, float zs, int nr, int ng, int nb, int na, int hr, int hg, int hb, int ha, int dr, int dg, int db, int da, std::string lb)
+{
+    button_class::image_normal        = in;
+    button_class::image_highlighted   = ih;
+    button_class::image_disabled      = id;
+    button_class::highlighted         = hl;
+    button_class::enabled             = en;
+    button_class::glow                = gl;
+    button_class::zoom                = zm;
+    button_class::zoom_size           = zs;
+    button_class::pos_x               = x;
+    button_class::pos_y               = y;
+    button_class::pos_z               = z;
+    button_class::width               = w;
+    button_class::height              = h;
+    button_class::label               = lb;
+    button_class::normal_color_r      = nr;
+    button_class::normal_color_g      = ng;
+    button_class::normal_color_b      = nb;
+    button_class::normal_color_a      = na;
+    button_class::highlighted_color_r = hr;
+    button_class::highlighted_color_g = hg;
+    button_class::highlighted_color_b = hb;
+    button_class::highlighted_color_a = ha;
+    button_class::disabled_color_r    = dr;
+    button_class::disabled_color_g    = dg;
+    button_class::disabled_color_b    = db;
+    button_class::disabled_color_a    = da;
+};
+
 button_class::~button_class(void)
 {
 
@@ -180,18 +210,18 @@ bool button_class::button_pressed(void)
     else return (false);
 };
 
-button_class::button_class(float x, float y, float z, float w, float h, int in, int ih, int id, bool hl, bool en, bool gl, bool zm, float zs, int nr, int ng, int nb, int na, int hr, int hg, int hb, int ha, int dr, int dg, int db, int da, std::string lb)
+//--------------------------------------- menu ----------------------------------------------------
+menu_class::menu_class(void)
 {
-    button_class::pos_x = x;
-    button_class::pos_y = y;
-    button_class::pos_z = z;
-    button_class::width  = w;
-    button_class::height = h;
-    button_class::image_normal = in;
-    button_class::image_highlighted = ih;
-    button_class::image_disabled = id;
 
+};
 
+menu_class::menu_class(int num_buttons)
+{
+    for(button_count = 0; button_count < num_buttons;button_count++)
+    {
+        new button_class button;
+    }
 };
 
 

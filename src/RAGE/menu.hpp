@@ -111,7 +111,8 @@ class menu_class
         int         disabled_color_a;
 
     public:
-        int   menu_delay;
+        menu_class(void);
+        menu_class(int num_buttons);
 
 };
 
