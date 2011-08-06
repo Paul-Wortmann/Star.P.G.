@@ -125,6 +125,7 @@ class menu_class
     public:
         menu_class(void);
         menu_class(int num_buttons);
+        void draw(void);
 
 
 
