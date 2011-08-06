@@ -28,6 +28,7 @@ extern game_class        game;
 
 button_class::button_class(void)
 {
+    button_class::active              = false;
     button_class::image_normal        = 0;
     button_class::image_highlighted   = 0;
     button_class::image_disabled      = 0;
@@ -58,6 +59,7 @@ button_class::button_class(void)
 
 button_class::button_class(float x, float y, float z, float w, float h, int in, int ih, int id, bool hl, bool en, bool gl, bool zm, float zs, int nr, int ng, int nb, int na, int hr, int hg, int hb, int ha, int dr, int dg, int db, int da, std::string lb)
 {
+    button_class::active              = false;
     button_class::image_normal        = in;
     button_class::image_highlighted   = ih;
     button_class::image_disabled      = id;
@@ -210,6 +212,12 @@ bool button_class::button_pressed(void)
     else return (false);
 };
 
+void button_class::set_active(bool bool_data)
+{
+    button_class::active = bool_data;
+};
+
+
 //--------------------------------------- menu ----------------------------------------------------
 menu_class::menu_class(void)
 {
@@ -218,11 +226,45 @@ menu_class::menu_class(void)
 
 menu_class::menu_class(int num_buttons)
 {
-    for(button_count = 0; button_count < num_buttons;button_count++)
-    {
-        new button_class button;
-    }
+    menu_class::number_of_buttons = num_buttons;
+    if(num_buttons >= 0) menu_class::button_0.set_active(true);
+    else menu_class::button_0.set_active(false);
+    if(num_buttons >= 1) menu_class::button_1.set_active(true);
+    else menu_class::button_1.set_active(false);
+    if(num_buttons >= 2) menu_class::button_2.set_active(true);
+    else menu_class::button_2.set_active(false);
+    if(num_buttons >= 3) menu_class::button_3.set_active(true);
+    else menu_class::button_3.set_active(false);
+    if(num_buttons >= 4) menu_class::button_4.set_active(true);
+    else menu_class::button_4.set_active(false);
+    if(num_buttons >= 5) menu_class::button_5.set_active(true);
+    else menu_class::button_5.set_active(false);
+    if(num_buttons >= 6) menu_class::button_6.set_active(true);
+    else menu_class::button_6.set_active(false);
+    if(num_buttons >= 7) menu_class::button_7.set_active(true);
+    else menu_class::button_7.set_active(false);
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

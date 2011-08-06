@@ -28,6 +28,7 @@
 class button_class
 {
     private:
+        bool        active;
         int         image_normal;
         int         image_highlighted;
         int         image_disabled;
@@ -74,46 +75,85 @@ class button_class
         bool mouse_over(void);
         bool mouse_clicked(void);
         bool button_pressed(void);
+        void set_active(bool bool_data);
 };
 
 //-------------------------- menu -------------------------------
 class menu_class
 {
     private:
-        float       pos_x;
-        float       pos_y;
-        float       pos_z;
-        int         image_background;
-        int         button_image_normal;
-        int         button_image_highlighted;
-        int         button_image_disabled;
-        bool        enabled;
-        bool        glow;
-        bool        zoom;
-        float       zoom_size;
-        float       height;
-        float       width;
-        float       button_height;
-        float       button_width;
-        std::string title;
-        std::string status;
-        int         normal_color_r;
-        int         normal_color_g;
-        int         normal_color_b;
-        int         normal_color_a;
-        int         highlighted_color_r;
-        int         highlighted_color_g;
-        int         highlighted_color_b;
-        int         highlighted_color_a;
-        int         disabled_color_r;
-        int         disabled_color_g;
-        int         disabled_color_b;
-        int         disabled_color_a;
+        int           number_of_buttons;
+        button_class  close_button;
+        button_class  button_0;
+        button_class  button_1;
+        button_class  button_2;
+        button_class  button_3;
+        button_class  button_4;
+        button_class  button_5;
+        button_class  button_6;
+        button_class  button_7;
+        float         pos_x;
+        float         pos_y;
+        float         pos_z;
+        int           image_background;
+        int           button_image_normal;
+        int           button_image_highlighted;
+        int           button_image_disabled;
+        bool          enabled;
+        bool          glow;
+        bool          zoom;
+        float         zoom_size;
+        float         height;
+        float         width;
+        float         button_height;
+        float         button_width;
+        std::string   title;
+        std::string   status;
+        int           normal_color_r;
+        int           normal_color_g;
+        int           normal_color_b;
+        int           normal_color_a;
+        int           highlighted_color_r;
+        int           highlighted_color_g;
+        int           highlighted_color_b;
+        int           highlighted_color_a;
+        int           disabled_color_r;
+        int           disabled_color_g;
+        int           disabled_color_b;
+        int           disabled_color_a;
 
     public:
         menu_class(void);
         menu_class(int num_buttons);
 
+
+
+
+
+
+
 };
 
 #endif //MENU_H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
