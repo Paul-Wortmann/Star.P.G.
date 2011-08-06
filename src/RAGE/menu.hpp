@@ -92,14 +92,14 @@ class menu_class
         int           button_image_normal;
         int           button_image_highlighted;
         int           button_image_disabled;
+        float         button_width;
+        float         button_height;
         bool          enabled;
         bool          glow;
         bool          zoom;
         float         zoom_size;
         float         height;
         float         width;
-        float         button_height;
-        float         button_width;
         std::string   title;
         std::string   status;
         int           normal_color_r;
@@ -130,12 +130,17 @@ class menu_class
         void set_pos(float x, float y, float z);
         void set_size(float w, float h);
         void set_image_background(int bi);
+        void set_color_normal(int r, int g, int b, int a);
+        void set_color_highlighted(int r, int g, int b, int a);
+        void set_color_disabled(int r, int g, int b, int a);
+        void set_image_normal(int image);
+        void set_image_disabled(int image);
+        void set_image_highlighted(int image);
+        void set_button_data(int button_number);
+        void set_button_size(float w, float h);
 };
 
 #endif //MENU_H
-
-
-
 
 
 
