@@ -16,11 +16,13 @@
 	<vector>
 	<string>
 
-1311350630 
+1312613065 
 
 1286187896 source:c:\paul\2010-c++_game_projects\star.p.g\config.cpp
 	<fstream>
 	"config.h"
+
+1311350378 
 
 1293529461 c:\paul\2010-c++_game_projects\star.p.g\config.h
 
@@ -91,7 +93,7 @@
 1286693770 source:c:\paul\2010-c++_game_projects\star.p.g\physics.cpp
 	"physics.h"
 
-1310962501 "
+1310912103 "
 
 1286109968 source:c:\paul\2010-c++_game_projects\star.p.g\savegame.cpp
 	<fstream>
@@ -135,7 +137,7 @@
 1286698870 source:c:\paul\2010-c++_game_projects\star.p.g\star.p.g._private.rc
 	<windows.h>
 
-1311045027 >
+1312296043 >
 
 1293298027 c:\paul\2010-c++_game_projects\star.p.g\version.h
 
@@ -625,7 +627,7 @@
 	<fstream>
 	"config.hpp"
 
-1311253717 p"
+1312301642 p"
 
 1309782914 c:\_git_\star.p.g\src\config.h
 
@@ -931,6 +933,8 @@
 1312199199 c:\_git_\star.p.g\src\rage\font.hpp
 	<SDL/SDL_ttf.h>
 
+1312199199 tf.h>
+
 1312199199 source:c:\_git_\star.p.g\src\rage\font.cpp
 	<SDL/SDL_ttf.h>
 	<SDL/SDL_ttf.h>
@@ -1144,6 +1148,8 @@
 	"rage.hpp"
 	"../load_resources.hpp"
 
+1312447645 esources.hpp"
+
 1312301893 c:\_git_\star.p.g\src\menu_system.hpp
 
 1312301642 source:c:\_git_\star.p.g\src\menu_system.cpp
@@ -1153,4 +1159,203 @@
 	"RAGE/rage.hpp"
 	"load_resources.hpp"
 	"levels.hpp"
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/RAGE/config.cpp
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	"config.hpp"
+
+1312623429 /home/paul/Desktop/Star.P.G./src/RAGE/config.hpp
+	<string>
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/RAGE/font.cpp
+	<SDL/SDL_ttf.h>
+	<SDL/SDL_ttf.h>
+	<GL/gl.h>
+	<string>
+	<sstream>
+	"rage.hpp"
+
+1312623429 /home/paul/Desktop/Star.P.G./src/RAGE/rage.hpp
+	"log.hpp"
+	"config.hpp"
+	"graphics.hpp"
+	"physics.hpp"
+	"network.hpp"
+	"timer.hpp"
+	"sound.hpp"
+	"savegame.hpp"
+	"font.hpp"
+	"menu.hpp"
+	"io.hpp"
+
+1312623429 /home/paul/Desktop/Star.P.G./src/RAGE/log.hpp
+	<string>
+
+1312623429 /home/paul/Desktop/Star.P.G./src/RAGE/graphics.hpp
+
+1312623429 /home/paul/Desktop/Star.P.G./src/RAGE/physics.hpp
+
+1312623429 /home/paul/Desktop/Star.P.G./src/RAGE/network.hpp
+
+1312623429 /home/paul/Desktop/Star.P.G./src/RAGE/timer.hpp
+
+1312623429 /home/paul/Desktop/Star.P.G./src/RAGE/sound.hpp
+	<SDL/SDL_mixer.h>
+	<string>
+
+1312623429 /home/paul/Desktop/Star.P.G./src/RAGE/savegame.hpp
+
+1312623429 /home/paul/Desktop/Star.P.G./src/RAGE/font.hpp
+	<SDL/SDL_ttf.h>
+
+1312623787 /home/paul/Desktop/Star.P.G./src/RAGE/menu.hpp
+	<string>
+
+1312623429 /home/paul/Desktop/Star.P.G./src/RAGE/io.hpp
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/RAGE/graphics.cpp
+	<GL/gl.h>
+	"rage.hpp"
+	"graphics.hpp"
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/RAGE/io.cpp
+	<SDL/SDL.h>
+	"rage.hpp"
+	"../game.hpp"
+	"io.hpp"
+
+1312623429 /home/paul/Desktop/Star.P.G./src/game.hpp
+	<SDL/SDL.h>
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/RAGE/log.cpp
+	<fstream>
+	<stdio.h>
+	"log.hpp"
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/RAGE/menu.cpp
+	"menu.hpp"
+	"rage.hpp"
+	"../load_resources.hpp"
+
+1312623429 /home/paul/Desktop/Star.P.G./src/load_resources.hpp
+	"RAGE/rage.hpp"
+	"RAGE/sound.hpp"
+	"RAGE/music.hpp"
+	"RAGE/textures.hpp"
+	"RAGE/font.hpp"
+
+1312623429 /home/paul/Desktop/Star.P.G./src/RAGE/music.hpp
+	<SDL/SDL_mixer.h>
+	<string>
+
+1312623429 /home/paul/Desktop/Star.P.G./src/RAGE/textures.hpp
+	<GL/gl.h>
+	<string>
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/RAGE/music.cpp
+	"music.hpp"
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/RAGE/network.cpp
+	"network.hpp"
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/RAGE/physics.cpp
+	"physics.hpp"
+	<math.h>
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/RAGE/rage.cpp
+	"rage.hpp"
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/RAGE/savegame.cpp
+	<fstream>
+	"savegame.hpp"
+	"rage.hpp"
+	"../save_data.hpp"
+
+1312623429 /home/paul/Desktop/Star.P.G./src/save_data.hpp
+	"RAGE/rage.hpp"
+	"RAGE/savegame.hpp"
+	"game.hpp"
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/RAGE/sound.cpp
+	"rage.hpp"
+	"sound.hpp"
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/RAGE/textures.cpp
+	<GL/gl.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	"textures.hpp"
+	"rage.hpp"
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/RAGE/timer.cpp
+	"SDL/SDL.h"
+	"timer.hpp"
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/game.cpp
+	<SDL/SDL.h>
+	"RAGE/rage.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1312623429 /home/paul/Desktop/Star.P.G./src/misc.hpp
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/levels.cpp
+	"RAGE/rage.hpp"
+	"levels.hpp"
+	"game.hpp"
+
+1312623429 /home/paul/Desktop/Star.P.G./src/levels.hpp
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/load_resources.cpp
+	<SDL/SDL.h>
+	"load_resources.hpp"
+	"RAGE/rage.hpp"
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/main.cpp
+	<SDL/SDL.h>
+	<SDL/SDL_main.h>
+	<SDL/SDL_ttf.h>
+	<SDL/SDL_net.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_opengl.h>
+	<GL/gl.h>
+	"RAGE/rage.hpp"
+	"load_resources.hpp"
+	"misc.hpp"
+	"main.hpp"
+	"menu_system.hpp"
+	"game.hpp"
+	"levels.hpp"
+	"version.h"
+
+1312623429 /home/paul/Desktop/Star.P.G./src/main.hpp
+
+1312623429 /home/paul/Desktop/Star.P.G./src/menu_system.hpp
+
+1312623429 /home/paul/Desktop/Star.P.G./src/version.h
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/menu_system.cpp
+	<GL/gl.h>
+	"menu_system.hpp"
+	"game.hpp"
+	"RAGE/rage.hpp"
+	"load_resources.hpp"
+	"levels.hpp"
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/misc.cpp
+	<time.h>
+	<stdlib.h>
+	<math.h>
+	<string>
+	<sstream>
+	<fstream>
+	"misc.hpp"
+
+1312623429 source:/home/paul/Desktop/Star.P.G./src/save_data.cpp
+	"save_data.hpp"
+	"RAGE/rage.hpp"
+	"game.hpp"
 
