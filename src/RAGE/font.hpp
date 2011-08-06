@@ -35,6 +35,7 @@ class font_class
         bool Set_File(std::string filename);
         bool Write(int r,int g,int b,int a,float x,float y,std::string text,int int_data);
         bool Write(int r,int g,int b,int a,float x,float y,std::string text,float float_data);
+        bool Write(int r,int g,int b,int a,float x,float y,std::string text);
 };
 
 #endif //FONT_H

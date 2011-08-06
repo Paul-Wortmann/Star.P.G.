@@ -76,6 +76,8 @@ class button_class
         bool mouse_clicked(void);
         bool button_pressed(void);
         void set_active(bool bool_data);
+        void set_zoom(bool bool_data);
+        void set_zoom(bool bool_data, float zs);
 };
 
 //-------------------------- menu -------------------------------
@@ -83,15 +85,6 @@ class menu_class
 {
     private:
         int           number_of_buttons;
-        button_class  close_button;
-        button_class  button_0;
-        button_class  button_1;
-        button_class  button_2;
-        button_class  button_3;
-        button_class  button_4;
-        button_class  button_5;
-        button_class  button_6;
-        button_class  button_7;
         float         pos_x;
         float         pos_y;
         float         pos_z;
@@ -121,21 +114,45 @@ class menu_class
         int           disabled_color_g;
         int           disabled_color_b;
         int           disabled_color_a;
-
     public:
+        button_class  close_button;
+        button_class  button_1;
+        button_class  button_2;
+        button_class  button_3;
+        button_class  button_4;
+        button_class  button_5;
+        button_class  button_6;
+        button_class  button_7;
+        button_class  button_8;
         menu_class(void);
         menu_class(int num_buttons);
         void draw(void);
-
-
-
-
-
-
-
+        void set_pos(float x, float y, float z);
+        void set_size(float w, float h);
+        void set_image_background(int bi);
 };
 
 #endif //MENU_H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

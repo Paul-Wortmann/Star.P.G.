@@ -35,6 +35,9 @@ class physics_class
         bool  point_in_quadrangle  (float qx, float qw, float qy, float qh, float px, float py);
         bool  point_in_diamond     (float dx, float dw, float dws, float dy, float dh, float dhs, float px, float py);
         float line_slope_2D        (float x1, float y1, float x2, float y2);
+        float line_angle           (float x1, float y1, float x2, float y2);
+        float line_point_2D_x      (float x1, float distance, float angle);
+        float line_point_2D_y      (float y1, float distance, float angle);
 };
 
 #endif //PHYSICS_H

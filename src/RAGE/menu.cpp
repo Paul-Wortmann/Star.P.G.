@@ -24,7 +24,8 @@
 #include "rage.hpp"
 #include "../load_resources.hpp"
 
-extern game_class        game;
+extern  game_class               game;
+extern  font_type                font;
 
 button_class::button_class(void)
 {
@@ -178,12 +179,13 @@ bool button_class::mouse_clicked(void)
 
 void button_class::draw(void)
 {
+    if (!button_class::active) return;
     if (!button_class::enabled) bind_texture(button_class::image_disabled);
     else
     {
         if (button_class::highlighted) bind_texture(button_class::image_highlighted);
         else bind_texture(button_class::image_normal);
-    }
+    };
     if((button_class::zoom) && (button_class::highlighted))
     {
         glLoadIdentity();
@@ -193,6 +195,8 @@ void button_class::draw(void)
         glTexCoord2i( 1, 0 );glVertex3f(button_class::pos_x+(button_class::width/2)+button_class::zoom,button_class::pos_y+(button_class::height/2)+button_class::zoom,button_class::pos_z);
         glTexCoord2i( 1, 1 );glVertex3f(button_class::pos_x+(button_class::width/2)+button_class::zoom,button_class::pos_y-(button_class::height/2)-button_class::zoom,button_class::pos_z);
         glEnd();
+        font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/8,button_class::pos_y-button_class::height/3,button_class::label);
+        ///font print label!!!
     }
     else
     {
@@ -203,7 +207,9 @@ void button_class::draw(void)
         glTexCoord2i( 1, 0 );glVertex3f(button_class::pos_x+(button_class::width/2),button_class::pos_y+(button_class::height/2),button_class::pos_z);
         glTexCoord2i( 1, 1 );glVertex3f(button_class::pos_x+(button_class::width/2),button_class::pos_y-(button_class::height/2),button_class::pos_z);
         glEnd();
-    }
+        font.font_2.Write(button_class::normal_color_r,button_class::normal_color_g,button_class::normal_color_b,button_class::normal_color_a,button_class::pos_x-button_class::width/8,button_class::pos_y-button_class::height/3,button_class::label);
+        ///font print label!!!
+    };
 };
 
 bool button_class::button_pressed(void)
@@ -217,8 +223,36 @@ void button_class::set_active(bool bool_data)
     button_class::active = bool_data;
 };
 
+void button_class::set_zoom(bool bool_data)
+{
+    button_class::zoom      = bool_data;
+};
+
+void button_class::set_zoom(bool bool_data, float zs)
+{
+    button_class::zoom      = bool_data;
+    button_class::zoom_size = zs;
+};
 
 //--------------------------------------- menu ----------------------------------------------------
+void menu_class::set_pos(float x, float y, float z)
+{
+    menu_class::pos_x = x;
+    menu_class::pos_y = y;
+    menu_class::pos_z = z;
+};
+
+void menu_class::set_size(float w, float h)
+{
+    menu_class::width  = w;
+    menu_class::height = h;
+};
+
+void menu_class::set_image_background(int bi)
+{
+    menu_class::image_background = bi;
+};
+
 menu_class::menu_class(void)
 {
 
@@ -227,8 +261,6 @@ menu_class::menu_class(void)
 menu_class::menu_class(int num_buttons)
 {
     menu_class::number_of_buttons = num_buttons;
-    if(num_buttons >= 0) menu_class::button_0.set_active(true);
-    else menu_class::button_0.set_active(false);
     if(num_buttons >= 1) menu_class::button_1.set_active(true);
     else menu_class::button_1.set_active(false);
     if(num_buttons >= 2) menu_class::button_2.set_active(true);
@@ -243,7 +275,29 @@ menu_class::menu_class(int num_buttons)
     else menu_class::button_6.set_active(false);
     if(num_buttons >= 7) menu_class::button_7.set_active(true);
     else menu_class::button_7.set_active(false);
+    if(num_buttons >= 8) menu_class::button_8.set_active(true);
+    else menu_class::button_8.set_active(false);
 
+};
+
+void menu_class::draw(void)
+{
+    bind_texture(menu_class::image_background);
+    glLoadIdentity();
+    glBegin( GL_QUADS );
+    glTexCoord2i( 0, 1 );glVertex3f(menu_class::pos_x-menu_class::width/2,menu_class::pos_y-menu_class::height/2,menu_class::pos_y);
+    glTexCoord2i( 0, 0 );glVertex3f(menu_class::pos_x-menu_class::width/2,menu_class::pos_y+menu_class::height/2,menu_class::pos_y);
+    glTexCoord2i( 1, 0 );glVertex3f(menu_class::pos_x+menu_class::width/2,menu_class::pos_y+menu_class::height/2,menu_class::pos_y);
+    glTexCoord2i( 1, 1 );glVertex3f(menu_class::pos_x+menu_class::width/2,menu_class::pos_y-menu_class::height/2,menu_class::pos_y);
+    glEnd();
+    menu_class::button_1.draw();
+    menu_class::button_2.draw();
+    menu_class::button_3.draw();
+    menu_class::button_4.draw();
+    menu_class::button_5.draw();
+    menu_class::button_6.draw();
+    menu_class::button_7.draw();
+    menu_class::button_8.draw();
 };
 
 

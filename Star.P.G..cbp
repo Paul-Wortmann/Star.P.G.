@@ -27,8 +27,8 @@
 					<Add library="SDL_net" />
 					<Add library="SDL_ttf" />
 					<Add library="GL" />
-					<Add directory="/host/Program Files (x86)/CodeBlocks/MinGW/lib" />
-					<Add directory="/usr/lib" />
+					<Add directory="\host\Program Files (x86)\CodeBlocks\MinGW\lib" />
+					<Add directory="\usr\lib" />
 				</Linker>
 			</Target>
 			<Target title="Linux">
@@ -47,66 +47,66 @@
 					<Add library="SDL_net" />
 					<Add library="SDL_ttf" />
 					<Add library="GL" />
-					<Add library="/usr/lib/mesa/libGL.so" />
-					<Add directory="/host/Program Files (x86)/CodeBlocks/MinGW/lib" />
-					<Add directory="/usr/lib" />
+					<Add library="\usr\lib\mesa\libGL.so" />
+					<Add directory="\host\Program Files (x86)\CodeBlocks\MinGW\lib" />
+					<Add directory="\usr\lib" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wno-write-strings" />
-			<Add directory='&quot;C:/Program Files (x86)/CodeBlocks/MinGW/include&quot;' />
+			<Add directory='&quot;C:\Program Files (x86)\CodeBlocks\MinGW\include&quot;' />
 		</Compiler>
 		<Linker>
-			<Add directory='&quot;C:/Program Files (x86)/CodeBlocks/MinGW/lib&quot;' />
+			<Add directory='&quot;C:\Program Files (x86)\CodeBlocks\MinGW\lib&quot;' />
 		</Linker>
-		<Unit filename="src/RAGE/config.cpp" />
-		<Unit filename="src/RAGE/config.hpp" />
-		<Unit filename="src/RAGE/font.cpp" />
-		<Unit filename="src/RAGE/font.hpp" />
-		<Unit filename="src/RAGE/graphics.cpp" />
-		<Unit filename="src/RAGE/graphics.hpp" />
-		<Unit filename="src/RAGE/io.cpp" />
-		<Unit filename="src/RAGE/io.hpp" />
-		<Unit filename="src/RAGE/log.cpp" />
-		<Unit filename="src/RAGE/log.hpp" />
-		<Unit filename="src/RAGE/menu.cpp" />
-		<Unit filename="src/RAGE/menu.hpp" />
-		<Unit filename="src/RAGE/music.cpp" />
-		<Unit filename="src/RAGE/music.hpp" />
-		<Unit filename="src/RAGE/network.cpp" />
-		<Unit filename="src/RAGE/network.hpp" />
-		<Unit filename="src/RAGE/physics.cpp" />
-		<Unit filename="src/RAGE/physics.hpp" />
-		<Unit filename="src/RAGE/rage.cpp" />
-		<Unit filename="src/RAGE/rage.hpp" />
-		<Unit filename="src/RAGE/savegame.cpp" />
-		<Unit filename="src/RAGE/savegame.hpp" />
-		<Unit filename="src/RAGE/sound.cpp" />
-		<Unit filename="src/RAGE/sound.hpp" />
-		<Unit filename="src/RAGE/textures.cpp" />
-		<Unit filename="src/RAGE/textures.hpp" />
-		<Unit filename="src/RAGE/timer.cpp" />
-		<Unit filename="src/RAGE/timer.hpp" />
-		<Unit filename="src/Star.P.G._private.h" />
-		<Unit filename="src/Star.P.G._private.rc">
+		<Unit filename="src\RAGE\config.cpp" />
+		<Unit filename="src\RAGE\config.hpp" />
+		<Unit filename="src\RAGE\font.cpp" />
+		<Unit filename="src\RAGE\font.hpp" />
+		<Unit filename="src\RAGE\graphics.cpp" />
+		<Unit filename="src\RAGE\graphics.hpp" />
+		<Unit filename="src\RAGE\io.cpp" />
+		<Unit filename="src\RAGE\io.hpp" />
+		<Unit filename="src\RAGE\log.cpp" />
+		<Unit filename="src\RAGE\log.hpp" />
+		<Unit filename="src\RAGE\menu.cpp" />
+		<Unit filename="src\RAGE\menu.hpp" />
+		<Unit filename="src\RAGE\music.cpp" />
+		<Unit filename="src\RAGE\music.hpp" />
+		<Unit filename="src\RAGE\network.cpp" />
+		<Unit filename="src\RAGE\network.hpp" />
+		<Unit filename="src\RAGE\physics.cpp" />
+		<Unit filename="src\RAGE\physics.hpp" />
+		<Unit filename="src\RAGE\rage.cpp" />
+		<Unit filename="src\RAGE\rage.hpp" />
+		<Unit filename="src\RAGE\savegame.cpp" />
+		<Unit filename="src\RAGE\savegame.hpp" />
+		<Unit filename="src\RAGE\sound.cpp" />
+		<Unit filename="src\RAGE\sound.hpp" />
+		<Unit filename="src\RAGE\textures.cpp" />
+		<Unit filename="src\RAGE\textures.hpp" />
+		<Unit filename="src\RAGE\timer.cpp" />
+		<Unit filename="src\RAGE\timer.hpp" />
+		<Unit filename="src\Star.P.G._private.h" />
+		<Unit filename="src\Star.P.G._private.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="src/game.cpp" />
-		<Unit filename="src/game.hpp" />
-		<Unit filename="src/levels.cpp" />
-		<Unit filename="src/levels.hpp" />
-		<Unit filename="src/load_resources.cpp" />
-		<Unit filename="src/load_resources.hpp" />
-		<Unit filename="src/main.cpp" />
-		<Unit filename="src/main.hpp" />
-		<Unit filename="src/menu_system.cpp" />
-		<Unit filename="src/menu_system.hpp" />
-		<Unit filename="src/misc.cpp" />
-		<Unit filename="src/misc.hpp" />
-		<Unit filename="src/save_data.cpp" />
-		<Unit filename="src/save_data.hpp" />
-		<Unit filename="src/version.h" />
+		<Unit filename="src\game.cpp" />
+		<Unit filename="src\game.hpp" />
+		<Unit filename="src\levels.cpp" />
+		<Unit filename="src\levels.hpp" />
+		<Unit filename="src\load_resources.cpp" />
+		<Unit filename="src\load_resources.hpp" />
+		<Unit filename="src\main.cpp" />
+		<Unit filename="src\main.hpp" />
+		<Unit filename="src\menu_system.cpp" />
+		<Unit filename="src\menu_system.hpp" />
+		<Unit filename="src\misc.cpp" />
+		<Unit filename="src\misc.hpp" />
+		<Unit filename="src\save_data.cpp" />
+		<Unit filename="src\save_data.hpp" />
+		<Unit filename="src\version.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

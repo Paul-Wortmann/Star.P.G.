@@ -84,3 +84,22 @@ float physics_class::line_slope_2D(float x1, float y1, float x2, float y2)
     return((y2-y1)/(x2-x1));
 };
 
+float physics_class::line_angle(float x1, float y1, float x2, float y2)
+{
+    return(atan2(y2 - y1, x2 - x1));
+};
+
+float physics_class::line_point_2D_x(float x1, float distance, float angle)
+{
+    return(x1 + distance*cos(angle));
+};
+
+float physics_class::line_point_2D_y(float y1, float distance, float angle)
+{
+    return(y1 + distance*sin(angle));
+};
+
+
+
+
+

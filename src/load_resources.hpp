@@ -549,6 +549,9 @@ struct texture_type
    texture_class explosion_228;
    texture_class explosion_229;
    texture_class explosion_230;
+
+   texture_class menu_background_002;
+   texture_class menu_background_003;
 };
 
 struct font_type

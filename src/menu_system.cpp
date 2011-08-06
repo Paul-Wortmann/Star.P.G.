@@ -39,6 +39,7 @@ extern  save_game_class          save_03;
 extern  save_game_class          save_04;
 extern  save_game_class          save_05;
         menu_type                menu;
+        menu_class               main_menu(1);
 
 int process_menu_background(void)
 {
@@ -846,6 +847,90 @@ int process_menu(void)
 
 int init_menu   (void)
 {
+    main_menu.set_pos(0.0f,-0.1f,0.001f);
+    main_menu.set_size(0.8f,1.7f);
+    main_menu.set_image_background(395);
+    main_menu.button_1.set_label("test");
+    main_menu.button_1.set_pos(0.0f,0.6f,0.001f);
+    main_menu.button_1.set_size(0.6f,0.1f);
+    main_menu.button_1.set_image_normal(395);
+    main_menu.button_1.set_image_disabled(395);
+    main_menu.button_1.set_image_highlighted(395);
+    main_menu.button_1.set_active(true);
+    main_menu.button_1.set_highlighted(true);
+    main_menu.button_1.set_enabled(true);
+    main_menu.button_1.set_zoom(false);
+    main_menu.button_2.set_label("test");
+    main_menu.button_2.set_pos(0.0f,0.45f,0.001f);
+    main_menu.button_2.set_size(0.6f,0.1f);
+    main_menu.button_2.set_image_normal(395);
+    main_menu.button_2.set_image_disabled(395);
+    main_menu.button_2.set_image_highlighted(395);
+    main_menu.button_2.set_active(true);
+    main_menu.button_2.set_highlighted(true);
+    main_menu.button_2.set_enabled(true);
+    main_menu.button_2.set_zoom(false);
+    main_menu.button_3.set_label("test");
+    main_menu.button_3.set_pos(0.0f,0.3f,0.001f);
+    main_menu.button_3.set_size(0.6f,0.1f);
+    main_menu.button_3.set_image_normal(395);
+    main_menu.button_3.set_image_disabled(395);
+    main_menu.button_3.set_image_highlighted(395);
+    main_menu.button_3.set_active(true);
+    main_menu.button_3.set_highlighted(true);
+    main_menu.button_3.set_enabled(true);
+    main_menu.button_3.set_zoom(false);
+    main_menu.button_4.set_label("test");
+    main_menu.button_4.set_pos(0.0f,0.15f,0.001f);
+    main_menu.button_4.set_size(0.6f,0.1f);
+    main_menu.button_4.set_image_normal(395);
+    main_menu.button_4.set_image_disabled(395);
+    main_menu.button_4.set_image_highlighted(395);
+    main_menu.button_4.set_active(true);
+    main_menu.button_4.set_highlighted(true);
+    main_menu.button_4.set_enabled(true);
+    main_menu.button_4.set_zoom(false);
+    main_menu.button_5.set_label("test");
+    main_menu.button_5.set_pos(0.0f,0.0f,0.001f);
+    main_menu.button_5.set_size(0.6f,0.1f);
+    main_menu.button_5.set_image_normal(395);
+    main_menu.button_5.set_image_disabled(395);
+    main_menu.button_5.set_image_highlighted(395);
+    main_menu.button_5.set_active(true);
+    main_menu.button_5.set_highlighted(true);
+    main_menu.button_5.set_enabled(true);
+    main_menu.button_5.set_zoom(false);
+    main_menu.button_6.set_label("test");
+    main_menu.button_6.set_pos(0.0f,-0.15f,0.001f);
+    main_menu.button_6.set_size(0.6f,0.1f);
+    main_menu.button_6.set_image_normal(395);
+    main_menu.button_6.set_image_disabled(395);
+    main_menu.button_6.set_image_highlighted(395);
+    main_menu.button_6.set_active(true);
+    main_menu.button_6.set_highlighted(true);
+    main_menu.button_6.set_enabled(true);
+    main_menu.button_6.set_zoom(false);
+    main_menu.button_7.set_label("test");
+    main_menu.button_7.set_pos(0.0f,-0.3f,0.001f);
+    main_menu.button_7.set_size(0.6f,0.1f);
+    main_menu.button_7.set_image_normal(395);
+    main_menu.button_7.set_image_disabled(395);
+    main_menu.button_7.set_image_highlighted(395);
+    main_menu.button_7.set_active(true);
+    main_menu.button_7.set_highlighted(true);
+    main_menu.button_7.set_enabled(true);
+    main_menu.button_7.set_zoom(false);
+    main_menu.button_8.set_label("test");
+    main_menu.button_8.set_pos(0.0f,-0.6f,0.001f);
+    main_menu.button_8.set_size(0.6f,0.1f);
+    main_menu.button_8.set_image_normal(395);
+    main_menu.button_8.set_image_disabled(395);
+    main_menu.button_8.set_image_highlighted(395);
+    main_menu.button_8.set_active(true);
+    main_menu.button_8.set_highlighted(true);
+    main_menu.button_8.set_enabled(true);
+    main_menu.button_8.set_zoom(false);
+
    menu.level_no                          = 0;
    menu.possition                         = 0;
    menu.level                             = 0;
@@ -872,6 +957,41 @@ int diplay_menu (void)
     glDisable(GL_DEPTH_TEST);
 /*-----------------------------------------------------------------------------*/
    if (menu.level == 0) //main_menu
+   {
+        bind_texture(63); //background 01
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+	    glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
+	    glTexCoord2i( 0, 0 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos, 2.0f + menu.background_scroll[0].y_pos, 0.15f );
+	    glTexCoord2i( 1, 0 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos, 2.0f + menu.background_scroll[0].y_pos, 0.15f );
+	    glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
+        glEnd();
+
+        bind_texture(64); //background 02
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+    	glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
+    	glTexCoord2i( 0, 0 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos, 2.0f + menu.background_scroll[1].y_pos, 0.1f );
+    	glTexCoord2i( 1, 0 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos, 2.0f + menu.background_scroll[1].y_pos, 0.1f );
+    	glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
+        glEnd();
+
+        bind_texture(30); //logo
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+    	glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
+    	glTexCoord2i( 0, 0 );glVertex3f(-0.9f, 1.0f, 0.0f );
+    	glTexCoord2i( 1, 0 );glVertex3f( 0.9f, 1.0f, 0.0f );
+        glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
+        glEnd();
+
+        main_menu.draw();
+
+   }
+
+
+
+   if (menu.level == -1) //main_menu
    {
       bind_texture(63); //background 01
       glLoadIdentity();

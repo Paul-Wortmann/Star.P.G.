@@ -574,6 +574,8 @@ bool load_textures(void)
     texture.explosion_229.load("data/textures/explosions/explosion_02/explosion_29.png");texture_count++;
     texture.explosion_230.load("data/textures/explosions/explosion_02/explosion_30.png");texture_count++;
 
+    texture.menu_background_002.load("data/textures/menu/menu_background_00.png");texture_count++;
+    texture.menu_background_003.load("data/textures/menu/menu_background_01.png");texture_count++;
     game.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
 };
@@ -994,6 +996,9 @@ bool bind_texture(int texture_number)
     if (texture_number == 391) glBindTexture( GL_TEXTURE_2D, texture.explosion_228.texture_data);
     if (texture_number == 392) glBindTexture( GL_TEXTURE_2D, texture.explosion_229.texture_data);
     if (texture_number == 393) glBindTexture( GL_TEXTURE_2D, texture.explosion_230.texture_data);
+
+    if (texture_number == 394) glBindTexture( GL_TEXTURE_2D, texture.menu_background_002.texture_data);
+    if (texture_number == 395) glBindTexture( GL_TEXTURE_2D, texture.menu_background_003.texture_data);
     return(true);
 };
 
