@@ -61,6 +61,7 @@ class button_class
         button_class(float x, float y, float z, float w, float h, int in, int ih, int id, bool hl, bool en, bool gl, bool zm, float zs, int nr, int ng, int nb, int na, int hr, int hg, int hb, int ha, int dr, int dg, int db, int da, std::string lb);
        ~button_class(void);
         void set_pos(float x, float y, float z);
+        void set_pos_y(float y);
         void set_size(float w, float h);
         void set_label(std::string text);
         void set_color_normal(int r, int g, int b, int a);
@@ -94,6 +95,7 @@ class menu_class
         int           button_image_disabled;
         float         button_width;
         float         button_height;
+        float         button_spacing;
         bool          enabled;
         bool          glow;
         bool          zoom;
@@ -124,6 +126,9 @@ class menu_class
         button_class  button_6;
         button_class  button_7;
         button_class  button_8;
+        button_class  button_9;
+        button_class  button_10;
+        button_class  button_11;
         menu_class(void);
         menu_class(int num_buttons);
         void draw(void);
@@ -133,11 +138,21 @@ class menu_class
         void set_color_normal(int r, int g, int b, int a);
         void set_color_highlighted(int r, int g, int b, int a);
         void set_color_disabled(int r, int g, int b, int a);
-        void set_image_normal(int image);
-        void set_image_disabled(int image);
-        void set_image_highlighted(int image);
+        void set_button_image_normal(int image);
+        void set_button_image_disabled(int image);
+        void set_button_image_highlighted(int image);
+        void set_button_zoom(bool z, float zs);
         void set_button_data(int button_number);
+        void set_button_data(int button_number, std::string label);
+        void set_button_data(int button_number, std::string label,float x, float y, float z);
+        void set_button_data(void);
         void set_button_size(float w, float h);
+        void set_number_of_buttons(int nob);
+        void set_button_active(int button_number, bool bool_data);
+        void set_button_spacing(void);
+        void set_button_spacing(float button_offset);
+        void set_button_spacing_auto(void);
+        void set_button_spacing_auto(float button_offset);
 };
 
 #endif //MENU_H

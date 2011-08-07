@@ -1138,10 +1138,10 @@
 	"../game.hpp"
 	"io.hpp"
 
-1312646680 c:\_git_\star.p.g\src\rage\menu.hpp
+1312700564 c:\_git_\star.p.g\src\rage\menu.hpp
 	<string>
 
-1312638644 source:c:\_git_\star.p.g\src\rage\menu.cpp
+1312700564 source:c:\_git_\star.p.g\src\rage\menu.cpp
 	"menu.hpp"
 	"rage.hpp"
 	"../load_resources.hpp"
@@ -1150,7 +1150,7 @@
 
 1312373388 c:\_git_\star.p.g\src\menu_system.hpp
 
-1312638347 source:c:\_git_\star.p.g\src\menu_system.cpp
+1312697855 source:c:\_git_\star.p.g\src\menu_system.cpp
 	<GL/gl.h>
 	"menu_system.hpp"
 	"game.hpp"

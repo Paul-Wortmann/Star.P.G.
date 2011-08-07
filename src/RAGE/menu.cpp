@@ -101,6 +101,11 @@ void button_class::set_pos(float x, float y, float z)
     button_class::pos_z = z;
 };
 
+void button_class::set_pos_y(float y)
+{
+    button_class::pos_y = y;
+};
+
 void button_class::set_size(float w, float h)
 {
     button_class::width  = w;
@@ -277,6 +282,12 @@ menu_class::menu_class(int num_buttons)
     else menu_class::button_7.set_active(false);
     if(num_buttons >= 8) menu_class::button_8.set_active(true);
     else menu_class::button_8.set_active(false);
+    if(num_buttons >= 9) menu_class::button_9.set_active(true);
+    else menu_class::button_9.set_active(false);
+    if(num_buttons >= 10) menu_class::button_10.set_active(true);
+    else menu_class::button_10.set_active(false);
+    if(num_buttons >= 11) menu_class::button_11.set_active(true);
+    else menu_class::button_11.set_active(false);
 
 };
 
@@ -324,26 +335,27 @@ void menu_class::set_color_disabled(int r, int g, int b, int a)
     menu_class::disabled_color_a = a;
 };
 
-void menu_class::set_image_normal(int image)
+void menu_class::set_button_image_normal(int image)
 {
     menu_class::button_image_normal = image;
 };
 
-void menu_class::set_image_disabled(int image)
+void menu_class::set_button_image_disabled(int image)
 {
     menu_class::button_image_disabled = image;
 };
 
-void menu_class::set_image_highlighted(int image)
+void menu_class::set_button_image_highlighted(int image)
 {
     menu_class::button_image_highlighted = image;
 };
 
-void set_button_data(int button_number)
+void menu_class::set_button_data(int button_number)
 {
     switch (button_number)
     {
         case 1:
+            menu_class::set_button_active(1,true);
             menu_class::button_1.set_size(menu_class::button_width,menu_class::button_height);
             menu_class::button_1.set_label("Not Set");
             menu_class::button_1.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
@@ -353,8 +365,9 @@ void set_button_data(int button_number)
             menu_class::button_1.set_image_disabled(menu_class::button_image_disabled);
             menu_class::button_1.set_image_highlighted(menu_class::button_image_highlighted);
             menu_class::button_1.set_zoom(menu_class::zoom,menu_class::zoom_size);
-        break
+        break;
         case 2:
+            menu_class::set_button_active(2,true);
             menu_class::button_2.set_size(menu_class::button_width,menu_class::button_height);
             menu_class::button_2.set_label("Not Set");
             menu_class::button_2.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
@@ -364,8 +377,9 @@ void set_button_data(int button_number)
             menu_class::button_2.set_image_disabled(menu_class::button_image_disabled);
             menu_class::button_2.set_image_highlighted(menu_class::button_image_highlighted);
             menu_class::button_2.set_zoom(menu_class::zoom,menu_class::zoom_size);
-        break
+        break;
         case 3:
+            menu_class::set_button_active(3,true);
             menu_class::button_3.set_size(menu_class::button_width,menu_class::button_height);
             menu_class::button_3.set_label("Not Set");
             menu_class::button_3.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
@@ -375,8 +389,9 @@ void set_button_data(int button_number)
             menu_class::button_3.set_image_disabled(menu_class::button_image_disabled);
             menu_class::button_3.set_image_highlighted(menu_class::button_image_highlighted);
             menu_class::button_3.set_zoom(menu_class::zoom,menu_class::zoom_size);
-        break
+        break;
         case 4:
+            menu_class::set_button_active(4,true);
             menu_class::button_4.set_size(menu_class::button_width,menu_class::button_height);
             menu_class::button_4.set_label("Not Set");
             menu_class::button_4.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
@@ -386,8 +401,9 @@ void set_button_data(int button_number)
             menu_class::button_4.set_image_disabled(menu_class::button_image_disabled);
             menu_class::button_4.set_image_highlighted(menu_class::button_image_highlighted);
             menu_class::button_4.set_zoom(menu_class::zoom,menu_class::zoom_size);
-        break
+        break;
         case 5:
+            menu_class::set_button_active(5,true);
             menu_class::button_5.set_size(menu_class::button_width,menu_class::button_height);
             menu_class::button_5.set_label("Not Set");
             menu_class::button_5.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
@@ -397,8 +413,9 @@ void set_button_data(int button_number)
             menu_class::button_5.set_image_disabled(menu_class::button_image_disabled);
             menu_class::button_5.set_image_highlighted(menu_class::button_image_highlighted);
             menu_class::button_5.set_zoom(menu_class::zoom,menu_class::zoom_size);
-        break
+        break;
         case 6:
+            menu_class::set_button_active(6,true);
             menu_class::button_6.set_size(menu_class::button_width,menu_class::button_height);
             menu_class::button_6.set_label("Not Set");
             menu_class::button_6.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
@@ -408,8 +425,9 @@ void set_button_data(int button_number)
             menu_class::button_6.set_image_disabled(menu_class::button_image_disabled);
             menu_class::button_6.set_image_highlighted(menu_class::button_image_highlighted);
             menu_class::button_6.set_zoom(menu_class::zoom,menu_class::zoom_size);
-        break
+        break;
         case 7:
+            menu_class::set_button_active(7,true);
             menu_class::button_7.set_size(menu_class::button_width,menu_class::button_height);
             menu_class::button_7.set_label("Not Set");
             menu_class::button_7.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
@@ -419,8 +437,9 @@ void set_button_data(int button_number)
             menu_class::button_7.set_image_disabled(menu_class::button_image_disabled);
             menu_class::button_7.set_image_highlighted(menu_class::button_image_highlighted);
             menu_class::button_7.set_zoom(menu_class::zoom,menu_class::zoom_size);
-        break
+        break;
         case 8:
+            menu_class::set_button_active(8,true);
             menu_class::button_8.set_size(menu_class::button_width,menu_class::button_height);
             menu_class::button_8.set_label("Not Set");
             menu_class::button_8.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
@@ -430,12 +449,559 @@ void set_button_data(int button_number)
             menu_class::button_8.set_image_disabled(menu_class::button_image_disabled);
             menu_class::button_8.set_image_highlighted(menu_class::button_image_highlighted);
             menu_class::button_8.set_zoom(menu_class::zoom,menu_class::zoom_size);
-        break
+        break;
+        case 9:
+            menu_class::set_button_active(9,true);
+            menu_class::button_9.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_9.set_label("Not Set");
+            menu_class::button_9.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_9.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_9.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_9.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_9.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_9.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_9.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 10:
+            menu_class::set_button_active(10,true);
+            menu_class::button_10.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_10.set_label("Not Set");
+            menu_class::button_10.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_10.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_10.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_10.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_10.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_10.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_10.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 11:
+            menu_class::set_button_active(11,true);
+            menu_class::button_11.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_11.set_label("Not Set");
+            menu_class::button_11.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_11.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_11.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_11.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_11.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_11.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_11.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        default:
+            ;
+        break;
     }
 };
 
+void menu_class::set_button_data(int button_number, std::string label)
+{
+    switch (button_number)
+    {
+        case 1:
+            menu_class::set_button_active(1,true);
+            menu_class::button_1.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_1.set_label(label);
+            menu_class::button_1.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_1.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_1.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_1.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_1.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_1.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_1.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 2:
+            menu_class::set_button_active(2,true);
+            menu_class::button_2.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_2.set_label(label);
+            menu_class::button_2.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_2.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_2.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_2.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_2.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_2.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_2.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 3:
+            menu_class::set_button_active(3,true);
+            menu_class::button_3.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_3.set_label(label);
+            menu_class::button_3.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_3.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_3.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_3.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_3.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_3.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_3.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 4:
+            menu_class::set_button_active(4,true);
+            menu_class::button_4.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_4.set_label(label);
+            menu_class::button_4.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_4.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_4.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_4.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_4.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_4.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_4.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 5:
+            menu_class::set_button_active(5,true);
+            menu_class::button_5.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_5.set_label(label);
+            menu_class::button_5.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_5.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_5.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_5.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_5.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_5.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_5.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 6:
+            menu_class::set_button_active(6,true);
+            menu_class::button_6.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_6.set_label(label);
+            menu_class::button_6.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_6.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_6.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_6.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_6.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_6.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_6.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 7:
+            menu_class::set_button_active(7,true);
+            menu_class::button_7.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_7.set_label(label);
+            menu_class::button_7.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_7.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_7.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_7.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_7.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_7.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_7.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 8:
+            menu_class::set_button_active(8,true);
+            menu_class::button_8.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_8.set_label(label);
+            menu_class::button_8.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_8.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_8.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_8.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_8.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_8.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_8.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 9:
+            menu_class::set_button_active(9,true);
+            menu_class::button_9.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_9.set_label(label);
+            menu_class::button_9.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_9.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_9.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_9.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_9.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_9.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_9.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 10:
+            menu_class::set_button_active(10,true);
+            menu_class::button_10.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_10.set_label(label);
+            menu_class::button_10.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_10.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_10.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_10.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_10.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_10.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_10.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 11:
+            menu_class::set_button_active(11,true);
+            menu_class::button_11.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_11.set_label(label);
+            menu_class::button_11.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_11.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_11.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_11.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_11.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_11.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_11.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        default:
+            ;
+        break;
+    }
+};
 
+void menu_class::set_button_data(int button_number, std::string label,float x, float y, float z)
+{
+    switch (button_number)
+    {
+        case 1:
+            menu_class::set_button_active(1,true);
+            menu_class::button_1.set_pos(x,y,z);
+            menu_class::button_1.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_1.set_label(label);
+            menu_class::button_1.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_1.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_1.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_1.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_1.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_1.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_1.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 2:
+            menu_class::set_button_active(2,true);
+            menu_class::button_2.set_pos(x,y,z);
+            menu_class::button_2.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_2.set_label(label);
+            menu_class::button_2.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_2.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_2.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_2.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_2.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_2.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_2.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 3:
+            menu_class::set_button_active(3,true);
+            menu_class::button_3.set_pos(x,y,z);
+            menu_class::button_3.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_3.set_label(label);
+            menu_class::button_3.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_3.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_3.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_3.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_3.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_3.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_3.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 4:
+            menu_class::set_button_active(4,true);
+            menu_class::button_4.set_pos(x,y,z);
+            menu_class::button_4.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_4.set_label(label);
+            menu_class::button_4.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_4.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_4.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_4.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_4.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_4.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_4.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 5:
+            menu_class::set_button_active(5,true);
+            menu_class::button_5.set_pos(x,y,z);
+            menu_class::button_5.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_5.set_label(label);
+            menu_class::button_5.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_5.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_5.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_5.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_5.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_5.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_5.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 6:
+            menu_class::set_button_active(6,true);
+            menu_class::button_6.set_pos(x,y,z);
+            menu_class::button_6.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_6.set_label(label);
+            menu_class::button_6.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_6.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_6.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_6.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_6.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_6.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_6.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 7:
+            menu_class::set_button_active(7,true);
+            menu_class::button_7.set_pos(x,y,z);
+            menu_class::button_7.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_7.set_label(label);
+            menu_class::button_7.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_7.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_7.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_7.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_7.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_7.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_7.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 8:
+            menu_class::set_button_active(8,true);
+            menu_class::button_8.set_pos(x,y,z);
+            menu_class::button_8.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_8.set_label(label);
+            menu_class::button_8.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_8.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_8.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_8.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_8.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_8.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_8.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 9:
+            menu_class::set_button_active(9,true);
+            menu_class::button_9.set_pos(x,y,z);
+            menu_class::button_9.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_9.set_label(label);
+            menu_class::button_9.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_9.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_9.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_9.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_9.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_9.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_9.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 10:
+            menu_class::set_button_active(10,true);
+            menu_class::button_10.set_pos(x,y,z);
+            menu_class::button_10.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_10.set_label(label);
+            menu_class::button_10.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_10.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_10.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_10.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_10.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_10.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_10.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        case 11:
+            menu_class::set_button_active(11,true);
+            menu_class::button_11.set_pos(x,y,z);
+            menu_class::button_11.set_size(menu_class::button_width,menu_class::button_height);
+            menu_class::button_11.set_label(label);
+            menu_class::button_11.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+            menu_class::button_11.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+            menu_class::button_11.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+            menu_class::button_11.set_image_normal(menu_class::button_image_normal);
+            menu_class::button_11.set_image_disabled(menu_class::button_image_disabled);
+            menu_class::button_11.set_image_highlighted(menu_class::button_image_highlighted);
+            menu_class::button_11.set_zoom(menu_class::zoom,menu_class::zoom_size);
+        break;
+        default:
+            ;
+        break;
+    }
+};
 
+void menu_class::set_button_data(void)
+{
+    //------ button 1 ------
+    menu_class::button_1.set_size(menu_class::button_width,menu_class::button_height);
+    menu_class::button_1.set_label("Not Set");
+    menu_class::button_1.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+    menu_class::button_1.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+    menu_class::button_1.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+    menu_class::button_1.set_image_normal(menu_class::button_image_normal);
+    menu_class::button_1.set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button_1.set_image_highlighted(menu_class::button_image_highlighted);
+    menu_class::button_1.set_zoom(menu_class::zoom,menu_class::zoom_size);
+    //------ button 2 ------
+    menu_class::button_2.set_size(menu_class::button_width,menu_class::button_height);
+    menu_class::button_2.set_label("Not Set");
+    menu_class::button_2.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+    menu_class::button_2.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+    menu_class::button_2.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+    menu_class::button_2.set_image_normal(menu_class::button_image_normal);
+    menu_class::button_2.set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button_2.set_image_highlighted(menu_class::button_image_highlighted);
+    menu_class::button_2.set_zoom(menu_class::zoom,menu_class::zoom_size);
+    //------ button 3 ------
+    menu_class::button_3.set_size(menu_class::button_width,menu_class::button_height);
+    menu_class::button_3.set_label("Not Set");
+    menu_class::button_3.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+    menu_class::button_3.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+    menu_class::button_3.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+    menu_class::button_3.set_image_normal(menu_class::button_image_normal);
+    menu_class::button_3.set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button_3.set_image_highlighted(menu_class::button_image_highlighted);
+    menu_class::button_3.set_zoom(menu_class::zoom,menu_class::zoom_size);
+    //------ button 4 ------
+    menu_class::button_4.set_size(menu_class::button_width,menu_class::button_height);
+    menu_class::button_4.set_label("Not Set");
+    menu_class::button_4.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+    menu_class::button_4.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+    menu_class::button_4.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+    menu_class::button_4.set_image_normal(menu_class::button_image_normal);
+    menu_class::button_4.set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button_4.set_image_highlighted(menu_class::button_image_highlighted);
+    menu_class::button_4.set_zoom(menu_class::zoom,menu_class::zoom_size);
+    //------ button 5 ------
+    menu_class::button_5.set_size(menu_class::button_width,menu_class::button_height);
+    menu_class::button_5.set_label("Not Set");
+    menu_class::button_5.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+    menu_class::button_5.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+    menu_class::button_5.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+    menu_class::button_5.set_image_normal(menu_class::button_image_normal);
+    menu_class::button_5.set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button_5.set_image_highlighted(menu_class::button_image_highlighted);
+    menu_class::button_5.set_zoom(menu_class::zoom,menu_class::zoom_size);
+    //------ button 6 ------
+    menu_class::button_6.set_size(menu_class::button_width,menu_class::button_height);
+    menu_class::button_6.set_label("Not Set");
+    menu_class::button_6.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+    menu_class::button_6.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+    menu_class::button_6.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+    menu_class::button_6.set_image_normal(menu_class::button_image_normal);
+    menu_class::button_6.set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button_6.set_image_highlighted(menu_class::button_image_highlighted);
+    menu_class::button_6.set_zoom(menu_class::zoom,menu_class::zoom_size);
+    //------ button 7 ------
+    menu_class::button_7.set_size(menu_class::button_width,menu_class::button_height);
+    menu_class::button_7.set_label("Not Set");
+    menu_class::button_7.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+    menu_class::button_7.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+    menu_class::button_7.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+    menu_class::button_7.set_image_normal(menu_class::button_image_normal);
+    menu_class::button_7.set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button_7.set_image_highlighted(menu_class::button_image_highlighted);
+    menu_class::button_7.set_zoom(menu_class::zoom,menu_class::zoom_size);
+    //------ button 8 ------
+    menu_class::button_8.set_size(menu_class::button_width,menu_class::button_height);
+    menu_class::button_8.set_label("Not Set");
+    menu_class::button_8.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+    menu_class::button_8.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+    menu_class::button_8.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+    menu_class::button_8.set_image_normal(menu_class::button_image_normal);
+    menu_class::button_8.set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button_8.set_image_highlighted(menu_class::button_image_highlighted);
+    menu_class::button_8.set_zoom(menu_class::zoom,menu_class::zoom_size);
+    //------ button 9 ------
+    menu_class::button_9.set_size(menu_class::button_width,menu_class::button_height);
+    menu_class::button_9.set_label("Not Set");
+    menu_class::button_9.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+    menu_class::button_9.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+    menu_class::button_9.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+    menu_class::button_9.set_image_normal(menu_class::button_image_normal);
+    menu_class::button_9.set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button_9.set_image_highlighted(menu_class::button_image_highlighted);
+    menu_class::button_9.set_zoom(menu_class::zoom,menu_class::zoom_size);
+    //------ button 10 ------
+    menu_class::button_10.set_size(menu_class::button_width,menu_class::button_height);
+    menu_class::button_10.set_label("Not Set");
+    menu_class::button_10.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+    menu_class::button_10.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+    menu_class::button_10.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+    menu_class::button_10.set_image_normal(menu_class::button_image_normal);
+    menu_class::button_10.set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button_10.set_image_highlighted(menu_class::button_image_highlighted);
+    menu_class::button_10.set_zoom(menu_class::zoom,menu_class::zoom_size);
+    //------ button 11 ------
+    menu_class::button_11.set_size(menu_class::button_width,menu_class::button_height);
+    menu_class::button_11.set_label("Not Set");
+    menu_class::button_11.set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
+    menu_class::button_11.set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
+    menu_class::button_11.set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
+    menu_class::button_11.set_image_normal(menu_class::button_image_normal);
+    menu_class::button_11.set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button_11.set_image_highlighted(menu_class::button_image_highlighted);
+    menu_class::button_11.set_zoom(menu_class::zoom,menu_class::zoom_size);
+};
+
+void menu_class::set_button_zoom(bool z, float zs)
+{
+    menu_class::zoom      = z;
+    menu_class::zoom_size = zs;
+};
+
+void menu_class::set_button_size(float w, float h)
+{
+    menu_class::button_width  = w;
+    menu_class::button_height = h;
+};
+
+void menu_class::set_number_of_buttons(int nob)
+{
+    if (nob > 11) nob = 11;
+    if (nob <  0) nob = 0;
+    menu_class::number_of_buttons = nob;
+};
+
+void menu_class::set_button_active(int button_number, bool bool_data)
+{
+    if (button_number ==  1) menu_class::button_1.set_active(bool_data);
+    if (button_number ==  2) menu_class::button_2.set_active(bool_data);
+    if (button_number ==  3) menu_class::button_3.set_active(bool_data);
+    if (button_number ==  4) menu_class::button_4.set_active(bool_data);
+    if (button_number ==  5) menu_class::button_5.set_active(bool_data);
+    if (button_number ==  6) menu_class::button_6.set_active(bool_data);
+    if (button_number ==  7) menu_class::button_7.set_active(bool_data);
+    if (button_number ==  8) menu_class::button_8.set_active(bool_data);
+    if (button_number ==  9) menu_class::button_8.set_active(bool_data);
+    if (button_number == 10) menu_class::button_8.set_active(bool_data);
+    if (button_number == 11) menu_class::button_8.set_active(bool_data);
+};
+
+void menu_class::set_button_spacing(void)
+{
+    menu_class::button_spacing = ((menu_class::width - menu_class::button_width) /2);
+};
+
+void menu_class::set_button_spacing(float button_offset)
+{
+    menu_class::button_spacing = button_offset;
+};
+
+void menu_class::set_button_spacing_auto(void)
+{
+    float temp_float = menu_class::height/2;
+    float button_offset = ((menu_class::width - menu_class::button_width) /2);
+    menu_class::button_spacing = button_offset;
+    temp_float += button_offset;
+    menu_class::button_1.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_2.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_3.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_4.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_5.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_6.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_7.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_8.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_9.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_10.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_11.set_pos_y(temp_float);
+};
+
+void menu_class::set_button_spacing_auto(float button_offset)
+{
+    float temp_float = 0;
+    menu_class::button_spacing = button_offset;
+    temp_float = menu_class::height/2;
+    temp_float += button_offset;
+    menu_class::button_1.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_2.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_3.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_4.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_5.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_6.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_7.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_8.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_9.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_10.set_pos_y(temp_float);
+    temp_float += button_offset;
+    menu_class::button_11.set_pos_y(temp_float);
+};
 
 
 
