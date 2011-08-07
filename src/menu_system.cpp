@@ -888,7 +888,7 @@ int init_menu   (void)
     main_menu.set_button_z_pos(main_menu.get_menu_z_pos());
     main_menu.set_button_size_auto();
     main_menu.set_button_spacing_auto();
-    main_menu.close_button.
+    main_menu.close_button.set_data();
 
    menu.level_no                          = 0;
    menu.possition                         = 0;

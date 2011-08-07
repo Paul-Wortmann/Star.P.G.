@@ -98,6 +98,8 @@ class button_class
         float get_zoom_size_counter(void);
         void  set_zoom_speed(float zsp);
         float get_zoom_speed(void);
+        void  set_data(float x, float y, float z, float w, float h, int in, int ih);
+        void  set_close_button_pos menu_height - button_height/2
 };
 
 //-------------------------- menu -------------------------------

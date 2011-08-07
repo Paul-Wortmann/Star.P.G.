@@ -339,6 +339,19 @@ float button_class::get_zoom_size(void)
     return(button_class::zoom_size);
 };
 
+void  button_class::set_data(float x, float y, float z, float w, float h, int in, int ih);
+{
+    button_class::active              = true;
+    button_class::image_normal        = in;
+    button_class::image_highlighted   = ih;
+    button_class::highlighted         = false;
+    button_class::pos_x               = x;
+    button_class::pos_y               = y;
+    button_class::pos_z               = z;
+    button_class::width               = w;
+    button_class::height              = h;
+;
+
 //--------------------------------------- menu ----------------------------------------------------
 
 menu_class::menu_class(void)
