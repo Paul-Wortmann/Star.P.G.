@@ -92,7 +92,17 @@ int process_menu_background(void)
    //---------------------------------------------------------------------------------------
 int process_menu(void)
 {
-    main_menu.process();
+    int activated_button = main_menu.process();
+    if (activated_button == 1)
+    {
+                                init_game();
+                                game.music_next_track = true;
+                                menu.possition = 0;
+                                menu.level = 1;
+                                menu.possition_max = 6;
+                                game.log.File_Write("Entering 'new game' menu.");
+    }
+
 
     process_menu_background();
         game.io.keyboard_delay_count++;
@@ -862,7 +872,7 @@ int init_menu   (void)
     main_menu.set_color_normal(128,128,128,255);
     main_menu.set_color_highlighted(255,255,255,255);
     main_menu.set_color_disabled(255,255,255,255);
-    main_menu.set_number_of_buttons(11);
+    main_menu.set_number_of_buttons(10);
     main_menu.set_button_data( 1,"New Game");
     main_menu.set_button_data( 2,"Load Game");
     main_menu.set_button_data( 3,"Save Game");
@@ -873,6 +883,7 @@ int init_menu   (void)
     main_menu.set_button_data( 8,"Options");
     main_menu.set_button_active(9,false);
     main_menu.set_button_data(10,"Quit Game");
+    main_menu.set_button_data(11,"Quit Game again");
     main_menu.set_button_x_pos(main_menu.get_menu_x_pos());
     main_menu.set_button_z_pos(main_menu.get_menu_z_pos());
     main_menu.set_button_size_auto();

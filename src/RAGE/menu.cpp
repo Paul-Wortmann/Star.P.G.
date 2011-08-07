@@ -313,16 +313,18 @@ int  button_class::get_font(void)
 menu_class::menu_class(void)
 {
     menu_class::current_selection = 1;
+    menu_class::button[1].set_highlighted(true);
 };
 
 menu_class::menu_class(int num_buttons)
 {
     menu_class::current_selection = 1;
-    for (int button_count = 1; button_count < menu_class::number_of_buttons; button_count++)
+    for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
     {
         if (button_count <= num_buttons) menu_class::button[button_count].set_active(true);
         else menu_class::button[button_count].set_active(false);
     }
+    menu_class::button[1].set_highlighted(true);
 };
 
 void menu_class::set_pos(float x, float y, float z)
@@ -353,7 +355,7 @@ void menu_class::draw(void)
     glTexCoord2i( 1, 0 );glVertex3f(menu_class::pos_x+menu_class::width/2,menu_class::pos_y+menu_class::height/2,menu_class::pos_y);
     glTexCoord2i( 1, 1 );glVertex3f(menu_class::pos_x+menu_class::width/2,menu_class::pos_y-menu_class::height/2,menu_class::pos_y);
     glEnd();
-    for (int button_count = 1; button_count < menu_class::number_of_buttons; button_count++)
+    for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
     {
         menu_class::button[button_count].draw();
     }
@@ -400,9 +402,9 @@ void menu_class::set_button_image_highlighted(int image)
 
 void menu_class::set_button_data(int button_number)
 {
+    menu_class::button[button_number].set_active(true);
     menu_class::button[button_number].set_font(menu_class::button_font);
     menu_class::button[button_number].set_pos_z(menu_class::button_z_pos);
-    menu_class::set_button_active(button_number,true);
     menu_class::button[button_number].set_size(menu_class::button_width,menu_class::button_height);
     menu_class::button[button_number].set_label("Not Set");
     menu_class::button[button_number].set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
@@ -416,10 +418,10 @@ void menu_class::set_button_data(int button_number)
 
 void menu_class::set_button_data(int button_number, std::string label)
 {
+    menu_class::button[button_number].set_active(true);
     menu_class::button[button_number].set_font(menu_class::button_font);
     menu_class::button[button_number].set_pos_z(menu_class::button_z_pos);
     menu_class::button[button_number].set_label(label);
-    menu_class::set_button_active(button_number,true);
     menu_class::button[button_number].set_size(menu_class::button_width,menu_class::button_height);
     menu_class::button[button_number].set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
     menu_class::button[button_number].set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
@@ -432,10 +434,10 @@ void menu_class::set_button_data(int button_number, std::string label)
 
 void menu_class::set_button_data(int button_number, std::string label,float x, float y, float z)
 {
+    menu_class::button[button_number].set_active(true);
     menu_class::button[button_number].set_font(menu_class::button_font);
     menu_class::button[button_number].set_pos(x,y,z);
     menu_class::button[button_number].set_label(label);
-    menu_class::set_button_active(button_number,true);
     menu_class::button[button_number].set_size(menu_class::button_width,menu_class::button_height);
     menu_class::button[button_number].set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
     menu_class::button[button_number].set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
@@ -448,8 +450,9 @@ void menu_class::set_button_data(int button_number, std::string label,float x, f
 
 void menu_class::set_button_data(void)
 {
-    for (int button_count = 1; button_count < menu_class::number_of_buttons; button_count++)
+    for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
     {
+        menu_class::button[button_count].set_active(true);
         menu_class::button[button_count].set_font(menu_class::button_font);
         menu_class::button[button_count].set_pos_z(menu_class::button_z_pos);
         menu_class::button[button_count].set_size(menu_class::button_width,menu_class::button_height);
@@ -502,7 +505,7 @@ void menu_class::set_button_spacing_auto(void)
     float button_offset = (menu_class::button_height/2.0f)*3.0f;
     float temp_float = (menu_class::pos_y + (menu_class::height/2)) - (menu_class::button_height/2.0f);
     menu_class::button_spacing = button_offset;
-    for (int button_count = 1; button_count < menu_class::number_of_buttons; button_count++)
+    for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
     {
         temp_float -= button_offset;
         menu_class::button[button_count].set_pos_y(temp_float);
@@ -514,7 +517,7 @@ void menu_class::set_button_spacing_auto(float button_offset)
     float temp_float = 0;
     menu_class::button_spacing = button_offset;
     temp_float = (menu_class::height/2) - button_offset - (button_offset /2);
-    for (int button_count = 1; button_count < menu_class::number_of_buttons; button_count++)
+    for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
     {
         temp_float -= button_offset;
         menu_class::button[button_count].set_pos_y(temp_float);
@@ -579,9 +582,9 @@ void menu_class::set_button_font(int button_number)
 void menu_class::set_button_size_auto(void)
 {
     menu_class::button_width  = (menu_class::width / 100.0f) * 90.0f;
-    menu_class::button_height = (menu_class::height / (menu_class::number_of_buttons+((menu_class::number_of_buttons + 1) / 2)));
+    menu_class::button_height = (menu_class::height / (menu_class::number_of_buttons+((menu_class::number_of_buttons + 4) / 2)));
     set_button_size(menu_class::button_width,menu_class::button_height);
-    for (int button_count = 1; button_count < menu_class::number_of_buttons; button_count++)
+    for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
     {
         menu_class::button[button_count].set_size(menu_class::button_width,menu_class::button_height);
     }
@@ -597,13 +600,24 @@ int  menu_class::get_current_selection(void)
     return(menu_class::current_selection);
 };
 
-void menu_class::process(void)
+bool  menu_class::mouse_over_any_button(void)
 {
+    bool return_value = false;
+    for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
+    {
+        if (menu_class::button[button_count].mouse_over()) return_value = true;
+    }
+    return(return_value);
+};
+
+int menu_class::process(void)
+{
+    int  return_value = -1;
     bool done = false;
     if (game.io.up)
     {
         done = false;
-        while ((!done) && (!menu_class::current_selection == 1))
+        while ((!done) && (menu_class::current_selection != 1))
         {
             menu_class::current_selection--;
             if (menu_class::button[current_selection].get_active()) done = true;
@@ -613,7 +627,7 @@ void menu_class::process(void)
     if (game.io.down)
     {
         done = false;
-        while ((!done) && (!menu_class::current_selection == menu_class::number_of_buttons))
+        while ((!done) && (menu_class::current_selection != menu_class::number_of_buttons))
         {
             menu_class::current_selection++;
             if (menu_class::button[current_selection].get_active()) done = true;
@@ -622,45 +636,31 @@ void menu_class::process(void)
     }
     if (menu_class::current_selection < 1) menu_class::current_selection = 1;
     if (menu_class::current_selection > menu_class::number_of_buttons) menu_class::current_selection = menu_class::number_of_buttons;
-    for (int button_count = 1; button_count < menu_class::number_of_buttons; button_count++)
+    for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
     {
         if (menu_class::current_selection == button_count) menu_class::button[button_count].set_highlighted(true);
         else  menu_class::button[button_count].set_highlighted(false);
     }
+    if (menu_class::mouse_over_any_button())
+    {
+        for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
+        {
+            if (menu_class::button[button_count].mouse_over())
+            {
+                menu_class::current_selection = button_count;
+                menu_class::button[button_count].set_highlighted(true);
+            }
+            else  menu_class::button[button_count].set_highlighted(false);
+        }
+        for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
+        {
+            if (menu_class::button[button_count].mouse_clicked()) return_value = button_count;
+        }
+        if (game.io.select) return_value = current_selection;
+    }
+    return(return_value);
 };
 
-void menu_class::process(int move_selector)
-{
-    bool done = false;
-    if (move_selector == 00) return;
-    if (move_selector == 01)
-    {
-        done = false;
-        while ((!done) && (!menu_class::current_selection == 1))
-        {
-            menu_class::current_selection--;
-            if (menu_class::button[current_selection].get_active()) done = true;
-            if (menu_class::current_selection == 1) done = true;
-        }
-    }
-    if (move_selector == 10)
-    {
-        done = false;
-        while ((!done) && (!menu_class::current_selection == menu_class::number_of_buttons))
-        {
-            menu_class::current_selection++;
-            if (menu_class::button[current_selection].get_active()) done = true;
-            if (menu_class::current_selection == menu_class::number_of_buttons) done = true;
-        }
-    }
-    if (menu_class::current_selection < 1) menu_class::current_selection = 1;
-    if (menu_class::current_selection > menu_class::number_of_buttons) menu_class::current_selection = menu_class::number_of_buttons;
-    for (int button_count = 1; button_count < menu_class::number_of_buttons; button_count++)
-    {
-        if (menu_class::current_selection == button_count) menu_class::button[button_count].set_highlighted(true);
-        else  menu_class::button[button_count].set_highlighted(false);
-    }
-};
 
 
 

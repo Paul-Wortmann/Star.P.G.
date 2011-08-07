@@ -132,7 +132,7 @@ class menu_class
         int           disabled_color_a;
     public:
         button_class  close_button;
-        button_class  button[11];
+        button_class  button[12];
         menu_class(void);
         menu_class(int num_buttons);
         void  draw(void);
@@ -171,8 +171,8 @@ class menu_class
         void  set_button_size_auto(void);
         void  set_current_selection(int cs);
         int   get_current_selection(void);
-        void  process(int move_selector);
-        void  process(void);
+        bool  mouse_over_any_button(void);
+        int   process(void);
 };
 
 #endif //MENU_H
