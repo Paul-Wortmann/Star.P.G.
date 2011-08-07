@@ -865,13 +865,13 @@ int init_menu   (void)
     main_menu.set_menu_font(1);
     main_menu.set_menu_button_font(main_menu.get_menu_font());
     main_menu.set_image_background(395);
-    main_menu.set_button_zoom(false,0.0f);
+    main_menu.set_button_zoom(true,0.04f,0.005f);
     main_menu.set_button_image_normal(395);
     main_menu.set_button_image_highlighted(395);
     main_menu.set_button_image_disabled(395);
-    main_menu.set_color_normal(128,128,128,255);
-    main_menu.set_color_highlighted(255,255,255,255);
-    main_menu.set_color_disabled(255,255,255,255);
+    main_menu.set_color_normal(128,128,255,255);
+    main_menu.set_color_highlighted(192,192,255,255);
+    main_menu.set_color_disabled(064,064,128,128);
     main_menu.set_number_of_buttons(10);
     main_menu.set_button_data( 1,"New Game");
     main_menu.set_button_data( 2,"Load Game");
@@ -888,6 +888,7 @@ int init_menu   (void)
     main_menu.set_button_z_pos(main_menu.get_menu_z_pos());
     main_menu.set_button_size_auto();
     main_menu.set_button_spacing_auto();
+    main_menu.close_button.
 
    menu.level_no                          = 0;
    menu.possition                         = 0;

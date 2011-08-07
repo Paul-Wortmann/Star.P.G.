@@ -59,7 +59,7 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,std::string text,
     temp_string << int_data;
     text = text + temp_string.str();
     write_data = text.c_str();
-    SDL_Color font_color = {r,g,b,a};
+    SDL_Color font_color = {b,g,r,a};
     SDL_Surface *font_string = TTF_RenderText_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
@@ -105,7 +105,7 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,std::string text,
     temp_string << float_data;
     text = text + temp_string.str();
     write_data = text.c_str();
-    SDL_Color font_color = {r,g,b,a};
+    SDL_Color font_color = {b,g,r,a};
     SDL_Surface *font_string = TTF_RenderText_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
@@ -150,7 +150,7 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,std::string text)
     std::stringstream temp_string;
     text = text + temp_string.str();
     write_data = text.c_str();
-    SDL_Color font_color = {r,g,b,a};
+    SDL_Color font_color = {b,g,r,a};
     SDL_Surface *font_string = TTF_RenderText_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
@@ -195,7 +195,7 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs
     std::stringstream temp_string;
     text = text + temp_string.str();
     write_data = text.c_str();
-    SDL_Color font_color = {r,g,b,a};
+    SDL_Color font_color = {b,g,r,a};
     SDL_Surface *font_string = TTF_RenderText_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );

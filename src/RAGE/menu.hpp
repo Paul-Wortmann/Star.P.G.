@@ -40,6 +40,8 @@ class button_class
         bool        glow;
         bool        zoom;
         float       zoom_size;
+        float       zoom_size_counter;
+        float       zoom_speed;
         float       pos_x;
         float       pos_y;
         float       pos_z;
@@ -79,6 +81,7 @@ class button_class
         void  set_image_highlighted(int image);
         void  set_enabled(bool bool_value);
         void  set_highlighted(bool bool_value);
+        bool  get_highlighted(void);
         bool  mouse_over(void);
         bool  mouse_clicked(void);
         bool  button_pressed(void);
@@ -86,8 +89,15 @@ class button_class
         bool  get_active(void);
         void  set_zoom(bool bool_data);
         void  set_zoom(bool bool_data, float zs);
+        void  set_zoom(bool bool_data, float zs, float zsp);
         void  set_font(int font_number);
         int   get_font(void);
+        void  set_zoom_size(float zs);
+        float get_zoom_size(void);
+        void  set_zoom_size_counter(float zsc);
+        float get_zoom_size_counter(void);
+        void  set_zoom_speed(float zsp);
+        float get_zoom_speed(void);
 };
 
 //-------------------------- menu -------------------------------
@@ -113,6 +123,8 @@ class menu_class
         bool          glow;
         bool          zoom;
         float         zoom_size;
+        float         zoom_size_counter;
+        float         zoom_speed;
         float         height;
         float         width;
         std::string   title;
@@ -146,6 +158,7 @@ class menu_class
         void  set_button_image_disabled(int image);
         void  set_button_image_highlighted(int image);
         void  set_button_zoom(bool z, float zs);
+        void  set_button_zoom(bool bool_data, float zs, float zsp);
         void  set_button_data(int button_number);
         void  set_button_data(int button_number, std::string label);
         void  set_button_data(int button_number, std::string label,float x, float y, float z);
@@ -173,6 +186,10 @@ class menu_class
         int   get_current_selection(void);
         bool  mouse_over_any_button(void);
         int   process(void);
+        void  set_zoom_size_counter(int button_number,float zsc);
+        float get_zoom_size_counter(int button_number);
+        void  set_zoom_speed(int button_number,float zsp);
+        float get_zoom_speed(int button_number);
 };
 
 #endif //MENU_H
