@@ -101,9 +101,19 @@ void button_class::set_pos(float x, float y, float z)
     button_class::pos_z = z;
 };
 
+void button_class::set_pos_x(float x)
+{
+    button_class::pos_x = x;
+};
+
 void button_class::set_pos_y(float y)
 {
     button_class::pos_y = y;
+};
+
+void button_class::set_pos_z(float z)
+{
+    button_class::pos_z = z;
 };
 
 void button_class::set_size(float w, float h)
@@ -191,7 +201,7 @@ void button_class::draw(void)
         if (button_class::highlighted) bind_texture(button_class::image_highlighted);
         else bind_texture(button_class::image_normal);
     };
-    if((button_class::zoom) && (button_class::highlighted))
+    if(button_class::zoom)
     {
         glLoadIdentity();
         glBegin( GL_QUADS );
@@ -200,8 +210,6 @@ void button_class::draw(void)
         glTexCoord2i( 1, 0 );glVertex3f(button_class::pos_x+(button_class::width/2)+button_class::zoom,button_class::pos_y+(button_class::height/2)+button_class::zoom,button_class::pos_z);
         glTexCoord2i( 1, 1 );glVertex3f(button_class::pos_x+(button_class::width/2)+button_class::zoom,button_class::pos_y-(button_class::height/2)-button_class::zoom,button_class::pos_z);
         glEnd();
-        font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/8,button_class::pos_y-button_class::height/3,button_class::label);
-        ///font print label!!!
     }
     else
     {
@@ -212,8 +220,54 @@ void button_class::draw(void)
         glTexCoord2i( 1, 0 );glVertex3f(button_class::pos_x+(button_class::width/2),button_class::pos_y+(button_class::height/2),button_class::pos_z);
         glTexCoord2i( 1, 1 );glVertex3f(button_class::pos_x+(button_class::width/2),button_class::pos_y-(button_class::height/2),button_class::pos_z);
         glEnd();
-        font.font_2.Write(button_class::normal_color_r,button_class::normal_color_g,button_class::normal_color_b,button_class::normal_color_a,button_class::pos_x-button_class::width/8,button_class::pos_y-button_class::height/3,button_class::label);
-        ///font print label!!!
+    }
+    if(button_class::zoom)
+    {
+        switch(button_class::get_font())
+        {
+            case 1:
+                if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r,button_class::normal_color_g,button_class::normal_color_b,button_class::normal_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
+            break;
+            case 2:
+                if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,16.0f,button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,16.0f,button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,16.0f,button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r,button_class::normal_color_g,button_class::normal_color_b,button_class::normal_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,16.0f,button_class::label);
+            break;
+            default:
+                if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r,button_class::normal_color_g,button_class::normal_color_b,button_class::normal_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
+            break;
+        }
+    }
+    else
+    {
+        switch(button_class::get_font())
+        {
+            case 1:
+                if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r,button_class::normal_color_g,button_class::normal_color_b,button_class::normal_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
+            break;
+            case 2:
+                if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,16.0f,button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,16.0f,button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,16.0f,button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r,button_class::normal_color_g,button_class::normal_color_b,button_class::normal_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,16.0f,button_class::label);
+            break;
+            default:
+                if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r,button_class::normal_color_g,button_class::normal_color_b,button_class::normal_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
+            break;
+        }
     };
 };
 
@@ -228,6 +282,11 @@ void button_class::set_active(bool bool_data)
     button_class::active = bool_data;
 };
 
+bool  button_class::get_active(void)
+{
+    return(button_class::active);
+};
+
 void button_class::set_zoom(bool bool_data)
 {
     button_class::zoom      = bool_data;
@@ -239,7 +298,33 @@ void button_class::set_zoom(bool bool_data, float zs)
     button_class::zoom_size = zs;
 };
 
+void button_class::set_font(int font_number)
+{
+    button_class::button_font = font_number;
+};
+
+int  button_class::get_font(void)
+{
+    return(button_class::button_font);
+};
+
 //--------------------------------------- menu ----------------------------------------------------
+
+menu_class::menu_class(void)
+{
+    menu_class::current_selection = 1;
+};
+
+menu_class::menu_class(int num_buttons)
+{
+    menu_class::current_selection = 1;
+    for (int button_count = 1; button_count < menu_class::number_of_buttons; button_count++)
+    {
+        if (button_count <= num_buttons) menu_class::button[button_count].set_active(true);
+        else menu_class::button[button_count].set_active(false);
+    }
+};
+
 void menu_class::set_pos(float x, float y, float z)
 {
     menu_class::pos_x = x;
@@ -256,20 +341,6 @@ void menu_class::set_size(float w, float h)
 void menu_class::set_image_background(int bi)
 {
     menu_class::image_background = bi;
-};
-
-menu_class::menu_class(void)
-{
-
-};
-
-menu_class::menu_class(int num_buttons)
-{
-    for (int button_count = 1; button_count < menu_class::number_of_buttons; button_count++)
-    {
-        if (button_count <= num_buttons) menu_class::button[button_count].set_active(true);
-        else menu_class::button[button_count].set_active(false);
-    }
 };
 
 void menu_class::draw(void)
@@ -329,6 +400,8 @@ void menu_class::set_button_image_highlighted(int image)
 
 void menu_class::set_button_data(int button_number)
 {
+    menu_class::button[button_number].set_font(menu_class::button_font);
+    menu_class::button[button_number].set_pos_z(menu_class::button_z_pos);
     menu_class::set_button_active(button_number,true);
     menu_class::button[button_number].set_size(menu_class::button_width,menu_class::button_height);
     menu_class::button[button_number].set_label("Not Set");
@@ -343,6 +416,8 @@ void menu_class::set_button_data(int button_number)
 
 void menu_class::set_button_data(int button_number, std::string label)
 {
+    menu_class::button[button_number].set_font(menu_class::button_font);
+    menu_class::button[button_number].set_pos_z(menu_class::button_z_pos);
     menu_class::button[button_number].set_label(label);
     menu_class::set_button_active(button_number,true);
     menu_class::button[button_number].set_size(menu_class::button_width,menu_class::button_height);
@@ -357,6 +432,7 @@ void menu_class::set_button_data(int button_number, std::string label)
 
 void menu_class::set_button_data(int button_number, std::string label,float x, float y, float z)
 {
+    menu_class::button[button_number].set_font(menu_class::button_font);
     menu_class::button[button_number].set_pos(x,y,z);
     menu_class::button[button_number].set_label(label);
     menu_class::set_button_active(button_number,true);
@@ -374,6 +450,8 @@ void menu_class::set_button_data(void)
 {
     for (int button_count = 1; button_count < menu_class::number_of_buttons; button_count++)
     {
+        menu_class::button[button_count].set_font(menu_class::button_font);
+        menu_class::button[button_count].set_pos_z(menu_class::button_z_pos);
         menu_class::button[button_count].set_size(menu_class::button_width,menu_class::button_height);
         menu_class::button[button_count].set_label("Label Not Set");
         menu_class::button[button_count].set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
@@ -421,9 +499,8 @@ void menu_class::set_button_spacing(float button_offset)
 
 void menu_class::set_button_spacing_auto(void)
 {
-    float button_offset = ((menu_class::width - menu_class::button_width));
-    float temp_float = (menu_class::height/2) - button_offset;
-    button_offset += button_offset/2;
+    float button_offset = (menu_class::button_height/2.0f)*3.0f;
+    float temp_float = (menu_class::pos_y + (menu_class::height/2)) - (menu_class::button_height/2.0f);
     menu_class::button_spacing = button_offset;
     for (int button_count = 1; button_count < menu_class::number_of_buttons; button_count++)
     {
@@ -436,7 +513,7 @@ void menu_class::set_button_spacing_auto(float button_offset)
 {
     float temp_float = 0;
     menu_class::button_spacing = button_offset;
-    temp_float = (menu_class::height/2) -  (button_offset /2);
+    temp_float = (menu_class::height/2) - button_offset - (button_offset /2);
     for (int button_count = 1; button_count < menu_class::number_of_buttons; button_count++)
     {
         temp_float -= button_offset;
@@ -444,13 +521,146 @@ void menu_class::set_button_spacing_auto(float button_offset)
     }
 };
 
+void menu_class::set_button_x_pos(float xp)
+{
+    menu_class::button_x_pos = xp;
+};
 
+float menu_class::get_menu_x_pos(void)
+{
+    return(menu_class::pos_x);
+};
 
+void menu_class::set_button_y_pos(float yp)
+{
+    menu_class::button_y_pos = yp;
+};
 
+float menu_class::get_menu_y_pos(void)
+{
+    return(menu_class::pos_y);
+};
 
+void menu_class::set_button_z_pos(float zp)
+{
+    menu_class::button_z_pos = zp;
+};
 
+float menu_class::get_menu_z_pos(void)
+{
+    return(menu_class::pos_z);
+};
 
+void menu_class::set_menu_title(std::string menu_title)
+{
+    menu_class::title = menu_title;
+};
 
+void menu_class::set_menu_font(int font_number)
+{
+    menu_class::menu_font = font_number;
+};
+
+void menu_class::set_menu_button_font(int font_number)
+{
+    menu_class::button_font = font_number;
+};
+
+int  menu_class::get_menu_font(void)
+{
+    return(menu_class::menu_font);
+};
+
+void menu_class::set_button_font(int button_number)
+{
+    menu_class::button[button_number].set_font(menu_class::button_font);
+};
+
+void menu_class::set_button_size_auto(void)
+{
+    menu_class::button_width  = (menu_class::width / 100.0f) * 90.0f;
+    menu_class::button_height = (menu_class::height / (menu_class::number_of_buttons+((menu_class::number_of_buttons + 1) / 2)));
+    set_button_size(menu_class::button_width,menu_class::button_height);
+    for (int button_count = 1; button_count < menu_class::number_of_buttons; button_count++)
+    {
+        menu_class::button[button_count].set_size(menu_class::button_width,menu_class::button_height);
+    }
+};
+
+void menu_class::set_current_selection(int cs)
+{
+    menu_class::current_selection = cs;
+};
+
+int  menu_class::get_current_selection(void)
+{
+    return(menu_class::current_selection);
+};
+
+void menu_class::process(void)
+{
+    bool done = false;
+    if (game.io.up)
+    {
+        done = false;
+        while ((!done) && (!menu_class::current_selection == 1))
+        {
+            menu_class::current_selection--;
+            if (menu_class::button[current_selection].get_active()) done = true;
+            if (menu_class::current_selection == 1) done = true;
+        }
+    }
+    if (game.io.down)
+    {
+        done = false;
+        while ((!done) && (!menu_class::current_selection == menu_class::number_of_buttons))
+        {
+            menu_class::current_selection++;
+            if (menu_class::button[current_selection].get_active()) done = true;
+            if (menu_class::current_selection == menu_class::number_of_buttons) done = true;
+        }
+    }
+    if (menu_class::current_selection < 1) menu_class::current_selection = 1;
+    if (menu_class::current_selection > menu_class::number_of_buttons) menu_class::current_selection = menu_class::number_of_buttons;
+    for (int button_count = 1; button_count < menu_class::number_of_buttons; button_count++)
+    {
+        if (menu_class::current_selection == button_count) menu_class::button[button_count].set_highlighted(true);
+        else  menu_class::button[button_count].set_highlighted(false);
+    }
+};
+
+void menu_class::process(int move_selector)
+{
+    bool done = false;
+    if (move_selector == 00) return;
+    if (move_selector == 01)
+    {
+        done = false;
+        while ((!done) && (!menu_class::current_selection == 1))
+        {
+            menu_class::current_selection--;
+            if (menu_class::button[current_selection].get_active()) done = true;
+            if (menu_class::current_selection == 1) done = true;
+        }
+    }
+    if (move_selector == 10)
+    {
+        done = false;
+        while ((!done) && (!menu_class::current_selection == menu_class::number_of_buttons))
+        {
+            menu_class::current_selection++;
+            if (menu_class::button[current_selection].get_active()) done = true;
+            if (menu_class::current_selection == menu_class::number_of_buttons) done = true;
+        }
+    }
+    if (menu_class::current_selection < 1) menu_class::current_selection = 1;
+    if (menu_class::current_selection > menu_class::number_of_buttons) menu_class::current_selection = menu_class::number_of_buttons;
+    for (int button_count = 1; button_count < menu_class::number_of_buttons; button_count++)
+    {
+        if (menu_class::current_selection == button_count) menu_class::button[button_count].set_highlighted(true);
+        else  menu_class::button[button_count].set_highlighted(false);
+    }
+};
 
 
 

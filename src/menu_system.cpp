@@ -92,6 +92,8 @@ int process_menu_background(void)
    //---------------------------------------------------------------------------------------
 int process_menu(void)
 {
+    main_menu.process();
+
     process_menu_background();
         game.io.keyboard_delay_count++;
         if (game.io.keyboard_delay_count > game.io.keyboard_delay) game.io.keyboard_delay_count = game.io.keyboard_delay;
@@ -847,29 +849,33 @@ int process_menu(void)
 
 int init_menu   (void)
 {
+    main_menu.set_menu_title("Main Menu");
     main_menu.set_pos(0.0f,-0.1f,0.001f);
-
     main_menu.set_size(0.8f,1.7f);
+    main_menu.set_menu_font(1);
+    main_menu.set_menu_button_font(main_menu.get_menu_font());
     main_menu.set_image_background(395);
     main_menu.set_button_zoom(false,0.0f);
     main_menu.set_button_image_normal(395);
     main_menu.set_button_image_highlighted(395);
     main_menu.set_button_image_disabled(395);
-    main_menu.set_color_normal(255,255,255,255);
+    main_menu.set_color_normal(128,128,128,255);
     main_menu.set_color_highlighted(255,255,255,255);
     main_menu.set_color_disabled(255,255,255,255);
-    main_menu.set_button_size(0.7f,0.1f);
     main_menu.set_number_of_buttons(11);
-    main_menu.set_button_data( 1,"New Game",0.0f, 0.60f,0.001f);
-    main_menu.set_button_data( 2,"Load Game",0.0f, 0.45f,0.001f);
-    main_menu.set_button_data( 3,"Save Game",0.0f, 0.30f,0.001f);
-    main_menu.set_button_data( 4,"Resume Game",0.0f, 0.15f,0.001f);
-    main_menu.set_button_data( 5,"Achievements",0.0f, 0.00f,0.001f);
-    main_menu.set_button_data( 6,"Customize Starship",0.0f,-0.15f,0.001f);
-    main_menu.set_button_data( 7,"Not yet implemented",0.0f,-0.15f,0.001f);
-    main_menu.set_button_data( 8,"Options",0.0f,-0.15f,0.001f);
+    main_menu.set_button_data( 1,"New Game");
+    main_menu.set_button_data( 2,"Load Game");
+    main_menu.set_button_data( 3,"Save Game");
+    main_menu.set_button_data( 4,"Resume Game");
+    main_menu.set_button_data( 5,"Achievements");
+    main_menu.set_button_data( 6,"Customize Starship");
+    main_menu.set_button_data( 7,"Not yet implemented");
+    main_menu.set_button_data( 8,"Options");
     main_menu.set_button_active(9,false);
-    main_menu.set_button_data(10,"Quit Game",0.0f,-0.45f,0.001f);
+    main_menu.set_button_data(10,"Quit Game");
+    main_menu.set_button_x_pos(main_menu.get_menu_x_pos());
+    main_menu.set_button_z_pos(main_menu.get_menu_z_pos());
+    main_menu.set_button_size_auto();
     main_menu.set_button_spacing_auto();
 
    menu.level_no                          = 0;
