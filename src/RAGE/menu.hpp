@@ -24,6 +24,9 @@
 #define MENU_H
 
 #include <string>
+
+const int MAX_MENU_BUTTONS = 11;
+
 //-------------------------- button -------------------------------
 class button_class
 {
@@ -118,17 +121,7 @@ class menu_class
         int           disabled_color_a;
     public:
         button_class  close_button;
-        button_class  button_1;
-        button_class  button_2;
-        button_class  button_3;
-        button_class  button_4;
-        button_class  button_5;
-        button_class  button_6;
-        button_class  button_7;
-        button_class  button_8;
-        button_class  button_9;
-        button_class  button_10;
-        button_class  button_11;
+        button_class  button[11];
         menu_class(void);
         menu_class(int num_buttons);
         void draw(void);

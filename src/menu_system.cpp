@@ -848,6 +848,7 @@ int process_menu(void)
 int init_menu   (void)
 {
     main_menu.set_pos(0.0f,-0.1f,0.001f);
+
     main_menu.set_size(0.8f,1.7f);
     main_menu.set_image_background(395);
     main_menu.set_button_zoom(false,0.0f);
@@ -866,12 +867,10 @@ int init_menu   (void)
     main_menu.set_button_data( 5,"Achievements",0.0f, 0.00f,0.001f);
     main_menu.set_button_data( 6,"Customize Starship",0.0f,-0.15f,0.001f);
     main_menu.set_button_data( 7,"Not yet implemented",0.0f,-0.15f,0.001f);
-    main_menu.set_button_data( 8,"Not yet implemented",0.0f,-0.15f,0.001f);
-    main_menu.set_button_data( 9,"Options",0.0f,-0.15f,0.001f);
-    main_menu.set_button_active(10,false);
-    main_menu.set_button_data(11,"Quit Game",0.0f,-0.45f,0.001f);
+    main_menu.set_button_data( 8,"Options",0.0f,-0.15f,0.001f);
+    main_menu.set_button_active(9,false);
+    main_menu.set_button_data(10,"Quit Game",0.0f,-0.45f,0.001f);
     main_menu.set_button_spacing_auto();
-
 
    menu.level_no                          = 0;
    menu.possition                         = 0;
