@@ -26,12 +26,12 @@ game_class        game;
 
 game_class::game_class(void)
 {
+    menu_level       = 1;
     FPS              = 0;
     LastTicks        = 0;
     music_track      = -1;
     process_ready    = true;
     music_next_track = true;
-
 };
 
 game_class::~game_class(void)

@@ -679,7 +679,7 @@
 
 1309768119 c:\_git_\star.p.g\src\levels.h
 
-1312373388 source:c:\_git_\star.p.g\src\main.cpp
+1312812517 source:c:\_git_\star.p.g\src\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -817,10 +817,10 @@
 1312290460 c:\_git_\star.p.g\src\rage\log.hpp
 	<string>
 
-1312290460 source:c:\_git_\star.p.g\src\rage\rage.cpp
+1312811303 source:c:\_git_\star.p.g\src\rage\rage.cpp
 	"rage.hpp"
 
-1312373388 c:\_git_\star.p.g\src\rage\rage.hpp
+1312811301 c:\_git_\star.p.g\src\rage\rage.hpp
 	"log.hpp"
 	"config.hpp"
 	"graphics.hpp"
@@ -1138,10 +1138,10 @@
 	"../game.hpp"
 	"io.hpp"
 
-1312807544 c:\_git_\star.p.g\src\rage\menu.hpp
+1312812941 c:\_git_\star.p.g\src\rage\menu.hpp
 	<string>
 
-1312807869 source:c:\_git_\star.p.g\src\rage\menu.cpp
+1312813060 source:c:\_git_\star.p.g\src\rage\menu.cpp
 	"menu.hpp"
 	"rage.hpp"
 	"../load_resources.hpp"
@@ -1150,7 +1150,7 @@
 
 1312373388 c:\_git_\star.p.g\src\menu_system.hpp
 
-1312801844 source:c:\_git_\star.p.g\src\menu_system.cpp
+1312812232 source:c:\_git_\star.p.g\src\menu_system.cpp
 	<GL/gl.h>
 	"menu_system.hpp"
 	"game.hpp"

@@ -233,6 +233,7 @@ class menu_class
         void  set_title_data(float x, float y, float z, float w, float h, std::string menu_title);
         bool  mouse_over_title(void);
         bool  mouse_click_title(void);
+        float set_buttons_auto(void);
         int   process(void);
 };
 

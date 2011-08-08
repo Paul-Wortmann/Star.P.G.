@@ -896,6 +896,15 @@ float menu_class::get_close_button_pos_z(void)
     return(menu_class::close_button.get_pos_z());
 };
 
+float menu_class::set_buttons_auto(void)
+{
+    menu_class::set_menu_button_font(menu_class::get_menu_font());
+    menu_class::set_button_x_pos(menu_class::get_menu_x_pos());
+    menu_class::set_button_z_pos(menu_class::get_menu_z_pos());
+    menu_class::set_button_size_auto();
+    menu_class::set_button_spacing_auto();
+};
+
 int menu_class::process(void)
 {
     float  drag_x_delta = 0.0f;
@@ -916,6 +925,7 @@ int menu_class::process(void)
             done = false;
             while ((!done) && (menu_class::current_vertical_selection != 1))
             {
+                return_value = 65533;
                 menu_class::current_vertical_selection--;
                 if (menu_class::button[current_vertical_selection].get_active()) done = true;
                 if (menu_class::current_vertical_selection == 1) done = true;
@@ -927,6 +937,7 @@ int menu_class::process(void)
             done = false;
             while ((!done) && (menu_class::current_vertical_selection != menu_class::number_of_buttons))
             {
+                return_value = 65533;
                 menu_class::current_vertical_selection++;
                 if (menu_class::button[current_vertical_selection].get_active()) done = true;
                 if (menu_class::current_vertical_selection == menu_class::number_of_buttons) done = true;
@@ -952,6 +963,7 @@ int menu_class::process(void)
         {
             if (menu_class::button[button_count].mouse_over())
             {
+                if (menu_class::current_vertical_selection != button_count) return_value = 65533;
                 menu_class::current_vertical_selection = button_count;
                 menu_class::button[button_count].set_highlighted(true);
             }
@@ -990,6 +1002,7 @@ int menu_class::process(void)
     //---- close button ----
     if(!menu_class::get_drag_active())
     {
+        if (menu_class::close_button.mouse_over() && !menu_class::close_button.get_highlighted()) return_value = 65533;
         if (menu_class::close_button.mouse_over()) menu_class::close_button.set_highlighted(true);
         else  menu_class::close_button.set_highlighted(false);
         if (menu_class::close_button.mouse_clicked()) return_value = 65535;

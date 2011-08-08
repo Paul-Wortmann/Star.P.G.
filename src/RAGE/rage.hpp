@@ -38,7 +38,8 @@
 class game_class
 {
     public:
-        int               GAME_VERSION;
+        int               GAME_VERSION_MAJOR;
+        int               GAME_VERSION_MINOR;
         int               FPS;
         int               LastTicks;
         bool              process_ready;
@@ -52,6 +53,7 @@ class game_class
         bool              nlvl_active;
         bool              outr_active;
         bool              status_quit_active;
+        int               menu_level;
         io_type           io;
         SDL_Event         event;
         log_file_class    log;

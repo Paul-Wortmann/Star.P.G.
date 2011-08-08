@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
   game.log.File_Write("------------------");
   game.log.File_Write("| Star.P.G V0.18 |");
   game.log.File_Write("------------------\n");
-  game.log.File_Write("Booting up!");
+  game.log.File_Write("Starting up!");
   game.log.File_Write("------------------\n");
   if (game_o.cheats_enabled) game.log.File_Write("Cheating enabled!\n");
   game.config.File_Set("Star.P.G..cfg");
@@ -212,11 +212,9 @@ int main(int argc, char *argv[])
         if (game.io.escape)
         {
             sound.menu_select.play();
-            game.music_next_track          = true;
+            game.music_next_track        = true;
             game.game_active             = false;
-            menu.level                     = 1;
-            menu.possition                 = 3;
-            menu.possition_max             = 6;
+            game.menu_level              = 1;
             game.menu_active             = true;
             game.io.escape               = false;
             game.io.keyboard_delay_count = 0;
