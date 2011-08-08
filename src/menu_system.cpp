@@ -260,28 +260,28 @@ int process_menu(void)
     // ------------------- Save menu ------------
     if (game.menu_level == 6)
     {
-        activated_button = main_menu.process();
+        activated_button = save_menu.process();
         switch (activated_button)
         {
             case 1://Save Slot 1 selected.
             break;
-            case 9://Quit Game
+            case 9://Return to main menu
                 sound.menu_select.play();
-                game.status_quit_active = true;
-                game.log.File_Write("User terminating game - 'Quit Game' selected!");
+                game.menu_level = 1;
+                game.log.File_Write("Entering main menu, from save menu. - button selected.");
             break;
-            case 65533://only move no select.
+            case 65533://menu choice changed
                 sound.menu_move.play();
             break;
-            case 65534:// escape pressed on keyboard.
+            case 65534://Return to main menu
                 sound.menu_select.play();
-                game.status_quit_active = true;
-                game.log.File_Write("User terminating game - keyboard escape pressed!");
+                game.menu_level = 1;
+                game.log.File_Write("Entering main menu, from save menu. - escape preses.");
             break;
-            case 65535:// close button clicked.
+            case 65535://Return to main menu
                 sound.menu_select.play();
-                game.status_quit_active = true;
-                game.log.File_Write("User terminating game - clicked escape button!");
+                game.menu_level = 1;
+                game.log.File_Write("Entering main menu, from save menu. - button clicked.");
             break;
             default:
             break;
