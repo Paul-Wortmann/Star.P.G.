@@ -89,22 +89,35 @@ int process_menu_background(void)
    }
 };
 
-   //---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
 int process_menu(void)
 {
+
+    process_menu_background();
     int activated_button = main_menu.process();
-    if (activated_button == 1)
+    switch (activated_button)
     {
-                                init_game();
-                                game.music_next_track = true;
-                                menu.possition = 0;
-                                menu.level = 1;
-                                menu.possition_max = 6;
-                                game.log.File_Write("Entering 'new game' menu.");
+        case 1:
+            init_game();
+            game.music_next_track = true;
+            menu.possition = 0;
+            menu.level = 1;
+            menu.possition_max = 6;
+            game.log.File_Write("Entering 'new game' menu.");
+        break;
+        case 65534:
+            game.status_quit_active = true;
+            game.log.File_Write("User terminating game - keyboard escape pressed!");
+        break;
+        case 65535:
+            game.status_quit_active = true;
+            game.log.File_Write("User terminating game - clicked escape button!");
+        break;
+        default:
+        break;
     }
 
 
-    process_menu_background();
         game.io.keyboard_delay_count++;
         if (game.io.keyboard_delay_count > game.io.keyboard_delay) game.io.keyboard_delay_count = game.io.keyboard_delay;
         if ((game.io.escape) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
@@ -860,6 +873,8 @@ int process_menu(void)
 int init_menu   (void)
 {
     main_menu.set_menu_title("Main Menu");
+    main_menu.set_keyboard_delay(16);
+    main_menu.set_mouse_delay(24);
     main_menu.set_pos(0.0f,-0.1f,0.001f);
     main_menu.set_size(0.8f,1.7f);
     main_menu.set_menu_font(1);
@@ -872,41 +887,39 @@ int init_menu   (void)
     main_menu.set_color_normal(128,128,255,255);
     main_menu.set_color_highlighted(192,192,255,255);
     main_menu.set_color_disabled(064,064,128,128);
-    main_menu.set_number_of_buttons(10);
-    main_menu.set_button_data( 1,"New Game");
-    main_menu.set_button_data( 2,"Load Game");
-    main_menu.set_button_data( 3,"Save Game");
-    main_menu.set_button_data( 4,"Resume Game");
-    main_menu.set_button_data( 5,"Achievements");
-    main_menu.set_button_data( 6,"Customize Starship");
-    main_menu.set_button_data( 7,"Not yet implemented");
-    main_menu.set_button_data( 8,"Options");
-    main_menu.set_button_active(9,false);
-    main_menu.set_button_data(10,"Quit Game");
-    main_menu.set_button_data(11,"Quit Game again");
+    main_menu.set_number_of_buttons(9);
+    main_menu.set_button_data( 1,"Star Map");
+    main_menu.set_button_data( 2,"Customize Starship");
+    main_menu.set_button_data( 3,"Achievements");
+    main_menu.set_button_data( 4,"Load Game");
+    main_menu.set_button_data( 5,"Save Game");
+    main_menu.set_button_data( 6,"Resume Game");
+    main_menu.set_button_data( 7,"Options");
+    main_menu.set_button_active(8,false);
+    main_menu.set_button_data(9,"Quit Game");
     main_menu.set_button_x_pos(main_menu.get_menu_x_pos());
     main_menu.set_button_z_pos(main_menu.get_menu_z_pos());
     main_menu.set_button_size_auto();
     main_menu.set_button_spacing_auto();
-    main_menu.close_button.set_data();
+    main_menu.set_close_button_data(396,397);
 
-   menu.level_no                          = 0;
-   menu.possition                         = 0;
-   menu.level                             = 0;
-   menu.possition_max                     = 4;
-   menu.recall_position                   = 0;
-   menu.recall_view                       = 0;
-   menu.background_scroll[0].x_dir        = 0;
-   menu.background_scroll[0].y_dir        = 0;
-   menu.background_scroll[0].x_pos        = 0.0f;
-   menu.background_scroll[0].y_pos        = 0.0f;
-   menu.background_scroll[0].scroll_rate  = 0.0005f;
-   menu.background_scroll[1].x_dir        = 1;
-   menu.background_scroll[1].y_dir        = 1;
-   menu.background_scroll[1].x_pos        = 0.0f;
-   menu.background_scroll[1].y_pos        = 0.0f;
-   menu.background_scroll[1].scroll_rate  = 0.001f;
-   return(0);
+    menu.level_no                          = 0;
+    menu.possition                         = 0;
+    menu.level                             = 0;
+    menu.possition_max                     = 4;
+    menu.recall_position                   = 0;
+    menu.recall_view                       = 0;
+    menu.background_scroll[0].x_dir        = 0;
+    menu.background_scroll[0].y_dir        = 0;
+    menu.background_scroll[0].x_pos        = 0.0f;
+    menu.background_scroll[0].y_pos        = 0.0f;
+    menu.background_scroll[0].scroll_rate  = 0.0005f;
+    menu.background_scroll[1].x_dir        = 1;
+    menu.background_scroll[1].y_dir        = 1;
+    menu.background_scroll[1].x_pos        = 0.0f;
+    menu.background_scroll[1].y_pos        = 0.0f;
+    menu.background_scroll[1].scroll_rate  = 0.001f;
+    return(0);
 };
 
    //---------------------------------------------------------------------------------------

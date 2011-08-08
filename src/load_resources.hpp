@@ -552,6 +552,12 @@ struct texture_type
 
    texture_class menu_background_002;
    texture_class menu_background_003;
+   texture_class red_button;
+   texture_class red_button_highlighted;
+   texture_class green_button;
+   texture_class green_button_highlighted;
+   texture_class blue_button;
+   texture_class blue_button_highlighted;
 };
 
 struct font_type

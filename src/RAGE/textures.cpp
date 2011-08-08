@@ -38,14 +38,16 @@ texture_class::~texture_class()
     glDeleteTextures(1, &texture_data);
 };
 
-void texture_class::load(std::string file_name)
+bool texture_class::load(std::string file_name)
 {
    SDL_Surface *surface;
    GLenum       texture_format;
    GLint        nOfColors;
+   bool         return_value = false;
 
    if (surface = IMG_Load(file_name.c_str()))
    {
+      return_value = true;
       if ((surface->w & (surface->w - 1)) != 0 );
       if ((surface->h & (surface->h - 1)) != 0 );
       nOfColors = surface->format->BytesPerPixel;
@@ -69,8 +71,10 @@ void texture_class::load(std::string file_name)
    }
    else
    {
+      return_value = false;
       //game.log.File_Write("SDL could not load image.",File_Name);
       SDL_Quit();
    }
    if ( surface ) SDL_FreeSurface( surface );
+   return(return_value);
 };

@@ -31,6 +31,7 @@ const int MAX_MENU_BUTTONS = 11;
 class button_class
 {
     private:
+        int         type;
         bool        active;
         int         image_normal;
         int         image_highlighted;
@@ -99,14 +100,22 @@ class button_class
         void  set_zoom_speed(float zsp);
         float get_zoom_speed(void);
         void  set_data(float x, float y, float z, float w, float h, int in, int ih);
-        void  set_close_button_pos menu_height - button_height/2
+        void  set_data(float x, float y, float z, float w, float h);
+        void  set_data(int in, int ih);
+        void  set_button_type(int bt);
+        int   get_button_type(void);
 };
 
 //-------------------------- menu -------------------------------
 class menu_class
 {
     private:
-        int           current_selection;
+        int           keyboard_delay;
+        int           keyboard_delay_count;
+        int           mouse_delay;
+        int           mouse_delay_count;
+        int           current_vertical_selection;
+        int           current_horizontal_selection;
         int           number_of_buttons;
         float         pos_x;
         float         pos_y;
@@ -184,14 +193,26 @@ class menu_class
         void  set_button_font(int button_number);
         int   get_menu_font(void);
         void  set_button_size_auto(void);
-        void  set_current_selection(int cs);
-        int   get_current_selection(void);
+        void  set_current_vertical_selection(int cvs);
+        int   get_current_vertical_selection(void);
         bool  mouse_over_any_button(void);
-        int   process(void);
         void  set_zoom_size_counter(int button_number,float zsc);
         float get_zoom_size_counter(int button_number);
         void  set_zoom_speed(int button_number,float zsp);
         float get_zoom_speed(int button_number);
+        void  set_close_button_data(float x, float y, float z, float w, float h, int in, int ih);
+        void  set_close_button_data(float x, float y, float z, float w, float h);
+        void  set_close_button_data(int in, int ih);
+        void  set_close_button_type(int bt);
+        void  set_keyboard_delay(int kd);
+        int   get_keyboard_delay(void);
+        void  set_keyboard_delay_count(int kdc);
+        int   get_keyboard_delay_count(void);
+        void  set_mouse_delay(int md);
+        int   get_mouse_delay(void);
+        void  set_mouse_delay_count(int mdc);
+        int   get_mouse_delay_count(void);
+        int   process(void);
 };
 
 #endif //MENU_H

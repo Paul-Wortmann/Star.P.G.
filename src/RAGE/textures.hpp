@@ -32,7 +32,7 @@ class texture_class
     GLuint texture_data;
     texture_class();
    ~texture_class();
-    void load(std::string file_name);
+    bool load(std::string file_name);
 };
 
 #endif //TEXTURES_H

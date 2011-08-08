@@ -576,6 +576,12 @@ bool load_textures(void)
 
     texture.menu_background_002.load("data/textures/menu/menu_background_00.png");texture_count++;
     texture.menu_background_003.load("data/textures/menu/menu_background_01.png");texture_count++;
+    texture.red_button.load("data/textures/menu/red_button.png");texture_count++;
+    texture.red_button_highlighted.load("data/textures/menu/red_button_highlighted.png");texture_count++;
+    texture.green_button.load("data/textures/menu/green_button.png");texture_count++;
+    texture.green_button_highlighted.load("data/textures/menu/green_button_highlighted.png");texture_count++;
+    texture.blue_button.load("data/textures/menu/blue_button.png");texture_count++;
+    texture.blue_button_highlighted.load("data/textures/menu/blue_button_highlighted.png");texture_count++;
     game.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
 };
@@ -999,6 +1005,12 @@ bool bind_texture(int texture_number)
 
     if (texture_number == 394) glBindTexture( GL_TEXTURE_2D, texture.menu_background_002.texture_data);
     if (texture_number == 395) glBindTexture( GL_TEXTURE_2D, texture.menu_background_003.texture_data);
+    if (texture_number == 396) glBindTexture( GL_TEXTURE_2D, texture.red_button.texture_data);
+    if (texture_number == 397) glBindTexture( GL_TEXTURE_2D, texture.red_button_highlighted.texture_data);
+    if (texture_number == 398) glBindTexture( GL_TEXTURE_2D, texture.green_button.texture_data);
+    if (texture_number == 399) glBindTexture( GL_TEXTURE_2D, texture.green_button_highlighted.texture_data);
+    if (texture_number == 310) glBindTexture( GL_TEXTURE_2D, texture.blue_button.texture_data);
+    if (texture_number == 311) glBindTexture( GL_TEXTURE_2D, texture.blue_button_highlighted.texture_data);
     return(true);
 };
 
