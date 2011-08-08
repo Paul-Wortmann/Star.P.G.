@@ -71,6 +71,9 @@ class button_class
         void  set_pos_x(float x);
         void  set_pos_y(float y);
         void  set_pos_z(float z);
+        float get_pos_x(void);
+        float get_pos_y(void);
+        float get_pos_z(void);
         void  set_size(float w, float h);
         void  set_label(std::string text);
         void  set_color_normal(int r, int g, int b, int a);
@@ -110,6 +113,9 @@ class button_class
 class menu_class
 {
     private:
+        bool          drag_active;
+        float         drag_offset_x;
+        float         drag_offset_y;
         int           keyboard_delay;
         int           keyboard_delay_count;
         int           mouse_delay;
@@ -138,7 +144,12 @@ class menu_class
         float         zoom_speed;
         float         height;
         float         width;
-        std::string   title;
+        std::string   title_label;
+        float         title_height;
+        float         title_width;
+        float         title_pos_x;
+        float         title_pos_y;
+        float         title_pos_z;
         int           menu_font;
         int           button_font;
         int           normal_color_r;
@@ -202,7 +213,11 @@ class menu_class
         float get_zoom_speed(int button_number);
         void  set_close_button_data(float x, float y, float z, float w, float h, int in, int ih);
         void  set_close_button_data(float x, float y, float z, float w, float h);
+        void  set_close_button_data(float x, float y, float z);
         void  set_close_button_data(int in, int ih);
+        float get_close_button_pos_x(void);
+        float get_close_button_pos_y(void);
+        float get_close_button_pos_z(void);
         void  set_close_button_type(int bt);
         void  set_keyboard_delay(int kd);
         int   get_keyboard_delay(void);
@@ -212,6 +227,12 @@ class menu_class
         int   get_mouse_delay(void);
         void  set_mouse_delay_count(int mdc);
         int   get_mouse_delay_count(void);
+        void  set_drag_active(bool bool_data);
+        bool  get_drag_active(void);
+        void  set_title_data(std::string menu_title);
+        void  set_title_data(float x, float y, float z, float w, float h, std::string menu_title);
+        bool  mouse_over_title(void);
+        bool  mouse_click_title(void);
         int   process(void);
 };
 

@@ -401,6 +401,21 @@ int   button_class::get_button_type(void)
     return(button_class::type);
 };
 
+float button_class::get_pos_x(void)
+{
+    return(button_class::pos_x);
+};
+
+float button_class::get_pos_y(void)
+{
+    return(button_class::pos_y);
+};
+
+float button_class::get_pos_z(void)
+{
+    return(button_class::pos_z);
+};
+
 //--------------------------------------- menu ----------------------------------------------------
 
 menu_class::menu_class(void)
@@ -443,21 +458,21 @@ void menu_class::draw(void)
     bind_texture(menu_class::image_background);
     glLoadIdentity();
     glBegin( GL_QUADS );
-    glTexCoord2i( 0, 1 );glVertex3f(menu_class::pos_x-menu_class::width/2,menu_class::pos_y-menu_class::height/2,menu_class::pos_y);
-    glTexCoord2i( 0, 0 );glVertex3f(menu_class::pos_x-menu_class::width/2,menu_class::pos_y+menu_class::height/2,menu_class::pos_y);
-    glTexCoord2i( 1, 0 );glVertex3f(menu_class::pos_x+menu_class::width/2,menu_class::pos_y+menu_class::height/2,menu_class::pos_y);
-    glTexCoord2i( 1, 1 );glVertex3f(menu_class::pos_x+menu_class::width/2,menu_class::pos_y-menu_class::height/2,menu_class::pos_y);
+    glTexCoord2i( 0, 1 );glVertex3f(menu_class::pos_x-menu_class::width/2,menu_class::pos_y-menu_class::height/2,menu_class::pos_z);
+    glTexCoord2i( 0, 0 );glVertex3f(menu_class::pos_x-menu_class::width/2,menu_class::pos_y+menu_class::height/2,menu_class::pos_z);
+    glTexCoord2i( 1, 0 );glVertex3f(menu_class::pos_x+menu_class::width/2,menu_class::pos_y+menu_class::height/2,menu_class::pos_z);
+    glTexCoord2i( 1, 1 );glVertex3f(menu_class::pos_x+menu_class::width/2,menu_class::pos_y-menu_class::height/2,menu_class::pos_z);
     glEnd();
-    switch(menu_class::menu_font)
+    switch(menu_class::menu_font) // title text
     {
         case 1:
-            font.font_1.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::pos_x-menu_class::width/2.4,menu_class::pos_y+(menu_class::height/2)-((menu_class::button_spacing/3)*2),1.7f,12.0f,menu_class::title);
+            font.font_1.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::title_pos_x-menu_class::title_width/2.4,menu_class::title_pos_y-menu_class::title_height/3,1.7f,12.0f,menu_class::title_label);
         break;
         case 2:
-            font.font_2.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::pos_x-menu_class::width/2.4,menu_class::pos_y+(menu_class::height/2)-((menu_class::button_spacing/3)*2),1.7f,16.0f,menu_class::title);
+            font.font_2.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::title_pos_x-menu_class::title_width/2.4,menu_class::title_pos_y-menu_class::title_height/3,1.7f,16.0f,menu_class::title_label);
         break;
         default:
-            font.font_1.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::pos_x-menu_class::width/2.4,menu_class::pos_y+(menu_class::height/2)-((menu_class::button_spacing/3)*2),1.7f,12.0f,menu_class::title);
+            font.font_1.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::title_pos_x-menu_class::title_width/2.4,menu_class::title_pos_y-menu_class::title_height/3,1.7f,12.0f,menu_class::title_label);
         break;
     }
     for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
@@ -622,6 +637,7 @@ void menu_class::set_button_spacing_auto(void)
     for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
     {
         temp_float -= button_offset;
+        menu_class::button[button_count].set_pos_x(menu_class::pos_x);
         menu_class::button[button_count].set_pos_y(temp_float);
     }
 };
@@ -634,6 +650,7 @@ void menu_class::set_button_spacing_auto(float button_offset)
     for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
     {
         temp_float -= button_offset;
+        menu_class::button[button_count].set_pos_x(menu_class::pos_x);
         menu_class::button[button_count].set_pos_y(temp_float);
     }
 };
@@ -670,7 +687,7 @@ float menu_class::get_menu_z_pos(void)
 
 void menu_class::set_menu_title(std::string menu_title)
 {
-    menu_class::title = menu_title;
+    menu_class::title_label = menu_title;
 };
 
 void menu_class::set_menu_font(int font_number)
@@ -807,7 +824,7 @@ void  menu_class::set_close_button_data(int in, int ih)
     float z = 0.0f;
     float w = 0.0f;
     float h = 0.0f;
-    w = (menu_class::width / 100.0f) * 15.0f;;
+    w = (menu_class::width / 100.0f) * 15.0f;
     h = w;
     x = (menu_class::pos_x+(menu_class::width /2))-((w/3)*2);
     y = (menu_class::pos_y+(menu_class::height/2))-((h/3)*2);
@@ -816,10 +833,75 @@ void  menu_class::set_close_button_data(int in, int ih)
     menu_class::close_button.set_data(x,y,z,w,h,in,ih);
 };
 
+void  menu_class::set_drag_active(bool bool_data)
+{
+    menu_class::drag_active = bool_data;
+};
+
+bool  menu_class::get_drag_active(void)
+{
+    return(menu_class::drag_active);
+};
+
+void  menu_class::set_title_data(std::string menu_title)
+{
+    menu_class::title_label  = menu_title;
+    menu_class::title_height = ((menu_class::button_spacing/3)*2);
+    menu_class::title_width  = (menu_class::width / 100.0f) * 90.0f;
+    menu_class::title_pos_x  = menu_class::pos_x;
+    menu_class::title_pos_y  = menu_class::pos_y+(menu_class::height/2)-((menu_class::button_spacing/2));
+    menu_class::title_pos_z  = menu_class::pos_z;
+};
+
+void  menu_class::set_title_data(float x, float y, float z, float w, float h, std::string menu_title)
+{
+    menu_class::title_label  = menu_title;
+    menu_class::title_height = h;
+    menu_class::title_width  = w;
+    menu_class::title_pos_x  = x;
+    menu_class::title_pos_y  = y;
+    menu_class::title_pos_z  = z;
+};
+
+bool  menu_class::mouse_over_title(void)
+{
+    return(game.physics.point_in_quadrangle(menu_class::title_pos_x,menu_class::title_width,menu_class::title_pos_y,menu_class::title_height,game.io.mouse_x,game.io.mouse_y));
+};
+
+bool  menu_class::mouse_click_title(void)
+{
+    if (game.io.mouse_button_left) return(game.physics.point_in_quadrangle(menu_class::title_pos_x,menu_class::title_width,menu_class::title_pos_y,menu_class::title_height,game.io.mouse_x,game.io.mouse_y));
+    else return(false);
+};
+
+void  menu_class::set_close_button_data(float x, float y, float z)
+{
+    menu_class::close_button.set_pos_x(x);
+    menu_class::close_button.set_pos_y(y);
+    menu_class::close_button.set_pos_z(z);
+};
+
+float menu_class::get_close_button_pos_x(void)
+{
+    return(menu_class::close_button.get_pos_x());
+};
+
+float menu_class::get_close_button_pos_y(void)
+{
+    return(menu_class::close_button.get_pos_y());
+};
+
+float menu_class::get_close_button_pos_z(void)
+{
+    return(menu_class::close_button.get_pos_z());
+};
+
 int menu_class::process(void)
 {
-    int  return_value = -1;
-    bool done = false;
+    float  drag_x_delta = 0.0f;
+    float  drag_y_delta = 0.0f;
+    int    return_value = -1;
+    bool   done = false;
     // ---- io delay ----
     menu_class::keyboard_delay_count++;
     if (menu_class::keyboard_delay_count > menu_class::keyboard_delay) menu_class::keyboard_delay_count = menu_class::keyboard_delay;
@@ -864,7 +946,7 @@ int menu_class::process(void)
         }
     }
     //---- mouse ----
-    if (menu_class::mouse_over_any_button())
+    if ((menu_class::mouse_over_any_button()) && (!menu_class::get_drag_active()))
     {
         for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
         {
@@ -889,23 +971,76 @@ int menu_class::process(void)
         if (game.io.select) return_value = current_vertical_selection;
     }
     // ---- zoom ----
-    for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
+    if (menu_class::zoom)
     {
-        if (menu_class::button[button_count].get_highlighted())
+        for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
         {
-            menu_class::button[button_count].set_zoom_size_counter(menu_class::button[button_count].get_zoom_size_counter()+menu_class::button[button_count].get_zoom_speed());
-            if (menu_class::button[button_count].get_zoom_size_counter() > menu_class::button[button_count].get_zoom_size()) menu_class::button[button_count].set_zoom_size_counter(menu_class::button[button_count].get_zoom_size());
-        }
-        else
-        {
-            menu_class::button[button_count].set_zoom_size_counter(menu_class::button[button_count].get_zoom_size_counter()-menu_class::button[button_count].get_zoom_speed());
-            if (menu_class::button[button_count].get_zoom_size_counter() < 0.0f) menu_class::button[button_count].set_zoom_size_counter(0.0f);
+            if (menu_class::button[button_count].get_highlighted())
+            {
+                menu_class::button[button_count].set_zoom_size_counter(menu_class::button[button_count].get_zoom_size_counter()+menu_class::button[button_count].get_zoom_speed());
+                if (menu_class::button[button_count].get_zoom_size_counter() > menu_class::button[button_count].get_zoom_size()) menu_class::button[button_count].set_zoom_size_counter(menu_class::button[button_count].get_zoom_size());
+            }
+            else
+            {
+                menu_class::button[button_count].set_zoom_size_counter(menu_class::button[button_count].get_zoom_size_counter()-menu_class::button[button_count].get_zoom_speed());
+                if (menu_class::button[button_count].get_zoom_size_counter() < 0.0f) menu_class::button[button_count].set_zoom_size_counter(0.0f);
+            }
         }
     }
     //---- close button ----
-    if (menu_class::close_button.mouse_over()) menu_class::close_button.set_highlighted(true);
-    else  menu_class::close_button.set_highlighted(false);
-    if (menu_class::close_button.mouse_clicked()) return_value = 65535;
+    if(!menu_class::get_drag_active())
+    {
+        if (menu_class::close_button.mouse_over()) menu_class::close_button.set_highlighted(true);
+        else  menu_class::close_button.set_highlighted(false);
+        if (menu_class::close_button.mouse_clicked()) return_value = 65535;
+    }
+    //---- menu drag ----
+    if (menu_class::mouse_over_title())
+    {
+        if (menu_class::mouse_click_title())
+        {
+            if(!menu_class::get_drag_active())
+            {
+                menu_class::drag_offset_x = game.io.mouse_x - menu_class::title_pos_x;
+                menu_class::drag_offset_y = game.io.mouse_y - menu_class::title_pos_y;
+                menu_class::set_drag_active(true);
+            }
+            else
+            {
+                drag_x_delta = menu_class::title_pos_x;
+                drag_y_delta = menu_class::title_pos_y;
+                menu_class::title_pos_x = game.io.mouse_x - menu_class::drag_offset_x;
+                menu_class::title_pos_y = game.io.mouse_y - menu_class::drag_offset_y;
+                drag_x_delta -= menu_class::title_pos_x;
+                drag_y_delta -= menu_class::title_pos_y;
+                menu_class::set_pos(menu_class::pos_x-drag_x_delta,menu_class::pos_y-drag_y_delta,menu_class::pos_z);
+                menu_class::set_button_spacing_auto();
+
+                menu_class::set_close_button_data(menu_class::get_close_button_pos_x()-drag_x_delta,menu_class::get_close_button_pos_y()-drag_y_delta,menu_class::get_close_button_pos_z());
+            }
+        }
+        else
+        {
+            menu_class::set_drag_active(false);
+        }
+    }
+    //---- return ----
     return(return_value);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
