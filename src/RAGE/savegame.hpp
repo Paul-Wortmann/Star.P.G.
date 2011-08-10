@@ -33,6 +33,7 @@ class save_game_class
         bool  Save(void);
         bool  Load(void);
         bool  Delete(void);
+        bool  File_Exists(void);
 };
 
 #endif //SAVEGAME_H

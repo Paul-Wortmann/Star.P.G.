@@ -31,22 +31,24 @@ extern  music_type       music;
 extern  texture_type     texture;
 extern  font_type        font;
 extern  game_class       game;
-        save_game_class          save_00;
         save_game_class          save_01;
         save_game_class          save_02;
         save_game_class          save_03;
         save_game_class          save_04;
         save_game_class          save_05;
+        save_game_class          save_06;
+        save_game_class          save_07;
         game_type        game_o;
 
 int init_game(void)
 {
-    save_00.Assign_File("save/slot_00.sav");
     save_01.Assign_File("save/slot_01.sav");
     save_02.Assign_File("save/slot_02.sav");
     save_03.Assign_File("save/slot_03.sav");
     save_04.Assign_File("save/slot_04.sav");
     save_05.Assign_File("save/slot_05.sav");
+    save_06.Assign_File("save/slot_06.sav");
+    save_07.Assign_File("save/slot_07.sav");
    for (int count =0;count < MAX_BACKGROUNDS;count++)
    {
       game_o.background_scroll[count].x_dir        = 0;

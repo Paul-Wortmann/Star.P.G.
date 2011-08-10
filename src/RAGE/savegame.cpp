@@ -75,7 +75,11 @@ bool  save_game_class::Delete(void)
   else return(true);
 };
 
-
+bool save_game_class::File_Exists(void)
+{
+  std::ifstream ifile(save_game_class::save_file_name.c_str());
+  return ifile;
+};
 
 
 
