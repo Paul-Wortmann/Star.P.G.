@@ -23,6 +23,17 @@
 #include "rage.hpp"
 #include "graphics.hpp"
 
+      graphics_class::(void)
+{
+    graphics_class::resolution_x = 0;
+    graphics_class::resolution_y = 0;
+};
+
+void  graphics_class::set_resolution(int x_res, int y_res);
+int   graphics_class::get_resolution_x(void);
+int   graphics_class::get_resolution_y(void);
+
+
 int   graphics_class::gl_to_res(float gl_coord, int max_res)
 {
    return((gl_coord+1)*(max_res / 2));
