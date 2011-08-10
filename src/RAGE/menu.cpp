@@ -170,6 +170,21 @@ void button_class::set_image_highlighted(int image)
     button_class::image_highlighted = image;
 };
 
+void button_class::set_image_arrow_normal(int image)
+{
+    button_class::image_arrow_normal = image;
+};
+
+void button_class::set_image_arrow_disabled(int image)
+{
+    button_class::image_arrow_disabled = image;
+};
+
+void button_class::set_image_arrow_highlighted(int image)
+{
+    button_class::image_arrow_highlighted = image;
+};
+
 void button_class::set_enabled(bool bool_value)
 {
     button_class::enabled = bool_value;
@@ -218,7 +233,7 @@ float button_class::get_zoom_speed(void)
 
 void button_class::draw(void)
 {
-    if (button_class::type == 0) //----- normal button -----
+    if (button_class::type == NORMAL) //----- normal button -----
     {
         if (!button_class::active) return;
         if (!button_class::enabled) bind_texture(button_class::image_disabled);
@@ -283,7 +298,7 @@ void button_class::draw(void)
             }
         };
     };
-    if (button_class::type == 1) //----- close button -----
+    if (button_class::type == CLOSE) //----- close button -----
     {
         if (button_class::highlighted) bind_texture(button_class::image_highlighted);
         else bind_texture(button_class::image_normal);
@@ -533,8 +548,11 @@ void menu_class::set_button_data(int button_number)
     menu_class::button[button_number].set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
     menu_class::button[button_number].set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
     menu_class::button[button_number].set_image_normal(menu_class::button_image_normal);
-    menu_class::button[button_number].set_image_disabled(menu_class::button_image_disabled);
     menu_class::button[button_number].set_image_highlighted(menu_class::button_image_highlighted);
+    menu_class::button[button_number].set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button[button_number].set_image_arrow_normal(menu_class::button_image_arrow_normal);
+    menu_class::button[button_number].set_image_arrow_highlighted(menu_class::button_image_arrow_highlighted);
+    menu_class::button[button_number].set_image_arrow_disabled(menu_class::button_image_arrow_disabled);
     menu_class::button[button_number].set_zoom(menu_class::zoom,menu_class::zoom_size,menu_class::zoom_speed);
 };
 
@@ -549,8 +567,11 @@ void menu_class::set_button_data(int button_number, std::string label)
     menu_class::button[button_number].set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
     menu_class::button[button_number].set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
     menu_class::button[button_number].set_image_normal(menu_class::button_image_normal);
-    menu_class::button[button_number].set_image_disabled(menu_class::button_image_disabled);
     menu_class::button[button_number].set_image_highlighted(menu_class::button_image_highlighted);
+    menu_class::button[button_number].set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button[button_number].set_image_arrow_normal(menu_class::button_image_arrow_normal);
+    menu_class::button[button_number].set_image_arrow_highlighted(menu_class::button_image_arrow_highlighted);
+    menu_class::button[button_number].set_image_arrow_disabled(menu_class::button_image_arrow_disabled);
     menu_class::button[button_number].set_zoom(menu_class::zoom,menu_class::zoom_size,menu_class::zoom_speed);
 };
 
@@ -565,8 +586,11 @@ void menu_class::set_button_data(int button_number, std::string label,float x, f
     menu_class::button[button_number].set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
     menu_class::button[button_number].set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
     menu_class::button[button_number].set_image_normal(menu_class::button_image_normal);
-    menu_class::button[button_number].set_image_disabled(menu_class::button_image_disabled);
     menu_class::button[button_number].set_image_highlighted(menu_class::button_image_highlighted);
+    menu_class::button[button_number].set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button[button_number].set_image_arrow_normal(menu_class::button_image_arrow_normal);
+    menu_class::button[button_number].set_image_arrow_highlighted(menu_class::button_image_arrow_highlighted);
+    menu_class::button[button_number].set_image_arrow_disabled(menu_class::button_image_arrow_disabled);
     menu_class::button[button_number].set_zoom(menu_class::zoom,menu_class::zoom_size,menu_class::zoom_speed);
 };
 
@@ -583,8 +607,11 @@ void menu_class::set_button_data(void)
         menu_class::button[button_count].set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
         menu_class::button[button_count].set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
         menu_class::button[button_count].set_image_normal(menu_class::button_image_normal);
-        menu_class::button[button_count].set_image_disabled(menu_class::button_image_disabled);
         menu_class::button[button_count].set_image_highlighted(menu_class::button_image_highlighted);
+        menu_class::button[button_count].set_image_disabled(menu_class::button_image_disabled);
+        menu_class::button[button_count].set_image_arrow_normal(menu_class::button_image_arrow_normal);
+        menu_class::button[button_count].set_image_arrow_highlighted(menu_class::button_image_arrow_highlighted);
+        menu_class::button[button_count].set_image_arrow_disabled(menu_class::button_image_arrow_disabled);
         menu_class::button[button_count].set_zoom(menu_class::zoom,menu_class::zoom_size,menu_class::zoom_speed);
     }
 };
@@ -829,7 +856,7 @@ void  menu_class::set_close_button_data(int in, int ih)
     x = (menu_class::pos_x+(menu_class::width /2))-((w/3)*2);
     y = (menu_class::pos_y+(menu_class::height/2))-((h/3)*2);
     z = menu_class::pos_z;
-    menu_class::close_button.set_button_type(1);
+    menu_class::close_button.set_button_type(CLOSE);
     menu_class::close_button.set_data(x,y,z,w,h,in,ih);
 };
 
@@ -905,6 +932,31 @@ float menu_class::set_buttons_auto(void)
     menu_class::set_button_spacing_auto();
 };
 
+void  menu_class::set_image_arrow_normal(int image_ref_no)
+{
+    menu_class::button_image_arrow_normal = image_ref_no;
+};
+
+void  menu_class::set_image_arrow_highlighted(int image_ref_no)
+{
+    menu_class::button_image_arrow_highlighted = image_ref_no;
+};
+
+void  menu_class::set_image_arrow_disabled(int image_ref_no)
+{
+    menu_class::button_image_arrow_disabled = image_ref_no;
+};
+
+void  menu_class::set_button_images(int in, int ih, int id, int ian, int iah, int iad)
+{
+    menu_class::button_image_normal = in;
+    menu_class::button_image_disabled = ih;
+    menu_class::button_image_highlighted = id;
+    menu_class::button_image_arrow_normal = ian;
+    menu_class::button_image_arrow_highlighted = iah;
+    menu_class::button_image_arrow_disabled = iad;
+};
+
 int menu_class::process(void)
 {
     float  drag_x_delta = 0.0f;
@@ -963,7 +1015,7 @@ int menu_class::process(void)
         {
             if (menu_class::button[button_count].mouse_over())
             {
-                if (menu_class::current_vertical_selection != button_count) return_value = 65533;
+                if ((menu_class::current_vertical_selection != button_count) && (menu_class::button[button_count].get_active())) return_value = 65533;
                 menu_class::current_vertical_selection = button_count;
                 menu_class::button[button_count].set_highlighted(true);
             }
@@ -1040,9 +1092,6 @@ int menu_class::process(void)
     //---- return ----
     return(return_value);
 };
-
-
-
 
 
 

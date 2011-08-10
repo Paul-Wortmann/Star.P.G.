@@ -60,9 +60,7 @@ int init_menu   (void)
     main_menu.set_menu_font(1);
     main_menu.set_image_background(395);
     main_menu.set_button_zoom(true,0.04f,0.005f);
-    main_menu.set_button_image_normal(395);
-    main_menu.set_button_image_highlighted(395);
-    main_menu.set_button_image_disabled(395);
+    main_menu.set_button_images(395,395,395,395,395,395);
     main_menu.set_color_normal(128,128,255,255);
     main_menu.set_color_highlighted(192,192,255,255);
     main_menu.set_color_disabled(064,064,128,128);
@@ -88,9 +86,7 @@ int init_menu   (void)
     star_map_menu.set_menu_font(1);
     star_map_menu.set_image_background(395);
     star_map_menu.set_button_zoom(true,0.04f,0.005f);
-    star_map_menu.set_button_image_normal(395);
-    star_map_menu.set_button_image_highlighted(395);
-    star_map_menu.set_button_image_disabled(395);
+    star_map_menu.set_button_images(395,395,395,395,395,395);
     star_map_menu.set_color_normal(128,128,255,255);
     star_map_menu.set_color_highlighted(192,192,255,255);
     star_map_menu.set_color_disabled(064,064,128,128);
@@ -116,9 +112,7 @@ int init_menu   (void)
     customize_starship_menu.set_menu_font(1);
     customize_starship_menu.set_image_background(395);
     customize_starship_menu.set_button_zoom(true,0.04f,0.005f);
-    customize_starship_menu.set_button_image_normal(395);
-    customize_starship_menu.set_button_image_highlighted(395);
-    customize_starship_menu.set_button_image_disabled(395);
+    customize_starship_menu.set_button_images(395,395,395,395,395,395);
     customize_starship_menu.set_color_normal(128,128,255,255);
     customize_starship_menu.set_color_highlighted(192,192,255,255);
     customize_starship_menu.set_color_disabled(064,064,128,128);
@@ -144,9 +138,7 @@ int init_menu   (void)
     achievements_menu.set_menu_font(1);
     achievements_menu.set_image_background(395);
     achievements_menu.set_button_zoom(true,0.04f,0.005f);
-    achievements_menu.set_button_image_normal(395);
-    achievements_menu.set_button_image_highlighted(395);
-    achievements_menu.set_button_image_disabled(395);
+    achievements_menu.set_button_images(395,395,395,395,395,395);
     achievements_menu.set_color_normal(128,128,255,255);
     achievements_menu.set_color_highlighted(192,192,255,255);
     achievements_menu.set_color_disabled(064,064,128,128);
@@ -172,9 +164,7 @@ int init_menu   (void)
     save_menu.set_menu_font(1);
     save_menu.set_image_background(395);
     save_menu.set_button_zoom(true,0.04f,0.005f);
-    save_menu.set_button_image_normal(395);
-    save_menu.set_button_image_highlighted(395);
-    save_menu.set_button_image_disabled(395);
+    save_menu.set_button_images(395,395,395,395,395,395);
     save_menu.set_color_normal(128,128,255,255);
     save_menu.set_color_highlighted(192,192,255,255);
     save_menu.set_color_disabled(064,064,128,128);
@@ -200,9 +190,7 @@ int init_menu   (void)
     load_menu.set_menu_font(1);
     load_menu.set_image_background(395);
     load_menu.set_button_zoom(true,0.04f,0.005f);
-    load_menu.set_button_image_normal(395);
-    load_menu.set_button_image_highlighted(395);
-    load_menu.set_button_image_disabled(395);
+    load_menu.set_button_images(395,395,395,395,395,395);
     load_menu.set_color_normal(128,128,255,255);
     load_menu.set_color_highlighted(192,192,255,255);
     load_menu.set_color_disabled(064,064,128,128);
@@ -228,9 +216,7 @@ int init_menu   (void)
     options_menu.set_menu_font(1);
     options_menu.set_image_background(395);
     options_menu.set_button_zoom(true,0.04f,0.005f);
-    options_menu.set_button_image_normal(395);
-    options_menu.set_button_image_highlighted(395);
-    options_menu.set_button_image_disabled(395);
+    options_menu.set_button_images(395,395,395,395,395,395);
     options_menu.set_color_normal(128,128,255,255);
     options_menu.set_color_highlighted(192,192,255,255);
     options_menu.set_color_disabled(064,064,128,128);
@@ -250,7 +236,7 @@ int init_menu   (void)
     //-----------------------------------------
 
 
-
+//- OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD -
     menu.level_no                          = 0;
     menu.possition                         = 0;
     menu.level                             = 0;
@@ -267,6 +253,7 @@ int init_menu   (void)
     menu.background_scroll[1].x_pos        = 0.0f;
     menu.background_scroll[1].y_pos        = 0.0f;
     menu.background_scroll[1].scroll_rate  = 0.001f;
+//- OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD -
     return(0);
 };
 

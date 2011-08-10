@@ -25,6 +25,12 @@
 
 #include <string>
 
+#define NORMAL   0
+#define CLOSE    1
+#define SLIDER   2
+#define TOGGLE   3
+#define CHOICE   4
+
 const int MAX_MENU_BUTTONS = 11;
 
 //-------------------------- button -------------------------------
@@ -36,6 +42,9 @@ class button_class
         int         image_normal;
         int         image_highlighted;
         int         image_disabled;
+        int         image_arrow_normal;
+        int         image_arrow_highlighted;
+        int         image_arrow_disabled;
         bool        highlighted;
         bool        enabled;
         bool        glow;
@@ -83,6 +92,9 @@ class button_class
         void  set_image_normal(int image);
         void  set_image_disabled(int image);
         void  set_image_highlighted(int image);
+        void  set_image_arrow_normal(int image);
+        void  set_image_arrow_disabled(int image);
+        void  set_image_arrow_highlighted(int image);
         void  set_enabled(bool bool_value);
         void  set_highlighted(bool bool_value);
         bool  get_highlighted(void);
@@ -130,6 +142,9 @@ class menu_class
         int           button_image_normal;
         int           button_image_highlighted;
         int           button_image_disabled;
+        int           button_image_arrow_normal;
+        int           button_image_arrow_highlighted;
+        int           button_image_arrow_disabled;
         float         button_width;
         float         button_height;
         float         button_spacing;
@@ -234,6 +249,10 @@ class menu_class
         bool  mouse_over_title(void);
         bool  mouse_click_title(void);
         float set_buttons_auto(void);
+        void  set_image_arrow_normal(int image_ref_no);
+        void  set_image_arrow_highlighted(int image_ref_no);
+        void  set_image_arrow_disabled(int image_ref_no);
+        void  set_button_images(int in, int ih, int id, int ian, int iah, int iad);
         int   process(void);
 };
 
