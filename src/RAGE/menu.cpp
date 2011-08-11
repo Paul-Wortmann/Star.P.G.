@@ -431,7 +431,57 @@ float button_class::get_pos_z(void)
     return(button_class::pos_z);
 };
 
-//--------------------------------------- menu ----------------------------------------------------
+void  button_class::set_arrow_left_pos_x(float set_data)
+{
+    button_class::arrow_left_pos_x = set_data;
+};
+
+void  button_class::set_arrow_left_pos_y(float set_data)
+{
+    button_class::arrow_left_pos_y = set_data;
+};
+
+void  button_class::set_arrow_right_pos_x(float set_data)
+{
+    button_class::arrow_right_pos_x = set_data;
+};
+
+void  button_class::set_arrow_right_pos_y(float set_data)
+{
+    button_class::arrow_right_pos_y = set_data;
+};
+
+void  button_class::set_arrow_width(float set_data)
+{
+    button_class::arrow_width = set_data;
+};
+
+void  button_class::set_arrow_height(float set_data)
+{
+    button_class::arrow_height = set_data;
+};
+
+void  button_class::set_arrow_data(float lx, float ly, float rx, float ry, float w, float h)
+{
+    button_class::arrow_left_pos_x  = lx;
+    button_class::arrow_left_pos_y  = ly;
+    button_class::arrow_right_pos_x = rx;
+    button_class::arrow_right_pos_y = ry;
+    button_class::arrow_width       = w;
+    button_class::arrow_height      = h;
+};
+
+void  button_class::set_slider_position(float set_data)
+{
+    button_class::slider_position = set_data;
+};
+
+float button_class::get_slider_position(void)
+{
+    return(button_class::slider_position);
+};
+
+//------------------------------------------ menu ---------------------------------------------------------------------------------------
 
 menu_class::menu_class(void)
 {
@@ -957,6 +1007,56 @@ void  menu_class::set_button_images(int in, int ih, int id, int ian, int iah, in
     menu_class::button_image_arrow_disabled = iad;
 };
 
+void  menu_class::set_button_arrow_left_pos_x(float set_data)
+{
+    menu_class::button_arrow_left_pos_x = set_data;
+};
+
+void  menu_class::set_button_arrow_left_pos_y(float set_data)
+{
+    menu_class::button_arrow_left_pos_y = set_data;
+};
+
+void  menu_class::set_button_arrow_right_pos_x(float set_data)
+{
+    menu_class::button_arrow_right_pos_x = set_data;
+};
+
+void  menu_class::set_button_arrow_right_pos_y(float set_data)
+{
+    menu_class::button_arrow_right_pos_y = set_data;
+};
+
+void  menu_class::set_button_arrow_width(float set_data)
+{
+    menu_class::button_arrow_width = set_data;
+};
+
+void  menu_class::set_button_arrow_height(float set_data)
+{
+    menu_class::button_arrow_height = set_data;
+};
+
+void  menu_class::set_button_arrow_data(float lx, float ly, float rx, float ry, float w, float h)
+{
+    menu_class::button_arrow_left_pos_x  = lx;
+    menu_class::button_arrow_left_pos_y  = ly;
+    menu_class::button_arrow_right_pos_x = rx;
+    menu_class::button_arrow_right_pos_y = ry;
+    menu_class::button_arrow_width       = w;
+    menu_class::button_arrow_height      = h;
+};
+
+void  menu_class::set_button_slider_position(int button_number, float set_data)
+{
+    menu_class::button[button_number].set_slider_position(set_data);
+};
+
+float menu_class::get_button_slider_position(int button_number)
+{
+    return(menu_class::button[button_number].get_slider_position());
+};
+
 int menu_class::process(void)
 {
     float  drag_x_delta = 0.0f;
@@ -1092,6 +1192,13 @@ int menu_class::process(void)
     //---- return ----
     return(return_value);
 };
+
+
+
+
+
+
+
 
 
 

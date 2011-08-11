@@ -51,6 +51,10 @@ extern  save_game_class          save_07;
 
 int init_menu   (void)
 {
+    //------ setup menu background -----------
+    set_movement_type(int type_data);
+    set_data (int layer_number, int dx, int dy, int px, int py, float sr);
+    set_image(63,64);
     //------ setup "main" menu -----------
     main_menu.set_menu_title("Main Menu");
     main_menu.set_keyboard_delay(16);
@@ -261,8 +265,7 @@ int init_menu   (void)
 int process_menu(void)
 {
     int activated_button = -1;
-    process_menu_background();
-
+        void process(void);
     // ------------------- main menu ------------
     activated_button = -1;
     if (game.menu_level == 1)
@@ -1427,33 +1430,16 @@ int diplay_menu (void)
 {
     glPushMatrix();
     glDisable(GL_DEPTH_TEST);
+        void draw(void);
 /*-----------------------------------------------------------------------------*/
-        bind_texture(63); //background 01
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-	    glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
-	    glTexCoord2i( 0, 0 );glVertex3f(-2.0f + menu.background_scroll[0].x_pos, 2.0f + menu.background_scroll[0].y_pos, 0.15f );
-	    glTexCoord2i( 1, 0 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos, 2.0f + menu.background_scroll[0].y_pos, 0.15f );
-	    glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[0].x_pos,-2.0f + menu.background_scroll[0].y_pos, 0.15f );
-        glEnd();
-
-        bind_texture(64); //background 02
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-    	glTexCoord2i( 0, 1 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
-    	glTexCoord2i( 0, 0 );glVertex3f(-2.0f + menu.background_scroll[1].x_pos, 2.0f + menu.background_scroll[1].y_pos, 0.1f );
-    	glTexCoord2i( 1, 0 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos, 2.0f + menu.background_scroll[1].y_pos, 0.1f );
-    	glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
-        glEnd();
-
-        bind_texture(30); //logo
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-    	glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
-    	glTexCoord2i( 0, 0 );glVertex3f(-0.9f, 1.0f, 0.0f );
-    	glTexCoord2i( 1, 0 );glVertex3f( 0.9f, 1.0f, 0.0f );
-        glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
-        glEnd();
+    bind_texture(30); //logo
+    glLoadIdentity();
+    glBegin( GL_QUADS );
+	glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
+	glTexCoord2i( 0, 0 );glVertex3f(-0.9f, 1.0f, 0.0f );
+  	glTexCoord2i( 1, 0 );glVertex3f( 0.9f, 1.0f, 0.0f );
+    glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
+    glEnd();
 /*-----------------------------------------------------------------------------*/
    if (game.menu_level == 1) main_menu.draw();//main_menu
    if (game.menu_level == 2) star_map_menu.draw();//star_map_menu

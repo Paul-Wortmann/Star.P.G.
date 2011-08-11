@@ -92,6 +92,8 @@
 		<Unit filename="src\Star.P.G._private.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
+		<Unit filename="src\background.cpp" />
+		<Unit filename="src\background.hpp" />
 		<Unit filename="src\game.cpp" />
 		<Unit filename="src\game.hpp" />
 		<Unit filename="src\levels.cpp" />
