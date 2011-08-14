@@ -49,17 +49,6 @@ int init_game(void)
     save_05.Assign_File("save/slot_05.sav");
     save_06.Assign_File("save/slot_06.sav");
     save_07.Assign_File("save/slot_07.sav");
-   for (int count =0;count < MAX_BACKGROUNDS;count++)
-   {
-      game_o.background_scroll[count].x_dir        = 0;
-      game_o.background_scroll[count].y_dir        = 0;
-      game_o.background_scroll[count].x_pos        = 0.0f;
-      game_o.background_scroll[count].y_pos        = 0.0f;
-      game_o.background_scroll[count].scroll_rate  = 0.0005f;
-      game_o.background_scroll[count].image        = 119;
-   }
-   game_o.anc_enabled                       = false;
-   game_o.fps_enabled                       = false;
    game.game_paused                       = false;
    game.game_active                       = false;
    game.game_resume                       = false;
@@ -67,6 +56,9 @@ int init_game(void)
    game.menu_active                       = true;
    game.pdie_active                       = false;
    game.nlvl_active                       = false;
+
+   game_o.anc_enabled                       = false;
+   game_o.fps_enabled                       = false;
    game_o.npc_damage_duration               = 10;
    game_o.exp_rate                          = 5;
    game_o.coin_spawn_rate                   = 665.36 * 5;
@@ -2846,7 +2838,7 @@ int proccess_explosions(void)
    {
       if(game_o.explosion[count].active)
       {
-         game_o.explosion[count].x_pos -= (game_o.background_scroll[0].scroll_rate*2);
+         game_o.explosion[count].x_pos -= (game.background.get_scroll_x(1)*2);
          game_o.explosion[count].frame++;
          if ((game_o.explosion[count].animation == 0) && (game_o.explosion[count].frame > 24))
          {
@@ -3664,22 +3656,17 @@ bool boss_level(void)
 /*----------------------------------------------------------------------------*/
 int process_game(void)
 {
+    bool return_data       = false;
    float temp_x            = 0.0f;
    float temp_y            = 0.0f;
    int   temp_r            = 0;
    game_o.player.health += game_o.player.health_regen_rate;
    if (game_o.player.health > game_o.player.max_health) game_o.player.health = game_o.player.max_health;
-   for (int count = 0;count < MAX_BACKGROUNDS;count++)//process backgrounds
-   {
-      game_o.background_scroll[count].x_pos -= game_o.background_scroll[count].scroll_rate;
-      if (game_o.background_scroll[count].x_pos <= -4.0f) game_o.background_scroll[count].x_pos = 4.0f;
-      //now for y pos scrolling
-      if (game_o.player.y_pos >= 0.75f)
-      {
-         game_o.background_scroll[count].y_pos  -= game_o.background_scroll[count].scroll_rate;
-         if (game_o.background_scroll[count].y_pos < -1.0f) game_o.background_scroll[count].y_pos = -1.0f;
-         else
-         {
+   game.background.process();
+   return_data = false;
+   if (game_o.player.y_pos >= 0.75f) return_data = game.background.scroll_up();
+   if(return_data)
+    {
             for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
             {
                 for (int bullet_count = 0; bullet_count < MAX_BULLETS; bullet_count++)
@@ -3724,13 +3711,10 @@ int process_game(void)
                }
             }
          }
-      }
-      if (game_o.player.y_pos <= -0.75f)
-      {
-         game_o.background_scroll[count].y_pos  += game_o.background_scroll[count].scroll_rate;
-         if (game_o.background_scroll[count].y_pos > 1.0f) game_o.background_scroll[count].y_pos = 1.0f;
-         else
-         {
+   return_data = false;
+   if (game_o.player.y_pos <= -0.75f) return_data = game.background.scroll_down();
+   if(return_data)
+    {
             for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
             {
                 for (int bullet_count = 0; bullet_count < MAX_BULLETS; bullet_count++)
@@ -3775,8 +3759,6 @@ int process_game(void)
                }
             }
          }
-      }
-   }
    process_p_actinium_shields();
    process_p_blasters();
    process_p_burst_lasers();
@@ -4097,105 +4079,7 @@ int display_game(void)
    float temp_val;
    glPushMatrix();
    glDisable(GL_DEPTH_TEST);
- //---------------------------------- display backgrounds ---------------------------------------------------------------------
-   if (game_o.background_scroll[3].x_pos >= game_o.background_scroll[2].x_pos)
-   {
-       z_pos = 0.16f;
-       bind_texture(game_o.background_scroll[3].image);
-       glLoadIdentity();
-       glBegin( GL_QUADS );
-       glTexCoord2i( 0, 1 );glVertex3f( 2.000f + game_o.background_scroll[2].x_pos,-2.000f + game_o.background_scroll[3].y_pos,z_pos);
-       glTexCoord2i( 0, 0 );glVertex3f( 2.000f + game_o.background_scroll[2].x_pos, 2.000f + game_o.background_scroll[3].y_pos,z_pos);
-       glTexCoord2i( 1, 0 );glVertex3f( 2.000f + game_o.background_scroll[3].x_pos, 2.000f + game_o.background_scroll[3].y_pos,z_pos);
-       glTexCoord2i( 1, 1 );glVertex3f( 2.000f + game_o.background_scroll[3].x_pos,-2.000f + game_o.background_scroll[3].y_pos,z_pos);
-       glEnd();
-   }
-   else
-   {
-       z_pos = 0.16f;
-       bind_texture(game_o.background_scroll[3].image);
-       glLoadIdentity();
-       glBegin( GL_QUADS );
-       glTexCoord2i( 0, 1 );glVertex3f(-2.000f + game_o.background_scroll[3].x_pos,-2.000f + game_o.background_scroll[3].y_pos,z_pos);
-       glTexCoord2i( 0, 0 );glVertex3f(-2.000f + game_o.background_scroll[3].x_pos, 2.000f + game_o.background_scroll[3].y_pos,z_pos);
-       glTexCoord2i( 1, 0 );glVertex3f(-2.000f + game_o.background_scroll[2].x_pos, 2.000f + game_o.background_scroll[3].y_pos,z_pos);
-       glTexCoord2i( 1, 1 );glVertex3f(-2.000f + game_o.background_scroll[2].x_pos,-2.000f + game_o.background_scroll[3].y_pos,z_pos);
-       glEnd();
-   }
-   if (game_o.background_scroll[2].x_pos >= game_o.background_scroll[3].x_pos)
-   {
-       z_pos = 0.16f;
-       bind_texture(game_o.background_scroll[2].image);
-       glLoadIdentity();
-       glBegin( GL_QUADS );
-       glTexCoord2i( 0, 1 );glVertex3f( 2.000f + game_o.background_scroll[3].x_pos,-2.000f + game_o.background_scroll[2].y_pos,z_pos);
-       glTexCoord2i( 0, 0 );glVertex3f( 2.000f + game_o.background_scroll[3].x_pos, 2.000f + game_o.background_scroll[2].y_pos,z_pos);
-       glTexCoord2i( 1, 0 );glVertex3f( 2.000f + game_o.background_scroll[2].x_pos, 2.000f + game_o.background_scroll[2].y_pos,z_pos);
-       glTexCoord2i( 1, 1 );glVertex3f( 2.000f + game_o.background_scroll[2].x_pos,-2.000f + game_o.background_scroll[2].y_pos,z_pos);
-       glEnd();
-   }
-   else
-   {
-       z_pos = 0.16f;
-       bind_texture(game_o.background_scroll[2].image);
-       glLoadIdentity();
-       glBegin( GL_QUADS );
-       glTexCoord2i( 0, 1 );glVertex3f(-2.000f + game_o.background_scroll[2].x_pos,-2.000f + game_o.background_scroll[2].y_pos,z_pos);
-       glTexCoord2i( 0, 0 );glVertex3f(-2.000f + game_o.background_scroll[2].x_pos, 2.000f + game_o.background_scroll[2].y_pos,z_pos);
-       glTexCoord2i( 1, 0 );glVertex3f(-2.000f + game_o.background_scroll[3].x_pos, 2.000f + game_o.background_scroll[2].y_pos,z_pos);
-       glTexCoord2i( 1, 1 );glVertex3f(-2.000f + game_o.background_scroll[3].x_pos,-2.000f + game_o.background_scroll[2].y_pos,z_pos);
-       glEnd();
-   }
-//------------------------------------------- display effects layer ------------------------------------------------------
-   if (game_o.background_scroll[1].x_pos >= game_o.background_scroll[0].x_pos)
-   {
-       z_pos = 0.15f;
-       bind_texture(game_o.background_scroll[1].image);
-       glLoadIdentity();
-       glBegin( GL_QUADS );
-       glTexCoord2i( 0, 1 );glVertex3f( 2.000f + game_o.background_scroll[0].x_pos,-2.000f + game_o.background_scroll[1].y_pos,z_pos);
-       glTexCoord2i( 0, 0 );glVertex3f( 2.000f + game_o.background_scroll[0].x_pos, 2.000f + game_o.background_scroll[1].y_pos,z_pos);
-       glTexCoord2i( 1, 0 );glVertex3f( 2.000f + game_o.background_scroll[1].x_pos, 2.000f + game_o.background_scroll[1].y_pos,z_pos);
-       glTexCoord2i( 1, 1 );glVertex3f( 2.000f + game_o.background_scroll[1].x_pos,-2.000f + game_o.background_scroll[1].y_pos,z_pos);
-       glEnd();
-   }
-   else
-   {
-       z_pos = 0.15f;
-       bind_texture(game_o.background_scroll[1].image);
-       glLoadIdentity();
-       glBegin( GL_QUADS );
-       glTexCoord2i( 0, 1 );glVertex3f(-2.000f + game_o.background_scroll[1].x_pos,-2.000f + game_o.background_scroll[1].y_pos,z_pos);
-       glTexCoord2i( 0, 0 );glVertex3f(-2.000f + game_o.background_scroll[1].x_pos, 2.000f + game_o.background_scroll[1].y_pos,z_pos);
-       glTexCoord2i( 1, 0 );glVertex3f(-2.000f + game_o.background_scroll[0].x_pos, 2.000f + game_o.background_scroll[1].y_pos,z_pos);
-       glTexCoord2i( 1, 1 );glVertex3f(-2.000f + game_o.background_scroll[0].x_pos,-2.000f + game_o.background_scroll[1].y_pos,z_pos);
-       glEnd();
-   }
-   if (game_o.background_scroll[0].x_pos >= game_o.background_scroll[1].x_pos)
-   {
-       z_pos = 0.15f;
-       bind_texture(game_o.background_scroll[0].image);
-       glLoadIdentity();
-       glBegin( GL_QUADS );
-       glTexCoord2i( 0, 1 );glVertex3f( 2.000f + game_o.background_scroll[1].x_pos,-2.000f + game_o.background_scroll[0].y_pos,z_pos);
-       glTexCoord2i( 0, 0 );glVertex3f( 2.000f + game_o.background_scroll[1].x_pos, 2.000f + game_o.background_scroll[0].y_pos,z_pos);
-       glTexCoord2i( 1, 0 );glVertex3f( 2.000f + game_o.background_scroll[0].x_pos, 2.000f + game_o.background_scroll[0].y_pos,z_pos);
-       glTexCoord2i( 1, 1 );glVertex3f( 2.000f + game_o.background_scroll[0].x_pos,-2.000f + game_o.background_scroll[0].y_pos,z_pos);
-       glEnd();
-   }
-   else
-   {
-       z_pos = 0.15f;
-       bind_texture(game_o.background_scroll[0].image);
-       glLoadIdentity();
-       glBegin( GL_QUADS );
-       glTexCoord2i( 0, 1 );glVertex3f(-2.000f + game_o.background_scroll[0].x_pos,-2.000f + game_o.background_scroll[0].y_pos,z_pos);
-       glTexCoord2i( 0, 0 );glVertex3f(-2.000f + game_o.background_scroll[0].x_pos, 2.000f + game_o.background_scroll[0].y_pos,z_pos);
-       glTexCoord2i( 1, 0 );glVertex3f(-2.000f + game_o.background_scroll[1].x_pos, 2.000f + game_o.background_scroll[0].y_pos,z_pos);
-       glTexCoord2i( 1, 1 );glVertex3f(-2.000f + game_o.background_scroll[1].x_pos,-2.000f + game_o.background_scroll[0].y_pos,z_pos);
-       glEnd();
-   }
-//--------------------------------------------------------------------------------------------------------------------------------------
+   game.background.draw();
 //-----------------------------------------------------------------------------------------------------------------------
    for (int npc_count =MAX_NPCS-1;npc_count >=0;npc_count--)  // npcs
    {

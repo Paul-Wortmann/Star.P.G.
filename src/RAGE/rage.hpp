@@ -34,6 +34,7 @@
 #include "font.hpp"
 #include "menu.hpp"
 #include "io.hpp"
+#include "background.hpp"
 
 class game_class
 {
@@ -62,6 +63,7 @@ class game_class
         physics_class     physics;
         network_class     network;
         timer_class       timer;
+        background_class  background;
          game_class(void);
         ~game_class(void);
 };

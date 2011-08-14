@@ -31,7 +31,6 @@ const int   MAX_THRUSTERS   = 4;
 const int   MAX_BULLETS     = 96;
 const int   MAX_EXPLOSIONS  = 32;
 const int   MAX_ENEMYS      = 32;
-const int   MAX_BACKGROUNDS = 4;
 const int   MAX_LEVELS      = 25;
 const int   MAX_WAVES       = 32;
 const int   MAX_POWERUPS    = 13;
@@ -342,7 +341,6 @@ struct game_type
    shield_type          shield[MAX_SHIELDS];
    thruster_type        thruster[MAX_THRUSTERS];
    explosion_type       explosion[MAX_EXPLOSIONS];
-   bkground_scroll_type background_scroll[MAX_BACKGROUNDS];
    powerup_type         powerup[MAX_POWERUPS];
    coin_type            coin[MAX_COINS];
    wexp_type            wexp[MAX_WEXPS];

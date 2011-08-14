@@ -90,7 +90,6 @@ struct save_data_type
    shield_type          shield[MAX_SHIELDS];
    thruster_type        thruster[MAX_THRUSTERS];
    explosion_type       explosion[MAX_EXPLOSIONS];
-   bkground_scroll_type background_scroll[MAX_BACKGROUNDS];
    powerup_type         powerup[MAX_POWERUPS];
    coin_type            coin[MAX_COINS];
    wexp_type            wexp[MAX_WEXPS];

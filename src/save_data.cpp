@@ -120,10 +120,12 @@ void update_save_data(void)
     {
         save_data.explosion[count] = game_o.explosion[count];
     }
+/*
     for (count = 0; count < MAX_BACKGROUNDS; count++)
     {
         save_data.background_scroll[count] = game_o.background_scroll[count];
     }
+*/
     for (count = 0; count < MAX_POWERUPS; count++)
     {
         save_data.powerup[count] = game_o.powerup[count];
@@ -235,10 +237,12 @@ void update_game_data(void)
     {
         game_o.explosion[count] = save_data.explosion[count];
     }
+/*
     for (count = 0; count < MAX_BACKGROUNDS; count++)
     {
         game_o.background_scroll[count] = save_data.background_scroll[count];
     }
+*/
     for (count = 0; count < MAX_POWERUPS; count++)
     {
         game_o.powerup[count] = save_data.powerup[count];
