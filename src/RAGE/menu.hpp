@@ -31,7 +31,8 @@
 #define TOGGLE   3
 #define CHOICE   4
 
-const int MAX_MENU_BUTTONS = 11;
+const int MAX_MENU_BUTTONS        = 12;
+const int MAX_MENU_CHOICE_BUTTONS = 32;
 
 //-------------------------- button -------------------------------
 class button_class
@@ -39,51 +40,62 @@ class button_class
     private:
         struct choice_data_type
         {
-            int         image_ref;
-            std::string text_label;
+            bool         active;
+            bool         enabled;
+            int          image_ref;
+            std::string  text_label;
+            bool         highlighted;
+            float        zoom_size_counter;
         };
-        int           type;
-        bool          active;
-        int           image_normal;
-        int           image_highlighted;
-        int           image_disabled;
-        int           image_arrow_normal;
-        int           image_arrow_highlighted;
-        int           image_arrow_disabled;
-        bool          highlighted;
-        bool          enabled;
-        bool          glow;
-        bool          zoom;
-        float         zoom_size;
-        float         zoom_size_counter;
-        float         zoom_speed;
-        float         pos_x;
-        float         pos_y;
-        float         pos_z;
-        float         height;
-        float         width;
-        float         arrow_left_pos_x;
-        float         arrow_left_pos_y;
-        float         arrow_right_pos_x;
-        float         arrow_right_pos_y;
-        float         arrow_width;
-        float         arrow_height;
-        float         slider_position;
-        float         choice_position;
-        std::string   label;
-        int           button_font;
-        int           normal_color_r;
-        int           normal_color_g;
-        int           normal_color_b;
-        int           normal_color_a;
-        int           highlighted_color_r;
-        int           highlighted_color_g;
-        int           highlighted_color_b;
-        int           highlighted_color_a;
-        int           disabled_color_r;
-        int           disabled_color_g;
-        int           disabled_color_b;
-        int           disabled_color_a;
+        choice_data_type choice_data[MAX_MENU_CHOICE_BUTTONS];
+        int              number_of_choices;
+        int              type;
+        bool             active;
+        int              image_normal;
+        int              image_highlighted;
+        int              image_disabled;
+        int              image_choice_disabled;
+        int              image_arrow_normal;
+        int              image_arrow_highlighted;
+        int              image_arrow_disabled;
+        bool             highlighted;
+        bool             arrow_left_highlighted;
+        bool             arrow_right_highlighted;
+        bool             enabled;
+        bool             glow;
+        bool             zoom;
+        float            zoom_size;
+        float            zoom_size_counter;
+        float            zoom_speed;
+        float            pos_x;
+        float            pos_y;
+        float            pos_z;
+        float            height;
+        float            width;
+        float            arrow_left_zoom_size_counter;
+        float            arrow_right_zoom_size_counter;
+        float            arrow_left_pos_x;
+        float            arrow_left_pos_y;
+        float            arrow_right_pos_x;
+        float            arrow_right_pos_y;
+        float            arrow_width;
+        float            arrow_height;
+        float            slider_position;
+        int              choice_position;
+        std::string      label;
+        int              button_font;
+        int              normal_color_r;
+        int              normal_color_g;
+        int              normal_color_b;
+        int              normal_color_a;
+        int              highlighted_color_r;
+        int              highlighted_color_g;
+        int              highlighted_color_b;
+        int              highlighted_color_a;
+        int              disabled_color_r;
+        int              disabled_color_g;
+        int              disabled_color_b;
+        int              disabled_color_a;
 
     public:
         button_class(void);
@@ -97,6 +109,8 @@ class button_class
         float get_pos_y(void);
         float get_pos_z(void);
         void  set_size(float w, float h);
+        float get_width(void);
+        float get_height(void);
         void  set_label(std::string text);
         void  set_color_normal(int r, int g, int b, int a);
         void  set_color_highlighted(int r, int g, int b, int a);
@@ -105,6 +119,7 @@ class button_class
         void  set_image_normal(int image);
         void  set_image_disabled(int image);
         void  set_image_highlighted(int image);
+        void  set_image_choice_disabled(int image);
         void  set_image_arrow_normal(int image);
         void  set_image_arrow_disabled(int image);
         void  set_image_arrow_highlighted(int image);
@@ -137,10 +152,31 @@ class button_class
         void  set_arrow_right_pos_x(float set_data);
         void  set_arrow_right_pos_y(float set_data);
         void  set_arrow_width(float set_data);
+        float get_arrow_width(void);
         void  set_arrow_height(float set_data);
+        float get_arrow_height(void);
         void  set_arrow_data(float lx, float ly, float rx, float ry, float w, float h);
         void  set_slider_position(float set_data);
         float get_slider_position(void);
+        void  set_choice_position(int set_data);
+        int   get_choice_position(void);
+        void  set_choice_data(int choice_number, int image_ref_data, std::string text_label_data, bool active_data);
+        void  set_number_of_choices(int choice_data);
+        int   get_number_of_choices(void);
+        void  set_choice_enabled(int choice_number, bool enabled_data);
+        bool  get_choice_enabled(int choice_number);
+        void  set_choice_zoom_size_counter(int choice_number, int zoom_data);
+        int   get_choice_zoom_size_counter(int choice_number);
+        void  set_arrow_left_zoom_size_counter(int zoom_data);
+        int   get_arrow_left_zoom_size_counter(void);
+        void  set_arrow_right_zoom_size_counter(int zoom_data);
+        int   get_arrow_right_zoom_size_counter(void);
+        void  set_choice_highlighted(int choice_number, bool bool_data);
+        bool  get_choice_highlighted(int choice_number);
+        void  set_arrow_left_highlighted (bool bool_data);
+        bool  get_arrow_left_highlighted (void);
+        void  set_arrow_right_highlighted(bool bool_data);
+        bool  get_arrow_right_highlighted(void);
 };
 
 //-------------------------- menu -------------------------------
@@ -210,7 +246,7 @@ class menu_class
         int           disabled_color_a;
     public:
         button_class  close_button;
-        button_class  button[12];
+        button_class  button[MAX_MENU_BUTTONS];
         menu_class(void);
         menu_class(int num_buttons);
         void  draw(void);
@@ -281,16 +317,26 @@ class menu_class
         void  set_image_arrow_normal(int image_ref_no);
         void  set_image_arrow_highlighted(int image_ref_no);
         void  set_image_arrow_disabled(int image_ref_no);
-        void  set_button_images(int in, int ih, int id, int ian, int iah, int iad);
+        void  set_button_images(int in, int ih, int id, int icd, int ian, int iah, int iad);
         void  set_button_arrow_left_pos_x(float set_data);
         void  set_button_arrow_left_pos_y(float set_data);
         void  set_button_arrow_right_pos_x(float set_data);
         void  set_button_arrow_right_pos_y(float set_data);
         void  set_button_arrow_width(float set_data);
         void  set_button_arrow_height(float set_data);
-        void  set_button_arrow_data(float lx, float ly, float rx, float ry, float w, float h);
+        void  set_button_arrow_data(int button_number, float lx, float ly, float rx, float ry, float w, float h);
+        void  set_button_arrow_data_auto(int button_number);
         void  set_button_slider_position(int button_number, float set_data);
         float get_button_slider_position(int button_number);
+        void  set_button_choice_position(int button_number, int set_data);
+        int   get_button_choice_position(int button_number);
+        void  set_button_choice_data(int button_number, int choice_number, int image_ref_data, std::string text_label_data, bool active_data);
+        void  set_number_of_choices(int button_number, int choice_data);
+        int   get_number_of_choices(int button_number);
+        void  set_button_type(int button_number, int bt);
+        int   get_button_type(int button_number);
+        void  set_button_choice_enabled(int button_number, int choice_number, bool enabled_data);
+        bool  get_button_choice_enabled(int button_number, int choice_number);
         int   process(void);
 };
 

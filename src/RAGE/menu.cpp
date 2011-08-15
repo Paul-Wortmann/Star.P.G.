@@ -126,6 +126,16 @@ void button_class::set_size(float w, float h)
     button_class::height = h;
 };
 
+float button_class::get_width(void)
+{
+    return(button_class::width);
+};
+
+float button_class::get_height(void)
+{
+    return(button_class::height);
+};
+
 void button_class::set_label(std::string text)
 {
     button_class::label = text;
@@ -168,6 +178,11 @@ void button_class::set_image_disabled(int image)
 void button_class::set_image_highlighted(int image)
 {
     button_class::image_highlighted = image;
+};
+
+void  button_class::set_image_choice_disabled(int image)
+{
+    button_class::image_choice_disabled = image;
 };
 
 void button_class::set_image_arrow_normal(int image)
@@ -233,6 +248,7 @@ float button_class::get_zoom_speed(void)
 
 void button_class::draw(void)
 {
+    float delta_x = 0.0f;
     if (button_class::type == NORMAL) //----- normal button -----
     {
         if (!button_class::active) return;
@@ -308,6 +324,70 @@ void button_class::draw(void)
         glTexCoord2i( 0, 0 );glVertex3f(button_class::pos_x-(button_class::width/2),button_class::pos_y+(button_class::height/2),button_class::pos_z);
         glTexCoord2i( 1, 0 );glVertex3f(button_class::pos_x+(button_class::width/2),button_class::pos_y+(button_class::height/2),button_class::pos_z);
         glTexCoord2i( 1, 1 );glVertex3f(button_class::pos_x+(button_class::width/2),button_class::pos_y-(button_class::height/2),button_class::pos_z);
+        glEnd();
+    }
+    if (button_class::type == CHOICE) //----- choice button -----
+    {
+        // --- left  arrow ---
+        if (button_class::highlighted) bind_texture(button_class::image_arrow_highlighted);
+        else bind_texture(button_class::image_arrow_normal);
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f(button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 0, 0 );glVertex3f(button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 0 );glVertex3f(button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 1 );glVertex3f(button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glEnd();
+        // --- right arrow ---
+        if (button_class::highlighted) bind_texture(button_class::image_arrow_highlighted);
+        else bind_texture(button_class::image_arrow_normal);
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 1, 0 );glVertex3f(button_class::arrow_right_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_right_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 1 );glVertex3f(button_class::arrow_right_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_right_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 0, 1 );glVertex3f(button_class::arrow_right_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_right_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 0, 0 );glVertex3f(button_class::arrow_right_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_right_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glEnd();
+        // --- choice 1    ---
+        delta_x = (button_class::arrow_width/3) *4;
+        if (button_class::choice_data[button_class::choice_position].enabled) bind_texture(button_class::choice_data[button_class::choice_position].image_ref);
+        else bind_texture(button_class::choice_data[button_class::choice_position].image_ref);
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 0, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glEnd();
+        // --- choice 2    ---
+        delta_x += (button_class::arrow_width/2) *3;
+        bind_texture(button_class::choice_data[button_class::choice_position+1].image_ref);
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 0, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glEnd();
+        // --- choice 3    ---
+        delta_x += (button_class::arrow_width/2) *3;
+        bind_texture(button_class::choice_data[button_class::choice_position+2].image_ref);
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 0, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glEnd();
+        // --- choice 4    ---
+        delta_x += (button_class::arrow_width/2) *3;
+        bind_texture(button_class::choice_data[button_class::choice_position+3].image_ref);
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 0, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
         glEnd();
     }
 };
@@ -461,6 +541,16 @@ void  button_class::set_arrow_height(float set_data)
     button_class::arrow_height = set_data;
 };
 
+float button_class::get_arrow_width(void)
+{
+    return(button_class::arrow_width);
+};
+
+float button_class::get_arrow_height(void)
+{
+    return(button_class::arrow_height);
+};
+
 void  button_class::set_arrow_data(float lx, float ly, float rx, float ry, float w, float h)
 {
     button_class::arrow_left_pos_x  = lx;
@@ -479,6 +569,103 @@ void  button_class::set_slider_position(float set_data)
 float button_class::get_slider_position(void)
 {
     return(button_class::slider_position);
+};
+
+void  button_class::set_choice_position(int set_data)
+{
+    button_class::choice_position = set_data;
+};
+
+int   button_class::get_choice_position(void)
+{
+    return(button_class::choice_position);
+};
+
+void  button_class::set_choice_data(int choice_number, int image_ref_data, std::string text_label_data, bool active_data)
+{
+    button_class::choice_data[choice_number].active     = active_data;
+    button_class::choice_data[choice_number].image_ref  = image_ref_data;
+    button_class::choice_data[choice_number].text_label = text_label_data;
+};
+
+void  button_class::set_number_of_choices(int choice_data)
+{
+    button_class::number_of_choices = choice_data;
+};
+
+int   button_class::get_number_of_choices(void)
+{
+    return(button_class::number_of_choices);
+};
+
+void  button_class::set_choice_enabled(int choice_number, bool enabled_data)
+{
+    button_class::choice_data[choice_number].enabled = enabled_data;
+};
+
+bool  button_class::get_choice_enabled(int choice_number)
+{
+    return(button_class::choice_data[choice_number].enabled);
+};
+
+void  button_class::set_choice_zoom_size_counter(int choice_number, int zoom_data)
+{
+    button_class::choice_data[choice_number].zoom_size_counter = zoom_data;
+};
+
+int   button_class::get_choice_zoom_size_counter(int choice_number)
+{
+    return(button_class::choice_data[choice_number].zoom_size_counter);
+};
+
+void  button_class::set_arrow_left_zoom_size_counter(int zoom_data)
+{
+    button_class::arrow_left_zoom_size_counter = zoom_data;
+};
+
+int   button_class::get_arrow_left_zoom_size_counter(void)
+{
+    return(button_class::arrow_left_zoom_size_counter);
+};
+
+void  button_class::set_arrow_right_zoom_size_counter(int zoom_data)
+{
+    button_class::arrow_right_zoom_size_counter = zoom_data;
+};
+
+int   button_class::get_arrow_right_zoom_size_counter(void)
+{
+    return(button_class::arrow_right_zoom_size_counter);
+};
+
+void  button_class::set_choice_highlighted(int choice_number, bool bool_data)
+{
+    button_class::choice_data[choice_number].highlighted = bool_data;
+};
+
+bool  button_class::get_choice_highlighted(int choice_number)
+{
+    return(button_class::choice_data[choice_number].highlighted);
+};
+
+void  button_class::set_arrow_left_highlighted (bool bool_data)
+{
+    button_class::arrow_left_highlighted = bool_data;
+};
+
+bool  button_class::get_arrow_left_highlighted (void)
+{
+    return(button_class::arrow_left_highlighted);
+};
+
+void  button_class::set_arrow_right_highlighted(bool bool_data)
+{
+    button_class::arrow_right_highlighted = bool_data;
+};
+
+bool  button_class::get_arrow_right_highlighted(void)
+{
+    return(button_class::arrow_right_highlighted);
 };
 
 //------------------------------------------ menu ---------------------------------------------------------------------------------------
@@ -589,6 +776,8 @@ void menu_class::set_button_image_highlighted(int image)
 
 void menu_class::set_button_data(int button_number)
 {
+    menu_class::button[button_number].set_highlighted(false);
+    menu_class::button[button_number].set_button_type(NORMAL);
     menu_class::button[button_number].set_active(true);
     menu_class::button[button_number].set_font(menu_class::button_font);
     menu_class::button[button_number].set_pos_z(menu_class::button_z_pos);
@@ -608,6 +797,8 @@ void menu_class::set_button_data(int button_number)
 
 void menu_class::set_button_data(int button_number, std::string label)
 {
+    menu_class::button[button_number].set_highlighted(false);
+    menu_class::button[button_number].set_button_type(NORMAL);
     menu_class::button[button_number].set_active(true);
     menu_class::button[button_number].set_font(menu_class::button_font);
     menu_class::button[button_number].set_pos_z(menu_class::button_z_pos);
@@ -627,6 +818,8 @@ void menu_class::set_button_data(int button_number, std::string label)
 
 void menu_class::set_button_data(int button_number, std::string label,float x, float y, float z)
 {
+    menu_class::button[button_number].set_highlighted(false);
+    menu_class::button[button_number].set_button_type(NORMAL);
     menu_class::button[button_number].set_active(true);
     menu_class::button[button_number].set_font(menu_class::button_font);
     menu_class::button[button_number].set_pos(x,y,z);
@@ -648,6 +841,8 @@ void menu_class::set_button_data(void)
 {
     for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
     {
+        menu_class::button[button_count].set_highlighted(false);
+        menu_class::button[button_count].set_button_type(NORMAL);
         menu_class::button[button_count].set_active(true);
         menu_class::button[button_count].set_font(menu_class::button_font);
         menu_class::button[button_count].set_pos_z(menu_class::button_z_pos);
@@ -997,14 +1192,24 @@ void  menu_class::set_image_arrow_disabled(int image_ref_no)
     menu_class::button_image_arrow_disabled = image_ref_no;
 };
 
-void  menu_class::set_button_images(int in, int ih, int id, int ian, int iah, int iad)
+void  menu_class::set_button_images(int in, int ih, int id, int icd, int ian, int iah, int iad)
 {
-    menu_class::button_image_normal = in;
-    menu_class::button_image_disabled = ih;
-    menu_class::button_image_highlighted = id;
-    menu_class::button_image_arrow_normal = ian;
+    menu_class::button_image_normal            = in;
+    menu_class::button_image_highlighted       = id;
+    menu_class::button_image_disabled          = ih;
+    menu_class::button_image_arrow_normal      = ian;
     menu_class::button_image_arrow_highlighted = iah;
-    menu_class::button_image_arrow_disabled = iad;
+    menu_class::button_image_arrow_disabled    = iad;
+    for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
+    {
+        menu_class::button[button_count].set_image_normal            (in);
+        menu_class::button[button_count].set_image_highlighted       (ih);
+        menu_class::button[button_count].set_image_disabled          (id);
+        menu_class::button[button_count].set_image_choice_disabled   (icd);
+        menu_class::button[button_count].set_image_arrow_normal      (ian);
+        menu_class::button[button_count].set_image_arrow_highlighted (iah);
+        menu_class::button[button_count].set_image_arrow_disabled    (iad);
+    }
 };
 
 void  menu_class::set_button_arrow_left_pos_x(float set_data)
@@ -1037,14 +1242,33 @@ void  menu_class::set_button_arrow_height(float set_data)
     menu_class::button_arrow_height = set_data;
 };
 
-void  menu_class::set_button_arrow_data(float lx, float ly, float rx, float ry, float w, float h)
+void  menu_class::set_button_arrow_data(int button_number, float lx, float ly, float rx, float ry, float w, float h)
 {
-    menu_class::button_arrow_left_pos_x  = lx;
-    menu_class::button_arrow_left_pos_y  = ly;
-    menu_class::button_arrow_right_pos_x = rx;
-    menu_class::button_arrow_right_pos_y = ry;
-    menu_class::button_arrow_width       = w;
-    menu_class::button_arrow_height      = h;
+    menu_class::button[button_number].set_arrow_left_pos_x  (lx);
+    menu_class::button[button_number].set_arrow_left_pos_y  (ly);
+    menu_class::button[button_number].set_arrow_right_pos_x (rx);
+    menu_class::button[button_number].set_arrow_right_pos_y (ry);
+    menu_class::button[button_number].set_arrow_width       (w);
+    menu_class::button[button_number].set_arrow_height      (h);
+};
+
+void  menu_class::set_button_arrow_data_auto(int button_number)
+{
+    menu_class::button[button_number].set_arrow_width                  (menu_class::button_spacing);
+    menu_class::button[button_number].set_arrow_height                 (menu_class::button_spacing*2);
+    menu_class::button[button_number].set_arrow_left_pos_x             ((menu_class::button[button_number].get_pos_x() - (menu_class::button[button_number].get_width()/2)) + ((menu_class::button[button_number].get_arrow_width()/2)*1));
+    menu_class::button[button_number].set_arrow_left_pos_y             (menu_class::pos_y);
+    menu_class::button[button_number].set_arrow_right_pos_x            ((menu_class::button[button_number].get_pos_x() + (menu_class::button[button_number].get_width()/2)) - ((menu_class::button[button_number].get_arrow_width()/2)*1));
+    menu_class::button[button_number].set_arrow_right_pos_y            (menu_class::pos_y);
+    menu_class::button[button_number].set_arrow_left_zoom_size_counter (0);
+    menu_class::button[button_number].set_arrow_right_zoom_size_counter(0);
+    menu_class::button[button_number].set_arrow_left_highlighted       (false);
+    menu_class::button[button_number].set_arrow_right_highlighted      (false);
+    for(int choice_count = 1; choice_count < menu_class::button[button_number].get_number_of_choices(); choice_count++)
+    {
+        menu_class::button[button_number].set_highlighted              (false);
+        menu_class::button[button_number].set_choice_zoom_size_counter (choice_count,0);
+    }
 };
 
 void  menu_class::set_button_slider_position(int button_number, float set_data)
@@ -1055,6 +1279,53 @@ void  menu_class::set_button_slider_position(int button_number, float set_data)
 float menu_class::get_button_slider_position(int button_number)
 {
     return(menu_class::button[button_number].get_slider_position());
+};
+
+void  menu_class::set_button_choice_position(int button_number, int set_data)
+{
+    menu_class::button[button_number].set_choice_position(set_data);
+};
+
+int menu_class::get_button_choice_position(int button_number)
+{
+    return(menu_class::button[button_number].get_choice_position());
+};
+
+void  menu_class::set_button_choice_data(int button_number, int choice_number, int image_ref_data, std::string text_label_data, bool active_data)
+{
+    menu_class::button[button_number].set_active(true);
+    menu_class::button[button_number].set_button_type(CHOICE);
+    return(menu_class::button[button_number].set_choice_data(choice_number, image_ref_data, text_label_data, active_data));
+};
+
+void  menu_class::set_number_of_choices(int button_number, int choice_data)
+{
+    menu_class::button[button_number].set_number_of_choices(choice_data);
+};
+
+int   menu_class::get_number_of_choices(int button_number)
+{
+    return(menu_class::button[button_number].get_number_of_choices());
+};
+
+void  menu_class::set_button_type(int button_number, int bt)
+{
+    menu_class::button[button_number].set_button_type(bt);
+};
+
+int   menu_class::get_button_type(int button_number)
+{
+    return(menu_class::button[button_number].get_button_type());
+};
+
+void  menu_class::set_button_choice_enabled(int button_number, int choice_number, bool enabled_data)
+{
+    menu_class::button[button_number].set_choice_enabled(choice_number,enabled_data);
+};
+
+bool  menu_class::get_button_choice_enabled(int button_number, int choice_number)
+{
+    return(menu_class::button[button_number].get_choice_enabled(choice_number));
 };
 
 int menu_class::process(void)
@@ -1113,22 +1384,28 @@ int menu_class::process(void)
     {
         for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
         {
-            if (menu_class::button[button_count].mouse_over())
+            if (menu_class::button[button_count].get_button_type() == NORMAL)
             {
-                if ((menu_class::current_vertical_selection != button_count) && (menu_class::button[button_count].get_active())) return_value = 65533;
-                menu_class::current_vertical_selection = button_count;
-                menu_class::button[button_count].set_highlighted(true);
+                if (menu_class::button[button_count].mouse_over())
+                {
+                    if ((menu_class::current_vertical_selection != button_count) && (menu_class::button[button_count].get_active())) return_value = 65533;
+                    menu_class::current_vertical_selection = button_count;
+                    menu_class::button[button_count].set_highlighted(true);
+                }
+                else  menu_class::button[button_count].set_highlighted(false);
             }
-            else  menu_class::button[button_count].set_highlighted(false);
         }
         for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
         {
-            if (menu_class::button[button_count].mouse_clicked())
+            if (menu_class::button[button_count].get_button_type() == NORMAL)
             {
-                if  (menu_class::mouse_delay_count >= menu_class::mouse_delay)
+                if (menu_class::button[button_count].mouse_clicked())
                 {
-                    menu_class::mouse_delay_count = 0;
-                    return_value = button_count;
+                    if  (menu_class::mouse_delay_count >= menu_class::mouse_delay)
+                    {
+                        menu_class::mouse_delay_count = 0;
+                        return_value = button_count;
+                    }
                 }
             }
         }
@@ -1139,7 +1416,7 @@ int menu_class::process(void)
     {
         for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
         {
-            if (menu_class::button[button_count].get_highlighted())
+            if (menu_class::button[button_count].get_highlighted())//normal button
             {
                 menu_class::button[button_count].set_zoom_size_counter(menu_class::button[button_count].get_zoom_size_counter()+menu_class::button[button_count].get_zoom_speed());
                 if (menu_class::button[button_count].get_zoom_size_counter() > menu_class::button[button_count].get_zoom_size()) menu_class::button[button_count].set_zoom_size_counter(menu_class::button[button_count].get_zoom_size());
@@ -1148,6 +1425,40 @@ int menu_class::process(void)
             {
                 menu_class::button[button_count].set_zoom_size_counter(menu_class::button[button_count].get_zoom_size_counter()-menu_class::button[button_count].get_zoom_speed());
                 if (menu_class::button[button_count].get_zoom_size_counter() < 0.0f) menu_class::button[button_count].set_zoom_size_counter(0.0f);
+            }
+            if (menu_class::button[button_count].get_arrow_left_highlighted())//left arrow
+            {
+                menu_class::button[button_count].set_arrow_left_zoom_size_counter(menu_class::button[button_count].get_arrow_left_zoom_size_counter()+menu_class::button[button_count].get_zoom_speed());
+                if (menu_class::button[button_count].get_arrow_left_zoom_size_counter() > menu_class::button[button_count].get_zoom_size()) menu_class::button[button_count].set_arrow_left_zoom_size_counter(menu_class::button[button_count].get_zoom_size());
+            }
+            else
+            {
+                menu_class::button[button_count].set_arrow_right_zoom_size_counter(menu_class::button[button_count].get_arrow_left_zoom_size_counter()-menu_class::button[button_count].get_zoom_speed());
+                if (menu_class::button[button_count].get_arrow_left_zoom_size_counter() < 0.0f) menu_class::button[button_count].set_arrow_left_zoom_size_counter(0.0f);
+            }
+            if (menu_class::button[button_count].get_arrow_right_highlighted())//right arrow
+            {
+                menu_class::button[button_count].set_arrow_right_zoom_size_counter(menu_class::button[button_count].get_arrow_right_zoom_size_counter()+menu_class::button[button_count].get_zoom_speed());
+                if (menu_class::button[button_count].get_arrow_right_zoom_size_counter() > menu_class::button[button_count].get_zoom_size()) menu_class::button[button_count].set_arrow_right_zoom_size_counter(menu_class::button[button_count].get_zoom_size());
+            }
+            else
+            {
+                menu_class::button[button_count].set_arrow_right_zoom_size_counter(menu_class::button[button_count].get_arrow_right_zoom_size_counter()-menu_class::button[button_count].get_zoom_speed());
+                if (menu_class::button[button_count].get_arrow_right_zoom_size_counter() < 0.0f) menu_class::button[button_count].set_arrow_right_zoom_size_counter(0.0f);
+            }
+            for(int choice_count = 1; choice_count < menu_class::button[button_count].get_number_of_choices(); choice_count++)
+            {
+                if (menu_class::button[button_count].get_choice_highlighted(choice_count))//choices
+                {
+                    menu_class::button[button_count].set_choice_zoom_size_counter(choice_count,menu_class::button[button_count].get_choice_zoom_size_counter(choice_count)+menu_class::button[button_count].get_zoom_speed());
+
+                    if (menu_class::button[button_count].get_choice_zoom_size_counter(choice_count) > menu_class::button[button_count].get_zoom_size()) menu_class::button[button_count].set_choice_zoom_size_counter(choice_count,menu_class::button[button_count].get_zoom_size());
+                }
+                else
+                {
+                    menu_class::button[button_count].set_choice_zoom_size_counter(choice_count,menu_class::button[button_count].get_choice_zoom_size_counter(choice_count)-menu_class::button[button_count].get_zoom_speed());
+                    if (menu_class::button[button_count].get_choice_zoom_size_counter(choice_count) < 0.0f) menu_class::button[button_count].set_choice_zoom_size_counter(choice_count,0.0f);
+                }
             }
         }
     }
@@ -1160,7 +1471,7 @@ int menu_class::process(void)
         if (menu_class::close_button.mouse_clicked()) return_value = 65535;
     }
     //---- menu drag ----
-    if (menu_class::mouse_over_title())
+    if ((menu_class::mouse_over_title()) && (return_value != 65535))
     {
         if (menu_class::mouse_click_title())
         {
@@ -1192,6 +1503,8 @@ int menu_class::process(void)
     //---- return ----
     return(return_value);
 };
+
+
 
 
 

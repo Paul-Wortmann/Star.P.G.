@@ -558,6 +558,9 @@ struct texture_type
    texture_class green_button_highlighted;
    texture_class blue_button;
    texture_class blue_button_highlighted;
+   texture_class arrow_button_normal;
+   texture_class arrow_button_highlighted;
+   texture_class arrow_button_disabled;
 };
 
 struct font_type
