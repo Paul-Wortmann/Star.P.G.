@@ -901,10 +901,10 @@ void  menu_class::set_close_button_data(int in, int ih)
     float z = 0.0f;
     float w = 0.0f;
     float h = 0.0f;
-    w = (menu_class::width / 100.0f) * 15.0f;
-    h = w;
-    x = (menu_class::pos_x+(menu_class::width /2))-((w/3)*2);
-    y = (menu_class::pos_y+(menu_class::height/2))-((h/3)*2);
+    w = (menu_class::button_spacing / 100.0f) * 60.0f;
+    h = (menu_class::button_spacing / 100.0f) * 60.0f;
+    x = (menu_class::pos_x+(menu_class::width /2))-((w/5)*4);
+    y = (menu_class::pos_y+(menu_class::height/2))-((h/5)*4);
     z = menu_class::pos_z;
     menu_class::close_button.set_button_type(CLOSE);
     menu_class::close_button.set_data(x,y,z,w,h,in,ih);

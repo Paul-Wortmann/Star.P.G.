@@ -54,7 +54,7 @@ int init_menu   (void)
     //------ setup menu background -----------
     game.background.set_movement_type(BOUNCE);
     game.background.set_data ( 1, 1, 0, 1.0f, 0.0f, 0.0005f, 0.00040f, 63);
-    game.background.set_data ( 2, 1, 0, 0.0f, 1.0f, 0.0010f, 0.00095f, 64);
+    game.background.set_data ( 2, 1, 1, 0.0f, 1.0f, 0.0010f, 0.00095f, 64);
     //------ setup "main" menu -----------
     main_menu.set_menu_title("Main Menu");
     main_menu.set_keyboard_delay(16);
@@ -86,7 +86,7 @@ int init_menu   (void)
     star_map_menu.set_keyboard_delay(16);
     star_map_menu.set_mouse_delay(24);
     star_map_menu.set_pos(0.0f,-0.1f,0.001f);
-    star_map_menu.set_size(0.8f,1.7f);
+    star_map_menu.set_size(1.8f,1.7f);
     star_map_menu.set_menu_font(1);
     star_map_menu.set_image_background(395);
     star_map_menu.set_button_zoom(true,0.04f,0.005f);
@@ -95,6 +95,7 @@ int init_menu   (void)
     star_map_menu.set_color_highlighted(192,192,255,255);
     star_map_menu.set_color_disabled(064,064,128,128);
     star_map_menu.set_number_of_buttons(9);
+    /*
     star_map_menu.set_button_active( 1,false);
     star_map_menu.set_button_active( 2,false);
     star_map_menu.set_button_active( 3,false);
@@ -103,6 +104,7 @@ int init_menu   (void)
     star_map_menu.set_button_active( 6,false);
     star_map_menu.set_button_active( 7,false);
     star_map_menu.set_button_active( 8,false);
+    */
     star_map_menu.set_button_data  ( 9,"Main Menu");
     star_map_menu.set_buttons_auto();
     star_map_menu.set_close_button_data(396,397);

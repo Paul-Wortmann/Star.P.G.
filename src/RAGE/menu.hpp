@@ -37,6 +37,11 @@ const int MAX_MENU_BUTTONS = 11;
 class button_class
 {
     private:
+        struct choice_data_type
+        {
+            int         image_ref;
+            std::string text_label;
+        };
         int           type;
         bool          active;
         int           image_normal;
@@ -64,6 +69,7 @@ class button_class
         float         arrow_width;
         float         arrow_height;
         float         slider_position;
+        float         choice_position;
         std::string   label;
         int           button_font;
         int           normal_color_r;

@@ -157,109 +157,107 @@ void background_class::draw             (void)
             }
         }
     }
-    if (background_class::movemennt_type == BOUNCE)
+    if (background_class::movemennt_type == SCROLL)
     {
-
- //---------------------------------- display backgrounds ---------------------------------------------------------------------
-   if (game_o.background_scroll[3].x_pos >= game_o.background_scroll[2].x_pos)
-   {
-       z_pos = 0.16f;
-       bind_texture(game_o.background_scroll[3].image);
-       glLoadIdentity();
-       glBegin( GL_QUADS );
-       glTexCoord2i( 0, 1 );glVertex3f( 2.000f + game_o.background_scroll[2].x_pos,-2.000f + game_o.background_scroll[3].y_pos,z_pos);
-       glTexCoord2i( 0, 0 );glVertex3f( 2.000f + game_o.background_scroll[2].x_pos, 2.000f + game_o.background_scroll[3].y_pos,z_pos);
-       glTexCoord2i( 1, 0 );glVertex3f( 2.000f + game_o.background_scroll[3].x_pos, 2.000f + game_o.background_scroll[3].y_pos,z_pos);
-       glTexCoord2i( 1, 1 );glVertex3f( 2.000f + game_o.background_scroll[3].x_pos,-2.000f + game_o.background_scroll[3].y_pos,z_pos);
-       glEnd();
-   }
-   else
-   {
-       z_pos = 0.16f;
-       bind_texture(game_o.background_scroll[3].image);
-       glLoadIdentity();
-       glBegin( GL_QUADS );
-       glTexCoord2i( 0, 1 );glVertex3f(-2.000f + game_o.background_scroll[3].x_pos,-2.000f + game_o.background_scroll[3].y_pos,z_pos);
-       glTexCoord2i( 0, 0 );glVertex3f(-2.000f + game_o.background_scroll[3].x_pos, 2.000f + game_o.background_scroll[3].y_pos,z_pos);
-       glTexCoord2i( 1, 0 );glVertex3f(-2.000f + game_o.background_scroll[2].x_pos, 2.000f + game_o.background_scroll[3].y_pos,z_pos);
-       glTexCoord2i( 1, 1 );glVertex3f(-2.000f + game_o.background_scroll[2].x_pos,-2.000f + game_o.background_scroll[3].y_pos,z_pos);
-       glEnd();
-   }
-   if (game_o.background_scroll[2].x_pos >= game_o.background_scroll[3].x_pos)
-   {
-       z_pos = 0.16f;
-       bind_texture(game_o.background_scroll[2].image);
-       glLoadIdentity();
-       glBegin( GL_QUADS );
-       glTexCoord2i( 0, 1 );glVertex3f( 2.000f + game_o.background_scroll[3].x_pos,-2.000f + game_o.background_scroll[2].y_pos,z_pos);
-       glTexCoord2i( 0, 0 );glVertex3f( 2.000f + game_o.background_scroll[3].x_pos, 2.000f + game_o.background_scroll[2].y_pos,z_pos);
-       glTexCoord2i( 1, 0 );glVertex3f( 2.000f + game_o.background_scroll[2].x_pos, 2.000f + game_o.background_scroll[2].y_pos,z_pos);
-       glTexCoord2i( 1, 1 );glVertex3f( 2.000f + game_o.background_scroll[2].x_pos,-2.000f + game_o.background_scroll[2].y_pos,z_pos);
-       glEnd();
-   }
-   else
-   {
-       z_pos = 0.16f;
-       bind_texture(game_o.background_scroll[2].image);
-       glLoadIdentity();
-       glBegin( GL_QUADS );
-       glTexCoord2i( 0, 1 );glVertex3f(-2.000f + game_o.background_scroll[2].x_pos,-2.000f + game_o.background_scroll[2].y_pos,z_pos);
-       glTexCoord2i( 0, 0 );glVertex3f(-2.000f + game_o.background_scroll[2].x_pos, 2.000f + game_o.background_scroll[2].y_pos,z_pos);
-       glTexCoord2i( 1, 0 );glVertex3f(-2.000f + game_o.background_scroll[3].x_pos, 2.000f + game_o.background_scroll[2].y_pos,z_pos);
-       glTexCoord2i( 1, 1 );glVertex3f(-2.000f + game_o.background_scroll[3].x_pos,-2.000f + game_o.background_scroll[2].y_pos,z_pos);
-       glEnd();
-   }
-//------------------------------------------- display effects layer ------------------------------------------------------
-   if (game_o.background_scroll[1].x_pos >= game_o.background_scroll[0].x_pos)
-   {
-       z_pos = 0.15f;
-       bind_texture(game_o.background_scroll[1].image);
-       glLoadIdentity();
-       glBegin( GL_QUADS );
-       glTexCoord2i( 0, 1 );glVertex3f( 2.000f + game_o.background_scroll[0].x_pos,-2.000f + game_o.background_scroll[1].y_pos,z_pos);
-       glTexCoord2i( 0, 0 );glVertex3f( 2.000f + game_o.background_scroll[0].x_pos, 2.000f + game_o.background_scroll[1].y_pos,z_pos);
-       glTexCoord2i( 1, 0 );glVertex3f( 2.000f + game_o.background_scroll[1].x_pos, 2.000f + game_o.background_scroll[1].y_pos,z_pos);
-       glTexCoord2i( 1, 1 );glVertex3f( 2.000f + game_o.background_scroll[1].x_pos,-2.000f + game_o.background_scroll[1].y_pos,z_pos);
-       glEnd();
-   }
-   else
-   {
-       z_pos = 0.15f;
-       bind_texture(game_o.background_scroll[1].image);
-       glLoadIdentity();
-       glBegin( GL_QUADS );
-       glTexCoord2i( 0, 1 );glVertex3f(-2.000f + game_o.background_scroll[1].x_pos,-2.000f + game_o.background_scroll[1].y_pos,z_pos);
-       glTexCoord2i( 0, 0 );glVertex3f(-2.000f + game_o.background_scroll[1].x_pos, 2.000f + game_o.background_scroll[1].y_pos,z_pos);
-       glTexCoord2i( 1, 0 );glVertex3f(-2.000f + game_o.background_scroll[0].x_pos, 2.000f + game_o.background_scroll[1].y_pos,z_pos);
-       glTexCoord2i( 1, 1 );glVertex3f(-2.000f + game_o.background_scroll[0].x_pos,-2.000f + game_o.background_scroll[1].y_pos,z_pos);
-       glEnd();
-   }
-   if (game_o.background_scroll[0].x_pos >= game_o.background_scroll[1].x_pos)
-   {
-       z_pos = 0.15f;
-       bind_texture(game_o.background_scroll[0].image);
-       glLoadIdentity();
-       glBegin( GL_QUADS );
-       glTexCoord2i( 0, 1 );glVertex3f( 2.000f + game_o.background_scroll[1].x_pos,-2.000f + game_o.background_scroll[0].y_pos,z_pos);
-       glTexCoord2i( 0, 0 );glVertex3f( 2.000f + game_o.background_scroll[1].x_pos, 2.000f + game_o.background_scroll[0].y_pos,z_pos);
-       glTexCoord2i( 1, 0 );glVertex3f( 2.000f + game_o.background_scroll[0].x_pos, 2.000f + game_o.background_scroll[0].y_pos,z_pos);
-       glTexCoord2i( 1, 1 );glVertex3f( 2.000f + game_o.background_scroll[0].x_pos,-2.000f + game_o.background_scroll[0].y_pos,z_pos);
-       glEnd();
-   }
-   else
-   {
-       z_pos = 0.15f;
-       bind_texture(game_o.background_scroll[0].image);
-       glLoadIdentity();
-       glBegin( GL_QUADS );
-       glTexCoord2i( 0, 1 );glVertex3f(-2.000f + game_o.background_scroll[0].x_pos,-2.000f + game_o.background_scroll[0].y_pos,z_pos);
-       glTexCoord2i( 0, 0 );glVertex3f(-2.000f + game_o.background_scroll[0].x_pos, 2.000f + game_o.background_scroll[0].y_pos,z_pos);
-       glTexCoord2i( 1, 0 );glVertex3f(-2.000f + game_o.background_scroll[1].x_pos, 2.000f + game_o.background_scroll[0].y_pos,z_pos);
-       glTexCoord2i( 1, 1 );glVertex3f(-2.000f + game_o.background_scroll[1].x_pos,-2.000f + game_o.background_scroll[0].y_pos,z_pos);
-       glEnd();
-   }
-//--------------------------------------------------------------------------------------------------------------------------------------
-
+        //---------------------------------- display backgrounds ---------------------------------------------------------------------
+        if (background_class::layer[4].pos_x >= background_class::layer[3].pos_x)
+        {
+            z_pos = 0.16f;
+            bind_texture(background_class::layer[4].image);
+            glLoadIdentity();
+            glBegin( GL_QUADS );
+            glTexCoord2i( 0, 1 );glVertex3f( 2.000f + background_class::layer[3].pos_x,-2.000f + background_class::layer[4].pos_y,z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f( 2.000f + background_class::layer[3].pos_x, 2.000f + background_class::layer[4].pos_y,z_pos);
+            glTexCoord2i( 1, 0 );glVertex3f( 2.000f + background_class::layer[4].pos_x, 2.000f + background_class::layer[4].pos_y,z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f( 2.000f + background_class::layer[4].pos_x,-2.000f + background_class::layer[4].pos_y,z_pos);
+            glEnd();
+        }
+        else
+        {
+            z_pos = 0.16f;
+            bind_texture(background_class::layer[4].image);
+            glLoadIdentity();
+            glBegin( GL_QUADS );
+            glTexCoord2i( 0, 1 );glVertex3f(-2.000f + background_class::layer[4].pos_x,-2.000f + background_class::layer[4].pos_y,z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f(-2.000f + background_class::layer[4].pos_x, 2.000f + background_class::layer[4].pos_y,z_pos);
+            glTexCoord2i( 1, 0 );glVertex3f(-2.000f + background_class::layer[3].pos_x, 2.000f + background_class::layer[4].pos_y,z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f(-2.000f + background_class::layer[3].pos_x,-2.000f + background_class::layer[4].pos_y,z_pos);
+            glEnd();
+        }
+        if (background_class::layer[3].pos_x >= background_class::layer[4].pos_x)
+        {
+            z_pos = 0.16f;
+            bind_texture(background_class::layer[3].image);
+            glLoadIdentity();
+            glBegin( GL_QUADS );
+            glTexCoord2i( 0, 1 );glVertex3f( 2.000f + background_class::layer[4].pos_x,-2.000f + background_class::layer[3].pos_y,z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f( 2.000f + background_class::layer[4].pos_x, 2.000f + background_class::layer[3].pos_y,z_pos);
+            glTexCoord2i( 1, 0 );glVertex3f( 2.000f + background_class::layer[3].pos_x, 2.000f + background_class::layer[3].pos_y,z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f( 2.000f + background_class::layer[3].pos_x,-2.000f + background_class::layer[3].pos_y,z_pos);
+            glEnd();
+        }
+        else
+        {
+            z_pos = 0.16f;
+            bind_texture(background_class::layer[3].image);
+            glLoadIdentity();
+            glBegin( GL_QUADS );
+            glTexCoord2i( 0, 1 );glVertex3f(-2.000f + background_class::layer[3].pos_x,-2.000f + background_class::layer[3].pos_y,z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f(-2.000f + background_class::layer[3].pos_x, 2.000f + background_class::layer[3].pos_y,z_pos);
+            glTexCoord2i( 1, 0 );glVertex3f(-2.000f + background_class::layer[4].pos_x, 2.000f + background_class::layer[3].pos_y,z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f(-2.000f + background_class::layer[4].pos_x,-2.000f + background_class::layer[3].pos_y,z_pos);
+            glEnd();
+        }
+        //------------------------------------------- display effects layer ------------------------------------------------------
+        if (background_class::layer[2].pos_x >= background_class::layer[1].pos_x)
+        {
+            z_pos = 0.15f;
+            bind_texture(background_class::layer[2].image);
+            glLoadIdentity();
+            glBegin( GL_QUADS );
+            glTexCoord2i( 0, 1 );glVertex3f( 2.000f + background_class::layer[1].pos_x,-2.000f + background_class::layer[2].pos_y,z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f( 2.000f + background_class::layer[1].pos_x, 2.000f + background_class::layer[2].pos_y,z_pos);
+            glTexCoord2i( 1, 0 );glVertex3f( 2.000f + background_class::layer[2].pos_x, 2.000f + background_class::layer[2].pos_y,z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f( 2.000f + background_class::layer[2].pos_x,-2.000f + background_class::layer[2].pos_y,z_pos);
+            glEnd();
+        }
+        else
+        {
+            z_pos = 0.15f;
+            bind_texture(background_class::layer[2].image);
+            glLoadIdentity();
+            glBegin( GL_QUADS );
+            glTexCoord2i( 0, 1 );glVertex3f(-2.000f + background_class::layer[2].pos_x,-2.000f + background_class::layer[2].pos_y,z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f(-2.000f + background_class::layer[2].pos_x, 2.000f + background_class::layer[2].pos_y,z_pos);
+            glTexCoord2i( 1, 0 );glVertex3f(-2.000f + background_class::layer[1].pos_x, 2.000f + background_class::layer[2].pos_y,z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f(-2.000f + background_class::layer[1].pos_x,-2.000f + background_class::layer[2].pos_y,z_pos);
+            glEnd();
+        }
+        if (background_class::layer[1].pos_x >= background_class::layer[2].pos_x)
+        {
+            z_pos = 0.15f;
+            bind_texture(background_class::layer[1].image);
+            glLoadIdentity();
+            glBegin( GL_QUADS );
+            glTexCoord2i( 0, 1 );glVertex3f( 2.000f + background_class::layer[2].pos_x,-2.000f + background_class::layer[1].pos_y,z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f( 2.000f + background_class::layer[2].pos_x, 2.000f + background_class::layer[1].pos_y,z_pos);
+            glTexCoord2i( 1, 0 );glVertex3f( 2.000f + background_class::layer[1].pos_x, 2.000f + background_class::layer[1].pos_y,z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f( 2.000f + background_class::layer[1].pos_x,-2.000f + background_class::layer[1].pos_y,z_pos);
+            glEnd();
+        }
+        else
+        {
+            z_pos = 0.15f;
+            bind_texture(background_class::layer[1].image);
+            glLoadIdentity();
+            glBegin( GL_QUADS );
+            glTexCoord2i( 0, 1 );glVertex3f(-2.000f + background_class::layer[1].pos_x,-2.000f + background_class::layer[1].pos_y,z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f(-2.000f + background_class::layer[1].pos_x, 2.000f + background_class::layer[1].pos_y,z_pos);
+            glTexCoord2i( 1, 0 );glVertex3f(-2.000f + background_class::layer[2].pos_x, 2.000f + background_class::layer[1].pos_y,z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f(-2.000f + background_class::layer[2].pos_x,-2.000f + background_class::layer[1].pos_y,z_pos);
+            glEnd();
+        }
+        //--------------------------------------------------------------------------------------------------------------------------------------
     }
 };
 
