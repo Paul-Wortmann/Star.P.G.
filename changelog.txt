@@ -1,3 +1,11 @@
+V0.18 - (xx-xx-2011)
+---New pause button for touch screen support.
+---New death,next_level,outro screens created.
+---Mouse, joystick, keyboard support for menu.
+---Rewrote menu system, created new menu.
+Many tweaks and and a few bug fixes.
+LOC - ?????
+
 V0.17 - (02-08-2011)
 Touchscreen support, with on screen controls.
 Bomb power-ups now a stackable, usable item.

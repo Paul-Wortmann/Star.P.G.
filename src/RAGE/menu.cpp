@@ -29,36 +29,37 @@ extern  font_type                font;
 
 button_class::button_class(void)
 {
-    button_class::active              = false;
-    button_class::image_normal        = 0;
-    button_class::image_highlighted   = 0;
-    button_class::image_disabled      = 0;
-    button_class::highlighted         = false;
-    button_class::enabled             = true;
-    button_class::glow                = true;
-    button_class::zoom                = true;
-    button_class::zoom_size           = 0.0f;
-    button_class::zoom_size_counter   = 0.0f;
-    button_class::zoom_speed          = 0.0f;
-    button_class::pos_x               = 0.0f;
-    button_class::pos_y               = 0.0f;
-    button_class::pos_z               = 0.0f;
-    button_class::height              = 0.0f;
-    button_class::width               = 0.0f;
-    button_class::label               = "Label Not Set";
-    button_class::normal_color_r      = 255;
-    button_class::normal_color_g      = 255;
-    button_class::normal_color_b      = 255;
-    button_class::normal_color_a      = 255;
-    button_class::highlighted_color_r = 255;
-    button_class::highlighted_color_g = 255;
-    button_class::highlighted_color_b = 255;
-    button_class::highlighted_color_a = 255;
-    button_class::disabled_color_r    = 255;
-    button_class::disabled_color_g    = 255;
-    button_class::disabled_color_b    = 255;
-    button_class::disabled_color_a    = 255;
-    button_class::type                = 0;
+    button_class::active                = false;
+    button_class::image_normal          = 0;
+    button_class::image_highlighted     = 0;
+    button_class::image_disabled        = 0;
+    button_class::image_choice_disabled = 0;
+    button_class::highlighted           = false;
+    button_class::enabled               = true;
+    button_class::glow                  = true;
+    button_class::zoom                  = true;
+    button_class::zoom_size             = 0.0f;
+    button_class::zoom_size_counter     = 0.0f;
+    button_class::zoom_speed            = 0.0f;
+    button_class::pos_x                 = 0.0f;
+    button_class::pos_y                 = 0.0f;
+    button_class::pos_z                 = 0.0f;
+    button_class::height                = 0.0f;
+    button_class::width                 = 0.0f;
+    button_class::label                 = "Label Not Set";
+    button_class::normal_color_r        = 255;
+    button_class::normal_color_g        = 255;
+    button_class::normal_color_b        = 255;
+    button_class::normal_color_a        = 255;
+    button_class::highlighted_color_r   = 255;
+    button_class::highlighted_color_g   = 255;
+    button_class::highlighted_color_b   = 255;
+    button_class::highlighted_color_a   = 255;
+    button_class::disabled_color_r      = 255;
+    button_class::disabled_color_g      = 255;
+    button_class::disabled_color_b      = 255;
+    button_class::disabled_color_a      = 255;
+    button_class::type                  = 0;
 };
 
 button_class::button_class(float x, float y, float z, float w, float h, int in, int ih, int id, bool hl, bool en, bool gl, bool zm, float zs, int nr, int ng, int nb, int na, int hr, int hg, int hb, int ha, int dr, int dg, int db, int da, std::string lb)
@@ -265,54 +266,27 @@ void button_class::draw(void)
         glTexCoord2i( 1, 0 );glVertex3f(button_class::pos_x+(button_class::width/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_y+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
         glTexCoord2i( 1, 1 );glVertex3f(button_class::pos_x+(button_class::width/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_y-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
         glEnd();
-        if(button_class::zoom)
+        switch(button_class::get_font())
         {
-            switch(button_class::get_font())
-            {
-                case 1:
-                    if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
-                    if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
-                    if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f+(button_class::zoom_size/2),button_class::label);
-                    if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r,button_class::normal_color_g,button_class::normal_color_b,button_class::normal_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
-                break;
-                case 2:
-                    if ((!button_class::enabled) && ( button_class::highlighted)) font.font_2.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
-                    if ((!button_class::enabled) && (!button_class::highlighted)) font.font_2.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
-                    if (( button_class::enabled) && ( button_class::highlighted)) font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
-                    if (( button_class::enabled) && (!button_class::highlighted)) font.font_2.Write(button_class::normal_color_r,button_class::normal_color_g,button_class::normal_color_b,button_class::normal_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
-                break;
-                default:
-                    if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
-                    if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
-                    if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f+(button_class::zoom_size/2),button_class::label);
-                    if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r,button_class::normal_color_g,button_class::normal_color_b,button_class::normal_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
-                break;
-            }
+            case 1:
+                if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+            break;
+            case 2:
+                if ((!button_class::enabled) && ( button_class::highlighted)) font.font_2.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) font.font_2.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) font.font_2.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
+            break;
+            default:
+                if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+            break;
         }
-        else
-        {
-            switch(button_class::get_font())
-            {
-                case 1:
-                    if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
-                    if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
-                    if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
-                    if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r,button_class::normal_color_g,button_class::normal_color_b,button_class::normal_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
-                break;
-                case 2:
-                    if ((!button_class::enabled) && ( button_class::highlighted)) font.font_2.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,16.0f,button_class::label);
-                    if ((!button_class::enabled) && (!button_class::highlighted)) font.font_2.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,16.0f,button_class::label);
-                    if (( button_class::enabled) && ( button_class::highlighted)) font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,16.0f,button_class::label);
-                    if (( button_class::enabled) && (!button_class::highlighted)) font.font_2.Write(button_class::normal_color_r,button_class::normal_color_g,button_class::normal_color_b,button_class::normal_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,16.0f,button_class::label);
-                break;
-                default:
-                    if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
-                    if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r,button_class::disabled_color_g,button_class::disabled_color_b,button_class::disabled_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
-                    if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
-                    if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r,button_class::normal_color_g,button_class::normal_color_b,button_class::normal_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f,12.0f,button_class::label);
-                break;
-            }
-        };
     };
     if (button_class::type == CLOSE) //----- close button -----
     {
@@ -351,7 +325,7 @@ void button_class::draw(void)
         // --- choice 1    ---
         delta_x = (button_class::arrow_width/3) *4;
         if (button_class::choice_data[button_class::choice_position].enabled) bind_texture(button_class::choice_data[button_class::choice_position].image_ref);
-        else bind_texture(button_class::choice_data[button_class::choice_position].image_ref);
+        else bind_texture(button_class::image_choice_disabled);
         glLoadIdentity();
         glBegin( GL_QUADS );
         glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
@@ -361,7 +335,8 @@ void button_class::draw(void)
         glEnd();
         // --- choice 2    ---
         delta_x += (button_class::arrow_width/2) *3;
-        bind_texture(button_class::choice_data[button_class::choice_position+1].image_ref);
+        if (button_class::choice_data[button_class::choice_position+1].enabled) bind_texture(button_class::choice_data[button_class::choice_position+1].image_ref);
+        else bind_texture(button_class::image_choice_disabled);
         glLoadIdentity();
         glBegin( GL_QUADS );
         glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
@@ -371,7 +346,8 @@ void button_class::draw(void)
         glEnd();
         // --- choice 3    ---
         delta_x += (button_class::arrow_width/2) *3;
-        bind_texture(button_class::choice_data[button_class::choice_position+2].image_ref);
+        if (button_class::choice_data[button_class::choice_position+2].enabled) bind_texture(button_class::choice_data[button_class::choice_position+2].image_ref);
+        else bind_texture(button_class::image_choice_disabled);
         glLoadIdentity();
         glBegin( GL_QUADS );
         glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
@@ -381,7 +357,8 @@ void button_class::draw(void)
         glEnd();
         // --- choice 4    ---
         delta_x += (button_class::arrow_width/2) *3;
-        bind_texture(button_class::choice_data[button_class::choice_position+3].image_ref);
+        if (button_class::choice_data[button_class::choice_position+3].enabled) bind_texture(button_class::choice_data[button_class::choice_position+3].image_ref);
+        else bind_texture(button_class::image_choice_disabled);
         glLoadIdentity();
         glBegin( GL_QUADS );
         glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
@@ -389,6 +366,27 @@ void button_class::draw(void)
         glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
         glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
         glEnd();
+        switch(button_class::get_font()) //write selected level name
+        {
+            case 1:
+                if ((!button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
+                if ((!button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
+                if (( button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
+                if (( button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
+            break;
+            case 2:
+                if ((!button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_2.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
+                if ((!button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_2.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
+                if (( button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
+                if (( button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_2.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
+            break;
+            default:
+                if ((!button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
+                if ((!button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
+                if (( button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
+                if (( button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
+            break;
+        };
     }
 };
 
@@ -789,6 +787,7 @@ void menu_class::set_button_data(int button_number)
     menu_class::button[button_number].set_image_normal(menu_class::button_image_normal);
     menu_class::button[button_number].set_image_highlighted(menu_class::button_image_highlighted);
     menu_class::button[button_number].set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button[button_number].set_image_choice_disabled(menu_class::button_image_choice_disabled);
     menu_class::button[button_number].set_image_arrow_normal(menu_class::button_image_arrow_normal);
     menu_class::button[button_number].set_image_arrow_highlighted(menu_class::button_image_arrow_highlighted);
     menu_class::button[button_number].set_image_arrow_disabled(menu_class::button_image_arrow_disabled);
@@ -810,6 +809,7 @@ void menu_class::set_button_data(int button_number, std::string label)
     menu_class::button[button_number].set_image_normal(menu_class::button_image_normal);
     menu_class::button[button_number].set_image_highlighted(menu_class::button_image_highlighted);
     menu_class::button[button_number].set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button[button_number].set_image_choice_disabled(menu_class::button_image_choice_disabled);
     menu_class::button[button_number].set_image_arrow_normal(menu_class::button_image_arrow_normal);
     menu_class::button[button_number].set_image_arrow_highlighted(menu_class::button_image_arrow_highlighted);
     menu_class::button[button_number].set_image_arrow_disabled(menu_class::button_image_arrow_disabled);
@@ -831,6 +831,7 @@ void menu_class::set_button_data(int button_number, std::string label,float x, f
     menu_class::button[button_number].set_image_normal(menu_class::button_image_normal);
     menu_class::button[button_number].set_image_highlighted(menu_class::button_image_highlighted);
     menu_class::button[button_number].set_image_disabled(menu_class::button_image_disabled);
+    menu_class::button[button_number].set_image_choice_disabled(menu_class::button_image_choice_disabled);
     menu_class::button[button_number].set_image_arrow_normal(menu_class::button_image_arrow_normal);
     menu_class::button[button_number].set_image_arrow_highlighted(menu_class::button_image_arrow_highlighted);
     menu_class::button[button_number].set_image_arrow_disabled(menu_class::button_image_arrow_disabled);
@@ -854,6 +855,7 @@ void menu_class::set_button_data(void)
         menu_class::button[button_count].set_image_normal(menu_class::button_image_normal);
         menu_class::button[button_count].set_image_highlighted(menu_class::button_image_highlighted);
         menu_class::button[button_count].set_image_disabled(menu_class::button_image_disabled);
+        menu_class::button[button_count].set_image_choice_disabled(menu_class::button_image_choice_disabled);
         menu_class::button[button_count].set_image_arrow_normal(menu_class::button_image_arrow_normal);
         menu_class::button[button_count].set_image_arrow_highlighted(menu_class::button_image_arrow_highlighted);
         menu_class::button[button_count].set_image_arrow_disabled(menu_class::button_image_arrow_disabled);
@@ -964,7 +966,8 @@ void menu_class::set_menu_title(std::string menu_title)
 
 void menu_class::set_menu_font(int font_number)
 {
-    menu_class::menu_font = font_number;
+    menu_class::menu_font   = font_number;
+    menu_class::button_font = font_number;
 };
 
 void menu_class::set_menu_button_font(int font_number)
@@ -1197,6 +1200,7 @@ void  menu_class::set_button_images(int in, int ih, int id, int icd, int ian, in
     menu_class::button_image_normal            = in;
     menu_class::button_image_highlighted       = id;
     menu_class::button_image_disabled          = ih;
+    menu_class::button_image_choice_disabled   = icd;
     menu_class::button_image_arrow_normal      = ian;
     menu_class::button_image_arrow_highlighted = iah;
     menu_class::button_image_arrow_disabled    = iad;
@@ -1291,8 +1295,9 @@ int menu_class::get_button_choice_position(int button_number)
     return(menu_class::button[button_number].get_choice_position());
 };
 
-void  menu_class::set_button_choice_data(int button_number, int choice_number, int image_ref_data, std::string text_label_data, bool active_data)
+void  menu_class::set_button_choice_data(int button_number, int choice_number, int image_ref_data, std::string text_label_data, bool active_data, bool enabled_data)
 {
+    menu_class::set_button_choice_enabled(button_number,choice_number,enabled_data);
     menu_class::button[button_number].set_active(true);
     menu_class::button[button_number].set_button_type(CHOICE);
     return(menu_class::button[button_number].set_choice_data(choice_number, image_ref_data, text_label_data, active_data));
