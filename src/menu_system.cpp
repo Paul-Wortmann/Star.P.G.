@@ -52,9 +52,9 @@ extern  save_game_class          save_07;
 int init_menu   (void)
 {
     //------ setup menu background -----------
-    game.background.set_movement_type(BOUNCE);
     game.background.set_data ( 1, 1, 0, 1.0f, 0.0f, 0.0005f, 0.00040f, 63);
     game.background.set_data ( 2, 1, 1, 0.0f, 1.0f, 0.0010f, 0.00095f, 64);
+    game.background.set_movement_type(BOUNCE);
     //------ setup "main" menu -----------
     main_menu.set_menu_title(L"Main Menu");
     main_menu.set_keyboard_delay(16);
@@ -84,7 +84,7 @@ int init_menu   (void)
     //------ setup "star map" menu -----------
     star_map_menu.set_menu_title(L"Star Map");
     star_map_menu.set_keyboard_delay(16);
-    star_map_menu.set_mouse_delay(24);
+    star_map_menu.set_mouse_delay(8);
     star_map_menu.set_pos(0.0f,-0.1f,0.001f);
     star_map_menu.set_size(1.8f,1.2f);
     star_map_menu.set_menu_font(1);
@@ -379,6 +379,54 @@ int process_menu(void)
         activated_button = star_map_menu.process();
         switch (activated_button)
         {
+            case 101://Choice 1 selected
+                if (!game_o.level_locked[star_map_menu.get_button_choice_position(1) + 0 -1])
+                {
+                    sound.menu_select.play();
+                    game.music_next_track = true;
+                    game_o.level = star_map_menu.get_button_choice_position(1) + 0 -1;
+                    init_game_level(game_o.level);
+                    game.game_active = true;
+                    game.menu_active = false;
+                    game.log.File_Write("Starting level ",game_o.level);
+                }
+            break;
+            case 102://Choice 2 selected
+                if (!game_o.level_locked[star_map_menu.get_button_choice_position(1) + 1 -1])
+                {
+                    sound.menu_select.play();
+                    game.music_next_track = true;
+                    game_o.level = star_map_menu.get_button_choice_position(1) + 1 -1;
+                    init_game_level(game_o.level);
+                    game.game_active = true;
+                    game.menu_active = false;
+                    game.log.File_Write("Starting level ",game_o.level);
+                }
+            break;
+            case 103://Choice 3 selected
+                if (!game_o.level_locked[star_map_menu.get_button_choice_position(1) + 2 -1])
+                {
+                    sound.menu_select.play();
+                    game.music_next_track = true;
+                    game_o.level = star_map_menu.get_button_choice_position(1) + 2 -1;
+                    init_game_level(game_o.level);
+                    game.game_active = true;
+                    game.menu_active = false;
+                    game.log.File_Write("Starting level ",game_o.level);
+                }
+            break;
+            case 104://Choice 4 selected
+                if (!game_o.level_locked[star_map_menu.get_button_choice_position(1) + 3 -1])
+                {
+                    sound.menu_select.play();
+                    game.music_next_track = true;
+                    game_o.level = star_map_menu.get_button_choice_position(1) + 3 -1;
+                    init_game_level(game_o.level);
+                    game.game_active = true;
+                    game.menu_active = false;
+                    game.log.File_Write("Starting level ",game_o.level);
+                }
+            break;
             case 4001://left arrow on button 1
                 star_map_menu.set_button_choice_position(1,star_map_menu.get_button_choice_position(1)-1);
                 if (star_map_menu.get_button_choice_position(1) < 1) star_map_menu.set_button_choice_position(1,1);

@@ -46,18 +46,19 @@ class background_class
         layer_type  layer[MAX_LAYERS];
         int         movemennt_type;
     public:
-        background_class       (void);
-        void  set_movement_type(int type_data);
-        void  set_data         (int layer_number, int dx, int dy, int px, int py, float srx, float sry, int image_ref);
-        void  set_image        (int layer_number, int image_ref);
-        void  set_active       (int layer_number,bool bool_data);
-        bool  get_active       (int layer_number);
-        float get_scroll_x     (int layer_number);
-        float get_scroll_y     (int layer_number);
-        bool  scroll_up        (void);
-        bool  scroll_down      (void);
-        void  process          (void);
-        void  draw             (void);
+        background_class        (void);
+        void  set_movement_type (int type_data);
+        int   get_movement_type (void);
+        void  set_data          (int layer_number, int dx, int dy, int px, int py, float srx, float sry, int image_ref);
+        void  set_image         (int layer_number, int image_ref);
+        void  set_active        (int layer_number, bool bool_data);
+        bool  get_active        (int layer_number);
+        float get_scroll_x      (int layer_number);
+        float get_scroll_y      (int layer_number);
+        bool  scroll_up         (void);
+        bool  scroll_down       (void);
+        void  process           (void);
+        void  draw              (void);
 };
 
 #endif //BACKGROUND_H

@@ -1362,16 +1362,16 @@ int  menu_class::mouse_over_button_choice(int button_number)
 {
     int   return_data = -1;
     float delta_x     =  0.0f;
-    if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
-    if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
+    if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height()*1.5f,game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
+    if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height()*1.5f,game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
     delta_x = ((menu_class::button[button_number].get_arrow_width()/3) *4)+menu_class::button[button_number].get_arrow_left_pos_x()-(menu_class::button[button_number].get_choice_zoom_size_counter(menu_class::button[button_number].get_choice_position())/2);
-    if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+1; //Choice 1
+    if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y(),menu_class::button[button_number].get_arrow_height()*1.5f,game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+1; //Choice 1
     delta_x += (menu_class::button[button_number].get_arrow_width()/2) *3;
-    if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+2; //Choice 2
+    if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height()*1.5f,game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+2; //Choice 2
     delta_x += (menu_class::button[button_number].get_arrow_width()/2) *3;
-    if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+3; //Choice 3
+    if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height()*1.5f,game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+3; //Choice 3
     delta_x += (menu_class::button[button_number].get_arrow_width()/2) *3;
-    if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+4; //Choice 4
+    if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height()*1.5f,game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+4; //Choice 4
     return(return_data);
 };
 
@@ -1381,16 +1381,16 @@ int  menu_class::mouse_click_button_choice(int button_number)
     float delta_x     =  0.0f;
     if (game.io.mouse_button_left)
     {
-        if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
-        if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
+        if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height()*2,game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
+        if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height()*2,game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
         delta_x = ((menu_class::button[button_number].get_arrow_width()/3) *4)+menu_class::button[button_number].get_arrow_left_pos_x()-(menu_class::button[button_number].get_choice_zoom_size_counter(menu_class::button[button_number].get_choice_position())/2);
-        if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+1; //Choice 1
+        if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y(),menu_class::button[button_number].get_arrow_height()*2,game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+1; //Choice 1
         delta_x += (menu_class::button[button_number].get_arrow_width()/2) *3;
-        if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+2; //Choice 2
+        if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height()*2,game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+2; //Choice 2
         delta_x += (menu_class::button[button_number].get_arrow_width()/2) *3;
-        if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+3; //Choice 3
+        if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height()*2,game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+3; //Choice 3
         delta_x += (menu_class::button[button_number].get_arrow_width()/2) *3;
-        if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+4; //Choice 4
+        if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height()*2,game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+4; //Choice 4
     }
     return(return_data);
 };
@@ -1406,6 +1406,7 @@ int menu_class::process(void)
     if (menu_class::keyboard_delay_count > menu_class::keyboard_delay) menu_class::keyboard_delay_count = menu_class::keyboard_delay;
     menu_class::mouse_delay_count++;
     if (menu_class::mouse_delay_count > menu_class::mouse_delay) menu_class::mouse_delay_count = menu_class::mouse_delay;
+    if ((!game.io.mouse_button_left) && (!game.io.mouse_button_middle) && (!game.io.mouse_button_right)) menu_class::mouse_delay_count = menu_class::mouse_delay;
     // ---- movement from io ----
     if  (menu_class::keyboard_delay_count >= menu_class::keyboard_delay)
     {
@@ -1501,7 +1502,11 @@ int menu_class::process(void)
             if ((menu_button_choice == (button_count*100)+4) && (!menu_class::button[button_count].get_choice_highlighted(menu_class::get_button_choice_position(button_count)+3))) return_value = 65533;
             if  (menu_button_choice == (button_count*100)+4)      menu_class::button[button_count].set_choice_highlighted(menu_class::get_button_choice_position(button_count)+3,true);//Choice 4
             else menu_class::button[button_count].set_choice_highlighted(menu_class::get_button_choice_position(button_count)+3,false);
-            if (return_value == -1) return_value = menu_class::mouse_click_button_choice(button_count);
+            if  ((menu_class::mouse_delay_count >= menu_class::mouse_delay) && (game.io.mouse_button_left))
+            {
+                menu_class::mouse_delay_count = 0;
+                if (return_value == -1) return_value = menu_class::mouse_click_button_choice(button_count);
+            }
         }
     }
     // ---- zoom ----

@@ -26,7 +26,7 @@
 
 background_class::background_class       (void)
 {
-    for(int layer_count = 1; layer_count < MAX_LAYERS; layer_count++)
+    for(int layer_count = 1; layer_count < MAX_LAYERS+1; layer_count++)
     {
         background_class::layer[layer_count].active      = false;
     }
@@ -35,6 +35,11 @@ background_class::background_class       (void)
 void background_class::set_movement_type (int type_data)
 {
     background_class::movemennt_type = type_data;
+};
+
+int   background_class::get_movement_type (void)
+{
+    return(background_class::movemennt_type);
 };
 
 void background_class::set_data          (int layer_number, int dx, int dy, int px, int py, float srx, float sry, int image_ref)
@@ -77,7 +82,7 @@ float background_class::get_scroll_y     (int layer_number)
 bool  background_class::scroll_up        (void)
 {
     bool return_value = false;
-    for(int layer_count = 1; layer_count < MAX_LAYERS; layer_count++)
+    for(int layer_count = 1; layer_count < MAX_LAYERS+1; layer_count++)
     {
         background_class::layer[layer_count].pos_y -= background_class::layer[layer_count].scroll_rate_y;
         if (background_class::layer[layer_count].pos_y < -1.0f) background_class::layer[layer_count].pos_y = -1.0f;
@@ -89,7 +94,7 @@ bool  background_class::scroll_up        (void)
 bool  background_class::scroll_down      (void)
 {
     bool return_value = false;
-    for(int layer_count = 1; layer_count < MAX_LAYERS; layer_count++)
+    for(int layer_count = 1; layer_count < MAX_LAYERS+1; layer_count++)
     {
         background_class::layer[layer_count].pos_y += background_class::layer[layer_count].scroll_rate_y;
         if (background_class::layer[layer_count].pos_y > 1.0f) background_class::layer[layer_count].pos_y = 1.0f;
@@ -101,9 +106,9 @@ bool  background_class::scroll_down      (void)
 
 void background_class::process           (void)
 {
-    if (background_class::movemennt_type == BOUNCE)
+    if (background_class::get_movement_type() == BOUNCE)
     {
-        for(int layer_count = 1; layer_count < MAX_LAYERS; layer_count++)
+        for(int layer_count = 1; layer_count < MAX_LAYERS+1; layer_count++)
         {
             if(background_class::layer[layer_count].dir_x == 0)
             {
@@ -127,12 +132,12 @@ void background_class::process           (void)
             }
         }
     };
-    if (background_class::movemennt_type == SCROLL)
+    if (background_class::get_movement_type() == SCROLL)
     {
-        for(int layer_count = 1; layer_count < MAX_LAYERS; layer_count++)
+        for(int layer_count = 1; layer_count < MAX_LAYERS+1; layer_count++)
         {
             background_class::layer[layer_count].pos_x -= background_class::layer[layer_count].scroll_rate_x;
-            if (background_class::layer[layer_count].pos_x <= -4.0f) background_class::layer[layer_count].dir_x = 4.0f;
+            if (background_class::layer[layer_count].pos_x <= -4.0f) background_class::layer[layer_count].pos_x = 4.0f;
         }
     }
 };
@@ -140,7 +145,7 @@ void background_class::process           (void)
 void background_class::draw             (void)
 {
     float z_pos = 0.15f;
-    if (background_class::movemennt_type == BOUNCE)
+    if (background_class::get_movement_type() == BOUNCE)
     {
         for(int layer_count = 1; layer_count < MAX_LAYERS; layer_count++)
         {
@@ -157,7 +162,7 @@ void background_class::draw             (void)
             }
         }
     }
-    if (background_class::movemennt_type == SCROLL)
+    if (background_class::get_movement_type() == SCROLL)
     {
         //---------------------------------- display backgrounds ---------------------------------------------------------------------
         if (background_class::layer[4].pos_x >= background_class::layer[3].pos_x)

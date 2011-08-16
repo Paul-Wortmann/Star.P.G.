@@ -3671,43 +3671,43 @@ int process_game(void)
             {
                 for (int bullet_count = 0; bullet_count < MAX_BULLETS; bullet_count++)
                 {
-                   game_o.npc[npc_count].bullet[bullet_count].y_pos  -= (game_o.thruster[game_o.player.thrusters].thrust/2);
+                   game_o.npc[npc_count].bullet[bullet_count].y_pos  -= (game.background.get_scroll_y(1));
                 }
-                game_o.npc[npc_count].y_pos -= (game_o.thruster[game_o.player.thrusters].thrust/2);
+                game_o.npc[npc_count].y_pos -= (game.background.get_scroll_y(1));
             }
             for (int player_bullet_num = 0; player_bullet_num < MAX_BULLETS; player_bullet_num++)
             {
                if (game_o.player.bullet[player_bullet_num].active)
                {
-                  game_o.player.bullet[player_bullet_num].y_pos -= (game_o.thruster[game_o.player.thrusters].thrust/2);
+                  game_o.player.bullet[player_bullet_num].y_pos -= (game.background.get_scroll_y(1));
                }
             }
             for (int count =0;count < MAX_EXPLOSIONS;count++)
             {
                if(game_o.explosion[count].active)
                {
-                  game_o.explosion[count].y_pos -= (game_o.thruster[game_o.player.thrusters].thrust/2);
+                  game_o.explosion[count].y_pos -= (game.background.get_scroll_y(1));
                }
             }
             for (int count = 0; count < MAX_WEXPS; count++)
             {
                if (game_o.wexp[count].active)
                {
-                  game_o.wexp[count].y_pos -= (game_o.thruster[game_o.player.thrusters].thrust/2);
+                  game_o.wexp[count].y_pos -= (game.background.get_scroll_y(1));
                }
             }
             for (int count = 0; count < MAX_COINS; count++)
             {
                if (game_o.coin[count].active)
                {
-                  game_o.coin[count].y_pos -= (game_o.thruster[game_o.player.thrusters].thrust/2);
+                  game_o.coin[count].y_pos -= (game.background.get_scroll_y(1));
                }
             }
             for (int count = 1; count < MAX_POWERUPS; count++)
             {
                if (game_o.powerup[count].active)
                {
-                  game_o.powerup[count].y_pos -= (game_o.thruster[game_o.player.thrusters].thrust/2);
+                  game_o.powerup[count].y_pos -= (game.background.get_scroll_y(1));
                }
             }
          }
@@ -3719,43 +3719,43 @@ int process_game(void)
             {
                 for (int bullet_count = 0; bullet_count < MAX_BULLETS; bullet_count++)
                 {
-                   game_o.npc[npc_count].bullet[bullet_count].y_pos  += (game_o.thruster[game_o.player.thrusters].thrust/2);
+                   game_o.npc[npc_count].bullet[bullet_count].y_pos  += (game.background.get_scroll_y(1));
                 }
-                game_o.npc[npc_count].y_pos += (game_o.thruster[game_o.player.thrusters].thrust/2);
+                game_o.npc[npc_count].y_pos += (game.background.get_scroll_y(1));
             }
             for (int player_bullet_num = 0; player_bullet_num < MAX_BULLETS; player_bullet_num++)
             {
                if (game_o.player.bullet[player_bullet_num].active)
                {
-                  game_o.player.bullet[player_bullet_num].y_pos += (game_o.thruster[game_o.player.thrusters].thrust/2);
+                  game_o.player.bullet[player_bullet_num].y_pos += (game.background.get_scroll_y(1));
                }
             }
             for (int count =0;count < MAX_EXPLOSIONS;count++)
             {
                if(game_o.explosion[count].active)
                {
-                  game_o.explosion[count].y_pos += (game_o.thruster[game_o.player.thrusters].thrust/2);
+                  game_o.explosion[count].y_pos += (game.background.get_scroll_y(1));
                }
             }
             for (int count = 0; count < MAX_WEXPS; count++)
             {
                if (game_o.wexp[count].active)
                {
-                  game_o.wexp[count].y_pos += (game_o.thruster[game_o.player.thrusters].thrust/2);
+                  game_o.wexp[count].y_pos += (game.background.get_scroll_y(1));
                }
             }
             for (int count = 0; count < MAX_COINS; count++)
             {
                if (game_o.coin[count].active)
                {
-                  game_o.coin[count].y_pos += (game_o.thruster[game_o.player.thrusters].thrust/2);
+                  game_o.coin[count].y_pos += (game.background.get_scroll_y(1));
                }
             }
             for (int count = 1; count < MAX_POWERUPS; count++)
             {
                if (game_o.powerup[count].active)
                {
-                  game_o.powerup[count].y_pos += (game_o.thruster[game_o.player.thrusters].thrust/2);
+                  game_o.powerup[count].y_pos += (game.background.get_scroll_y(1));
                }
             }
          }
