@@ -148,9 +148,13 @@ class button_class
         void  set_button_type(int bt);
         int   get_button_type(void);
         void  set_arrow_left_pos_x(float set_data);
+        float get_arrow_left_pos_x(void);
         void  set_arrow_left_pos_y(float set_data);
+        float get_arrow_left_pos_y(void);
         void  set_arrow_right_pos_x(float set_data);
+        float get_arrow_right_pos_x(void);
         void  set_arrow_right_pos_y(float set_data);
+        float get_arrow_right_pos_y(void);
         void  set_arrow_width(float set_data);
         float get_arrow_width(void);
         void  set_arrow_height(float set_data);
@@ -165,12 +169,12 @@ class button_class
         int   get_number_of_choices(void);
         void  set_choice_enabled(int choice_number, bool enabled_data);
         bool  get_choice_enabled(int choice_number);
-        void  set_choice_zoom_size_counter(int choice_number, int zoom_data);
-        int   get_choice_zoom_size_counter(int choice_number);
-        void  set_arrow_left_zoom_size_counter(int zoom_data);
-        int   get_arrow_left_zoom_size_counter(void);
-        void  set_arrow_right_zoom_size_counter(int zoom_data);
-        int   get_arrow_right_zoom_size_counter(void);
+        void  set_choice_zoom_size_counter(int choice_number, float zoom_data);
+        float get_choice_zoom_size_counter(int choice_number);
+        void  set_arrow_left_zoom_size_counter(float zoom_data);
+        float get_arrow_left_zoom_size_counter(void);
+        void  set_arrow_right_zoom_size_counter(float zoom_data);
+        float get_arrow_right_zoom_size_counter(void);
         void  set_choice_highlighted(int choice_number, bool bool_data);
         bool  get_choice_highlighted(int choice_number);
         void  set_arrow_left_highlighted (bool bool_data);
@@ -338,6 +342,7 @@ class menu_class
         int   get_button_type(int button_number);
         void  set_button_choice_enabled(int button_number, int choice_number, bool enabled_data);
         bool  get_button_choice_enabled(int button_number, int choice_number);
+        int   mouse_over_button_choice(int button_number);
         int   process(void);
 };
 

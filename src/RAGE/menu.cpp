@@ -303,24 +303,24 @@ void button_class::draw(void)
     if (button_class::type == CHOICE) //----- choice button -----
     {
         // --- left  arrow ---
-        if (button_class::highlighted) bind_texture(button_class::image_arrow_highlighted);
+        if (button_class::get_arrow_left_highlighted()) bind_texture(button_class::image_arrow_highlighted);
         else bind_texture(button_class::image_arrow_normal);
         glLoadIdentity();
         glBegin( GL_QUADS );
-        glTexCoord2i( 0, 1 );glVertex3f(button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 0, 0 );glVertex3f(button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 0 );glVertex3f(button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 1 );glVertex3f(button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 0, 1 );glVertex3f(button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 0, 0 );glVertex3f(button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 0 );glVertex3f(button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 1 );glVertex3f(button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
         glEnd();
         // --- right arrow ---
-        if (button_class::highlighted) bind_texture(button_class::image_arrow_highlighted);
+        if (button_class::get_arrow_right_highlighted()) bind_texture(button_class::image_arrow_highlighted);
         else bind_texture(button_class::image_arrow_normal);
         glLoadIdentity();
         glBegin( GL_QUADS );
-        glTexCoord2i( 1, 0 );glVertex3f(button_class::arrow_right_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_right_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 1 );glVertex3f(button_class::arrow_right_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_right_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 0, 1 );glVertex3f(button_class::arrow_right_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_right_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 0, 0 );glVertex3f(button_class::arrow_right_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_right_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 0 );glVertex3f(button_class::arrow_right_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 1 );glVertex3f(button_class::arrow_right_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 0, 1 );glVertex3f(button_class::arrow_right_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 0, 0 );glVertex3f(button_class::arrow_right_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
         glEnd();
         // --- choice 1    ---
         delta_x = (button_class::arrow_width/3) *4;
@@ -328,10 +328,10 @@ void button_class::draw(void)
         else bind_texture(button_class::image_choice_disabled);
         glLoadIdentity();
         glBegin( GL_QUADS );
-        glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 0, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position)/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position)/2),button_class::pos_z);
+        glTexCoord2i( 0, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position)/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position)/2),button_class::pos_z);
+        glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position)/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position)/2),button_class::pos_z);
+        glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position)/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position)/2),button_class::pos_z);
         glEnd();
         // --- choice 2    ---
         delta_x += (button_class::arrow_width/2) *3;
@@ -339,10 +339,10 @@ void button_class::draw(void)
         else bind_texture(button_class::image_choice_disabled);
         glLoadIdentity();
         glBegin( GL_QUADS );
-        glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 0, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+1)/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+1)/2),button_class::pos_z);
+        glTexCoord2i( 0, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+1)/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+1)/2),button_class::pos_z);
+        glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+1)/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+1)/2),button_class::pos_z);
+        glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+1)/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+1)/2),button_class::pos_z);
         glEnd();
         // --- choice 3    ---
         delta_x += (button_class::arrow_width/2) *3;
@@ -350,10 +350,10 @@ void button_class::draw(void)
         else bind_texture(button_class::image_choice_disabled);
         glLoadIdentity();
         glBegin( GL_QUADS );
-        glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 0, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+2)/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+2)/2),button_class::pos_z);
+        glTexCoord2i( 0, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+2)/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+2)/2),button_class::pos_z);
+        glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+2)/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+2)/2),button_class::pos_z);
+        glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+2)/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+2)/2),button_class::pos_z);
         glEnd();
         // --- choice 4    ---
         delta_x += (button_class::arrow_width/2) *3;
@@ -361,30 +361,35 @@ void button_class::draw(void)
         else bind_texture(button_class::image_choice_disabled);
         glLoadIdentity();
         glBegin( GL_QUADS );
-        glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 0, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+3)/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+3)/2),button_class::pos_z);
+        glTexCoord2i( 0, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+3)/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+3)/2),button_class::pos_z);
+        glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+3)/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+3)/2),button_class::pos_z);
+        glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+3)/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+3)/2),button_class::pos_z);
         glEnd();
+        std::string temp_label = " ";
+        if (button_class::choice_data[button_class::choice_position+0].highlighted) temp_label = button_class::choice_data[button_class::choice_position+0].text_label;//choices
+        if (button_class::choice_data[button_class::choice_position+1].highlighted) temp_label = button_class::choice_data[button_class::choice_position+1].text_label;//choices
+        if (button_class::choice_data[button_class::choice_position+2].highlighted) temp_label = button_class::choice_data[button_class::choice_position+2].text_label;//choices
+        if (button_class::choice_data[button_class::choice_position+3].highlighted) temp_label = button_class::choice_data[button_class::choice_position+3].text_label;//choices
         switch(button_class::get_font()) //write selected level name
         {
             case 1:
-                if ((!button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
-                if ((!button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
-                if (( button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
-                if (( button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
+                if ((!button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),temp_label);
+                if ((!button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),temp_label);
+                if (( button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),temp_label);
+                if (( button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),temp_label);
             break;
             case 2:
-                if ((!button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_2.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
-                if ((!button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_2.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
-                if (( button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
-                if (( button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_2.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
+                if ((!button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_2.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),temp_label);
+                if ((!button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_2.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),temp_label);
+                if (( button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),temp_label);
+                if (( button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_2.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),temp_label);
             break;
             default:
-                if ((!button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
-                if ((!button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
-                if (( button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
-                if (( button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::choice_data[button_class::choice_position].text_label);
+                if ((!button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),temp_label);
+                if ((!button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),temp_label);
+                if (( button_class::choice_data[button_class::choice_position].active) && ( button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),temp_label);
+                if (( button_class::choice_data[button_class::choice_position].active) && (!button_class::choice_data[button_class::choice_position].highlighted)) font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),temp_label);
             break;
         };
     }
@@ -514,9 +519,19 @@ void  button_class::set_arrow_left_pos_x(float set_data)
     button_class::arrow_left_pos_x = set_data;
 };
 
+float button_class::get_arrow_left_pos_x(void)
+{
+    return(button_class::arrow_left_pos_x);
+};
+
 void  button_class::set_arrow_left_pos_y(float set_data)
 {
     button_class::arrow_left_pos_y = set_data;
+};
+
+float button_class::get_arrow_left_pos_y(void)
+{
+    return(button_class::arrow_left_pos_y);
 };
 
 void  button_class::set_arrow_right_pos_x(float set_data)
@@ -524,9 +539,19 @@ void  button_class::set_arrow_right_pos_x(float set_data)
     button_class::arrow_right_pos_x = set_data;
 };
 
+float button_class::get_arrow_right_pos_x(void)
+{
+    return(button_class::arrow_right_pos_x);
+};
+
 void  button_class::set_arrow_right_pos_y(float set_data)
 {
     button_class::arrow_right_pos_y = set_data;
+};
+
+float button_class::get_arrow_right_pos_y(void)
+{
+    return(button_class::arrow_right_pos_y);
 };
 
 void  button_class::set_arrow_width(float set_data)
@@ -606,32 +631,32 @@ bool  button_class::get_choice_enabled(int choice_number)
     return(button_class::choice_data[choice_number].enabled);
 };
 
-void  button_class::set_choice_zoom_size_counter(int choice_number, int zoom_data)
+void  button_class::set_choice_zoom_size_counter(int choice_number, float zoom_data)
 {
     button_class::choice_data[choice_number].zoom_size_counter = zoom_data;
 };
 
-int   button_class::get_choice_zoom_size_counter(int choice_number)
+float   button_class::get_choice_zoom_size_counter(int choice_number)
 {
     return(button_class::choice_data[choice_number].zoom_size_counter);
 };
 
-void  button_class::set_arrow_left_zoom_size_counter(int zoom_data)
+void  button_class::set_arrow_left_zoom_size_counter(float zoom_data)
 {
     button_class::arrow_left_zoom_size_counter = zoom_data;
 };
 
-int   button_class::get_arrow_left_zoom_size_counter(void)
+float   button_class::get_arrow_left_zoom_size_counter(void)
 {
     return(button_class::arrow_left_zoom_size_counter);
 };
 
-void  button_class::set_arrow_right_zoom_size_counter(int zoom_data)
+void  button_class::set_arrow_right_zoom_size_counter(float zoom_data)
 {
     button_class::arrow_right_zoom_size_counter = zoom_data;
 };
 
-int   button_class::get_arrow_right_zoom_size_counter(void)
+float   button_class::get_arrow_right_zoom_size_counter(void)
 {
     return(button_class::arrow_right_zoom_size_counter);
 };
@@ -1333,6 +1358,30 @@ bool  menu_class::get_button_choice_enabled(int button_number, int choice_number
     return(menu_class::button[button_number].get_choice_enabled(choice_number));
 };
 
+int  menu_class::mouse_over_button_choice(int button_number)
+{
+    int   return_data = -1;
+    float delta_x     =  0.0f;
+    if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
+    if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
+    delta_x = ((menu_class::button[button_number].get_arrow_width()/3) *4)+menu_class::button[button_number].get_arrow_left_pos_x()-(menu_class::button[button_number].get_choice_zoom_size_counter(menu_class::button[button_number].get_choice_position())/2);
+    if (game.physics.point_in_quadrangle(
+    delta_x
+    ,menu_class::button[button_number].get_arrow_width()
+    ,menu_class::button[button_number].get_arrow_left_pos_y()
+    ,menu_class::button[button_number].get_arrow_height()
+
+    ,game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+1; //Choice 1
+
+    delta_x += (menu_class::button[button_number].get_arrow_width()/2) *3;
+    if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+2; //Choice 2
+    delta_x += (menu_class::button[button_number].get_arrow_width()/2) *3;
+    if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+3; //Choice 3
+    delta_x += (menu_class::button[button_number].get_arrow_width()/2) *3;
+    if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+4; //Choice 4
+    return(return_data);
+};
+
 int menu_class::process(void)
 {
     float  drag_x_delta = 0.0f;
@@ -1416,6 +1465,31 @@ int menu_class::process(void)
         }
         if (game.io.select) return_value = current_vertical_selection;
     }
+    for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
+    {
+        if (menu_class::button[button_count].get_button_type() == CHOICE)//choice button
+        {
+            int menu_button_choice = menu_class::mouse_over_button_choice(button_count);
+            if ((menu_button_choice == 4000+button_count) && (!menu_class::button[button_count].get_arrow_left_highlighted())) return_value = 65533;
+            if  (menu_button_choice == 4000+button_count)      menu_class::button[button_count].set_arrow_left_highlighted(true);//left arrow
+            else menu_class::button[button_count].set_arrow_left_highlighted(false);
+            if ((menu_button_choice == 5000+button_count) && (!menu_class::button[button_count].get_arrow_right_highlighted())) return_value = 65533;
+            if  (menu_button_choice == 5000+button_count)      menu_class::button[button_count].set_arrow_right_highlighted(true);//right arrow
+            else menu_class::button[button_count].set_arrow_right_highlighted(false);
+            if ((menu_button_choice == (button_count*100)+1) && (!menu_class::button[button_count].get_choice_highlighted(menu_class::get_button_choice_position(button_count)+0))) return_value = 65533;
+            if  (menu_button_choice == (button_count*100)+1)      menu_class::button[button_count].set_choice_highlighted(menu_class::get_button_choice_position(button_count)+0,true);//Choice 1
+            else menu_class::button[button_count].set_choice_highlighted(menu_class::get_button_choice_position(button_count)+0,false);
+            if ((menu_button_choice == (button_count*100)+2) && (!menu_class::button[button_count].get_choice_highlighted(menu_class::get_button_choice_position(button_count)+1))) return_value = 65533;
+            if  (menu_button_choice == (button_count*100)+2)      menu_class::button[button_count].set_choice_highlighted(menu_class::get_button_choice_position(button_count)+1,true);//Choice 2
+            else menu_class::button[button_count].set_choice_highlighted(menu_class::get_button_choice_position(button_count)+1,false);
+            if ((menu_button_choice == (button_count*100)+3) && (!menu_class::button[button_count].get_choice_highlighted(menu_class::get_button_choice_position(button_count)+2))) return_value = 65533;
+            if  (menu_button_choice == (button_count*100)+3)      menu_class::button[button_count].set_choice_highlighted(menu_class::get_button_choice_position(button_count)+2,true);//Choice 3
+            else menu_class::button[button_count].set_choice_highlighted(menu_class::get_button_choice_position(button_count)+2,false);
+            if ((menu_button_choice == (button_count*100)+4) && (!menu_class::button[button_count].get_choice_highlighted(menu_class::get_button_choice_position(button_count)+3))) return_value = 65533;
+            if  (menu_button_choice == (button_count*100)+4)      menu_class::button[button_count].set_choice_highlighted(menu_class::get_button_choice_position(button_count)+3,true);//Choice 4
+            else menu_class::button[button_count].set_choice_highlighted(menu_class::get_button_choice_position(button_count)+3,false);
+        }
+    }
     // ---- zoom ----
     if (menu_class::zoom)
     {
@@ -1438,7 +1512,7 @@ int menu_class::process(void)
             }
             else
             {
-                menu_class::button[button_count].set_arrow_right_zoom_size_counter(menu_class::button[button_count].get_arrow_left_zoom_size_counter()-menu_class::button[button_count].get_zoom_speed());
+                menu_class::button[button_count].set_arrow_left_zoom_size_counter(menu_class::button[button_count].get_arrow_left_zoom_size_counter()-menu_class::button[button_count].get_zoom_speed());
                 if (menu_class::button[button_count].get_arrow_left_zoom_size_counter() < 0.0f) menu_class::button[button_count].set_arrow_left_zoom_size_counter(0.0f);
             }
             if (menu_class::button[button_count].get_arrow_right_highlighted())//right arrow
@@ -1456,7 +1530,6 @@ int menu_class::process(void)
                 if (menu_class::button[button_count].get_choice_highlighted(choice_count))//choices
                 {
                     menu_class::button[button_count].set_choice_zoom_size_counter(choice_count,menu_class::button[button_count].get_choice_zoom_size_counter(choice_count)+menu_class::button[button_count].get_zoom_speed());
-
                     if (menu_class::button[button_count].get_choice_zoom_size_counter(choice_count) > menu_class::button[button_count].get_zoom_size()) menu_class::button[button_count].set_choice_zoom_size_counter(choice_count,menu_class::button[button_count].get_zoom_size());
                 }
                 else
@@ -1496,8 +1569,10 @@ int menu_class::process(void)
                 drag_y_delta -= menu_class::title_pos_y;
                 menu_class::set_pos(menu_class::pos_x-drag_x_delta,menu_class::pos_y-drag_y_delta,menu_class::pos_z);
                 menu_class::set_button_spacing_auto();
-
                 menu_class::set_close_button_data(menu_class::get_close_button_pos_x()-drag_x_delta,menu_class::get_close_button_pos_y()-drag_y_delta,menu_class::get_close_button_pos_z());
+
+                menu_class::set_button_arrow_left_pos_x(menu_class::get_button_arrow_left_pos_x()-drag_x_delta);
+                menu_class::set_button_arrow_left_pos_y(menu_class::get_button_arrow_left_pos_y()-drag_y_delta);
             }
         }
         else
@@ -1508,8 +1583,6 @@ int menu_class::process(void)
     //---- return ----
     return(return_value);
 };
-
-
 
 
 
