@@ -69,7 +69,7 @@ int init_menu   (void)
     main_menu.set_color_highlighted(192,192,255,255);
     main_menu.set_color_disabled(064,064,128,128);
     main_menu.set_number_of_buttons(9);
-    main_menu.set_button_data  ( 1,L"あStar Map");
+    main_menu.set_button_data  ( 1,L"Star Map");
     main_menu.set_button_data  ( 2,L"Customize Starship");
     main_menu.set_button_data  ( 3,L"Achievements");
     main_menu.set_button_data  ( 4,L"Load Game");
@@ -379,8 +379,13 @@ int process_menu(void)
         activated_button = star_map_menu.process();
         switch (activated_button)
         {
-            case 1://
-
+            case 4001://left arrow on button 1
+                star_map_menu.set_button_choice_position(1,star_map_menu.get_button_choice_position(1)-1);
+                if (star_map_menu.get_button_choice_position(1) < 1) star_map_menu.set_button_choice_position(1,1);
+            break;
+            case 5001://right arrow on button 1
+                star_map_menu.set_button_choice_position(1,star_map_menu.get_button_choice_position(1)+1);
+                if (star_map_menu.get_button_choice_position(1) >= star_map_menu.get_number_of_choices(1)-3) star_map_menu.set_button_choice_position(1,star_map_menu.get_number_of_choices(1)-3);
             break;
             case 5://Return to main menu
                 sound.menu_select.play();

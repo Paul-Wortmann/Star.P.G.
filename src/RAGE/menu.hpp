@@ -323,8 +323,8 @@ class menu_class
         void  set_image_arrow_highlighted(int image_ref_no);
         void  set_image_arrow_disabled(int image_ref_no);
         void  set_button_images(int in, int ih, int id, int icd, int ian, int iah, int iad);
-        void  set_button_arrow_left_pos_x(float set_data);
-        void  set_button_arrow_left_pos_y(float set_data);
+        void  set_button_arrow_left_pos_x (float set_data);
+        void  set_button_arrow_left_pos_y (float set_data);
         void  set_button_arrow_right_pos_x(float set_data);
         void  set_button_arrow_right_pos_y(float set_data);
         void  set_button_arrow_width(float set_data);
@@ -343,6 +343,7 @@ class menu_class
         void  set_button_choice_enabled(int button_number, int choice_number, bool enabled_data);
         bool  get_button_choice_enabled(int button_number, int choice_number);
         int   mouse_over_button_choice(int button_number);
+        int   mouse_click_button_choice(int button_number);
         int   process(void);
 };
 
