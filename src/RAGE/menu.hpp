@@ -43,7 +43,7 @@ class button_class
             bool         active;
             bool         enabled;
             int          image_ref;
-            std::string  text_label;
+            std::wstring text_label;
             bool         highlighted;
             float        zoom_size_counter;
         };
@@ -82,7 +82,7 @@ class button_class
         float            arrow_height;
         float            slider_position;
         int              choice_position;
-        std::string      label;
+        std::wstring     label;
         int              button_font;
         int              normal_color_r;
         int              normal_color_g;
@@ -99,7 +99,7 @@ class button_class
 
     public:
         button_class(void);
-        button_class(float x, float y, float z, float w, float h, int in, int ih, int id, bool hl, bool en, bool gl, bool zm, float zs, int nr, int ng, int nb, int na, int hr, int hg, int hb, int ha, int dr, int dg, int db, int da, std::string lb);
+        button_class(float x, float y, float z, float w, float h, int in, int ih, int id, bool hl, bool en, bool gl, bool zm, float zs, int nr, int ng, int nb, int na, int hr, int hg, int hb, int ha, int dr, int dg, int db, int da, std::wstring lb);
        ~button_class(void);
         void  set_pos(float x, float y, float z);
         void  set_pos_x(float x);
@@ -111,7 +111,7 @@ class button_class
         void  set_size(float w, float h);
         float get_width(void);
         float get_height(void);
-        void  set_label(std::string text);
+        void  set_label(std::wstring text);
         void  set_color_normal(int r, int g, int b, int a);
         void  set_color_highlighted(int r, int g, int b, int a);
         void  set_color_disabled(int r, int g, int b, int a);
@@ -164,7 +164,7 @@ class button_class
         float get_slider_position(void);
         void  set_choice_position(int set_data);
         int   get_choice_position(void);
-        void  set_choice_data(int choice_number, int image_ref_data, std::string text_label_data, bool active_data);
+        void  set_choice_data(int choice_number, int image_ref_data, std::wstring text_label_data, bool active_data);
         void  set_number_of_choices(int choice_data);
         int   get_number_of_choices(void);
         void  set_choice_enabled(int choice_number, bool enabled_data);
@@ -229,7 +229,7 @@ class menu_class
         float         zoom_speed;
         float         height;
         float         width;
-        std::string   title_label;
+        std::wstring  title_label;
         float         title_height;
         float         title_width;
         float         title_pos_x;
@@ -267,8 +267,8 @@ class menu_class
         void  set_button_zoom(bool z, float zs);
         void  set_button_zoom(bool bool_data, float zs, float zsp);
         void  set_button_data(int button_number);
-        void  set_button_data(int button_number, std::string label);
-        void  set_button_data(int button_number, std::string label,float x, float y, float z);
+        void  set_button_data(int button_number, std::wstring label);
+        void  set_button_data(int button_number, std::wstring label,float x, float y, float z);
         void  set_button_data(void);
         void  set_button_size(float w, float h);
         void  set_number_of_buttons(int nob);
@@ -283,7 +283,7 @@ class menu_class
         float get_menu_y_pos(void);
         void  set_button_z_pos(float zp);
         float get_menu_z_pos(void);
-        void  set_menu_title(std::string menu_title);
+        void  set_menu_title(std::wstring menu_title);
         void  set_menu_font(int font_number);
         void  set_menu_button_font(int font_number);
         void  set_button_font(int button_number);
@@ -314,8 +314,8 @@ class menu_class
         int   get_mouse_delay_count(void);
         void  set_drag_active(bool bool_data);
         bool  get_drag_active(void);
-        void  set_title_data(std::string menu_title);
-        void  set_title_data(float x, float y, float z, float w, float h, std::string menu_title);
+        void  set_title_data(std::wstring menu_title);
+        void  set_title_data(float x, float y, float z, float w, float h, std::wstring menu_title);
         bool  mouse_over_title(void);
         bool  mouse_click_title(void);
         float set_buttons_auto(void);
@@ -335,7 +335,7 @@ class menu_class
         float get_button_slider_position(int button_number);
         void  set_button_choice_position(int button_number, int set_data);
         int   get_button_choice_position(int button_number);
-        void  set_button_choice_data(int button_number, int choice_number, int image_ref_data, std::string text_label_data, bool active_data, bool enabled_data);
+        void  set_button_choice_data(int button_number, int choice_number, int image_ref_data, std::wstring text_label_data, bool active_data, bool enabled_data);
         void  set_number_of_choices(int button_number, int choice_data);
         int   get_number_of_choices(int button_number);
         void  set_button_type(int button_number, int bt);

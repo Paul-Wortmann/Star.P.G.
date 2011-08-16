@@ -46,7 +46,7 @@ button_class::button_class(void)
     button_class::pos_z                 = 0.0f;
     button_class::height                = 0.0f;
     button_class::width                 = 0.0f;
-    button_class::label                 = "Label Not Set";
+    button_class::label                 = L"Label Not Set";
     button_class::normal_color_r        = 255;
     button_class::normal_color_g        = 255;
     button_class::normal_color_b        = 255;
@@ -62,7 +62,7 @@ button_class::button_class(void)
     button_class::type                  = 0;
 };
 
-button_class::button_class(float x, float y, float z, float w, float h, int in, int ih, int id, bool hl, bool en, bool gl, bool zm, float zs, int nr, int ng, int nb, int na, int hr, int hg, int hb, int ha, int dr, int dg, int db, int da, std::string lb)
+button_class::button_class(float x, float y, float z, float w, float h, int in, int ih, int id, bool hl, bool en, bool gl, bool zm, float zs, int nr, int ng, int nb, int na, int hr, int hg, int hb, int ha, int dr, int dg, int db, int da, std::wstring  lb)
 {
     button_class::type                = 0;
     button_class::active              = false;
@@ -137,7 +137,7 @@ float button_class::get_height(void)
     return(button_class::height);
 };
 
-void button_class::set_label(std::string text)
+void button_class::set_label(std::wstring text)
 {
     button_class::label = text;
 };
@@ -366,7 +366,7 @@ void button_class::draw(void)
         glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+3)/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+3)/2),button_class::pos_z);
         glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+3)/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+3)/2),button_class::pos_z);
         glEnd();
-        std::string temp_label = " ";
+        std::wstring temp_label = L" ";
         if (button_class::choice_data[button_class::choice_position+0].highlighted) temp_label = button_class::choice_data[button_class::choice_position+0].text_label;//choices
         if (button_class::choice_data[button_class::choice_position+1].highlighted) temp_label = button_class::choice_data[button_class::choice_position+1].text_label;//choices
         if (button_class::choice_data[button_class::choice_position+2].highlighted) temp_label = button_class::choice_data[button_class::choice_position+2].text_label;//choices
@@ -465,7 +465,7 @@ void  button_class::set_data(float x, float y, float z, float w, float h, int in
     button_class::pos_z               = z;
     button_class::width               = w;
     button_class::height              = h;
-    button_class::label               = "x";
+    button_class::label               = L"x";
 };
 
 void  button_class::set_data(float x, float y, float z, float w, float h)
@@ -477,7 +477,7 @@ void  button_class::set_data(float x, float y, float z, float w, float h)
     button_class::pos_z               = z;
     button_class::width               = w;
     button_class::height              = h;
-    button_class::label               = "x";
+    button_class::label               = L"x";
 };
 
 void  button_class::set_data(int in, int ih)
@@ -486,7 +486,7 @@ void  button_class::set_data(int in, int ih)
     button_class::image_normal        = in;
     button_class::image_highlighted   = ih;
     button_class::highlighted         = false;
-    button_class::label               = "x";
+    button_class::label               = L"x";
 };
 
 void  button_class::set_button_type(int bt)
@@ -604,7 +604,7 @@ int   button_class::get_choice_position(void)
     return(button_class::choice_position);
 };
 
-void  button_class::set_choice_data(int choice_number, int image_ref_data, std::string text_label_data, bool active_data)
+void  button_class::set_choice_data(int choice_number, int image_ref_data, std::wstring text_label_data, bool active_data)
 {
     button_class::choice_data[choice_number].active     = active_data;
     button_class::choice_data[choice_number].image_ref  = image_ref_data;
@@ -805,7 +805,7 @@ void menu_class::set_button_data(int button_number)
     menu_class::button[button_number].set_font(menu_class::button_font);
     menu_class::button[button_number].set_pos_z(menu_class::button_z_pos);
     menu_class::button[button_number].set_size(menu_class::button_width,menu_class::button_height);
-    menu_class::button[button_number].set_label("Not Set");
+    menu_class::button[button_number].set_label(L"Not Set");
     menu_class::button[button_number].set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
     menu_class::button[button_number].set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
     menu_class::button[button_number].set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
@@ -819,7 +819,7 @@ void menu_class::set_button_data(int button_number)
     menu_class::button[button_number].set_zoom(menu_class::zoom,menu_class::zoom_size,menu_class::zoom_speed);
 };
 
-void menu_class::set_button_data(int button_number, std::string label)
+void menu_class::set_button_data(int button_number, std::wstring label)
 {
     menu_class::button[button_number].set_highlighted(false);
     menu_class::button[button_number].set_button_type(NORMAL);
@@ -841,7 +841,7 @@ void menu_class::set_button_data(int button_number, std::string label)
     menu_class::button[button_number].set_zoom(menu_class::zoom,menu_class::zoom_size,menu_class::zoom_speed);
 };
 
-void menu_class::set_button_data(int button_number, std::string label,float x, float y, float z)
+void menu_class::set_button_data(int button_number, std::wstring label,float x, float y, float z)
 {
     menu_class::button[button_number].set_highlighted(false);
     menu_class::button[button_number].set_button_type(NORMAL);
@@ -873,7 +873,7 @@ void menu_class::set_button_data(void)
         menu_class::button[button_count].set_font(menu_class::button_font);
         menu_class::button[button_count].set_pos_z(menu_class::button_z_pos);
         menu_class::button[button_count].set_size(menu_class::button_width,menu_class::button_height);
-        menu_class::button[button_count].set_label("Label Not Set");
+        menu_class::button[button_count].set_label(L"Label Not Set");
         menu_class::button[button_count].set_color_normal(menu_class::normal_color_r,menu_class::normal_color_g,menu_class::normal_color_b,menu_class::normal_color_a);
         menu_class::button[button_count].set_color_highlighted(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a);
         menu_class::button[button_count].set_color_disabled(menu_class::disabled_color_r,menu_class::disabled_color_g,menu_class::disabled_color_b,menu_class::disabled_color_a);
@@ -984,7 +984,7 @@ float menu_class::get_menu_z_pos(void)
     return(menu_class::pos_z);
 };
 
-void menu_class::set_menu_title(std::string menu_title)
+void menu_class::set_menu_title(std::wstring menu_title)
 {
     menu_class::title_label = menu_title;
 };
@@ -1143,7 +1143,7 @@ bool  menu_class::get_drag_active(void)
     return(menu_class::drag_active);
 };
 
-void  menu_class::set_title_data(std::string menu_title)
+void  menu_class::set_title_data(std::wstring menu_title)
 {
     menu_class::title_label  = menu_title;
     menu_class::title_height = ((menu_class::button_spacing/3)*2);
@@ -1153,7 +1153,7 @@ void  menu_class::set_title_data(std::string menu_title)
     menu_class::title_pos_z  = menu_class::pos_z;
 };
 
-void  menu_class::set_title_data(float x, float y, float z, float w, float h, std::string menu_title)
+void  menu_class::set_title_data(float x, float y, float z, float w, float h, std::wstring menu_title)
 {
     menu_class::title_label  = menu_title;
     menu_class::title_height = h;
@@ -1320,7 +1320,7 @@ int menu_class::get_button_choice_position(int button_number)
     return(menu_class::button[button_number].get_choice_position());
 };
 
-void  menu_class::set_button_choice_data(int button_number, int choice_number, int image_ref_data, std::string text_label_data, bool active_data, bool enabled_data)
+void  menu_class::set_button_choice_data(int button_number, int choice_number, int image_ref_data, std::wstring text_label_data, bool active_data, bool enabled_data)
 {
     menu_class::set_button_choice_enabled(button_number,choice_number,enabled_data);
     menu_class::button[button_number].set_active(true);
@@ -1570,9 +1570,10 @@ int menu_class::process(void)
                 menu_class::set_pos(menu_class::pos_x-drag_x_delta,menu_class::pos_y-drag_y_delta,menu_class::pos_z);
                 menu_class::set_button_spacing_auto();
                 menu_class::set_close_button_data(menu_class::get_close_button_pos_x()-drag_x_delta,menu_class::get_close_button_pos_y()-drag_y_delta,menu_class::get_close_button_pos_z());
-
+/*
                 menu_class::set_button_arrow_left_pos_x(menu_class::get_button_arrow_left_pos_x()-drag_x_delta);
                 menu_class::set_button_arrow_left_pos_y(menu_class::get_button_arrow_left_pos_y()-drag_y_delta);
+*/
             }
         }
         else
