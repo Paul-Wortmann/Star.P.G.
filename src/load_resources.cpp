@@ -585,6 +585,8 @@ bool load_textures(void)
     texture.arrow_button_normal.load("data/textures/menu/arrow_normal.png");texture_count++;
     texture.arrow_button_highlighted.load("data/textures/menu/arrow_highlighted.png");texture_count++;
     texture.arrow_button_disabled.load("data/textures/menu/arrow_disabled.png");texture_count++;
+    texture.slider_normal.load("data/textures/menu/slider_normal.png");texture_count++;
+    texture.slider_highlighted.load("data/textures/menu/slider_highlighted.png");texture_count++;
     game.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
 };
@@ -1017,6 +1019,8 @@ bool bind_texture(int texture_number)
     if (texture_number == 402) glBindTexture( GL_TEXTURE_2D, texture.arrow_button_normal.texture_data);
     if (texture_number == 403) glBindTexture( GL_TEXTURE_2D, texture.arrow_button_highlighted.texture_data);
     if (texture_number == 404) glBindTexture( GL_TEXTURE_2D, texture.arrow_button_disabled.texture_data);
+    if (texture_number == 405) glBindTexture( GL_TEXTURE_2D, texture.slider_normal.texture_data);
+    if (texture_number == 406) glBindTexture( GL_TEXTURE_2D, texture.slider_highlighted.texture_data);
     return(true);
 };
 

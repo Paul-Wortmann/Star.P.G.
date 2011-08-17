@@ -37,11 +37,11 @@
 	<File name="src\RAGE\log.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1901" topLine="13" />
 	</File>
-	<File name="src\RAGE\menu.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="43477" topLine="724" />
+	<File name="src\RAGE\menu.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor1 position="66964" topLine="1325" />
 	</File>
-	<File name="src\RAGE\menu.hpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="7601" topLine="334" />
+	<File name="src\RAGE\menu.hpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="15235" topLine="325" />
 	</File>
 	<File name="src\RAGE\music.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1031" topLine="18" />
@@ -98,10 +98,10 @@
 		<Cursor1 position="944" topLine="0" />
 	</File>
 	<File name="src\load_resources.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="65565" topLine="757" />
+		<Cursor1 position="89169" topLine="999" />
 	</File>
 	<File name="src\load_resources.hpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="17912" topLine="536" />
+		<Cursor1 position="18074" topLine="554" />
 	</File>
 	<File name="src\main.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="830" topLine="0" />
@@ -109,8 +109,8 @@
 	<File name="src\main.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="851" topLine="0" />
 	</File>
-	<File name="src\menu_system.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="13598" topLine="234" />
+	<File name="src\menu_system.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="14456" topLine="246" />
 	</File>
 	<File name="src\menu_system.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="996" topLine="12" />

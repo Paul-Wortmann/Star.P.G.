@@ -40,7 +40,6 @@ extern  save_game_class          save_05;
 extern  save_game_class          save_06;
 extern  save_game_class          save_07;
         menu_type                menu;
-
         menu_class               main_menu(9);
         menu_class               star_map_menu(9);
         menu_class               customize_starship_menu(9);
@@ -64,7 +63,7 @@ int init_menu   (void)
     main_menu.set_menu_font(1);
     main_menu.set_image_background(395);
     main_menu.set_button_zoom(true,0.04f,0.005f);
-    main_menu.set_button_images(395,395,395,172,402,403,404);
+    main_menu.set_button_images(395,395,395,172,405,406,402,403,404);
     main_menu.set_color_normal(128,128,255,255);
     main_menu.set_color_highlighted(192,192,255,255);
     main_menu.set_color_disabled(064,064,128,128);
@@ -90,7 +89,7 @@ int init_menu   (void)
     star_map_menu.set_menu_font(1);
     star_map_menu.set_image_background(395);
     star_map_menu.set_button_zoom(true,0.04f,0.005f);
-    star_map_menu.set_button_images(395,395,395,172,402,403,404);
+    star_map_menu.set_button_images(395,395,395,172,405,406,402,403,404);
     star_map_menu.set_color_normal(128,128,255,255);
     star_map_menu.set_color_highlighted(192,192,255,255);
     star_map_menu.set_color_disabled(064,064,128,128);
@@ -138,7 +137,7 @@ int init_menu   (void)
     customize_starship_menu.set_menu_font(1);
     customize_starship_menu.set_image_background(395);
     customize_starship_menu.set_button_zoom(true,0.04f,0.005f);
-    customize_starship_menu.set_button_images(395,395,395,172,402,403,404);
+    customize_starship_menu.set_button_images(395,395,395,172,405,406,402,403,404);
     customize_starship_menu.set_color_normal(128,128,255,255);
     customize_starship_menu.set_color_highlighted(192,192,255,255);
     customize_starship_menu.set_color_disabled(064,064,128,128);
@@ -164,7 +163,7 @@ int init_menu   (void)
     achievements_menu.set_menu_font(1);
     achievements_menu.set_image_background(395);
     achievements_menu.set_button_zoom(true,0.04f,0.005f);
-    achievements_menu.set_button_images(395,395,395,172,402,403,404);
+    achievements_menu.set_button_images(395,395,395,172,405,406,402,403,404);
     achievements_menu.set_color_normal(128,128,255,255);
     achievements_menu.set_color_highlighted(192,192,255,255);
     achievements_menu.set_color_disabled(064,064,128,128);
@@ -190,7 +189,7 @@ int init_menu   (void)
     save_menu.set_menu_font(1);
     save_menu.set_image_background(395);
     save_menu.set_button_zoom(true,0.04f,0.005f);
-    save_menu.set_button_images(395,395,395,172,402,403,404);
+    save_menu.set_button_images(395,395,395,172,405,406,402,403,404);
     save_menu.set_color_normal(128,128,255,255);
     save_menu.set_color_highlighted(192,192,255,255);
     save_menu.set_color_disabled(064,064,128,128);
@@ -216,7 +215,7 @@ int init_menu   (void)
     load_menu.set_menu_font(1);
     load_menu.set_image_background(395);
     load_menu.set_button_zoom(true,0.04f,0.005f);
-    load_menu.set_button_images(395,395,395,172,402,403,404);
+    load_menu.set_button_images(395,395,395,172,405,406,402,403,404);
     load_menu.set_color_normal(128,128,255,255);
     load_menu.set_color_highlighted(192,192,255,255);
     load_menu.set_color_disabled(064,064,128,128);
@@ -242,7 +241,7 @@ int init_menu   (void)
     options_menu.set_menu_font(1);
     options_menu.set_image_background(395);
     options_menu.set_button_zoom(true,0.04f,0.005f);
-    options_menu.set_button_images(395,395,395,172,402,403,404);
+    options_menu.set_button_images(395,395,395,172,405,406,402,403,404);
     options_menu.set_color_normal(128,128,255,255);
     options_menu.set_color_highlighted(192,192,255,255);
     options_menu.set_color_disabled(064,064,128,128);
