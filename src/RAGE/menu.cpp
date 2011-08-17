@@ -691,6 +691,47 @@ bool  button_class::get_arrow_right_highlighted(void)
     return(button_class::arrow_right_highlighted);
 };
 
+void  button_class::set_slider_pos_x(float float_data)
+{
+    button_class::slider_pos_x = float_data;
+};
+
+float button_class::get_slider_pos_x(void)
+{
+    return(button_class::slider_pos_x);
+};
+
+void  button_class::set_slider_pos_y(float float_data)
+{
+    button_class::slider_pos_y = float_data;
+};
+
+float button_class::get_slider_pos_y(void)
+{
+    return(button_class::slider_pos_y);
+};
+
+void  button_class::set_slider_width(float float_data)
+{
+    button_class::slider_width = float_data;
+};
+
+float button_class::get_slider_width(void)
+{
+    return(button_class::slider_width);
+};
+
+void  button_class::set_slider_height(float float_data)
+{
+    button_class::slider_height = float_data;
+};
+
+float button_class::get_slider_height(void)
+{
+    return(button_class::slider_height);
+};
+
+
 //------------------------------------------ menu ---------------------------------------------------------------------------------------
 
 menu_class::menu_class(void)

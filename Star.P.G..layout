@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Windows" />
-	<File name="src\RAGE\background.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\RAGE\background.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="3446" topLine="84" />
 	</File>
 	<File name="src\RAGE\background.hpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -38,10 +38,10 @@
 		<Cursor1 position="1901" topLine="13" />
 	</File>
 	<File name="src\RAGE\menu.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="71665" topLine="1370" />
+		<Cursor1 position="43477" topLine="724" />
 	</File>
 	<File name="src\RAGE\menu.hpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="15898" topLine="321" />
+		<Cursor1 position="7601" topLine="334" />
 	</File>
 	<File name="src\RAGE\music.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1031" topLine="18" />
@@ -85,13 +85,13 @@
 	<File name="src\Star.P.G._private.rc" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="821" topLine="0" />
 	</File>
-	<File name="src\game.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\game.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="209801" topLine="3720" />
 	</File>
 	<File name="src\game.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="7802" topLine="324" />
 	</File>
-	<File name="src\levels.cpp" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="src\levels.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor1 position="36870" topLine="675" />
 	</File>
 	<File name="src\levels.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -109,8 +109,8 @@
 	<File name="src\main.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="851" topLine="0" />
 	</File>
-	<File name="src\menu_system.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="2104" topLine="38" />
+	<File name="src\menu_system.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="13598" topLine="234" />
 	</File>
 	<File name="src\menu_system.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="996" topLine="12" />

@@ -81,6 +81,10 @@ class button_class
         float            arrow_width;
         float            arrow_height;
         float            slider_position;
+        float            slider_pos_x;
+        float            slider_pos_y;
+        float            slider_width;
+        float            slider_height;
         int              choice_position;
         std::wstring     label;
         int              button_font;
@@ -181,6 +185,14 @@ class button_class
         bool  get_arrow_left_highlighted (void);
         void  set_arrow_right_highlighted(bool bool_data);
         bool  get_arrow_right_highlighted(void);
+        void  set_slider_pos_x(float float_data);
+        float get_slider_pos_x(void);
+        void  set_slider_pos_y(float float_data);
+        float get_slider_pos_y(void);
+        void  set_slider_width(float float_data);
+        float get_slider_width(void);
+        void  set_slider_height(float float_data);
+        float get_slider_height(void);
 };
 
 //-------------------------- menu -------------------------------
