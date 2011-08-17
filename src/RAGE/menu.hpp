@@ -55,6 +55,8 @@ class button_class
         int              image_highlighted;
         int              image_disabled;
         int              image_choice_disabled;
+        int              image_slider_normal;
+        int              image_slider_highlighted;
         int              image_arrow_normal;
         int              image_arrow_highlighted;
         int              image_arrow_disabled;
@@ -80,7 +82,7 @@ class button_class
         float            arrow_right_pos_y;
         float            arrow_width;
         float            arrow_height;
-        float            slider_position;
+        int              slider_position;
         float            slider_pos_x;
         float            slider_pos_y;
         float            slider_width;
@@ -124,6 +126,8 @@ class button_class
         void  set_image_disabled(int image);
         void  set_image_highlighted(int image);
         void  set_image_choice_disabled(int image);
+        void  set_image_slider_normal(int image);
+        void  set_image_slider_highlighted(int image);
         void  set_image_arrow_normal(int image);
         void  set_image_arrow_disabled(int image);
         void  set_image_arrow_highlighted(int image);
@@ -164,8 +168,8 @@ class button_class
         void  set_arrow_height(float set_data);
         float get_arrow_height(void);
         void  set_arrow_data(float lx, float ly, float rx, float ry, float w, float h);
-        void  set_slider_position(float set_data);
-        float get_slider_position(void);
+        void  set_slider_position(int set_data);
+        int   get_slider_position(void);
         void  set_choice_position(int set_data);
         int   get_choice_position(void);
         void  set_choice_data(int choice_number, int image_ref_data, std::wstring text_label_data, bool active_data);
@@ -217,6 +221,8 @@ class menu_class
         int           button_image_highlighted;
         int           button_image_disabled;
         int           button_image_choice_disabled;
+        int           button_image_slider_normal;
+        int           button_image_slider_highlighted;
         int           button_image_arrow_normal;
         int           button_image_arrow_highlighted;
         int           button_image_arrow_disabled;
@@ -334,7 +340,7 @@ class menu_class
         void  set_image_arrow_normal(int image_ref_no);
         void  set_image_arrow_highlighted(int image_ref_no);
         void  set_image_arrow_disabled(int image_ref_no);
-        void  set_button_images(int in, int ih, int id, int icd, int ian, int iah, int iad);
+        void  set_button_images(int in, int ih, int id, int icd, int isn, int ish, int ian, int iah, int iad);
         void  set_button_arrow_left_pos_x (float set_data);
         void  set_button_arrow_left_pos_y (float set_data);
         void  set_button_arrow_right_pos_x(float set_data);
@@ -356,6 +362,7 @@ class menu_class
         bool  get_button_choice_enabled(int button_number, int choice_number);
         int   mouse_over_button_choice(int button_number);
         int   mouse_click_button_choice(int button_number);
+        void  set_button_slider_data(int button_number, int position_data, std::wstring text_label_data, bool active_data, bool enabled_data);
         int   process(void);
 };
 

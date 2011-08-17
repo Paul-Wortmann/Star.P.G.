@@ -86,7 +86,7 @@ int init_menu   (void)
     star_map_menu.set_keyboard_delay(16);
     star_map_menu.set_mouse_delay(8);
     star_map_menu.set_pos(0.0f,-0.1f,0.001f);
-    star_map_menu.set_size(1.8f,1.2f);
+    star_map_menu.set_size(1.2f,1.0f);
     star_map_menu.set_menu_font(1);
     star_map_menu.set_image_background(395);
     star_map_menu.set_button_zoom(true,0.04f,0.005f);
@@ -94,39 +94,37 @@ int init_menu   (void)
     star_map_menu.set_color_normal(128,128,255,255);
     star_map_menu.set_color_highlighted(192,192,255,255);
     star_map_menu.set_color_disabled(064,064,128,128);
-    star_map_menu.set_number_of_buttons(5);
+    star_map_menu.set_number_of_buttons(3);
     star_map_menu.set_number_of_choices(1,25);
     star_map_menu.set_button_choice_position(1,1);
     star_map_menu.set_button_data( 1,L"Level Select");
-    star_map_menu.set_button_choice_data(1, 1,147,L"Taranis"   , true,!game_o.level_locked[ 0]);
-    star_map_menu.set_button_choice_data(1, 2,148,L"Teutates"  , true,!game_o.level_locked[ 1]);
-    star_map_menu.set_button_choice_data(1, 3,149,L"Esus"      , true,!game_o.level_locked[ 2]);
-    star_map_menu.set_button_choice_data(1, 4,150,L"Cantidious", true,!game_o.level_locked[ 3]);
-    star_map_menu.set_button_choice_data(1, 5,151,L"Vulcan"    , true,!game_o.level_locked[ 4]);
-    star_map_menu.set_button_choice_data(1, 6,152,L"Bacchus"   , true,!game_o.level_locked[ 5]);
-    star_map_menu.set_button_choice_data(1, 7,153,L"Janus"     , true,!game_o.level_locked[ 6]);
-    star_map_menu.set_button_choice_data(1, 8,154,L"Wrathorn"  , true,!game_o.level_locked[ 7]);
-    star_map_menu.set_button_choice_data(1, 9,155,L"Tartarus"  , true,!game_o.level_locked[ 8]);
-    star_map_menu.set_button_choice_data(1,10,156,L"Erebus"    , true,!game_o.level_locked[ 9]);
-    star_map_menu.set_button_choice_data(1,11,157,L"Nyx"       , true,!game_o.level_locked[10]);
-    star_map_menu.set_button_choice_data(1,12,158,L"Dediun"    , true,!game_o.level_locked[11]);
-    star_map_menu.set_button_choice_data(1,13,159,L"Niflheim"  , true,!game_o.level_locked[12]);
-    star_map_menu.set_button_choice_data(1,14,160,L"Muspelhiem", true,!game_o.level_locked[13]);
-    star_map_menu.set_button_choice_data(1,15,161,L"Hel"       , true,!game_o.level_locked[14]);
-    star_map_menu.set_button_choice_data(1,16,162,L"Paganite"  , true,!game_o.level_locked[15]);
-    star_map_menu.set_button_choice_data(1,17,163,L"Pixiu"     , true,!game_o.level_locked[16]);
-    star_map_menu.set_button_choice_data(1,18,164,L"Xiao"      , true,!game_o.level_locked[17]);
-    star_map_menu.set_button_choice_data(1,19,165,L"Fuxi"      , true,!game_o.level_locked[18]);
-    star_map_menu.set_button_choice_data(1,20,166,L"Haxorific" , true,!game_o.level_locked[19]);
-    star_map_menu.set_button_choice_data(1,21,167,L"Byakko"    , true,!game_o.level_locked[20]);
-    star_map_menu.set_button_choice_data(1,22,168,L"Enenra"    , true,!game_o.level_locked[21]);
-    star_map_menu.set_button_choice_data(1,23,169,L"Tengu"     , true,!game_o.level_locked[22]);
-    star_map_menu.set_button_choice_data(1,24,170,L"Robonoid"  , true,!game_o.level_locked[23]);
-    star_map_menu.set_button_choice_data(1,25,171,L"Oyabun"    , true,!game_o.level_locked[24]);
+    star_map_menu.set_button_choice_data(1, 1,147,L"Taranis           ", true,!game_o.level_locked[ 0]);
+    star_map_menu.set_button_choice_data(1, 2,148,L"Teutates          ", true,!game_o.level_locked[ 1]);
+    star_map_menu.set_button_choice_data(1, 3,149,L"Esus              ", true,!game_o.level_locked[ 2]);
+    star_map_menu.set_button_choice_data(1, 4,150,L"Cantidious        ", true,!game_o.level_locked[ 3]);
+    star_map_menu.set_button_choice_data(1, 5,151,L"Vulcan            ", true,!game_o.level_locked[ 4]);
+    star_map_menu.set_button_choice_data(1, 6,152,L"Bacchus           ", true,!game_o.level_locked[ 5]);
+    star_map_menu.set_button_choice_data(1, 7,153,L"Janus             ", true,!game_o.level_locked[ 6]);
+    star_map_menu.set_button_choice_data(1, 8,154,L"Wrathorn          ", true,!game_o.level_locked[ 7]);
+    star_map_menu.set_button_choice_data(1, 9,155,L"Tartarus          ", true,!game_o.level_locked[ 8]);
+    star_map_menu.set_button_choice_data(1,10,156,L"Erebus            ", true,!game_o.level_locked[ 9]);
+    star_map_menu.set_button_choice_data(1,11,157,L"Nyx               ", true,!game_o.level_locked[10]);
+    star_map_menu.set_button_choice_data(1,12,158,L"Dediun            ", true,!game_o.level_locked[11]);
+    star_map_menu.set_button_choice_data(1,13,159,L"Niflheim          ", true,!game_o.level_locked[12]);
+    star_map_menu.set_button_choice_data(1,14,160,L"Muspelhiem        ", true,!game_o.level_locked[13]);
+    star_map_menu.set_button_choice_data(1,15,161,L"Hel               ", true,!game_o.level_locked[14]);
+    star_map_menu.set_button_choice_data(1,16,162,L"Paganite          ", true,!game_o.level_locked[15]);
+    star_map_menu.set_button_choice_data(1,17,163,L"Pixiu             ", true,!game_o.level_locked[16]);
+    star_map_menu.set_button_choice_data(1,18,164,L"Xiao              ", true,!game_o.level_locked[17]);
+    star_map_menu.set_button_choice_data(1,19,165,L"Fuxi              ", true,!game_o.level_locked[18]);
+    star_map_menu.set_button_choice_data(1,20,166,L"Haxorific         ", true,!game_o.level_locked[19]);
+    star_map_menu.set_button_choice_data(1,21,167,L"Byakko            ", true,!game_o.level_locked[20]);
+    star_map_menu.set_button_choice_data(1,22,168,L"Enenra            ", true,!game_o.level_locked[21]);
+    star_map_menu.set_button_choice_data(1,23,169,L"Tengu             ", true,!game_o.level_locked[22]);
+    star_map_menu.set_button_choice_data(1,24,170,L"Robonoid          ", true,!game_o.level_locked[23]);
+    star_map_menu.set_button_choice_data(1,25,171,L"Oyabun            ", true,!game_o.level_locked[24]);
     star_map_menu.set_button_active( 2,false);
-    star_map_menu.set_button_active( 3,false);
-    star_map_menu.set_button_active( 4,false);
-    star_map_menu.set_button_data  ( 5,L"Main Menu");
+    star_map_menu.set_button_data  ( 3,L"Main Menu");
     star_map_menu.set_buttons_auto();
     star_map_menu.set_close_button_data(396,397);
     star_map_menu.set_button_arrow_data_auto(1);
@@ -249,6 +247,7 @@ int init_menu   (void)
     options_menu.set_color_highlighted(192,192,255,255);
     options_menu.set_color_disabled(064,064,128,128);
     options_menu.set_number_of_buttons(10);
+    options_menu.set_button_type(1,SLIDER);
     options_menu.set_button_data  ( 1,L"Sound Volume");
     options_menu.set_button_data  ( 2,L"Music Volume");
     options_menu.set_button_data  ( 3,L"Audio bit rate");
@@ -428,15 +427,27 @@ int process_menu(void)
                     game.log.File_Write("Starting level ",game_o.level);
                 }
             break;
+            case 105://Choice 5 selected
+                if (!game_o.level_locked[star_map_menu.get_button_choice_position(1) + 4 -1])
+                {
+                    sound.menu_select.play();
+                    game.music_next_track = true;
+                    game_o.level = star_map_menu.get_button_choice_position(1) + 4 -1;
+                    init_game_level(game_o.level);
+                    game.game_active = true;
+                    game.menu_active = false;
+                    game.log.File_Write("Starting level ",game_o.level);
+                }
+            break;
             case 4001://left arrow on button 1
                 star_map_menu.set_button_choice_position(1,star_map_menu.get_button_choice_position(1)-1);
                 if (star_map_menu.get_button_choice_position(1) < 1) star_map_menu.set_button_choice_position(1,1);
             break;
             case 5001://right arrow on button 1
                 star_map_menu.set_button_choice_position(1,star_map_menu.get_button_choice_position(1)+1);
-                if (star_map_menu.get_button_choice_position(1) >= star_map_menu.get_number_of_choices(1)-3) star_map_menu.set_button_choice_position(1,star_map_menu.get_number_of_choices(1)-3);
+                if (star_map_menu.get_button_choice_position(1) >= star_map_menu.get_number_of_choices(1)-4) star_map_menu.set_button_choice_position(1,star_map_menu.get_number_of_choices(1)-4);
             break;
-            case 5://Return to main menu
+            case 3://Return to main menu
                 sound.menu_select.play();
                 game.menu_level = 1;
                 game.log.File_Write("Entering main menu, from Star_Map menu. - button selected.");
@@ -760,7 +771,7 @@ int process_menu(void)
             case 1://
 
             break;
-            case 9://Return to main menu
+            case 10://Return to main menu
                 sound.menu_select.play();
                 game.menu_level = 1;
                 game.log.File_Write("Entering main menu, from Options menu. - button selected.");
