@@ -95,6 +95,7 @@ int init_menu   (void)
     star_map_menu.set_color_disabled(064,064,128,128);
     star_map_menu.set_number_of_buttons(3);
     star_map_menu.set_number_of_choices(1,25);
+    star_map_menu.set_number_of_visable_choices(1,5);
     star_map_menu.set_button_choice_position(1,1);
     star_map_menu.set_button_data( 1,L"Level Select");
     star_map_menu.set_button_choice_data(1, 1,147,L"Taranis           ", true,!game_o.level_locked[ 0]);
