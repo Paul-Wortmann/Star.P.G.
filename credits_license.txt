@@ -1,6 +1,9 @@
 ---------------------------------------------------
   Design, programming and almost everything else...
 ---------------------------------------------------
+
+Paul Wortmann
+
 www.physhexgames.co.nr
 physhex@gmail.com
 

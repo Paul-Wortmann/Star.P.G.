@@ -1698,6 +1698,9 @@ int menu_class::process(void)
 
 
 
+visible
+
+visable
 
 
 
