@@ -1,4 +1,15 @@
-Star.P.G.
+                            -------------
+                            | Star.P.G. |
+                            -------------
+
+
+Paul Wortmann
+www.physhexgames.co.nr
+physhex@gmail.com
+
+
+---------
+| About |
 ---------
 
 An arcade style, side scrolling shooter.
@@ -14,16 +25,18 @@ I only placed Star.P.G. on the Internet in order to utilize the benefits of vers
 I am not looking for help or contributions to the code.
 Although if you are an artist or musician, and wish to improve the games resources, I would be happy to include them and give due credit.
 
-Savegames:
-----------
+--------------
+| Savegames: |
+--------------
 
 As this is still a work in progress, the format of the savegames may, and does change quite often.
 It is recommended you either overwrite your older savegames with new ones, or delete the older ones when upgrading to a newer version of Star.P.G..
 Or better still remove the older version of the game completely, before installing a newer version.
 If the game fails to load, try deleting / modifying the Star.P.G..cfg file, it may be caused by recent improvements to the game.
 
-Keys:
------
+---------
+| Keys: |
+---------
 
 "Left"    ->    Move starship left.
 "Right"   ->    Move starship right.
@@ -34,15 +47,20 @@ Keys:
 "P"       ->    Pause / Resume.
 "ESC"	  ->    Menu, Quit.
 
-Credits and License
--------------------
+-----------------------
+| Credits and License |
+-----------------------
+
 This information can be found in the credits_license.txt file.
 
-ChangeLog
--------------------
+-------------
+| ChangeLog |
+-------------
+
 This information can be found in the changelog.txt file.
 
----------------------------------------------------
+
+---------------------------------------------------------------------------------
 www.physhexgames.co.nr
 physhex@gmail.com
 
