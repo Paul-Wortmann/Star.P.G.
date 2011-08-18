@@ -95,7 +95,7 @@ int init_menu   (void)
     star_map_menu.set_color_disabled(064,064,128,128);
     star_map_menu.set_number_of_buttons(3);
     star_map_menu.set_number_of_choices(1,25);
-    star_map_menu.set_number_of_visable_choices(1,5);
+    star_map_menu.set_number_of_visible_choices(1,5);
     star_map_menu.set_button_choice_position(1,1);
     star_map_menu.set_button_data( 1,L"Level Select");
     star_map_menu.set_button_choice_data(1, 1,147,L"Taranis           ", true,!game_o.level_locked[ 0]);
@@ -268,7 +268,6 @@ int init_menu   (void)
 int process_menu(void)
 {
     int activated_button = -1;
-    game.background.process();
     // ------------------- main menu ------------
     activated_button = -1;
     if (game.menu_level == 1)
@@ -1556,6 +1555,7 @@ int diplay_menu (void)
 /*-----------------------------------------------------------------------------*/
    if (menu.level == 8) //Player death screen
    {
+/*
       bind_texture(84); //background 01
       glLoadIdentity();
       glBegin( GL_QUADS );
@@ -1573,7 +1573,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 0 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos, 2.0f + menu.background_scroll[1].y_pos, 0.1f );
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
       glEnd();
-
+*/
       bind_texture(330); //logo
       glLoadIdentity();
       glBegin( GL_QUADS );
@@ -1615,6 +1615,7 @@ int diplay_menu (void)
    {
       int level_t = game_o.level + 1;
       if (level_t > 24) level_t = 24;
+      /*
       bind_texture(63); //background 01
       glLoadIdentity();
       glBegin( GL_QUADS );
@@ -1632,7 +1633,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 0 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos, 2.0f + menu.background_scroll[1].y_pos, 0.1f );
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
       glEnd();
-
+*/
       bind_texture(30); //logo
       glLoadIdentity();
       glBegin( GL_QUADS );
@@ -1692,6 +1693,7 @@ int diplay_menu (void)
    {
       int level_t = game_o.level + 1;
       if (level_t > 24) level_t = 24;
+      /*
       bind_texture(63); //background 01
       glLoadIdentity();
       glBegin( GL_QUADS );
@@ -1709,7 +1711,7 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 0 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos, 2.0f + menu.background_scroll[1].y_pos, 0.1f );
 	  glTexCoord2i( 1, 1 );glVertex3f( 2.0f + menu.background_scroll[1].x_pos,-2.0f + menu.background_scroll[1].y_pos, 0.1f );
       glEnd();
-
+*/
       bind_texture(30); //logo
       glLoadIdentity();
       glBegin( GL_QUADS );
@@ -1739,52 +1741,4 @@ int diplay_menu (void)
    }
    glPopMatrix();
    return(0);
-};
-
-int process_menu_background(void)
-{
-// -------------------------   background 0  -----------------------------------
-   if (menu.background_scroll[0].x_dir == 0)
-   {
-      menu.background_scroll[0].x_pos -= menu.background_scroll[0].scroll_rate;
-      if (menu.background_scroll[0].x_pos < 0.0f) menu.background_scroll[0].x_dir = 1;
-   }
-   if (menu.background_scroll[0].x_dir == 1)
-   {
-      menu.background_scroll[0].x_pos += menu.background_scroll[0].scroll_rate;
-      if (menu.background_scroll[0].x_pos > 1.0f) menu.background_scroll[0].x_dir = 0;
-   }
-
-   if (menu.background_scroll[0].y_dir == 0)
-   {
-      menu.background_scroll[0].y_pos -= menu.background_scroll[0].scroll_rate;
-      if (menu.background_scroll[0].y_pos < 0.0f) menu.background_scroll[0].y_dir = 1;
-   }
-   if (menu.background_scroll[0].y_dir == 1)
-   {
-      menu.background_scroll[0].y_pos += menu.background_scroll[0].scroll_rate;
-      if (menu.background_scroll[0].y_pos > 0.75f) menu.background_scroll[0].y_dir = 0;
-   }
-// -------------------------   background 1  -----------------------------------
-   if (menu.background_scroll[1].x_dir == 0)
-   {
-      menu.background_scroll[1].x_pos -= menu.background_scroll[1].scroll_rate;
-      if (menu.background_scroll[1].x_pos < 0.0f) menu.background_scroll[1].x_dir = 1;
-   }
-   if (menu.background_scroll[1].x_dir == 1)
-   {
-      menu.background_scroll[1].x_pos += menu.background_scroll[1].scroll_rate;
-      if (menu.background_scroll[1].x_pos > 1.0f) menu.background_scroll[1].x_dir = 0;
-   }
-
-   if (menu.background_scroll[1].y_dir == 0)
-   {
-      menu.background_scroll[1].y_pos -= menu.background_scroll[1].scroll_rate;
-      if (menu.background_scroll[1].y_pos < 0.0f) menu.background_scroll[1].y_dir = 1;
-   }
-   if (menu.background_scroll[1].y_dir == 1)
-   {
-      menu.background_scroll[1].y_pos += menu.background_scroll[1].scroll_rate;
-      if (menu.background_scroll[1].y_pos > 0.75f) menu.background_scroll[1].y_dir = 0;
-   }
 };

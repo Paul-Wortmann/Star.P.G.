@@ -150,6 +150,7 @@ int main(int argc, char *argv[])
         diplay_menu ();
         glPopMatrix();
         SDL_GL_SwapBuffers();
+        if (game.process_ready) game.background.process();
         if (game.process_ready) process_menu();
        }
 //****************************************** GAME *****************************************
@@ -319,7 +320,7 @@ int main(int argc, char *argv[])
         }
         glPushMatrix();
         diplay_menu ();
-        if (game.process_ready) process_menu_background();
+        if (game.process_ready) game.background.process();
         glPopMatrix();
         SDL_GL_SwapBuffers();
         game.config.menu_delay_count++;
@@ -353,7 +354,7 @@ int main(int argc, char *argv[])
         glPushMatrix();
         menu.level = 9;
         diplay_menu ();
-        if (game.process_ready) process_menu_background();
+        if (game.process_ready) game.background.process();
         glPopMatrix ();
         SDL_GL_SwapBuffers();
         game.config.menu_delay_count++;
@@ -416,7 +417,7 @@ int main(int argc, char *argv[])
         glPushMatrix();
         menu.level = 10;
         diplay_menu ();
-        if (game.process_ready) process_menu_background();
+        if (game.process_ready) game.background.process();
         glPopMatrix ();
         SDL_GL_SwapBuffers();
         game.config.menu_delay_count++;

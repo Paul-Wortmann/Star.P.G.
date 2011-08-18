@@ -22,18 +22,8 @@
 #ifndef MENU_SYSTEM_H
 #define MENU_SYSTEM_H
 
-struct background_scroll_type
-{
-   int   x_dir;
-   int   y_dir;
-   float x_pos;
-   float y_pos;
-   float scroll_rate;
-};
-
 struct menu_type
 {
-  background_scroll_type background_scroll[2];
   int possition;
   int possition_max;
   int level;
@@ -43,7 +33,6 @@ struct menu_type
 };
 
 int diplay_menu (void);
-int process_menu_background(void);
 int process_menu(void);
 int init_menu   (void);
 

@@ -324,7 +324,7 @@ void button_class::draw(void)
         glEnd();
         // --- choice buttons    ---
         delta_x = (button_class::arrow_width/3) *4;
-        for(int choice_count = 0; choice_count < button_class::get_number_of_visable_choices(); choice_count++)
+        for(int choice_count = 0; choice_count < button_class::get_number_of_visible_choices(); choice_count++)
         {
             if (button_class::choice_data[button_class::choice_position+choice_count].enabled) bind_texture(button_class::choice_data[button_class::choice_position+choice_count].image_ref);
             else bind_texture(button_class::image_choice_disabled);
@@ -338,7 +338,7 @@ void button_class::draw(void)
             delta_x += (button_class::arrow_width/2) *3;
         }
         std::wstring temp_label = L" ";
-        for(int choice_count = 0; choice_count < button_class::get_number_of_visable_choices(); choice_count++)
+        for(int choice_count = 0; choice_count < button_class::get_number_of_visible_choices(); choice_count++)
         {
             if ((button_class::choice_data[button_class::choice_position+choice_count].highlighted) && ( button_class::choice_data[button_class::choice_position+choice_count].enabled)) temp_label = button_class::choice_data[button_class::choice_position+choice_count].text_label;//choices
             if ((button_class::choice_data[button_class::choice_position+choice_count].highlighted) && (!button_class::choice_data[button_class::choice_position+choice_count].enabled)) temp_label = L">> LEVEL LOCKED <<";//choices
@@ -727,14 +727,14 @@ void  button_class::set_image_slider_highlighted(int image)
     button_class::image_slider_highlighted = image;
 };
 
-void  button_class::set_number_of_visable_choices(int visable_choice_data)
+void  button_class::set_number_of_visible_choices(int visible_choice_data)
 {
-    button_class::number_of_visable_choices = visable_choice_data;
+    button_class::number_of_visible_choices = visible_choice_data;
 };
 
-int   button_class::get_number_of_visable_choices(void)
+int   button_class::get_number_of_visible_choices(void)
 {
-    return(button_class::number_of_visable_choices);
+    return(button_class::number_of_visible_choices);
 };
 
 //------------------------------------------ menu ---------------------------------------------------------------------------------------
@@ -1447,7 +1447,7 @@ int  menu_class::mouse_over_button_choice(int button_number)
     if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
     if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
     delta_x = ((menu_class::button[button_number].get_arrow_width()/4) *3)+menu_class::button[button_number].get_arrow_left_pos_x()+(menu_class::button[button_number].get_choice_zoom_size_counter(menu_class::button[button_number].get_choice_position())/2)+(menu_class::button[button_number].get_arrow_width()/2);
-    for(int choice_count = 1; choice_count < menu_class::get_number_of_visable_choices(button_number)+1; choice_count++)
+    for(int choice_count = 1; choice_count < menu_class::get_number_of_visible_choices(button_number)+1; choice_count++)
     {
         if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+choice_count;
         delta_x += (menu_class::button[button_number].get_arrow_width()/2) *3;
@@ -1464,7 +1464,7 @@ int  menu_class::mouse_click_button_choice(int button_number)
         if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
         if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
         delta_x = ((menu_class::button[button_number].get_arrow_width()/4) *3)+menu_class::button[button_number].get_arrow_left_pos_x()+(menu_class::button[button_number].get_choice_zoom_size_counter(menu_class::button[button_number].get_choice_position())/2)+(menu_class::button[button_number].get_arrow_width()/2);
-        for(int choice_count = 1; choice_count < menu_class::get_number_of_visable_choices(button_number)+1; choice_count++)
+        for(int choice_count = 1; choice_count < menu_class::get_number_of_visible_choices(button_number)+1; choice_count++)
         {
             if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+choice_count;
             delta_x += (menu_class::button[button_number].get_arrow_width()/2) *3;
@@ -1480,14 +1480,14 @@ void  menu_class::set_button_slider_data(int button_number, int position_data, s
     menu_class::button[button_number].set_button_type(SLIDER);
 };
 
-void  menu_class::set_number_of_visable_choices(int button_number, int visable_choice_data)
+void  menu_class::set_number_of_visible_choices(int button_number, int visible_choice_data)
 {
-    menu_class::button[button_number].set_number_of_visable_choices(visable_choice_data);
+    menu_class::button[button_number].set_number_of_visible_choices(visible_choice_data);
 };
 
-int   menu_class::get_number_of_visable_choices(int button_number)
+int   menu_class::get_number_of_visible_choices(int button_number)
 {
-    return(menu_class::button[button_number].get_number_of_visable_choices());
+    return(menu_class::button[button_number].get_number_of_visible_choices());
 };
 
 int menu_class::process(void)
@@ -1585,7 +1585,7 @@ int menu_class::process(void)
             if ((menu_button_choice == 5000+button_count) && (!menu_class::button[button_count].get_arrow_right_highlighted())) return_value = 65533;
             if  (menu_button_choice == 5000+button_count)      menu_class::button[button_count].set_arrow_right_highlighted(true);//right arrow
             else menu_class::button[button_count].set_arrow_right_highlighted(false);
-            for(int choice_count = 1; choice_count < menu_class::get_number_of_visable_choices(button_count)+1; choice_count++)
+            for(int choice_count = 1; choice_count < menu_class::get_number_of_visible_choices(button_count)+1; choice_count++)
             {
                 if ((menu_button_choice == (button_count*100)+choice_count) && (!menu_class::button[button_count].get_choice_highlighted(menu_class::get_button_choice_position(button_count)+choice_count-1))) return_value = 65533;
                 if  (menu_button_choice == (button_count*100)+choice_count)      menu_class::button[button_count].set_choice_highlighted(menu_class::get_button_choice_position(button_count)+choice_count-1,true);//Choices
@@ -1696,11 +1696,6 @@ int menu_class::process(void)
     return(return_value);
 };
 
-
-
-visible
-
-visable
 
 
 

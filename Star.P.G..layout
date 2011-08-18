@@ -5,7 +5,7 @@
 		<Cursor1 position="3446" topLine="84" />
 	</File>
 	<File name="src\RAGE\background.hpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1421" topLine="27" />
+		<Cursor1 position="1983" topLine="38" />
 	</File>
 	<File name="src\RAGE\config.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1368" topLine="11" />
@@ -103,7 +103,7 @@
 	<File name="src\load_resources.hpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="18074" topLine="554" />
 	</File>
-	<File name="src\main.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\main.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="830" topLine="0" />
 	</File>
 	<File name="src\main.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -113,7 +113,7 @@
 		<Cursor1 position="14456" topLine="246" />
 	</File>
 	<File name="src\menu_system.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="996" topLine="12" />
+		<Cursor1 position="1036" topLine="3" />
 	</File>
 	<File name="src\misc.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1130" topLine="63" />

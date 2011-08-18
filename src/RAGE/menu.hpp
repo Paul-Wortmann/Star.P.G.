@@ -49,7 +49,7 @@ class button_class
         };
         choice_data_type choice_data[MAX_MENU_CHOICE_BUTTONS];
         int              number_of_choices;
-        int              number_of_visable_choices;
+        int              number_of_visible_choices;
         int              type;
         bool             active;
         int              image_normal;
@@ -176,8 +176,8 @@ class button_class
         void  set_choice_data(int choice_number, int image_ref_data, std::wstring text_label_data, bool active_data);
         void  set_number_of_choices(int choice_data);
         int   get_number_of_choices(void);
-        void  set_number_of_visable_choices(int visable_choice_data);
-        int   get_number_of_visable_choices(void);
+        void  set_number_of_visible_choices(int visible_choice_data);
+        int   get_number_of_visible_choices(void);
         void  set_choice_enabled(int choice_number, bool enabled_data);
         bool  get_choice_enabled(int choice_number);
         void  set_choice_zoom_size_counter(int choice_number, float zoom_data);
@@ -359,8 +359,8 @@ class menu_class
         void  set_button_choice_data(int button_number, int choice_number, int image_ref_data, std::wstring text_label_data, bool active_data, bool enabled_data);
         void  set_number_of_choices(int button_number, int choice_data);
         int   get_number_of_choices(int button_number);
-        void  set_number_of_visable_choices(int button_number, int visable_choice_data);
-        int   get_number_of_visable_choices(int button_number);
+        void  set_number_of_visible_choices(int button_number, int visible_choice_data);
+        int   get_number_of_visible_choices(int button_number);
         void  set_button_type(int button_number, int bt);
         int   get_button_type(int button_number);
         void  set_button_choice_enabled(int button_number, int choice_number, bool enabled_data);
