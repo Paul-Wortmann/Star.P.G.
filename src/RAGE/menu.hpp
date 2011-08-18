@@ -84,6 +84,7 @@ class button_class
         float            arrow_width;
         float            arrow_height;
         int              slider_position;
+        int              slider_position_max;
         float            slider_pos_x;
         float            slider_pos_y;
         float            slider_width;
@@ -171,6 +172,8 @@ class button_class
         void  set_arrow_data(float lx, float ly, float rx, float ry, float w, float h);
         void  set_slider_position(int set_data);
         int   get_slider_position(void);
+        void  set_slider_position_max(int set_data);
+        int   get_slider_position_max(void);
         void  set_choice_position(int set_data);
         int   get_choice_position(void);
         void  set_choice_data(int choice_number, int image_ref_data, std::wstring text_label_data, bool active_data);
@@ -354,6 +357,8 @@ class menu_class
         void  set_button_arrow_data_auto(int button_number);
         void  set_button_slider_position(int button_number, float set_data);
         float get_button_slider_position(int button_number);
+        void  set_button_slider_position_max(int button_number, float set_data);
+        float get_button_slider_position_max(int button_number);
         void  set_button_choice_position(int button_number, int set_data);
         int   get_button_choice_position(int button_number);
         void  set_button_choice_data(int button_number, int choice_number, int image_ref_data, std::wstring text_label_data, bool active_data, bool enabled_data);
@@ -368,6 +373,8 @@ class menu_class
         int   mouse_over_button_choice(int button_number);
         int   mouse_click_button_choice(int button_number);
         void  set_button_slider_data(int button_number, int position_data, std::wstring text_label_data, bool active_data, bool enabled_data);
+        int   mouse_over_button_slider(int button_number);
+        int   mouse_click_button_slider(int button_number);
         int   process(void);
 };
 

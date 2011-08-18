@@ -378,6 +378,29 @@ void button_class::draw(void)
         glTexCoord2i( 0, 1 );glVertex3f(button_class::arrow_right_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
         glTexCoord2i( 0, 0 );glVertex3f(button_class::arrow_right_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
         glEnd();
+        // --- slider bar ---
+        if (button_class::highlighted) bind_texture(button_class::image_slider_highlighted);
+        else bind_texture(button_class::image_slider_normal);
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f(button_class::pos_x-((button_class::width/200)*70)-(button_class::get_zoom_size_counter()/2),button_class::pos_y-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 0, 0 );glVertex3f(button_class::pos_x-((button_class::width/200)*70)-(button_class::get_zoom_size_counter()/2),button_class::pos_y+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 0 );glVertex3f(button_class::pos_x-((button_class::width/200)*70)+(((button_class::width/200)*140)*((float)button_class::slider_position/(float)button_class::slider_position_max))+(button_class::get_zoom_size_counter()/2),button_class::pos_y+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glTexCoord2i( 1, 1 );glVertex3f(button_class::pos_x-((button_class::width/200)*70)+(((button_class::width/200)*140)*((float)button_class::slider_position/(float)button_class::slider_position_max))+(button_class::get_zoom_size_counter()/2),button_class::pos_y-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+        glEnd();
+        std::wstring temp_label = button_class::label;
+        switch(button_class::get_font()) //write selected level name
+        {
+            case 1:
+                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+            break;
+            case 2:
+                font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
+            break;
+            default:
+                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+            break;
+        };
     }
 };
 
@@ -737,6 +760,16 @@ int   button_class::get_number_of_visible_choices(void)
     return(button_class::number_of_visible_choices);
 };
 
+void  button_class::set_slider_position_max(int set_data)
+{
+    button_class::slider_position_max = set_data;
+};
+
+int   button_class::get_slider_position_max(void)
+{
+    return(button_class::slider_position_max);
+};
+
 //------------------------------------------ menu ---------------------------------------------------------------------------------------
 //------------------------------------------ menu ---------------------------------------------------------------------------------------
 //------------------------------------------ menu ---------------------------------------------------------------------------------------
@@ -868,6 +901,8 @@ void menu_class::set_button_data(int button_number)
     menu_class::button[button_number].set_image_highlighted(menu_class::button_image_highlighted);
     menu_class::button[button_number].set_image_disabled(menu_class::button_image_disabled);
     menu_class::button[button_number].set_image_choice_disabled(menu_class::button_image_choice_disabled);
+    menu_class::button[button_number].set_image_slider_normal      (menu_class::button_image_slider_normal);
+    menu_class::button[button_number].set_image_slider_highlighted (menu_class::button_image_slider_highlighted);
     menu_class::button[button_number].set_image_arrow_normal(menu_class::button_image_arrow_normal);
     menu_class::button[button_number].set_image_arrow_highlighted(menu_class::button_image_arrow_highlighted);
     menu_class::button[button_number].set_image_arrow_disabled(menu_class::button_image_arrow_disabled);
@@ -890,6 +925,8 @@ void menu_class::set_button_data(int button_number, std::wstring label)
     menu_class::button[button_number].set_image_highlighted(menu_class::button_image_highlighted);
     menu_class::button[button_number].set_image_disabled(menu_class::button_image_disabled);
     menu_class::button[button_number].set_image_choice_disabled(menu_class::button_image_choice_disabled);
+    menu_class::button[button_number].set_image_slider_normal      (menu_class::button_image_slider_normal);
+    menu_class::button[button_number].set_image_slider_highlighted (menu_class::button_image_slider_highlighted);
     menu_class::button[button_number].set_image_arrow_normal(menu_class::button_image_arrow_normal);
     menu_class::button[button_number].set_image_arrow_highlighted(menu_class::button_image_arrow_highlighted);
     menu_class::button[button_number].set_image_arrow_disabled(menu_class::button_image_arrow_disabled);
@@ -912,6 +949,8 @@ void menu_class::set_button_data(int button_number, std::wstring label,float x, 
     menu_class::button[button_number].set_image_highlighted(menu_class::button_image_highlighted);
     menu_class::button[button_number].set_image_disabled(menu_class::button_image_disabled);
     menu_class::button[button_number].set_image_choice_disabled(menu_class::button_image_choice_disabled);
+    menu_class::button[button_number].set_image_slider_normal      (menu_class::button_image_slider_normal);
+    menu_class::button[button_number].set_image_slider_highlighted (menu_class::button_image_slider_highlighted);
     menu_class::button[button_number].set_image_arrow_normal(menu_class::button_image_arrow_normal);
     menu_class::button[button_number].set_image_arrow_highlighted(menu_class::button_image_arrow_highlighted);
     menu_class::button[button_number].set_image_arrow_disabled(menu_class::button_image_arrow_disabled);
@@ -936,6 +975,8 @@ void menu_class::set_button_data(void)
         menu_class::button[button_count].set_image_highlighted(menu_class::button_image_highlighted);
         menu_class::button[button_count].set_image_disabled(menu_class::button_image_disabled);
         menu_class::button[button_count].set_image_choice_disabled(menu_class::button_image_choice_disabled);
+        menu_class::button[button_count].set_image_slider_normal      (menu_class::button_image_slider_normal);
+        menu_class::button[button_count].set_image_slider_highlighted (menu_class::button_image_slider_highlighted);
         menu_class::button[button_count].set_image_arrow_normal(menu_class::button_image_arrow_normal);
         menu_class::button[button_count].set_image_arrow_highlighted(menu_class::button_image_arrow_highlighted);
         menu_class::button[button_count].set_image_arrow_disabled(menu_class::button_image_arrow_disabled);
@@ -1490,6 +1531,37 @@ int   menu_class::get_number_of_visible_choices(int button_number)
     return(menu_class::button[button_number].get_number_of_visible_choices());
 };
 
+void  menu_class::set_button_slider_position_max(int button_number, float set_data)
+{
+    menu_class::button[button_number].set_slider_position_max(set_data);
+};
+
+float menu_class::get_button_slider_position_max(int button_number)
+{
+    return(menu_class::button[button_number].get_slider_position_max());
+};
+
+int  menu_class::mouse_over_button_slider(int button_number)
+{
+    int   return_data = -1;
+    float delta_x     =  0.0f;
+    if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
+    if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
+    return(return_data);
+};
+
+int  menu_class::mouse_click_button_slider(int button_number)
+{
+    int   return_data = -1;
+    float delta_x     =  0.0f;
+    if (game.io.mouse_button_left)
+    {
+        if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
+        if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
+    }
+    return(return_data);
+};
+
 int menu_class::process(void)
 {
     float  drag_x_delta = 0.0f;
@@ -1543,7 +1615,7 @@ int menu_class::process(void)
         }
     }
     //---- mouse ----
-    if ((menu_class::mouse_over_any_button()) && (!menu_class::get_drag_active()))
+    if ((menu_class::mouse_over_any_button()) && (!menu_class::get_drag_active()))//drag
     {
         for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
         {
@@ -1558,7 +1630,7 @@ int menu_class::process(void)
                 else  menu_class::button[button_count].set_highlighted(false);
             }
         }
-        for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
+        for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)//normal
         {
             if (menu_class::button[button_count].get_button_type() == NORMAL)
             {
@@ -1574,7 +1646,7 @@ int menu_class::process(void)
         }
         if (game.io.select) return_value = current_vertical_selection;
     }
-    for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
+    for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)//choice
     {
         if (menu_class::button[button_count].get_button_type() == CHOICE)//choice button
         {
@@ -1596,6 +1668,22 @@ int menu_class::process(void)
                 menu_class::mouse_delay_count = 0;
                 if (return_value == -1) return_value = menu_class::mouse_click_button_choice(button_count);
             }
+        }
+    }
+    for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)//slider
+    {
+        if (menu_class::button[button_count].get_button_type() == SLIDER)//slider button
+        {
+            int menu_button_choice = menu_class::mouse_over_button_slider(button_count);
+            if ((menu_button_choice == 4000+button_count) && (!menu_class::button[button_count].get_arrow_left_highlighted())) return_value = 65533;
+            if  (menu_button_choice == 4000+button_count)      menu_class::button[button_count].set_arrow_left_highlighted(true);//left arrow
+            else menu_class::button[button_count].set_arrow_left_highlighted(false);
+            if ((menu_button_choice == 5000+button_count) && (!menu_class::button[button_count].get_arrow_right_highlighted())) return_value = 65533;
+            if  (menu_button_choice == 5000+button_count)      menu_class::button[button_count].set_arrow_right_highlighted(true);//right arrow
+            else menu_class::button[button_count].set_arrow_right_highlighted(false);
+            if ((menu_class::button[button_count].get_arrow_right_highlighted()) || (menu_class::button[button_count].get_arrow_left_highlighted())) menu_class::button[button_count].set_highlighted(true);
+            else menu_class::button[button_count].set_highlighted(false);
+            if (return_value == -1) return_value = menu_class::mouse_click_button_slider(button_count);
         }
     }
     // ---- zoom ----
@@ -1695,7 +1783,6 @@ int menu_class::process(void)
     //---- return ----
     return(return_value);
 };
-
 
 
 
