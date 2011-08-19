@@ -196,28 +196,28 @@ struct player_type
 
 struct shield_type
 {
-   char  name[24];
-   bool  active;
-   int   level;
-   float level_1;
-   float level_2;
-   float level_3;
-   float experience;
-   int   image;
-   float absorption;
+   std::wstring name;
+   bool         active;
+   int          level;
+   float        level_1;
+   float        level_2;
+   float        level_3;
+   float        experience;
+   int          image;
+   float        absorption;
 };
 
 struct thruster_type
 {
-   char  name[24];
-   bool  active;
-   int   level;
-   float level_1;
-   float level_2;
-   float level_3;
-   float experience;
-   int   image;
-   float thrust;
+   std::wstring name;
+   bool         active;
+   int          level;
+   float        level_1;
+   float        level_2;
+   float        level_3;
+   float        experience;
+   int          image;
+   float        thrust;
 };
 
 struct enemy_type

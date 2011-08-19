@@ -166,7 +166,23 @@ int init_menu   (void)
     customize_starship_menu.set_button_choice_data(2, 6,game_o.projectile[ 4].image,game_o.projectile[ 4].name, true, game_o.projectile[ 4].active);
     customize_starship_menu.set_button_choice_data(2, 7,game_o.projectile[ 5].image,game_o.projectile[ 5].name, true, game_o.projectile[ 5].active);
     customize_starship_menu.set_button_data  ( 3,L"Shield           ");
+    customize_starship_menu.set_number_of_choices(3,6);
+    customize_starship_menu.set_number_of_visible_choices(3,5);
+    customize_starship_menu.set_button_choice_position(3,1);
+    customize_starship_menu.set_button_choice_data(3, 1,283,L"None              ", true,true);
+    customize_starship_menu.set_button_choice_data(3, 2,game_o.shield[ 0].image,game_o.shield[ 0].name, true, game_o.shield[ 0].active);
+    customize_starship_menu.set_button_choice_data(3, 3,game_o.shield[ 1].image,game_o.shield[ 1].name, true, game_o.shield[ 1].active);
+    customize_starship_menu.set_button_choice_data(3, 4,game_o.shield[ 2].image,game_o.shield[ 2].name, true, game_o.shield[ 2].active);
+    customize_starship_menu.set_button_choice_data(3, 5,game_o.shield[ 3].image,game_o.shield[ 3].name, true, game_o.shield[ 3].active);
+    customize_starship_menu.set_button_choice_data(3, 6,game_o.shield[ 4].image,game_o.shield[ 4].name, true, game_o.shield[ 4].active);
     customize_starship_menu.set_button_data  ( 4,L"Thrusters        ");
+    customize_starship_menu.set_number_of_choices(4,4);
+    customize_starship_menu.set_number_of_visible_choices(4,4);
+    customize_starship_menu.set_button_choice_position(4,1);
+    customize_starship_menu.set_button_choice_data(4, 1,283,L"None              ", true,true);
+    customize_starship_menu.set_button_choice_data(4, 2,game_o.thruster[ 0].image,game_o.thruster[ 0].name, true, game_o.thruster[ 0].active);
+    customize_starship_menu.set_button_choice_data(4, 3,game_o.thruster[ 1].image,game_o.thruster[ 1].name, true, game_o.thruster[ 1].active);
+    customize_starship_menu.set_button_choice_data(4, 4,game_o.thruster[ 2].image,game_o.thruster[ 2].name, true, game_o.thruster[ 2].active);
     customize_starship_menu.set_button_data  ( 5,L"Support Ships    ");
     customize_starship_menu.set_button_active( 6,false);
     customize_starship_menu.set_button_data  ( 7,L"Main Menu        ");
@@ -468,7 +484,7 @@ int process_menu(void)
             break;
             case 5001://right arrow on button 1
                 star_map_menu.set_button_choice_position(1,star_map_menu.get_button_choice_position(1)+1);
-                if (star_map_menu.get_button_choice_position(1) >= star_map_menu.get_number_of_choices(1)-4) star_map_menu.set_button_choice_position(1,star_map_menu.get_number_of_choices(1)-4);
+                if (star_map_menu.get_button_choice_position(1) >= star_map_menu.get_number_of_choices(1)-(star_map_menu.get_number_of_visible_choices(1)-1)) star_map_menu.set_button_choice_position(1,star_map_menu.get_number_of_choices(1)-(star_map_menu.get_number_of_visible_choices(1)-1));
             break;
             case 3://Return to main menu
                 sound.menu_select.play();
@@ -508,6 +524,14 @@ int process_menu(void)
         customize_starship_menu.set_button_choice_data(2, 5,game_o.projectile[ 3].image,game_o.projectile[ 3].name, true, game_o.projectile[ 3].active);
         customize_starship_menu.set_button_choice_data(2, 6,game_o.projectile[ 4].image,game_o.projectile[ 4].name, true, game_o.projectile[ 4].active);
         customize_starship_menu.set_button_choice_data(2, 7,game_o.projectile[ 5].image,game_o.projectile[ 5].name, true, game_o.projectile[ 5].active);
+        customize_starship_menu.set_button_choice_data(3, 2,game_o.shield[ 0].image,game_o.shield[ 0].name, true, game_o.shield[ 0].active);
+        customize_starship_menu.set_button_choice_data(3, 3,game_o.shield[ 1].image,game_o.shield[ 1].name, true, game_o.shield[ 1].active);
+        customize_starship_menu.set_button_choice_data(3, 4,game_o.shield[ 2].image,game_o.shield[ 2].name, true, game_o.shield[ 2].active);
+        customize_starship_menu.set_button_choice_data(3, 5,game_o.shield[ 3].image,game_o.shield[ 3].name, true, game_o.shield[ 3].active);
+        customize_starship_menu.set_button_choice_data(3, 6,game_o.shield[ 4].image,game_o.shield[ 4].name, true, game_o.shield[ 4].active);
+        customize_starship_menu.set_button_choice_data(4, 2,game_o.thruster[ 0].image,game_o.thruster[ 0].name, true, game_o.thruster[ 0].active);
+        customize_starship_menu.set_button_choice_data(4, 3,game_o.thruster[ 1].image,game_o.thruster[ 1].name, true, game_o.thruster[ 1].active);
+        customize_starship_menu.set_button_choice_data(4, 4,game_o.thruster[ 2].image,game_o.thruster[ 2].name, true, game_o.thruster[ 2].active);
         activated_button = customize_starship_menu.process();
         switch (activated_button)
         {
@@ -518,6 +542,38 @@ int process_menu(void)
                 sound.menu_select.play();
                 game.menu_level = 1;
                 game.log.File_Write("Entering main menu, from Customize_Starship menu. - button selected.");
+            break;
+            case 4001://left arrow on button 1
+                customize_starship_menu.set_button_choice_position(1,customize_starship_menu.get_button_choice_position(1)-1);
+                if (customize_starship_menu.get_button_choice_position(1) < 1) customize_starship_menu.set_button_choice_position(1,1);
+            break;
+            case 5001://right arrow on button 1
+                customize_starship_menu.set_button_choice_position(1,customize_starship_menu.get_button_choice_position(1)+1);
+                if (customize_starship_menu.get_button_choice_position(1) >= customize_starship_menu.get_number_of_choices(1)-(customize_starship_menu.get_number_of_visible_choices(1)-1)) customize_starship_menu.set_button_choice_position(1,customize_starship_menu.get_number_of_choices(1)-(customize_starship_menu.get_number_of_visible_choices(1)-1));
+            break;
+            case 4002://left arrow on button 2
+                customize_starship_menu.set_button_choice_position(2,customize_starship_menu.get_button_choice_position(2)-1);
+                if (customize_starship_menu.get_button_choice_position(2) < 1) customize_starship_menu.set_button_choice_position(2,1);
+            break;
+            case 5002://right arrow on button 2
+                customize_starship_menu.set_button_choice_position(2,customize_starship_menu.get_button_choice_position(2)+1);
+                if (customize_starship_menu.get_button_choice_position(2) >= customize_starship_menu.get_number_of_choices(2)-(customize_starship_menu.get_number_of_visible_choices(2)-1)) customize_starship_menu.set_button_choice_position(2,customize_starship_menu.get_number_of_choices(2)-(customize_starship_menu.get_number_of_visible_choices(2)-1));
+            break;
+            case 4003://left arrow on button 3
+                customize_starship_menu.set_button_choice_position(3,customize_starship_menu.get_button_choice_position(3)-1);
+                if (customize_starship_menu.get_button_choice_position(3) < 1) customize_starship_menu.set_button_choice_position(3,1);
+            break;
+            case 5003://right arrow on button 3
+                customize_starship_menu.set_button_choice_position(3,customize_starship_menu.get_button_choice_position(3)+1);
+                if (customize_starship_menu.get_button_choice_position(3) >= customize_starship_menu.get_number_of_choices(3)-(customize_starship_menu.get_number_of_visible_choices(3)-1)) customize_starship_menu.set_button_choice_position(3,customize_starship_menu.get_number_of_choices(3)-(customize_starship_menu.get_number_of_visible_choices(3)-1));
+            break;
+            case 4004://left arrow on button 4
+                customize_starship_menu.set_button_choice_position(4,customize_starship_menu.get_button_choice_position(4)-1);
+                if (customize_starship_menu.get_button_choice_position(4) < 1) customize_starship_menu.set_button_choice_position(4,1);
+            break;
+            case 5004://right arrow on button 4
+                customize_starship_menu.set_button_choice_position(4,customize_starship_menu.get_button_choice_position(4)+1);
+                if (customize_starship_menu.get_button_choice_position(4) >= customize_starship_menu.get_number_of_choices(4)-(customize_starship_menu.get_number_of_visible_choices(4)-1)) customize_starship_menu.set_button_choice_position(4,customize_starship_menu.get_number_of_choices(4)-(customize_starship_menu.get_number_of_visible_choices(4)-1));
             break;
             case 65533://menu choice changed
                 sound.menu_move.play();

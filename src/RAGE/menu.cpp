@@ -326,16 +326,19 @@ void button_class::draw(void)
         delta_x = (button_class::arrow_width/3) *4;
         for(int choice_count = 0; choice_count < button_class::get_number_of_visible_choices(); choice_count++)
         {
-            if (button_class::choice_data[button_class::choice_position+choice_count].enabled) bind_texture(button_class::choice_data[button_class::choice_position+choice_count].image_ref);
-            else bind_texture(button_class::image_choice_disabled);
-            glLoadIdentity();
-            glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::pos_z);
-            glTexCoord2i( 0, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::pos_z);
-            glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::pos_z);
-            glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::pos_z);
-            glEnd();
-            delta_x += (button_class::arrow_width/2) *3;
+            if (button_class::choice_data[button_class::choice_position+choice_count].active)
+            {
+                if (button_class::choice_data[button_class::choice_position+choice_count].enabled) bind_texture(button_class::choice_data[button_class::choice_position+choice_count].image_ref);
+                else bind_texture(button_class::image_choice_disabled);
+                glLoadIdentity();
+                glBegin( GL_QUADS );
+                glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::pos_z);
+                glTexCoord2i( 0, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::pos_z);
+                glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::pos_z);
+                glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::pos_z);
+                glEnd();
+                delta_x += (button_class::arrow_width/2) *3;
+            }
         }
         std::wstring temp_label = L" ";
         for(int choice_count = 0; choice_count < button_class::get_number_of_visible_choices(); choice_count++)
@@ -1544,7 +1547,6 @@ float menu_class::get_button_slider_position_max(int button_number)
 int  menu_class::mouse_over_button_slider(int button_number)
 {
     int   return_data = -1;
-    float delta_x     =  0.0f;
     if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
     if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
     return(return_data);
@@ -1553,7 +1555,6 @@ int  menu_class::mouse_over_button_slider(int button_number)
 int  menu_class::mouse_click_button_slider(int button_number)
 {
     int   return_data = -1;
-    float delta_x     =  0.0f;
     if (game.io.mouse_button_left)
     {
         if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
