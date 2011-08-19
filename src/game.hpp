@@ -22,6 +22,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <string>
 #include <SDL/SDL.h>
 
 const int   MAX_NPCS        = 32;
@@ -131,23 +132,23 @@ struct bullet_type
 
 struct projectile_type
 {
-   char     name[16];
-   bool     active;
-   int      level;
-   float    experience;
-   float    level_1;
-   float    level_2;
-   float    level_3;
-   int      image;
-   float    size;
-   int      sound;
-   float    damage;
-   float    health;
-   float    speed;
-   int      rate_of_fire;
-   int      movement;
-   float    wave_size;
-   float    wave_velocity;
+   std::wstring name;
+   bool         active;
+   int          level;
+   float        experience;
+   float        level_1;
+   float        level_2;
+   float        level_3;
+   int          image;
+   float        size;
+   int          sound;
+   float        damage;
+   float        health;
+   float        speed;
+   int          rate_of_fire;
+   int          movement;
+   float        wave_size;
+   float        wave_velocity;
 };
 
 struct sideship_type

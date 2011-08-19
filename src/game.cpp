@@ -136,14 +136,7 @@ int init_game(void)
       game_o.player.bullet[count].wave_speed     =  0.0035f;
       game_o.player.bullet[count].wave_direction =  1;
    }
-   game_o.projectile[ 0].name[0]       = 'B';
-   game_o.projectile[ 0].name[1]       = 'l';
-   game_o.projectile[ 0].name[2]       = 'a';
-   game_o.projectile[ 0].name[3]       = 's';
-   game_o.projectile[ 0].name[4]       = 't';
-   game_o.projectile[ 0].name[5]       = 'e';
-   game_o.projectile[ 0].name[6]       = 'r';
-   game_o.projectile[ 0].name[7]       = 's';
+   game_o.projectile[ 0].name          = L"Blasters";
    game_o.projectile[ 0].active        = true;
    game_o.projectile[ 0].level         = 0;
    game_o.projectile[ 0].experience    = 0;
@@ -161,16 +154,7 @@ int init_game(void)
    game_o.projectile[ 0].wave_velocity = 0.00015f;
    game_o.projectile[ 0].size          = 0.075f;
 
-   game_o.projectile[ 1].name[0]       = 'C';
-   game_o.projectile[ 1].name[1]       = 'h';
-   game_o.projectile[ 1].name[2]       = 'a';
-   game_o.projectile[ 1].name[3]       = 'i';
-   game_o.projectile[ 1].name[4]       = 'n';
-   game_o.projectile[ 1].name[5]       = ' ';
-   game_o.projectile[ 1].name[6]       = 'g';
-   game_o.projectile[ 1].name[7]       = 'u';
-   game_o.projectile[ 1].name[8]       = 'n';
-   game_o.projectile[ 1].name[9]       = 's';
+   game_o.projectile[ 1].name          = L"Chain Guns";
    game_o.projectile[ 1].active        = false;
    game_o.projectile[ 1].level         = 0;
    game_o.projectile[ 1].experience    = 0;
@@ -188,18 +172,7 @@ int init_game(void)
    game_o.projectile[ 1].wave_velocity = 0.0035f;
    game_o.projectile[ 1].size          = 0.05f;
 
-   game_o.projectile[ 2].name[0]       = 'B';
-   game_o.projectile[ 2].name[1]       = 'u';
-   game_o.projectile[ 2].name[2]       = 'r';
-   game_o.projectile[ 2].name[3]       = 's';
-   game_o.projectile[ 2].name[4]       = 't';
-   game_o.projectile[ 2].name[5]       = ' ';
-   game_o.projectile[ 2].name[6]       = 'l';
-   game_o.projectile[ 2].name[7]       = 'a';
-   game_o.projectile[ 2].name[8]       = 's';
-   game_o.projectile[ 2].name[9]       = 'e';
-   game_o.projectile[ 2].name[10]      = 'r';
-   game_o.projectile[ 2].name[11]      = 's';
+   game_o.projectile[ 2].name          = L"Burst Lasers";
    game_o.projectile[ 2].active        = false;
    game_o.projectile[ 2].level         = 0;
    game_o.projectile[ 2].experience    = 0;
@@ -217,18 +190,7 @@ int init_game(void)
    game_o.projectile[ 2].wave_velocity = 0.00015f;
    game_o.projectile[ 2].size          = 0.05f;
 
-   game_o.projectile[ 3].name[0]       = 'R';
-   game_o.projectile[ 3].name[1]       = 'a';
-   game_o.projectile[ 3].name[2]       = 'i';
-   game_o.projectile[ 3].name[3]       = 'l';
-   game_o.projectile[ 3].name[4]       = ' ';
-   game_o.projectile[ 3].name[5]       = 't';
-   game_o.projectile[ 3].name[6]       = 'u';
-   game_o.projectile[ 3].name[7]       = 'r';
-   game_o.projectile[ 3].name[8]       = 'r';
-   game_o.projectile[ 3].name[9]       = 'e';
-   game_o.projectile[ 3].name[10]      = 't';
-   game_o.projectile[ 3].name[11]      = 's';
+   game_o.projectile[ 3].name          = L"Rail Turrets";
    game_o.projectile[ 3].active        = false;
    game_o.projectile[ 3].level         = 0;
    game_o.projectile[ 3].experience    = 0;
@@ -246,20 +208,7 @@ int init_game(void)
    game_o.projectile[ 3].wave_velocity = 0.0035f;
    game_o.projectile[ 3].size          = 0.05f;
 
-   game_o.projectile[ 4].name[0]       = 'P';
-   game_o.projectile[ 4].name[1]       = 'l';
-   game_o.projectile[ 4].name[2]       = 'a';
-   game_o.projectile[ 4].name[3]       = 's';
-   game_o.projectile[ 4].name[4]       = 'm';
-   game_o.projectile[ 4].name[5]       = 'a';
-   game_o.projectile[ 4].name[6]       = ' ';
-   game_o.projectile[ 4].name[7]       = 'r';
-   game_o.projectile[ 4].name[8]       = 'o';
-   game_o.projectile[ 4].name[9]       = 'c';
-   game_o.projectile[ 4].name[10]      = 'k';
-   game_o.projectile[ 4].name[11]      = 'e';
-   game_o.projectile[ 4].name[12]      = 't';
-   game_o.projectile[ 4].name[13]      = 's';
+   game_o.projectile[ 4].name          = L"Plasma Rockets";
    game_o.projectile[ 4].active        = false;
    game_o.projectile[ 4].level         = 0;
    game_o.projectile[ 4].experience    = 0;
@@ -277,17 +226,7 @@ int init_game(void)
    game_o.projectile[ 4].wave_velocity = 0.0035f;
    game_o.projectile[ 4].size          = 0.05f;
 
-   game_o.projectile[ 5].name[0]       = 'I';
-   game_o.projectile[ 5].name[1]       = 'o';
-   game_o.projectile[ 5].name[2]       = 'n';
-   game_o.projectile[ 5].name[3]       = ' ';
-   game_o.projectile[ 5].name[4]       = 'c';
-   game_o.projectile[ 5].name[5]       = 'a';
-   game_o.projectile[ 5].name[6]       = 'n';
-   game_o.projectile[ 5].name[7]       = 'n';
-   game_o.projectile[ 5].name[8]       = 'o';
-   game_o.projectile[ 5].name[9]       = 'n';
-   game_o.projectile[ 5].name[10]      = 's';
+   game_o.projectile[ 5].name          = L"Ion Cannons";
    game_o.projectile[ 5].active        = false;
    game_o.projectile[ 5].level         = 0;
    game_o.projectile[ 5].experience    = 0;
@@ -305,17 +244,7 @@ int init_game(void)
    game_o.projectile[ 5].wave_velocity = 0.0035f;
    game_o.projectile[ 5].size          = 0.05f;
 
-   game_o.projectile[ 6].name[0]       = 'E';
-   game_o.projectile[ 6].name[1]       = 'n';
-   game_o.projectile[ 6].name[2]       = 'e';
-   game_o.projectile[ 6].name[3]       = 'm';
-   game_o.projectile[ 6].name[4]       = 'y';
-   game_o.projectile[ 6].name[5]       = ' ';
-   game_o.projectile[ 6].name[6]       = 'l';
-   game_o.projectile[ 6].name[7]       = 'a';
-   game_o.projectile[ 6].name[8]       = 's';
-   game_o.projectile[ 6].name[9]       = 'e';
-   game_o.projectile[ 6].name[10]      = 'r';
+   game_o.projectile[ 6].name          = L"Enemy Weapon";
    game_o.projectile[ 6].active        = false;
    game_o.projectile[ 6].level         = 0;
    game_o.projectile[ 6].experience    = 0;
@@ -333,17 +262,7 @@ int init_game(void)
    game_o.projectile[ 6].wave_velocity = 0.0035f;
    game_o.projectile[ 6].size          = 0.05f;
 
-   game_o.projectile[ 7].name[0]       = 'E';
-   game_o.projectile[ 7].name[1]       = 'n';
-   game_o.projectile[ 7].name[2]       = 'e';
-   game_o.projectile[ 7].name[3]       = 'm';
-   game_o.projectile[ 7].name[4]       = 'y';
-   game_o.projectile[ 7].name[5]       = ' ';
-   game_o.projectile[ 7].name[6]       = 'l';
-   game_o.projectile[ 7].name[7]       = 'a';
-   game_o.projectile[ 7].name[8]       = 's';
-   game_o.projectile[ 7].name[9]       = 'e';
-   game_o.projectile[ 7].name[10]      = 'r';
+   game_o.projectile[ 7].name          = L"Enemy Weapon";
    game_o.projectile[ 7].active        = false;
    game_o.projectile[ 7].level         = 0;
    game_o.projectile[ 7].experience    = 0;
@@ -361,17 +280,7 @@ int init_game(void)
    game_o.projectile[ 7].wave_velocity = 0.0035f;
    game_o.projectile[ 7].size          = 0.05f;
 
-   game_o.projectile[ 8].name[0]       = 'E';
-   game_o.projectile[ 8].name[1]       = 'n';
-   game_o.projectile[ 8].name[2]       = 'e';
-   game_o.projectile[ 8].name[3]       = 'm';
-   game_o.projectile[ 8].name[4]       = 'y';
-   game_o.projectile[ 8].name[5]       = ' ';
-   game_o.projectile[ 8].name[6]       = 'l';
-   game_o.projectile[ 8].name[7]       = 'a';
-   game_o.projectile[ 8].name[8]       = 's';
-   game_o.projectile[ 8].name[9]       = 'e';
-   game_o.projectile[ 8].name[10]      = 'r';
+   game_o.projectile[ 8].name          = L"Enemy Weapon";
    game_o.projectile[ 8].active        = false;
    game_o.projectile[ 8].level         = 0;
    game_o.projectile[ 8].experience    = 0;
@@ -389,17 +298,7 @@ int init_game(void)
    game_o.projectile[ 8].wave_velocity = 0.0035f;
    game_o.projectile[ 8].size          = 0.05f;
 
-   game_o.projectile[ 9].name[0]       = 'E';
-   game_o.projectile[ 9].name[1]       = 'n';
-   game_o.projectile[ 9].name[2]       = 'e';
-   game_o.projectile[ 9].name[3]       = 'm';
-   game_o.projectile[ 9].name[4]       = 'y';
-   game_o.projectile[ 9].name[5]       = ' ';
-   game_o.projectile[ 9].name[6]       = 'l';
-   game_o.projectile[ 9].name[7]       = 'a';
-   game_o.projectile[ 9].name[8]       = 's';
-   game_o.projectile[ 9].name[9]       = 'e';
-   game_o.projectile[ 9].name[10]      = 'r';
+   game_o.projectile[ 9].name          = L"Enemy Weapon";
    game_o.projectile[ 9].active        = false;
    game_o.projectile[ 9].level         = 0;
    game_o.projectile[ 9].experience    = 0;
@@ -417,17 +316,7 @@ int init_game(void)
    game_o.projectile[ 9].wave_velocity = 0.0035f;
    game_o.projectile[ 9].size          = 0.05f;
 
-   game_o.projectile[10].name[0]       = 'E';
-   game_o.projectile[10].name[1]       = 'n';
-   game_o.projectile[10].name[2]       = 'e';
-   game_o.projectile[10].name[3]       = 'm';
-   game_o.projectile[10].name[4]       = 'y';
-   game_o.projectile[10].name[5]       = ' ';
-   game_o.projectile[10].name[6]       = 'l';
-   game_o.projectile[10].name[7]       = 'a';
-   game_o.projectile[10].name[8]       = 's';
-   game_o.projectile[10].name[9]       = 'e';
-   game_o.projectile[10].name[10]      = 'r';
+   game_o.projectile[10].name          = L"Enemy Weapon";
    game_o.projectile[10].active        = false;
    game_o.projectile[10].level         = 0;
    game_o.projectile[10].experience    = 0;
@@ -445,17 +334,7 @@ int init_game(void)
    game_o.projectile[10].wave_velocity = 0.0035f;
    game_o.projectile[10].size          = 0.05f;
 
-   game_o.projectile[11].name[0]       = 'E';
-   game_o.projectile[11].name[1]       = 'n';
-   game_o.projectile[11].name[2]       = 'e';
-   game_o.projectile[11].name[3]       = 'm';
-   game_o.projectile[11].name[4]       = 'y';
-   game_o.projectile[11].name[5]       = ' ';
-   game_o.projectile[11].name[6]       = 'l';
-   game_o.projectile[11].name[7]       = 'a';
-   game_o.projectile[11].name[8]       = 's';
-   game_o.projectile[11].name[9]       = 'e';
-   game_o.projectile[11].name[10]      = 'r';
+   game_o.projectile[11].name          = L"Enemy Weapon";
    game_o.projectile[11].active        = false;
    game_o.projectile[11].level         = 0;
    game_o.projectile[11].experience    = 0;
@@ -473,17 +352,7 @@ int init_game(void)
    game_o.projectile[11].wave_velocity = 0.0065f;
    game_o.projectile[11].size          = 0.05f;
 
-   game_o.projectile[12].name[0]       = 'E';
-   game_o.projectile[12].name[1]       = 'n';
-   game_o.projectile[12].name[2]       = 'e';
-   game_o.projectile[12].name[3]       = 'm';
-   game_o.projectile[12].name[4]       = 'y';
-   game_o.projectile[12].name[5]       = ' ';
-   game_o.projectile[12].name[6]       = 'l';
-   game_o.projectile[12].name[7]       = 'a';
-   game_o.projectile[12].name[8]       = 's';
-   game_o.projectile[12].name[9]       = 'e';
-   game_o.projectile[12].name[10]      = 'r';
+   game_o.projectile[12].name          = L"Enemy Weapon";
    game_o.projectile[12].active        = false;
    game_o.projectile[12].level         = 0;
    game_o.projectile[12].experience    = 0;
@@ -501,17 +370,7 @@ int init_game(void)
    game_o.projectile[12].wave_velocity = 0.0035f;
    game_o.projectile[12].size          = 0.05f;
 
-   game_o.projectile[13].name[0]       = 'E';
-   game_o.projectile[13].name[1]       = 'n';
-   game_o.projectile[13].name[2]       = 'e';
-   game_o.projectile[13].name[3]       = 'm';
-   game_o.projectile[13].name[4]       = 'y';
-   game_o.projectile[13].name[5]       = ' ';
-   game_o.projectile[13].name[6]       = 'l';
-   game_o.projectile[13].name[7]       = 'a';
-   game_o.projectile[13].name[8]       = 's';
-   game_o.projectile[13].name[9]       = 'e';
-   game_o.projectile[13].name[10]      = 'r';
+   game_o.projectile[13].name          = L"Enemy Weapon";
    game_o.projectile[13].active        = false;
    game_o.projectile[13].level         = 0;
    game_o.projectile[13].experience    = 0;
@@ -529,17 +388,7 @@ int init_game(void)
    game_o.projectile[13].wave_velocity = 0.0035f;
    game_o.projectile[13].size          = 0.05f;
 
-   game_o.projectile[14].name[0]       = 'E';
-   game_o.projectile[14].name[1]       = 'n';
-   game_o.projectile[14].name[2]       = 'e';
-   game_o.projectile[14].name[3]       = 'm';
-   game_o.projectile[14].name[4]       = 'y';
-   game_o.projectile[14].name[5]       = ' ';
-   game_o.projectile[14].name[6]       = 'l';
-   game_o.projectile[14].name[7]       = 'a';
-   game_o.projectile[14].name[8]       = 's';
-   game_o.projectile[14].name[9]       = 'e';
-   game_o.projectile[14].name[10]      = 'r';
+   game_o.projectile[14].name          = L"Enemy Weapon";
    game_o.projectile[14].active        = false;
    game_o.projectile[14].level         = 0;
    game_o.projectile[14].experience    = 0;
@@ -557,17 +406,7 @@ int init_game(void)
    game_o.projectile[14].wave_velocity = 0.0035f;
    game_o.projectile[14].size          = 0.05f;
 
-   game_o.projectile[15].name[0]       = 'E';
-   game_o.projectile[15].name[1]       = 'n';
-   game_o.projectile[15].name[2]       = 'e';
-   game_o.projectile[15].name[3]       = 'm';
-   game_o.projectile[15].name[4]       = 'y';
-   game_o.projectile[15].name[5]       = ' ';
-   game_o.projectile[15].name[6]       = 'l';
-   game_o.projectile[15].name[7]       = 'a';
-   game_o.projectile[15].name[8]       = 's';
-   game_o.projectile[15].name[9]       = 'e';
-   game_o.projectile[15].name[10]      = 'r';
+   game_o.projectile[15].name          = L"Enemy Weapon";
    game_o.projectile[15].active        = false;
    game_o.projectile[15].level         = 0;
    game_o.projectile[15].experience    = 0;
@@ -585,17 +424,7 @@ int init_game(void)
    game_o.projectile[15].wave_velocity = 0.0035f;
    game_o.projectile[15].size          = 0.05f;
 
-   game_o.projectile[16].name[0]       = 'E';
-   game_o.projectile[16].name[1]       = 'n';
-   game_o.projectile[16].name[2]       = 'e';
-   game_o.projectile[16].name[3]       = 'm';
-   game_o.projectile[16].name[4]       = 'y';
-   game_o.projectile[16].name[5]       = ' ';
-   game_o.projectile[16].name[6]       = 'l';
-   game_o.projectile[16].name[7]       = 'a';
-   game_o.projectile[16].name[8]       = 's';
-   game_o.projectile[16].name[9]       = 'e';
-   game_o.projectile[16].name[10]      = 'r';
+   game_o.projectile[16].name          = L"Enemy Weapon";
    game_o.projectile[16].active        = false;
    game_o.projectile[16].level         = 0;
    game_o.projectile[16].experience    = 0;
@@ -613,17 +442,7 @@ int init_game(void)
    game_o.projectile[16].wave_velocity = 0.0035f;
    game_o.projectile[16].size          = 0.05f;
 
-   game_o.projectile[17].name[0]       = 'E';
-   game_o.projectile[17].name[1]       = 'n';
-   game_o.projectile[17].name[2]       = 'e';
-   game_o.projectile[17].name[3]       = 'm';
-   game_o.projectile[17].name[4]       = 'y';
-   game_o.projectile[17].name[5]       = ' ';
-   game_o.projectile[17].name[6]       = 'l';
-   game_o.projectile[17].name[7]       = 'a';
-   game_o.projectile[17].name[8]       = 's';
-   game_o.projectile[17].name[9]       = 'e';
-   game_o.projectile[17].name[10]      = 'r';
+   game_o.projectile[17].name          = L"Enemy Weapon";
    game_o.projectile[17].active        = false;
    game_o.projectile[17].level         = 0;
    game_o.projectile[17].experience    = 0;
@@ -641,17 +460,7 @@ int init_game(void)
    game_o.projectile[17].wave_velocity = 0.0035f;
    game_o.projectile[17].size          = 0.05f;
 
-   game_o.projectile[18].name[0]       = 'E';
-   game_o.projectile[18].name[1]       = 'n';
-   game_o.projectile[18].name[2]       = 'e';
-   game_o.projectile[18].name[3]       = 'm';
-   game_o.projectile[18].name[4]       = 'y';
-   game_o.projectile[18].name[5]       = ' ';
-   game_o.projectile[18].name[6]       = 'l';
-   game_o.projectile[18].name[7]       = 'a';
-   game_o.projectile[18].name[8]       = 's';
-   game_o.projectile[18].name[9]       = 'e';
-   game_o.projectile[18].name[10]      = 'r';
+   game_o.projectile[18].name          = L"Enemy Weapon";
    game_o.projectile[18].active        = false;
    game_o.projectile[18].level         = 0;
    game_o.projectile[18].experience    = 0;
@@ -669,17 +478,7 @@ int init_game(void)
    game_o.projectile[18].wave_velocity = 0.0035f;
    game_o.projectile[18].size          = 0.05f;
 
-   game_o.projectile[19].name[0]       = 'E';
-   game_o.projectile[19].name[1]       = 'n';
-   game_o.projectile[19].name[2]       = 'e';
-   game_o.projectile[19].name[3]       = 'm';
-   game_o.projectile[19].name[4]       = 'y';
-   game_o.projectile[19].name[5]       = ' ';
-   game_o.projectile[19].name[6]       = 'l';
-   game_o.projectile[19].name[7]       = 'a';
-   game_o.projectile[19].name[8]       = 's';
-   game_o.projectile[19].name[9]       = 'e';
-   game_o.projectile[19].name[10]      = 'r';
+   game_o.projectile[19].name          = L"Enemy Weapon";
    game_o.projectile[19].active        = false;
    game_o.projectile[19].level         = 0;
    game_o.projectile[19].experience    = 0;
@@ -697,17 +496,7 @@ int init_game(void)
    game_o.projectile[19].wave_velocity = 0.0035f;
    game_o.projectile[19].size          = 0.05f;
 
-   game_o.projectile[20].name[0]       = 'E';
-   game_o.projectile[20].name[1]       = 'n';
-   game_o.projectile[20].name[2]       = 'e';
-   game_o.projectile[20].name[3]       = 'm';
-   game_o.projectile[20].name[4]       = 'y';
-   game_o.projectile[20].name[5]       = ' ';
-   game_o.projectile[20].name[6]       = 'l';
-   game_o.projectile[20].name[7]       = 'a';
-   game_o.projectile[20].name[8]       = 's';
-   game_o.projectile[20].name[9]       = 'e';
-   game_o.projectile[20].name[10]      = 'r';
+   game_o.projectile[20].name          = L"Enemy Weapon";
    game_o.projectile[20].active        = false;
    game_o.projectile[20].level         = 0;
    game_o.projectile[20].experience    = 0;
@@ -725,17 +514,7 @@ int init_game(void)
    game_o.projectile[20].wave_velocity = 0.0035f;
    game_o.projectile[20].size          = 0.05f;
 
-   game_o.projectile[21].name[0]       = 'E';
-   game_o.projectile[21].name[1]       = 'n';
-   game_o.projectile[21].name[2]       = 'e';
-   game_o.projectile[21].name[3]       = 'm';
-   game_o.projectile[21].name[4]       = 'y';
-   game_o.projectile[21].name[5]       = ' ';
-   game_o.projectile[21].name[6]       = 'l';
-   game_o.projectile[21].name[7]       = 'a';
-   game_o.projectile[21].name[8]       = 's';
-   game_o.projectile[21].name[9]       = 'e';
-   game_o.projectile[21].name[10]      = 'r';
+   game_o.projectile[21].name          = L"Enemy Weapon";
    game_o.projectile[21].active        = false;
    game_o.projectile[21].level         = 0;
    game_o.projectile[21].experience    = 0;
@@ -753,17 +532,7 @@ int init_game(void)
    game_o.projectile[21].wave_velocity = 0.0035f;
    game_o.projectile[21].size          = 0.05f;
 
-   game_o.projectile[22].name[0]       = 'E';
-   game_o.projectile[22].name[1]       = 'n';
-   game_o.projectile[22].name[2]       = 'e';
-   game_o.projectile[22].name[3]       = 'm';
-   game_o.projectile[22].name[4]       = 'y';
-   game_o.projectile[22].name[5]       = ' ';
-   game_o.projectile[22].name[6]       = 'l';
-   game_o.projectile[22].name[7]       = 'a';
-   game_o.projectile[22].name[8]       = 's';
-   game_o.projectile[22].name[9]       = 'e';
-   game_o.projectile[22].name[10]      = 'r';
+   game_o.projectile[22].name          = L"Enemy Weapon";
    game_o.projectile[22].active        = false;
    game_o.projectile[22].level         = 0;
    game_o.projectile[22].experience    = 0;
@@ -781,17 +550,7 @@ int init_game(void)
    game_o.projectile[22].wave_velocity = 0.0035f;
    game_o.projectile[22].size          = 0.05f;
 
-   game_o.projectile[23].name[0]       = 'E';
-   game_o.projectile[23].name[1]       = 'n';
-   game_o.projectile[23].name[2]       = 'e';
-   game_o.projectile[23].name[3]       = 'm';
-   game_o.projectile[23].name[4]       = 'y';
-   game_o.projectile[23].name[5]       = ' ';
-   game_o.projectile[23].name[6]       = 'l';
-   game_o.projectile[23].name[7]       = 'a';
-   game_o.projectile[23].name[8]       = 's';
-   game_o.projectile[23].name[9]       = 'e';
-   game_o.projectile[23].name[10]      = 'r';
+   game_o.projectile[23].name          = L"Enemy Weapon";
    game_o.projectile[23].active        = false;
    game_o.projectile[23].level         = 0;
    game_o.projectile[23].experience    = 0;
@@ -809,17 +568,7 @@ int init_game(void)
    game_o.projectile[23].wave_velocity = 0.0035f;
    game_o.projectile[23].size          = 0.05f;
 
-   game_o.projectile[24].name[0]       = 'E';
-   game_o.projectile[24].name[1]       = 'n';
-   game_o.projectile[24].name[2]       = 'e';
-   game_o.projectile[24].name[3]       = 'm';
-   game_o.projectile[24].name[4]       = 'y';
-   game_o.projectile[24].name[5]       = ' ';
-   game_o.projectile[24].name[6]       = 'l';
-   game_o.projectile[24].name[7]       = 'a';
-   game_o.projectile[24].name[8]       = 's';
-   game_o.projectile[24].name[9]       = 'e';
-   game_o.projectile[24].name[10]      = 'r';
+   game_o.projectile[24].name          = L"Enemy Weapon";
    game_o.projectile[24].active        = false;
    game_o.projectile[24].level         = 0;
    game_o.projectile[24].experience    = 0;
@@ -837,17 +586,7 @@ int init_game(void)
    game_o.projectile[24].wave_velocity = 0.0035f;
    game_o.projectile[24].size          = 0.05f;
 
-   game_o.projectile[25].name[0]       = 'E';
-   game_o.projectile[25].name[1]       = 'n';
-   game_o.projectile[25].name[2]       = 'e';
-   game_o.projectile[25].name[3]       = 'm';
-   game_o.projectile[25].name[4]       = 'y';
-   game_o.projectile[25].name[5]       = ' ';
-   game_o.projectile[25].name[6]       = 'l';
-   game_o.projectile[25].name[7]       = 'a';
-   game_o.projectile[25].name[8]       = 's';
-   game_o.projectile[25].name[9]       = 'e';
-   game_o.projectile[25].name[10]      = 'r';
+   game_o.projectile[25].name          = L"Enemy Weapon";
    game_o.projectile[25].active        = false;
    game_o.projectile[25].level         = 0;
    game_o.projectile[25].experience    = 0;
@@ -865,17 +604,7 @@ int init_game(void)
    game_o.projectile[25].wave_velocity = 0.0035f;
    game_o.projectile[25].size          = 0.05f;
 
-   game_o.projectile[26].name[0]       = 'E';
-   game_o.projectile[26].name[1]       = 'n';
-   game_o.projectile[26].name[2]       = 'e';
-   game_o.projectile[26].name[3]       = 'm';
-   game_o.projectile[26].name[4]       = 'y';
-   game_o.projectile[26].name[5]       = ' ';
-   game_o.projectile[26].name[6]       = 'l';
-   game_o.projectile[26].name[7]       = 'a';
-   game_o.projectile[26].name[8]       = 's';
-   game_o.projectile[26].name[9]       = 'e';
-   game_o.projectile[26].name[10]      = 'r';
+   game_o.projectile[26].name          = L"Enemy Weapon";
    game_o.projectile[26].active        = false;
    game_o.projectile[26].level         = 0;
    game_o.projectile[26].experience    = 0;
@@ -893,17 +622,7 @@ int init_game(void)
    game_o.projectile[26].wave_velocity = 0.0035f;
    game_o.projectile[26].size          = 0.05f;
 
-   game_o.projectile[27].name[0]       = 'E';
-   game_o.projectile[27].name[1]       = 'n';
-   game_o.projectile[27].name[2]       = 'e';
-   game_o.projectile[27].name[3]       = 'm';
-   game_o.projectile[27].name[4]       = 'y';
-   game_o.projectile[27].name[5]       = ' ';
-   game_o.projectile[27].name[6]       = 'l';
-   game_o.projectile[27].name[7]       = 'a';
-   game_o.projectile[27].name[8]       = 's';
-   game_o.projectile[27].name[9]       = 'e';
-   game_o.projectile[27].name[10]      = 'r';
+   game_o.projectile[27].name          = L"Enemy Weapon";
    game_o.projectile[27].active        = false;
    game_o.projectile[27].level         = 0;
    game_o.projectile[27].experience    = 0;
@@ -921,17 +640,7 @@ int init_game(void)
    game_o.projectile[27].wave_velocity = 0.0035f;
    game_o.projectile[27].size          = 0.05f;
 
-   game_o.projectile[28].name[0]       = 'E';
-   game_o.projectile[28].name[1]       = 'n';
-   game_o.projectile[28].name[2]       = 'e';
-   game_o.projectile[28].name[3]       = 'm';
-   game_o.projectile[28].name[4]       = 'y';
-   game_o.projectile[28].name[5]       = ' ';
-   game_o.projectile[28].name[6]       = 'l';
-   game_o.projectile[28].name[7]       = 'a';
-   game_o.projectile[28].name[8]       = 's';
-   game_o.projectile[28].name[9]       = 'e';
-   game_o.projectile[28].name[10]      = 'r';
+   game_o.projectile[28].name          = L"Enemy Weapon";
    game_o.projectile[28].active        = false;
    game_o.projectile[28].level         = 0;
    game_o.projectile[28].experience    = 0;
@@ -949,17 +658,7 @@ int init_game(void)
    game_o.projectile[28].wave_velocity = 0.0035f;
    game_o.projectile[28].size          = 0.05f;
 
-   game_o.projectile[29].name[0]       = 'E';
-   game_o.projectile[29].name[1]       = 'n';
-   game_o.projectile[29].name[2]       = 'e';
-   game_o.projectile[29].name[3]       = 'm';
-   game_o.projectile[29].name[4]       = 'y';
-   game_o.projectile[29].name[5]       = ' ';
-   game_o.projectile[29].name[6]       = 'l';
-   game_o.projectile[29].name[7]       = 'a';
-   game_o.projectile[29].name[8]       = 's';
-   game_o.projectile[29].name[9]       = 'e';
-   game_o.projectile[29].name[10]      = 'r';
+   game_o.projectile[29].name          = L"Enemy Weapon";
    game_o.projectile[29].active        = false;
    game_o.projectile[29].level         = 0;
    game_o.projectile[29].experience    = 0;
@@ -977,17 +676,7 @@ int init_game(void)
    game_o.projectile[29].wave_velocity = 0.0035f;
    game_o.projectile[29].size          = 0.05f;
 
-   game_o.projectile[30].name[0]       = 'E';
-   game_o.projectile[30].name[1]       = 'n';
-   game_o.projectile[30].name[2]       = 'e';
-   game_o.projectile[30].name[3]       = 'm';
-   game_o.projectile[30].name[4]       = 'y';
-   game_o.projectile[30].name[5]       = ' ';
-   game_o.projectile[30].name[6]       = 'l';
-   game_o.projectile[30].name[7]       = 'a';
-   game_o.projectile[30].name[8]       = 's';
-   game_o.projectile[30].name[9]       = 'e';
-   game_o.projectile[30].name[10]      = 'r';
+   game_o.projectile[30].name          = L"Enemy Weapon";
    game_o.projectile[30].active        = false;
    game_o.projectile[30].level         = 0;
    game_o.projectile[30].experience    = 0;

@@ -341,7 +341,7 @@ void button_class::draw(void)
         for(int choice_count = 0; choice_count < button_class::get_number_of_visible_choices(); choice_count++)
         {
             if ((button_class::choice_data[button_class::choice_position+choice_count].highlighted) && ( button_class::choice_data[button_class::choice_position+choice_count].enabled)) temp_label = button_class::choice_data[button_class::choice_position+choice_count].text_label;//choices
-            if ((button_class::choice_data[button_class::choice_position+choice_count].highlighted) && (!button_class::choice_data[button_class::choice_position+choice_count].enabled)) temp_label = L">> LEVEL LOCKED <<";//choices
+            if ((button_class::choice_data[button_class::choice_position+choice_count].highlighted) && (!button_class::choice_data[button_class::choice_position+choice_count].enabled)) temp_label = L"Unavailable";//choices
         }
         switch(button_class::get_font()) //write selected level name
         {

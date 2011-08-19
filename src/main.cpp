@@ -109,10 +109,10 @@ int main(int argc, char *argv[])
   SDL_Joystick *joystick;
   SDL_JoystickEventState(SDL_ENABLE);
   joystick = SDL_JoystickOpen(0);
-  game.log.File_Write("Initializing menu system...");
-  init_menu();
   game.log.File_Write("Initializing game system...");
   init_game();
+  game.log.File_Write("Initializing menu system...");
+  init_menu();
   game.log.File_Write("Initializing projectiles...");
   init_player_bullets();
   game.log.File_Write("Initializing explosions...");
