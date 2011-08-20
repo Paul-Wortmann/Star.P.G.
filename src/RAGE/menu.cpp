@@ -250,7 +250,7 @@ float button_class::get_zoom_speed(void)
 void button_class::draw(void)
 {
     float delta_x = 0.0f;
-    if (button_class::type == NORMAL) //----- normal button -----
+    if ((button_class::type == NORMAL) || (button_class::type == TOGGLE)) //----- normal / toggle button -----
     {
         if (!button_class::active) return;
         if (!button_class::enabled) bind_texture(button_class::image_disabled);
@@ -266,6 +266,18 @@ void button_class::draw(void)
         glTexCoord2i( 1, 0 );glVertex3f(button_class::pos_x+(button_class::width/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_y+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
         glTexCoord2i( 1, 1 );glVertex3f(button_class::pos_x+(button_class::width/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_y-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
         glEnd();
+        if (button_class::type == TOGGLE) //----- toggle button -----
+        {
+            if (button_class::highlighted) bind_texture(button_class::image_highlighted);
+            else bind_texture(button_class::image_normal);
+            glLoadIdentity();
+            glBegin( GL_QUADS );
+            glTexCoord2i( 0, 1 );glVertex3f(button_class::pos_x-(button_class::width/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_y-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+            glTexCoord2i( 0, 0 );glVertex3f(button_class::pos_x-(button_class::width/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_y+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+            glTexCoord2i( 1, 0 );glVertex3f(button_class::pos_x+(button_class::width/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_y+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+            glTexCoord2i( 1, 1 );glVertex3f(button_class::pos_x+(button_class::width/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_y-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+            glEnd();
+        };
         switch(button_class::get_font())
         {
             case 1:
@@ -807,6 +819,16 @@ int   button_class::get_current_choice(void)
 void  button_class::set_image_selector(int image)
 {
     button_class::image_selector = image;
+};
+
+void  button_class::set_toggle_data(bool bool_data)
+{
+    button_class::toggle_data = bool_data;
+};
+
+bool   button_class::get_toggle_data(void)
+{
+    return(button_class::toggle_data);
 };
 
 //------------------------------------------ menu ---------------------------------------------------------------------------------------
@@ -1615,6 +1637,16 @@ int   menu_class::get_button_current_choice(int button_number)
     return(menu_class::button[button_number].get_current_choice());
 };
 
+void  menu_class::set_toggle_data(int button_number, bool bool_data)
+{
+    menu_class::button[button_number].set_toggle_data(bool_data);
+};
+
+bool  menu_class::get_toggle_data(int button_number)
+{
+    return(menu_class::button[button_number].get_toggle_data());
+};
+
 int menu_class::process(void)
 {
     float  drag_x_delta = 0.0f;
@@ -1668,11 +1700,11 @@ int menu_class::process(void)
         }
     }
     //---- mouse ----
-    if ((menu_class::mouse_over_any_button()) && (!menu_class::get_drag_active()))//drag
+    if ((menu_class::mouse_over_any_button()) && (!menu_class::get_drag_active()))//normal / toggle button
     {
         for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
         {
-            if (menu_class::button[button_count].get_button_type() == NORMAL)
+            if ((menu_class::button[button_count].get_button_type() == NORMAL) || (menu_class::button[button_count].get_button_type() == TOGGLE))
             {
                 if (menu_class::button[button_count].mouse_over())
                 {
@@ -1685,7 +1717,7 @@ int menu_class::process(void)
         }
         for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)//normal
         {
-            if (menu_class::button[button_count].get_button_type() == NORMAL)
+            if ((menu_class::button[button_count].get_button_type() == NORMAL) || (menu_class::button[button_count].get_button_type() == TOGGLE))
             {
                 if (menu_class::button[button_count].mouse_clicked())
                 {
@@ -1836,7 +1868,6 @@ int menu_class::process(void)
     //---- return ----
     return(return_value);
 };
-
 
 
 

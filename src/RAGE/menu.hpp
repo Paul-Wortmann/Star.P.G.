@@ -106,7 +106,7 @@ class button_class
         int              disabled_color_g;
         int              disabled_color_b;
         int              disabled_color_a;
-
+        bool             toggle_data;
     public:
         button_class(void);
         button_class(float x, float y, float z, float w, float h, int in, int ih, int id, bool hl, bool en, bool gl, bool zm, float zs, int nr, int ng, int nb, int na, int hr, int hg, int hb, int ha, int dr, int dg, int db, int da, std::wstring lb);
@@ -208,6 +208,8 @@ class button_class
         float get_slider_height(void);
         void  set_current_choice(int choice_data);
         int   get_current_choice(void);
+        void  set_toggle_data(bool bool_data);
+        bool  get_toggle_data(void);
 };
 
 //-------------------------- menu -------------------------------
@@ -383,6 +385,8 @@ class menu_class
         void  set_button_slider_data(int button_number, int position_data, std::wstring text_label_data, bool active_data, bool enabled_data);
         int   mouse_over_button_slider(int button_number);
         int   mouse_click_button_slider(int button_number);
+        void  set_toggle_data(int button_number, bool bool_data);
+        bool  get_toggle_data(int button_number);
         int   process(void);
 };
 
