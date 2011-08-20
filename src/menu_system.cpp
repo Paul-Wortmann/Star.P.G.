@@ -63,7 +63,7 @@ int init_menu   (void)
     main_menu.set_menu_font(1);
     main_menu.set_image_background(395);
     main_menu.set_button_zoom(true,0.04f,0.005f);
-    main_menu.set_button_images(395,395,395,172,405,406,402,403,404);
+    main_menu.set_button_images(395,395,395,172,282,405,406,402,403,404);
     main_menu.set_color_normal(128,128,255,255);
     main_menu.set_color_highlighted(192,192,255,255);
     main_menu.set_color_disabled(064,064,128,128);
@@ -89,7 +89,7 @@ int init_menu   (void)
     star_map_menu.set_menu_font(1);
     star_map_menu.set_image_background(395);
     star_map_menu.set_button_zoom(true,0.04f,0.005f);
-    star_map_menu.set_button_images(395,395,395,172,405,406,402,403,404);
+    star_map_menu.set_button_images(395,395,395,172,282,405,406,402,403,404);
     star_map_menu.set_color_normal(128,128,255,255);
     star_map_menu.set_color_highlighted(192,192,255,255);
     star_map_menu.set_color_disabled(064,064,128,128);
@@ -138,7 +138,7 @@ int init_menu   (void)
     customize_starship_menu.set_menu_font(1);
     customize_starship_menu.set_image_background(395);
     customize_starship_menu.set_button_zoom(true,0.04f,0.005f);
-    customize_starship_menu.set_button_images(395,395,395,172,405,406,402,403,404);
+    customize_starship_menu.set_button_images(395,395,395,172,282,405,406,402,403,404);
     customize_starship_menu.set_color_normal(128,128,255,255);
     customize_starship_menu.set_color_highlighted(192,192,255,255);
     customize_starship_menu.set_color_disabled(064,064,128,128);
@@ -147,6 +147,7 @@ int init_menu   (void)
     customize_starship_menu.set_number_of_choices(1,7);
     customize_starship_menu.set_number_of_visible_choices(1,5);
     customize_starship_menu.set_button_choice_position(1,1);
+    customize_starship_menu.set_button_current_choice(1,game_o.player.front_weapon);
     customize_starship_menu.set_button_choice_data(1, 1,283,L"None              ", true,true);
     customize_starship_menu.set_button_choice_data(1, 2,game_o.projectile[ 0].image,game_o.projectile[ 0].name, true, game_o.projectile[ 0].active);
     customize_starship_menu.set_button_choice_data(1, 3,game_o.projectile[ 1].image,game_o.projectile[ 1].name, true, game_o.projectile[ 1].active);
@@ -158,6 +159,7 @@ int init_menu   (void)
     customize_starship_menu.set_number_of_choices(2,7);
     customize_starship_menu.set_number_of_visible_choices(2,5);
     customize_starship_menu.set_button_choice_position(2,1);
+    customize_starship_menu.set_button_current_choice(2,game_o.player.side_weapon);
     customize_starship_menu.set_button_choice_data(2, 1,283,L"None              ", true,true);
     customize_starship_menu.set_button_choice_data(2, 2,game_o.projectile[ 0].image,game_o.projectile[ 0].name, true, game_o.projectile[ 0].active);
     customize_starship_menu.set_button_choice_data(2, 3,game_o.projectile[ 1].image,game_o.projectile[ 1].name, true, game_o.projectile[ 1].active);
@@ -169,6 +171,7 @@ int init_menu   (void)
     customize_starship_menu.set_number_of_choices(3,6);
     customize_starship_menu.set_number_of_visible_choices(3,5);
     customize_starship_menu.set_button_choice_position(3,1);
+    customize_starship_menu.set_button_current_choice(3,game_o.player.front_shield);
     customize_starship_menu.set_button_choice_data(3, 1,283,L"None              ", true,true);
     customize_starship_menu.set_button_choice_data(3, 2,game_o.shield[ 0].image,game_o.shield[ 0].name, true, game_o.shield[ 0].active);
     customize_starship_menu.set_button_choice_data(3, 3,game_o.shield[ 1].image,game_o.shield[ 1].name, true, game_o.shield[ 1].active);
@@ -179,6 +182,7 @@ int init_menu   (void)
     customize_starship_menu.set_number_of_choices(4,4);
     customize_starship_menu.set_number_of_visible_choices(4,4);
     customize_starship_menu.set_button_choice_position(4,1);
+    customize_starship_menu.set_button_current_choice(4,game_o.player.thrusters);
     customize_starship_menu.set_button_choice_data(4, 1,283,L"None              ", true,true);
     customize_starship_menu.set_button_choice_data(4, 2,game_o.thruster[ 0].image,game_o.thruster[ 0].name, true, game_o.thruster[ 0].active);
     customize_starship_menu.set_button_choice_data(4, 3,game_o.thruster[ 1].image,game_o.thruster[ 1].name, true, game_o.thruster[ 1].active);
@@ -199,7 +203,7 @@ int init_menu   (void)
     achievements_menu.set_menu_font(1);
     achievements_menu.set_image_background(395);
     achievements_menu.set_button_zoom(true,0.04f,0.005f);
-    achievements_menu.set_button_images(395,395,395,172,405,406,402,403,404);
+    achievements_menu.set_button_images(395,395,395,172,282,405,406,402,403,404);
     achievements_menu.set_color_normal(128,128,255,255);
     achievements_menu.set_color_highlighted(192,192,255,255);
     achievements_menu.set_color_disabled(064,064,128,128);
@@ -225,7 +229,7 @@ int init_menu   (void)
     save_menu.set_menu_font(1);
     save_menu.set_image_background(395);
     save_menu.set_button_zoom(true,0.04f,0.005f);
-    save_menu.set_button_images(395,395,395,172,405,406,402,403,404);
+    save_menu.set_button_images(395,395,395,172,282,405,406,402,403,404);
     save_menu.set_color_normal(128,128,255,255);
     save_menu.set_color_highlighted(192,192,255,255);
     save_menu.set_color_disabled(064,064,128,128);
@@ -251,7 +255,7 @@ int init_menu   (void)
     load_menu.set_menu_font(1);
     load_menu.set_image_background(395);
     load_menu.set_button_zoom(true,0.04f,0.005f);
-    load_menu.set_button_images(395,395,395,172,405,406,402,403,404);
+    load_menu.set_button_images(395,395,395,172,282,405,406,402,403,404);
     load_menu.set_color_normal(128,128,255,255);
     load_menu.set_color_highlighted(192,192,255,255);
     load_menu.set_color_disabled(064,064,128,128);
@@ -277,7 +281,7 @@ int init_menu   (void)
     options_menu.set_menu_font(1);
     options_menu.set_image_background(395);
     options_menu.set_button_zoom(true,0.04f,0.005f);
-    options_menu.set_button_images(395,395,395,172,405,406,402,403,404);
+    options_menu.set_button_images(395,395,395,172,282,405,406,402,403,404);
     options_menu.set_color_normal(128,128,255,255);
     options_menu.set_color_highlighted(192,192,255,255);
     options_menu.set_color_disabled(064,064,128,128);
@@ -532,6 +536,10 @@ int process_menu(void)
         customize_starship_menu.set_button_choice_data(4, 2,game_o.thruster[ 0].image,game_o.thruster[ 0].name, true, game_o.thruster[ 0].active);
         customize_starship_menu.set_button_choice_data(4, 3,game_o.thruster[ 1].image,game_o.thruster[ 1].name, true, game_o.thruster[ 1].active);
         customize_starship_menu.set_button_choice_data(4, 4,game_o.thruster[ 2].image,game_o.thruster[ 2].name, true, game_o.thruster[ 2].active);
+        customize_starship_menu.set_button_current_choice(1,game_o.player.front_weapon);
+        customize_starship_menu.set_button_current_choice(2,game_o.player.side_weapon);
+        customize_starship_menu.set_button_current_choice(3,game_o.player.front_shield);
+        customize_starship_menu.set_button_current_choice(4,game_o.player.thrusters);
         activated_button = customize_starship_menu.process();
         switch (activated_button)
         {
