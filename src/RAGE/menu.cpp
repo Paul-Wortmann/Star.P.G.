@@ -1666,8 +1666,8 @@ int menu_class::process(void)
             }
             if  ((menu_class::mouse_delay_count >= menu_class::mouse_delay) && (game.io.mouse_button_left))
             {
-                menu_class::mouse_delay_count = 0;
                 if (return_value == -1) return_value = menu_class::mouse_click_button_choice(button_count);
+                if (return_value != -1) menu_class::mouse_delay_count = 0;
             }
         }
     }
