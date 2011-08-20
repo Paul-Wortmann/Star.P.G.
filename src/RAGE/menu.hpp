@@ -63,6 +63,10 @@ class button_class
         int              image_arrow_normal;
         int              image_arrow_highlighted;
         int              image_arrow_disabled;
+        int              image_toggle_true_highlighted;
+        int              image_toggle_true_normal;
+        int              image_toggle_false_highlighted;
+        int              image_toggle_false_normal;
         bool             highlighted;
         bool             arrow_left_highlighted;
         bool             arrow_right_highlighted;
@@ -136,6 +140,10 @@ class button_class
         void  set_image_arrow_normal(int image);
         void  set_image_arrow_disabled(int image);
         void  set_image_arrow_highlighted(int image);
+        void  set_image_toggle_true_highlighted(int image);
+        void  set_image_toggle_true_normal(int image);
+        void  set_image_toggle_false_highlighted(int image);
+        void  set_image_toggle_false_normal(int image);
         void  set_enabled(bool bool_value);
         void  set_highlighted(bool bool_value);
         bool  get_highlighted(void);
@@ -210,6 +218,7 @@ class button_class
         int   get_current_choice(void);
         void  set_toggle_data(bool bool_data);
         bool  get_toggle_data(void);
+        void  set_toggle_images(int tth, int ttn, int tfh, int tfn);
 };
 
 //-------------------------- menu -------------------------------
@@ -240,6 +249,10 @@ class menu_class
         int           button_image_arrow_normal;
         int           button_image_arrow_highlighted;
         int           button_image_arrow_disabled;
+        int           button_image_toggle_true_highlighted;
+        int           button_image_toggle_true_normal;
+        int           button_image_toggle_false_highlighted;
+        int           button_image_toggle_false_normal;
         float         button_width;
         float         button_height;
         float         button_spacing;
@@ -387,6 +400,7 @@ class menu_class
         int   mouse_click_button_slider(int button_number);
         void  set_toggle_data(int button_number, bool bool_data);
         bool  get_toggle_data(int button_number);
+        void  set_toggle_button_images(int tth, int ttn, int tfh, int tfn);
         int   process(void);
 };
 

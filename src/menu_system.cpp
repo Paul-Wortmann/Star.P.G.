@@ -283,6 +283,7 @@ int init_menu   (void)
     options_menu.set_image_background(395);
     options_menu.set_button_zoom(true,0.04f,0.005f);
     options_menu.set_button_images(395,395,395,172,282,405,406,402,403,404);
+    options_menu.set_toggle_button_images(399,398,397,396);
     options_menu.set_color_normal(128,128,255,255);
     options_menu.set_color_highlighted(192,192,255,255);
     options_menu.set_color_disabled(064,064,128,128);
@@ -1003,9 +1004,18 @@ int process_menu(void)
     activated_button = -1;
     if (game.menu_level == 7)
     {
+        options_menu.set_toggle_data(6,game.config.Display_Fullscreen);
         activated_button = options_menu.process();
         switch (activated_button)
         {
+            case 6://Toggle Full-screen
+                options_menu.set_toggle_data(6,!options_menu.get_toggle_data(6));
+                game.config.Display_Fullscreen   = !game.config.Display_Fullscreen;
+                if (game.config.Display_Fullscreen) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
+                else  SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL);
+                game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
+                load_textures();
+            break;
             case 4001://left arrow on button 1
                 game.config.Audio_Sound_Volume --;
                 if (game.config.Audio_Sound_Volume < 0) game.config.Audio_Sound_Volume = 0;
@@ -1071,17 +1081,6 @@ int process_menu(void)
         if ((game.io.left) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
             {
                 game.io.keyboard_delay_count = 0;
-              if ((menu.level == 2) and (menu.possition == 2))//disable fullscreen
-              {
-                 if (game.config.Display_Fullscreen == true)
-                 {
-                    //kill_textures();
-                    SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL);
-                    game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
-                    load_textures();
-                    game.config.Display_Fullscreen   = false;
-                  }
-              }
                  if ((menu.level == 2) && (menu.possition == 3) && (game.config.Display_resolution != 0))//resolution select <
                  {
                     game.config.Display_resolution--;
@@ -1134,45 +1133,10 @@ int process_menu(void)
                     game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
                     load_textures();
                  }
-
-                 if (menu.level == 3)//customize starship
-                 {
-                    switch (menu.possition)
-                    {
-                       case 0://front weapon select
-                       game_o.player.front_weapon--;
-                       if (game_o.player.front_weapon < -1) game_o.player.front_weapon = -1;
-                       break;
-                       case 1://side weapon select
-                       game_o.player.side_weapon--;
-                       if (game_o.player.side_weapon < -1) game_o.player.side_weapon = -1;
-                       break;
-                       case 2://shield select
-                       game_o.player.front_shield--;
-                       if (game_o.player.front_shield < -1) game_o.player.front_shield = -1;
-                       break;
-                       case 3://thrusters select
-                       game_o.player.thrusters--;
-                       if (game_o.player.thrusters < -1) game_o.player.thrusters = -1;
-                       break;
-                    }
-                 sound.menu_move.play();
-                 }
               }
         if ((game.io.right) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
               {
                 game.io.keyboard_delay_count = 0;
-                 if ((menu.level == 2) and (menu.possition == 2))//enable fullscreen
-                 {
-                    if (game.config.Display_Fullscreen == false)
-                    {
-                       //kill_textures();
-                       SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
-                       game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
-                       load_textures();
-                       game.config.Display_Fullscreen   = true;
-                    }
-                 }
                  if ((menu.level == 2) && (menu.possition == 3) && (game.config.Display_resolution != 7))//resolution select <
                  {
                     game.config.Display_resolution++;
@@ -1224,347 +1188,6 @@ int process_menu(void)
                     if (game.config.Display_Fullscreen == false) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL);
                     game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
                     load_textures();
-                 }
-
-                 if (menu.level == 3)//customize starship
-                 {
-                    switch (menu.possition)
-                    {
-                       case 0://front weapon select
-                       if ((game_o.projectile[game_o.player.front_weapon+1].active) && (game_o.player.front_weapon < 6)) game_o.player.front_weapon++;
-                       if (game_o.player.front_weapon > 5) game_o.player.front_weapon = 5;
-                       break;
-                       case 1://side weapon select
-                       if ((game_o.projectile[game_o.player.side_weapon+1].active) && (game_o.player.side_weapon < 6)) game_o.player.side_weapon++;
-                       if (game_o.player.side_weapon > 5) game_o.player.side_weapon = 5;
-                       break;
-                       case 2://shield select
-                       if ((game_o.shield[game_o.player.front_shield+1].active) && (game_o.player.front_shield < 6)) game_o.player.front_shield++;
-                       if (game_o.player.front_shield > 4) game_o.player.front_shield = 4;
-                       break;
-                       case 3://thrusters select
-                       if ((game_o.thruster[game_o.player.thrusters+1].active) && (game_o.player.thrusters < 6)) game_o.player.thrusters++;
-                       if (game_o.player.thrusters > 2) game_o.player.thrusters = 2;
-                       break;
-                    }
-                 sound.menu_move.play();
-                 }
-              }
-        if ((game.io.select) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
-              {
-                 game.io.keyboard_delay_count = 0;
-                 sound.menu_select.play();
-                 switch (menu.level)
-                 {
-                    case 0://main menu
-                    break;
-                    case 1://game menu
-                       switch (menu.possition)
-                          {
-                             case 0://starmap
-                                menu.possition = 0;
-                                menu.level = 4;
-                                menu.possition_max = 3;
-                                game.log.File_Write("Entering 'star map' menu.");
-                             break;
-                             case 1://achievements
-                                menu.possition = 0;
-                                menu.level = 7;
-                                menu.possition_max = 0;
-                                game.log.File_Write("Entering 'Achievements' menu.");
-                             break;
-                             case 2://customize starship
-                                menu.possition = 0;
-                                menu.level = 3;
-                                menu.possition_max = 4;
-                                game.log.File_Write("Entering 'customize starship' menu.");
-                             break;
-                             case 3://resume game
-                                if (game.game_resume)
-                                {
-                                   game.music_next_track = true;
-                                   game.game_active    = true;
-                                   game.menu_active    = false;
-                                   game.log.File_Write("Resuming game_o.");
-                                }
-                             break;
-                             case 4://save game
-                                if (game.game_resume)
-                                {
-                                   menu.possition = 0;
-                                   menu.level = 5;
-                                   menu.possition_max = 5;
-                                   game.log.File_Write("Entering 'save game' menu.");
-                                }
-                             break;
-                             case 5://load game
-                                menu.possition = 0;
-                                menu.level = 6;
-                                menu.possition_max = 5;
-                                game.log.File_Write("Entering 'load game' menu.");
-                             break;
-                             case 6://main menu
-                                menu.possition = 0;
-                                menu.level = 0;
-                                menu.possition_max = 4;
-                                game.log.File_Write("Entering 'main' menu.");
-                             break;
-                          }
-                       break;
-                    case 2: // options menu
-                       switch (menu.possition)
-                          {
-                             case 0://sound volume
-                             break;
-                             case 1://music volume
-                             break;
-                             case 2://full screen
-                             break;
-                             case 3://resolution
-                             break;
-                             case 4://main menu
-                                menu.possition = 0;
-                                menu.level = 0;
-                                menu.possition_max = 4;
-                                game.log.File_Write("Entering 'main' menu.");
-                             break;
-                          }
-                       break;
-                    case 3: // customize starship menu
-                       switch (menu.possition)
-                          {
-                             case 0:
-                             break;
-                             case 1:
-                             break;
-                             case 2:
-                             break;
-                             case 3:
-                             break;
-                             case 4://game menu
-                                menu.possition = 2;
-                                menu.level = 1;
-                                menu.possition_max = 6;
-                                game.log.File_Write("Entering 'game' menu.");
-                             break;
-                          }
-                       break;
-                    case 4: // star map menu
-                       switch (menu.possition)
-                          {
-                             case 0://level x+0 select
-                                if (!game_o.level_locked[menu.level_no + 0])
-                                {
-                                   game.music_next_track = true;
-                                   game_o.level = menu.level_no + 0;
-                                   init_game_level(game_o.level);
-                                   game.game_active = true;
-                                   game.menu_active = false;
-                                   game.log.File_Write("Starting level ");
-                                }
-                             break;
-                             case 1://level x+1 select
-                                if (!game_o.level_locked[menu.level_no + 1])
-                                {
-                                   game.music_next_track = true;
-                                   game_o.level = menu.level_no + 1;
-                                   init_game_level(game_o.level);
-                                   game.game_active = true;
-                                   game.menu_active = false;
-                                   game.log.File_Write("Starting level ");
-                                }
-                             break;
-                             case 2://level x+2 select
-                                if (!game_o.level_locked[menu.level_no + 2])
-                                {
-                                   game.music_next_track = true;
-                                   game_o.level = menu.level_no + 2;
-                                   init_game_level(game_o.level);
-                                   game.game_active = true;
-                                   game.menu_active = false;
-                                   game.log.File_Write("Starting level ");
-                                }
-                             break;
-                             case 3://game menu
-                                menu.possition = 0;
-                                menu.level = 1;
-                                menu.possition_max = 6;
-                                game.log.File_Write("Entering 'game' menu.");
-                             break;
-                          }
-                        break;
-                    case 5: // save game menu
-                       switch (menu.possition)
-                          {
-                             case 0://save to slot 0
-//                                save_00.Save();
-                                game.log.File_Write("Saving to slot 0");
-                                spawn_saved();
-                                menu.possition = 3;
-                                menu.level = 1;
-                                menu.possition_max = 5;
-                                game.game_active = true;
-                                game.menu_active = false;
-                                game.log.File_Write("Resuming game");
-                                game.music_next_track = true;
-                             break;
-                             case 1://save to slot 1
-                                save_01.Save();
-                                game.log.File_Write("Saving to slot 1");
-                                spawn_saved();
-                                menu.possition = 3;
-                                menu.level = 1;
-                                menu.possition_max = 5;
-                                game.game_active = true;
-                                game.menu_active = false;
-                                game.log.File_Write("Resuming game");
-                                game.music_next_track = true;
-                             break;
-                             case 2://save to slot 2
-                                save_02.Save();
-                                game.log.File_Write("Saving to slot 2");
-                                spawn_saved();
-                                menu.possition = 3;
-                                menu.level = 1;
-                                menu.possition_max = 5;
-                                game.game_active = true;
-                                game.menu_active = false;
-                                game.log.File_Write("Resuming game");
-                                game.music_next_track = true;
-                             break;
-                             case 3://save to slot 3
-                                save_03.Save();
-                                game.log.File_Write("Saving to slot 3");
-                                spawn_saved();
-                                menu.possition = 3;
-                                menu.level = 1;
-                                menu.possition_max = 5;
-                                game.game_active = true;
-                                game.menu_active = false;
-                                game.log.File_Write("Resuming game");
-                                game.music_next_track = true;
-                             break;
-                             case 4://save to slot 4
-                                save_04.Save();
-                                game.log.File_Write("Saving to slot 4");
-                                spawn_saved();
-                                menu.possition = 3;
-                                menu.level = 1;
-                                menu.possition_max = 5;
-                                game.game_active = true;
-                                game.menu_active = false;
-                                game.log.File_Write("Resuming game");
-                                game.music_next_track = true;
-                             break;
-                             case 5://game menu
-                                menu.possition = 4;
-                                menu.level = 1;
-                                menu.possition_max = 6;
-                                game.log.File_Write("Entering 'game' menu.");
-                            break;
-                          }
-                       break;
-                    case 6: // load game menu
-                       switch (menu.possition)
-                          {
-                             case 0://load from slot 0
-                                if (save_01.Load())
-                                {
-                                   game.log.File_Write("Loading from slot 0");
-                                   spawn_loaded();
-                                   menu.possition = 3;
-                                   menu.level = 1;
-                                   menu.possition_max = 5;
-                                   game.game_active = true;
-                                   game.menu_active = false;
-                                   game.log.File_Write("Resuming game");
-                                   game.music_next_track = true;
-                                }
-                                else game.log.File_Write("Error loadng from slot 0");
-                             break;
-                             case 1://load from slot 1
-                                if (save_01.Load())
-                                {
-                                   game.log.File_Write("Loading from slot 1");
-                                   spawn_loaded();
-                                   menu.possition = 3;
-                                   menu.level = 1;
-                                   menu.possition_max = 5;
-                                   game.game_active = true;
-                                   game.menu_active = false;
-                                   game.log.File_Write("Resuming game");
-                                   game.music_next_track = true;
-                                }
-                                else game.log.File_Write("Error loadng from slot 1");
-                             break;
-                             case 2://load from slot 2
-                                if (save_02.Load())
-                                {
-                                   game.log.File_Write("Loading from slot 2");
-                                   spawn_loaded();
-                                   menu.possition = 3;
-                                   menu.level = 1;
-                                   menu.possition_max = 5;
-                                   game.game_active = true;
-                                   game.menu_active = false;
-                                   game.log.File_Write("Resuming game");
-                                   game.music_next_track = true;
-                                }
-                                else game.log.File_Write("Error loadng from slot 2");
-                             break;
-                             case 3://load from slot 3
-                                if (save_03.Load())
-                                {
-                                   game.log.File_Write("Loading from slot 3");
-                                   spawn_loaded();
-                                   menu.possition = 3;
-                                   menu.level = 1;
-                                   menu.possition_max = 5;
-                                   game.game_active = true;
-                                   game.menu_active = false;
-                                   game.log.File_Write("Resuming game");
-                                   game.music_next_track = true;
-                                }
-                                else game.log.File_Write("Error loadng from slot 3");
-                             break;
-                             case 4://load from slot 4
-                                if (save_04.Load())
-                                {
-                                   game.log.File_Write("Loading from slot 4");
-                                   spawn_loaded();
-                                   menu.possition = 3;
-                                   menu.level = 1;
-                                   menu.possition_max = 5;
-                                   game.game_active = true;
-                                   game.menu_active = false;
-                                   game.log.File_Write("Resuming game");
-                                   game.music_next_track = true;
-                                }
-                                else game.log.File_Write("Error loadng from slot 4");
-                             break;
-                             case 5://game menu
-                                menu.possition = 5;
-                                menu.level = 1;
-                                menu.possition_max = 6;
-                                game.log.File_Write("Entering 'game' menu.");
-                             break;
-                             default:
-                             break;
-
-                          }
-                    case 7: // Achievements menu
-                       switch (menu.possition)
-                          {
-                             case 0://game menu
-                                menu.possition = 1;
-                                menu.level = 1;
-                                menu.possition_max = 6;
-                                game.log.File_Write("Entering 'game' menu.");
-                             break;
-                          }
-                       break;
-                    default:
-                       sound.menu_select.play();
                  }
               }
    return(0);
