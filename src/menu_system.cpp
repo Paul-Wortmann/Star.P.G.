@@ -301,14 +301,14 @@ int init_menu   (void)
     options_menu.set_number_of_visible_choices(3,5);
     options_menu.set_button_choice_position(3,1);
     options_menu.set_button_current_choice(3,game.config.Display_resolution);
-    options_menu.set_button_choice_data(3, 1,283,L"640 X 480         ", true, true);
-    options_menu.set_button_choice_data(3, 2,283,L"800 X 600         ", true, true);
-    options_menu.set_button_choice_data(3, 3,283,L"1024 X 768        ", true, true);
-    options_menu.set_button_choice_data(3, 4,283,L"1280 X 1024       ", true, true);
-    options_menu.set_button_choice_data(3, 5,283,L"1366 X 768        ", true, true);
-    options_menu.set_button_choice_data(3, 6,283,L"1440 X 900        ", true, true);
-    options_menu.set_button_choice_data(3, 7,283,L"1680 X 1050       ", true, true);
-    options_menu.set_button_choice_data(3, 8,283,L"1920 X 1080       ", true, true);
+    options_menu.set_button_choice_data(3, 1,407,L"640 X 480         ", true, true);
+    options_menu.set_button_choice_data(3, 2,407,L"800 X 600         ", true, true);
+    options_menu.set_button_choice_data(3, 3,407,L"1024 X 768        ", true, true);
+    options_menu.set_button_choice_data(3, 4,407,L"1280 X 1024       ", true, true);
+    options_menu.set_button_choice_data(3, 5,407,L"1366 X 768        ", true, true);
+    options_menu.set_button_choice_data(3, 6,407,L"1440 X 900        ", true, true);
+    options_menu.set_button_choice_data(3, 7,407,L"1680 X 1050       ", true, true);
+    options_menu.set_button_choice_data(3, 8,407,L"1920 X 1080       ", true, true);
     options_menu.set_button_data  ( 4,L"Full Screen       ");
     options_menu.set_button_type  ( 4,TOGGLE);
     options_menu.set_button_active( 5,false);
@@ -319,10 +319,12 @@ int init_menu   (void)
     return(0);
 };
 
+
 //---------------------------------------------------------------------------------------
 int process_menu(void)
 {
-    int activated_button = -1;
+    int  activated_button = -1;
+    bool set_resolution   = false;
     // ------------------- main menu ------------
     activated_button = -1;
     if (game.menu_level == 1)
@@ -1014,15 +1016,51 @@ int process_menu(void)
     {
         options_menu.set_toggle_data(4,game.config.Display_Fullscreen);
         activated_button = options_menu.process();
+        options_menu.set_button_current_choice(3,game.config.Display_resolution-1);
         switch (activated_button)
         {
             case 4://Toggle Full-screen
                 options_menu.set_toggle_data(4,!options_menu.get_toggle_data(4));
                 game.config.Display_Fullscreen   = !game.config.Display_Fullscreen;
                 if (game.config.Display_Fullscreen) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
-                else  SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL);
+                else                                SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL);
                 game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
                 load_textures();
+            break;
+            case 301://Choice 1 selected
+                if (game.config.Display_resolution != options_menu.get_button_choice_position(3) + 0 -1)
+                {
+                    game.config.Display_resolution = options_menu.get_button_choice_position(3) + 0 -1;
+                    set_resolution = true;
+                }
+            break;
+            case 302://Choice 2 selected
+                if (game.config.Display_resolution != options_menu.get_button_choice_position(3) + 1 -1)
+                {
+                    game.config.Display_resolution = options_menu.get_button_choice_position(3) + 1 -1;
+                    set_resolution = true;
+                }
+            break;
+            case 303://Choice 3 selected
+                if (game.config.Display_resolution != options_menu.get_button_choice_position(3) + 2 -1)
+                {
+                    game.config.Display_resolution = options_menu.get_button_choice_position(3) + 2 -1;
+                    set_resolution = true;
+                }
+            break;
+            case 304://Choice 4 selected
+                if (game.config.Display_resolution != options_menu.get_button_choice_position(3) + 3 -1)
+                {
+                    game.config.Display_resolution = options_menu.get_button_choice_position(3) + 3 -1;
+                    set_resolution = true;
+                }
+            break;
+            case 305://Choice 5 selected
+                if (game.config.Display_resolution != options_menu.get_button_choice_position(3) + 4 -1)
+                {
+                    game.config.Display_resolution = options_menu.get_button_choice_position(3) + 4 -1;
+                    set_resolution = true;
+                }
             break;
             case 4001://left arrow on button 1
                 game.config.Audio_Sound_Volume --;
@@ -1048,6 +1086,14 @@ int process_menu(void)
                 Mix_VolumeMusic(game.config.Audio_Music_Volume);
                 options_menu.set_button_slider_position(2,game.config.Audio_Music_Volume);
             break;
+            case 4003://left arrow on button 3
+                options_menu.set_button_choice_position(3,options_menu.get_button_choice_position(3)-1);
+                if (options_menu.get_button_choice_position(3) < 1) options_menu.set_button_choice_position(3,1);
+            break;
+            case 5003://right arrow on button 3
+                options_menu.set_button_choice_position(3,options_menu.get_button_choice_position(3)+1);
+                if (options_menu.get_button_choice_position(3) >= options_menu.get_number_of_choices(3)-(options_menu.get_number_of_visible_choices(3)-1)) options_menu.set_button_choice_position(3,options_menu.get_number_of_choices(3)-(options_menu.get_number_of_visible_choices(3)-1));
+            break;
             case 6://Return to main menu
                 sound.menu_select.play();
                 game.menu_level = 1;
@@ -1069,135 +1115,61 @@ int process_menu(void)
             default:
             break;
         };
-    };
-//---------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-// - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD - OLD -
-
-        game.io.keyboard_delay_count++;
-        if (game.io.keyboard_delay_count > game.io.keyboard_delay) game.io.keyboard_delay_count = game.io.keyboard_delay;
-
-        if ((game.io.left) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
+        if (set_resolution)
+        {
+            set_resolution = false;
+            if (game.config.Display_resolution == 0)
             {
-                game.io.keyboard_delay_count = 0;
-                 if ((menu.level == 2) && (menu.possition == 3) && (game.config.Display_resolution != 0))//resolution select <
-                 {
-                    game.config.Display_resolution--;
-                    if (game.config.Display_resolution < 0) game.config.Display_resolution = 0;
-                    if (game.config.Display_resolution == 0)
-                    {
-                       game.config.Display_X_Resolution = 640;
-                       game.config.Display_Y_Resolution = 480;
-                    }
-                    if (game.config.Display_resolution == 1)
-                    {
-                       game.config.Display_X_Resolution = 800;
-                       game.config.Display_Y_Resolution = 600;
-                    }
-                    if (game.config.Display_resolution == 2)
-                    {
-                       game.config.Display_X_Resolution = 1024;
-                       game.config.Display_Y_Resolution = 768;
-                    }
-                    if (game.config.Display_resolution == 3)
-                    {
-                       game.config.Display_X_Resolution = 1280;
-                       game.config.Display_Y_Resolution = 1024;
-                    }
-                    if (game.config.Display_resolution == 4)
-                    {
-                       game.config.Display_X_Resolution = 1366;
-                       game.config.Display_Y_Resolution = 768;
-                    }
-                    if (game.config.Display_resolution == 5)
-                    {
-                       game.config.Display_X_Resolution = 1440;
-                       game.config.Display_Y_Resolution = 900;
-                    }
-                    if (game.config.Display_resolution == 6)
-                    {
-                       game.config.Display_X_Resolution = 1680;
-                       game.config.Display_Y_Resolution = 1050;
-                    }
-                    if (game.config.Display_resolution == 7)
-                    {
-                       game.config.Display_X_Resolution = 1920;
-                       game.config.Display_Y_Resolution = 1080;
-                    }
-                    game.config.mouse_resolution_x   = game.config.Display_X_Resolution;
-                    game.config.mouse_resolution_y   = game.config.Display_Y_Resolution;
-                    //kill_textures();
-                    if (game.config.Display_Fullscreen == true ) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
-                    if (game.config.Display_Fullscreen == false) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL);
-                    game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
-                    load_textures();
-                 }
-              }
-        if ((game.io.right) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
-              {
-                game.io.keyboard_delay_count = 0;
-                 if ((menu.level == 2) && (menu.possition == 3) && (game.config.Display_resolution != 7))//resolution select <
-                 {
-                    game.config.Display_resolution++;
-                    if (game.config.Display_resolution > 7) game.config.Display_resolution = 7;
-                    if (game.config.Display_resolution == 0)
-                    {
-                       game.config.Display_X_Resolution = 640;
-                       game.config.Display_Y_Resolution = 480;
-                    }
-                    if (game.config.Display_resolution == 1)
-                    {
-                       game.config.Display_X_Resolution = 800;
-                       game.config.Display_Y_Resolution = 600;
-                    }
-                    if (game.config.Display_resolution == 2)
-                    {
-                       game.config.Display_X_Resolution = 1024;
-                       game.config.Display_Y_Resolution = 768;
-                    }
-                    if (game.config.Display_resolution == 3)
-                    {
-                       game.config.Display_X_Resolution = 1280;
-                       game.config.Display_Y_Resolution = 1024;
-                    }
-                    if (game.config.Display_resolution == 4)
-                    {
-                       game.config.Display_X_Resolution = 1366;
-                       game.config.Display_Y_Resolution = 768;
-                    }
-                    if (game.config.Display_resolution == 5)
-                    {
-                       game.config.Display_X_Resolution = 1440;
-                       game.config.Display_Y_Resolution = 900;
-                    }
-                    if (game.config.Display_resolution == 6)
-                    {
-                       game.config.Display_X_Resolution = 1680;
-                       game.config.Display_Y_Resolution = 1050;
-                    }
-                    if (game.config.Display_resolution == 7)
-                    {
-                       game.config.Display_X_Resolution = 1920;
-                       game.config.Display_Y_Resolution = 1080;
-                    }
-                    game.config.mouse_resolution_x   = game.config.Display_X_Resolution;
-                    game.config.mouse_resolution_y   = game.config.Display_Y_Resolution;
-                    //kill_textures();
-                    if (game.config.Display_Fullscreen == true ) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
-                    if (game.config.Display_Fullscreen == false) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL);
-                    game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
-                    load_textures();
-                 }
-              }
+                game.config.Display_X_Resolution = 640;
+                game.config.Display_Y_Resolution = 480;
+            }
+            if (game.config.Display_resolution == 1)
+            {
+                game.config.Display_X_Resolution = 800;
+                game.config.Display_Y_Resolution = 600;
+            }
+            if (game.config.Display_resolution == 2)
+            {
+                game.config.Display_X_Resolution = 1024;
+                game.config.Display_Y_Resolution = 768;
+            }
+            if (game.config.Display_resolution == 3)
+            {
+                game.config.Display_X_Resolution = 1280;
+                game.config.Display_Y_Resolution = 1024;
+            }
+            if (game.config.Display_resolution == 4)
+            {
+                game.config.Display_X_Resolution = 1366;
+                game.config.Display_Y_Resolution = 768;
+            }
+            if (game.config.Display_resolution == 5)
+            {
+                game.config.Display_X_Resolution = 1440;
+                game.config.Display_Y_Resolution = 900;
+            }
+            if (game.config.Display_resolution == 6)
+            {
+                game.config.Display_X_Resolution = 1680;
+                game.config.Display_Y_Resolution = 1050;
+            }
+            if (game.config.Display_resolution == 7)
+            {
+                game.config.Display_X_Resolution = 1920;
+                game.config.Display_Y_Resolution = 1080;
+            }
+            game.config.mouse_resolution_x   = game.config.Display_X_Resolution;
+            game.config.mouse_resolution_y   = game.config.Display_Y_Resolution;
+            if (game.config.Display_Fullscreen) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
+            else                                SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL);
+            game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
+            load_textures();
+        }
+    };
    return(0);
 };
 
-   //---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------
 int diplay_menu (void)
 {
     glPushMatrix();

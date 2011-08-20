@@ -563,7 +563,7 @@ struct texture_type
    texture_class arrow_button_disabled;
    texture_class slider_normal;
    texture_class slider_highlighted;
-
+   texture_class resolution_icon;
 };
 
 struct font_type
