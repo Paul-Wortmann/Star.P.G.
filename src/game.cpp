@@ -114,11 +114,15 @@ int init_game(void)
    game_o.achivement.score_level_3          = 2500;
    game_o.achivement.score_level_4          = 5000;
    game_o.achivement.score_level_5          = 10000;
+   game_o.achivement.score_level_6          = 20000;
+   game_o.achivement.score_level_7          = 40000;
    game_o.achivement.kills_level_1          = 128;
    game_o.achivement.kills_level_2          = 256;
    game_o.achivement.kills_level_3          = 512;
    game_o.achivement.kills_level_4          = 1024;
    game_o.achivement.kills_level_5          = 2048;
+   game_o.achivement.kills_level_6          = 4096;
+   game_o.achivement.kills_level_7          = 8192;
 
    for (int count =0;count < MAX_BULLETS;count++)
    {
@@ -4267,6 +4271,16 @@ int process_a_score(void)
       game_o.achivement.score = 5;
       spawn_a_score();
    };
+   if ((game_o.score >= game_o.achivement.score_level_6) && (game_o.achivement.score < 6))
+   {
+      game_o.achivement.score = 6;
+      spawn_a_score();
+   };
+   if ((game_o.score >= game_o.achivement.score_level_7) && (game_o.achivement.score < 7))
+   {
+      game_o.achivement.score = 7;
+      spawn_a_score();
+   };
 return(1);
 };
 
@@ -4328,6 +4342,16 @@ int process_a_kills(void)
    if ((game_o.kills >= game_o.achivement.kills_level_5) && (game_o.achivement.kills < 5))
    {
       game_o.achivement.kills = 5;
+      spawn_a_kills();
+   };
+   if ((game_o.kills >= game_o.achivement.kills_level_6) && (game_o.achivement.kills < 6))
+   {
+      game_o.achivement.kills = 6;
+      spawn_a_kills();
+   };
+   if ((game_o.kills >= game_o.achivement.kills_level_7) && (game_o.achivement.kills < 7))
+   {
+      game_o.achivement.kills = 7;
       spawn_a_kills();
    };
    return(1);

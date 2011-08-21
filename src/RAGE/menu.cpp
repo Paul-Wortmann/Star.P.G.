@@ -446,6 +446,38 @@ void button_class::draw(void)
             break;
         };
     }
+    if(button_class::type == ACHIEVE) // Achieve button
+    {
+        float delta_x = 0.0f;
+        for (int achieve_count = 0; achieve_count < button_class::achieve_data; achieve_count++)
+        {
+            delta_x =(button_class::pos_x - (button_class::width/2)) + ((button_class::width/(float)button_class::achieve_data) * (float)achieve_count)+ (button_class::width/2/(float)button_class::achieve_data);
+            if(button_class::achieve_position > achieve_count) bind_texture(button_class::image_achieve_highlighted);
+            else bind_texture(button_class::image_achieve_normal);
+            glLoadIdentity();
+            glBegin( GL_QUADS );
+            glTexCoord2i( 0, 1 );glVertex3f(delta_x-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_y-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+            glTexCoord2i( 0, 0 );glVertex3f(delta_x-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_y+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+            glTexCoord2i( 1, 0 );glVertex3f(delta_x+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_y+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+            glTexCoord2i( 1, 1 );glVertex3f(delta_x+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_y-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
+            glEnd();
+
+        }
+
+        std::wstring temp_label = button_class::label;
+        switch(button_class::get_font()) //write selected level name
+        {
+            case 1:
+                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+            break;
+            case 2:
+                font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
+            break;
+            default:
+                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+            break;
+        };
+    }
 };
 
 bool button_class::button_pressed(void)
@@ -867,6 +899,31 @@ void  button_class::set_image_toggle_false_normal(int image)
     button_class::image_toggle_false_normal       = image;
 };
 
+void  button_class::set_image_achieve_highlighted(int image)
+{
+    button_class::image_achieve_highlighted = image;
+};
+
+void  button_class::set_image_achieve_normal(int image)
+{
+    button_class::image_achieve_normal = image;
+};
+
+void  button_class::set_achieve_data(int int_data)
+{
+    button_class::achieve_data = int_data;
+};
+
+int   button_class::get_achieve_data(void)
+{
+    return(button_class::achieve_data);
+};
+
+void  button_class::set_achieve_position(int int_data)
+{
+    button_class::achieve_position = int_data;
+};
+
 //------------------------------------------ menu ---------------------------------------------------------------------------------------
 //------------------------------------------ menu ---------------------------------------------------------------------------------------
 //------------------------------------------ menu ---------------------------------------------------------------------------------------
@@ -1008,6 +1065,8 @@ void menu_class::set_button_data(int button_number)
     menu_class::button[button_number].set_image_toggle_true_normal       (menu_class::button_image_toggle_true_normal);
     menu_class::button[button_number].set_image_toggle_false_highlighted (menu_class::button_image_toggle_false_highlighted);
     menu_class::button[button_number].set_image_toggle_false_normal      (menu_class::button_image_toggle_false_normal);
+    menu_class::button[button_number].set_image_achieve_highlighted      (menu_class::button_image_achieve_highlighted);
+    menu_class::button[button_number].set_image_achieve_normal           (menu_class::button_image_achieve_normal);
     menu_class::button[button_number].set_zoom                           (menu_class::zoom,menu_class::zoom_size,menu_class::zoom_speed);
 };
 
@@ -1037,6 +1096,8 @@ void menu_class::set_button_data(int button_number, std::wstring label)
     menu_class::button[button_number].set_image_toggle_true_normal       (menu_class::button_image_toggle_true_normal);
     menu_class::button[button_number].set_image_toggle_false_highlighted (menu_class::button_image_toggle_false_highlighted);
     menu_class::button[button_number].set_image_toggle_false_normal      (menu_class::button_image_toggle_false_normal);
+    menu_class::button[button_number].set_image_achieve_highlighted      (menu_class::button_image_achieve_highlighted);
+    menu_class::button[button_number].set_image_achieve_normal           (menu_class::button_image_achieve_normal);
     menu_class::button[button_number].set_zoom                           (menu_class::zoom,menu_class::zoom_size,menu_class::zoom_speed);
 };
 
@@ -1066,6 +1127,8 @@ void menu_class::set_button_data(int button_number, std::wstring label,float x, 
     menu_class::button[button_number].set_image_toggle_true_normal       (menu_class::button_image_toggle_true_normal);
     menu_class::button[button_number].set_image_toggle_false_highlighted (menu_class::button_image_toggle_false_highlighted);
     menu_class::button[button_number].set_image_toggle_false_normal      (menu_class::button_image_toggle_false_normal);
+    menu_class::button[button_number].set_image_achieve_highlighted      (menu_class::button_image_achieve_highlighted);
+    menu_class::button[button_number].set_image_achieve_normal           (menu_class::button_image_achieve_normal);
     menu_class::button[button_number].set_zoom                           (menu_class::zoom,menu_class::zoom_size,menu_class::zoom_speed);
 };
 
@@ -1097,6 +1160,8 @@ void menu_class::set_button_data(void)
         menu_class::button[button_count].set_image_toggle_true_normal       (menu_class::button_image_toggle_true_normal);
         menu_class::button[button_count].set_image_toggle_false_highlighted (menu_class::button_image_toggle_false_highlighted);
         menu_class::button[button_count].set_image_toggle_false_normal      (menu_class::button_image_toggle_false_normal);
+        menu_class::button[button_count].set_image_achieve_highlighted      (menu_class::button_image_achieve_highlighted);
+        menu_class::button[button_count].set_image_achieve_normal           (menu_class::button_image_achieve_normal);
         menu_class::button[button_count].set_zoom                           (menu_class::zoom,menu_class::zoom_size,menu_class::zoom_speed);
         menu_class::button[button_count].set_arrow_width                    ((menu_class::button_width /100)*10);
         menu_class::button[button_count].set_arrow_height                   (menu_class::button_height);
@@ -1130,6 +1195,7 @@ void menu_class::set_number_of_buttons(int nob)
 {
     if (nob <  0) nob = 0;
     menu_class::number_of_buttons = nob;
+    menu_class::current_vertical_selection = nob;
 };
 
 void menu_class::set_button_active(int button_number, bool bool_data)
@@ -1707,6 +1773,29 @@ bool  menu_class::get_toggle_data(int button_number)
     return(menu_class::button[button_number].get_toggle_data());
 };
 
+void  menu_class::set_achieve_data(int button_number, int int_data)
+{
+    menu_class::button[button_number].set_button_type(ACHIEVE);
+    menu_class::button[button_number].set_achieve_data(int_data);
+};
+
+int   menu_class::get_achieve_data(int button_number)
+{
+    return(menu_class::button[button_number].get_achieve_data());
+};
+
+void  menu_class::set_achieve_button_images(int ah, int an)
+{
+    menu_class::button_image_achieve_highlighted = ah;
+    menu_class::button_image_achieve_normal      = an;
+};
+
+void  menu_class::set_achieve_position(int button_number, int int_data)
+{
+    menu_class::button[button_number].set_button_type(ACHIEVE);
+    menu_class::button[button_number].set_achieve_position(int_data);
+};
+
 int menu_class::process(void)
 {
     float  drag_x_delta = 0.0f;
@@ -1928,12 +2017,6 @@ int menu_class::process(void)
     //---- return ----
     return(return_value);
 };
-
-
-
-
-
-
 
 
 

@@ -30,6 +30,7 @@
 #define SLIDER   2
 #define TOGGLE   3
 #define CHOICE   4
+#define ACHIEVE  5
 
 const int MAX_MENU_BUTTONS        = 12;
 const int MAX_MENU_CHOICE_BUTTONS = 32;
@@ -67,6 +68,8 @@ class button_class
         int              image_toggle_true_normal;
         int              image_toggle_false_highlighted;
         int              image_toggle_false_normal;
+        int              image_achieve_highlighted;
+        int              image_achieve_normal;
         bool             highlighted;
         bool             arrow_left_highlighted;
         bool             arrow_right_highlighted;
@@ -111,6 +114,8 @@ class button_class
         int              disabled_color_b;
         int              disabled_color_a;
         bool             toggle_data;
+        int              achieve_data;
+        int              achieve_position;
     public:
         button_class(void);
         button_class(float x, float y, float z, float w, float h, int in, int ih, int id, bool hl, bool en, bool gl, bool zm, float zs, int nr, int ng, int nb, int na, int hr, int hg, int hb, int ha, int dr, int dg, int db, int da, std::wstring lb);
@@ -219,6 +224,11 @@ class button_class
         void  set_toggle_data(bool bool_data);
         bool  get_toggle_data(void);
         void  set_toggle_images(int tth, int ttn, int tfh, int tfn);
+        void  set_image_achieve_highlighted(int image);
+        void  set_image_achieve_normal(int image);
+        void  set_achieve_data(int int_data);
+        int   get_achieve_data(void);
+        void  set_achieve_position(int int_data);
 };
 
 //-------------------------- menu -------------------------------
@@ -253,6 +263,8 @@ class menu_class
         int           button_image_toggle_true_normal;
         int           button_image_toggle_false_highlighted;
         int           button_image_toggle_false_normal;
+        int           button_image_achieve_highlighted;
+        int           button_image_achieve_normal;
         float         button_width;
         float         button_height;
         float         button_spacing;
@@ -401,6 +413,10 @@ class menu_class
         void  set_toggle_data(int button_number, bool bool_data);
         bool  get_toggle_data(int button_number);
         void  set_toggle_button_images(int tth, int ttn, int tfh, int tfn);
+        void  set_achieve_data(int button_number, int int_data);
+        int   get_achieve_data(int button_number);
+        void  set_achieve_button_images(int ah, int an);
+        void  set_achieve_position(int button_number, int int_data);
         int   process(void);
 };
 

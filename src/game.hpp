@@ -280,12 +280,16 @@ struct achivement_type
    int score_level_3;
    int score_level_4;
    int score_level_5;
+   int score_level_6;
+   int score_level_7;
    int kills;
    int kills_level_1;
    int kills_level_2;
    int kills_level_3;
    int kills_level_4;
    int kills_level_5;
+   int kills_level_6;
+   int kills_level_7;
 };
 
 struct game_type
