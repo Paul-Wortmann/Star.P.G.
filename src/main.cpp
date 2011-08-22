@@ -208,6 +208,11 @@ int main(int argc, char *argv[])
                 game.menu_level              = 8;
                 game.config.menu_delay_count = 0;
                 music.level_pd.play();
+                game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 84);
+                game.background.set_data ( 2, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 84);
+                game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 73);
+                game.background.set_data ( 4, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 73);
+                game.background.set_movement_type(BOUNCE);
                 game.log.File_Write("User terminated due to insufficient health...better luck next time buddy!");
             }
         if (game.io.escape)
@@ -311,84 +316,36 @@ int main(int argc, char *argv[])
         }
     }
 //*********************************** PLAYER DEATH SCREEN *****************************************
-    if (game.pdie_active)
-    {
-        if (game.music_next_track)
+        if (game.pdie_active)
         {
-            game.music_next_track = false;
-            music.level_pd.play();
+            if (game.music_next_track)
+            {
+                game.music_next_track = false;
+                music.level_pd.play();
+            }
+            glPushMatrix();
+            diplay_menu ();
+            glPopMatrix();
+            SDL_GL_SwapBuffers();
+            if (game.process_ready) game.background.process();
+            if (game.process_ready) process_menu();
         }
-        glPushMatrix();
-        diplay_menu ();
-        glPopMatrix();
-        SDL_GL_SwapBuffers();
-        if (game.process_ready) game.background.process();
-        if (game.process_ready) process_menu();
-    }
 //******************************* PLAYER NEXT LEVEL SCREEN *************************************
-     if (game.nlvl_active)
-     {
-        if (game.music_next_track)
+        if (game.nlvl_active)
         {
-            game.music_next_track = false;
-            music.level_nl.play();
+            if (game.music_next_track)
+            {
+                game.music_next_track = false;
+                music.level_nl.play();
+            }
+            game.menu_level = 9;
+            if (game.process_ready) game.background.process();
+            if (game.process_ready) process_menu();
+            glPushMatrix();
+            diplay_menu ();
+            glPopMatrix ();
+            SDL_GL_SwapBuffers();
         }
-        bool outro_time = false;
-        glPushMatrix();
-        game.menu_level = 9;
-        diplay_menu ();
-        if (game.process_ready) game.background.process();
-        glPopMatrix ();
-        SDL_GL_SwapBuffers();
-        game.config.menu_delay_count++;
-        if ((game.config.menu_delay_count >= game.config.menu_delay) && (game.process_ready))
-        {
-            game.config.menu_delay_count = game.config.menu_delay;
-            if ((game.io.escape) || (game.io.enter) || (game.io.space))
-              {
-                 sound.menu_select.play();
-                 game_o.level++;
-                 if (game_o.level > 24) // killed last boss!
-                 {
-                     outro_time = true;
-                     game_o.level = 24;
-                     if (!game_o.completed)
-                     {
-                         for(int count = 0; count < MAX_ENEMYS; count++) //finished the game, now its twice as hard! ;)
-                         {
-                            game_o.enemy[count].health += game_o.enemy[count].health;
-                            if (game_o.enemy[count].health > 65535) game_o.enemy[count].health = 65535;
-                         }
-                         game_o.completed = true;
-                     }
-                 }
-                 if (game_o.level_locked[game_o.level]) game_o.level_locked[game_o.level] = false;
-                 init_game_level(game_o.level);
-                 if (outro_time)
-                 {
-                    game.music_next_track = true;
-                    game.outr_active    = true;
-                    game.game_active    = false;
-                    game.menu_active    = false;
-                    game.nlvl_active    = false;
-                    game.log.File_Write("Player just completed the game, proceeding to Outro!");
-                    game.config.menu_delay_count = 0;
-                 }
-                 else
-                 {
-                    game.music_next_track = true;
-                    game.game_active    = true;
-                    game.menu_active    = false;
-                    game.nlvl_active    = false;
-                    game.log.File_Write("Victory conditions met, player proceeding to next level!");
-                    game.config.menu_delay_count = 0;
-                 }
-              game.io.keyboard_delay_count = 0;
-              game.io.escape   = false;
-              }
-        }
-     }
-
 //******************************* OUTRO SCREEN *************************************************
      if (game.outr_active)
      {

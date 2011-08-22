@@ -3333,12 +3333,17 @@ int process_game(void)
    proccess_powerups();
    proccess_coin();
    proccess_wexp();
-   if (level_completed())
-   {
-      game.game_active = false;
-      game.nlvl_active = true;
-      game.music_next_track = true;
-   }
+    if (level_completed())
+    {
+        game.game_active      = false;
+        game.nlvl_active      = true;
+        game.music_next_track = true;
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0015f, 0.0015f, 63);
+        game.background.set_data ( 2, 1, 1, 0.0f, 0.0f, 0.0015f, 0.0015f, 63);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 64);
+        game.background.set_data ( 4, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 64);
+        game.background.set_movement_type(BOUNCE);
+    }
    if  (random(game_o.powerup[1 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup
    if ((random(game_o.powerup[8 ].spawn_rate) <= 5)&& (!boss_level())) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb powerup
 
@@ -3349,7 +3354,7 @@ int process_game(void)
 
    if ((game_o.shield[game_o.player.front_shield].level  < 3) && (random(game_o.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),2);//spawn shield lvl powerup
    if ((game_o.thruster[game_o.player.thrusters].level   < 3) && (random(game_o.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster lvl powerup
-   // if player missed boss weapon drops enable random spawning of powerups to keep consistancy
+   // if player missed boss weapon drops enable random spawning of powerups to keep consistency
    if ((game_o.level >=  4) && (!game_o.projectile[1].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
    if ((game_o.level >=  7) && (!game_o.projectile[2].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
    if ((game_o.level >= 11) && (!game_o.projectile[3].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon

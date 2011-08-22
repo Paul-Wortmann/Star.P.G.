@@ -26,7 +26,7 @@
 
 background_class::background_class       (void)
 {
-    for(int layer_count = 1; layer_count < MAX_LAYERS+1; layer_count++)
+    for(int layer_count = 1; layer_count < MAX_LAYERS; layer_count++)
     {
         background_class::layer[layer_count].active      = false;
     }
@@ -107,7 +107,7 @@ float background_class::get_pos_y(int layer_number)
 bool  background_class::scroll_up        (void)
 {
     bool return_value = false;
-    for(int layer_count = 1; layer_count < MAX_LAYERS+1; layer_count++)
+    for(int layer_count = 1; layer_count < MAX_LAYERS; layer_count++)
     {
         background_class::layer[layer_count].pos_y -= background_class::layer[layer_count].scroll_rate_y;
         if (background_class::layer[layer_count].pos_y < -1.0f) background_class::layer[layer_count].pos_y = -1.0f;
@@ -119,7 +119,7 @@ bool  background_class::scroll_up        (void)
 bool  background_class::scroll_down      (void)
 {
     bool return_value = false;
-    for(int layer_count = 1; layer_count < MAX_LAYERS+1; layer_count++)
+    for(int layer_count = 1; layer_count < MAX_LAYERS; layer_count++)
     {
         background_class::layer[layer_count].pos_y += background_class::layer[layer_count].scroll_rate_y;
         if (background_class::layer[layer_count].pos_y > 1.0f) background_class::layer[layer_count].pos_y = 1.0f;
@@ -133,7 +133,7 @@ void background_class::process           (void)
 {
     if (background_class::get_movement_type() == BOUNCE)
     {
-        for(int layer_count = 1; layer_count < MAX_LAYERS+1; layer_count++)
+        for(int layer_count = 1; layer_count < MAX_LAYERS; layer_count++)
         {
             if(background_class::layer[layer_count].dir_x == 0)
             {
@@ -159,7 +159,7 @@ void background_class::process           (void)
     };
     if (background_class::get_movement_type() == SCROLL)
     {
-        for(int layer_count = 1; layer_count < MAX_LAYERS+1; layer_count++)
+        for(int layer_count = 1; layer_count < MAX_LAYERS; layer_count++)
         {
             background_class::layer[layer_count].pos_x -= background_class::layer[layer_count].scroll_rate_x;
             if (background_class::layer[layer_count].pos_x <= -4.0f) background_class::layer[layer_count].pos_x = 4.0f;
