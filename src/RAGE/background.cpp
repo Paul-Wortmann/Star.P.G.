@@ -79,6 +79,31 @@ float background_class::get_scroll_y     (int layer_number)
     return(background_class::layer[layer_number].scroll_rate_y);
 };
 
+int   background_class::get_image(int layer_number)
+{
+    return(background_class::layer[layer_number].image);
+};
+
+int   background_class::get_dir_x(int layer_number)
+{
+    return(background_class::layer[layer_number].dir_x);
+};
+
+int   background_class::get_dir_y(int layer_number)
+{
+    return(background_class::layer[layer_number].dir_y);
+};
+
+float background_class::get_pos_x(int layer_number)
+{
+    return(background_class::layer[layer_number].pos_x);
+};
+
+float background_class::get_pos_y(int layer_number)
+{
+    return(background_class::layer[layer_number].pos_y);
+};
+
 bool  background_class::scroll_up        (void)
 {
     bool return_value = false;
@@ -266,11 +291,5 @@ void background_class::draw             (void)
     }
 };
 
-
-int   get_image(void);
-int   get_dir_x(void);
-int   get_dir_y(void);
-float get_pos_x(void);
-float get_pos_y(void);
 
 

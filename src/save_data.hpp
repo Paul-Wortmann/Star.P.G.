@@ -41,7 +41,7 @@ struct layer_type
 
 struct background_data_type
 {
-    layer_type  layer[MAX_LAYERS];
+    layer_type  layer[MAX_LAYERS+1];
     int         movemennt_type;
 };
 

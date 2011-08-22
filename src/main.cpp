@@ -203,10 +203,11 @@ int main(int argc, char *argv[])
             {
                 sound.menu_select.play();
                 game.music_next_track = true;
-                game.game_active    = false;
-                game.game_resume    = false;
-                game.pdie_active    = true;
-                menu.level = 8;
+                game.game_active      = false;
+                game.game_resume      = false;
+                game.pdie_active      = true;
+                game.menu_active      = true;
+                menu.level            = 8;
                 game.config.menu_delay_count = 0;
                 game.log.File_Write("User terminated due to insuficient health...better luck next time buddy!");
             }
@@ -301,11 +302,11 @@ int main(int argc, char *argv[])
             if (((game.io.escape) || (game.io.select)) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
             {
                 game.io.keyboard_delay_count = 0;
-                game.game_paused    = false;
-                game.game_active    = true;
-                game.io.escape      = false;
-                game.io.select      = false;
-                game.io.pause       = false;
+                game.game_paused      = false;
+                game.game_active      = true;
+                game.io.escape        = false;
+                game.io.select        = false;
+                game.io.pause         = false;
                 game.music_next_track = true;
             }
         }
@@ -331,14 +332,12 @@ int main(int argc, char *argv[])
             {
                 sound.menu_select.play();
                 init_game();
-                menu.level                     = 0;
-                menu.possition                 = 0;
-                menu.possition_max             = 4;
+                menu.level                   = 1;
                 game.menu_active             = true;
                 game.pdie_active             = false;
                 game.io.keyboard_delay_count = 0;
                 game.io.escape               = false;
-                game.music_next_track          = true;
+                game.music_next_track        = true;
             }
         }
     }

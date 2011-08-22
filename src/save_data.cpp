@@ -23,6 +23,7 @@
 #include "save_data.hpp"
 #include "RAGE/rage.hpp"
 #include "game.hpp"
+#include "levels.hpp"
 
 extern game_class     game;
 extern game_type      game_o;
@@ -30,7 +31,6 @@ extern game_type      game_o;
 
 void update_save_data(void)
 {
-    int count;
     save_data.npc_damage_duration = game_o.npc_damage_duration;
     save_data.cheats_enabled = game_o.cheats_enabled;
     save_data.number_bombs = game_o.number_bombs;
@@ -84,70 +84,84 @@ void update_save_data(void)
     save_data.player = game_o.player;
     save_data.active_npc_count = game_o.active_npc_count;
     save_data.achivement = game_o.achivement;
-    for (count = 0; count < MAX_LEVELS; count++)
+    for (int count = 0; count < MAX_LEVELS; count++)
     {
         save_data.level_locked[count] = game_o.level_locked[count];
     }
-    for (count = 0; count < MAX_WAVES; count++)
+    for (int count = 0; count < MAX_WAVES; count++)
     {
         save_data.wave[count] = game_o.wave[count];
     }
-    for (count = 0; count < MAX_SIDESHIPS; count++)
+    for (int count = 0; count < MAX_SIDESHIPS; count++)
     {
         save_data.sideship[count] = game_o.sideship[count];
     }
-    for (count = 0; count < MAX_ENEMYS; count++)
+    for (int count = 0; count < MAX_ENEMYS; count++)
     {
         save_data.enemy[count] = game_o.enemy[count];
     }
-    for (count = 0; count < MAX_NPCS; count++)
+    for (int count = 0; count < MAX_NPCS; count++)
     {
         save_data.npc[count] = game_o.npc[count];
     }
-    for (count = 0; count < MAX_PROJECTILES; count++)
+    for (int count = 0; count < MAX_PROJECTILES; count++)
     {
         save_data.projectile[count] = game_o.projectile[count];
     }
-    for (count = 0; count < MAX_SHIELDS; count++)
+    for (int count = 0; count < MAX_SHIELDS; count++)
     {
         save_data.shield[count] = game_o.shield[count];
     }
-    for (count = 0; count < MAX_THRUSTERS; count++)
+    for (int count = 0; count < MAX_THRUSTERS; count++)
     {
         save_data.thruster[count] = game_o.thruster[count];
     }
-    for (count = 0; count < MAX_EXPLOSIONS; count++)
+    for (int count = 0; count < MAX_EXPLOSIONS; count++)
     {
         save_data.explosion[count] = game_o.explosion[count];
     }
-/*
-    for (count = 0; count < MAX_BACKGROUNDS; count++)
-    {
-        save_data.background_scroll[count] = game_o.background_scroll[count];
-    }
-*/
-    for (count = 0; count < MAX_POWERUPS; count++)
+    for (int count = 0; count < MAX_POWERUPS; count++)
     {
         save_data.powerup[count] = game_o.powerup[count];
     }
-    for (count = 0; count < MAX_COINS; count++)
+    for (int count = 0; count < MAX_COINS; count++)
     {
         save_data.coin[count] = game_o.coin[count];
     }
-    for (count = 0; count < MAX_WEXPS; count++)
+    for (int count = 0; count < MAX_WEXPS; count++)
     {
         save_data.wexp[count] = game_o.wexp[count];
     }
-    for (count = 0; count < MAX_NPCS; count++)
+    for (int count = 0; count < MAX_NPCS; count++)
     {
         save_data.active_npc[count] = game_o.active_npc[count];
     }
+    for (int count = 0; count <= MAX_LAYERS; count++)
+    {
+        save_data.background.layer[count].active        = game.background.get_active  (count);
+        save_data.background.layer[count].dir_x         = game.background.get_dir_x   (count);
+        save_data.background.layer[count].dir_y         = game.background.get_dir_y   (count);
+        save_data.background.layer[count].image         = game.background.get_image   (count);
+        save_data.background.layer[count].pos_x         = game.background.get_pos_x   (count);
+        save_data.background.layer[count].pos_y         = game.background.get_pos_y   (count);
+        save_data.background.layer[count].scroll_rate_x = game.background.get_scroll_x(count);
+        save_data.background.layer[count].scroll_rate_y = game.background.get_scroll_y(count);
+    }
+    save_data.background.movemennt_type = game.background.get_movement_type();
     save_data.save_version = 1;
 };
 
 void update_game_data(void)
 {
-    int count;
+    game_o.level = save_data.level;
+    init_game_level(save_data.level);
+    for (int count = 0; count <= MAX_LAYERS; count++)
+    {
+        game.background.set_active  (count,save_data.background.layer[count].active);
+        game.background.set_data    (count,save_data.background.layer[count].dir_x,save_data.background.layer[count].dir_y,save_data.background.layer[count].pos_x,save_data.background.layer[count].pos_y,save_data.background.layer[count].scroll_rate_x,save_data.background.layer[count].scroll_rate_y,save_data.background.layer[count].image);
+        game.background.set_image   (count,save_data.background.layer[count].image);
+    }
+    game.background.set_movement_type(save_data.background.movemennt_type);
     game_o.npc_damage_duration = save_data.npc_damage_duration;
     game_o.cheats_enabled = save_data.cheats_enabled;
     game_o.number_bombs = save_data.number_bombs;
@@ -168,7 +182,6 @@ void update_game_data(void)
     game.outr_active = save_data.outr_active;
     game.status_quit_active = save_data.status_quit_active;
     game_o.exp_rate = save_data.exp_rate;
-    game_o.level = save_data.level;
     game_o.level_waves = save_data.level_waves;
     game_o.wave_spawnable = save_data.wave_spawnable;
     game_o.level_npc_type = save_data.level_npc_type;
@@ -201,61 +214,55 @@ void update_game_data(void)
     game_o.player = save_data.player;
     game_o.active_npc_count = save_data.active_npc_count;
     game_o.achivement = save_data.achivement;
-    for (count = 0; count < MAX_LEVELS; count++)
+    for (int count = 0; count < MAX_LEVELS; count++)
     {
         game_o.level_locked[count] = save_data.level_locked[count];
     }
-    for (count = 0; count < MAX_WAVES; count++)
+    for (int count = 0; count < MAX_WAVES; count++)
     {
         game_o.wave[count] = save_data.wave[count];
     }
-    for (count = 0; count < MAX_SIDESHIPS; count++)
+    for (int count = 0; count < MAX_SIDESHIPS; count++)
     {
         game_o.sideship[count] = save_data.sideship[count];
     }
-    for (count = 0; count < MAX_ENEMYS; count++)
+    for (int count = 0; count < MAX_ENEMYS; count++)
     {
         game_o.enemy[count] = save_data.enemy[count];
     }
-    for (count = 0; count < MAX_NPCS; count++)
+    for (int count = 0; count < MAX_NPCS; count++)
     {
         game_o.npc[count] = save_data.npc[count];
     }
-    for (count = 0; count < MAX_PROJECTILES; count++)
+    for (int count = 0; count < MAX_PROJECTILES; count++)
     {
         game_o.projectile[count] = save_data.projectile[count];
     }
-    for (count = 0; count < MAX_SHIELDS; count++)
+    for (int count = 0; count < MAX_SHIELDS; count++)
     {
         game_o.shield[count] = save_data.shield[count];
     }
-    for (count = 0; count < MAX_THRUSTERS; count++)
+    for (int count = 0; count < MAX_THRUSTERS; count++)
     {
         game_o.thruster[count] = save_data.thruster[count];
     }
-    for (count = 0; count < MAX_EXPLOSIONS; count++)
+    for (int count = 0; count < MAX_EXPLOSIONS; count++)
     {
         game_o.explosion[count] = save_data.explosion[count];
     }
-/*
-    for (count = 0; count < MAX_BACKGROUNDS; count++)
-    {
-        game_o.background_scroll[count] = save_data.background_scroll[count];
-    }
-*/
-    for (count = 0; count < MAX_POWERUPS; count++)
+    for (int count = 0; count < MAX_POWERUPS; count++)
     {
         game_o.powerup[count] = save_data.powerup[count];
     }
-    for (count = 0; count < MAX_COINS; count++)
+    for (int count = 0; count < MAX_COINS; count++)
     {
         game_o.coin[count] = save_data.coin[count];
     }
-    for (count = 0; count < MAX_WEXPS; count++)
+    for (int count = 0; count < MAX_WEXPS; count++)
     {
         game_o.wexp[count] = save_data.wexp[count];
     }
-    for (count = 0; count < MAX_NPCS; count++)
+    for (int count = 0; count < MAX_NPCS; count++)
     {
         game_o.active_npc[count] = save_data.active_npc[count];
     }
