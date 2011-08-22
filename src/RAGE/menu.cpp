@@ -1880,6 +1880,7 @@ int menu_class::process(void)
         }
         if (game.io.select) return_value = current_vertical_selection;
     }
+    if ((!menu_class::mouse_over_any_button()) && (menu_class::number_of_buttons == 1)) menu_class::button[1].set_highlighted(false);
     for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)//choice
     {
         if (menu_class::button[button_count].get_button_type() == CHOICE)//choice button

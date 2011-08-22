@@ -202,14 +202,13 @@ int main(int argc, char *argv[])
             if (game_o.player.health < 0)
             {
                 sound.menu_select.play();
-                game.music_next_track = true;
-                game.game_active      = false;
-                game.game_resume      = false;
-                game.pdie_active      = true;
-                game.menu_active      = true;
-                menu.level            = 8;
+                game.game_active             = false;
+                game.game_resume             = false;
+                game.pdie_active             = true;
+                game.menu_level              = 8;
                 game.config.menu_delay_count = 0;
-                game.log.File_Write("User terminated due to insuficient health...better luck next time buddy!");
+                music.level_pd.play();
+                game.log.File_Write("User terminated due to insufficient health...better luck next time buddy!");
             }
         if (game.io.escape)
         {
@@ -321,25 +320,10 @@ int main(int argc, char *argv[])
         }
         glPushMatrix();
         diplay_menu ();
-        if (game.process_ready) game.background.process();
         glPopMatrix();
         SDL_GL_SwapBuffers();
-        game.config.menu_delay_count++;
-        if ((game.config.menu_delay_count >= game.config.menu_delay) && (game.process_ready))
-        {
-            game.config.menu_delay_count = game.config.menu_delay;
-            if ((game.io.escape) || (game.io.enter) || (game.io.space))
-            {
-                sound.menu_select.play();
-                init_game();
-                menu.level                   = 1;
-                game.menu_active             = true;
-                game.pdie_active             = false;
-                game.io.keyboard_delay_count = 0;
-                game.io.escape               = false;
-                game.music_next_track        = true;
-            }
-        }
+        if (game.process_ready) game.background.process();
+        if (game.process_ready) process_menu();
     }
 //******************************* PLAYER NEXT LEVEL SCREEN *************************************
      if (game.nlvl_active)
@@ -351,7 +335,7 @@ int main(int argc, char *argv[])
         }
         bool outro_time = false;
         glPushMatrix();
-        menu.level = 9;
+        game.menu_level = 9;
         diplay_menu ();
         if (game.process_ready) game.background.process();
         glPopMatrix ();
@@ -414,7 +398,7 @@ int main(int argc, char *argv[])
             music.outro_00.play();
         }
         glPushMatrix();
-        menu.level = 10;
+        game.menu_level = 10;
         diplay_menu ();
         if (game.process_ready) game.background.process();
         glPopMatrix ();
@@ -426,7 +410,7 @@ int main(int argc, char *argv[])
             if ((game.io.escape) || (game.io.enter) || (game.io.space))
               {
                  sound.menu_select.play();
-                 menu.level            = 1;
+                 game.menu_level            = 1;
                  menu.possition        = 0;
                  menu.possition_max    = 6;
                  game.game_resume    = false;
@@ -441,15 +425,15 @@ int main(int argc, char *argv[])
                  game.music_next_track = true;
               }
         }
-    }
+        }
 //---------------------------- code for end of main loop -----------------------
-    game.FPS = (game.timer.getticks() - game.LastTicks);
-    if ((game.timer.getticks() - game.LastTicks) >= 1000/90)
-    {
-        game.LastTicks = game.timer.getticks();
-        game.process_ready = true;
-    }
-    else game.process_ready = false;
+        game.FPS = (game.timer.getticks() - game.LastTicks);
+        if ((game.timer.getticks() - game.LastTicks) >= 1000/90)
+        {
+            game.LastTicks = game.timer.getticks();
+            game.process_ready = true;
+        }
+        else game.process_ready = false;
     }
 //----------------------------------- Exit -------------------------------------
     game.log.File_Write("Saving config...");

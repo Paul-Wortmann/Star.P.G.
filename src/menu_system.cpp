@@ -332,8 +332,8 @@ int init_menu   (void)
     game_over_menu.set_menu_title(L"Game Over         ");
     game_over_menu.set_keyboard_delay(16);
     game_over_menu.set_mouse_delay(24);
-    game_over_menu.set_pos(0.0f,-0.1f,0.001f);
-    game_over_menu.set_size(0.8f,0.4f);
+    game_over_menu.set_pos(0.0f,-0.7f,0.001f);
+    game_over_menu.set_size(0.8f,0.2f);
     game_over_menu.set_menu_font(1);
     game_over_menu.set_image_background(395);
     game_over_menu.set_button_zoom(true,0.04f,0.005f);
@@ -1203,9 +1203,41 @@ int process_menu(void)
             load_textures();
         }
     };
+    // ------------------- Options Menu ------------
+    activated_button = -1;
     if (game.menu_level == 8)
     {
-    }
+        activated_button = game_over_menu.process();
+        switch (activated_button)
+        {
+            case 1://Button 1 selected.
+                sound.menu_select.play();
+                init_game();
+                game.menu_level              = 1;
+                game.menu_active             = true;
+                game.pdie_active             = false;
+                game.io.escape               = false;
+                game.music_next_track        = true;
+                game.log.File_Write("Entering main menu, from game over menu. - button 1 selected.");
+            break;
+            case 65533://menu choice changed
+                sound.menu_move.play();
+            break;
+            case 65534://Return to main menu
+                sound.menu_select.play();
+                game.menu_level = 1;
+                game.log.File_Write("Entering main menu, from game over menu. - escape preses.");
+            break;
+            case 65535://Return to main menu
+                sound.menu_select.play();
+                game.menu_level = 1;
+                game.log.File_Write("Entering main menu, from game over menu. - button clicked.");
+            break;
+            default:
+            break;
+        };
+    };
+    //-------------------------------------------------------------------------------------------------------------------
     if (game.menu_level == 9)
     {
     }
@@ -1233,7 +1265,7 @@ int diplay_menu (void)
     glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
     glEnd();
 /*-----------------------------------------------------------------------------*/
-   if (menu.level == 8) //Player death screen
+   if (game.menu_level == 8) //Player death screen
    {
        if (game.background.get_image(1) != 84)
        {
@@ -1270,7 +1302,7 @@ int diplay_menu (void)
       glEnd();
    }
 /*-----------------------------------------------------------------------------*/
-   if (menu.level == 9) //Next level screen
+   if (game.menu_level == 9) //Next level screen
    {
       int level_t = game_o.level + 1;
       if (level_t > 24) level_t = 24;
@@ -1327,7 +1359,7 @@ int diplay_menu (void)
       font.font_1.Write(255,255,255,64,-1.00f,-0.40f,"Kill rate   - ./'",(((float)game_o.level_kills/(float)game_o.level_spawened)*100));
    }
 /*-----------------------------------------------------------------------------*/
-   if (menu.level == 10) //Outro screen
+   if (game.menu_level == 10) //Outro screen
    {
        if (game.background.get_image(1) != 84)
        {
