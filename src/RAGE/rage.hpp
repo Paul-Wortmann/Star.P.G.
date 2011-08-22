@@ -55,6 +55,13 @@ class game_class
         bool              outr_active;
         bool              status_quit_active;
         int               menu_level;
+        save_game_class   save_01;
+        save_game_class   save_02;
+        save_game_class   save_03;
+        save_game_class   save_04;
+        save_game_class   save_05;
+        save_game_class   save_06;
+        save_game_class   save_07;
         io_type           io;
         SDL_Event         event;
         log_file_class    log;

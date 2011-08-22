@@ -267,5 +267,10 @@ void background_class::draw             (void)
 };
 
 
+int   get_image(void);
+int   get_dir_x(void);
+int   get_dir_y(void);
+float get_pos_x(void);
+float get_pos_y(void);
 
 

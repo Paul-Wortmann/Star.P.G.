@@ -27,9 +27,27 @@
 #include "RAGE/savegame.hpp"
 #include "game.hpp"
 
+struct layer_type
+{
+    bool  active;
+    int   image;
+    int   dir_x;
+    int   dir_y;
+    float pos_x;
+    float pos_y;
+    float scroll_rate_x;
+    float scroll_rate_y;
+};
+
+struct background_data_type
+{
+    layer_type  layer[MAX_LAYERS];
+    int         movemennt_type;
+};
+
 struct save_data_type
 {
-    int save_version;
+   int                  save_version;
    int                  npc_damage_duration;
    bool                 cheats_enabled;
    int                  number_bombs;
@@ -96,6 +114,7 @@ struct save_data_type
    int                  active_npc_count;
    active_npc_type      active_npc[MAX_NPCS];
    achivement_type      achivement;
+   background_data_type background;
 };
 
 void update_save_data(void);

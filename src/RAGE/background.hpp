@@ -55,6 +55,11 @@ class background_class
         bool  get_active        (int layer_number);
         float get_scroll_x      (int layer_number);
         float get_scroll_y      (int layer_number);
+        int   get_image         (void);
+        int   get_dir_x         (void);
+        int   get_dir_y         (void);
+        float get_pos_x         (void);
+        float get_pos_y         (void);
         bool  scroll_up         (void);
         bool  scroll_down       (void);
         void  process           (void);
@@ -62,3 +67,19 @@ class background_class
 };
 
 #endif //BACKGROUND_H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
