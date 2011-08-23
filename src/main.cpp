@@ -348,40 +348,19 @@ int main(int argc, char *argv[])
         }
 //******************************* OUTRO SCREEN *************************************************
      if (game.outr_active)
-     {
-        if (game.music_next_track)
         {
-            game.music_next_track = false;
-            music.outro_00.play();
-        }
-        glPushMatrix();
-        game.menu_level = 10;
-        diplay_menu ();
-        if (game.process_ready) game.background.process();
-        glPopMatrix ();
-        SDL_GL_SwapBuffers();
-        game.config.menu_delay_count++;
-        if ((game.config.menu_delay_count >= game.config.menu_delay) && (game.process_ready))
-        {
-            game.config.menu_delay_count = game.config.menu_delay;
-            if ((game.io.escape) || (game.io.enter) || (game.io.space))
-              {
-                 sound.menu_select.play();
-                 game.menu_level            = 1;
-                 menu.possition        = 0;
-                 menu.possition_max    = 6;
-                 game.game_resume    = false;
-                 game.pdie_active    = false;
-                 game.outr_active    = false;
-                 game.game_active    = false;
-                 game.menu_active    = true;
-                 game.nlvl_active    = false;
-                 game.log.File_Write("Outro finished, proceeding to main menu!");
-                 game.io.keyboard_delay_count = 0;
-                 game.io.escape      = false;
-                 game.music_next_track = true;
-              }
-        }
+            if (game.music_next_track)
+            {
+                game.music_next_track = false;
+                music.outro_00.play();
+            }
+            game.menu_level = 10;
+            if (game.process_ready) game.background.process();
+            if (game.process_ready) process_menu();
+            glPushMatrix();
+            diplay_menu ();
+            glPopMatrix ();
+            SDL_GL_SwapBuffers();
         }
 //---------------------------- code for end of main loop -----------------------
         game.FPS = (game.timer.getticks() - game.LastTicks);
