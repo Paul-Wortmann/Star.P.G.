@@ -146,10 +146,7 @@ int main(int argc, char *argv[])
             music.menu_00.play();
             game.music_next_track = false;
         }
-        glPushMatrix();
         diplay_menu ();
-        glPopMatrix();
-        SDL_GL_SwapBuffers();
         if (game.process_ready) game.background.process();
         if (game.process_ready) process_menu();
        }
@@ -251,7 +248,7 @@ int main(int argc, char *argv[])
                  game.game_active = false;
                  spawn_paused();
                  game.io.pause    = false;
-                 game.io.keyboard_delay_count = 0;
+                 game.menu_level = 11;
               };
         //if (game_o.cheats_enabled == true)
         {
@@ -296,25 +293,19 @@ int main(int argc, char *argv[])
         if (game.io.left)  process_player(4);
      }
 //*********************************** Game paused *****************************************
-    if (game.game_paused)
-    {
-        display_game();
-        game.config.menu_delay_count++;
-        if (game.config.menu_delay_count >= game.config.menu_delay)
+        if (game.game_paused)
         {
-            game.config.menu_delay_count = game.config.menu_delay;
-            if (((game.io.escape) || (game.io.select)) && (game.io.keyboard_delay_count >= game.io.keyboard_delay))
+            if (game.music_next_track)
             {
-                game.io.keyboard_delay_count = 0;
-                game.game_paused      = false;
-                game.game_active      = true;
-                game.io.escape        = false;
-                game.io.select        = false;
-                game.io.pause         = false;
-                game.music_next_track = true;
+                game.music_next_track = false;
+                music.level_pd.play();
             }
-        }
-    }
+            game.menu_level = 11;
+            if (game.process_ready) game.background.process();
+            if (game.process_ready) process_menu();
+            display_game();
+            diplay_menu ();
+         }
 //*********************************** PLAYER DEATH SCREEN *****************************************
         if (game.pdie_active)
         {
@@ -323,10 +314,7 @@ int main(int argc, char *argv[])
                 game.music_next_track = false;
                 music.level_pd.play();
             }
-            glPushMatrix();
             diplay_menu ();
-            glPopMatrix();
-            SDL_GL_SwapBuffers();
             if (game.process_ready) game.background.process();
             if (game.process_ready) process_menu();
         }
@@ -341,10 +329,7 @@ int main(int argc, char *argv[])
             game.menu_level = 9;
             if (game.process_ready) game.background.process();
             if (game.process_ready) process_menu();
-            glPushMatrix();
             diplay_menu ();
-            glPopMatrix ();
-            SDL_GL_SwapBuffers();
         }
 //******************************* OUTRO SCREEN *************************************************
      if (game.outr_active)
@@ -357,10 +342,7 @@ int main(int argc, char *argv[])
             game.menu_level = 10;
             if (game.process_ready) game.background.process();
             if (game.process_ready) process_menu();
-            glPushMatrix();
             diplay_menu ();
-            glPopMatrix ();
-            SDL_GL_SwapBuffers();
         }
 //---------------------------- code for end of main loop -----------------------
         game.FPS = (game.timer.getticks() - game.LastTicks);
@@ -370,6 +352,7 @@ int main(int argc, char *argv[])
             game.process_ready = true;
         }
         else game.process_ready = false;
+        SDL_GL_SwapBuffers();
     }
 //----------------------------------- Exit -------------------------------------
     game.log.File_Write("Saving config...");

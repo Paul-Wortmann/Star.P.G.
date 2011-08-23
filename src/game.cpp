@@ -4084,7 +4084,6 @@ int display_game(void)
     if (game_o.fps_enabled &&  game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.40f, 0.90f,"FPS - ",  game.FPS);
     if (game_o.fps_enabled && !game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.40f, 0.95f,"FPS - ",  game.FPS);
     glPopMatrix();
-    SDL_GL_SwapBuffers();
     return(1);
 };
 
