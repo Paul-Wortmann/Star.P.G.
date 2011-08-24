@@ -1859,7 +1859,11 @@ int menu_class::process(void)
                 {
                     if ((menu_class::current_vertical_selection != button_count) && (menu_class::button[button_count].get_active())) return_value = 65533;
                     menu_class::current_vertical_selection = button_count;
-                    menu_class::button[button_count].set_highlighted(true);
+                    if (!menu_class::button[button_count].get_highlighted())
+                    {
+                        menu_class::button[button_count].set_highlighted(true); //??????
+                        return_value = 65533;
+                    }
                 }
                 else  menu_class::button[button_count].set_highlighted(false);
             }

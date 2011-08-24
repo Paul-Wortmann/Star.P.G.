@@ -136,7 +136,7 @@ void update_save_data(void)
     {
         save_data.active_npc[count] = game_o.active_npc[count];
     }
-    for (int count = 0; count <= MAX_LAYERS; count++)
+    for (int count = 0; count <= MAX_LAYERS+1; count++)
     {
         save_data.background.layer[count].active        = game.background.get_active  (count);
         save_data.background.layer[count].dir_x         = game.background.get_dir_x   (count);
@@ -155,13 +155,15 @@ void update_game_data(void)
 {
     game_o.level = save_data.level;
     init_game_level(save_data.level);
-    for (int count = 0; count <= MAX_LAYERS; count++)
+/*
+    for (int count = 0; count <= MAX_LAYERS+1; count++)
     {
         game.background.set_active  (count,save_data.background.layer[count].active);
         game.background.set_data    (count,save_data.background.layer[count].dir_x,save_data.background.layer[count].dir_y,save_data.background.layer[count].pos_x,save_data.background.layer[count].pos_y,save_data.background.layer[count].scroll_rate_x,save_data.background.layer[count].scroll_rate_y,save_data.background.layer[count].image);
         game.background.set_image   (count,save_data.background.layer[count].image);
     }
     game.background.set_movement_type(save_data.background.movemennt_type);
+*/
     game_o.npc_damage_duration = save_data.npc_damage_duration;
     game_o.cheats_enabled = save_data.cheats_enabled;
     game_o.number_bombs = save_data.number_bombs;

@@ -1512,7 +1512,7 @@ int process_menu(void)
     activated_button = -1;
     if (game.menu_level == 11)
     {
-        activated_button = outro_menu.process();
+        activated_button = pause_menu.process();
         switch (activated_button)
         {
             case 1://Button 1 selected.
