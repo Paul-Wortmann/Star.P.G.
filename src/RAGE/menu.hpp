@@ -150,6 +150,7 @@ class button_class
         void  set_image_toggle_false_highlighted(int image);
         void  set_image_toggle_false_normal(int image);
         void  set_enabled(bool bool_value);
+        bool  get_enabled(void);
         void  set_highlighted(bool bool_value);
         bool  get_highlighted(void);
         bool  mouse_over(void);
@@ -417,6 +418,7 @@ class menu_class
         int   get_achieve_data(int button_number);
         void  set_achieve_button_images(int ah, int an);
         void  set_achieve_position(int button_number, int int_data);
+        bool  get_button_enabled(int button_number);
         int   process(void);
 };
 

@@ -924,6 +924,11 @@ void  button_class::set_achieve_position(int int_data)
     button_class::achieve_position = int_data;
 };
 
+bool  button_class::get_enabled(void)
+{
+    return(button_class::enabled);
+};
+
 //------------------------------------------ menu ---------------------------------------------------------------------------------------
 //------------------------------------------ menu ---------------------------------------------------------------------------------------
 //------------------------------------------ menu ---------------------------------------------------------------------------------------
@@ -1796,6 +1801,11 @@ void  menu_class::set_achieve_position(int button_number, int int_data)
     menu_class::button[button_number].set_achieve_position(int_data);
 };
 
+bool  menu_class::get_button_enabled(int button_number)
+{
+    return(menu_class::button[button_number].get_enabled());
+};
+
 int menu_class::process(void)
 {
     float  drag_x_delta = 0.0f;
@@ -2022,7 +2032,6 @@ int menu_class::process(void)
     //---- return ----
     return(return_value);
 };
-
 
 
 

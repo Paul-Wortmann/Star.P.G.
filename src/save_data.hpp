@@ -42,7 +42,7 @@ struct layer_type
 struct background_data_type
 {
     layer_type  layer[MAX_LAYERS+1];
-    int         movemennt_type;
+    int         movement_type;
 };
 
 struct save_data_type
