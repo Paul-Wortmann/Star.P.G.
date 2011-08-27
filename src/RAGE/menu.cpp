@@ -322,26 +322,29 @@ void button_class::draw(void)
     }
     if (button_class::type == CHOICE) //----- choice button -----
     {
-        // --- left  arrow ---
-        if (button_class::get_arrow_left_highlighted()) bind_texture(button_class::image_arrow_highlighted);
-        else bind_texture(button_class::image_arrow_normal);
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        glTexCoord2i( 0, 1 );glVertex3f(button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 0, 0 );glVertex3f(button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 0 );glVertex3f(button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 1 );glVertex3f(button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
-        glEnd();
-        // --- right arrow ---
-        if (button_class::get_arrow_right_highlighted()) bind_texture(button_class::image_arrow_highlighted);
-        else bind_texture(button_class::image_arrow_normal);
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        glTexCoord2i( 1, 0 );glVertex3f(button_class::arrow_right_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 1 );glVertex3f(button_class::arrow_right_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 0, 1 );glVertex3f(button_class::arrow_right_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 0, 0 );glVertex3f(button_class::arrow_right_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
-        glEnd();
+        if(button_class::number_of_visible_choices < button_class::number_of_choices)
+        {
+            // --- left  arrow ---
+            if (button_class::get_arrow_left_highlighted()) bind_texture(button_class::image_arrow_highlighted);
+            else bind_texture(button_class::image_arrow_normal);
+            glLoadIdentity();
+            glBegin( GL_QUADS );
+            glTexCoord2i( 0, 1 );glVertex3f(button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
+            glTexCoord2i( 0, 0 );glVertex3f(button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
+            glTexCoord2i( 1, 0 );glVertex3f(button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
+            glTexCoord2i( 1, 1 );glVertex3f(button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
+            glEnd();
+            // --- right arrow ---
+            if (button_class::get_arrow_right_highlighted()) bind_texture(button_class::image_arrow_highlighted);
+            else bind_texture(button_class::image_arrow_normal);
+            glLoadIdentity();
+            glBegin( GL_QUADS );
+            glTexCoord2i( 1, 0 );glVertex3f(button_class::arrow_right_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
+            glTexCoord2i( 1, 1 );glVertex3f(button_class::arrow_right_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
+            glTexCoord2i( 0, 1 );glVertex3f(button_class::arrow_right_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
+            glTexCoord2i( 0, 0 );glVertex3f(button_class::arrow_right_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
+            glEnd();
+        }
         // --- Show current selection ---
         delta_x = (button_class::arrow_width/3) *4;
         for(int choice_count = 0; choice_count < button_class::get_number_of_visible_choices(); choice_count++)
@@ -1697,8 +1700,11 @@ int  menu_class::mouse_over_button_choice(int button_number)
 {
     int   return_data = -1;
     float delta_x     =  0.0f;
-    if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
-    if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
+        if(menu_class::button[button_number].get_number_of_visible_choices() < menu_class::button[button_number].get_number_of_choices())
+        {
+            if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
+            if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
+        }
     delta_x = ((menu_class::button[button_number].get_arrow_width()/4) *3)+menu_class::button[button_number].get_arrow_left_pos_x()+(menu_class::button[button_number].get_choice_zoom_size_counter(menu_class::button[button_number].get_choice_position())/2)+(menu_class::button[button_number].get_arrow_width()/2);
     for(int choice_count = 1; choice_count < menu_class::get_number_of_visible_choices(button_number)+1; choice_count++)
     {
@@ -1714,8 +1720,11 @@ int  menu_class::mouse_click_button_choice(int button_number)
     float delta_x     =  0.0f;
     if (game.io.mouse_button_left)
     {
-        if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
-        if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
+        if(menu_class::button[button_number].get_number_of_visible_choices() < menu_class::button[button_number].get_number_of_choices())
+        {
+            if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
+            if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
+        }
         delta_x = ((menu_class::button[button_number].get_arrow_width()/4) *3)+menu_class::button[button_number].get_arrow_left_pos_x()+(menu_class::button[button_number].get_choice_zoom_size_counter(menu_class::button[button_number].get_choice_position())/2)+(menu_class::button[button_number].get_arrow_width()/2);
         for(int choice_count = 1; choice_count < menu_class::get_number_of_visible_choices(button_number)+1; choice_count++)
         {
@@ -1914,12 +1923,15 @@ int menu_class::process(void)
         if (menu_class::button[button_count].get_button_type() == CHOICE)//choice button
         {
             int menu_button_choice = menu_class::mouse_over_button_choice(button_count);
-            if ((menu_button_choice == 4000+button_count) && (!menu_class::button[button_count].get_arrow_left_highlighted())) return_value = 65533;
-            if  (menu_button_choice == 4000+button_count)      menu_class::button[button_count].set_arrow_left_highlighted(true);//left arrow
-            else menu_class::button[button_count].set_arrow_left_highlighted(false);
-            if ((menu_button_choice == 5000+button_count) && (!menu_class::button[button_count].get_arrow_right_highlighted())) return_value = 65533;
-            if  (menu_button_choice == 5000+button_count)      menu_class::button[button_count].set_arrow_right_highlighted(true);//right arrow
-            else menu_class::button[button_count].set_arrow_right_highlighted(false);
+            if(menu_class::button[button_count].get_number_of_visible_choices() < menu_class::button[button_count].get_number_of_choices())
+            {
+                if ((menu_button_choice == 4000+button_count) && (!menu_class::button[button_count].get_arrow_left_highlighted())) return_value = 65533;
+                if  (menu_button_choice == 4000+button_count)      menu_class::button[button_count].set_arrow_left_highlighted(true);//left arrow
+                else menu_class::button[button_count].set_arrow_left_highlighted(false);
+                if ((menu_button_choice == 5000+button_count) && (!menu_class::button[button_count].get_arrow_right_highlighted())) return_value = 65533;
+                if  (menu_button_choice == 5000+button_count)      menu_class::button[button_count].set_arrow_right_highlighted(true);//right arrow
+                else menu_class::button[button_count].set_arrow_right_highlighted(false);
+            }
             for(int choice_count = 1; choice_count < menu_class::get_number_of_visible_choices(button_count)+1; choice_count++)
             {
                 if ((menu_button_choice == (button_count*100)+choice_count) && (!menu_class::button[button_count].get_choice_highlighted(menu_class::get_button_choice_position(button_count)+choice_count-1))) return_value = 65533;
