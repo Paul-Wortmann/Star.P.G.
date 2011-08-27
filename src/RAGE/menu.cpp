@@ -696,6 +696,12 @@ void  button_class::set_choice_data(int choice_number, int image_ref_data, std::
     button_class::choice_data[choice_number].text_label = text_label_data;
 };
 
+void  button_class::set_choice_data(int choice_number, int image_ref_data, bool active_data)
+{
+    button_class::choice_data[choice_number].active     = active_data;
+    button_class::choice_data[choice_number].image_ref  = image_ref_data;
+};
+
 void  button_class::set_number_of_choices(int choice_data)
 {
     button_class::number_of_choices = choice_data;
@@ -1647,6 +1653,14 @@ void  menu_class::set_button_choice_data(int button_number, int choice_number, i
     menu_class::button[button_number].set_active(true);
     menu_class::button[button_number].set_button_type(CHOICE);
     menu_class::button[button_number].set_choice_data(choice_number, image_ref_data, text_label_data, active_data);
+};
+
+void  menu_class::set_button_choice_data(int button_number, int choice_number, int image_ref_data, bool active_data, bool enabled_data)
+{
+    menu_class::set_button_choice_enabled(button_number,choice_number,enabled_data);
+    menu_class::button[button_number].set_active(true);
+    menu_class::button[button_number].set_button_type(CHOICE);
+    menu_class::button[button_number].set_choice_data(choice_number, image_ref_data, active_data);
 };
 
 void  menu_class::set_number_of_choices(int button_number, int choice_data)

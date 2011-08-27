@@ -623,26 +623,26 @@ int process_menu(void)
     activated_button = -1;
     if (game.menu_level == 3)
     {
-        customize_starship_menu.set_button_choice_data(1, 2,game_o.projectile[ 0].image,game_o.projectile[ 0].name, true, game_o.projectile[ 0].active);
-        customize_starship_menu.set_button_choice_data(1, 3,game_o.projectile[ 1].image,game_o.projectile[ 1].name, true, game_o.projectile[ 1].active);
-        customize_starship_menu.set_button_choice_data(1, 4,game_o.projectile[ 2].image,game_o.projectile[ 2].name, true, game_o.projectile[ 2].active);
-        customize_starship_menu.set_button_choice_data(1, 5,game_o.projectile[ 3].image,game_o.projectile[ 3].name, true, game_o.projectile[ 3].active);
-        customize_starship_menu.set_button_choice_data(1, 6,game_o.projectile[ 4].image,game_o.projectile[ 4].name, true, game_o.projectile[ 4].active);
-        customize_starship_menu.set_button_choice_data(1, 7,game_o.projectile[ 5].image,game_o.projectile[ 5].name, true, game_o.projectile[ 5].active);
-        customize_starship_menu.set_button_choice_data(2, 2,game_o.projectile[ 0].image,game_o.projectile[ 0].name, true, game_o.projectile[ 0].active);
-        customize_starship_menu.set_button_choice_data(2, 3,game_o.projectile[ 1].image,game_o.projectile[ 1].name, true, game_o.projectile[ 1].active);
-        customize_starship_menu.set_button_choice_data(2, 4,game_o.projectile[ 2].image,game_o.projectile[ 2].name, true, game_o.projectile[ 2].active);
-        customize_starship_menu.set_button_choice_data(2, 5,game_o.projectile[ 3].image,game_o.projectile[ 3].name, true, game_o.projectile[ 3].active);
-        customize_starship_menu.set_button_choice_data(2, 6,game_o.projectile[ 4].image,game_o.projectile[ 4].name, true, game_o.projectile[ 4].active);
-        customize_starship_menu.set_button_choice_data(2, 7,game_o.projectile[ 5].image,game_o.projectile[ 5].name, true, game_o.projectile[ 5].active);
-        customize_starship_menu.set_button_choice_data(3, 2,game_o.shield[ 0].image,game_o.shield[ 0].name, true, game_o.shield[ 0].active);
-        customize_starship_menu.set_button_choice_data(3, 3,game_o.shield[ 1].image,game_o.shield[ 1].name, true, game_o.shield[ 1].active);
-        customize_starship_menu.set_button_choice_data(3, 4,game_o.shield[ 2].image,game_o.shield[ 2].name, true, game_o.shield[ 2].active);
-        customize_starship_menu.set_button_choice_data(3, 5,game_o.shield[ 3].image,game_o.shield[ 3].name, true, game_o.shield[ 3].active);
-        customize_starship_menu.set_button_choice_data(3, 6,game_o.shield[ 4].image,game_o.shield[ 4].name, true, game_o.shield[ 4].active);
-        customize_starship_menu.set_button_choice_data(4, 2,game_o.thruster[ 0].image,game_o.thruster[ 0].name, true, game_o.thruster[ 0].active);
-        customize_starship_menu.set_button_choice_data(4, 3,game_o.thruster[ 1].image,game_o.thruster[ 1].name, true, game_o.thruster[ 1].active);
-        customize_starship_menu.set_button_choice_data(4, 4,game_o.thruster[ 2].image,game_o.thruster[ 2].name, true, game_o.thruster[ 2].active);
+        customize_starship_menu.set_button_choice_data(1, 2,game_o.projectile[ 0].image, true, game_o.projectile[ 0].active);
+        customize_starship_menu.set_button_choice_data(1, 3,game_o.projectile[ 1].image, true, game_o.projectile[ 1].active);
+        customize_starship_menu.set_button_choice_data(1, 4,game_o.projectile[ 2].image, true, game_o.projectile[ 2].active);
+        customize_starship_menu.set_button_choice_data(1, 5,game_o.projectile[ 3].image, true, game_o.projectile[ 3].active);
+        customize_starship_menu.set_button_choice_data(1, 6,game_o.projectile[ 4].image, true, game_o.projectile[ 4].active);
+        customize_starship_menu.set_button_choice_data(1, 7,game_o.projectile[ 5].image, true, game_o.projectile[ 5].active);
+        customize_starship_menu.set_button_choice_data(2, 2,game_o.projectile[ 0].image, true, game_o.projectile[ 0].active);
+        customize_starship_menu.set_button_choice_data(2, 3,game_o.projectile[ 1].image, true, game_o.projectile[ 1].active);
+        customize_starship_menu.set_button_choice_data(2, 4,game_o.projectile[ 2].image, true, game_o.projectile[ 2].active);
+        customize_starship_menu.set_button_choice_data(2, 5,game_o.projectile[ 3].image, true, game_o.projectile[ 3].active);
+        customize_starship_menu.set_button_choice_data(2, 6,game_o.projectile[ 4].image, true, game_o.projectile[ 4].active);
+        customize_starship_menu.set_button_choice_data(2, 7,game_o.projectile[ 5].image, true, game_o.projectile[ 5].active);
+        customize_starship_menu.set_button_choice_data(3, 2,game_o.shield[ 0].image, true, game_o.shield[ 0].active);
+        customize_starship_menu.set_button_choice_data(3, 3,game_o.shield[ 1].image, true, game_o.shield[ 1].active);
+        customize_starship_menu.set_button_choice_data(3, 4,game_o.shield[ 2].image, true, game_o.shield[ 2].active);
+        customize_starship_menu.set_button_choice_data(3, 5,game_o.shield[ 3].image, true, game_o.shield[ 3].active);
+        customize_starship_menu.set_button_choice_data(3, 6,game_o.shield[ 4].image, true, game_o.shield[ 4].active);
+        customize_starship_menu.set_button_choice_data(4, 2,game_o.thruster[ 0].image, true, game_o.thruster[ 0].active);
+        customize_starship_menu.set_button_choice_data(4, 3,game_o.thruster[ 1].image, true, game_o.thruster[ 1].active);
+        customize_starship_menu.set_button_choice_data(4, 4,game_o.thruster[ 2].image, true, game_o.thruster[ 2].active);
         customize_starship_menu.set_button_current_choice(1,game_o.player.front_weapon);
         customize_starship_menu.set_button_current_choice(2,game_o.player.side_weapon);
         customize_starship_menu.set_button_current_choice(3,game_o.player.front_shield);
@@ -1302,10 +1302,12 @@ int process_menu(void)
         {
             case 1://Button 1 selected.
                 sound.menu_select.play();
-                init_game();
                 game.menu_level              = 1;
                 game.menu_active             = true;
                 game.pdie_active             = false;
+                game.outr_active             = false;
+                game.game_active             = false;
+                game.nlvl_active             = false;
                 game.io.escape               = false;
                 game.music_next_track        = true;
                 game.log.File_Write("Entering main menu, from game over menu. - button 1 selected.");
@@ -1315,20 +1317,24 @@ int process_menu(void)
             break;
             case 65534://Return to main menu
                 sound.menu_select.play();
-                init_game();
                 game.menu_level              = 1;
                 game.menu_active             = true;
                 game.pdie_active             = false;
+                game.outr_active             = false;
+                game.game_active             = false;
+                game.nlvl_active             = false;
                 game.io.escape               = false;
                 game.music_next_track        = true;
                 game.log.File_Write("Entering main menu, from game over menu. - button 1 selected.");
             break;
             case 65535://Return to main menu
                 sound.menu_select.play();
-                init_game();
                 game.menu_level              = 1;
                 game.menu_active             = true;
                 game.pdie_active             = false;
+                game.outr_active             = false;
+                game.game_active             = false;
+                game.nlvl_active             = false;
                 game.io.escape               = false;
                 game.music_next_track        = true;
                 game.log.File_Write("Entering main menu, from game over menu. - button 1 selected.");

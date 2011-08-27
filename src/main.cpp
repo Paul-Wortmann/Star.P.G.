@@ -110,7 +110,7 @@ int main(int argc, char *argv[])
   SDL_JoystickEventState(SDL_ENABLE);
   joystick = SDL_JoystickOpen(0);
   game.log.File_Write("Initializing game system...");
-  init_game();
+  init_game(false);
   game.log.File_Write("Initializing menu system...");
   init_menu();
   game.log.File_Write("Initializing projectiles...");
@@ -317,6 +317,7 @@ int main(int argc, char *argv[])
             diplay_menu ();
             if (game.process_ready) game.background.process();
             if (game.process_ready) process_menu();
+            if (!game.pdie_active)  init_game(true);
         }
 //******************************* PLAYER NEXT LEVEL SCREEN *************************************
         if (game.nlvl_active)

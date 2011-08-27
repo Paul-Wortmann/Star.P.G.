@@ -194,6 +194,7 @@ class button_class
         void  set_choice_position(int set_data);
         int   get_choice_position(void);
         void  set_choice_data(int choice_number, int image_ref_data, std::wstring text_label_data, bool active_data);
+        void  set_choice_data(int choice_number, int image_ref_data, bool active_data);
         void  set_number_of_choices(int choice_data);
         int   get_number_of_choices(void);
         void  set_number_of_visible_choices(int visible_choice_data);
@@ -398,6 +399,7 @@ class menu_class
         void  set_button_current_choice(int button_number, int choice_data);
         int   get_button_current_choice(int button_number);
         void  set_button_choice_data(int button_number, int choice_number, int image_ref_data, std::wstring text_label_data, bool active_data, bool enabled_data);
+        void  set_button_choice_data(int button_number, int choice_number, int image_ref_data, bool active_data, bool enabled_data);
         void  set_number_of_choices(int button_number, int choice_data);
         int   get_number_of_choices(int button_number);
         void  set_number_of_visible_choices(int button_number, int visible_choice_data);

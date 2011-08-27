@@ -33,7 +33,7 @@ extern  font_type        font;
 extern  game_class       game;
         game_type                game_o;
 
-int init_game(void)
+int init_game(bool re_init)
 {
    game.game_paused                       = false;
    game.game_active                       = false;
@@ -109,23 +109,31 @@ int init_game(void)
    game_o.achivement.kills_level_5          = 2048;
    game_o.achivement.kills_level_6          = 4096;
    game_o.achivement.kills_level_7          = 8192;
+    if (re_init)
+    {
+        for (int count = 0; count <= MAX_PROJECTILES; count++)
+        {
+            game_o.projectile[count].active     = false;
+            game_o.projectile[count].experience = 0;
+            game_o.projectile[count].level      = 0;
+        }
+        game_o.projectile[ 0].active            = true;
+        for (int count = 0; count <= MAX_SHIELDS; count++)
+        {
+            game_o.shield[count].active         = false;
+            game_o.shield[count].experience     = 0;
+            game_o.shield[count].level          = 0;
+        }
+        for (int count = 0; count <= MAX_THRUSTERS; count++)
+        {
+            game_o.thruster[count].active       = false;
+            game_o.thruster[count].experience   = 0;
+            game_o.thruster[count].level        = 0;
+        }
+    }
+    else
+    {
 
-   for (int count =0;count < MAX_BULLETS;count++)
-   {
-      game_o.player.bullet[count].active         =  false;
-      game_o.player.bullet[count].x_pos          = -2.0f;
-      game_o.player.bullet[count].y_pos          = -2.0f;
-      game_o.player.bullet[count].x_speed        =  0.0f;
-      game_o.player.bullet[count].y_speed        =  0.0f;
-      game_o.player.bullet[count].width          =  0.05f;
-      game_o.player.bullet[count].hight          =  0.05f;
-      game_o.player.bullet[count].warhead        =  0;
-      game_o.player.bullet[count].location       =  0;
-      game_o.player.bullet[count].wave_hight     =  0.125f;
-      game_o.player.bullet[count].wave_count     =  0.0f;
-      game_o.player.bullet[count].wave_speed     =  0.0035f;
-      game_o.player.bullet[count].wave_direction =  1;
-   }
    game_o.projectile[ 0].name          = L"Blasters";
    game_o.projectile[ 0].active        = true;
    game_o.projectile[ 0].level         = 0;
@@ -767,6 +775,23 @@ int init_game(void)
    game_o.thruster[3].image          = 336;
    game_o.thruster[3].thrust         = 0.008f;
 
+   for (int count = 0;count < MAX_BULLETS;count++)
+   {
+      game_o.player.bullet[count].active         =  false;
+      game_o.player.bullet[count].x_pos          = -2.0f;
+      game_o.player.bullet[count].y_pos          = -2.0f;
+      game_o.player.bullet[count].x_speed        =  0.0f;
+      game_o.player.bullet[count].y_speed        =  0.0f;
+      game_o.player.bullet[count].width          =  0.05f;
+      game_o.player.bullet[count].hight          =  0.05f;
+      game_o.player.bullet[count].warhead        =  0;
+      game_o.player.bullet[count].location       =  0;
+      game_o.player.bullet[count].wave_hight     =  0.125f;
+      game_o.player.bullet[count].wave_count     =  0.0f;
+      game_o.player.bullet[count].wave_speed     =  0.0035f;
+      game_o.player.bullet[count].wave_direction =  1;
+   }
+
    for (int count =0;count < MAX_EXPLOSIONS;count++)
    {
       game_o.explosion[count].active  = false;
@@ -1003,16 +1028,17 @@ int init_game(void)
    game_o.enemy[24].size_w      = 0.8f;
    game_o.enemy[24].sound       = 0;
    game_o.enemy[24].speed       = (game_o.projectile[game_o.enemy[24].weapon].speed/2);   init_npcs(0);   game_o.active_npc_count = 0;
+    }
+    initialize_sideships();
+    init_waves();
+    init_coin();
+    init_wexp();
 
-   for (int level_no_count = 0;level_no_count < (MAX_LEVELS+1); level_no_count++)
-   {
-      game_o.level_locked[level_no_count] = false; /// change me!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
-   }
-   game_o.level_locked[0] = false;
-   initialize_sideships();
-   init_waves();
-   init_coin();
-   init_wexp();
+    for (int level_no_count = 0;level_no_count < (MAX_LEVELS+1); level_no_count++)
+    {
+        game_o.level_locked[level_no_count] = false; /// change me!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+    }
+    game_o.level_locked[0] = false;
    return(0);
 };
 /*----------------------------------------------------------------------------*/

@@ -26,7 +26,7 @@
 #include <SDL/SDL.h>
 
 const int   MAX_NPCS        = 32;
-const int   MAX_PROJECTILES = 64;
+const int   MAX_PROJECTILES = 32;
 const int   MAX_SHIELDS     = 5;
 const int   MAX_THRUSTERS   = 4;
 const int   MAX_BULLETS     = 96;
@@ -382,7 +382,7 @@ int   init_waves          (void);
 int   spawn_wave          (void);
 int   get_next_active_wave(void);
 int   process_waves       (void);
-int   init_game           (void);
+int   init_game           (bool re_init);
 bool  level_completed     (void);
 int   process_game        (void);
 int   process_ball        (void);
