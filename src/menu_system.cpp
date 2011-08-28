@@ -340,7 +340,7 @@ int init_menu   (void)
     game_over_menu.set_menu_title(L"Game Over         ");
     game_over_menu.set_keyboard_delay(16);
     game_over_menu.set_mouse_delay(24);
-    game_over_menu.set_pos(0.0f,-0.7f,0.001f);
+    game_over_menu.set_pos(0.0f,-0.85f,0.001f);
     game_over_menu.set_size(0.8f,0.2f);
     game_over_menu.set_menu_font(1);
     game_over_menu.set_image_background(395);
@@ -358,7 +358,7 @@ int init_menu   (void)
     next_level_menu.set_menu_title(L"Level Completed   ");
     next_level_menu.set_keyboard_delay(16);
     next_level_menu.set_mouse_delay(24);
-    next_level_menu.set_pos(0.0f,-0.7f,0.001f);
+    next_level_menu.set_pos(0.0f,-0.85f,0.001f);
     next_level_menu.set_size(0.8f,0.2f);
     next_level_menu.set_menu_font(1);
     next_level_menu.set_image_background(395);
@@ -376,7 +376,7 @@ int init_menu   (void)
     outro_menu.set_menu_title(L"Game Completed    ");
     outro_menu.set_keyboard_delay(16);
     outro_menu.set_mouse_delay(24);
-    outro_menu.set_pos(0.0f,-0.7f,0.001f);
+    outro_menu.set_pos(0.0f,-0.85f,0.001f);
     outro_menu.set_size(0.8f,0.2f);
     outro_menu.set_menu_font(1);
     outro_menu.set_image_background(395);
@@ -394,7 +394,7 @@ int init_menu   (void)
     pause_menu.set_menu_title(L"Game Paused       ");
     pause_menu.set_keyboard_delay(16);
     pause_menu.set_mouse_delay(24);
-    pause_menu.set_pos(0.0f,-0.7f,0.001f);
+    pause_menu.set_pos(0.0f,-0.85f,0.001f);
     pause_menu.set_size(0.8f,0.2f);
     pause_menu.set_menu_font(1);
     pause_menu.set_image_background(395);
@@ -1605,6 +1605,7 @@ int diplay_menu (void)
         glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
         glEnd();
     }
+    font.font_1.Write(255,255,255,64,-0.98f,-0.98f,2,8,"www.PhysHexGames.c0.nr");
 /*-----------------------------------------------------------------------------*/
    if (game.menu_level == 8) //Player death screen
    {
@@ -1624,15 +1625,6 @@ int diplay_menu (void)
 	  glTexCoord2i( 0, 0 );glVertex3f(-0.6f, 0.50f, 0.0f );
 	  glTexCoord2i( 1, 0 );glVertex3f( 0.6f, 0.50f, 0.0f );
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.6f,-0.70f, 0.0f );
-      glEnd();
-
-      bind_texture(331); //Press any key to return to the main menu
-      glLoadIdentity();
-      glBegin( GL_QUADS );
-	  glTexCoord2i( 0, 1 );glVertex3f(-0.8f,-0.95f, 0.0f );
-	  glTexCoord2i( 0, 0 );glVertex3f(-0.8f,-0.75f, 0.0f );
-	  glTexCoord2i( 1, 0 );glVertex3f( 0.8f,-0.75f, 0.0f );
-	  glTexCoord2i( 1, 1 );glVertex3f( 0.8f,-0.95f, 0.0f );
       glEnd();
    }
 /*-----------------------------------------------------------------------------*/
@@ -1670,15 +1662,6 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.5f,-0.70f, 0.0f );
       glEnd();
 
-      bind_texture(334); //Press any key to continue
-      glLoadIdentity();
-      glBegin( GL_QUADS );
-	  glTexCoord2i( 0, 1 );glVertex3f(-0.8f,-0.95f, 0.0f );
-	  glTexCoord2i( 0, 0 );glVertex3f(-0.8f,-0.75f, 0.0f );
-	  glTexCoord2i( 1, 0 );glVertex3f( 0.8f,-0.75f, 0.0f );
-	  glTexCoord2i( 1, 1 );glVertex3f( 0.8f,-0.95f, 0.0f );
-      glEnd();
-
       font.font_1.Write(255,255,255,64,-1.00f,-0.00f,"Level score - ", game_o.level_score);
       font.font_1.Write(255,255,255,64,-1.00f,-0.10f,"Total score - ", game_o.score);
       font.font_1.Write(255,255,255,64,-1.00f,-0.20f,"Level kills - ", game_o.level_kills);
@@ -1688,15 +1671,6 @@ int diplay_menu (void)
 /*-----------------------------------------------------------------------------*/
    if (game.menu_level == 10) //Outro screen
    {
-      bind_texture(334); //Press any key to continue
-      glLoadIdentity();
-      glBegin( GL_QUADS );
-	  glTexCoord2i( 0, 1 );glVertex3f(-0.8f,-0.95f, 0.0f );
-	  glTexCoord2i( 0, 0 );glVertex3f(-0.8f,-0.75f, 0.0f );
-	  glTexCoord2i( 1, 0 );glVertex3f( 0.8f,-0.75f, 0.0f );
-	  glTexCoord2i( 1, 1 );glVertex3f( 0.8f,-0.95f, 0.0f );
-      glEnd();
-
       bind_texture(339); //credits
       glLoadIdentity();
       glBegin( GL_QUADS );

@@ -820,7 +820,7 @@ int init_game(bool re_init)
    game_o.enemy[1 ].size_h      = 0.2f;
    game_o.enemy[1 ].size_w      = 0.2f;
    game_o.enemy[1 ].sound       = 0;
-   game_o.enemy[1 ].speed       = (game_o.projectile[game_o.enemy[1 ].weapon].speed/2);
+   game_o.enemy[1 ].speed       = (game_o.projectile[game_o.enemy[1 ].weapon].speed/2) + 0.0f;
    game_o.enemy[2 ].image       = 255;
    game_o.enemy[2 ].health      = 15.0f;
    game_o.enemy[2 ].movement    = 5; //wave motion
