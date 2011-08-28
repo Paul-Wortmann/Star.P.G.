@@ -78,7 +78,7 @@ int init_game_level(int level_no)
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 66);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 96);
         game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 96);
-      game_o.speed                             = 0.045f;
+      game_o.speed                             = 0.015f;
       game_o.npc_spawn_rate                    = 300;
       game_o.npc_spawn_rate_count              = 300;
       game_o.npc_projectile_spawn_rate         = 50;

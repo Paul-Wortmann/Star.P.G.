@@ -1605,7 +1605,7 @@ int diplay_menu (void)
         glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
         glEnd();
     }
-    font.font_1.Write(255,255,255,64,-0.98f,-0.98f,2,8,"www.PhysHexGames.c0.nr");
+    font.font_1.Write(255,255,255,64,-0.98f,-0.98f,2,8,"www.PhysHexGames.co.nr");
 /*-----------------------------------------------------------------------------*/
    if (game.menu_level == 8) //Player death screen
    {
