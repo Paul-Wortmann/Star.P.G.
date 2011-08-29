@@ -421,6 +421,7 @@ class menu_class
         void  set_achieve_button_images(int ah, int an);
         void  set_achieve_position(int button_number, int int_data);
         bool  get_button_enabled(int button_number);
+        void  set_button_enabled(int button_number, bool bool_data);
         int   process(void);
 };
 

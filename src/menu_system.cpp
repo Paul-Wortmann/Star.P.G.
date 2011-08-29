@@ -185,9 +185,10 @@ int init_menu   (void)
     customize_starship_menu.set_button_choice_data(4, 2,game_o.thruster[ 0].image,game_o.thruster[ 0].name, true, game_o.thruster[ 0].active);
     customize_starship_menu.set_button_choice_data(4, 3,game_o.thruster[ 1].image,game_o.thruster[ 1].name, true, game_o.thruster[ 1].active);
     customize_starship_menu.set_button_choice_data(4, 4,game_o.thruster[ 2].image,game_o.thruster[ 2].name, true, game_o.thruster[ 2].active);
-    customize_starship_menu.set_button_data  ( 5,L"Support Ships    ");
-    customize_starship_menu.set_button_active( 6,false);
-    customize_starship_menu.set_button_data  ( 7,L"Main Menu        ");
+    customize_starship_menu.set_button_data   ( 5,L"Support Ships    ");
+    customize_starship_menu.set_button_enabled( 5,false);
+    customize_starship_menu.set_button_active ( 6,false);
+    customize_starship_menu.set_button_data   ( 7,L"Main Menu        ");
     customize_starship_menu.set_buttons_auto();
     customize_starship_menu.set_close_button_data(396,397);
     star_map_menu.set_button_arrow_data_auto(1);

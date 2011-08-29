@@ -1829,6 +1829,11 @@ bool  menu_class::get_button_enabled(int button_number)
     return(menu_class::button[button_number].get_enabled());
 };
 
+void menu_class::set_button_enabled(int button_number, bool bool_data)
+{
+    menu_class::button[button_number].set_enabled(bool_data);
+};
+
 int menu_class::process(void)
 {
     float  drag_x_delta = 0.0f;

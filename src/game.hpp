@@ -26,10 +26,10 @@
 #include <SDL/SDL.h>
 
 const int   MAX_NPCS        = 32;
-const int   MAX_PROJECTILES = 32;
+const int   MAX_PROJECTILES = 48;
 const int   MAX_SHIELDS     = 5;
 const int   MAX_THRUSTERS   = 4;
-const int   MAX_BULLETS     = 96;
+const int   MAX_BULLETS     = 128;
 const int   MAX_EXPLOSIONS  = 32;
 const int   MAX_ENEMYS      = 32;
 const int   MAX_LEVELS      = 25;
