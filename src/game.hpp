@@ -28,17 +28,13 @@
 #include "NPC.hpp"
 #include "levels.hpp"
 #include "shields.hpp"
+#include "powerups.hpp"
 #include "thrusters.hpp"
 #include "explosions.hpp"
 #include "projectiles.hpp"
 #include "support_ships.hpp"
 
 const int   MAX_WAVES          = 32;
-const int   MAX_POWERUPS       = 13;
-const int   MAX_COINS          = 32;
-const int   MAX_WEXPS          = 32;
-const float MAX_VELOCITY       = 0.01f;
-const int   MAX_BOMBS          = 6;
 
 struct wave_type
 {
@@ -51,45 +47,6 @@ struct wave_type
    int    count_spawned;
    int    spawn_pattern;
    float  wave_size;
-};
-
-struct powerup_type
-{
-   bool  active;
-   int   image;
-   int   sound;
-   float x_pos;
-   float y_pos;
-   float width;
-   float hight;
-   float speed;
-   int   spawn_rate;
-};
-
-struct coin_type
-{
-   bool  active;
-   int   value;
-   int   image;
-   int   sound;
-   float x_pos;
-   float y_pos;
-   float width;
-   float hight;
-   float speed;
-};
-
-struct wexp_type
-{
-   bool  active;
-   int   value;
-   int   image;
-   int   sound;
-   float x_pos;
-   float y_pos;
-   float width;
-   float hight;
-   float speed;
 };
 
 struct fade_logo_type
@@ -211,26 +168,7 @@ int   process_waves       (void);
 int   init_game           (bool re_init);
 bool  level_completed     (void);
 int   process_game        (void);
-int   process_ball        (void);
 int   display_game        (void);
-
-int  spawn_npc(float x_position, float y_position, int type_npc, int type_formation, float x_formation_ofset, float y_formation_ofset);
-int  kill_npc(int npc_num);
-int  kill_active_npcs(void);
-int  init_npcs(int type_npc);
-int  proccess_npcs(void);
-
-int  spawn_npc_bullet_num(int npc_num, int npc_bullet_num, int location);
-int  spawn_npc_bullet(int npc_num, int location);
-int  kill_npc_bullet(int npc_num, int npc_bullet_num);
-int  init_npc_bullets(void);
-int  proccess_npc_bullets(void);
-
-int  init_active_npcs(void);
-int  check_active_npcs(void);
-int  sort_active_npcs(void);
-int  add_active_npc  (int npc_num);
-int  del_active_npc  (int npc_num);
 
 int  kill_paused(void);
 int  spawn_paused(void);
@@ -246,25 +184,6 @@ int  kill_saved(void);
 int  spawn_saved(void);
 int  display_saved(void);
 int  process_saved(void);
-
-int  spawn_powerup(float x_position, float y_position, int type_powerup);
-int  kill_powerup(int type_powerup);
-int  kill_powerups(void);
-int  init_powerups(void);
-int  proccess_powerups(void);
-int  use_bomb_powerup(void);
-
-int  spawn_coin(float x_position, float y_position, int coin_value);
-int  kill_coin(int coin_num);
-int  kill_coins(void);
-int  init_coin(void);
-int  proccess_coin(void);
-
-int  spawn_wexp(float x_position, float y_position, int wexp_value);
-int  kill_wexp(int wexp_num);
-int  kill_wexps(void);
-int  init_wexp(void);
-int  proccess_wexp(void);
 
 int  kill_a_score(void);
 int  spawn_a_score(void);

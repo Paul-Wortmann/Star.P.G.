@@ -27,6 +27,7 @@
 
 #include "bullets.hpp"
 
+const float MAX_VELOCITY    = 0.01f;
 const int   MAX_PLAYERS     = 2;
 
 struct player_class

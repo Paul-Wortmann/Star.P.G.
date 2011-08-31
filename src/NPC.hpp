@@ -77,6 +77,7 @@ struct active_npc_type
 };
 
 void init_enemies         (bool re_init);
+int  kill_active_npcs     (void);
 int  init_active_npcs     (void);
 int  check_active_npcs    (void);
 int  sort_active_npcs     (void);
