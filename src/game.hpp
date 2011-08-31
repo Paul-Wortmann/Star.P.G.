@@ -24,22 +24,22 @@
 
 #include <string>
 #include <SDL/SDL.h>
+#include "projectiles.hpp"
 
-const int   MAX_NPCS        = 32;
-const int   MAX_PROJECTILES = 48;
-const int   MAX_SHIELDS     = 5;
-const int   MAX_THRUSTERS   = 4;
-const int   MAX_BULLETS     = 128;
-const int   MAX_EXPLOSIONS  = 32;
-const int   MAX_ENEMYS      = 32;
-const int   MAX_LEVELS      = 25;
-const int   MAX_WAVES       = 32;
-const int   MAX_POWERUPS    = 13;
-const int   MAX_COINS       = 32;
-const int   MAX_WEXPS       = 32;
-const int   MAX_SIDESHIPS   = 5;
-const float MAX_VELOCITY    = 0.01f;
-const int   MAX_BOMBS       = 6;
+const int   MAX_NPCS           = 32;
+const int   MAX_SHIELDS        = 5;
+const int   MAX_THRUSTERS      = 4;
+const int   MAX_BULLETS        = 256;
+const int   MAX_EXPLOSIONS     = 32;
+const int   MAX_ENEMYS         = 32;
+const int   MAX_LEVELS         = 25;
+const int   MAX_WAVES          = 32;
+const int   MAX_POWERUPS       = 13;
+const int   MAX_COINS          = 32;
+const int   MAX_WEXPS          = 32;
+const int   MAX_SUPPORTSHIPS   = 5;
+const float MAX_VELOCITY       = 0.01f;
+const int   MAX_BOMBS          = 6;
 
 struct wave_type
 {
@@ -130,28 +130,7 @@ struct bullet_type
    bool  wave_direction;
 };
 
-struct projectile_type
-{
-   std::wstring name;
-   bool         active;
-   int          level;
-   float        experience;
-   float        level_1;
-   float        level_2;
-   float        level_3;
-   int          image;
-   float        size;
-   int          sound;
-   float        damage;
-   float        health;
-   float        speed;
-   int          rate_of_fire;
-   int          movement;
-   float        wave_size;
-   float        wave_velocity;
-};
-
-struct sideship_type
+struct supportship_type
 {
    int         rate_of_fire;
    int         rate_of_fire_count;
@@ -339,10 +318,10 @@ struct game_type
    int                  npc_projectile_spawn_rate;
    wave_type            wave[MAX_WAVES];
    player_type          player;
-   sideship_type        sideship[MAX_SIDESHIPS];
+   supportship_type     supportship[MAX_SUPPORTSHIPS];
    enemy_type           enemy[MAX_ENEMYS];
    npc_type             npc[MAX_NPCS];
-   projectile_type      projectile[MAX_PROJECTILES];
+   projectile_class     projectile[MAX_PROJECTILES];
    shield_type          shield[MAX_SHIELDS];
    thruster_type        thruster[MAX_THRUSTERS];
    explosion_type       explosion[MAX_EXPLOSIONS];
@@ -564,11 +543,11 @@ int  spawn_d_level_end(void);
 int  display_d_level_end(void);
 int  process_d_level_end(void);
 
-int  spawn_sideship_bullet(int sideship_count,int location, int direction_x, int direction_y);
-int  initialize_sideships(void);
-int  process_sideships(bool spawn_bullet);
+int  spawn_supportship_bullet(int supportship_count,int location, int direction_x, int direction_y);
+int  initialize_supportships(void);
+int  process_supportships(bool spawn_bullet);
 int  kill_player_bullet(void);
-int  kill_player_sideship_bullet(void);
+int  kill_player_supportship_bullet(void);
 bool boss_level(void);
 
 #endif //GAME_H

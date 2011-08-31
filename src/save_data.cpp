@@ -92,9 +92,9 @@ void update_save_data(void)
     {
         save_data.wave[count] = game_o.wave[count];
     }
-    for (int count = 0; count <= MAX_SIDESHIPS; count++)
+    for (int count = 0; count <= MAX_SUPPORTSHIPS; count++)
     {
-        save_data.sideship[count] = game_o.sideship[count];
+        save_data.supportship[count] = game_o.supportship[count];
     }
     for (int count = 0; count <= MAX_ENEMYS; count++)
     {
@@ -224,9 +224,9 @@ void update_game_data(void)
     {
         game_o.wave[count] = save_data.wave[count];
     }
-    for (int count = 0; count <= MAX_SIDESHIPS; count++)
+    for (int count = 0; count <= MAX_SUPPORTSHIPS; count++)
     {
-        game_o.sideship[count] = save_data.sideship[count];
+        game_o.supportship[count] = save_data.supportship[count];
     }
     for (int count = 0; count <= MAX_ENEMYS; count++)
     {

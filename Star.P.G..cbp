@@ -60,6 +60,10 @@
 		<Linker>
 			<Add directory='&quot;C:\Program Files (x86)\CodeBlocks\MinGW\lib&quot;' />
 		</Linker>
+		<Unit filename="src\NPC.cpp" />
+		<Unit filename="src\NPC.hpp" />
+		<Unit filename="src\PC.cpp" />
+		<Unit filename="src\PC.hpp" />
 		<Unit filename="src\RAGE\background.cpp" />
 		<Unit filename="src\RAGE\background.hpp" />
 		<Unit filename="src\RAGE\config.cpp" />
@@ -106,8 +110,12 @@
 		<Unit filename="src\menu_system.hpp" />
 		<Unit filename="src\misc.cpp" />
 		<Unit filename="src\misc.hpp" />
+		<Unit filename="src\projectiles.cpp" />
+		<Unit filename="src\projectiles.hpp" />
 		<Unit filename="src\save_data.cpp" />
 		<Unit filename="src\save_data.hpp" />
+		<Unit filename="src\support_ships.cpp" />
+		<Unit filename="src\support_ships.hpp" />
 		<Unit filename="src\version.h" />
 		<Extensions>
 			<code_completion />

@@ -101,10 +101,10 @@ struct save_data_type
    int                  npc_projectile_spawn_rate;
    wave_type            wave[MAX_WAVES];
    player_type          player;
-   sideship_type        sideship[MAX_SIDESHIPS];
+   supportship_type     supportship[MAX_SUPPORTSHIPS];
    enemy_type           enemy[MAX_ENEMYS];
    npc_type             npc[MAX_NPCS];
-   projectile_type      projectile[MAX_PROJECTILES];
+   projectile_class     projectile[MAX_PROJECTILES];
    shield_type          shield[MAX_SHIELDS];
    thruster_type        thruster[MAX_THRUSTERS];
    explosion_type       explosion[MAX_EXPLOSIONS];

@@ -69,6 +69,7 @@ int main(int argc, char *argv[])
   game.log.File_Write("| Star.P.G V0.18 |");
   game.log.File_Write("------------------\n");
   game.log.File_Write("Starting up!");
+  game.log.File_Write("");
   game.log.File_Write("------------------\n");
   if (game_o.cheats_enabled) game.log.File_Write("Cheating enabled!\n");
   game.config.File_Set("Star.P.G..cfg");
@@ -264,14 +265,14 @@ int main(int argc, char *argv[])
           if (game.io.key_9) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb powerup
           if (game.io.key_a) game_o.anc_enabled   = !game_o.anc_enabled; //toggle active NPC count display
           if (game.io.key_f) game_o.fps_enabled   = !game_o.fps_enabled; //toggle active NPC count display
-          if (game.io.key_q) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn sideship 0 powerup
-          if (game.io.key_w) spawn_powerup(1.0f,random_GLcoord(),10);//spawn sideship 1 powerup
-          if (game.io.key_e) spawn_powerup(1.0f,random_GLcoord(),11);//spawn sideship 2 powerup
-          if (game.io.key_r) spawn_powerup(1.0f,random_GLcoord(),12);//spawn sideship 3 powerup
+          if (game.io.key_q) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn supportship 0 powerup
+          if (game.io.key_w) spawn_powerup(1.0f,random_GLcoord(),10);//spawn supportship 1 powerup
+          if (game.io.key_e) spawn_powerup(1.0f,random_GLcoord(),11);//spawn supportship 2 powerup
+          if (game.io.key_r) spawn_powerup(1.0f,random_GLcoord(),12);//spawn supportship 3 powerup
         }
         if (game.io.shoot)
         {
-           process_sideships(true);
+           process_supportships(true);
            if(game_o.fw_rof_count >= game_o.projectile[game_o.player.front_weapon].rate_of_fire)
            {
               spawn_player_bullet(0);
@@ -285,7 +286,7 @@ int main(int argc, char *argv[])
         }
         else
         {
-            process_sideships(false);
+            process_supportships(false);
         }
         if (game.io.up)    process_player(1);
         if (game.io.down)  process_player(2);
