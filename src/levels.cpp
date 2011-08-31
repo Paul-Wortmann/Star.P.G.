@@ -26,6 +26,15 @@
 extern game_type  game_o;
 extern game_class game;
 
+void init_levels(void)
+{
+    for (int level_no_count = 0;level_no_count < (MAX_LEVELS+1); level_no_count++)
+    {
+        game_o.level_locked[level_no_count] = false; /// change me!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+    }
+    game_o.level_locked[0] = false;
+};
+
 int unlock_levels(void)
 {
    for (int level_no_count = 0;level_no_count < (MAX_LEVELS+1); level_no_count++)

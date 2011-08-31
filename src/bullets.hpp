@@ -25,7 +25,7 @@
 #ifndef BULLETS_H
 #define BULLETS_H
 
-const int   MAX_BULLETS        = 256;
+const int   MAX_BULLETS        = 128;
 
 struct bullet_type
 {

@@ -351,11 +351,26 @@ int kill_player_bullet(int player_bullet_num)
 }
 
 /*----------------------------------------------------------------------------*/
-int init_player_bullets(void)
+void init_player_bullets(void)
 {
-   for (int num_player_bullets = 0; num_player_bullets < MAX_BULLETS; num_player_bullets++) kill_player_bullet(num_player_bullets);
-   return(1);
+    for (int count = 0;count < MAX_BULLETS;count++)
+    {
+        game_o.player.bullet[count].active         =  false;
+        game_o.player.bullet[count].x_pos          = -2.0f;
+        game_o.player.bullet[count].y_pos          = -2.0f;
+        game_o.player.bullet[count].x_speed        =  0.0f;
+        game_o.player.bullet[count].y_speed        =  0.0f;
+        game_o.player.bullet[count].width          =  0.05f;
+        game_o.player.bullet[count].hight          =  0.05f;
+        game_o.player.bullet[count].warhead        =  0;
+        game_o.player.bullet[count].location       =  0;
+        game_o.player.bullet[count].wave_hight     =  0.125f;
+        game_o.player.bullet[count].wave_count     =  0.0f;
+        game_o.player.bullet[count].wave_speed     =  0.0035f;
+        game_o.player.bullet[count].wave_direction =  1;
+    }
 }
+
 /*----------------------------------------------------------------------------*/
 int proccess_player_bullets(void)
 {

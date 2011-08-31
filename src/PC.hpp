@@ -59,7 +59,7 @@ int  spawn_player_bullet_num (int player_bullet_num, int location);
 int  spawn_player_bullet     (int position);
 int  kill_player_bullet      (void);
 int  kill_player_bullet      (int player_bullet_num);
-int  init_player_bullets     (void);
+void init_player_bullets     (void);
 int  proccess_player_bullets (void);
 
 #endif //PC_H

@@ -22,8 +22,10 @@
 #ifndef LEVELS_H
 #define LEVELS_H
 
-int unlock_levels(void);
-int init_game_level(int level_no);
+const int   MAX_LEVELS = 25;
 
+int  unlock_levels(void);
+int  init_game_level(int level_no);
+void init_levels(void);
 
 #endif //LEVELS_H

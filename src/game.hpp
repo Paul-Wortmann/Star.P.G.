@@ -26,13 +26,13 @@
 #include <SDL/SDL.h>
 #include "PC.hpp"
 #include "NPC.hpp"
+#include "levels.hpp"
 #include "shields.hpp"
 #include "thrusters.hpp"
 #include "projectiles.hpp"
 #include "support_ships.hpp"
 
 const int   MAX_EXPLOSIONS     = 32;
-const int   MAX_LEVELS         = 25;
 const int   MAX_WAVES          = 32;
 const int   MAX_POWERUPS       = 13;
 const int   MAX_COINS          = 32;

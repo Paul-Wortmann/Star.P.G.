@@ -641,7 +641,7 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1314795956 source:c:\_git_\star.p.g\src\game.cpp
+1314796274 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"RAGE/rage.hpp"
 	"load_resources.hpp"
@@ -672,7 +672,7 @@
 
 1310910430 hpp"
 
-1314785466 source:c:\_git_\star.p.g\src\levels.cpp
+1314796274 source:c:\_git_\star.p.g\src\levels.cpp
 	"RAGE/rage.hpp"
 	"levels.hpp"
 	"game.hpp"
@@ -773,11 +773,12 @@
 
 1310897251 c:\_git_\star.p.g\src\graphics.hpp
 
-1314795810 c:\_git_\star.p.g\src\game.hpp
+1314796292 c:\_git_\star.p.g\src\game.hpp
 	<string>
 	<SDL/SDL.h>
 	"PC.hpp"
 	"NPC.hpp"
+	"levels.hpp"
 	"shields.hpp"
 	"thrusters.hpp"
 	"projectiles.hpp"
@@ -797,7 +798,7 @@
 
 1312290460 c:\_git_\star.p.g\src\misc.hpp
 
-1312290460 c:\_git_\star.p.g\src\levels.hpp
+1314796313 c:\_git_\star.p.g\src\levels.hpp
 
 1312290460 c:\_git_\star.p.g\src\main.hpp
 
@@ -1388,7 +1389,7 @@
 1314795718 c:\_git_\star.p.g\src\npc.hpp
 	"bullets.hpp"
 
-1314796023 source:c:\_git_\star.p.g\src\pc.cpp
+1314796791 source:c:\_git_\star.p.g\src\pc.cpp
 	"RAGE/rage.hpp"
 	"PC.hpp"
 	"NPC.hpp"
@@ -1396,7 +1397,7 @@
 	"game.hpp"
 	"misc.hpp"
 
-1314795956 c:\_git_\star.p.g\src\pc.hpp
+1314796774 c:\_git_\star.p.g\src\pc.hpp
 	"bullets.hpp"
 
 1314792463 source:c:\_git_\star.p.g\src\support_ships.cpp
@@ -1413,7 +1414,7 @@
 	"projectiles.hpp"
 	"game.hpp"
 
-1314781434 c:\_git_\star.p.g\src\bullets.hpp
+1314796452 c:\_git_\star.p.g\src\bullets.hpp
 
 1314781320 source:c:\_git_\star.p.g\src\bullets.cpp
 	"bullets.hpp"
