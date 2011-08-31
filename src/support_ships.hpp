@@ -48,7 +48,7 @@ class supportship_class
 };
 
 void  process_supportships    (bool spawn_bullet);
-void  initialize_supportships (void);
+void  init_supportships (void);
 void  kill_supportship_bullets(void);
 
 #endif //SUPPORT_SHIPS_H

@@ -34,7 +34,6 @@ extern  texture_type     texture;
 extern  game_type  game_o;
 extern  game_class game;
 
-
 void supportship_class::init(int supportship_count)
 {
     supportship_class::rate_of_fire       = 5;
@@ -56,7 +55,7 @@ void supportship_class::init(int supportship_count)
     }
 };
 
-void  initialize_supportships(void)
+void  init_supportships(void)
 {
    for (int supportship_count = 0;supportship_count < MAX_SUPPORTSHIPS-1;supportship_count++)
    {

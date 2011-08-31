@@ -24,14 +24,14 @@
 
 #include <string>
 #include <SDL/SDL.h>
+#include "PC.hpp"
+#include "NPC.hpp"
 #include "shields.hpp"
 #include "thrusters.hpp"
 #include "projectiles.hpp"
 #include "support_ships.hpp"
 
-const int   MAX_NPCS           = 32;
 const int   MAX_EXPLOSIONS     = 32;
-const int   MAX_ENEMYS         = 32;
 const int   MAX_LEVELS         = 25;
 const int   MAX_WAVES          = 32;
 const int   MAX_POWERUPS       = 13;
@@ -106,83 +106,6 @@ struct wexp_type
    float speed;
 };
 
-struct bkground_scroll_type
-{
-   int   image;
-   int   x_dir;
-   int   y_dir;
-   float x_pos;
-   float y_pos;
-   float scroll_rate;
-};
-
-struct player_type
-{
-   int   front_weapon;
-   int   side_weapon;
-   int   front_shield;
-   int   thrusters;
-   float x_pos;
-   float y_pos;
-   float x_dir;
-   float y_dir;
-   float x_vel;
-   float y_vel;
-   float width;
-   float hight;
-   float health;
-   float health_regen_rate;
-   float max_health;
-   int   image;
-   bullet_type          bullet[MAX_BULLETS];
-};
-
-struct enemy_type
-{
-   int   image;
-   int   sound;
-   float health;
-   float speed;
-   int   movement;
-   int   weapon;
-   int   projectiles;
-   float size_w;
-   float size_h;
-};
-
-struct npc_type
-{
-   bool  active;
-   int   damaged;
-   int   type_npc;
-   int   weapon;
-   int   projectiles;
-   float x_pos;
-   float y_pos;
-   int   formation_wave_no;
-   float formation_wave_size;
-   float formation_wave_axis;
-   float formation_target;
-   int   formation_type;
-   float formation_ofset_x;
-   float formation_ofset_y;
-   float health;
-   float width;
-   float hight;
-   float x_speed;
-   float y_speed;
-   int   movement;
-   int   x_direction;
-   int   y_direction;
-   bullet_type          bullet[MAX_BULLETS];
-};
-
-struct active_npc_type
-{
-   bool active;
-   int  number;
-};
-
 struct fade_logo_type
 {
    bool  active;
@@ -255,7 +178,7 @@ struct game_type
    int                  npc_spawn_rate_count;
    int                  npc_projectile_spawn_rate;
    wave_type            wave[MAX_WAVES];
-   player_type          player;
+   player_class         player;
    supportship_class    supportship[MAX_SUPPORTSHIPS];
    enemy_type           enemy[MAX_ENEMYS];
    npc_type             npc[MAX_NPCS];
@@ -304,15 +227,6 @@ bool  level_completed     (void);
 int   process_game        (void);
 int   process_ball        (void);
 int   display_game        (void);
-int   init_player         (void);
-float thruster_offset     (void);
-int   process_player      (int command);
-
-int  spawn_player_bullet_num(int player_bullet_num, int location);
-int  spawn_player_bullet    (int position);
-int  kill_player_bullet     (int player_bullet_num);
-int  init_player_bullets    (void);
-int  proccess_player_bullets(void);
 
 int  spawn_explosion(float x_position, float y_position, float size);
 int  kill_explosion(int explosion_num);
@@ -481,7 +395,6 @@ int  spawn_d_level_end(void);
 int  display_d_level_end(void);
 int  process_d_level_end(void);
 
-int  kill_player_bullet(void);
 bool boss_level(void);
 
 #endif //GAME_H

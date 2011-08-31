@@ -641,7 +641,7 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1314789809 source:c:\_git_\star.p.g\src\game.cpp
+1314795956 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"RAGE/rage.hpp"
 	"load_resources.hpp"
@@ -773,9 +773,11 @@
 
 1310897251 c:\_git_\star.p.g\src\graphics.hpp
 
-1314789080 c:\_git_\star.p.g\src\game.hpp
+1314795810 c:\_git_\star.p.g\src\game.hpp
 	<string>
 	<SDL/SDL.h>
+	"PC.hpp"
+	"NPC.hpp"
 	"shields.hpp"
 	"thrusters.hpp"
 	"projectiles.hpp"
@@ -922,7 +924,7 @@
 
 1313907625 c:\_git_\star.p.g\src\rage\savegame.hpp
 
-1314789119 c:\_git_\star.p.g\src\save_data.hpp
+1314795508 c:\_git_\star.p.g\src\save_data.hpp
 	"RAGE/rage.hpp"
 	"RAGE/savegame.hpp"
 	"game.hpp"
@@ -1376,24 +1378,35 @@
 1314712403 c:\_git_\star.p.g\src\projectiles.hpp
 	<string>
 
-1314708417 source:c:\_git_\star.p.g\src\npc.cpp
+1314792704 source:c:\_git_\star.p.g\src\npc.cpp
+	"RAGE/rage.hpp"
 	"NPC.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
 
-1314708262 c:\_git_\star.p.g\src\npc.hpp
+1314795718 c:\_git_\star.p.g\src\npc.hpp
+	"bullets.hpp"
 
-1314708416 source:c:\_git_\star.p.g\src\pc.cpp
+1314796023 source:c:\_git_\star.p.g\src\pc.cpp
+	"RAGE/rage.hpp"
 	"PC.hpp"
+	"NPC.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
 
-1314708325 c:\_git_\star.p.g\src\pc.hpp
+1314795956 c:\_git_\star.p.g\src\pc.hpp
+	"bullets.hpp"
 
-1314785495 source:c:\_git_\star.p.g\src\support_ships.cpp
+1314792463 source:c:\_git_\star.p.g\src\support_ships.cpp
 	"RAGE/rage.hpp"
 	"support_ships.hpp"
 	"load_resources.hpp"
 	"game.hpp"
 	"misc.hpp"
 
-1314785455 c:\_git_\star.p.g\src\support_ships.hpp
+1314791287 c:\_git_\star.p.g\src\support_ships.hpp
 	"bullets.hpp"
 
 1314713508 source:c:\_git_\star.p.g\src\projectiles.cpp
@@ -1415,6 +1428,7 @@
 	"shields.hpp"
 	"game.hpp"
 
-1314708416 source:c:\_git_\star.p.g\src\thrusters.cpp
-	"PC.hpp"
+1314789965 source:c:\_git_\star.p.g\src\thrusters.cpp
+	"thrusters.hpp"
+	"game.hpp"
 

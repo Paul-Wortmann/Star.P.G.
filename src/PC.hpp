@@ -25,4 +25,41 @@
 #ifndef PC_H
 #define PC_H
 
+#include "bullets.hpp"
+
+const int   MAX_PLAYERS     = 2;
+
+struct player_class
+{
+    public:
+    int            front_weapon;
+    int            side_weapon;
+    int            front_shield;
+    int            thrusters;
+    float          x_pos;
+    float          y_pos;
+    float          x_dir;
+    float          y_dir;
+    float          x_vel;
+    float          y_vel;
+    float          width;
+    float          hight;
+    float          health;
+    float          health_regen_rate;
+    float          max_health;
+    int            image;
+    bullet_type    bullet[MAX_BULLETS];
+};
+
+int   init_player            (void);
+float thruster_offset        (void);
+int   process_player         (int command);
+
+int  spawn_player_bullet_num (int player_bullet_num, int location);
+int  spawn_player_bullet     (int position);
+int  kill_player_bullet      (void);
+int  kill_player_bullet      (int player_bullet_num);
+int  init_player_bullets     (void);
+int  proccess_player_bullets (void);
+
 #endif //PC_H
