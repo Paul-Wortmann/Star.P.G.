@@ -100,6 +100,8 @@
 		</Unit>
 		<Unit filename="src\bullets.cpp" />
 		<Unit filename="src\bullets.hpp" />
+		<Unit filename="src\explosions.cpp" />
+		<Unit filename="src\explosions.hpp" />
 		<Unit filename="src\game.cpp" />
 		<Unit filename="src\game.hpp" />
 		<Unit filename="src\levels.cpp" />

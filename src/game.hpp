@@ -29,10 +29,10 @@
 #include "levels.hpp"
 #include "shields.hpp"
 #include "thrusters.hpp"
+#include "explosions.hpp"
 #include "projectiles.hpp"
 #include "support_ships.hpp"
 
-const int   MAX_EXPLOSIONS     = 32;
 const int   MAX_WAVES          = 32;
 const int   MAX_POWERUPS       = 13;
 const int   MAX_COINS          = 32;
@@ -51,20 +51,6 @@ struct wave_type
    int    count_spawned;
    int    spawn_pattern;
    float  wave_size;
-};
-
-struct explosion_type
-{
-    int   animation;
-    bool  active;
-    int   frame;
-    int   image;
-    int   sound;
-    float x_pos;
-    float y_pos;
-    float width;
-    float hight;
-    float size;
 };
 
 struct powerup_type
@@ -185,7 +171,7 @@ struct game_type
    projectile_class     projectile[MAX_PROJECTILES];
    shield_class         shield[MAX_SHIELDS];
    thruster_class       thruster[MAX_THRUSTERS];
-   explosion_type       explosion[MAX_EXPLOSIONS];
+   explosion_class      explosion[MAX_EXPLOSIONS];
    powerup_type         powerup[MAX_POWERUPS];
    coin_type            coin[MAX_COINS];
    wexp_type            wexp[MAX_WEXPS];
@@ -227,11 +213,6 @@ bool  level_completed     (void);
 int   process_game        (void);
 int   process_ball        (void);
 int   display_game        (void);
-
-int  spawn_explosion(float x_position, float y_position, float size);
-int  kill_explosion(int explosion_num);
-int  init_explosions(void);
-int  proccess_explosions(void);
 
 int  spawn_npc(float x_position, float y_position, int type_npc, int type_formation, float x_formation_ofset, float y_formation_ofset);
 int  kill_npc(int npc_num);
