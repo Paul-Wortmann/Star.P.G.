@@ -98,6 +98,8 @@
 		<Unit filename="src\Star.P.G._private.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
+		<Unit filename="src\bullets.cpp" />
+		<Unit filename="src\bullets.hpp" />
 		<Unit filename="src\game.cpp" />
 		<Unit filename="src\game.hpp" />
 		<Unit filename="src\levels.cpp" />

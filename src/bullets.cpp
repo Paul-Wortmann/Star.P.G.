@@ -22,33 +22,6 @@
  * @date 2011-08-30
  */
 
-#ifndef SUPPORT_SHIPS_H
-#define SUPPORT_SHIPS_H
-
 #include "bullets.hpp"
 
-const int   MAX_SUPPORTSHIPS   = 5;
 
-class supportship_class
-{
-    public:
-    int         rate_of_fire;
-    int         rate_of_fire_count;
-    bool        active;
-    int         level;
-    int         image;
-    float       width;
-    float       height;
-    bullet_type bullet[MAX_BULLETS];
-
-    void        init(int supportship_count);
-    void        process(bool spawn_bullet);
-    void        kill_bullets(void);
-    int         spawn_bullet(int location, int direction_x, int direction_y);
-};
-
-void  process_supportships(bool spawn_bullet);
-void  initialize_supportships(void);
-void  kill_player_supportship_bullets(void);
-
-#endif //SUPPORT_SHIPS_H

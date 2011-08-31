@@ -101,7 +101,7 @@ struct save_data_type
    int                  npc_projectile_spawn_rate;
    wave_type            wave[MAX_WAVES];
    player_type          player;
-   supportship_type     supportship[MAX_SUPPORTSHIPS];
+   supportship_class    supportship[MAX_SUPPORTSHIPS];
    enemy_type           enemy[MAX_ENEMYS];
    npc_type             npc[MAX_NPCS];
    projectile_class     projectile[MAX_PROJECTILES];

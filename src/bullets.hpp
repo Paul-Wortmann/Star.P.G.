@@ -22,33 +22,32 @@
  * @date 2011-08-30
  */
 
-#ifndef SUPPORT_SHIPS_H
-#define SUPPORT_SHIPS_H
+#ifndef BULLETS_H
+#define BULLETS_H
 
-#include "bullets.hpp"
+const int   MAX_BULLETS        = 256;
 
-const int   MAX_SUPPORTSHIPS   = 5;
-
-class supportship_class
+struct bullet_type
 {
-    public:
-    int         rate_of_fire;
-    int         rate_of_fire_count;
-    bool        active;
-    int         level;
-    int         image;
-    float       width;
-    float       height;
-    bullet_type bullet[MAX_BULLETS];
-
-    void        init(int supportship_count);
-    void        process(bool spawn_bullet);
-    void        kill_bullets(void);
-    int         spawn_bullet(int location, int direction_x, int direction_y);
+   int   warhead; //projectile
+   bool  active;
+   int   location;
+   float x_pos;
+   float y_pos;
+   int   x_dir;
+   int   y_dir;
+   float x_speed;
+   float y_speed;
+   float width;
+   float hight;
+   bool  straight;
+   bool  homeing_00;
+   bool  homeing_01;
+   bool  wave;
+   float wave_hight;
+   float wave_count;
+   float wave_speed;
+   bool  wave_direction;
 };
 
-void  process_supportships(bool spawn_bullet);
-void  initialize_supportships(void);
-void  kill_player_supportship_bullets(void);
-
-#endif //SUPPORT_SHIPS_H
+#endif //BULLETS_H

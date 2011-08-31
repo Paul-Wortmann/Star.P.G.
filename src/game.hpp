@@ -25,11 +25,11 @@
 #include <string>
 #include <SDL/SDL.h>
 #include "projectiles.hpp"
+#include "support_ships.hpp"
 
 const int   MAX_NPCS           = 32;
 const int   MAX_SHIELDS        = 5;
 const int   MAX_THRUSTERS      = 4;
-const int   MAX_BULLETS        = 256;
 const int   MAX_EXPLOSIONS     = 32;
 const int   MAX_ENEMYS         = 32;
 const int   MAX_LEVELS         = 25;
@@ -37,7 +37,6 @@ const int   MAX_WAVES          = 32;
 const int   MAX_POWERUPS       = 13;
 const int   MAX_COINS          = 32;
 const int   MAX_WEXPS          = 32;
-const int   MAX_SUPPORTSHIPS   = 5;
 const float MAX_VELOCITY       = 0.01f;
 const int   MAX_BOMBS          = 6;
 
@@ -105,41 +104,6 @@ struct wexp_type
    float width;
    float hight;
    float speed;
-};
-
-struct bullet_type
-{
-   int   warhead; //projectile
-   bool  active;
-   int   location;
-   float x_pos;
-   float y_pos;
-   int   x_dir;
-   int   y_dir;
-   float x_speed;
-   float y_speed;
-   float width;
-   float hight;
-   bool  straight;
-   bool  homeing_00;
-   bool  homeing_01;
-   bool  wave;
-   float wave_hight;
-   float wave_count;
-   float wave_speed;
-   bool  wave_direction;
-};
-
-struct supportship_type
-{
-   int         rate_of_fire;
-   int         rate_of_fire_count;
-   bool        active;
-   int         level;
-   int         image;
-   float       width;
-   float       height;
-   bullet_type bullet[MAX_BULLETS];
 };
 
 struct bkground_scroll_type
@@ -318,7 +282,7 @@ struct game_type
    int                  npc_projectile_spawn_rate;
    wave_type            wave[MAX_WAVES];
    player_type          player;
-   supportship_type     supportship[MAX_SUPPORTSHIPS];
+   supportship_class    supportship[MAX_SUPPORTSHIPS];
    enemy_type           enemy[MAX_ENEMYS];
    npc_type             npc[MAX_NPCS];
    projectile_class     projectile[MAX_PROJECTILES];
@@ -543,11 +507,7 @@ int  spawn_d_level_end(void);
 int  display_d_level_end(void);
 int  process_d_level_end(void);
 
-int  spawn_supportship_bullet(int supportship_count,int location, int direction_x, int direction_y);
-int  initialize_supportships(void);
-int  process_supportships(bool spawn_bullet);
 int  kill_player_bullet(void);
-int  kill_player_supportship_bullet(void);
 bool boss_level(void);
 
 #endif //GAME_H
