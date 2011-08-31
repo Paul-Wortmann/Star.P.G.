@@ -22,33 +22,28 @@
  * @date 2011-08-30
  */
 
-#ifndef SUPPORT_SHIPS_H
-#define SUPPORT_SHIPS_H
+#ifndef SHIELDS_H
+#define SHIELDS_H
 
-#include "bullets.hpp"
+#include <string>
 
-const int   MAX_SUPPORTSHIPS   = 5;
+const int   MAX_SHIELDS        = 5;
 
-class supportship_class
+class shield_class
 {
     public:
-    int         rate_of_fire;
-    int         rate_of_fire_count;
-    bool        active;
-    int         level;
-    int         image;
-    float       width;
-    float       height;
-    bullet_type bullet[MAX_BULLETS];
-
-    void        init        (int  supportship_count);
-    void        process     (bool spawn_bullet);
-    void        kill_bullets(void);
-    int         spawn_bullet(int  location, int direction_x, int direction_y);
+    std::wstring name;
+    bool         active;
+    int          level;
+    float        level_1;
+    float        level_2;
+    float        level_3;
+    float        experience;
+    int          image;
+    float        absorption;
 };
 
-void  process_supportships    (bool spawn_bullet);
-void  initialize_supportships (void);
-void  kill_supportship_bullets(void);
+void init_shields(bool re_init);
 
-#endif //SUPPORT_SHIPS_H
+#endif //SHIELDS_H
+

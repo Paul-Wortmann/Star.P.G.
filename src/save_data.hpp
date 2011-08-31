@@ -105,8 +105,8 @@ struct save_data_type
    enemy_type           enemy[MAX_ENEMYS];
    npc_type             npc[MAX_NPCS];
    projectile_class     projectile[MAX_PROJECTILES];
-   shield_type          shield[MAX_SHIELDS];
-   thruster_type        thruster[MAX_THRUSTERS];
+   shield_class         shield[MAX_SHIELDS];
+   thruster_class       thruster[MAX_THRUSTERS];
    explosion_type       explosion[MAX_EXPLOSIONS];
    powerup_type         powerup[MAX_POWERUPS];
    coin_type            coin[MAX_COINS];

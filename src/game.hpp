@@ -24,12 +24,12 @@
 
 #include <string>
 #include <SDL/SDL.h>
+#include "shields.hpp"
+#include "thrusters.hpp"
 #include "projectiles.hpp"
 #include "support_ships.hpp"
 
 const int   MAX_NPCS           = 32;
-const int   MAX_SHIELDS        = 5;
-const int   MAX_THRUSTERS      = 4;
 const int   MAX_EXPLOSIONS     = 32;
 const int   MAX_ENEMYS         = 32;
 const int   MAX_LEVELS         = 25;
@@ -135,32 +135,6 @@ struct player_type
    float max_health;
    int   image;
    bullet_type          bullet[MAX_BULLETS];
-};
-
-struct shield_type
-{
-   std::wstring name;
-   bool         active;
-   int          level;
-   float        level_1;
-   float        level_2;
-   float        level_3;
-   float        experience;
-   int          image;
-   float        absorption;
-};
-
-struct thruster_type
-{
-   std::wstring name;
-   bool         active;
-   int          level;
-   float        level_1;
-   float        level_2;
-   float        level_3;
-   float        experience;
-   int          image;
-   float        thrust;
 };
 
 struct enemy_type
@@ -286,8 +260,8 @@ struct game_type
    enemy_type           enemy[MAX_ENEMYS];
    npc_type             npc[MAX_NPCS];
    projectile_class     projectile[MAX_PROJECTILES];
-   shield_type          shield[MAX_SHIELDS];
-   thruster_type        thruster[MAX_THRUSTERS];
+   shield_class         shield[MAX_SHIELDS];
+   thruster_class       thruster[MAX_THRUSTERS];
    explosion_type       explosion[MAX_EXPLOSIONS];
    powerup_type         powerup[MAX_POWERUPS];
    coin_type            coin[MAX_COINS];

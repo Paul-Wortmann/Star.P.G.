@@ -31,8 +31,8 @@
 extern  sound_type       sound;
 extern  music_type       music;
 extern  texture_type     texture;
-extern game_type  game_o;
-extern game_class game;
+extern  game_type  game_o;
+extern  game_class game;
 
 
 void supportship_class::init(int supportship_count)
@@ -419,7 +419,7 @@ void supportship_class::kill_bullets(void)
     }
 };
 
-void kill_player_supportship_bullets(void)
+void kill_supportship_bullets(void)
 {
     for (int supportship_count = 0;supportship_count < MAX_SUPPORTSHIPS-1;supportship_count++)
     {

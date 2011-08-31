@@ -64,7 +64,7 @@ int init_game_level(int level_no)
     kill_coins();
     kill_wexps();
     kill_player_bullet();
-    kill_player_supportship_bullets();
+    kill_supportship_bullets();
     init_waves();
     game_o.wave[0].active = true;
 
