@@ -26,6 +26,7 @@
 #include <SDL/SDL.h>
 #include "PC.hpp"
 #include "NPC.hpp"
+#include "waves.hpp"
 #include "levels.hpp"
 #include "shields.hpp"
 #include "powerups.hpp"
@@ -33,21 +34,6 @@
 #include "explosions.hpp"
 #include "projectiles.hpp"
 #include "support_ships.hpp"
-
-const int   MAX_WAVES          = 32;
-
-struct wave_type
-{
-   bool   active;
-   int    leader_num;
-   int    npc_type;
-   int    target_kills;
-   int    count_kills;
-   int    target_spawned;
-   int    count_spawned;
-   int    spawn_pattern;
-   float  wave_size;
-};
 
 struct fade_logo_type
 {
@@ -120,7 +106,7 @@ struct game_type
    int                  npc_spawn_rate;
    int                  npc_spawn_rate_count;
    int                  npc_projectile_spawn_rate;
-   wave_type            wave[MAX_WAVES];
+   wave_class           wave[MAX_WAVES];
    player_class         player;
    supportship_class    supportship[MAX_SUPPORTSHIPS];
    enemy_type           enemy[MAX_ENEMYS];
@@ -161,10 +147,6 @@ struct game_type
    fade_logo_type       p_weapon_level_up;
 };
 
-int   init_waves          (void);
-int   spawn_wave          (void);
-int   get_next_active_wave(void);
-int   process_waves       (void);
 int   init_game           (bool re_init);
 bool  level_completed     (void);
 int   process_game        (void);

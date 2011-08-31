@@ -641,7 +641,7 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1314798127 source:c:\_git_\star.p.g\src\game.cpp
+1314798465 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"RAGE/rage.hpp"
 	"load_resources.hpp"
@@ -773,11 +773,12 @@
 
 1310897251 c:\_git_\star.p.g\src\graphics.hpp
 
-1314798127 c:\_git_\star.p.g\src\game.hpp
+1314798481 c:\_git_\star.p.g\src\game.hpp
 	<string>
 	<SDL/SDL.h>
 	"PC.hpp"
 	"NPC.hpp"
+	"waves.hpp"
 	"levels.hpp"
 	"shields.hpp"
 	"powerups.hpp"
@@ -927,7 +928,7 @@
 
 1313907625 c:\_git_\star.p.g\src\rage\savegame.hpp
 
-1314797349 c:\_git_\star.p.g\src\save_data.hpp
+1314798490 c:\_git_\star.p.g\src\save_data.hpp
 	"RAGE/rage.hpp"
 	"RAGE/savegame.hpp"
 	"game.hpp"
@@ -1449,6 +1450,15 @@
 1314798160 source:c:\_git_\star.p.g\src\powerups.cpp
 	"RAGE/rage.hpp"
 	"powerups.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1314798465 c:\_git_\star.p.g\src\waves.hpp
+
+1314798544 source:c:\_git_\star.p.g\src\waves.cpp
+	"RAGE/rage.hpp"
+	"waves.hpp"
 	"load_resources.hpp"
 	"game.hpp"
 	"misc.hpp"

@@ -127,6 +127,8 @@
 		<Unit filename="src\thrusters.cpp" />
 		<Unit filename="src\thrusters.hpp" />
 		<Unit filename="src\version.h" />
+		<Unit filename="src\waves.cpp" />
+		<Unit filename="src\waves.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
