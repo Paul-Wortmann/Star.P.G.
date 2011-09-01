@@ -15,19 +15,34 @@
  * You should have received a copy of the GNU General Public License
  * along with Star.P.G. If not, see <http://www.gnu.org/licenses/>.
  *
- * @author Paul Wortmann
+ * @author  Paul Wortmann
+ * @email   physhex@gmail.com
+ * @website www.physhexgames.co.nr
  * @license GPL
+ * @date 2011-08-30
  */
 
-#ifndef LEVELS_H
-#define LEVELS_H
+#ifndef IN_GAME_MESSAGES_H
+#define IN_GAME_MESSAGES_H
 
-const int   MAX_LEVELS = 25;
+struct in_game_message_class
+{
+    public:
+    bool  active;
+    float alpha;
+    float count;
+    int   image;
 
-int  unlock_levels(void);
-int  init_game_level(int level_no);
-void init_levels(void);
-bool level_completed(void);
-bool boss_level(void);
+    void  set_image  (int image_ref);
+    void  init       (int image_ref);
+    void  init       (void);
+    void  kill       (void);
+    void  spawn      (void);
+    void  draw       (void);
+    void  process    (void);
 
-#endif //LEVELS_H
+};
+
+void  init_in_game_message_class  (void);
+
+#endif //IN_GAME_MESSAGES_H

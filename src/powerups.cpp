@@ -148,7 +148,7 @@ int proccess_powerups(void)
                 case 1: //health 100%
                     {
                        game_o.player.health = 0.100f;
-                       spawn_p_health();
+                       game_o.p_health.spawn();
                     }
                 break;
                 case 2://shield lvl up
@@ -158,7 +158,7 @@ int proccess_powerups(void)
                           if (game_o.shield[game_o.player.front_shield].level  < 3)
                           {
                              game_o.shield[game_o.player.front_shield].level++;
-                             spawn_p_shield_level_up();
+                             game_o.p_shield_level_up.spawn();
                           }
                        }
                     }
@@ -173,11 +173,11 @@ int proccess_powerups(void)
                                game_o.player.front_shield = s_count;
                                game_o.shield[s_count].active = true;
                                done = true;
-                               if (game_o.player.front_shield == 0) spawn_p_terbium_shields();
-                               if (game_o.player.front_shield == 1) spawn_p_iridium_shileds();
-                               if (game_o.player.front_shield == 2) spawn_p_rubidium_shields();
-                               if (game_o.player.front_shield == 3) spawn_p_tantalum_shields();
-                               if (game_o.player.front_shield == 4) spawn_p_actinium_shields();
+                               if (game_o.player.front_shield == 0) game_o.p_terbium_shields.spawn();
+                               if (game_o.player.front_shield == 1) game_o.p_iridium_shileds.spawn();
+                               if (game_o.player.front_shield == 2) game_o.p_rubidium_shields.spawn();
+                               if (game_o.player.front_shield == 3) game_o.p_tantalum_shields.spawn();
+                               if (game_o.player.front_shield == 4) game_o.p_actinium_shields.spawn();
                            }
                        }
                     }
@@ -189,7 +189,7 @@ int proccess_powerups(void)
                           if (game_o.thruster[game_o.player.thrusters].level  < 3)
                           {
                              game_o.thruster[game_o.player.thrusters].level++;
-                             spawn_p_thrusters_level_up();
+                             game_o.p_thrusters_level_up.spawn();
                           }
                        }
                     }
@@ -204,10 +204,10 @@ int proccess_powerups(void)
                                game_o.player.thrusters = t_count;
                                game_o.thruster[t_count].active = true;
                                done = true;
-                               if (game_o.player.thrusters == 0) spawn_p_maelstrom_thrusters();
-                               if (game_o.player.thrusters == 1) spawn_p_seismic_thrusters();
-                               if (game_o.player.thrusters == 2) spawn_p_vortex_thrusters();
-                               if (game_o.player.thrusters == 3) spawn_p_convolution_thrusters();
+                               if (game_o.player.thrusters == 0) game_o.p_maelstrom_thrusters.spawn();
+                               if (game_o.player.thrusters == 1) game_o.p_seismic_thrusters.spawn();
+                               if (game_o.player.thrusters == 2) game_o.p_vortex_thrusters.spawn();
+                               if (game_o.player.thrusters == 3) game_o.p_convolution_thrusters.spawn();
                            }
                        }
                     }
@@ -223,7 +223,7 @@ int proccess_powerups(void)
                           if (game_o.projectile[game_o.player.side_weapon].level > 3) game_o.projectile[game_o.player.side_weapon].level = 3;
                           game_o.projectile[game_o.player.side_weapon].experience = 0;
                        }
-                       spawn_p_weapon_level_up();
+                       game_o.p_weapon_level_up.spawn();
                     }
                 break;
                 case 7://get new weapon
@@ -237,12 +237,12 @@ int proccess_powerups(void)
                                game_o.player.side_weapon  = w_count;
                                game_o.projectile[w_count].active = true;
                                done = true;
-                               if (game_o.player.front_weapon == 0) spawn_p_blasters();
-                               if (game_o.player.front_weapon == 1) spawn_p_chain_guns();
-                               if (game_o.player.front_weapon == 2) spawn_p_burst_lasers();
-                               if (game_o.player.front_weapon == 3) spawn_p_rail_turrets();
-                               if (game_o.player.front_weapon == 4) spawn_p_plasma_rockets();
-                               if (game_o.player.front_weapon == 5) spawn_p_ion_cannons();
+                               if (game_o.player.front_weapon == 0) game_o.p_blasters.spawn();
+                               if (game_o.player.front_weapon == 1) game_o.p_chain_guns.spawn();
+                               if (game_o.player.front_weapon == 2) game_o.p_burst_lasers.spawn();
+                               if (game_o.player.front_weapon == 3) game_o.p_rail_turrets.spawn();
+                               if (game_o.player.front_weapon == 4) game_o.p_plasma_rockets.spawn();
+                               if (game_o.player.front_weapon == 5) game_o.p_ion_cannons.spawn();
                            }
                        }
                     }
@@ -587,25 +587,25 @@ int proccess_wexp(void)
             game_o.projectile[game_o.player.front_weapon].experience += game_o.wexp[count].value*game_o.exp_rate;
             if ((game_o.projectile[game_o.player.front_weapon].experience >= game_o.projectile[game_o.player.front_weapon].level_1) && (game_o.projectile[game_o.player.front_weapon].level == 0))
             {
-               spawn_p_weapon_level_up();
+               game_o.p_weapon_level_up.spawn();
                game_o.projectile[game_o.player.front_weapon].level = 1;
                game_o.projectile[game_o.player.front_weapon].experience = 0;
             }
             if ((game_o.projectile[game_o.player.front_weapon].experience >= game_o.projectile[game_o.player.front_weapon].level_2) && (game_o.projectile[game_o.player.front_weapon].level == 1))
             {
-               spawn_p_weapon_level_up();
+               game_o.p_weapon_level_up.spawn();
                game_o.projectile[game_o.player.front_weapon].level = 2;
                game_o.projectile[game_o.player.front_weapon].experience = 0;
             }
             if ((game_o.projectile[game_o.player.front_weapon].experience >= game_o.projectile[game_o.player.front_weapon].level_3) && (game_o.projectile[game_o.player.front_weapon].level == 2))
             {
-               spawn_p_weapon_level_up();
+               game_o.p_weapon_level_up.spawn();
                game_o.projectile[game_o.player.front_weapon].level = 3;
                game_o.projectile[game_o.player.front_weapon].experience = game_o.projectile[game_o.player.front_weapon].level_3;
             }
             if ((game_o.projectile[game_o.player.front_weapon].experience >= game_o.projectile[game_o.player.front_weapon].level_3) && (game_o.projectile[game_o.player.front_weapon].level == 3))
             {
-               //spawn_p_weapon_level_up();
+               //game_o.p_weapon_level_up.spawn();
                game_o.projectile[game_o.player.front_weapon].level = 3;
                game_o.projectile[game_o.player.front_weapon].experience = game_o.projectile[game_o.player.front_weapon].level_3;
             }
@@ -613,25 +613,25 @@ int proccess_wexp(void)
             game_o.projectile[game_o.player.side_weapon].experience += game_o.wexp[count].value*game_o.exp_rate;
             if ((game_o.projectile[game_o.player.side_weapon].experience >= game_o.projectile[game_o.player.side_weapon].level_1) && (game_o.projectile[game_o.player.side_weapon].level == 0))
             {
-               spawn_p_weapon_level_up();
+               game_o.p_weapon_level_up.spawn();
                game_o.projectile[game_o.player.side_weapon].level = 1;
                game_o.projectile[game_o.player.side_weapon].experience = 0;
             }
             if ((game_o.projectile[game_o.player.side_weapon].experience >= game_o.projectile[game_o.player.side_weapon].level_2) && (game_o.projectile[game_o.player.side_weapon].level == 1))
             {
-               spawn_p_weapon_level_up();
+               game_o.p_weapon_level_up.spawn();
                game_o.projectile[game_o.player.side_weapon].level = 2;
                game_o.projectile[game_o.player.side_weapon].experience = 0;
             }
             if ((game_o.projectile[game_o.player.side_weapon].experience >= game_o.projectile[game_o.player.side_weapon].level_3) && (game_o.projectile[game_o.player.side_weapon].level == 2))
             {
-               spawn_p_weapon_level_up();
+               game_o.p_weapon_level_up.spawn();
                game_o.projectile[game_o.player.side_weapon].level = 3;
                game_o.projectile[game_o.player.side_weapon].experience = game_o.projectile[game_o.player.side_weapon].level_3;
             }
             if ((game_o.projectile[game_o.player.side_weapon].experience >= game_o.projectile[game_o.player.side_weapon].level_3) && (game_o.projectile[game_o.player.side_weapon].level == 3))
             {
-               //spawn_p_weapon_level_up();
+               //game_o.p_weapon_level_up.spawn();
                game_o.projectile[game_o.player.side_weapon].level = 3;
                game_o.projectile[game_o.player.side_weapon].experience = game_o.projectile[game_o.player.side_weapon].level_3;
             }

@@ -247,7 +247,7 @@ int main(int argc, char *argv[])
               {
                  game.game_paused = true;
                  game.game_active = false;
-                 spawn_paused();
+                 game_o.paused.spawn();
                  game.io.pause    = false;
                  game.menu_level = 11;
               };

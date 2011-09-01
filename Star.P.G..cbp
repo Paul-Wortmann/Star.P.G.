@@ -104,6 +104,8 @@
 		<Unit filename="src\explosions.hpp" />
 		<Unit filename="src\game.cpp" />
 		<Unit filename="src\game.hpp" />
+		<Unit filename="src\in_game_messages.cpp" />
+		<Unit filename="src\in_game_messages.hpp" />
 		<Unit filename="src\levels.cpp" />
 		<Unit filename="src\levels.hpp" />
 		<Unit filename="src\load_resources.cpp" />

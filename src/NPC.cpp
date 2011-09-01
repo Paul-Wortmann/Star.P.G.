@@ -738,7 +738,7 @@ int proccess_npc_bullets(void)
                 {
                     if (game_o.shield[game_o.player.front_shield].experience >= game_o.shield[game_o.player.front_shield].level_1)
                     {
-                       spawn_p_shield_level_up();
+                       game_o.p_shield_level_up.spawn();
                        game_o.shield[game_o.player.front_shield].experience = 0;
                        game_o.shield[game_o.player.front_shield].level++;
                     }
@@ -747,7 +747,7 @@ int proccess_npc_bullets(void)
                 {
                     if (game_o.shield[game_o.player.front_shield].experience >= game_o.shield[game_o.player.front_shield].level_2)
                     {
-                       spawn_p_shield_level_up();
+                       game_o.p_shield_level_up.spawn();
                        game_o.shield[game_o.player.front_shield].experience = 0;
                        game_o.shield[game_o.player.front_shield].level++;
                     }
@@ -756,7 +756,7 @@ int proccess_npc_bullets(void)
                 {
                     if (game_o.shield[game_o.player.front_shield].experience >= game_o.shield[game_o.player.front_shield].level_3)
                     {
-                       spawn_p_shield_level_up();
+                       game_o.p_shield_level_up.spawn();
                        game_o.shield[game_o.player.front_shield].experience = 0;
                        game_o.shield[game_o.player.front_shield].level++;
                     }

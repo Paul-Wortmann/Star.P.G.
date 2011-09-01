@@ -895,7 +895,7 @@ int process_menu(void)
                     if (game.save_01.Load())
                     {
                         game.log.File_Write("Loading from slot 1");
-                        spawn_loaded();
+                        game_o.loaded.spawn();
                         game.game_active = true;
                         game.menu_active = false;
                         game.log.File_Write("Resuming game");
@@ -911,7 +911,7 @@ int process_menu(void)
                     if (game.save_02.Load())
                     {
                         game.log.File_Write("Loading from slot 2");
-                        spawn_loaded();
+                        game_o.loaded.spawn();
                         game.game_active = true;
                         game.menu_active = false;
                         game.log.File_Write("Resuming game");
@@ -927,7 +927,7 @@ int process_menu(void)
                     if (game.save_03.Load())
                     {
                         game.log.File_Write("Loading from slot 3");
-                        spawn_loaded();
+                        game_o.loaded.spawn();
                         game.game_active = true;
                         game.menu_active = false;
                         game.log.File_Write("Resuming game");
@@ -943,7 +943,7 @@ int process_menu(void)
                     if (game.save_04.Load())
                     {
                         game.log.File_Write("Loading from slot 4");
-                        spawn_loaded();
+                        game_o.loaded.spawn();
                         game.game_active = true;
                         game.menu_active = false;
                         game.log.File_Write("Resuming game");
@@ -959,7 +959,7 @@ int process_menu(void)
                     if (game.save_05.Load())
                     {
                         game.log.File_Write("Loading from slot 5");
-                        spawn_loaded();
+                        game_o.loaded.spawn();
                         game.game_active = true;
                         game.menu_active = false;
                         game.log.File_Write("Resuming game");
@@ -975,7 +975,7 @@ int process_menu(void)
                     if (game.save_06.Load())
                     {
                         game.log.File_Write("Loading from slot 6");
-                        spawn_loaded();
+                        game_o.loaded.spawn();
                         game.game_active = true;
                         game.menu_active = false;
                         game.log.File_Write("Resuming game");
@@ -991,7 +991,7 @@ int process_menu(void)
                     if (game.save_07.Load())
                     {
                         game.log.File_Write("Loading from slot 7");
-                        spawn_loaded();
+                        game_o.loaded.spawn();
                         game.game_active = true;
                         game.menu_active = false;
                         game.log.File_Write("Resuming game");
@@ -1034,7 +1034,7 @@ int process_menu(void)
                 game.save_01.Assign_File("save/slot_01.sav");
                 game.save_01.Save();
                 game.log.File_Write("Saving to slot 1");
-                spawn_saved();
+                game_o.saved.spawn();
                 game.game_active = true;
                 game.menu_active = false;
                 game.log.File_Write("Resuming game");
@@ -1046,7 +1046,7 @@ int process_menu(void)
                 game.save_02.Assign_File("save/slot_02.sav");
                 game.save_02.Save();
                 game.log.File_Write("Saving to slot 2");
-                spawn_saved();
+                game_o.saved.spawn();
                 game.game_active = true;
                 game.menu_active = false;
                 game.log.File_Write("Resuming game");
@@ -1058,7 +1058,7 @@ int process_menu(void)
                 game.save_03.Assign_File("save/slot_03.sav");
                 game.save_03.Save();
                 game.log.File_Write("Saving to slot 3");
-                spawn_saved();
+                game_o.saved.spawn();
                 game.game_active = true;
                 game.menu_active = false;
                 game.log.File_Write("Resuming game");
@@ -1070,7 +1070,7 @@ int process_menu(void)
                 game.save_04.Assign_File("save/slot_04.sav");
                 game.save_04.Save();
                 game.log.File_Write("Saving to slot 4");
-                spawn_saved();
+                game_o.saved.spawn();
                 game.game_active = true;
                 game.menu_active = false;
                 game.log.File_Write("Resuming game");
@@ -1082,7 +1082,7 @@ int process_menu(void)
                 game.save_05.Assign_File("save/slot_05.sav");
                 game.save_05.Save();
                 game.log.File_Write("Saving to slot 5");
-                spawn_saved();
+                game_o.saved.spawn();
                 game.game_active = true;
                 game.menu_active = false;
                 game.log.File_Write("Resuming game");
@@ -1094,7 +1094,7 @@ int process_menu(void)
                 game.save_06.Assign_File("save/slot_06.sav");
                 game.save_06.Save();
                 game.log.File_Write("Saving to slot 6");
-                spawn_saved();
+                game_o.saved.spawn();
                 game.game_active = true;
                 game.menu_active = false;
                 game.log.File_Write("Resuming game");
@@ -1106,7 +1106,7 @@ int process_menu(void)
                 game.save_07.Assign_File("save/slot_07.sav");
                 game.save_07.Save();
                 game.log.File_Write("Saving to slot 7");
-                spawn_saved();
+                game_o.saved.spawn();
                 game.game_active = true;
                 game.menu_active = false;
                 game.log.File_Write("Resuming game");

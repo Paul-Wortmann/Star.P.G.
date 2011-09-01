@@ -721,3 +721,38 @@ int init_game_level(int level_no)
     init_npcs(game_o.level_npc_type);
     return(0);
 };
+
+bool level_completed(void)
+{
+   if ((game_o.level_kills >= game_o.victory_kills) && (game_o.level_spawened >= game_o.victory_spawened) && (game_o.level_score >= game_o.victory_score))
+   {
+       game_o.level_end_time = true;
+       if (game_o.level_end_phase == 0)
+       {
+          game_o.level_end_count++;
+          if (game_o.level_end_count >= game_o.level_end_time_out)
+          {
+              game_o.level_end_phase = 1;
+              game_o.level_end_count = 0;
+          }
+       }
+       if (game_o.level_end_phase == 1)
+       {
+          game_o.level_end_count++;
+          if (game_o.level_end_count >= game_o.level_end_time_out)
+          {
+              game_o.level_end_phase = 2;
+              game_o.level_end_count = 0;
+          }
+       }
+       if (game_o.level_end_phase == 2) return(true);
+       else return(false);
+   }
+   else return(false);
+}
+
+bool boss_level(void)
+{
+    if ((game_o.level ==  3) || (game_o.level ==  7) || (game_o.level == 11) || (game_o.level == 15) || (game_o.level == 19) || (game_o.level == 23) || (game_o.level == 24)) return (true);
+    else return (false);
+};

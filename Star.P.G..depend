@@ -641,7 +641,7 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1314798465 source:c:\_git_\star.p.g\src\game.cpp
+1314878333 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"RAGE/rage.hpp"
 	"load_resources.hpp"
@@ -672,14 +672,14 @@
 
 1310910430 hpp"
 
-1314796274 source:c:\_git_\star.p.g\src\levels.cpp
+1314798658 source:c:\_git_\star.p.g\src\levels.cpp
 	"RAGE/rage.hpp"
 	"levels.hpp"
 	"game.hpp"
 
 1309768119 c:\_git_\star.p.g\src\levels.h
 
-1314716727 source:c:\_git_\star.p.g\src\main.cpp
+1314800319 source:c:\_git_\star.p.g\src\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -773,7 +773,7 @@
 
 1310897251 c:\_git_\star.p.g\src\graphics.hpp
 
-1314798481 c:\_git_\star.p.g\src\game.hpp
+1314878844 c:\_git_\star.p.g\src\game.hpp
 	<string>
 	<SDL/SDL.h>
 	"PC.hpp"
@@ -786,6 +786,7 @@
 	"explosions.hpp"
 	"projectiles.hpp"
 	"support_ships.hpp"
+	"in_game_messages.hpp"
 
 1310897251 c:\_git_\star.p.g\src\sounds.hpp
 	<SDL/SDL_mixer.h>
@@ -801,7 +802,7 @@
 
 1312290460 c:\_git_\star.p.g\src\misc.hpp
 
-1314796313 c:\_git_\star.p.g\src\levels.hpp
+1314798680 c:\_git_\star.p.g\src\levels.hpp
 
 1312290460 c:\_git_\star.p.g\src\main.hpp
 
@@ -1163,7 +1164,7 @@
 
 1313669005 c:\_git_\star.p.g\src\menu_system.hpp
 
-1314626880 source:c:\_git_\star.p.g\src\menu_system.cpp
+1314878272 source:c:\_git_\star.p.g\src\menu_system.cpp
 	<GL/gl.h>
 	"menu_system.hpp"
 	"game.hpp"
@@ -1382,7 +1383,7 @@
 1314712403 c:\_git_\star.p.g\src\projectiles.hpp
 	<string>
 
-1314792704 source:c:\_git_\star.p.g\src\npc.cpp
+1314801397 source:c:\_git_\star.p.g\src\npc.cpp
 	"RAGE/rage.hpp"
 	"NPC.hpp"
 	"load_resources.hpp"
@@ -1392,7 +1393,7 @@
 1314797696 c:\_git_\star.p.g\src\npc.hpp
 	"bullets.hpp"
 
-1314796791 source:c:\_git_\star.p.g\src\pc.cpp
+1314801562 source:c:\_git_\star.p.g\src\pc.cpp
 	"RAGE/rage.hpp"
 	"PC.hpp"
 	"NPC.hpp"
@@ -1447,7 +1448,7 @@
 
 1314798127 c:\_git_\star.p.g\src\powerups.hpp
 
-1314798160 source:c:\_git_\star.p.g\src\powerups.cpp
+1314878550 source:c:\_git_\star.p.g\src\powerups.cpp
 	"RAGE/rage.hpp"
 	"powerups.hpp"
 	"load_resources.hpp"
@@ -1462,4 +1463,12 @@
 	"load_resources.hpp"
 	"game.hpp"
 	"misc.hpp"
+
+1314800718 c:\_git_\star.p.g\src\in_game_messages.hpp
+
+1314877964 source:c:\_git_\star.p.g\src\in_game_messages.cpp
+	"in_game_messages.hpp"
+	"RAGE/rage.hpp"
+	"load_resources.hpp"
+	"game.hpp"
 
