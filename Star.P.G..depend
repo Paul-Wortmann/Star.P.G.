@@ -773,7 +773,7 @@
 
 1310897251 c:\_git_\star.p.g\src\graphics.hpp
 
-1314878844 c:\_git_\star.p.g\src\game.hpp
+1314879828 c:\_git_\star.p.g\src\game.hpp
 	<string>
 	<SDL/SDL.h>
 	"PC.hpp"
@@ -785,6 +785,7 @@
 	"thrusters.hpp"
 	"explosions.hpp"
 	"projectiles.hpp"
+	"achievements.hpp"
 	"support_ships.hpp"
 	"in_game_messages.hpp"
 
@@ -1466,9 +1467,11 @@
 
 1314800718 c:\_git_\star.p.g\src\in_game_messages.hpp
 
-1314877964 source:c:\_git_\star.p.g\src\in_game_messages.cpp
+1314878844 source:c:\_git_\star.p.g\src\in_game_messages.cpp
 	"in_game_messages.hpp"
 	"RAGE/rage.hpp"
 	"load_resources.hpp"
 	"game.hpp"
+
+1314880276 c:\_git_\star.p.g\src\achievements.hpp
 

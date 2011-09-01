@@ -98,6 +98,8 @@
 		<Unit filename="src\Star.P.G._private.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
+		<Unit filename="src\achievements.cpp" />
+		<Unit filename="src\achievements.hpp" />
 		<Unit filename="src\bullets.cpp" />
 		<Unit filename="src\bullets.hpp" />
 		<Unit filename="src\explosions.cpp" />

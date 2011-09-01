@@ -43,73 +43,58 @@ int init_game(bool re_init)
    game.pdie_active                       = false;
    game.nlvl_active                       = false;
 
-   game_o.anc_enabled                       = false;
-   game_o.fps_enabled                       = false;
-   game_o.npc_damage_duration               = 10;
-   game_o.exp_rate                          = 5;
-   game_o.coin_spawn_rate                   = 665.36 * 5;
-   game_o.wexp_spawn_rate                   = 665.36 * 10;
-   game_o.npc_spawn_rate                    = 256;
-   game_o.npc_spawn_rate_count              = 0;
-   game_o.paused.active                     = false;
-   game_o.number_bombs                      = 0;
-   game_o.bomb_delay                        = 32;
-   game_o.bomb_delay_count                  = 0;
-   game_o.immune                            = true;
-   game_o.immunity_state                    = 0;
-   game_o.immunity_delay                    = 256;
-   game_o.immunity_delay_count              = 0;
-   game_o.score                             = 0;
-   game_o.kills                             = 0;
-   game_o.level_kills                       = 0;
-   game_o.level_spawened                    = 0;
-   game_o.level_score                       = 0;
-   game_o.victory_kills                     = 0;
-   game_o.victory_spawened                  = 0;
-   game_o.victory_score                     = 0;
-   game_o.level_end_count                   = 0;
-   game_o.level_end_time_out                = 300;
-   game_o.level_end_time                    = false;
-   game_o.level_end_phase                   = 0;
-   game_o.level_end_display_active          = false;
-   game_o.powerups_spawened                 = false;
-   game_o.completed                         = 0;
-   game_o.speed                             = 0.045f;
-   game_o.fw_rof_count                      = 0;
-   game_o.sw_rof_count                      = 0;
-   game_o.player.x_pos                      =-0.9f;
-   game_o.player.y_pos                      = 0.0f;
-   game_o.player.x_dir                      = 0.0f;
-   game_o.player.y_dir                      = 0.0f;
-   game_o.player.x_vel                      = 0.0f;
-   game_o.player.y_vel                      = 0.0f;
-   game_o.player.width                      = 0.2f;
-   game_o.player.hight                      = 0.2f;
-   game_o.player.health                     = 0.100f;
-   game_o.player.health_regen_rate          = 0.00005f;
-   game_o.player.max_health                 = 0.100f;
-   game_o.player.image                      = 278;
-   game_o.player.front_weapon               = 0;
-   game_o.player.side_weapon                = 0;
+   game_o.anc_enabled                       =  false;
+   game_o.fps_enabled                       =  false;
+   game_o.npc_damage_duration               =  10;
+   game_o.exp_rate                          =  5;
+   game_o.coin_spawn_rate                   =  665.36 * 5;
+   game_o.wexp_spawn_rate                   =  665.36 * 10;
+   game_o.npc_spawn_rate                    =  256;
+   game_o.npc_spawn_rate_count              =  0;
+   game_o.paused.active                     =  false;
+   game_o.number_bombs                      =  0;
+   game_o.bomb_delay                        =  32;
+   game_o.bomb_delay_count                  =  0;
+   game_o.immune                            =  true;
+   game_o.immunity_state                    =  0;
+   game_o.immunity_delay                    =  256;
+   game_o.immunity_delay_count              =  0;
+   game_o.score                             =  0;
+   game_o.kills                             =  0;
+   game_o.level_kills                       =  0;
+   game_o.level_spawened                    =  0;
+   game_o.level_score                       =  0;
+   game_o.victory_kills                     =  0;
+   game_o.victory_spawened                  =  0;
+   game_o.victory_score                     =  0;
+   game_o.level_end_count                   =  0;
+   game_o.level_end_time_out                =  300;
+   game_o.level_end_time                    =  false;
+   game_o.level_end_phase                   =  0;
+   game_o.level_end_display_active          =  false;
+   game_o.powerups_spawened                 =  false;
+   game_o.completed                         =  0;
+   game_o.speed                             =  0.045f;
+   game_o.fw_rof_count                      =  0;
+   game_o.sw_rof_count                      =  0;
+   game_o.player.x_pos                      = -0.9f;
+   game_o.player.y_pos                      =  0.0f;
+   game_o.player.x_dir                      =  0.0f;
+   game_o.player.y_dir                      =  0.0f;
+   game_o.player.x_vel                      =  0.0f;
+   game_o.player.y_vel                      =  0.0f;
+   game_o.player.width                      =  0.2f;
+   game_o.player.hight                      =  0.2f;
+   game_o.player.health                     =  0.100f;
+   game_o.player.health_regen_rate          =  0.00005f;
+   game_o.player.max_health                 =  0.100f;
+   game_o.player.image                      =  278;
+   game_o.player.front_weapon               =  0;
+   game_o.player.side_weapon                =  0;
    game_o.player.front_shield               = -1;
    game_o.player.thrusters                  = -1;
-   game_o.achivement.score                  = 0;
-   game_o.achivement.kills                  = 0;
-   game_o.achivement.score_level_1          = 625;
-   game_o.achivement.score_level_2          = 1250;
-   game_o.achivement.score_level_3          = 2500;
-   game_o.achivement.score_level_4          = 5000;
-   game_o.achivement.score_level_5          = 10000;
-   game_o.achivement.score_level_6          = 20000;
-   game_o.achivement.score_level_7          = 40000;
-   game_o.achivement.kills_level_1          = 128;
-   game_o.achivement.kills_level_2          = 256;
-   game_o.achivement.kills_level_3          = 512;
-   game_o.achivement.kills_level_4          = 1024;
-   game_o.achivement.kills_level_5          = 2048;
-   game_o.achivement.kills_level_6          = 4096;
-   game_o.achivement.kills_level_7          = 8192;
 
+    init_achievements();
     init_projectiles(re_init);
     init_shields    (re_init);
     init_thrusters  (re_init);
@@ -251,8 +236,8 @@ int process_game(void)
    game_o.p_thrusters_level_up.process();
    game_o.p_vortex_thrusters.process();
    game_o.p_weapon_level_up.process();
-   //achievement_kills_process();
-   //achievement_score_process();
+   achievement_kills_process();
+   achievement_score_process();
    game_o.paused.process();
    game_o.loaded.process();
    game_o.saved.process();
@@ -1024,83 +1009,3 @@ int display_game(void)
 };
 
 
-void achievement_score_process(void)
-{
-   if (game_o.a_score.active) game_o.a_score.process();
-   if ((game_o.score >= game_o.achivement.score_level_1) && (game_o.achivement.score < 1))
-   {
-      game_o.achivement.score = 1;
-      game_o.a_score.spawn();
-   };
-   if ((game_o.score >= game_o.achivement.score_level_2) && (game_o.achivement.score < 2))
-   {
-      game_o.achivement.score = 2;
-      game_o.a_score.spawn();
-   };
-   if ((game_o.score >= game_o.achivement.score_level_3) && (game_o.achivement.score < 3))
-   {
-      game_o.achivement.score = 3;
-      game_o.a_score.spawn();
-   };
-   if ((game_o.score >= game_o.achivement.score_level_4) && (game_o.achivement.score < 4))
-   {
-      game_o.achivement.score = 4;
-      game_o.a_score.spawn();
-   };
-   if ((game_o.score >= game_o.achivement.score_level_5) && (game_o.achivement.score < 5))
-   {
-      game_o.achivement.score = 5;
-      game_o.a_score.spawn();
-   };
-   if ((game_o.score >= game_o.achivement.score_level_6) && (game_o.achivement.score < 6))
-   {
-      game_o.achivement.score = 6;
-      game_o.a_score.spawn();
-   };
-   if ((game_o.score >= game_o.achivement.score_level_7) && (game_o.achivement.score < 7))
-   {
-      game_o.achivement.score = 7;
-      game_o.a_score.spawn();
-   };
-};
-
-
-void achievement_kills_process(void)
-{
-   if (game_o.a_kills.active) game_o.a_kills.process();
-   if ((game_o.kills >= game_o.achivement.kills_level_1) && (game_o.achivement.kills < 1))
-   {
-      game_o.achivement.kills = 1;
-      game_o.a_kills.spawn();
-   };
-   if ((game_o.kills >= game_o.achivement.kills_level_2) && (game_o.achivement.kills < 2))
-   {
-      game_o.achivement.kills = 2;
-      game_o.a_kills.spawn();
-   };
-   if ((game_o.kills >= game_o.achivement.kills_level_3) && (game_o.achivement.kills < 3))
-   {
-      game_o.achivement.kills = 3;
-      game_o.a_kills.spawn();
-   };
-   if ((game_o.kills >= game_o.achivement.kills_level_4) && (game_o.achivement.kills < 4))
-   {
-      game_o.achivement.kills = 4;
-      game_o.a_kills.spawn();
-   };
-   if ((game_o.kills >= game_o.achivement.kills_level_5) && (game_o.achivement.kills < 5))
-   {
-      game_o.achivement.kills = 5;
-      game_o.a_kills.spawn();
-   };
-   if ((game_o.kills >= game_o.achivement.kills_level_6) && (game_o.achivement.kills < 6))
-   {
-      game_o.achivement.kills = 6;
-      game_o.a_kills.spawn();
-   };
-   if ((game_o.kills >= game_o.achivement.kills_level_7) && (game_o.achivement.kills < 7))
-   {
-      game_o.achivement.kills = 7;
-      game_o.a_kills.spawn();
-   };
-};
