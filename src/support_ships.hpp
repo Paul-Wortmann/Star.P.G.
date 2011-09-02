@@ -32,23 +32,31 @@ const int   MAX_SUPPORTSHIPS   = 5;
 class supportship_class
 {
     public:
-    int         rate_of_fire;
-    int         rate_of_fire_count;
-    bool        active;
-    int         level;
-    int         image;
-    float       width;
-    float       height;
-    bullet_type bullet[MAX_BULLETS];
+        bool        follow;
+        float       follow_distance;
+        bool        rotate;
+        float       movement_speed;
+        int         number_of_ships;
+        float       pos_x;
+        float       pos_y;
+        int         rate_of_fire;
+        int         rate_of_fire_count;
+        bool        active;
+        int         level;
+        int         image;
+        float       width;
+        float       height;
+        bullet_type bullet[MAX_BULLETS];
 
-    void        init        (int  supportship_count);
-    void        process     (bool spawn_bullet);
-    void        kill_bullets(void);
-    int         spawn_bullet(int  location, int direction_x, int direction_y);
+        void        init        (int  supportship_count, int number_of_ships, float x_pos, float y_pos);
+        void        process     (bool spawn_bullet);
+        void        kill_bullets(void);
+        int         spawn_bullet(int  location, int direction_x, int direction_y);
 };
 
+void  init_supportships       (int number_of_ships, float x_pos, float y_pos);
 void  process_supportships    (bool spawn_bullet);
-void  init_supportships (void);
 void  kill_supportship_bullets(void);
+void  draw_supportships       (void);
 
 #endif //SUPPORT_SHIPS_H

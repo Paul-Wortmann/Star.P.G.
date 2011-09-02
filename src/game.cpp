@@ -101,7 +101,7 @@ int init_game(bool re_init)
     init_enemies    (re_init);
     init_in_game_message_class();
     init_player_bullets();
-    init_supportships();
+    init_supportships(2,game_o.player.x_pos,game_o.player.y_pos);
     init_waves();
     init_coin();
     init_wexp();
@@ -650,26 +650,7 @@ int display_game(void)
    glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2),game_o.player.y_pos-(game_o.player.hight/2), 0.03f );
    glEnd();
 
-   for (int count = 0;count < MAX_SUPPORTSHIPS;count++)
-   {
-      if (game_o.supportship[count].active)
-      {
-         bind_texture(game_o.supportship[count].image); //supportships
-         glLoadIdentity();
-         glBegin( GL_QUADS );//top
-         glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)+game_o.supportship[count].width,game_o.player.y_pos+(game_o.player.hight/2)+game_o.supportship[count].height, 0.001f);
-         glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)+game_o.supportship[count].width,game_o.player.y_pos+(game_o.player.hight/2)                            , 0.001f);
-         glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)                           ,game_o.player.y_pos+(game_o.player.hight/2)                            , 0.001f);
-         glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)                           ,game_o.player.y_pos+(game_o.player.hight/2)+game_o.supportship[count].height, 0.001f);
-         glEnd();
-         glBegin( GL_QUADS );//bottom
-         glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)+game_o.supportship[count].width,game_o.player.y_pos-(game_o.player.hight/2)-game_o.supportship[count].height, 0.001f);
-         glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)+game_o.supportship[count].width,game_o.player.y_pos-(game_o.player.hight/2)                            , 0.001f);
-         glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)                           ,game_o.player.y_pos-(game_o.player.hight/2)                            , 0.001f);
-         glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)                           ,game_o.player.y_pos-(game_o.player.hight/2)-game_o.supportship[count].height, 0.001f);
-         glEnd();
-      }
-   }
+     draw_supportships(); // support ships
 
      if (game_o.player.front_weapon > -1)
       {
