@@ -76,32 +76,40 @@ void  init_supportships(int number_of_ships, float x_pos, float y_pos)
 
 int supportship_class::spawn_bullet(int location, int direction_x, int direction_y)
 {
-   bool done = false;
-   for (int bullet_count = 0;bullet_count < MAX_BULLETS-1;bullet_count++)//spawn bullet
-   {
-       if ((!supportship_class::bullet[bullet_count].active) && (!done))
-       {
-          done = true;
-          supportship_class::bullet[bullet_count].active = true;
-          supportship_class::bullet[bullet_count].x_pos  = game_o.player.x_pos-(game_o.player.width/4)+supportship_class::width;
-          if (location  == 0) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos-(game_o.player.hight/2)-supportship_class::height;
-          if (location  == 1) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos+(game_o.player.hight/2)+supportship_class::height;
-          if (location  == 2) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos-(game_o.player.hight/2)-((supportship_class::height/2)*3);
-          if (location  == 3) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos+(game_o.player.hight/2)+((supportship_class::height/2)*3);
-          if (location  == 4) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos-(game_o.player.hight/2)-supportship_class::height;
-          if (location  == 5) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos+(game_o.player.hight/2)+supportship_class::height;
-          if (location  == 4) supportship_class::bullet[bullet_count].x_pos -= supportship_class::width/2;
-          if (location  == 5) supportship_class::bullet[bullet_count].x_pos -= supportship_class::width/2;
-          supportship_class::bullet[bullet_count].x_dir   = direction_x;
-          supportship_class::bullet[bullet_count].y_dir   = direction_y;
-          supportship_class::bullet[bullet_count].x_speed = game_o.projectile[supportship_class::bullet[bullet_count].warhead].speed;
-          supportship_class::bullet[bullet_count].y_speed = game_o.projectile[supportship_class::bullet[bullet_count].warhead].speed;
-          supportship_class::bullet[bullet_count].hight   = game_o.projectile[supportship_class::bullet[bullet_count].warhead].size;
-          supportship_class::bullet[bullet_count].width   = game_o.projectile[supportship_class::bullet[bullet_count].warhead].size;
-       }
-   }
-   if (done) return(1);
-   else return(0);
+    bool done = false;
+    for (int bullet_count = 0;bullet_count < MAX_BULLETS-1;bullet_count++)//spawn bullet
+    {
+        if ((!supportship_class::bullet[bullet_count].active) && (!done))
+        {
+            done = true;
+            supportship_class::bullet[bullet_count].active = true;
+            if (supportship_class::follow)
+            {
+                supportship_class::bullet[bullet_count].x_pos  = supportship_class::pos_x;
+                supportship_class::bullet[bullet_count].y_pos  = supportship_class::pos_y;
+            }
+            else
+            {
+                supportship_class::bullet[bullet_count].x_pos  = game_o.player.x_pos-(game_o.player.width/4)+supportship_class::width;
+                if (location  == 0) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos-(game_o.player.hight/2)-supportship_class::height;
+                if (location  == 1) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos+(game_o.player.hight/2)+supportship_class::height;
+                if (location  == 2) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos-(game_o.player.hight/2)-((supportship_class::height/2)*3);
+                if (location  == 3) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos+(game_o.player.hight/2)+((supportship_class::height/2)*3);
+                if (location  == 4) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos-(game_o.player.hight/2)-supportship_class::height;
+                if (location  == 5) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos+(game_o.player.hight/2)+supportship_class::height;
+                if (location  == 4) supportship_class::bullet[bullet_count].x_pos -= supportship_class::width/2;
+                if (location  == 5) supportship_class::bullet[bullet_count].x_pos -= supportship_class::width/2;
+            }
+            supportship_class::bullet[bullet_count].x_dir   = direction_x;
+            supportship_class::bullet[bullet_count].y_dir   = direction_y;
+            supportship_class::bullet[bullet_count].x_speed = game_o.projectile[supportship_class::bullet[bullet_count].warhead].speed;
+            supportship_class::bullet[bullet_count].y_speed = game_o.projectile[supportship_class::bullet[bullet_count].warhead].speed;
+            supportship_class::bullet[bullet_count].hight   = game_o.projectile[supportship_class::bullet[bullet_count].warhead].size;
+            supportship_class::bullet[bullet_count].width   = game_o.projectile[supportship_class::bullet[bullet_count].warhead].size;
+        }
+    }
+    if (done) return(1);
+    else return(0);
 };
 
 void  process_supportships(bool spawn_bullet)

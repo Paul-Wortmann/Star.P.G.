@@ -538,131 +538,131 @@ int process_game(void)
 /*----------------------------------------------------------------------------*/
 int display_game(void)
 {
-   float z_pos = 0;
-   float temp_val;
-   glPushMatrix();
-   glDisable(GL_DEPTH_TEST);
-   game.background.draw();
+    float z_pos = 0;
+    float temp_val;
+    glPushMatrix();
+    glDisable(GL_DEPTH_TEST);
+    game.background.draw();
 //-----------------------------------------------------------------------------------------------------------------------
-   for (int npc_count =MAX_NPCS-1;npc_count >=0;npc_count--)  // npcs
-   {
-      for (int bullet_count = MAX_BULLETS-1;bullet_count >=0;bullet_count--)  // npcs bullets
-      {
-         z_pos = 0.05f + (0.0001*bullet_count);
-         bind_texture(game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image);
-         glLoadIdentity();
-         if (game_o.npc[npc_count].bullet[bullet_count].active)
-         {
-            glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos+(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos-(game_o.npc[npc_count].bullet[bullet_count].hight/2),z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos+(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos+(game_o.npc[npc_count].bullet[bullet_count].hight/2),z_pos);
-            glTexCoord2i( 1, 0 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos-(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos+(game_o.npc[npc_count].bullet[bullet_count].hight/2),z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos-(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos-(game_o.npc[npc_count].bullet[bullet_count].hight/2),z_pos);
-            glEnd();
-         }
-      }
-      z_pos = 0.04f + (0.0001*npc_count); // npc's
-      if (game_o.npc[npc_count].active)
-      {
-         if (game_o.npc[npc_count].damaged > (game_o.npc_damage_duration/5)) glColor4f(1.0f,0.0f,0.0f,0.6f);
-         bind_texture(game_o.enemy[game_o.npc[npc_count].type_npc].image);
-         glLoadIdentity();
-         glBegin( GL_QUADS );
-         glTexCoord2i( 1, 1 );glVertex3f(game_o.npc[npc_count].x_pos+(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos-(game_o.npc[npc_count].hight/2),z_pos);
-         glTexCoord2i( 0, 1 );glVertex3f(game_o.npc[npc_count].x_pos+(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos+(game_o.npc[npc_count].hight/2),z_pos);
-         glTexCoord2i( 0, 0 );glVertex3f(game_o.npc[npc_count].x_pos-(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos+(game_o.npc[npc_count].hight/2),z_pos);
-         glTexCoord2i( 1, 0 );glVertex3f(game_o.npc[npc_count].x_pos-(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos-(game_o.npc[npc_count].hight/2),z_pos);
-         glEnd();
-         glColor4f(1.0f,1.0f,1.0f,1.0f);
-      }
-   }
-   for (int count =0;count < MAX_BULLETS;count++) //player bullets
-   {
-      if (game_o.player.bullet[count].active)
-      {
-         z_pos = 0.05f + (0.001*count);
-         if (game_o.player.bullet[count].location < 3) bind_texture(game_o.projectile[game_o.player.front_weapon].image);
-         else bind_texture(game_o.projectile[game_o.player.side_weapon].image);
-         glLoadIdentity();
-         glBegin( GL_QUADS );
-         glTexCoord2i( 1, 0 );glVertex3f(game_o.player.bullet[count].x_pos+(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos-(game_o.player.bullet[count].hight/2), z_pos);
-         glTexCoord2i( 1, 1 );glVertex3f(game_o.player.bullet[count].x_pos+(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos+(game_o.player.bullet[count].hight/2), z_pos);
-         glTexCoord2i( 0, 1 );glVertex3f(game_o.player.bullet[count].x_pos-(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos+(game_o.player.bullet[count].hight/2), z_pos);
-         glTexCoord2i( 0, 0 );glVertex3f(game_o.player.bullet[count].x_pos-(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos-(game_o.player.bullet[count].hight/2), z_pos);
-         glEnd();
-      }
-   }
-
-   for (int supportship_count = 0;supportship_count < MAX_SUPPORTSHIPS;supportship_count++)//display supportship bullets
-   {
-      for (int bullet_count = 0;bullet_count < MAX_BULLETS;bullet_count++)
-      {
-         if (game_o.supportship[supportship_count].bullet[bullet_count].active)
-         {
-            z_pos = 0.05f + (0.001*bullet_count);
-            bind_texture(game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image);
+    for (int npc_count =MAX_NPCS-1;npc_count >=0;npc_count--)  // npcs
+    {
+        for (int bullet_count = MAX_BULLETS-1;bullet_count >=0;bullet_count--)  // npcs bullets
+        {
+            z_pos = 0.05f + (0.0001*bullet_count);
+            bind_texture(game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image);
+            glLoadIdentity();
+            if (game_o.npc[npc_count].bullet[bullet_count].active)
+            {
+                glBegin( GL_QUADS );
+                glTexCoord2i( 0, 1 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos+(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos-(game_o.npc[npc_count].bullet[bullet_count].hight/2),z_pos);
+                glTexCoord2i( 0, 0 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos+(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos+(game_o.npc[npc_count].bullet[bullet_count].hight/2),z_pos);
+                glTexCoord2i( 1, 0 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos-(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos+(game_o.npc[npc_count].bullet[bullet_count].hight/2),z_pos);
+                glTexCoord2i( 1, 1 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos-(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos-(game_o.npc[npc_count].bullet[bullet_count].hight/2),z_pos);
+                glEnd();
+            }
+        }
+        z_pos = 0.04f + (0.0001*npc_count); // npc's
+        if (game_o.npc[npc_count].active)
+        {
+            if (game_o.npc[npc_count].damaged > (game_o.npc_damage_duration/5)) glColor4f(1.0f,0.0f,0.0f,0.6f);
+            bind_texture(game_o.enemy[game_o.npc[npc_count].type_npc].image);
             glLoadIdentity();
             glBegin( GL_QUADS );
-            glTexCoord2i( 1, 0 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos+(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos-(game_o.supportship[supportship_count].bullet[bullet_count].hight/2), z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos+(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos+(game_o.supportship[supportship_count].bullet[bullet_count].hight/2), z_pos);
-            glTexCoord2i( 0, 1 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos-(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos+(game_o.supportship[supportship_count].bullet[bullet_count].hight/2), z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos-(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos-(game_o.supportship[supportship_count].bullet[bullet_count].hight/2), z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f(game_o.npc[npc_count].x_pos+(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos-(game_o.npc[npc_count].hight/2),z_pos);
+            glTexCoord2i( 0, 1 );glVertex3f(game_o.npc[npc_count].x_pos+(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos+(game_o.npc[npc_count].hight/2),z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f(game_o.npc[npc_count].x_pos-(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos+(game_o.npc[npc_count].hight/2),z_pos);
+            glTexCoord2i( 1, 0 );glVertex3f(game_o.npc[npc_count].x_pos-(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos-(game_o.npc[npc_count].hight/2),z_pos);
             glEnd();
-         }
-      }
-   }
+            glColor4f(1.0f,1.0f,1.0f,1.0f);
+        }
+    }
+    for (int count =0;count < MAX_BULLETS;count++) //player bullets
+    {
+        if (game_o.player.bullet[count].active)
+        {
+            z_pos = 0.05f + (0.001*count);
+            if (game_o.player.bullet[count].location < 3) bind_texture(game_o.projectile[game_o.player.front_weapon].image);
+            else bind_texture(game_o.projectile[game_o.player.side_weapon].image);
+            glLoadIdentity();
+            glBegin( GL_QUADS );
+            glTexCoord2i( 1, 0 );glVertex3f(game_o.player.bullet[count].x_pos+(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos-(game_o.player.bullet[count].hight/2), z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f(game_o.player.bullet[count].x_pos+(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos+(game_o.player.bullet[count].hight/2), z_pos);
+            glTexCoord2i( 0, 1 );glVertex3f(game_o.player.bullet[count].x_pos-(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos+(game_o.player.bullet[count].hight/2), z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f(game_o.player.bullet[count].x_pos-(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos-(game_o.player.bullet[count].hight/2), z_pos);
+            glEnd();
+        }
+    }
 
-   for (int count =MAX_EXPLOSIONS;count >=0;count--)  // explosions
-   {
-      z_pos = 0.001f + (0.0001*count);
-      bind_texture(game_o.explosion[count].image + game_o.explosion[count].frame);
-      glLoadIdentity();
-      if (game_o.explosion[count].active)
-      {
-         glBegin( GL_QUADS );
-         glTexCoord2i( 1, 0 );glVertex3f(game_o.explosion[count].x_pos+(game_o.explosion[count].width/2),game_o.explosion[count].y_pos-(game_o.explosion[count].hight/2),z_pos);
-         glTexCoord2i( 1, 1 );glVertex3f(game_o.explosion[count].x_pos+(game_o.explosion[count].width/2),game_o.explosion[count].y_pos+(game_o.explosion[count].hight/2),z_pos);
-         glTexCoord2i( 0, 1 );glVertex3f(game_o.explosion[count].x_pos-(game_o.explosion[count].width/2),game_o.explosion[count].y_pos+(game_o.explosion[count].hight/2),z_pos);
-         glTexCoord2i( 0, 0 );glVertex3f(game_o.explosion[count].x_pos-(game_o.explosion[count].width/2),game_o.explosion[count].y_pos-(game_o.explosion[count].hight/2),z_pos);
-         glEnd();
-      }
-   }
+    for (int supportship_count = 0;supportship_count < MAX_SUPPORTSHIPS;supportship_count++)//display supportship bullets
+    {
+        for (int bullet_count = 0;bullet_count < MAX_BULLETS;bullet_count++)
+        {
+            if (game_o.supportship[supportship_count].bullet[bullet_count].active)
+            {
+                z_pos = 0.05f + (0.001*bullet_count);
+                bind_texture(game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image);
+                glLoadIdentity();
+                glBegin( GL_QUADS );
+                glTexCoord2i( 1, 0 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos+(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos-(game_o.supportship[supportship_count].bullet[bullet_count].hight/2), z_pos);
+                glTexCoord2i( 1, 1 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos+(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos+(game_o.supportship[supportship_count].bullet[bullet_count].hight/2), z_pos);
+                glTexCoord2i( 0, 1 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos-(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos+(game_o.supportship[supportship_count].bullet[bullet_count].hight/2), z_pos);
+                glTexCoord2i( 0, 0 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos-(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos-(game_o.supportship[supportship_count].bullet[bullet_count].hight/2), z_pos);
+                glEnd();
+            }
+        }
+    }
+
+    for (int count =MAX_EXPLOSIONS;count >=0;count--)  // explosions
+    {
+        z_pos = 0.001f + (0.0001*count);
+        bind_texture(game_o.explosion[count].image + game_o.explosion[count].frame);
+        glLoadIdentity();
+        if (game_o.explosion[count].active)
+        {
+            glBegin( GL_QUADS );
+            glTexCoord2i( 1, 0 );glVertex3f(game_o.explosion[count].x_pos+(game_o.explosion[count].width/2),game_o.explosion[count].y_pos-(game_o.explosion[count].hight/2),z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f(game_o.explosion[count].x_pos+(game_o.explosion[count].width/2),game_o.explosion[count].y_pos+(game_o.explosion[count].hight/2),z_pos);
+            glTexCoord2i( 0, 1 );glVertex3f(game_o.explosion[count].x_pos-(game_o.explosion[count].width/2),game_o.explosion[count].y_pos+(game_o.explosion[count].hight/2),z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f(game_o.explosion[count].x_pos-(game_o.explosion[count].width/2),game_o.explosion[count].y_pos-(game_o.explosion[count].hight/2),z_pos);
+            glEnd();
+        }
+    }
 //----------------------------------------------------------------------------------------
-   if ((game_o.immune) && (game_o.immunity_state == 0)) glColor4f(1.0f,0.0f,0.0f,0.6f);
-   if (game_o.player.thrusters > -1)//player starship
-   {
-      bind_texture(game_o.thruster[game_o.player.thrusters].image); //player thrusters
-      glLoadIdentity();
-      glBegin( GL_QUADS );
-      glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/2)-0.190f,game_o.player.y_pos-(game_o.player.hight/2), 0.035f );
-      glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/2)-0.190f,game_o.player.y_pos+(game_o.player.hight/2), 0.035f );
-      glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2)-0.190f,game_o.player.y_pos+(game_o.player.hight/2), 0.035f );
-      glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2)-0.190f,game_o.player.y_pos-(game_o.player.hight/2), 0.035f );
-      glEnd();
-   }
+    draw_supportships(); // support ships
 
-   bind_texture(game_o.player.image); //player starship
-   glLoadIdentity();
-   glBegin( GL_QUADS );
-   glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/2),game_o.player.y_pos-(game_o.player.hight/2), 0.03f );
-   glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/2),game_o.player.y_pos+(game_o.player.hight/2), 0.03f );
-   glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2),game_o.player.y_pos+(game_o.player.hight/2), 0.03f );
-   glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2),game_o.player.y_pos-(game_o.player.hight/2), 0.03f );
-   glEnd();
+    if ((game_o.immune) && (game_o.immunity_state == 0)) glColor4f(1.0f,0.0f,0.0f,0.6f);
+    if (game_o.player.thrusters > -1)//player starship
+    {
+        bind_texture(game_o.thruster[game_o.player.thrusters].image); //player thrusters
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/2)-0.190f,game_o.player.y_pos-(game_o.player.hight/2), 0.035f );
+        glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/2)-0.190f,game_o.player.y_pos+(game_o.player.hight/2), 0.035f );
+        glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2)-0.190f,game_o.player.y_pos+(game_o.player.hight/2), 0.035f );
+        glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2)-0.190f,game_o.player.y_pos-(game_o.player.hight/2), 0.035f );
+        glEnd();
+    }
 
-     draw_supportships(); // support ships
+    bind_texture(game_o.player.image); //player starship
+    glLoadIdentity();
+    glBegin( GL_QUADS );
+    glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/2),game_o.player.y_pos-(game_o.player.hight/2), 0.03f );
+    glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/2),game_o.player.y_pos+(game_o.player.hight/2), 0.03f );
+    glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2),game_o.player.y_pos+(game_o.player.hight/2), 0.03f );
+    glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2),game_o.player.y_pos-(game_o.player.hight/2), 0.03f );
+    glEnd();
 
-     if (game_o.player.front_weapon > -1)
-      {
-         bind_texture(game_o.player.front_weapon+211); //player starship front weapon
-         glLoadIdentity();
-         glBegin( GL_QUADS );
-         glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/8)+0.053f,game_o.player.y_pos-(game_o.player.hight/8), 0.025f );
-         glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/8)+0.053f,game_o.player.y_pos+(game_o.player.hight/8), 0.025f );
-         glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/8)+0.078f,game_o.player.y_pos+(game_o.player.hight/8), 0.025f );
-         glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/8)+0.078f,game_o.player.y_pos-(game_o.player.hight/8), 0.025f );
-         glEnd();
-      }
+    if (game_o.player.front_weapon > -1)
+    {
+        bind_texture(game_o.player.front_weapon+211); //player starship front weapon
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/8)+0.053f,game_o.player.y_pos-(game_o.player.hight/8), 0.025f );
+        glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/8)+0.053f,game_o.player.y_pos+(game_o.player.hight/8), 0.025f );
+        glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/8)+0.078f,game_o.player.y_pos+(game_o.player.hight/8), 0.025f );
+        glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/8)+0.078f,game_o.player.y_pos-(game_o.player.hight/8), 0.025f );
+        glEnd();
+    }
 
     if (game_o.player.side_weapon > -1)
     {
@@ -693,54 +693,54 @@ int display_game(void)
         glEnd();
     }
     glColor4f(1.0f,1.0f,1.0f,1.0f);//------------------------------------------------
-   float  npc_num = 0.0f;
-   for  (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
-   {
-       bind_texture(210); // npc health bars
-       glLoadIdentity();
-       if (game_o.active_npc[npc_count].active)
-       {
-          npc_num += 0.05f;
-          glBegin( GL_QUADS );
-          glTexCoord2i( 0, 1 );glVertex3f(0.89f +((game_o.npc[npc_count].health/game_o.enemy[game_o.npc[npc_count].type_npc].health)/10),1.0f -0.025f-npc_num, 0.001f);
-          glTexCoord2i( 0, 0 );glVertex3f(0.89f +((game_o.npc[npc_count].health/game_o.enemy[game_o.npc[npc_count].type_npc].health)/10),1.0f +0.025f-npc_num, 0.001f);
-          glTexCoord2i( 1, 0 );glVertex3f(0.89f                ,1.0f +0.025f-npc_num, 0.001f);
-          glTexCoord2i( 1, 1 );glVertex3f(0.89f                ,1.0f -0.025f-npc_num, 0.001f);
-          glEnd();
-       }
-   }
+    float  npc_num = 0.0f;
+    for  (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+    {
+        bind_texture(210); // npc health bars
+        glLoadIdentity();
+        if (game_o.active_npc[npc_count].active)
+        {
+            npc_num += 0.05f;
+            glBegin( GL_QUADS );
+            glTexCoord2i( 0, 1 );glVertex3f(0.89f +((game_o.npc[npc_count].health/game_o.enemy[game_o.npc[npc_count].type_npc].health)/10),1.0f -0.025f-npc_num, 0.001f);
+            glTexCoord2i( 0, 0 );glVertex3f(0.89f +((game_o.npc[npc_count].health/game_o.enemy[game_o.npc[npc_count].type_npc].health)/10),1.0f +0.025f-npc_num, 0.001f);
+            glTexCoord2i( 1, 0 );glVertex3f(0.89f                ,1.0f +0.025f-npc_num, 0.001f);
+            glTexCoord2i( 1, 1 );glVertex3f(0.89f                ,1.0f -0.025f-npc_num, 0.001f);
+            glEnd();
+        }
+    }
 
-   for (int count = MAX_POWERUPS;count >=1;count--)  // powerups
-   {
-      z_pos = 0.002f + (0.0002*count);
-      bind_texture(game_o.powerup[count].image);
-      glLoadIdentity();
-      if (game_o.powerup[count].active)
-      {
-         glBegin( GL_QUADS );
-         glTexCoord2i( 0, 1 );glVertex3f(game_o.powerup[count].x_pos+(game_o.powerup[count].width/2),game_o.powerup[count].y_pos-(game_o.powerup[count].hight/2),z_pos);
-         glTexCoord2i( 0, 0 );glVertex3f(game_o.powerup[count].x_pos+(game_o.powerup[count].width/2),game_o.powerup[count].y_pos+(game_o.powerup[count].hight/2),z_pos);
-         glTexCoord2i( 1, 0 );glVertex3f(game_o.powerup[count].x_pos-(game_o.powerup[count].width/2),game_o.powerup[count].y_pos+(game_o.powerup[count].hight/2),z_pos);
-         glTexCoord2i( 1, 1 );glVertex3f(game_o.powerup[count].x_pos-(game_o.powerup[count].width/2),game_o.powerup[count].y_pos-(game_o.powerup[count].hight/2),z_pos);
-         glEnd();
-      }
-   }
+    for (int count = MAX_POWERUPS;count >=1;count--)  // powerups
+    {
+        z_pos = 0.002f + (0.0002*count);
+        bind_texture(game_o.powerup[count].image);
+        glLoadIdentity();
+        if (game_o.powerup[count].active)
+        {
+            glBegin( GL_QUADS );
+            glTexCoord2i( 0, 1 );glVertex3f(game_o.powerup[count].x_pos+(game_o.powerup[count].width/2),game_o.powerup[count].y_pos-(game_o.powerup[count].hight/2),z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f(game_o.powerup[count].x_pos+(game_o.powerup[count].width/2),game_o.powerup[count].y_pos+(game_o.powerup[count].hight/2),z_pos);
+            glTexCoord2i( 1, 0 );glVertex3f(game_o.powerup[count].x_pos-(game_o.powerup[count].width/2),game_o.powerup[count].y_pos+(game_o.powerup[count].hight/2),z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f(game_o.powerup[count].x_pos-(game_o.powerup[count].width/2),game_o.powerup[count].y_pos-(game_o.powerup[count].hight/2),z_pos);
+            glEnd();
+        }
+    }
 
-   for (int count = MAX_COINS;count >=1;count--)  // coin
-   {
-      z_pos = 0.002f + (0.0002*(count+MAX_POWERUPS));
-      bind_texture(game_o.coin[count].image);
-      glLoadIdentity();
-      if (game_o.coin[count].active)
-      {
-         glBegin( GL_QUADS );
-         glTexCoord2i( 0, 1 );glVertex3f(game_o.coin[count].x_pos+(game_o.coin[count].width/2),game_o.coin[count].y_pos-(game_o.coin[count].hight/2),z_pos);
-         glTexCoord2i( 0, 0 );glVertex3f(game_o.coin[count].x_pos+(game_o.coin[count].width/2),game_o.coin[count].y_pos+(game_o.coin[count].hight/2),z_pos);
-         glTexCoord2i( 1, 0 );glVertex3f(game_o.coin[count].x_pos-(game_o.coin[count].width/2),game_o.coin[count].y_pos+(game_o.coin[count].hight/2),z_pos);
-         glTexCoord2i( 1, 1 );glVertex3f(game_o.coin[count].x_pos-(game_o.coin[count].width/2),game_o.coin[count].y_pos-(game_o.coin[count].hight/2),z_pos);
-         glEnd();
-      }
-   }
+    for (int count = MAX_COINS;count >=1;count--)  // coin
+    {
+        z_pos = 0.002f + (0.0002*(count+MAX_POWERUPS));
+        bind_texture(game_o.coin[count].image);
+        glLoadIdentity();
+        if (game_o.coin[count].active)
+        {
+            glBegin( GL_QUADS );
+            glTexCoord2i( 0, 1 );glVertex3f(game_o.coin[count].x_pos+(game_o.coin[count].width/2),game_o.coin[count].y_pos-(game_o.coin[count].hight/2),z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f(game_o.coin[count].x_pos+(game_o.coin[count].width/2),game_o.coin[count].y_pos+(game_o.coin[count].hight/2),z_pos);
+            glTexCoord2i( 1, 0 );glVertex3f(game_o.coin[count].x_pos-(game_o.coin[count].width/2),game_o.coin[count].y_pos+(game_o.coin[count].hight/2),z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f(game_o.coin[count].x_pos-(game_o.coin[count].width/2),game_o.coin[count].y_pos-(game_o.coin[count].hight/2),z_pos);
+            glEnd();
+        }
+    }
 
    for (int count = MAX_WEXPS;count >=1;count--)  // wexp
    {
