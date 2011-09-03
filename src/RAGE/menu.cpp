@@ -15,9 +15,11 @@
  * You should have received a copy of the GNU General Public License
  * along with R.A.G.E. (RoboPaul's Adaptable Game Engine) If not, see <http://www.gnu.org/licenses/>.
  *
- * @author Paul Wortmann
+ * @author  Paul Wortmann
+ * @email   physhex@gmail.com
+ * @website www.physhexgames.co.nr
  * @license GPL
- * @date 2011-07-17
+ * @date 2011-09-03
  */
 
 #include "menu.hpp"

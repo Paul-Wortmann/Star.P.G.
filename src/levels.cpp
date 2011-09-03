@@ -15,8 +15,11 @@
  * You should have received a copy of the GNU General Public License
  * along with Star.P.G. If not, see <http://www.gnu.org/licenses/>.
  *
- * @author Paul Wortmann
+ * @author  Paul Wortmann
+ * @email   physhex@gmail.com
+ * @website www.physhexgames.co.nr
  * @license GPL
+ * @date 2011-09-03
  */
 
 #include "RAGE/rage.hpp"
@@ -30,7 +33,7 @@ void init_levels(void)
 {
     for (int level_no_count = 0;level_no_count < (MAX_LEVELS+1); level_no_count++)
     {
-        game_o.level_locked[level_no_count] = false; /// change me!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+        game_o.level_locked[level_no_count] = true;/// set to false to unlock all levels....for testing!
     }
     game_o.level_locked[0] = false;
 };

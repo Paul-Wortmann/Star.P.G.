@@ -61,6 +61,7 @@ This information can be found in the changelog.txt file.
 
 
 ---------------------------------------------------------------------------------
+Paul Wortmann
 www.physhexgames.co.nr
 physhex@gmail.com
 

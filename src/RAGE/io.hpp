@@ -15,8 +15,11 @@
  * You should have received a copy of the GNU General Public License
  * along with "Outcast Island!" If not, see <http://www.gnu.org/licenses/>.
  *
- * @author Paul Wortmann
+ * @author  Paul Wortmann
+ * @email   physhex@gmail.com
+ * @website www.physhexgames.co.nr
  * @license GPL
+ * @date 2011-09-03
  */
 #ifndef IO_H
 #define IO_H

@@ -1,10 +1,13 @@
-V0.18 - (xx-xx-2011)
----New pause button for touch screen support.
----New death,next_level,outro screens created.
----Mouse, joystick, keyboard support for menu.
----Rewrote menu system, created new menu.
+V0.18 - (03-09-2011)
+Improved "support ships"
+Created some varaiety with regards to NPC speed and size.
+Did a major code clean up.
+New pause button for touch screen support.
+New death,next_level,outro screens created.
+Mouse, joystick, keyboard support for menu.
+Rewrote menu system, created new menu.
 Many tweaks and and a few bug fixes.
-LOC - 15335
+LOC - 14363
 
 V0.17 - (02-08-2011)
 Touchscreen support, with on screen controls.

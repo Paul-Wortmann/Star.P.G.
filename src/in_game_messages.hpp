@@ -19,7 +19,7 @@
  * @email   physhex@gmail.com
  * @website www.physhexgames.co.nr
  * @license GPL
- * @date 2011-08-30
+ * @date 2011-09-03
  */
 
 #ifndef IN_GAME_MESSAGES_H
