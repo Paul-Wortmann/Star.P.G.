@@ -1663,11 +1663,11 @@ int diplay_menu (void)
 	  glTexCoord2i( 1, 1 );glVertex3f( 0.5f,-0.70f, 0.0f );
       glEnd();
 
-      font.font_1.Write(255,255,255,64,-1.00f,-0.00f,"Level score - ", game_o.level_score);
-      font.font_1.Write(255,255,255,64,-1.00f,-0.10f,"Total score - ", game_o.score);
-      font.font_1.Write(255,255,255,64,-1.00f,-0.20f,"Level kills - ", game_o.level_kills);
-      font.font_1.Write(255,255,255,64,-1.00f,-0.30f,"Total kills - ", game_o.kills);
-      font.font_1.Write(255,255,255,64,-1.00f,-0.40f,"Kill rate   - ./'",(((float)game_o.level_kills/(float)game_o.level_spawened)*100));
+      font.font_1.Write(255,255,255,64,-1.00f,-0.00f,3,9,L"Level score - ", game_o.level_score);
+      font.font_1.Write(255,255,255,64,-1.00f,-0.10f,3,9,L"Total score - ", game_o.score);
+      font.font_1.Write(255,255,255,64,-1.00f,-0.20f,3,9,L"Level kills - ", game_o.level_kills);
+      font.font_1.Write(255,255,255,64,-1.00f,-0.30f,3,9,L"Total kills - ", game_o.kills);
+      font.font_1.Write(255,255,255,64,-1.00f,-0.40f,3,9,L"Kill rate   - ./'",(((float)game_o.level_kills/(float)game_o.level_spawened)*100));
    }
 /*-----------------------------------------------------------------------------*/
    if (game.menu_level == 10) //Outro screen
