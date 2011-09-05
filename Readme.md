@@ -59,14 +59,14 @@ Required are also the SDL librarys.
 
 Usage
 -----
-"Left"    ->    Move starship left.
-"Right"   ->    Move starship right.
-"Up"      ->    Move starship up.
-"Down"    ->    Move starship down.
-"Space"   ->    Fire weapon.
-"B"       ->    Use a collected bomb.
-"P"       ->    Pause / Resume.
-"ESC"	  ->    Menu, Quit.
+- "Left"    ->    Move starship left.
+- "Right"   ->    Move starship right.
+- "Up"      ->    Move starship up.
+- "Down"    ->    Move starship down.
+- "Space"   ->    Fire weapon.
+- "B"       ->    Use a collected bomb.
+- "P"       ->    Pause / Resume.
+- "ESC"	  ->    Menu, Quit.
 
 Known bugs
 ----------
