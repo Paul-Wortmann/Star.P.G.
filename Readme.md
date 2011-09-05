@@ -83,7 +83,9 @@ This information can be found in the credits_license.txt file.
 Contact
 -------
 Paul Wortmann: physhex@gamil.com
+
 Website: http://www.physhexgames.co.nr
 
 Development, bug reports, feature requests and general questions are handled on
+
 GitHub: https://github.com/Paul-Wortmann/Star.P.G.
