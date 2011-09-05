@@ -50,6 +50,7 @@ Features
 - Parallax backgrounds.
 - Loading screen.
 - Touchscreen support.
+
 More information can be found in the changelog.txt file.
 
 Compiling
