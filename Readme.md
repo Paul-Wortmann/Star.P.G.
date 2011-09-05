@@ -67,7 +67,7 @@ Usage
 - "Space"   ->    Fire weapon.
 - "B"       ->    Use a collected bomb.
 - "P"       ->    Pause / Resume.
-- "ESC"	  ->    Menu, Quit.
+- "ESC"	    ->    Menu, Quit.
 
 Known bugs
 ----------
@@ -82,10 +82,7 @@ This information can be found in the credits_license.txt file.
 
 Contact
 -------
-Paul Wortmann: physhex@gamil.com
+- Paul Wortmann: physhex@gamil.com
+- Website: http://www.physhexgames.co.nr
+- Development, bug reports, feature requests and general questions are handled on GitHub: https://github.com/Paul-Wortmann/Star.P.G.
 
-Website: http://www.physhexgames.co.nr
-
-Development, bug reports, feature requests and general questions are handled on
-
-GitHub: https://github.com/Paul-Wortmann/Star.P.G.
