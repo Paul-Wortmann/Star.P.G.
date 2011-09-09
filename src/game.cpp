@@ -117,16 +117,16 @@ int init_game(bool re_init)
 /*----------------------------------------------------------------------------*/
 int process_game(void)
 {
-    bool return_data       = false;
-   float temp_x            = 0.0f;
-   float temp_y            = 0.0f;
-   int   temp_r            = 0;
-   game_o.player.health += game_o.player.health_regen_rate;
-   if (game_o.player.health > game_o.player.max_health) game_o.player.health = game_o.player.max_health;
-   game.background.process();
-   return_data = false;
-   if (game_o.player.y_pos >= 0.75f) return_data = game.background.scroll_up();
-   if(return_data)
+    bool return_data        = false;
+    float temp_x            = 0.0f;
+    float temp_y            = 0.0f;
+    int   temp_r            = 0;
+    game_o.player.health += game_o.player.health_regen_rate;
+    if (game_o.player.health > game_o.player.max_health) game_o.player.health = game_o.player.max_health;
+    game.background.process();
+    return_data = false;
+    if (game_o.player.y_pos >= 0.75f) return_data = game.background.scroll_up();
+    if(return_data)
     {
             for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
             {

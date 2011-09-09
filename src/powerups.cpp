@@ -258,7 +258,8 @@ int proccess_powerups(void)
                         if (game_o.supportship[0].active)
                         {
                             game_o.supportship[0].level++;
-                            if (game_o.supportship[0].level > 3) game_o.supportship[0].level = 3;
+                            game_o.supportship[0].supportship_pos[game_o.supportship[0].level].active = true;
+                            if (game_o.supportship[0].level > MAX_SUPPORTSHIP_LEVELS) game_o.supportship[0].level = MAX_SUPPORTSHIP_LEVELS;
                         }
                         else
                         {
@@ -266,6 +267,10 @@ int proccess_powerups(void)
                            {
                               game_o.supportship[count].active = false;
                               game_o.supportship[count].level  = -1;
+                              for (int supportship_level_count = 1;supportship_level_count < MAX_SUPPORTSHIP_LEVELS;supportship_level_count++)
+                              {
+                                  game_o.supportship[count].supportship_pos[supportship_level_count].active = false;
+                              }
                               for (int bullet_count = 0;bullet_count < MAX_BULLETS-1;bullet_count++)
                               {
                                  game_o.supportship[count].bullet[bullet_count].active = false;
@@ -281,7 +286,8 @@ int proccess_powerups(void)
                         if (game_o.supportship[1].active)
                         {
                             game_o.supportship[1].level++;
-                            if (game_o.supportship[1].level > 3) game_o.supportship[1].level = 3;
+                            game_o.supportship[1].supportship_pos[game_o.supportship[1].level].active = true;
+                            if (game_o.supportship[1].level > MAX_SUPPORTSHIP_LEVELS) game_o.supportship[1].level = MAX_SUPPORTSHIP_LEVELS;
                         }
                         else
                         {
@@ -289,6 +295,10 @@ int proccess_powerups(void)
                            {
                               game_o.supportship[count].active = false;
                               game_o.supportship[count].level  = -1;
+                              for (int supportship_level_count = 1;supportship_level_count < MAX_SUPPORTSHIP_LEVELS;supportship_level_count++)
+                              {
+                                  game_o.supportship[count].supportship_pos[supportship_level_count].active = false;
+                              }
                               for (int bullet_count = 0;bullet_count < MAX_BULLETS-1;bullet_count++)
                               {
                                  game_o.supportship[count].bullet[bullet_count].active = false;
@@ -304,7 +314,8 @@ int proccess_powerups(void)
                         if (game_o.supportship[2].active)
                         {
                             game_o.supportship[2].level++;
-                            if (game_o.supportship[2].level > 3) game_o.supportship[2].level = 3;
+                            game_o.supportship[2].supportship_pos[game_o.supportship[2].level].active = true;
+                            if (game_o.supportship[2].level > MAX_SUPPORTSHIP_LEVELS) game_o.supportship[2].level = MAX_SUPPORTSHIP_LEVELS;
                         }
                         else
                         {
@@ -312,6 +323,10 @@ int proccess_powerups(void)
                            {
                               game_o.supportship[count].active = false;
                               game_o.supportship[count].level  = -1;
+                              for (int supportship_level_count = 1;supportship_level_count < MAX_SUPPORTSHIP_LEVELS;supportship_level_count++)
+                              {
+                                  game_o.supportship[count].supportship_pos[supportship_level_count].active = false;
+                              }
                               for (int bullet_count = 0;bullet_count < MAX_BULLETS-1;bullet_count++)
                               {
                                  game_o.supportship[count].bullet[bullet_count].active = false;
@@ -327,7 +342,8 @@ int proccess_powerups(void)
                         if (game_o.supportship[3].active)
                         {
                             game_o.supportship[3].level++;
-                            if (game_o.supportship[3].level > 3) game_o.supportship[3].level = 3;
+                            game_o.supportship[3].supportship_pos[game_o.supportship[3].level].active = true;
+                            if (game_o.supportship[3].level > MAX_SUPPORTSHIP_LEVELS) game_o.supportship[3].level = MAX_SUPPORTSHIP_LEVELS;
                         }
                         else
                         {
@@ -335,6 +351,10 @@ int proccess_powerups(void)
                            {
                               game_o.supportship[count].active = false;
                               game_o.supportship[count].level  = -1;
+                              for (int supportship_level_count = 1;supportship_level_count < MAX_SUPPORTSHIP_LEVELS;supportship_level_count++)
+                              {
+                                  game_o.supportship[count].supportship_pos[supportship_level_count].active = false;
+                              }
                               for (int bullet_count = 0;bullet_count < MAX_BULLETS-1;bullet_count++)
                               {
                                  game_o.supportship[count].bullet[bullet_count].active = false;

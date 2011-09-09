@@ -27,26 +27,34 @@
 
 #include "bullets.hpp"
 
-const int   MAX_SUPPORTSHIPS   = 5;
+const int   MAX_SUPPORTSHIPS         = 6;
+const int   MAX_SUPPORTSHIP_LEVELS   = 6;
+
+struct supportship_pos_type
+{
+    bool  active;
+    float pos_x;
+    float pos_y;
+};
 
 class supportship_class
 {
     public:
-        bool        follow;
-        float       follow_distance;
-        bool        rotate;
-        float       movement_speed;
-        int         number_of_ships;
-        float       pos_x;
-        float       pos_y;
-        int         rate_of_fire;
-        int         rate_of_fire_count;
-        bool        active;
-        int         level;
-        int         image;
-        float       width;
-        float       height;
-        bullet_type bullet[MAX_BULLETS];
+        supportship_pos_type supportship_pos[MAX_SUPPORTSHIP_LEVELS];
+        bool                 multi_follow;
+        bool                 follow;
+        float                follow_distance;
+        bool                 rotate;
+        float                movement_speed;
+        int                  number_of_ships;
+        int                  rate_of_fire;
+        int                  rate_of_fire_count;
+        bool                 active;
+        int                  level;
+        int                  image;
+        float                width;
+        float                height;
+        bullet_type          bullet[MAX_BULLETS];
 
         void        init        (int  supportship_count, int number_of_ships, float x_pos, float y_pos);
         void        process     (bool spawn_bullet);

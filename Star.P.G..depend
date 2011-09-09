@@ -641,7 +641,7 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1315052578 source:c:\_git_\star.p.g\src\game.cpp
+1315496611 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"RAGE/rage.hpp"
 	"load_resources.hpp"
@@ -679,7 +679,7 @@
 
 1309768119 c:\_git_\star.p.g\src\levels.h
 
-1315052578 source:c:\_git_\star.p.g\src\main.cpp
+1315128422 source:c:\_git_\star.p.g\src\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -1405,14 +1405,14 @@
 1315053024 c:\_git_\star.p.g\src\pc.hpp
 	"bullets.hpp"
 
-1315052578 source:c:\_git_\star.p.g\src\support_ships.cpp
+1315542872 source:c:\_git_\star.p.g\src\support_ships.cpp
 	"RAGE/rage.hpp"
 	"support_ships.hpp"
 	"load_resources.hpp"
 	"game.hpp"
 	"misc.hpp"
 
-1315053023 c:\_git_\star.p.g\src\support_ships.hpp
+1315488352 c:\_git_\star.p.g\src\support_ships.hpp
 	"bullets.hpp"
 
 1315052578 source:c:\_git_\star.p.g\src\projectiles.cpp
@@ -1449,7 +1449,7 @@
 
 1315053024 c:\_git_\star.p.g\src\powerups.hpp
 
-1315052578 source:c:\_git_\star.p.g\src\powerups.cpp
+1315543748 source:c:\_git_\star.p.g\src\powerups.cpp
 	"RAGE/rage.hpp"
 	"powerups.hpp"
 	"load_resources.hpp"
