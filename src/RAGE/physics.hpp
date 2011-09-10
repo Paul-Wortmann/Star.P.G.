@@ -19,7 +19,7 @@
  * @email   physhex@gmail.com
  * @website www.physhexgames.co.nr
  * @license GPL
- * @date 2011-09-03
+ * @date 2011-09-10
  */
 
 #ifndef PHYSICS_H
@@ -41,6 +41,8 @@ class physics_class
         float line_angle           (float x1, float y1, float x2, float y2);
         float line_point_2D_x      (float x1, float distance, float angle);
         float line_point_2D_y      (float y1, float distance, float angle);
+        float rotate_point_2D_x    (float cx,float cy,float angle,float px,float py);
+        float rotate_point_2D_y    (float cx,float cy,float angle,float px,float py);
 };
 
 #endif //PHYSICS_H

@@ -19,7 +19,7 @@
  * @email   physhex@gmail.com
  * @website www.physhexgames.co.nr
  * @license GPL
- * @date 2011-09-03
+ * @date 2011-09-10
  */
 
 
@@ -102,7 +102,12 @@ float physics_class::line_point_2D_y(float y1, float distance, float angle)
     return(y1 + distance*sin(angle));
 };
 
+float physics_class::rotate_point_2D_x(float cx,float cy,float angle,float px,float py)
+{
+  return(((px-cx) * cos(angle) - (py-cy) * sin(angle))+cx);
+}
 
-
-
-
+float physics_class::rotate_point_2D_y(float cx,float cy,float angle,float px,float py)
+{
+  return(((px-cx) * sin(angle) + (py-cy) * cos(angle))+cy);
+}

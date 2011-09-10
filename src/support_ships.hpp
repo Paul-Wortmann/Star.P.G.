@@ -33,6 +33,7 @@ const int   MAX_SUPPORTSHIP_LEVELS   = 6;
 struct supportship_pos_type
 {
     bool  active;
+    float angle;
     float pos_x;
     float pos_y;
 };
@@ -41,10 +42,11 @@ class supportship_class
 {
     public:
         supportship_pos_type supportship_pos[MAX_SUPPORTSHIP_LEVELS];
+        bool                 rotate_follow;
+        bool                 side_follow;
         bool                 multi_follow;
         bool                 follow;
         float                follow_distance;
-        bool                 rotate;
         float                movement_speed;
         int                  number_of_ships;
         int                  rate_of_fire;

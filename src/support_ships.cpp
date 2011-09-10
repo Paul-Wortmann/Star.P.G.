@@ -39,7 +39,8 @@ void supportship_class::init(int supportship_number, int number_of_ships, float 
     supportship_class::follow_distance    = 0.05f;
     supportship_class::follow             = false;
     supportship_class::multi_follow       = false;
-    supportship_class::rotate             = false;
+    supportship_class::rotate_follow      = false;
+    supportship_class::side_follow        = false;
     supportship_class::movement_speed     = 0.005f;
     supportship_class::number_of_ships    = number_of_ships;
     supportship_class::rate_of_fire       = 5;
@@ -73,7 +74,9 @@ void  init_supportships(int number_of_ships, float x_pos, float y_pos)
    {
        game_o.supportship[supportship_count].init(supportship_count,number_of_ships,x_pos,y_pos);
    }
+    game_o.supportship[0].side_follow               = true;
     game_o.supportship[0].number_of_ships           = 2;
+    game_o.supportship[0].movement_speed            = 0.005f;
     game_o.supportship[1].follow                    = true;
     game_o.supportship[1].follow_distance           = 0.2f;
     game_o.supportship[1].movement_speed            = 0.0025f;
@@ -83,6 +86,9 @@ void  init_supportships(int number_of_ships, float x_pos, float y_pos)
     game_o.supportship[2].movement_speed            = 0.0045f;
     game_o.supportship[2].number_of_ships           = 5;
     game_o.supportship[2].supportship_pos[0].active = true;
+    game_o.supportship[3].rotate_follow             = true;
+    game_o.supportship[3].number_of_ships           = 1;
+    game_o.supportship[3].movement_speed            = 0.0025f;
 };
 
 int supportship_class::spawn_bullet(int location, int direction_x, int direction_y)
@@ -107,7 +113,7 @@ int supportship_class::spawn_bullet(int location, int direction_x, int direction
                 supportship_class::bullet[bullet_count].x_pos  = supportship_class::supportship_pos[supportship_count].pos_x;
                 supportship_class::bullet[bullet_count].y_pos  = supportship_class::supportship_pos[supportship_count].pos_y;
             }
-            if ((!supportship_class::follow) && (!supportship_class::multi_follow))
+            if (supportship_class::side_follow)
             {
                 supportship_class::bullet[bullet_count].x_pos  = game_o.player.x_pos-(game_o.player.width/4)+supportship_class::width;
                 if (location  == 0) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos-(game_o.player.hight/2)-supportship_class::height;
@@ -525,6 +531,19 @@ void supportship_class::process(bool spawn_bullet)
                 }
             }
         }
+        if (game_o.supportship[supportship_count].side_follow)/// side - follow
+        {
+            supportship_level_count = 0;
+            if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x < game_o.player.x_pos)                             game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x += game_o.supportship[supportship_count].movement_speed;
+            if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x > game_o.player.x_pos)                             game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x -= game_o.supportship[supportship_count].movement_speed;
+            if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y < game_o.player.y_pos-((game_o.player.hight/3)*2)) game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y += game_o.supportship[supportship_count].movement_speed;
+            if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y > game_o.player.y_pos-((game_o.player.hight/3)*2)) game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y -= game_o.supportship[supportship_count].movement_speed;
+            supportship_level_count = 1;
+            if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x < game_o.player.x_pos)                             game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x += game_o.supportship[supportship_count].movement_speed;
+            if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x > game_o.player.x_pos)                             game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x -= game_o.supportship[supportship_count].movement_speed;
+            if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y < game_o.player.y_pos+((game_o.player.hight/3)*2)) game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y += game_o.supportship[supportship_count].movement_speed;
+            if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y > game_o.player.y_pos+((game_o.player.hight/3)*2)) game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y -= game_o.supportship[supportship_count].movement_speed;
+        }
         ///end
     }
 };
@@ -583,37 +602,26 @@ void  draw_supportships       (void)
                     }
                 }
             }
-            if ((!game_o.supportship[count].follow) && (!game_o.supportship[count].multi_follow))
+            if (game_o.supportship[count].side_follow)
             {
                 supportship_level_count = 0;
-                if (game_o.supportship[count].number_of_ships == 1)
-                {
-                    bind_texture(game_o.supportship[count].image); //support ships
-                    glLoadIdentity();
-                    glBegin( GL_QUADS );//top
-                    glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)+game_o.supportship[count].width,game_o.player.y_pos+(game_o.player.hight/2)+game_o.supportship[count].height, 0.001f);
-                    glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)+game_o.supportship[count].width,game_o.player.y_pos+(game_o.player.hight/2)                                 , 0.001f);
-                    glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)                                ,game_o.player.y_pos+(game_o.player.hight/2)                                 , 0.001f);
-                    glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)                                ,game_o.player.y_pos+(game_o.player.hight/2)+game_o.supportship[count].height, 0.001f);
-                    glEnd();
-                }
-                if (game_o.supportship[count].number_of_ships == 2)
-                {
-                    bind_texture(game_o.supportship[count].image); //support ships
-                    glLoadIdentity();
-                    glBegin( GL_QUADS );//top
-                    glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)+game_o.supportship[count].width,game_o.player.y_pos+(game_o.player.hight/2)+game_o.supportship[count].height, 0.001f);
-                    glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)+game_o.supportship[count].width,game_o.player.y_pos+(game_o.player.hight/2)                                 , 0.001f);
-                    glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)                                ,game_o.player.y_pos+(game_o.player.hight/2)                                 , 0.001f);
-                    glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)                                ,game_o.player.y_pos+(game_o.player.hight/2)+game_o.supportship[count].height, 0.001f);
-                    glEnd();
-                    glBegin( GL_QUADS );//bottom
-                    glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)+game_o.supportship[count].width,game_o.player.y_pos-(game_o.player.hight/2)-game_o.supportship[count].height, 0.001f);
-                    glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)+game_o.supportship[count].width,game_o.player.y_pos-(game_o.player.hight/2)                                 , 0.001f);
-                    glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)                                ,game_o.player.y_pos-(game_o.player.hight/2)                                 , 0.001f);
-                    glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/4)                                ,game_o.player.y_pos-(game_o.player.hight/2)-game_o.supportship[count].height, 0.001f);
-                    glEnd();
-                }
+                bind_texture(game_o.supportship[count].image); //support ships
+                glLoadIdentity();
+                glBegin( GL_QUADS );
+                glTexCoord2i( 0, 0 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x+game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y+game_o.supportship[count].height/2, 0.001f);
+                glTexCoord2i( 1, 0 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x+game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y-game_o.supportship[count].height/2, 0.001f);
+                glTexCoord2i( 1, 1 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x-game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y-game_o.supportship[count].height/2, 0.001f);
+                glTexCoord2i( 0, 1 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x-game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y+game_o.supportship[count].height/2, 0.001f);
+                glEnd();
+                supportship_level_count = 1;
+                bind_texture(game_o.supportship[count].image); //support ships
+                glLoadIdentity();
+                glBegin( GL_QUADS );
+                glTexCoord2i( 0, 0 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x+game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y+game_o.supportship[count].height/2, 0.001f);
+                glTexCoord2i( 1, 0 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x+game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y-game_o.supportship[count].height/2, 0.001f);
+                glTexCoord2i( 1, 1 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x-game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y-game_o.supportship[count].height/2, 0.001f);
+                glTexCoord2i( 0, 1 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x-game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y+game_o.supportship[count].height/2, 0.001f);
+                glEnd();
             }
         }
     }
