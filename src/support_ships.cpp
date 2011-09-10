@@ -115,13 +115,13 @@ int supportship_class::spawn_bullet(int location, int direction_x, int direction
             }
             if (supportship_class::side_follow)
             {
-                supportship_class::bullet[bullet_count].x_pos  = game_o.player.x_pos-(game_o.player.width/4)+supportship_class::width;
-                if (location  == 0) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos-(game_o.player.hight/2)-supportship_class::height;
-                if (location  == 1) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos+(game_o.player.hight/2)+supportship_class::height;
-                if (location  == 2) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos-(game_o.player.hight/2)-((supportship_class::height/2)*3);
-                if (location  == 3) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos+(game_o.player.hight/2)+((supportship_class::height/2)*3);
-                if (location  == 4) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos-(game_o.player.hight/2)-supportship_class::height;
-                if (location  == 5) supportship_class::bullet[bullet_count].y_pos  = game_o.player.y_pos+(game_o.player.hight/2)+supportship_class::height;
+                supportship_class::bullet[bullet_count].x_pos  = supportship_class::supportship_pos[0].pos_x;
+                if (location  == 0) supportship_class::bullet[bullet_count].y_pos  = supportship_class::supportship_pos[0].pos_y;
+                if (location  == 1) supportship_class::bullet[bullet_count].y_pos  = supportship_class::supportship_pos[1].pos_y;
+                if (location  == 2) supportship_class::bullet[bullet_count].y_pos  = supportship_class::supportship_pos[0].pos_y;
+                if (location  == 3) supportship_class::bullet[bullet_count].y_pos  = supportship_class::supportship_pos[1].pos_y;
+                if (location  == 4) supportship_class::bullet[bullet_count].y_pos  = supportship_class::supportship_pos[0].pos_y;
+                if (location  == 5) supportship_class::bullet[bullet_count].y_pos  = supportship_class::supportship_pos[1].pos_y;
                 if (location  == 4) supportship_class::bullet[bullet_count].x_pos -= supportship_class::width/2;
                 if (location  == 5) supportship_class::bullet[bullet_count].x_pos -= supportship_class::width/2;
             }
