@@ -102,12 +102,39 @@ float physics_class::line_point_2D_y(float y1, float distance, float angle)
     return(y1 + distance*sin(angle));
 };
 
-float physics_class::rotate_point_2D_x(float cx,float cy,float angle,float px,float py)
+float physics_class::rotate_point_2D_x(float cx,float cy,float px,float py,float angle)
 {
   return(((px-cx) * cos(angle) - (py-cy) * sin(angle))+cx);
 }
 
-float physics_class::rotate_point_2D_y(float cx,float cy,float angle,float px,float py)
+float physics_class::rotate_point_2D_y(float cx,float cy,float px,float py,float angle)
 {
   return(((px-cx) * sin(angle) + (py-cy) * cos(angle))+cy);
 }
+
+float physics_class::degrees_to_radians   (float degrees)
+{
+    return(degrees * (M_PI/180));
+};
+
+float physics_class::radians_to_degrees   (float radians)
+{
+    return(radians * (180/M_PI));
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

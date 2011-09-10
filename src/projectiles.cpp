@@ -682,7 +682,7 @@ void init_projectiles(bool re_init)
    game_o.projectile[32].speed         = 0.025f;
    game_o.projectile[32].health        = 10;
    game_o.projectile[32].rate_of_fire  = 17;
-   game_o.projectile[32].movement      = 0;
+   game_o.projectile[32].movement      = 2;
    game_o.projectile[32].wave_size     = 0.125f;
    game_o.projectile[32].wave_velocity = 0.0035f;
    game_o.projectile[32].size          = 0.05f;

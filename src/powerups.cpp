@@ -258,8 +258,8 @@ int proccess_powerups(void)
                         if (game_o.supportship[0].active)
                         {
                             game_o.supportship[0].level++;
+                            if (game_o.supportship[0].level > MAX_SUPPORTSHIP_LEVELS-1) game_o.supportship[0].level = MAX_SUPPORTSHIP_LEVELS-1;
                             game_o.supportship[0].supportship_pos[game_o.supportship[0].level].active = true;
-                            if (game_o.supportship[0].level > MAX_SUPPORTSHIP_LEVELS) game_o.supportship[0].level = MAX_SUPPORTSHIP_LEVELS;
                         }
                         else
                         {
@@ -286,8 +286,8 @@ int proccess_powerups(void)
                         if (game_o.supportship[1].active)
                         {
                             game_o.supportship[1].level++;
+                            if (game_o.supportship[1].level > MAX_SUPPORTSHIP_LEVELS-1) game_o.supportship[1].level = MAX_SUPPORTSHIP_LEVELS-1;
                             game_o.supportship[1].supportship_pos[game_o.supportship[1].level].active = true;
-                            if (game_o.supportship[1].level > MAX_SUPPORTSHIP_LEVELS) game_o.supportship[1].level = MAX_SUPPORTSHIP_LEVELS;
                         }
                         else
                         {
@@ -314,8 +314,8 @@ int proccess_powerups(void)
                         if (game_o.supportship[2].active)
                         {
                             game_o.supportship[2].level++;
+                            if (game_o.supportship[2].level > MAX_SUPPORTSHIP_LEVELS-1) game_o.supportship[2].level = MAX_SUPPORTSHIP_LEVELS-1;
                             game_o.supportship[2].supportship_pos[game_o.supportship[2].level].active = true;
-                            if (game_o.supportship[2].level > MAX_SUPPORTSHIP_LEVELS) game_o.supportship[2].level = MAX_SUPPORTSHIP_LEVELS;
                         }
                         else
                         {
@@ -341,9 +341,10 @@ int proccess_powerups(void)
                     {
                         if (game_o.supportship[3].active)
                         {
+                            game_o.supportship[3].supportship_pos[0].active = true;
                             game_o.supportship[3].level++;
+                            if (game_o.supportship[3].level > MAX_SUPPORTSHIP_LEVELS-1) game_o.supportship[3].level = MAX_SUPPORTSHIP_LEVELS-1;
                             game_o.supportship[3].supportship_pos[game_o.supportship[3].level].active = true;
-                            if (game_o.supportship[3].level > MAX_SUPPORTSHIP_LEVELS) game_o.supportship[3].level = MAX_SUPPORTSHIP_LEVELS;
                         }
                         else
                         {
