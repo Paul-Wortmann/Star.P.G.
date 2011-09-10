@@ -47,7 +47,47 @@ bool texture_class::load(std::string file_name)
    GLenum       texture_format;
    GLint        nOfColors;
    bool         return_value = false;
+   if (surface = IMG_Load(file_name.c_str()))
+   {
+      return_value = true;
+      if ((surface->w & (surface->w - 1)) != 0 );
+      if ((surface->h & (surface->h - 1)) != 0 );
+      nOfColors = surface->format->BytesPerPixel;
+      if (nOfColors == 4)
+      {
+         if (surface->format->Rmask == 0x000000ff) texture_format = GL_RGBA;
+         else texture_format = GL_BGRA;
+      }
+      else if (nOfColors == 3)
+      {
+         if (surface->format->Rmask == 0x000000ff) texture_format = GL_RGB;
+         else texture_format = GL_BGR;
+      }
+      glGenTextures( 1, &texture_data);
+      glBindTexture( GL_TEXTURE_2D, texture_data);
+      glEnable(GL_BLEND);
+      glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+      glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+      glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+      glTexImage2D( GL_TEXTURE_2D, 0, nOfColors, surface->w, surface->h, 0, texture_format, GL_UNSIGNED_BYTE, surface->pixels );
+   }
+   else
+   {
+      return_value = false;
+      //game.log.File_Write("SDL could not load image.",File_Name);
+      SDL_Quit();
+   }
+   if ( surface ) SDL_FreeSurface( surface );
+   return(return_value);
+};
 
+bool texture_class::load(std::string file_name, int index_number)
+{
+   SDL_Surface *surface;
+   GLenum       texture_format;
+   GLint        nOfColors;
+   bool         return_value = false;
+   texture_class::ref_number = index_number;
    if (surface = IMG_Load(file_name.c_str()))
    {
       return_value = true;

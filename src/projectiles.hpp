@@ -43,7 +43,8 @@ class projectile_class
     float        level_5;
     float        level_6;
     int          image;
-    float        size;
+    float        width;
+    float        height;
     int          sound;
     float        damage;
     float        health;

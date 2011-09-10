@@ -32,10 +32,12 @@ class texture_class
 {
     private:
     public:
-    GLuint texture_data;
-    texture_class();
-   ~texture_class();
-    bool load(std::string file_name);
+        int       ref_number;
+        GLuint    texture_data;
+        texture_class();
+       ~texture_class();
+        bool     load(std::string file_name);
+        bool     load(std::string file_name, int index_number);
 };
 
 #endif //TEXTURES_H

@@ -67,10 +67,10 @@ int spawn_player_bullet_num(int player_bullet_num, int location)
    if (location == 6) game_o.player.bullet[player_bullet_num].wave_direction =  1;
    if (location == 7) game_o.player.bullet[player_bullet_num].wave_direction =  1;
    if (location == 8) game_o.player.bullet[player_bullet_num].wave_direction =  0;
-   if (location < 3) game_o.player.bullet[player_bullet_num].width = game_o.projectile[game_o.player.front_weapon].size;
-   else              game_o.player.bullet[player_bullet_num].width = game_o.projectile[game_o.player.side_weapon].size;
-   if (location < 3) game_o.player.bullet[player_bullet_num].hight = game_o.projectile[game_o.player.front_weapon].size;
-   else              game_o.player.bullet[player_bullet_num].hight = game_o.projectile[game_o.player.side_weapon].size;
+   if (location < 3)  game_o.player.bullet[player_bullet_num].width = game_o.projectile[game_o.player.front_weapon].width;
+   else               game_o.player.bullet[player_bullet_num].width = game_o.projectile[game_o.player.side_weapon ].width;
+   if (location < 3)  game_o.player.bullet[player_bullet_num].hight = game_o.projectile[game_o.player.front_weapon].height;
+   else               game_o.player.bullet[player_bullet_num].hight = game_o.projectile[game_o.player.side_weapon ].height;
    return(0);
 }
 /*----------------------------------------------------------------------------*/

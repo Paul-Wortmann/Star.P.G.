@@ -137,8 +137,8 @@ int supportship_class::spawn_bullet(int location, int direction_x, int direction
             supportship_class::bullet[bullet_count].y_dir   = direction_y;
             supportship_class::bullet[bullet_count].x_speed = game_o.projectile[supportship_class::bullet[bullet_count].warhead].speed;
             supportship_class::bullet[bullet_count].y_speed = game_o.projectile[supportship_class::bullet[bullet_count].warhead].speed;
-            supportship_class::bullet[bullet_count].hight   = game_o.projectile[supportship_class::bullet[bullet_count].warhead].size;
-            supportship_class::bullet[bullet_count].width   = game_o.projectile[supportship_class::bullet[bullet_count].warhead].size;
+            supportship_class::bullet[bullet_count].hight   = game_o.projectile[supportship_class::bullet[bullet_count].warhead].height;
+            supportship_class::bullet[bullet_count].width   = game_o.projectile[supportship_class::bullet[bullet_count].warhead].width;
         }
     }
     if (done) return(1);

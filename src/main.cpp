@@ -112,6 +112,7 @@ int main(int argc, char *argv[])
   SDL_Joystick *joystick;
   SDL_JoystickEventState(SDL_ENABLE);
   joystick = SDL_JoystickOpen(0);
+
   game.log.File_Write("Initializing game system...");
   init_game(false);
   game.log.File_Write("Initializing menu system...");
@@ -131,6 +132,7 @@ int main(int argc, char *argv[])
   game.log.File_Write("Loading resources...");
   loading_screen_display("data/textures/misc/loading_screen.png");
   load_resources();
+  init_projectiles(false);
   game.log.File_Write("Starting game...");
   game.log.File_Write("---------------\n");
 //----------------------------------- Main loop --------------------------------
