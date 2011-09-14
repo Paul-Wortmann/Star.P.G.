@@ -19,7 +19,7 @@
  * @email   physhex@gmail.com
  * @website www.physhexgames.co.nr
  * @license GPL
- * @date 2011-09-10
+ * @date 2011-09-15
  */
 
 
@@ -34,31 +34,31 @@ if (((x1-(w1/2) < x2+(w2/2)) && (x2+(w2/2) > x1-(w1/2))) && ((x2-(w2/2) < x1+(w1
 else return(false);
 }
 
-bool physics_class::quadrangle_collision   (float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2)
+bool  physics_class::quadrangle_collision   (float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2)
 {
 if (((x1-(w1/2) < x2+(w2/2)) && (x2+(w2/2) > x1-(w1/2))) && ((x2-(w2/2) < x1+(w1/2)) && (x1+(w1/2) > x2-(w2/2)))
  && ((y1-(h1/2) < y2+(h2/2)) && (y2+(h2/2) > y1-(h1/2))) && ((y2-(h2/2) < y1+(h1/2)) && (y1+(h1/2) > y2-(h2/2)))) return(true);
 else return(false);
 }
 
-bool physics_class::circle_collision(float x1, float y1, float r1, float x2, float y2, float r2)
+bool  physics_class::circle_collision(float x1, float y1, float r1, float x2, float y2, float r2)
 {
    if (((x2-x1)*(x2-x1))+((y2-y1)*(y2-y1)) < ((r1+r2)+(r1+r2))) return(true);
    else return(false);
 }
 
-bool physics_class::shere_collision(float x1, float y1, float z1, float r1, float x2, float y2, float z2, float r2)
+bool  physics_class::shere_collision(float x1, float y1, float z1, float r1, float x2, float y2, float z2, float r2)
 {
    if ((((x2-x1)*(x2-x1))+((y2-y1)*(y2-y1))+((z2-z1)*(z2-z1))) < ((r1+r2)+(r1+r2))) return(true);
    else return(false);
 }
 
-float physics_class::distance_2D(float x1, float y1, float x2, float y2)
+float  physics_class::distance_2D(float x1, float y1, float x2, float y2)
 {
    return(sqrt(((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2))));
 }
 
-float physics_class::distance_3D(float x1, float y1, float z1, float x2, float y2, float z2)
+float  physics_class::distance_3D(float x1, float y1, float z1, float x2, float y2, float z2)
 {
    return(sqrt(((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2))+((z1-z2)*(z1-z2))));
 }
@@ -82,17 +82,17 @@ bool  physics_class::point_in_diamond     (float dx, float dw, float dws, float 
     else return(false);
 };
 
-float physics_class::line_slope_2D(float x1, float y1, float x2, float y2)
+float  physics_class::line_slope_2D(float x1, float y1, float x2, float y2)
 {
     return((y2-y1)/(x2-x1));
 };
 
-float physics_class::line_angle(float x1, float y1, float x2, float y2)
+float  physics_class::line_angle(float x1, float y1, float x2, float y2)
 {
     return(atan2(y2 - y1, x2 - x1));
 };
 
-float physics_class::line_point_2D_x(float x1, float distance, float angle)
+float  physics_class::line_point_2D_x(float x1, float distance, float angle)
 {
     return(x1 + distance*cos(angle));
 };
@@ -102,26 +102,37 @@ float physics_class::line_point_2D_y(float y1, float distance, float angle)
     return(y1 + distance*sin(angle));
 };
 
-float physics_class::rotate_point_2D_x(float cx,float cy,float px,float py,float angle)
+float  physics_class::rotate_point_2D_x(float cx,float cy,float px,float py,int angle)
 {
-  return(((px-cx) * cos(angle) - (py-cy) * sin(angle))+cx);
+  return(((px-cx) * physics_class::cos_table[angle] - (py-cy) * physics_class::sin_table[angle])+cx);
 }
 
-float physics_class::rotate_point_2D_y(float cx,float cy,float px,float py,float angle)
+float  physics_class::rotate_point_2D_y(float cx,float cy,float px,float py,int angle)
 {
-  return(((px-cx) * sin(angle) + (py-cy) * cos(angle))+cy);
+  return(((px-cx) * physics_class::sin_table[angle] + (py-cy) * physics_class::cos_table[angle])+cy);
 }
 
-float physics_class::degrees_to_radians   (float degrees)
+float  physics_class::degrees_to_radians   (float degrees)
 {
     return(degrees * (M_PI/180));
 };
 
-float physics_class::radians_to_degrees   (float radians)
+float  physics_class::radians_to_degrees   (float radians)
 {
     return(radians * (180/M_PI));
 };
 
+void   physics_class::generate_sin_table   (void)
+{
+    for(int sin_count = 0; sin_count < 360; sin_count++)
+        physics_class::sin_table[sin_count] = sin(sin_count* (M_PI/180));
+};
+
+void   physics_class::generate_cos_table   (void)
+{
+    for(int cos_count = 0; cos_count < 360; cos_count++)
+        physics_class::cos_table[cos_count] = cos(cos_count* (M_PI/180));
+};
 
 
 

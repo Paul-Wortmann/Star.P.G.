@@ -19,7 +19,7 @@
  * @email   physhex@gmail.com
  * @website www.physhexgames.co.nr
  * @license GPL
- * @date 2011-09-03
+ * @date 2011-09-15
  */
 
 #include <SDL/SDL.h>
@@ -133,6 +133,8 @@ int main(int argc, char *argv[])
   loading_screen_display("data/textures/misc/loading_screen.png");
   load_resources();
   init_projectiles(false);
+  game.physics.generate_cos_table();
+  game.physics.generate_sin_table();
   game.log.File_Write("Starting game...");
   game.log.File_Write("---------------\n");
 //----------------------------------- Main loop --------------------------------

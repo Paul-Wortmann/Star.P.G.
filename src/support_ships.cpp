@@ -19,7 +19,7 @@
  * @email   physhex@gmail.com
  * @website www.physhexgames.co.nr
  * @license GPL
- * @date 2011-09-03
+ * @date 2011-09-15
  */
 
 #include "RAGE/rage.hpp"
@@ -604,8 +604,8 @@ void supportship_class::process(bool spawn_bullet)
                 {
                     game_o.supportship[supportship_count].supportship_pos[supportship_level_count].angle+= 0.00872664625f;
                     if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].angle > 6.28318531f) game_o.supportship[supportship_count].supportship_pos[supportship_level_count].angle = 0.0f;
-                    game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x = game.physics.rotate_point_2D_x(game_o.player.x_pos,game_o.player.y_pos,game_o.player.x_pos+game_o.player.width,game_o.player.y_pos+game_o.player.hight,game_o.supportship[supportship_count].supportship_pos[supportship_level_count].angle);
-                    game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y = game.physics.rotate_point_2D_y(game_o.player.x_pos,game_o.player.y_pos,game_o.player.x_pos+game_o.player.width,game_o.player.y_pos+game_o.player.hight,game_o.supportship[supportship_count].supportship_pos[supportship_level_count].angle);
+                    game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x = game.physics.rotate_point_2D_x(game_o.player.x_pos,game_o.player.y_pos,game_o.player.x_pos+game_o.player.width,game_o.player.y_pos+game_o.player.hight,game.physics.radians_to_degrees(game_o.supportship[supportship_count].supportship_pos[supportship_level_count].angle));
+                    game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y = game.physics.rotate_point_2D_y(game_o.player.x_pos,game_o.player.y_pos,game_o.player.x_pos+game_o.player.width,game_o.player.y_pos+game_o.player.hight,game.physics.radians_to_degrees(game_o.supportship[supportship_count].supportship_pos[supportship_level_count].angle));
                 }
                 else
                 {

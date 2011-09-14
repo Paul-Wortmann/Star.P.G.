@@ -31,9 +31,20 @@
 #define GL_BGR  0x80E0
 #define GL_BGRA 0x80E1
 
+extern  game_class game;
+
 texture_class::texture_class()
 {
-
+    texture_class::rotate_able      = false;
+    texture_class::rotate_speed     = 0.0f;
+    texture_class::rotate_direction = 0;
+    texture_class::angle            = 0.0f;
+    texture_class::frame            = 0;
+    texture_class::frame_max        = 0;
+    for (int frame_count = 0; frame_count < MAX_FRAMES; frame_count++)
+    {
+        texture_class::data[frame_count] = 0;
+    }
 };
 
 texture_class::~texture_class()
@@ -121,3 +132,38 @@ bool texture_class::load(std::string file_name, int index_number)
    if ( surface ) SDL_FreeSurface( surface );
    return(return_value);
 };
+
+void texture_class::process(void)
+{
+    if(texture_class::rotate_able)
+    {
+        if(texture_class::rotate_direction == 0)
+        {
+            texture_class::angle += texture_class::rotate_speed;
+            if (texture_class::angle > 6.2832f) texture_class::angle = 0.0f;
+        }
+        if(texture_class::rotate_direction == 1)
+        {
+            texture_class::angle -= texture_class::rotate_speed;
+            if (texture_class::angle < 0.0f) texture_class::angle = 6.2832f;
+        }
+    }
+    texture_class::frame++;
+    if (texture_class::frame > texture_class::frame_max) texture_class::frame = 0;
+};
+
+void texture_class::draw(float pos_x, float pos_y, float pos_z, float width, float height)
+{
+    glPushMatrix();
+    glBindTexture( GL_TEXTURE_2D, texture_class::data[frame]);
+    glLoadIdentity();
+    glBegin( GL_QUADS );
+    glTexCoord2i( 0, 1 );glVertex3f(game.physics.rotate_point_2D_x(pos_x, pos_y, pos_x-(width/2),pos_y-(height/2),texture_class::angle), game.physics.rotate_point_2D_y(pos_x,pos_y,pos_x-(width/2),pos_y-(height/2), texture_class::angle), pos_z);
+    glTexCoord2i( 0, 0 );glVertex3f(game.physics.rotate_point_2D_x(pos_x, pos_y, pos_x-(width/2),pos_y+(height/2),texture_class::angle), game.physics.rotate_point_2D_y(pos_x,pos_y,pos_x-(width/2),pos_y+(height/2), texture_class::angle), pos_z);
+    glTexCoord2i( 1, 0 );glVertex3f(game.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+(width/2),pos_y+(height/2),texture_class::angle), game.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+(width/2),pos_y+(height/2), texture_class::angle), pos_z);
+    glTexCoord2i( 1, 1 );glVertex3f(game.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+(width/2),pos_y-(height/2),texture_class::angle), game.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+(width/2),pos_y-(height/2), texture_class::angle), pos_z);
+    glEnd();
+    glPopMatrix();
+};
+
+
