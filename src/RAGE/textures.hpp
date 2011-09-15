@@ -46,10 +46,10 @@ class texture_class
         GLuint    texture_data;
         texture_class();
        ~texture_class();
-        bool     load(std::string file_name);
         bool     load(std::string file_name, int index_number);
         void     process(void);
         void     draw(float pos_x, float pos_y, float pos_z, float width, float height);
+        void     draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle);
 };
 
 #endif //TEXTURES_H

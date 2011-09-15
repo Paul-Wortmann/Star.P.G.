@@ -1049,7 +1049,7 @@ bool loading_screen_display(std::string file_name)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     SDL_GL_SwapBuffers();
     texture_class loading_screen;
-    loading_screen.load(file_name);
+    loading_screen.load(file_name,0);
     glPushMatrix();
     glBindTexture( GL_TEXTURE_2D, loading_screen.texture_data);
     glLoadIdentity();
