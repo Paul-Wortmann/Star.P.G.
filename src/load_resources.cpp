@@ -594,6 +594,26 @@ bool load_textures(void)
     return(true);
 };
 
+bool load_fonts(void)
+{
+    int font_count = 0;
+    font.font_1.Set_File("data/fonts/font_001.ttf");font_count++;
+    font.font_2.Set_File("data/fonts/font_002.ttf");font_count++;
+    game.log.File_Write("Font files loaded -> ",font_count);
+    return(true);
+};
+
+bool loading_screen_display(std::string file_name)
+{
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    SDL_GL_SwapBuffers();
+    texture_class loading_screen;
+    loading_screen.load(file_name,0);
+    loading_screen.draw(0.0f,0.0f,0.9f,2.0f,2.0f);
+    SDL_GL_SwapBuffers();
+    return(true);
+};
+
 bool bind_texture(int texture_number)
 {
     if (texture_number ==   0) glBindTexture( GL_TEXTURE_2D, texture.res_1024x768.data[0 /*replace_me.frame*/]);
@@ -1028,34 +1048,11 @@ bool bind_texture(int texture_number)
     return(true);
 };
 
-
 bool bind_texture(texture_class bind_me)
 {
     glBindTexture( GL_TEXTURE_2D, bind_me.data[0 /*replace_me.frame*/]);
     return(true);
 };
-
-bool load_fonts(void)
-{
-    int font_count = 0;
-    font.font_1.Set_File("data/fonts/font_001.ttf");font_count++;
-    font.font_2.Set_File("data/fonts/font_002.ttf");font_count++;
-
-    game.log.File_Write("Font files loaded -> ",font_count);
-    return(true);
-};
-
-bool loading_screen_display(std::string file_name)
-{
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    SDL_GL_SwapBuffers();
-    texture_class loading_screen;
-    loading_screen.load(file_name,0);
-    loading_screen.draw(0.0f,0.0f,0.9f,2.0f,2.0f);
-    SDL_GL_SwapBuffers();
-    return(true);
-};
-
 
 
 

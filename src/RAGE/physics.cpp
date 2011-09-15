@@ -47,7 +47,7 @@ bool  physics_class::circle_collision(float x1, float y1, float r1, float x2, fl
    else return(false);
 }
 
-bool  physics_class::shere_collision(float x1, float y1, float z1, float r1, float x2, float y2, float z2, float r2)
+bool  physics_class::sphere_collision(float x1, float y1, float z1, float r1, float x2, float y2, float z2, float r2)
 {
    if ((((x2-x1)*(x2-x1))+((y2-y1)*(y2-y1))+((z2-z1)*(z2-z1))) < ((r1+r2)+(r1+r2))) return(true);
    else return(false);

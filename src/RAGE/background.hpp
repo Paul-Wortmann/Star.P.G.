@@ -66,6 +66,7 @@ class background_class
         bool  scroll_down       (void);
         void  process           (void);
         void  draw              (void);
+        void  draw_background   (int image_ref);
 };
 
 #endif //BACKGROUND_H

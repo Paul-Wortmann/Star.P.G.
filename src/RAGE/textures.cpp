@@ -124,7 +124,7 @@ void texture_class::draw(float pos_x, float pos_y, float pos_z, float width, flo
 void texture_class::draw(float pos_x, float pos_y, float pos_z, float width, float height)
 {
     glPushMatrix();
-    glBindTexture( GL_TEXTURE_2D, texture_class::data[frame]);
+    glBindTexture( GL_TEXTURE_2D, texture_class::data[texture_class::frame]);
     glLoadIdentity();
     glBegin( GL_QUADS );
     glTexCoord2i( 0, 1 );glVertex3f(game.physics.rotate_point_2D_x(pos_x, pos_y, pos_x-(width/2),pos_y-(height/2),texture_class::angle), game.physics.rotate_point_2D_y(pos_x,pos_y,pos_x-(width/2),pos_y-(height/2), texture_class::angle), pos_z);
