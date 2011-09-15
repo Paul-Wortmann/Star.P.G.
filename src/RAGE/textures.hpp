@@ -43,7 +43,7 @@ class texture_class
         GLuint    data[MAX_FRAMES];
 
         int       ref_number;
-        GLuint    texture_data;
+        //GLuint    texture_data;
         texture_class();
        ~texture_class();
         bool     load(std::string file_name, int index_number);

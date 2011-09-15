@@ -49,7 +49,10 @@ texture_class::texture_class()
 
 texture_class::~texture_class()
 {
-    glDeleteTextures(1, &texture_data);
+    for (int frame_count = 0; frame_count < MAX_FRAMES; frame_count++)
+    {
+        glDeleteTextures(1, &texture_class::data[frame_count]);
+    }
 };
 
 bool texture_class::load(std::string file_name, int index_number)
@@ -75,8 +78,8 @@ bool texture_class::load(std::string file_name, int index_number)
          if (surface->format->Rmask == 0x000000ff) texture_format = GL_RGB;
          else texture_format = GL_BGR;
       }
-      glGenTextures( 1, &texture_data);
-      glBindTexture( GL_TEXTURE_2D, texture_data);
+      glGenTextures( 1, &texture_class::data[texture_class::frame]);
+      glBindTexture( GL_TEXTURE_2D, texture_class::data[texture_class::frame]);
       glEnable(GL_BLEND);
       glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
       glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
