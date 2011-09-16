@@ -2037,31 +2037,29 @@ int menu_class::process(void)
                 menu_class::drag_offset_y = game.io.mouse_y - menu_class::title_pos_y;
                 menu_class::set_drag_active(true);
             }
-            else
-            {
-                drag_x_delta = menu_class::title_pos_x;
-                drag_y_delta = menu_class::title_pos_y;
-                menu_class::title_pos_x = game.io.mouse_x - menu_class::drag_offset_x;
-                menu_class::title_pos_y = game.io.mouse_y - menu_class::drag_offset_y;
-                drag_x_delta -= menu_class::title_pos_x;
-                drag_y_delta -= menu_class::title_pos_y;
-                menu_class::set_pos(menu_class::pos_x-drag_x_delta,menu_class::pos_y-drag_y_delta,menu_class::pos_z);
-                menu_class::set_button_spacing_auto();
-                menu_class::set_close_button_data(menu_class::get_close_button_pos_x()-drag_x_delta,menu_class::get_close_button_pos_y()-drag_y_delta,menu_class::get_close_button_pos_z());
-                for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
-                {
-                    menu_class::button[button_count].set_arrow_left_pos_x (menu_class::button[button_count].get_arrow_left_pos_x ()-drag_x_delta);
-                    menu_class::button[button_count].set_arrow_left_pos_y (menu_class::button[button_count].get_arrow_left_pos_y ()-drag_y_delta);
-                    menu_class::button[button_count].set_arrow_right_pos_x(menu_class::button[button_count].get_arrow_right_pos_x()-drag_x_delta);
-                    menu_class::button[button_count].set_arrow_right_pos_y(menu_class::button[button_count].get_arrow_right_pos_y()-drag_y_delta);
-                }
-            }
-        }
-        else
-        {
-            menu_class::set_drag_active(false);
         }
     }
+    if ((menu_class::get_drag_active()) && (!game.io.mouse_button_left)) menu_class::set_drag_active(false);
+    if (menu_class::get_drag_active())
+    {
+        drag_x_delta = menu_class::title_pos_x;
+        drag_y_delta = menu_class::title_pos_y;
+        menu_class::title_pos_x = game.io.mouse_x - menu_class::drag_offset_x;
+        menu_class::title_pos_y = game.io.mouse_y - menu_class::drag_offset_y;
+        drag_x_delta -= menu_class::title_pos_x;
+        drag_y_delta -= menu_class::title_pos_y;
+        menu_class::set_pos(menu_class::pos_x-drag_x_delta,menu_class::pos_y-drag_y_delta,menu_class::pos_z);
+        menu_class::set_button_spacing_auto();
+        menu_class::set_close_button_data(menu_class::get_close_button_pos_x()-drag_x_delta,menu_class::get_close_button_pos_y()-drag_y_delta,menu_class::get_close_button_pos_z());
+        for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
+        {
+            menu_class::button[button_count].set_arrow_left_pos_x (menu_class::button[button_count].get_arrow_left_pos_x ()-drag_x_delta);
+            menu_class::button[button_count].set_arrow_left_pos_y (menu_class::button[button_count].get_arrow_left_pos_y ()-drag_y_delta);
+            menu_class::button[button_count].set_arrow_right_pos_x(menu_class::button[button_count].get_arrow_right_pos_x()-drag_x_delta);
+            menu_class::button[button_count].set_arrow_right_pos_y(menu_class::button[button_count].get_arrow_right_pos_y()-drag_y_delta);
+        }
+    }
+
     //---- return ----
     return(return_value);
 };
