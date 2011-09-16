@@ -1598,16 +1598,9 @@ int diplay_menu (void)
     {
         game.background.draw();
         /*----------------------------------------------------------------------*/
-        if (game.menu_level <= 7) bind_texture(30);  //logo
-        if (game.menu_level == 8) bind_texture(330); //logo
-        if (game.menu_level >= 9) bind_texture(30);  //logo
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        glTexCoord2i( 0, 1 );glVertex3f(-0.9f, 0.75f, 0.0f );
-        glTexCoord2i( 0, 0 );glVertex3f(-0.9f, 1.0f, 0.0f );
-        glTexCoord2i( 1, 0 );glVertex3f( 0.9f, 1.0f, 0.0f );
-        glTexCoord2i( 1, 1 );glVertex3f( 0.9f, 0.75f, 0.0f );
-        glEnd();
+        if (game.menu_level <= 7) texture.logo.draw    (0.0f,0.875f,0.0f,1.8f,0.25f);
+        if (game.menu_level == 8) texture.logo_red.draw(0.0f,0.875f,0.0f,1.8f,0.25f);
+        if (game.menu_level >= 9) texture.logo.draw    (0.0f,0.875f,0.0f,1.8f,0.25f);
     }
     font.font_1.Write(255,255,255,64,-0.98f,-0.98f,2,8,"www.PhysHexGames.co.nr");
 /*-----------------------------------------------------------------------------*/
