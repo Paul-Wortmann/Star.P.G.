@@ -19,7 +19,7 @@
  * @email   physhex@gmail.com
  * @website www.physhexgames.co.nr
  * @license GPL
- * @date 2011-09-03
+ * @date    2011-09-16
  */
 
 #ifndef TEXTURES_H
@@ -28,25 +28,35 @@
 #include <GL/gl.h>
 #include <string>
 
-const int MAX_FRAMES = 8;
+const int MAX_FRAMES           = 64;
+const int DEFAULT_FRAME_WIDTH  = 64;
+const int DEFAULT_FRAME_HEIGHT = 64;
+
+struct frame_type
+{
+    bool      active;
+    GLuint    data;
+};
 
 class texture_class
 {
     private:
     public:
-        bool      rotate_able;
-        float     rotate_speed;
-        int       rotate_direction;
-        float     angle;
-        int       frame;
-        int       frame_max;
-        GLuint    data[MAX_FRAMES];
+        int             width;
+        int             height;
+        bool            rotate_able;
+        float           rotate_speed;
+        int             rotate_direction;
+        float           angle;
+        int             frame_num;
+        int             frame_max;
+        frame_type      frame[MAX_FRAMES];
+        int             ref_number;
 
-        int       ref_number;
-        //GLuint    texture_data;
         texture_class();
        ~texture_class();
-        bool     load(std::string file_name, int index_number);
+        bool     load_image      (std::string file_name, int index_number);
+        bool     load_spritesheet(std::string file_name, int index_number);
         void     process(void);
         void     draw(float pos_x, float pos_y, float pos_z, float width, float height);
         void     draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle);

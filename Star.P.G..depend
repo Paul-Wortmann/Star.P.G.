@@ -888,7 +888,7 @@
 	"rage.hpp"
 	"sound.hpp"
 
-1316090656 source:c:\_git_\star.p.g\src\load_resources.cpp
+1316184568 source:c:\_git_\star.p.g\src\load_resources.cpp
 	<SDL/SDL.h>
 	"load_resources.hpp"
 	"RAGE/rage.hpp"
@@ -909,11 +909,11 @@
 1315052706 source:c:\_git_\star.p.g\src\rage\music.cpp
 	"music.hpp"
 
-1316089069 c:\_git_\star.p.g\src\rage\textures.hpp
+1316184455 c:\_git_\star.p.g\src\rage\textures.hpp
 	<GL/gl.h>
 	<string>
 
-1316090180 source:c:\_git_\star.p.g\src\rage\textures.cpp
+1316185104 source:c:\_git_\star.p.g\src\rage\textures.cpp
 	<GL/gl.h>
 	<SDL/SDL.h>
 	<SDL/SDL_image.h>
