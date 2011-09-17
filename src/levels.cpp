@@ -33,7 +33,7 @@ void init_levels(void)
 {
     for (int level_no_count = 0;level_no_count < (MAX_LEVELS+1); level_no_count++)
     {
-        game_o.level_locked[level_no_count] = true;/// set to false to unlock all levels....for testing!
+        game_o.level_locked[level_no_count] = false;/// set to false to unlock all levels....for testing!
     }
     game_o.level_locked[0] = false;
 };

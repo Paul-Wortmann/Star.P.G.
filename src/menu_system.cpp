@@ -1668,14 +1668,7 @@ int diplay_menu (void)
 /*-----------------------------------------------------------------------------*/
    if (game.menu_level == 10) //Outro screen
    {
-      bind_texture(339); //credits
-      glLoadIdentity();
-      glBegin( GL_QUADS );
-	  glTexCoord2i( 0, 1 );glVertex3f(-1.0f,-1.0f, 0.0f );
-	  glTexCoord2i( 0, 0 );glVertex3f(-1.0f, 1.0f, 0.0f );
-	  glTexCoord2i( 1, 0 );glVertex3f( 1.0f, 1.0f, 0.0f );
-	  glTexCoord2i( 1, 1 );glVertex3f( 1.0f,-1.0f, 0.0f );
-      glEnd();
+       texture.credits_00.draw(0.0f,0.0f,0.0f,2.0f,2.0f); //credits
    }
 /*-----------------------------------------------------------------------------*/
    if (game.menu_level == 11) //Pause screen
