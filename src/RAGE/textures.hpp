@@ -60,6 +60,7 @@ class texture_class
         void     process(void);
         void     draw(float pos_x, float pos_y, float pos_z, float width, float height);
         void     draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle);
+        void     draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle, float alpha);
 };
 
 #endif //TEXTURES_H

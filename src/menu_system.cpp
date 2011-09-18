@@ -22,7 +22,6 @@
  * @date 2011-09-03
  */
 
-#include <GL/gl.h>
 #include "menu_system.hpp"
 #include "game.hpp"
 #include "RAGE/rage.hpp"
