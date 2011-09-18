@@ -888,73 +888,18 @@ int display_game(void)
     }
 
     temp_val = (1.95f*((float)game_o.level_kills/(float)game_o.victory_kills));
-    bind_texture(340); //level progress bar
-    glLoadIdentity();
-    glBegin( GL_QUADS );
-    glTexCoord2i( 0, 1 );glVertex3f(-0.975f +temp_val,-0.950f, 0.001f);
-    glTexCoord2i( 0, 0 );glVertex3f(-0.975f +temp_val,-0.975f, 0.001f);
-    glTexCoord2i( 1, 0 );glVertex3f(-0.975f          ,-0.975f, 0.001f);
-    glTexCoord2i( 1, 1 );glVertex3f(-0.975f          ,-0.950f, 0.001f);
-    glEnd();
+    texture.level_progress_bar.draw (-0.975f +(temp_val/2),-0.965f, 0.001f,temp_val, 0.025f);// level progress bar
+
     //--------------------------- Touch screen controls ------------------------------------------------------------------------------------
     if(game.config.Display_Touchscreen)
     {
-        bind_texture(350); // Left button
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        glTexCoord2i( 1, 1 );glVertex3f(-0.775f ,-0.450f, 0.001f);
-        glTexCoord2i( 0, 1 );glVertex3f(-0.775f ,-0.650f, 0.001f);
-        glTexCoord2i( 0, 0 );glVertex3f(-0.975f ,-0.650f, 0.001f);
-        glTexCoord2i( 1, 0 );glVertex3f(-0.975f ,-0.450f, 0.001f);
-        glEnd();
-        bind_texture(350); // Right button
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        glTexCoord2i( 0, 0 );glVertex3f(-0.375f ,-0.450f, 0.001f);
-        glTexCoord2i( 1, 0 );glVertex3f(-0.375f ,-0.650f, 0.001f);
-        glTexCoord2i( 1, 1 );glVertex3f(-0.575f ,-0.650f, 0.001f);
-        glTexCoord2i( 0, 1 );glVertex3f(-0.575f ,-0.450f, 0.001f);
-        glEnd();
-        bind_texture(350); // Up button
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        glTexCoord2i( 1, 0 );glVertex3f(-0.575f ,-0.250f, 0.001f);
-        glTexCoord2i( 1, 1 );glVertex3f(-0.575f ,-0.450f, 0.001f);
-        glTexCoord2i( 0, 1 );glVertex3f(-0.775f ,-0.450f, 0.001f);
-        glTexCoord2i( 0, 0 );glVertex3f(-0.775f ,-0.250f, 0.001f);
-        glEnd();
-        bind_texture(350); // Down button
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        glTexCoord2i( 0, 1 );glVertex3f(-0.575f ,-0.650f, 0.001f);
-        glTexCoord2i( 0, 0 );glVertex3f(-0.575f ,-0.850f, 0.001f);
-        glTexCoord2i( 1, 0 );glVertex3f(-0.775f ,-0.850f, 0.001f);
-        glTexCoord2i( 1, 1 );glVertex3f(-0.775f ,-0.650f, 0.001f);
-        glEnd();
-        bind_texture(351); // Fire button
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        glTexCoord2i( 0, 1 );glVertex3f( 0.775f ,-0.650f, 0.001f);
-        glTexCoord2i( 0, 0 );glVertex3f( 0.775f ,-0.850f, 0.001f);
-        glTexCoord2i( 1, 0 );glVertex3f( 0.975f ,-0.850f, 0.001f);
-        glTexCoord2i( 1, 1 );glVertex3f( 0.975f ,-0.650f, 0.001f);
-        glEnd();
-        bind_texture(351); // Bomb button
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        glTexCoord2i( 0, 1 );glVertex3f( 0.475f ,-0.650f, 0.001f);
-        glTexCoord2i( 0, 0 );glVertex3f( 0.475f ,-0.850f, 0.001f);
-        glTexCoord2i( 1, 0 );glVertex3f( 0.675f ,-0.850f, 0.001f);
-        glTexCoord2i( 1, 1 );glVertex3f( 0.675f ,-0.650f, 0.001f);
-        glEnd();
-        bind_texture(351); // Menu button
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        glTexCoord2i( 0, 1 );glVertex3f( 0.775f , 0.650f, 0.001f);
-        glTexCoord2i( 0, 0 );glVertex3f( 0.775f , 0.850f, 0.001f);
-        glTexCoord2i( 1, 0 );glVertex3f( 0.975f , 0.850f, 0.001f);
-        glTexCoord2i( 1, 1 );glVertex3f( 0.975f , 0.650f, 0.001f);
-        glEnd();
+        texture.touchscreen_arrow.draw (-0.875,-0.550f, 0.001f, 0.2f, 0.2f, 90.0f);// Left  button
+        texture.touchscreen_arrow.draw (-0.475,-0.550f, 0.001f, 0.2f, 0.2f,270.0f);// Right button
+        texture.touchscreen_arrow.draw (-0.675,-0.350f, 0.001f, 0.2f, 0.2f,  0.0f);// Up    button
+        texture.touchscreen_arrow.draw (-0.675,-0.750f, 0.001f, 0.2f, 0.2f,180.0f);// Down  button
+        texture.touchscreen_button.draw( 0.875,-0.750f, 0.001f, 0.2f, 0.2f,  0.0f);// Fire  button
+        texture.touchscreen_button.draw( 0.575,-0.750f, 0.001f, 0.2f, 0.2f,  0.0f);// Bomb  button
+        texture.touchscreen_button.draw( 0.875, 0.750f, 0.001f, 0.2f, 0.2f,  0.0f);// Menu  button
     }
     //--------------------------------------------------------------------------------------------------------------------------------------
     if (game_o.paused.active)                   game_o.paused.draw();

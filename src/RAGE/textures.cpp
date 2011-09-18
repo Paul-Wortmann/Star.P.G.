@@ -190,6 +190,12 @@ void texture_class::process(void)
     if (texture_class::frame_num > texture_class::frame_max) texture_class::frame_num = 0;
 };
 
+void texture_class::draw(float pos_x, float pos_y, float pos_z, float width, float height, int   angle)
+{
+    texture_class::angle = game.physics.degrees_to_radians(angle);
+    texture_class::draw(pos_x,pos_y,pos_z,width,height);
+};
+
 void texture_class::draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle)
 {
     texture_class::angle = angle;
