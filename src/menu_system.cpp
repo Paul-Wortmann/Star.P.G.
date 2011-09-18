@@ -1604,52 +1604,54 @@ int diplay_menu (void)
     }
     font.font_1.Write(255,255,255,64,-0.98f,-0.98f,2,8,"www.PhysHexGames.co.nr");
 /*-----------------------------------------------------------------------------*/
-   if (game.menu_level == 8) //Player death screen
-   {
-       texture.game_over.draw    ( 0.0f, 0.65f, 0.0f, 0.8f, 0.2f); //Game Over
-       texture.explosion_001.draw( 0.0f,-0.10f, 0.0f, 1.2f, 1.2f); //explosion
-   }
+    if (game.menu_level == 8) //Player death screen
+    {
+        texture.game_over.draw    ( 0.0f, 0.65f, 0.0f, 0.8f, 0.2f); //Game Over
+        texture.explosion_001.draw( 0.0f,-0.10f, 0.0f, 1.2f, 1.2f); //explosion
+    }
 /*-----------------------------------------------------------------------------*/
-   if (game.menu_level == 9) //Next level screen
-   {
-      int level_t = game_o.level + 1;
-      if (level_t > 24) level_t = 24;
-      bind_texture(333); //Congratulations
-      glLoadIdentity();
-      glBegin( GL_QUADS );
-	  glTexCoord2i( 0, 1 );glVertex3f(-0.5f, 0.55f, 0.0f );
-	  glTexCoord2i( 0, 0 );glVertex3f(-0.5f, 0.75f, 0.0f );
-	  glTexCoord2i( 1, 0 );glVertex3f( 0.5f, 0.75f, 0.0f );
-	  glTexCoord2i( 1, 1 );glVertex3f( 0.5f, 0.55f, 0.0f );
-      glEnd();
+    if (game.menu_level == 9) //Next level screen
+    {
+        int level_t = game_o.level + 1;
+        if (level_t > 24) level_t = 24;
+        texture.level_completed.draw( 0.0f, 0.65f, 0.0f, 1.0f, 0.2f); //Congratulations
+        if (game_o.level_locked[level_t])
+        {
+            texture.new_level_unlocked.draw( 0.0f, 0.45f, 0.0f, 1.0f, 0.2f); //Congratulations
+        }
+        //next level game screen preview
+        if(level_t ==  0) texture.level_preview_00.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t ==  1) texture.level_preview_01.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t ==  2) texture.level_preview_02.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t ==  3) texture.level_preview_03.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t ==  4) texture.level_preview_04.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t ==  5) texture.level_preview_05.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t ==  6) texture.level_preview_06.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t ==  7) texture.level_preview_07.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t ==  8) texture.level_preview_08.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t ==  9) texture.level_preview_09.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t == 10) texture.level_preview_10.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t == 11) texture.level_preview_11.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t == 12) texture.level_preview_12.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t == 13) texture.level_preview_13.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t == 14) texture.level_preview_14.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t == 15) texture.level_preview_15.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t == 16) texture.level_preview_16.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t == 17) texture.level_preview_17.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t == 18) texture.level_preview_18.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t == 19) texture.level_preview_19.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t == 20) texture.level_preview_20.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t == 21) texture.level_preview_21.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t == 22) texture.level_preview_22.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t == 23) texture.level_preview_23.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
+        if(level_t == 24) texture.level_preview_24.draw( 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
 
-      if (game_o.level_locked[level_t])
-      {
-         bind_texture(335); //level unlocked
-         glLoadIdentity();
-         glBegin( GL_QUADS );
-	     glTexCoord2i( 0, 1 );glVertex3f(-0.5f, 0.35f, 0.0f );
-	     glTexCoord2i( 0, 0 );glVertex3f(-0.5f, 0.55f, 0.0f );
-	     glTexCoord2i( 1, 0 );glVertex3f( 0.5f, 0.55f, 0.0f );
-   	     glTexCoord2i( 1, 1 );glVertex3f( 0.5f, 0.35f, 0.0f );
-         glEnd();
-      }
-
-      bind_texture(147+level_t); //next level game screen preview
-      glLoadIdentity();
-      glBegin( GL_QUADS );
-	  glTexCoord2i( 0, 1 );glVertex3f(-0.5f,-0.70f, 0.0f );
-	  glTexCoord2i( 0, 0 );glVertex3f(-0.5f, 0.30f, 0.0f );
-	  glTexCoord2i( 1, 0 );glVertex3f( 0.5f, 0.30f, 0.0f );
-	  glTexCoord2i( 1, 1 );glVertex3f( 0.5f,-0.70f, 0.0f );
-      glEnd();
-
-      font.font_1.Write(255,255,255,64,-1.00f,-0.00f,3,9,L"Level score - ", game_o.level_score);
-      font.font_1.Write(255,255,255,64,-1.00f,-0.10f,3,9,L"Total score - ", game_o.score);
-      font.font_1.Write(255,255,255,64,-1.00f,-0.20f,3,9,L"Level kills - ", game_o.level_kills);
-      font.font_1.Write(255,255,255,64,-1.00f,-0.30f,3,9,L"Total kills - ", game_o.kills);
-      font.font_1.Write(255,255,255,64,-1.00f,-0.40f,3,9,L"Kill rate   - ./'",(((float)game_o.level_kills/(float)game_o.level_spawened)*100));
-   }
+        font.font_1.Write(255,255,255,64,-1.00f,-0.00f,3,9,L"Level score - ", game_o.level_score);
+        font.font_1.Write(255,255,255,64,-1.00f,-0.10f,3,9,L"Total score - ", game_o.score);
+        font.font_1.Write(255,255,255,64,-1.00f,-0.20f,3,9,L"Level kills - ", game_o.level_kills);
+        font.font_1.Write(255,255,255,64,-1.00f,-0.30f,3,9,L"Total kills - ", game_o.kills);
+        font.font_1.Write(255,255,255,64,-1.00f,-0.40f,3,9,L"Kill rate   - ./'",(((float)game_o.level_kills/(float)game_o.level_spawened)*100));
+    }
 /*-----------------------------------------------------------------------------*/
    if (game.menu_level == 10) //Outro screen
    {
