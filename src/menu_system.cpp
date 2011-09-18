@@ -1606,23 +1606,8 @@ int diplay_menu (void)
 /*-----------------------------------------------------------------------------*/
    if (game.menu_level == 8) //Player death screen
    {
-      bind_texture(329); //Game Over
-      glLoadIdentity();
-      glBegin( GL_QUADS );
-	  glTexCoord2i( 0, 1 );glVertex3f(-0.4f, 0.55f, 0.0f );
-	  glTexCoord2i( 0, 0 );glVertex3f(-0.4f, 0.75f, 0.0f );
-	  glTexCoord2i( 1, 0 );glVertex3f( 0.4f, 0.75f, 0.0f );
-	  glTexCoord2i( 1, 1 );glVertex3f( 0.4f, 0.55f, 0.0f );
-      glEnd();
-
-      bind_texture(332); //explosion
-      glLoadIdentity();
-      glBegin( GL_QUADS );
-	  glTexCoord2i( 0, 1 );glVertex3f(-0.6f,-0.70f, 0.0f );
-	  glTexCoord2i( 0, 0 );glVertex3f(-0.6f, 0.50f, 0.0f );
-	  glTexCoord2i( 1, 0 );glVertex3f( 0.6f, 0.50f, 0.0f );
-	  glTexCoord2i( 1, 1 );glVertex3f( 0.6f,-0.70f, 0.0f );
-      glEnd();
+       texture.game_over.draw    ( 0.0f, 0.65f, 0.0f, 0.8f, 0.2f); //Game Over
+       texture.explosion_001.draw( 0.0f,-0.10f, 0.0f, 1.2f, 1.2f); //explosion
    }
 /*-----------------------------------------------------------------------------*/
    if (game.menu_level == 9) //Next level screen
