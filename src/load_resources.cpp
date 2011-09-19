@@ -975,10 +975,10 @@ bool bind_texture(int texture_number)
     if (texture_number == 339) glBindTexture( GL_TEXTURE_2D, texture.credits_00.frame[0].data);
     if (texture_number == 340) glBindTexture( GL_TEXTURE_2D, texture.level_progress_bar.frame[0].data);
     if (texture_number == 341) glBindTexture( GL_TEXTURE_2D, texture.bomb_powerup.frame[0].data);
-    if (texture_number == 242) glBindTexture( GL_TEXTURE_2D, texture.sideship_00.frame[0].data);
-    if (texture_number == 243) glBindTexture( GL_TEXTURE_2D, texture.sideship_01.frame[0].data);
-    if (texture_number == 244) glBindTexture( GL_TEXTURE_2D, texture.sideship_02.frame[0].data);
-    if (texture_number == 245) glBindTexture( GL_TEXTURE_2D, texture.sideship_03.frame[0].data);
+    if (texture_number == 342) glBindTexture( GL_TEXTURE_2D, texture.sideship_00.frame[0].data);
+    if (texture_number == 343) glBindTexture( GL_TEXTURE_2D, texture.sideship_01.frame[0].data);
+    if (texture_number == 344) glBindTexture( GL_TEXTURE_2D, texture.sideship_02.frame[0].data);
+    if (texture_number == 345) glBindTexture( GL_TEXTURE_2D, texture.sideship_03.frame[0].data);
     if (texture_number == 346) glBindTexture( GL_TEXTURE_2D, texture.powerup_sideship_00.frame[0].data);
     if (texture_number == 347) glBindTexture( GL_TEXTURE_2D, texture.powerup_sideship_01.frame[0].data);
     if (texture_number == 348) glBindTexture( GL_TEXTURE_2D, texture.powerup_sideship_02.frame[0].data);

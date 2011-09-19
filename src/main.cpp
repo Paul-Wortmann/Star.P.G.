@@ -112,7 +112,6 @@ int main(int argc, char *argv[])
   SDL_Joystick *joystick;
   SDL_JoystickEventState(SDL_ENABLE);
   joystick = SDL_JoystickOpen(0);
-
   game.log.File_Write("Initializing game system...");
   init_game(false);
   game.log.File_Write("Initializing menu system...");
@@ -126,6 +125,7 @@ int main(int argc, char *argv[])
   init_npc_bullets();
   init_npcs(0);
   game_o.level = 0;
+  game.log.File_Write("Initializing OpenGL...");
   game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
   seed_rand();
   TTF_Init();
@@ -137,6 +137,7 @@ int main(int argc, char *argv[])
   init_projectiles(false);
   init_powerups();
   init_shields(false);
+  init_game(false);
   game.log.File_Write("Starting game...");
   game.log.File_Write("---------------\n");
 //----------------------------------- Main loop --------------------------------

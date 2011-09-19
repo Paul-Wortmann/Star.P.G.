@@ -47,7 +47,7 @@ void supportship_class::init(int supportship_number, int number_of_ships, float 
     supportship_class::rate_of_fire_count = 0;
     supportship_class::active             = false;
     supportship_class::level              = -1;
-    supportship_class::image              = supportship_number+242;
+    supportship_class::image              = supportship_number+texture.sideship_00.ref_number;
     supportship_class::width              = 0.075f;
     supportship_class::height             = 0.075f;
     for (int supportship_count = 0;supportship_count < MAX_SUPPORTSHIP_LEVELS;supportship_count++)
@@ -643,72 +643,52 @@ void  draw_supportships       (void)
     {
         if (game_o.supportship[count].active)
         {
-            if (game_o.supportship[count].follow)
+            if (game_o.supportship[count].follow) //support ships - follow
             {
                 supportship_level_count = 0;
-                bind_texture(game_o.supportship[count].image); //support ships
-                glLoadIdentity();
-                glBegin( GL_QUADS );
-                glTexCoord2i( 0, 0 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x+game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y+game_o.supportship[count].height/2, 0.001f);
-                glTexCoord2i( 1, 0 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x+game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y-game_o.supportship[count].height/2, 0.001f);
-                glTexCoord2i( 1, 1 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x-game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y-game_o.supportship[count].height/2, 0.001f);
-                glTexCoord2i( 0, 1 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x-game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y+game_o.supportship[count].height/2, 0.001f);
-                glEnd();
+                if (game_o.supportship[count].image == texture.sideship_00.ref_number) texture.sideship_00.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
+                if (game_o.supportship[count].image == texture.sideship_01.ref_number) texture.sideship_01.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
+                if (game_o.supportship[count].image == texture.sideship_02.ref_number) texture.sideship_02.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
+                if (game_o.supportship[count].image == texture.sideship_03.ref_number) texture.sideship_03.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
             }
-            if (game_o.supportship[count].multi_follow)
+            if (game_o.supportship[count].multi_follow) //support ships - multi_follow
             {
                 for (int supportship_level_count = 0;supportship_level_count < MAX_SUPPORTSHIP_LEVELS-1;supportship_level_count++)
                 {
                     if (game_o.supportship[count].supportship_pos[supportship_level_count].active)
                     {
-                        bind_texture(game_o.supportship[count].image); //support ships
-                        glLoadIdentity();
-                        glBegin( GL_QUADS );
-                        glTexCoord2i( 0, 0 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x+game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y+game_o.supportship[count].height/2, 0.001f);
-                        glTexCoord2i( 1, 0 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x+game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y-game_o.supportship[count].height/2, 0.001f);
-                        glTexCoord2i( 1, 1 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x-game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y-game_o.supportship[count].height/2, 0.001f);
-                        glTexCoord2i( 0, 1 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x-game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y+game_o.supportship[count].height/2, 0.001f);
-                        glEnd();
+                        if (game_o.supportship[count].image == texture.sideship_00.ref_number) texture.sideship_00.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
+                        if (game_o.supportship[count].image == texture.sideship_01.ref_number) texture.sideship_01.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
+                        if (game_o.supportship[count].image == texture.sideship_02.ref_number) texture.sideship_02.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
+                        if (game_o.supportship[count].image == texture.sideship_03.ref_number) texture.sideship_03.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
                     }
                 }
             }
-            if (game_o.supportship[count].rotate_follow)
+            if (game_o.supportship[count].rotate_follow) //support ships - rotate_follow
             {
                 for (int supportship_level_count = 0;supportship_level_count < MAX_SUPPORTSHIP_LEVELS;supportship_level_count++)
                 {
                     if (game_o.supportship[count].supportship_pos[supportship_level_count].active)
                     {
-                        bind_texture(game_o.supportship[count].image); //support ships
-                        glLoadIdentity();
-                        glBegin( GL_QUADS );
-                        glTexCoord2i( 0, 0 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x+game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y+game_o.supportship[count].height/2, 0.001f);
-                        glTexCoord2i( 1, 0 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x+game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y-game_o.supportship[count].height/2, 0.001f);
-                        glTexCoord2i( 1, 1 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x-game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y-game_o.supportship[count].height/2, 0.001f);
-                        glTexCoord2i( 0, 1 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x-game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y+game_o.supportship[count].height/2, 0.001f);
-                        glEnd();
+                        if (game_o.supportship[count].image == texture.sideship_00.ref_number) texture.sideship_00.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
+                        if (game_o.supportship[count].image == texture.sideship_01.ref_number) texture.sideship_01.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
+                        if (game_o.supportship[count].image == texture.sideship_02.ref_number) texture.sideship_02.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
+                        if (game_o.supportship[count].image == texture.sideship_03.ref_number) texture.sideship_03.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
                     }
                 }
             }
-            if (game_o.supportship[count].side_follow)
+            if (game_o.supportship[count].side_follow) //support ships - side_follow
             {
                 supportship_level_count = 0;
-                bind_texture(game_o.supportship[count].image); //support ships
-                glLoadIdentity();
-                glBegin( GL_QUADS );
-                glTexCoord2i( 0, 0 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x+game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y+game_o.supportship[count].height/2, 0.001f);
-                glTexCoord2i( 1, 0 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x+game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y-game_o.supportship[count].height/2, 0.001f);
-                glTexCoord2i( 1, 1 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x-game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y-game_o.supportship[count].height/2, 0.001f);
-                glTexCoord2i( 0, 1 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x-game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y+game_o.supportship[count].height/2, 0.001f);
-                glEnd();
+                if (game_o.supportship[count].image == texture.sideship_00.ref_number) texture.sideship_00.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
+                if (game_o.supportship[count].image == texture.sideship_01.ref_number) texture.sideship_01.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
+                if (game_o.supportship[count].image == texture.sideship_02.ref_number) texture.sideship_02.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
+                if (game_o.supportship[count].image == texture.sideship_03.ref_number) texture.sideship_03.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
                 supportship_level_count = 1;
-                bind_texture(game_o.supportship[count].image); //support ships
-                glLoadIdentity();
-                glBegin( GL_QUADS );
-                glTexCoord2i( 0, 0 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x+game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y+game_o.supportship[count].height/2, 0.001f);
-                glTexCoord2i( 1, 0 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x+game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y-game_o.supportship[count].height/2, 0.001f);
-                glTexCoord2i( 1, 1 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x-game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y-game_o.supportship[count].height/2, 0.001f);
-                glTexCoord2i( 0, 1 );glVertex3f(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x-game_o.supportship[count].width/2, game_o.supportship[count].supportship_pos[supportship_level_count].pos_y+game_o.supportship[count].height/2, 0.001f);
-                glEnd();
+                if (game_o.supportship[count].image == texture.sideship_00.ref_number) texture.sideship_00.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
+                if (game_o.supportship[count].image == texture.sideship_01.ref_number) texture.sideship_01.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
+                if (game_o.supportship[count].image == texture.sideship_02.ref_number) texture.sideship_02.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
+                if (game_o.supportship[count].image == texture.sideship_03.ref_number) texture.sideship_03.draw(game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,0.001f,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
             }
         }
     }

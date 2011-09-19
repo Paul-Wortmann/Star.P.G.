@@ -91,7 +91,7 @@ int init_game(bool re_init)
     game_o.player.health                     =  0.100f;
     game_o.player.health_regen_rate          =  0.00005f;
     game_o.player.max_health                 =  0.100f;
-    game_o.player.image                      =  278; // change game_draw(); code for drawing player if you change this!!!!
+    game_o.player.image                      =  texture.ship_025.ref_number; // change game_draw(); code for drawing player if you change this!!!!
     game_o.player.front_weapon               =  0;
     game_o.player.side_weapon                =  0;
     game_o.player.front_shield               = -1;
