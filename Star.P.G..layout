@@ -170,10 +170,10 @@
 		<Cursor1 position="903" topLine="1" />
 	</File>
 	<File name="src\powerups.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="17265" topLine="0" />
+		<Cursor1 position="1034" topLine="21" />
 	</File>
 	<File name="src\powerups.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="903" topLine="0" />
+		<Cursor1 position="1100" topLine="0" />
 	</File>
 	<File name="src\projectiles.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="34656" topLine="733" />

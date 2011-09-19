@@ -28,7 +28,7 @@
 const int   MAX_POWERUPS       = 13;
 const int   MAX_COINS          = 32;
 const int   MAX_WEXPS          = 32;
-const int   MAX_BOMBS          = 6;
+const int   MAX_BOMBS          = 5;
 
 struct powerup_type
 {
