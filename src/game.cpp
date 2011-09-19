@@ -699,17 +699,10 @@ int display_game(void)
     float  npc_num = 0.0f;
     for  (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
     {
-        bind_texture(210); // npc health bars
-        glLoadIdentity();
         if (game_o.active_npc[npc_count].active)
         {
             npc_num += 0.05f;
-            glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f(0.89f +((game_o.npc[npc_count].health/game_o.enemy[game_o.npc[npc_count].type_npc].health)/10),1.0f -0.025f-npc_num, 0.001f);
-            glTexCoord2i( 0, 0 );glVertex3f(0.89f +((game_o.npc[npc_count].health/game_o.enemy[game_o.npc[npc_count].type_npc].health)/10),1.0f +0.025f-npc_num, 0.001f);
-            glTexCoord2i( 1, 0 );glVertex3f(0.89f                                                                                         ,1.0f +0.025f-npc_num, 0.001f);
-            glTexCoord2i( 1, 1 );glVertex3f(0.89f                                                                                         ,1.0f -0.025f-npc_num, 0.001f);
-            glEnd();
+            texture.health_bar.draw(0.89f +((game_o.npc[npc_count].health/game_o.enemy[game_o.npc[npc_count].type_npc].health)/20),1.0f-npc_num, 0.001f,((game_o.npc[npc_count].health/game_o.enemy[game_o.npc[npc_count].type_npc].health)/10), 0.050); //
         }
     }
 
