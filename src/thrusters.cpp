@@ -22,10 +22,12 @@
  * @date 2011-09-03
  */
 
+#include "load_resources.hpp"
 #include "thrusters.hpp"
 #include "game.hpp"
 
-extern game_type game_o;
+extern  game_type        game_o;
+extern  texture_type     texture;
 
 void init_thrusters(bool re_init)
 {
@@ -47,7 +49,7 @@ void init_thrusters(bool re_init)
         game_o.thruster[0].level_2        = 512;
         game_o.thruster[0].level_3        = 1024;
         game_o.thruster[0].experience     = 0;
-        game_o.thruster[0].image          = 279;
+        game_o.thruster[0].image          = texture.thruster_000.ref_number;
         game_o.thruster[0].thrust         = 0.002f;
         game_o.thruster[1].name           = L"Seismic Thrusters";
         game_o.thruster[1].active         = false;
@@ -56,7 +58,7 @@ void init_thrusters(bool re_init)
         game_o.thruster[1].level_2        = 1024;
         game_o.thruster[1].level_3        = 2048;
         game_o.thruster[1].experience     = 0;
-        game_o.thruster[1].image          = 280;
+        game_o.thruster[1].image          = texture.thruster_001.ref_number;
         game_o.thruster[1].thrust         = 0.004f;
         game_o.thruster[2].name           = L"Vortex Thrusters";
         game_o.thruster[2].active         = false;
@@ -65,7 +67,7 @@ void init_thrusters(bool re_init)
         game_o.thruster[2].level_2        = 2048;
         game_o.thruster[2].level_3        = 4096;
         game_o.thruster[2].experience     = 0;
-        game_o.thruster[2].image          = 281;
+        game_o.thruster[2].image          = texture.thruster_002.ref_number;
         game_o.thruster[2].thrust         = 0.006f;
         game_o.thruster[3].name           = L"Convolution Thrusters";
         game_o.thruster[3].active         = false;
@@ -74,7 +76,7 @@ void init_thrusters(bool re_init)
         game_o.thruster[3].level_2        = 4096;
         game_o.thruster[3].level_3        = 8192;
         game_o.thruster[3].experience     = 0;
-        game_o.thruster[3].image          = 336;
+        game_o.thruster[3].image          = texture.thruster_003.ref_number;
         game_o.thruster[3].thrust         = 0.008f;
     }
 };
