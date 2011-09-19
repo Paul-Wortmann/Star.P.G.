@@ -696,13 +696,23 @@ int display_game(void)
         glEnd();
     }
     glColor4f(1.0f,1.0f,1.0f,1.0f);//------------------------------------------------
-    float  npc_num = 0.0f;
+
+    float  npc_num   = 0.0f;
+    float  temp_size = 0.0f;
     for  (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
     {
         if (game_o.active_npc[npc_count].active)
         {
             npc_num += 0.05f;
-            texture.health_bar.draw(0.89f +((game_o.npc[npc_count].health/game_o.enemy[game_o.npc[npc_count].type_npc].health)/20),1.0f-npc_num, 0.001f,((game_o.npc[npc_count].health/game_o.enemy[game_o.npc[npc_count].type_npc].health)/10), 0.050); //
+            if (boss_level())
+            {
+                temp_size = ((game_o.npc[npc_count].health/game_o.enemy[game_o.npc[npc_count].type_npc].health)*100)/52.5f;
+                texture.health_bar.draw(-0.95f + (temp_size/2),0.85f-npc_num, 0.001f,temp_size, 0.10); // NPC BOSS health bars
+            }
+            else
+            {
+                texture.health_bar.draw(0.89f +((game_o.npc[npc_count].health/game_o.enemy[game_o.npc[npc_count].type_npc].health)/20),1.0f-npc_num, 0.001f,((game_o.npc[npc_count].health/game_o.enemy[game_o.npc[npc_count].type_npc].health)/10), 0.050); // NPC health bars
+            }
         }
     }
 
