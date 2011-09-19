@@ -135,6 +135,7 @@ int main(int argc, char *argv[])
   loading_screen_display("data/textures/misc/loading_screen.png");
   load_resources();
   init_projectiles(false);
+  init_powerups();
   game.log.File_Write("Starting game...");
   game.log.File_Write("---------------\n");
 //----------------------------------- Main loop --------------------------------

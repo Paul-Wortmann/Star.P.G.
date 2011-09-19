@@ -716,16 +716,20 @@ int display_game(void)
     for (int count = MAX_POWERUPS;count >=1;count--)  // powerups
     {
         z_pos = 0.002f + (0.0002*count);
-        bind_texture(game_o.powerup[count].image);
-        glLoadIdentity();
         if (game_o.powerup[count].active)
         {
-            glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f(game_o.powerup[count].x_pos+(game_o.powerup[count].width/2),game_o.powerup[count].y_pos-(game_o.powerup[count].height/2),z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f(game_o.powerup[count].x_pos+(game_o.powerup[count].width/2),game_o.powerup[count].y_pos+(game_o.powerup[count].height/2),z_pos);
-            glTexCoord2i( 1, 0 );glVertex3f(game_o.powerup[count].x_pos-(game_o.powerup[count].width/2),game_o.powerup[count].y_pos+(game_o.powerup[count].height/2),z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f(game_o.powerup[count].x_pos-(game_o.powerup[count].width/2),game_o.powerup[count].y_pos-(game_o.powerup[count].height/2),z_pos);
-            glEnd();
+            if (game_o.powerup[count].image == texture.health_powerup.ref_number        ) texture.health_powerup.draw        (game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,z_pos,game_o.powerup[count].width,game_o.powerup[count].height); // health power up
+            if (game_o.powerup[count].image == texture.shield_lvlup_powerup.ref_number  ) texture.shield_lvlup_powerup.draw  (game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,z_pos,game_o.powerup[count].width,game_o.powerup[count].height); // shield level up
+            if (game_o.powerup[count].image == texture.shield_new_powerup.ref_number    ) texture.shield_new_powerup.draw    (game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,z_pos,game_o.powerup[count].width,game_o.powerup[count].height); // shield new
+            if (game_o.powerup[count].image == texture.thruster_lvlup_powerup.ref_number) texture.thruster_lvlup_powerup.draw(game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,z_pos,game_o.powerup[count].width,game_o.powerup[count].height); // thruster level up
+            if (game_o.powerup[count].image == texture.thruster_new_powerup.ref_number  ) texture.thruster_new_powerup.draw  (game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,z_pos,game_o.powerup[count].width,game_o.powerup[count].height); // thruster new
+            if (game_o.powerup[count].image == texture.weapon_lvlup_powerup.ref_number  ) texture.weapon_lvlup_powerup.draw  (game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,z_pos,game_o.powerup[count].width,game_o.powerup[count].height); // weapon level up
+            if (game_o.powerup[count].image == texture.weapon_new_powerup.ref_number    ) texture.weapon_new_powerup.draw    (game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,z_pos,game_o.powerup[count].width,game_o.powerup[count].height); // weapon new
+            if (game_o.powerup[count].image == texture.bomb_powerup.ref_number          ) texture.bomb_powerup.draw          (game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,z_pos,game_o.powerup[count].width,game_o.powerup[count].height); // bomb
+            if (game_o.powerup[count].image == texture.powerup_sideship_00.ref_number   ) texture.powerup_sideship_00.draw   (game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,z_pos,game_o.powerup[count].width,game_o.powerup[count].height); // side helper ship 0
+            if (game_o.powerup[count].image == texture.powerup_sideship_01.ref_number   ) texture.powerup_sideship_01.draw   (game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,z_pos,game_o.powerup[count].width,game_o.powerup[count].height); // side helper ship 1
+            if (game_o.powerup[count].image == texture.powerup_sideship_02.ref_number   ) texture.powerup_sideship_02.draw   (game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,z_pos,game_o.powerup[count].width,game_o.powerup[count].height); // side helper ship 2
+            if (game_o.powerup[count].image == texture.powerup_sideship_03.ref_number   ) texture.powerup_sideship_03.draw   (game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,z_pos,game_o.powerup[count].width,game_o.powerup[count].height); // side helper ship 3
         }
     }
 
@@ -740,7 +744,7 @@ int display_game(void)
       z_pos = 0.002f + (0.0002*(count+MAX_POWERUPS+MAX_COINS));
       if (game_o.wexp[count].active) texture.wexp_powerup.draw(game_o.wexp[count].x_pos,game_o.wexp[count].y_pos,z_pos,game_o.wexp[count].width,game_o.wexp[count].height);
    }
-    texture.health_bar.draw (-0.6f +((game_o.player.health/game_o.player.max_health)/10),0.9375f, 0.001f,((game_o.player.health/game_o.player.max_health)/5), 0.075f); //player health bar
+    texture.health_bar.draw (-0.6f +((game_o.player.health/game_o.player.max_health)/10), 0.9375f, 0.001f,((game_o.player.health/game_o.player.max_health)/5), 0.075f); //player health bar
 
     if (game_o.number_bombs > 0) texture.bomb_powerup.draw(-0.960f, 0.9375f, 0.001f, 0.075f, 0.075f); // bomb icons
     if (game_o.number_bombs > 1) texture.bomb_powerup.draw(-0.885f, 0.9375f, 0.001f, 0.075f, 0.075f); // bomb icons
@@ -788,7 +792,7 @@ int display_game(void)
         if (game_o.projectile[game_o.player.front_weapon].level == 1) temp_val = ((game_o.projectile[game_o.player.front_weapon].experience / game_o.projectile[game_o.player.front_weapon].level_2)/5);
         if (game_o.projectile[game_o.player.front_weapon].level == 2) temp_val = ((game_o.projectile[game_o.player.front_weapon].experience / game_o.projectile[game_o.player.front_weapon].level_3)/5);
         if (game_o.projectile[game_o.player.front_weapon].level == 3) temp_val = 0.2f;
-        texture.weapon_bar.draw (-0.3f +(temp_val/2),0.9375f, 0.001f,temp_val, 0.075f);// front weapon exp bar
+        texture.weapon_bar.draw (-0.3f +(temp_val/2), 0.9375f, 0.001f,temp_val, 0.075f);// front weapon exp bar
     }
 
     if (game_o.player.side_weapon > -1)

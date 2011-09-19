@@ -87,18 +87,18 @@ int init_powerups(void)
       game_o.powerup[count].speed      = 0.0025f;
       game_o.powerup[count].spawn_rate = 20000;
    }
-   game_o.powerup[1 ].image   = 291;//health
-   game_o.powerup[2 ].image   = 292;//shield lvl up
-   game_o.powerup[3 ].image   = 293;//shield new
-   game_o.powerup[4 ].image   = 294;//thruster lvl up
-   game_o.powerup[5 ].image   = 295;//thruster new
-   game_o.powerup[6 ].image   = 296;//weapon lvl up
-   game_o.powerup[7 ].image   = 297;//weapon new
-   game_o.powerup[8 ].image   = 341;//bomb
-   game_o.powerup[9 ].image   = 346;//side helper ship 0
-   game_o.powerup[10].image   = 347;//side helper ship 1
-   game_o.powerup[11].image   = 348;//side helper ship 2
-   game_o.powerup[12].image   = 349;//side helper ship 3
+   game_o.powerup[1 ].image   = texture.health_powerup.ref_number;          //health
+   game_o.powerup[2 ].image   = texture.shield_lvlup_powerup.ref_number;    //shield lvl up
+   game_o.powerup[3 ].image   = texture.shield_new_powerup.ref_number;      //shield new
+   game_o.powerup[4 ].image   = texture.thruster_lvlup_powerup.ref_number;  //thruster lvl up
+   game_o.powerup[5 ].image   = texture.thruster_new_powerup.ref_number;    //thruster new
+   game_o.powerup[6 ].image   = texture.weapon_lvlup_powerup.ref_number;    //weapon lvl up
+   game_o.powerup[7 ].image   = texture.weapon_new_powerup.ref_number;      //weapon new
+   game_o.powerup[8 ].image   = texture.bomb_powerup.ref_number;            //bomb
+   game_o.powerup[9 ].image   = texture.powerup_sideship_00.ref_number;     //side helper ship 0
+   game_o.powerup[10].image   = texture.powerup_sideship_01.ref_number;     //side helper ship 1
+   game_o.powerup[11].image   = texture.powerup_sideship_02.ref_number;     //side helper ship 2
+   game_o.powerup[12].image   = texture.powerup_sideship_03.ref_number;     //side helper ship 3
 
    game_o.powerup[1 ].sound   = 14;//health
    game_o.powerup[2 ].sound   = 15;//shield lvl up
