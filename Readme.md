@@ -5,7 +5,7 @@ This is Star.P.G., a free/open source computer game.
 
 About
 -----
-An arcade style, side scrolling shooter.
+Star.P.G. is an arcade style, side scrolling shooter.
 
 It was just supposed to be a one month game project...now its almost a year in the making. :P
 Star.P.G. is a personal project, I never intended or for that matter wish for help on the code for this game. 
@@ -66,7 +66,7 @@ Usage
 - "Down"    ->    Move starship down.
 - "Space"   ->    Fire weapon.
 - "B"       ->    Use a collected bomb.
-- "P"       ->    Pause / Resume.
+- "P"       ->    Pause.
 - "ESC"	    ->    Menu, Quit.
 
 Known bugs

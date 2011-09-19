@@ -631,6 +631,8 @@ int display_game(void)
         }
     }
 //----------------------------------------------------------------------------------------
+
+
     draw_supportships(); // support ships
 
     if ((game_o.immune) && (game_o.immunity_state == 0)) glColor4f(1.0f,0.0f,0.0f,0.6f);
