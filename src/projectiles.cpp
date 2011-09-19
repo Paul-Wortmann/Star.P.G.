@@ -105,7 +105,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[ 0].level_1       = 1024.0f;
     game_o.projectile[ 0].level_2       = 2048.0f;
     game_o.projectile[ 0].level_3       = 4096.0f;
-    game_o.projectile[ 0].image         = 222;
+    game_o.projectile[ 0].image         = texture.projectile_000.ref_number;
     game_o.projectile[ 0].sound         = 7;
     game_o.projectile[ 0].damage        = 2.5f;
     game_o.projectile[ 0].speed         = 0.003f;
@@ -124,7 +124,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[ 1].level_1       = 2048.0f;
     game_o.projectile[ 1].level_2       = 4096.0f;
     game_o.projectile[ 1].level_3       = 8192.0f;
-    game_o.projectile[ 1].image         = 223;
+    game_o.projectile[ 1].image         = texture.projectile_001.ref_number;
     game_o.projectile[ 1].sound         = 8;
     game_o.projectile[ 1].damage        = 4;
     game_o.projectile[ 1].speed         = 0.015f;
@@ -143,7 +143,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[ 2].level_1       = 4096.0f;
     game_o.projectile[ 2].level_2       = 8192.0f;
     game_o.projectile[ 2].level_3       = 16384.0f;
-    game_o.projectile[ 2].image         = 224;
+    game_o.projectile[ 2].image         = texture.projectile_002.ref_number;
     game_o.projectile[ 2].sound         = 9;
     game_o.projectile[ 2].damage        = 7;
     game_o.projectile[ 2].speed         = 0.005f;
@@ -162,7 +162,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[ 3].level_1       = 8192.0f;
     game_o.projectile[ 3].level_2       = 16384.0f;
     game_o.projectile[ 3].level_3       = 32768.0f;
-    game_o.projectile[ 3].image         = 225;
+    game_o.projectile[ 3].image         = texture.projectile_003.ref_number;
     game_o.projectile[ 3].sound         = 10;
     game_o.projectile[ 3].damage        = 8;
     game_o.projectile[ 3].speed         = 0.02f;
@@ -181,7 +181,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[ 4].level_1       = 16384.0f;
     game_o.projectile[ 4].level_2       = 32768.0f;
     game_o.projectile[ 4].level_3       = 65536.0f;
-    game_o.projectile[ 4].image         = 226;
+    game_o.projectile[ 4].image         = texture.projectile_004.ref_number;
     game_o.projectile[ 4].sound         = 11;
     game_o.projectile[ 4].damage        = 9;
     game_o.projectile[ 4].speed         = 0.025f;
@@ -200,7 +200,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[ 5].level_1       = 32768.0f;
     game_o.projectile[ 5].level_2       = 65536.0f;
     game_o.projectile[ 5].level_3       = 131072.0f;
-    game_o.projectile[ 5].image         = 227;
+    game_o.projectile[ 5].image         = texture.projectile_005.ref_number;
     game_o.projectile[ 5].sound         = 12;
     game_o.projectile[ 5].damage        = 10;
     game_o.projectile[ 5].speed         = 0.03f;
@@ -219,7 +219,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[ 6].level_1       = 0.0f;
     game_o.projectile[ 6].level_2       = 0.0f;
     game_o.projectile[ 6].level_3       = 0.0f;
-    game_o.projectile[ 6].image         = 228;
+    game_o.projectile[ 6].image         = texture.projectile_006.ref_number;
     game_o.projectile[ 6].sound         = 23;
     game_o.projectile[ 6].damage        = 0.0125f;
     game_o.projectile[ 6].speed         = 0.0075f;
@@ -238,7 +238,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[ 7].level_1       = 0.0f;
     game_o.projectile[ 7].level_2       = 0.0f;
     game_o.projectile[ 7].level_3       = 0.0f;
-    game_o.projectile[ 7].image         = 229;
+    game_o.projectile[ 7].image         = texture.projectile_007.ref_number;
     game_o.projectile[ 7].sound         = 24;
     game_o.projectile[ 7].damage        = 0.025f;
     game_o.projectile[ 7].speed         = 0.0080f;
@@ -257,7 +257,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[ 8].level_1       = 0.0f;
     game_o.projectile[ 8].level_2       = 0.0f;
     game_o.projectile[ 8].level_3       = 0.0f;
-    game_o.projectile[ 8].image         = 230;
+    game_o.projectile[ 8].image         = texture.projectile_008.ref_number;
     game_o.projectile[ 8].sound         = 25;
     game_o.projectile[ 8].damage        = 0.0375f;
     game_o.projectile[ 8].speed         = 0.0075f;
@@ -276,7 +276,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[ 9].level_1       = 0.0f;
     game_o.projectile[ 9].level_2       = 0.0f;
     game_o.projectile[ 9].level_3       = 0.0f;
-    game_o.projectile[ 9].image         = 231;
+    game_o.projectile[ 9].image         = texture.projectile_009.ref_number;
     game_o.projectile[ 9].sound         = 26;
     game_o.projectile[ 9].damage        = 0.05f;
     game_o.projectile[ 9].speed         = 0.0075f;
@@ -295,7 +295,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[10].level_1       = 0.0f;
     game_o.projectile[10].level_2       = 0.0f;
     game_o.projectile[10].level_3       = 0.0f;
-    game_o.projectile[10].image         = 232;
+    game_o.projectile[10].image         = texture.projectile_010.ref_number;
     game_o.projectile[10].sound         = 27;
     game_o.projectile[10].damage        = 0.0625f;
     game_o.projectile[10].speed         = 0.0075f;
@@ -314,7 +314,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[11].level_1       = 0.0f;
     game_o.projectile[11].level_2       = 0.0f;
     game_o.projectile[11].level_3       = 0.0f;
-    game_o.projectile[11].image         = 233;
+    game_o.projectile[11].image         = texture.projectile_011.ref_number;
     game_o.projectile[11].sound         = 28;
     game_o.projectile[11].damage        = 0.075f;
     game_o.projectile[11].speed         = 0.0075f;
@@ -333,7 +333,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[12].level_1       = 0.0f;
     game_o.projectile[12].level_2       = 0.0f;
     game_o.projectile[12].level_3       = 0.0f;
-    game_o.projectile[12].image         = 234;
+    game_o.projectile[12].image         = texture.projectile_012.ref_number;
     game_o.projectile[12].sound         = 29;
     game_o.projectile[12].damage        = 0.0875f;
     game_o.projectile[12].speed         = 0.0075f;
@@ -352,7 +352,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[13].level_1       = 0.0f;
     game_o.projectile[13].level_2       = 0.0f;
     game_o.projectile[13].level_3       = 0.0f;
-    game_o.projectile[13].image         = 235;
+    game_o.projectile[13].image         = texture.projectile_013.ref_number;
     game_o.projectile[13].sound         = 30;
     game_o.projectile[13].damage        = 0.500f;
     game_o.projectile[13].speed         = 0.0175f;
@@ -371,7 +371,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[14].level_1       = 0.0f;
     game_o.projectile[14].level_2       = 0.0f;
     game_o.projectile[14].level_3       = 0.0f;
-    game_o.projectile[14].image         = 236;
+    game_o.projectile[14].image         = texture.projectile_014.ref_number;
     game_o.projectile[14].sound         = 31;
     game_o.projectile[14].damage        = 0.1125f;
     game_o.projectile[14].speed         = 0.0075f;
@@ -390,7 +390,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[15].level_1       = 0.0f;
     game_o.projectile[15].level_2       = 0.0f;
     game_o.projectile[15].level_3       = 0.0f;
-    game_o.projectile[15].image         = 237;
+    game_o.projectile[15].image         = texture.projectile_015.ref_number;
     game_o.projectile[15].sound         = 32;
     game_o.projectile[15].damage        = 0.125f;
     game_o.projectile[15].speed         = 0.0075f;
@@ -409,7 +409,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[16].level_1       = 0.0f;
     game_o.projectile[16].level_2       = 0.0f;
     game_o.projectile[16].level_3       = 0.0f;
-    game_o.projectile[16].image         = 238;
+    game_o.projectile[16].image         = texture.projectile_016.ref_number;
     game_o.projectile[16].sound         = 33;
     game_o.projectile[16].damage        = 0.1375f;
     game_o.projectile[16].speed         = 0.0075f;
@@ -428,7 +428,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[17].level_1       = 0.0f;
     game_o.projectile[17].level_2       = 0.0f;
     game_o.projectile[17].level_3       = 0.0f;
-    game_o.projectile[17].image         = 239;
+    game_o.projectile[17].image         = texture.projectile_017.ref_number;
     game_o.projectile[17].sound         = 34;
     game_o.projectile[17].damage        = 0.75f;
     game_o.projectile[17].speed         = 0.0175f;
@@ -447,7 +447,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[18].level_1       = 0.0f;
     game_o.projectile[18].level_2       = 0.0f;
     game_o.projectile[18].level_3       = 0.0f;
-    game_o.projectile[18].image         = 240;
+    game_o.projectile[18].image         = texture.projectile_018.ref_number;
     game_o.projectile[18].sound         = 35;
     game_o.projectile[18].damage        = 0.1625f;
     game_o.projectile[18].speed         = 0.0075f;
@@ -466,7 +466,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[19].level_1       = 0.0f;
     game_o.projectile[19].level_2       = 0.0f;
     game_o.projectile[19].level_3       = 0.0f;
-    game_o.projectile[19].image         = 241;
+    game_o.projectile[19].image         = texture.projectile_019.ref_number;
     game_o.projectile[19].sound         = 36;
     game_o.projectile[19].damage        = 0.175f;
     game_o.projectile[19].speed         = 0.0075f;
@@ -485,7 +485,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[20].level_1       = 0.0f;
     game_o.projectile[20].level_2       = 0.0f;
     game_o.projectile[20].level_3       = 0.0f;
-    game_o.projectile[20].image         = 242;
+    game_o.projectile[20].image         = texture.projectile_020.ref_number;
     game_o.projectile[20].sound         = 37;
     game_o.projectile[20].damage        = 0.1875f;
     game_o.projectile[20].speed         = 0.0075f;
@@ -504,7 +504,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[21].level_1       = 0.0f;
     game_o.projectile[21].level_2       = 0.0f;
     game_o.projectile[21].level_3       = 0.0f;
-    game_o.projectile[21].image         = 243;
+    game_o.projectile[21].image         = texture.projectile_021.ref_number;
     game_o.projectile[21].sound         = 38;
     game_o.projectile[21].damage        = 0.86f;
     game_o.projectile[21].speed         = 0.0225f;
@@ -523,7 +523,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[22].level_1       = 0.0f;
     game_o.projectile[22].level_2       = 0.0f;
     game_o.projectile[22].level_3       = 0.0f;
-    game_o.projectile[22].image         = 244;
+    game_o.projectile[22].image         = texture.projectile_022.ref_number;
     game_o.projectile[22].sound         = 39;
     game_o.projectile[22].damage        = 0.2125f;
     game_o.projectile[22].speed         = 0.0075f;
@@ -542,7 +542,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[23].level_1       = 0.0f;
     game_o.projectile[23].level_2       = 0.0f;
     game_o.projectile[23].level_3       = 0.0f;
-    game_o.projectile[23].image         = 245;
+    game_o.projectile[23].image         = texture.projectile_023.ref_number;
     game_o.projectile[23].sound         = 40;
     game_o.projectile[23].damage        = 0.225f;
     game_o.projectile[23].speed         = 0.0075f;
@@ -561,7 +561,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[24].level_1       = 0.0f;
     game_o.projectile[24].level_2       = 0.0f;
     game_o.projectile[24].level_3       = 0.0f;
-    game_o.projectile[24].image         = 246;
+    game_o.projectile[24].image         = texture.projectile_024.ref_number;
     game_o.projectile[24].sound         = 41;
     game_o.projectile[24].damage        = 0.2375f;
     game_o.projectile[24].speed         = 0.0075f;
@@ -580,7 +580,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[25].level_1       = 0.0f;
     game_o.projectile[25].level_2       = 0.0f;
     game_o.projectile[25].level_3       = 0.0f;
-    game_o.projectile[25].image         = 247;
+    game_o.projectile[25].image         = texture.projectile_025.ref_number;
     game_o.projectile[25].sound         = 42;
     game_o.projectile[25].damage        = 0.25f;
     game_o.projectile[25].speed         = 0.0075f;
@@ -599,7 +599,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[26].level_1       = 0.0f;
     game_o.projectile[26].level_2       = 0.0f;
     game_o.projectile[26].level_3       = 0.0f;
-    game_o.projectile[26].image         = 248;
+    game_o.projectile[26].image         = texture.projectile_026.ref_number;
     game_o.projectile[26].sound         = 43;
     game_o.projectile[26].damage        = 0.2625f;
     game_o.projectile[26].speed         = 0.0075f;
@@ -618,7 +618,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[27].level_1       = 0.0f;
     game_o.projectile[27].level_2       = 0.0f;
     game_o.projectile[27].level_3       = 0.0f;
-    game_o.projectile[27].image         = 249;
+    game_o.projectile[27].image         = texture.projectile_027.ref_number;
     game_o.projectile[27].sound         = 44;
     game_o.projectile[27].damage        = 0.275f;
     game_o.projectile[27].speed         = 0.0075f;
@@ -637,7 +637,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[28].level_1       = 0.0f;
     game_o.projectile[28].level_2       = 0.0f;
     game_o.projectile[28].level_3       = 0.0f;
-    game_o.projectile[28].image         = 250;
+    game_o.projectile[28].image         = texture.projectile_028.ref_number;
     game_o.projectile[28].sound         = 45;
     game_o.projectile[28].damage        = 0.2875f;
     game_o.projectile[28].speed         = 0.0075f;
@@ -656,7 +656,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[29].level_1       = 0.0f;
     game_o.projectile[29].level_2       = 0.0f;
     game_o.projectile[29].level_3       = 0.0f;
-    game_o.projectile[29].image         = 251;
+    game_o.projectile[29].image         = texture.projectile_029.ref_number;
     game_o.projectile[29].sound         = 46;
     game_o.projectile[29].damage        = 0.3f;
     game_o.projectile[29].speed         = 0.0075f;
@@ -675,7 +675,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[30].level_1       = 0.0f;
     game_o.projectile[30].level_2       = 0.0f;
     game_o.projectile[30].level_3       = 0.0f;
-    game_o.projectile[30].image         = 252;
+    game_o.projectile[30].image         = texture.projectile_030.ref_number;
     game_o.projectile[30].sound         = 47;
     game_o.projectile[30].damage        = 0.3125f;
     game_o.projectile[30].speed         = 0.0175f;
@@ -694,7 +694,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[31].level_1       = 32768.0f;
     game_o.projectile[31].level_2       = 65536.0f;
     game_o.projectile[31].level_3       = 131072.0f;
-    game_o.projectile[31].image         = 226;
+    game_o.projectile[31].image         = texture.projectile_004.ref_number;
     game_o.projectile[31].sound         = 12;
     game_o.projectile[31].damage        = 1.0f;
     game_o.projectile[31].speed         = 0.025f;
@@ -713,7 +713,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[32].level_1       = 16384.0f;
     game_o.projectile[32].level_2       = 32768.0f;
     game_o.projectile[32].level_3       = 65536.0f;
-    game_o.projectile[32].image         = 226;
+    game_o.projectile[32].image         = texture.projectile_004.ref_number;
     game_o.projectile[32].sound         = 11;
     game_o.projectile[32].damage        = 9;
     game_o.projectile[32].speed         = 0.025f;
@@ -732,7 +732,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[33].level_1       = 0.0f;
     game_o.projectile[33].level_2       = 0.0f;
     game_o.projectile[33].level_3       = 0.0f;
-    game_o.projectile[33].image         = 234;
+    game_o.projectile[33].image         = texture.projectile_012.ref_number;
     game_o.projectile[33].sound         = 29;
     game_o.projectile[33].damage        = 0.0875f;
     game_o.projectile[33].speed         = 0.0075f;
