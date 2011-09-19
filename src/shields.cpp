@@ -22,10 +22,12 @@
  * @date 2011-09-03
  */
 
+#include "load_resources.hpp"
 #include "shields.hpp"
 #include "game.hpp"
 
-extern game_type game_o;
+extern  game_type game_o;
+extern  texture_type     texture;
 
 void init_shields(bool re_init)
 {
@@ -47,7 +49,7 @@ void init_shields(bool re_init)
         game_o.shield[0].level_2          = 512;
         game_o.shield[0].level_3          = 1024;
         game_o.shield[0].experience       = 0;
-        game_o.shield[0].image            = 217;
+        game_o.shield[0].image            = texture.shield_000.ref_number;
         game_o.shield[0].absorption       = 0.0005f;
         game_o.shield[1].name             = L"Iridium Shields";
         game_o.shield[1].active           = false;
@@ -56,7 +58,7 @@ void init_shields(bool re_init)
         game_o.shield[1].level_2          = 1024;
         game_o.shield[1].level_3          = 2048;
         game_o.shield[1].experience       = 0;
-        game_o.shield[1].image            = 218;
+        game_o.shield[1].image            = texture.shield_001.ref_number;
         game_o.shield[1].absorption       = 0.0010f;
         game_o.shield[2].name             = L"Rubidium Shields";
         game_o.shield[2].active           = false;
@@ -65,7 +67,7 @@ void init_shields(bool re_init)
         game_o.shield[2].level_2          = 2048;
         game_o.shield[2].level_3          = 4096;
         game_o.shield[2].experience       = 0;
-        game_o.shield[2].image            = 219;
+        game_o.shield[2].image            = texture.shield_002.ref_number;
         game_o.shield[2].absorption       = 0.0015f;
         game_o.shield[3].name             = L"Tantalum Shields";
         game_o.shield[3].active           = false;
@@ -74,7 +76,7 @@ void init_shields(bool re_init)
         game_o.shield[3].level_2          = 4096;
         game_o.shield[3].level_3          = 8192;
         game_o.shield[3].experience       = 0;
-        game_o.shield[3].image            = 220;
+        game_o.shield[3].image            = texture.shield_003.ref_number;
         game_o.shield[3].absorption       = 0.0020f;
         game_o.shield[4].name             = L"Actinium Shields";
         game_o.shield[4].active           = false;
@@ -83,7 +85,7 @@ void init_shields(bool re_init)
         game_o.shield[4].level_2          = 8192;
         game_o.shield[4].level_3          = 16384;
         game_o.shield[4].experience       = 0;
-        game_o.shield[4].image            = 221;
+        game_o.shield[4].image            = texture.shield_004.ref_number;
         game_o.shield[4].absorption       = 0.0025f;
     }
 };

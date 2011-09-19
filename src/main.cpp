@@ -136,6 +136,7 @@ int main(int argc, char *argv[])
   load_resources();
   init_projectiles(false);
   init_powerups();
+  init_shields(false);
   game.log.File_Write("Starting game...");
   game.log.File_Write("---------------\n");
 //----------------------------------- Main loop --------------------------------

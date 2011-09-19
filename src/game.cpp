@@ -684,16 +684,13 @@ int display_game(void)
         glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.height/6)-0.075f, 0.025f );
         glEnd();
     }
-    if (game_o.player.front_shield > -1)
+    if (game_o.player.front_shield > -1) // player starship shield
     {
-        bind_texture(game_o.shield[game_o.player.front_shield].image); //player starship shield
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/1.5),game_o.player.y_pos-(game_o.player.height/1.5), 0.02f );
-        glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos+(game_o.player.width/1.5),game_o.player.y_pos+(game_o.player.height/1.5), 0.02f );
-        glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/1.5),game_o.player.y_pos+(game_o.player.height/1.5), 0.02f );
-        glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos-(game_o.player.width/1.5),game_o.player.y_pos-(game_o.player.height/1.5), 0.02f );
-        glEnd();
+        if(game_o.shield[game_o.player.front_shield].image == texture.shield_000.ref_number) texture.shield_000.draw(game_o.player.x_pos,game_o.player.y_pos, 0.02f,(game_o.player.width/1.5)*2,(game_o.player.height/1.5)*2);
+        if(game_o.shield[game_o.player.front_shield].image == texture.shield_001.ref_number) texture.shield_001.draw(game_o.player.x_pos,game_o.player.y_pos, 0.02f,(game_o.player.width/1.5)*2,(game_o.player.height/1.5)*2);
+        if(game_o.shield[game_o.player.front_shield].image == texture.shield_002.ref_number) texture.shield_002.draw(game_o.player.x_pos,game_o.player.y_pos, 0.02f,(game_o.player.width/1.5)*2,(game_o.player.height/1.5)*2);
+        if(game_o.shield[game_o.player.front_shield].image == texture.shield_003.ref_number) texture.shield_003.draw(game_o.player.x_pos,game_o.player.y_pos, 0.02f,(game_o.player.width/1.5)*2,(game_o.player.height/1.5)*2);
+        if(game_o.shield[game_o.player.front_shield].image == texture.shield_004.ref_number) texture.shield_004.draw(game_o.player.x_pos,game_o.player.y_pos, 0.02f,(game_o.player.width/1.5)*2,(game_o.player.height/1.5)*2);
     }
     glColor4f(1.0f,1.0f,1.0f,1.0f);//------------------------------------------------
 
