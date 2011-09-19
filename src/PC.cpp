@@ -46,16 +46,16 @@ int spawn_player_bullet_num(int player_bullet_num, int location)
    if (location < 3) game_o.player.bullet[player_bullet_num].warhead = game_o.player.front_weapon;
    else              game_o.player.bullet[player_bullet_num].warhead = game_o.player.side_weapon;
    game_o.player.bullet[player_bullet_num].x_pos    = (game_o.player.x_pos + (game_o.player.width/2));
-   if (location == 0) game_o.player.bullet[player_bullet_num].y_pos =(game_o.player.y_pos + (game_o.player.hight/2))-0.02f;
+   if (location == 0) game_o.player.bullet[player_bullet_num].y_pos =(game_o.player.y_pos + (game_o.player.height/2))-0.02f;
    if (location == 1) game_o.player.bullet[player_bullet_num].y_pos = game_o.player.y_pos;
-   if (location == 2) game_o.player.bullet[player_bullet_num].y_pos =(game_o.player.y_pos - (game_o.player.hight/2))+0.02f;
-   if (location == 3) game_o.player.bullet[player_bullet_num].y_pos =(game_o.player.y_pos + (game_o.player.hight/2))-0.02f;
+   if (location == 2) game_o.player.bullet[player_bullet_num].y_pos =(game_o.player.y_pos - (game_o.player.height/2))+0.02f;
+   if (location == 3) game_o.player.bullet[player_bullet_num].y_pos =(game_o.player.y_pos + (game_o.player.height/2))-0.02f;
    if (location == 4) game_o.player.bullet[player_bullet_num].y_pos = game_o.player.y_pos;
-   if (location == 5) game_o.player.bullet[player_bullet_num].y_pos =(game_o.player.y_pos - (game_o.player.hight/2))+0.02f;
-   if (location == 6) game_o.player.bullet[player_bullet_num].y_pos =(game_o.player.y_pos + (game_o.player.hight/2))-0.02f;
+   if (location == 5) game_o.player.bullet[player_bullet_num].y_pos =(game_o.player.y_pos - (game_o.player.height/2))+0.02f;
+   if (location == 6) game_o.player.bullet[player_bullet_num].y_pos =(game_o.player.y_pos + (game_o.player.height/2))-0.02f;
    if (location == 7) game_o.player.bullet[player_bullet_num].y_pos = game_o.player.y_pos;
-   if (location == 8) game_o.player.bullet[player_bullet_num].y_pos =(game_o.player.y_pos - (game_o.player.hight/2))+0.02f;
-   game_o.player.bullet[player_bullet_num].wave_hight     =  game_o.projectile[game_o.player.bullet[player_bullet_num].warhead].wave_size;
+   if (location == 8) game_o.player.bullet[player_bullet_num].y_pos =(game_o.player.y_pos - (game_o.player.height/2))+0.02f;
+   game_o.player.bullet[player_bullet_num].wave_height     =  game_o.projectile[game_o.player.bullet[player_bullet_num].warhead].wave_size;
    game_o.player.bullet[player_bullet_num].wave_count     =  0.0f;
    game_o.player.bullet[player_bullet_num].wave_speed     =  game_o.projectile[game_o.player.bullet[player_bullet_num].warhead].wave_velocity;
    if (location == 0) game_o.player.bullet[player_bullet_num].wave_direction =  1;
@@ -69,8 +69,8 @@ int spawn_player_bullet_num(int player_bullet_num, int location)
    if (location == 8) game_o.player.bullet[player_bullet_num].wave_direction =  0;
    if (location < 3)  game_o.player.bullet[player_bullet_num].width = game_o.projectile[game_o.player.front_weapon].width;
    else               game_o.player.bullet[player_bullet_num].width = game_o.projectile[game_o.player.side_weapon ].width;
-   if (location < 3)  game_o.player.bullet[player_bullet_num].hight = game_o.projectile[game_o.player.front_weapon].height;
-   else               game_o.player.bullet[player_bullet_num].hight = game_o.projectile[game_o.player.side_weapon ].height;
+   if (location < 3)  game_o.player.bullet[player_bullet_num].height = game_o.projectile[game_o.player.front_weapon].height;
+   else               game_o.player.bullet[player_bullet_num].height = game_o.projectile[game_o.player.side_weapon ].height;
    return(0);
 }
 /*----------------------------------------------------------------------------*/
@@ -361,10 +361,10 @@ void init_player_bullets(void)
         game_o.player.bullet[count].x_speed        =  0.0f;
         game_o.player.bullet[count].y_speed        =  0.0f;
         game_o.player.bullet[count].width          =  0.05f;
-        game_o.player.bullet[count].hight          =  0.05f;
+        game_o.player.bullet[count].height          =  0.05f;
         game_o.player.bullet[count].warhead        =  0;
         game_o.player.bullet[count].location       =  0;
-        game_o.player.bullet[count].wave_hight     =  0.125f;
+        game_o.player.bullet[count].wave_height     =  0.125f;
         game_o.player.bullet[count].wave_count     =  0.0f;
         game_o.player.bullet[count].wave_speed     =  0.0035f;
         game_o.player.bullet[count].wave_direction =  1;
@@ -450,7 +450,7 @@ int proccess_player_bullets(void)
                if (game_o.player.bullet[player_bullet_num].location < 3) game_o.player.bullet[player_bullet_num].x_pos += game_o.projectile[game_o.player.front_weapon].speed;
                else game_o.player.bullet[player_bullet_num].x_pos += game_o.projectile[game_o.player.side_weapon].speed;
                game_o.player.bullet[player_bullet_num].wave_count += game_o.player.bullet[player_bullet_num].wave_speed;
-               if (game_o.player.bullet[player_bullet_num].wave_count >= game_o.player.bullet[player_bullet_num].wave_hight)
+               if (game_o.player.bullet[player_bullet_num].wave_count >= game_o.player.bullet[player_bullet_num].wave_height)
                {
                   game_o.player.bullet[player_bullet_num].wave_count = 0.0f;
                   game_o.player.bullet[player_bullet_num].wave_direction = !game_o.player.bullet[player_bullet_num].wave_direction;
@@ -503,7 +503,7 @@ int proccess_player_bullets(void)
          {
             if (game_o.npc[npc_count].active)// check player bullets / npc collisions...
             {
-               if (game.physics.quadrangle_collision(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].hight,game_o.player.bullet[player_bullet_num].x_pos,game_o.player.bullet[player_bullet_num].y_pos,game_o.player.bullet[player_bullet_num].width,game_o.player.bullet[player_bullet_num].hight))
+               if (game.physics.quadrangle_collision(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height,game_o.player.bullet[player_bullet_num].x_pos,game_o.player.bullet[player_bullet_num].y_pos,game_o.player.bullet[player_bullet_num].width,game_o.player.bullet[player_bullet_num].height))
                {
                   if (game_o.player.bullet[player_bullet_num].location < 3) game_o.npc[npc_count].health -= game_o.projectile[game_o.player.front_weapon].damage;
                   else // hit npc ship, but not a kill
@@ -598,7 +598,7 @@ int proccess_player_bullets(void)
                {
                   if(game_o.npc[npc_count].bullet[npc_bullet_num].active)
                   {
-                     if (game.physics.quadrangle_collision(game_o.npc[npc_count].bullet[npc_bullet_num].x_pos,game_o.npc[npc_count].bullet[npc_bullet_num].y_pos,game_o.npc[npc_count].bullet[npc_bullet_num].width,game_o.npc[npc_count].bullet[npc_bullet_num].hight,game_o.player.bullet[player_bullet_num].x_pos,game_o.player.bullet[player_bullet_num].y_pos,game_o.player.bullet[player_bullet_num].width,game_o.player.bullet[player_bullet_num].hight))
+                     if (game.physics.quadrangle_collision(game_o.npc[npc_count].bullet[npc_bullet_num].x_pos,game_o.npc[npc_count].bullet[npc_bullet_num].y_pos,game_o.npc[npc_count].bullet[npc_bullet_num].width,game_o.npc[npc_count].bullet[npc_bullet_num].height,game_o.player.bullet[player_bullet_num].x_pos,game_o.player.bullet[player_bullet_num].y_pos,game_o.player.bullet[player_bullet_num].width,game_o.player.bullet[player_bullet_num].height))
                      {
                      if (game_o.player.bullet[player_bullet_num].location < 3) //level up our front weapon!
                      {
@@ -790,8 +790,8 @@ int process_player(int command)
              if (game_o.player.x_vel > 0.0f) game_o.player.x_vel  = 0.0f;
          };
          game_o.player.y_pos += game_o.player.y_vel;
-         if (game_o.player.y_pos >  (1.0f -(game_o.player.hight/2))) game_o.player.y_pos = (1.0f -(game_o.player.hight/2));
-         if (game_o.player.y_pos < -(1.0f -(game_o.player.hight/2))) game_o.player.y_pos = -(1.0f -(game_o.player.hight/2));
+         if (game_o.player.y_pos >  (1.0f -(game_o.player.height/2))) game_o.player.y_pos = (1.0f -(game_o.player.height/2));
+         if (game_o.player.y_pos < -(1.0f -(game_o.player.height/2))) game_o.player.y_pos = -(1.0f -(game_o.player.height/2));
          game_o.player.x_pos += game_o.player.x_vel;
          if (game_o.player.x_pos >  (1.0f -(game_o.player.width/2))) game_o.player.x_pos = (1.0f -(game_o.player.width/2));
          if (game_o.player.x_pos < -(1.0f - (game_o.player.width/2) - thruster_offset())) game_o.player.x_pos = -(1.0f -(game_o.player.width/2) - thruster_offset());
@@ -800,7 +800,7 @@ int process_player(int command)
    {
         for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) // player npc collision?
         {
-            if (game.physics.quadrangle_collision(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].hight,game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight))
+            if (game.physics.quadrangle_collision(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height,game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.height))
             {
                 sound.shield_hit.play();//player shield hit
                 game_o.npc[npc_count].health -= game_o.projectile[game_o.player.front_weapon].damage;

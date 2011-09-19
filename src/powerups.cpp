@@ -42,7 +42,7 @@ int spawn_powerup(float x_position, float y_position, int type_powerup)
       game_o.powerup[type_powerup].x_pos      = x_position;
       game_o.powerup[type_powerup].y_pos      = y_position;
       game_o.powerup[type_powerup].width      = 0.10f;
-      game_o.powerup[type_powerup].hight      = 0.10f;
+      game_o.powerup[type_powerup].height      = 0.10f;
       game_o.powerup[type_powerup].speed      = 0.0025f;
    }
    return(0);
@@ -54,7 +54,7 @@ int kill_powerup(int type_powerup)
    game_o.powerup[type_powerup].x_pos      = -2.0f;
    game_o.powerup[type_powerup].y_pos      = -2.0f;
    game_o.powerup[type_powerup].width      = 0.10f;
-   game_o.powerup[type_powerup].hight      = 0.10f;
+   game_o.powerup[type_powerup].height      = 0.10f;
    game_o.powerup[type_powerup].speed      = 0.0025f;
    return(0);
 };
@@ -67,7 +67,7 @@ int kill_powerups(void)
       game_o.powerup[count].x_pos      = -2.0f;
       game_o.powerup[count].y_pos      = -2.0f;
       game_o.powerup[count].width      = 0.10f;
-      game_o.powerup[count].hight      = 0.10f;
+      game_o.powerup[count].height      = 0.10f;
       game_o.powerup[count].speed      = 0.0025f;
    }
    return(0);
@@ -83,7 +83,7 @@ int init_powerups(void)
       game_o.powerup[count].x_pos      = -2.0f;
       game_o.powerup[count].y_pos      = -2.0f;
       game_o.powerup[count].width      = 0.10f;
-      game_o.powerup[count].hight      = 0.10f;
+      game_o.powerup[count].height      = 0.10f;
       game_o.powerup[count].speed      = 0.0025f;
       game_o.powerup[count].spawn_rate = 20000;
    }
@@ -128,7 +128,7 @@ int proccess_powerups(void)
       {
          game_o.powerup[count].x_pos -= game_o.powerup[count].speed;
          if (game_o.powerup[count].x_pos <= (-1.0f - game_o.powerup[count].width)) kill_powerup(count);
-         if (game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight,game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,game_o.powerup[count].width,game_o.powerup[count].hight))
+         if (game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.height,game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,game_o.powerup[count].width,game_o.powerup[count].height))
          {
             if (count ==  1) sound.powerup_01.play();
             if (count ==  2) sound.powerup_02.play();
@@ -253,7 +253,7 @@ int proccess_powerups(void)
                         if(game_o.number_bombs > MAX_BOMBS) game_o.number_bombs = MAX_BOMBS;
                     }
                 break;
-                case 9://supportship 0
+                case 9://support ship 0
                     {
                         if (game_o.supportship[0].active)
                         {
@@ -281,7 +281,7 @@ int proccess_powerups(void)
                         }
                     }
                 break;
-                case 10://supportship 1
+                case 10://support ship 1
                     {
                         if (game_o.supportship[1].active)
                         {
@@ -309,7 +309,7 @@ int proccess_powerups(void)
                         }
                     }
                 break;
-                case 11://supportship 2
+                case 11://support ship 2
                     {
                         if (game_o.supportship[2].active)
                         {
@@ -337,7 +337,7 @@ int proccess_powerups(void)
                         }
                     }
                 break;
-                case 12://supportship 3
+                case 12://support ship 3
                     {
                         if (game_o.supportship[3].active)
                         {
@@ -449,7 +449,7 @@ int spawn_coin(float x_position, float y_position, int coin_value)
          game_o.coin[count].x_pos         = x_position;
          game_o.coin[count].y_pos         = y_position;
          game_o.coin[count].width         = (0.055f + (coin_value / 750.0f));
-         game_o.coin[count].hight         = (0.055f + (coin_value / 750.0f));
+         game_o.coin[count].height         = (0.055f + (coin_value / 750.0f));
          game_o.coin[count].sound         = 21;
          game_o.coin[count].speed         = 0.0025f;
          game_o.coin[count].value         = coin_value;
@@ -462,12 +462,12 @@ int spawn_coin(float x_position, float y_position, int coin_value)
 int kill_coin(int coin_num)
 {
    game_o.coin[coin_num].active     = false;
-   game_o.coin[coin_num].image      = 337;
+   game_o.coin[coin_num].image      = texture.coin_powerup.ref_number;
    game_o.coin[coin_num].sound      = 21;
    game_o.coin[coin_num].x_pos      = -2.0f;
    game_o.coin[coin_num].y_pos      = -2.0f;
    game_o.coin[coin_num].width      = 0.10f;
-   game_o.coin[coin_num].hight      = 0.10f;
+   game_o.coin[coin_num].height      = 0.10f;
    game_o.coin[coin_num].speed      = 0.0025f;
    game_o.coin[coin_num].value      = 0;
    return(0);
@@ -478,12 +478,12 @@ int kill_coins(void)
    for (int count = 0;count < MAX_COINS;count++)
    {
       game_o.coin[count].active     = false;
-      game_o.coin[count].image      = 337;
+      game_o.coin[count].image      = texture.coin_powerup.ref_number;
       game_o.coin[count].sound      = 21;
       game_o.coin[count].x_pos      = -2.0f;
       game_o.coin[count].y_pos      = -2.0f;
       game_o.coin[count].width      = 0.10f;
-      game_o.coin[count].hight      = 0.10f;
+      game_o.coin[count].height      = 0.10f;
       game_o.coin[count].speed      = 0.0025f;
       game_o.coin[count].value      = 0;
    }
@@ -495,12 +495,12 @@ int init_coin(void)
    for (int count = 0;count < MAX_COINS;count++)
    {
       game_o.coin[count].active     = false;
-      game_o.coin[count].image      = 337;
+      game_o.coin[count].image      = texture.coin_powerup.ref_number;
       game_o.coin[count].sound      = 21;
       game_o.coin[count].x_pos      = -2.0f;
       game_o.coin[count].y_pos      = -2.0f;
       game_o.coin[count].width      = 0.10f;
-      game_o.coin[count].hight      = 0.10f;
+      game_o.coin[count].height      = 0.10f;
       game_o.coin[count].speed      = 0.0025f;
       game_o.coin[count].value      = 0;
    }
@@ -515,7 +515,7 @@ int proccess_coin(void)
       {
          game_o.coin[count].x_pos -= game_o.coin[count].speed;
          if (game_o.coin[count].x_pos <= (-1.0f - game_o.coin[count].width)) kill_coin(count);
-         if (game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight,game_o.coin[count].x_pos,game_o.coin[count].y_pos,game_o.coin[count].width,game_o.coin[count].hight))
+         if (game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.height,game_o.coin[count].x_pos,game_o.coin[count].y_pos,game_o.coin[count].width,game_o.coin[count].height))
          {
             game_o.score += game_o.coin[count].value;
             game_o.level_score += game_o.coin[count].value;
@@ -538,7 +538,7 @@ int spawn_wexp(float x_position, float y_position, int wexp_value)
          game_o.wexp[count].x_pos         = x_position;
          game_o.wexp[count].y_pos         = y_position;
          game_o.wexp[count].width         = (0.055f + (wexp_value / 750.f));
-         game_o.wexp[count].hight         = (0.055f + (wexp_value / 750.f));
+         game_o.wexp[count].height         = (0.055f + (wexp_value / 750.f));
          game_o.wexp[count].value         = wexp_value;
          spawned = true;
       }
@@ -549,12 +549,12 @@ int spawn_wexp(float x_position, float y_position, int wexp_value)
 int kill_wexp(int wexp_num)
 {
    game_o.wexp[wexp_num].active     = false;
-   game_o.wexp[wexp_num].image      = 338;
+   game_o.wexp[wexp_num].image      = texture.wexp_powerup.ref_number;
    game_o.wexp[wexp_num].sound      = 22;
    game_o.wexp[wexp_num].x_pos      = -2.0f;
    game_o.wexp[wexp_num].y_pos      = -2.0f;
    game_o.wexp[wexp_num].width      = 0.10f;
-   game_o.wexp[wexp_num].hight      = 0.10f;
+   game_o.wexp[wexp_num].height      = 0.10f;
    game_o.wexp[wexp_num].speed      = 0.0025f;
    game_o.wexp[wexp_num].value      = 0;
    return(0);
@@ -565,12 +565,12 @@ int kill_wexps(void)
    for (int count = 0;count < MAX_WEXPS;count++)
    {
       game_o.wexp[count].active     = false;
-      game_o.wexp[count].image      = 338;
+      game_o.wexp[count].image      = texture.wexp_powerup.ref_number;
       game_o.wexp[count].sound      = 22;
       game_o.wexp[count].x_pos      = -2.0f;
       game_o.wexp[count].y_pos      = -2.0f;
       game_o.wexp[count].width      = 0.10f;
-      game_o.wexp[count].hight      = 0.10f;
+      game_o.wexp[count].height      = 0.10f;
       game_o.wexp[count].speed      = 0.0025f;
       game_o.wexp[count].value      = 0;
    }
@@ -582,12 +582,12 @@ int init_wexp(void)
    for (int count = 0;count < MAX_WEXPS;count++)
    {
       game_o.wexp[count].active     = false;
-      game_o.wexp[count].image      = 338;
+      game_o.wexp[count].image      = texture.wexp_powerup.ref_number;
       game_o.wexp[count].sound      = 22;
       game_o.wexp[count].x_pos      = -2.0f;
       game_o.wexp[count].y_pos      = -2.0f;
       game_o.wexp[count].width      = 0.10f;
-      game_o.wexp[count].hight      = 0.10f;
+      game_o.wexp[count].height      = 0.10f;
       game_o.wexp[count].speed      = 0.0025f;
       game_o.wexp[count].value      = 0;
    }
@@ -602,7 +602,7 @@ int proccess_wexp(void)
       {
          game_o.wexp[count].x_pos -= game_o.wexp[count].speed;
          if (game_o.wexp[count].x_pos <= (-1.0f - game_o.wexp[count].width)) kill_wexp(count);
-         if (game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.hight,game_o.wexp[count].x_pos,game_o.wexp[count].y_pos,game_o.wexp[count].width,game_o.wexp[count].hight))
+         if (game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.height,game_o.wexp[count].x_pos,game_o.wexp[count].y_pos,game_o.wexp[count].width,game_o.wexp[count].height))
          {
             //level up our front weapon!
             game_o.projectile[game_o.player.front_weapon].experience += game_o.wexp[count].value*game_o.exp_rate;

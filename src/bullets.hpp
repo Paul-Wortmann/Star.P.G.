@@ -39,12 +39,12 @@ struct bullet_type
    float x_speed;
    float y_speed;
    float width;
-   float hight;
+   float height;
    bool  straight;
    bool  homeing_00;
    bool  homeing_01;
    bool  wave;
-   float wave_hight;
+   float wave_height;
    float wave_count;
    float wave_speed;
    bool  wave_direction;

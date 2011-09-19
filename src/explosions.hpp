@@ -38,7 +38,7 @@ struct explosion_class
     float x_pos;
     float y_pos;
     float width;
-    float hight;
+    float height;
     float size;
 };
 

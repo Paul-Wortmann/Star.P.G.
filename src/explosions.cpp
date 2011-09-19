@@ -56,7 +56,7 @@ int spawn_explosion(float x_position, float y_position, float size)
            game_o.explosion[explosion_num].sound   = 4;
            game_o.explosion[explosion_num].size    = size;
            game_o.explosion[explosion_num].width   = size/2;
-           game_o.explosion[explosion_num].hight   = size/2;
+           game_o.explosion[explosion_num].height  = size/2;
            game_o.explosion[explosion_num].x_pos   = x_position;
            game_o.explosion[explosion_num].y_pos   = y_position;
            spawn_done = 1;

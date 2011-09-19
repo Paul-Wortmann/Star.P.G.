@@ -61,7 +61,7 @@ struct npc_type
    float         formation_ofset_y;
    float         health;
    float         width;
-   float         hight;
+   float         height;
    float         x_speed;
    float         y_speed;
    int           movement;

@@ -87,7 +87,7 @@ int init_game(bool re_init)
     game_o.player.x_vel                      =  0.0f;
     game_o.player.y_vel                      =  0.0f;
     game_o.player.width                      =  0.2f;
-    game_o.player.hight                      =  0.2f;
+    game_o.player.height                      =  0.2f;
     game_o.player.health                     =  0.100f;
     game_o.player.health_regen_rate          =  0.00005f;
     game_o.player.max_health                 =  0.100f;
@@ -557,10 +557,10 @@ int display_game(void)
             if (game_o.npc[npc_count].bullet[bullet_count].active)
             {
                 glBegin( GL_QUADS );
-                glTexCoord2i( 0, 1 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos+(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos-(game_o.npc[npc_count].bullet[bullet_count].hight/2),z_pos);
-                glTexCoord2i( 0, 0 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos+(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos+(game_o.npc[npc_count].bullet[bullet_count].hight/2),z_pos);
-                glTexCoord2i( 1, 0 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos-(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos+(game_o.npc[npc_count].bullet[bullet_count].hight/2),z_pos);
-                glTexCoord2i( 1, 1 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos-(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos-(game_o.npc[npc_count].bullet[bullet_count].hight/2),z_pos);
+                glTexCoord2i( 0, 1 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos+(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos-(game_o.npc[npc_count].bullet[bullet_count].height/2),z_pos);
+                glTexCoord2i( 0, 0 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos+(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos+(game_o.npc[npc_count].bullet[bullet_count].height/2),z_pos);
+                glTexCoord2i( 1, 0 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos-(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos+(game_o.npc[npc_count].bullet[bullet_count].height/2),z_pos);
+                glTexCoord2i( 1, 1 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos-(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos-(game_o.npc[npc_count].bullet[bullet_count].height/2),z_pos);
                 glEnd();
             }
         }
@@ -571,10 +571,10 @@ int display_game(void)
             bind_texture(game_o.enemy[game_o.npc[npc_count].type_npc].image);
             glLoadIdentity();
             glBegin( GL_QUADS );
-            glTexCoord2i( 1, 1 );glVertex3f(game_o.npc[npc_count].x_pos+(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos-(game_o.npc[npc_count].hight/2),z_pos);
-            glTexCoord2i( 0, 1 );glVertex3f(game_o.npc[npc_count].x_pos+(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos+(game_o.npc[npc_count].hight/2),z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f(game_o.npc[npc_count].x_pos-(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos+(game_o.npc[npc_count].hight/2),z_pos);
-            glTexCoord2i( 1, 0 );glVertex3f(game_o.npc[npc_count].x_pos-(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos-(game_o.npc[npc_count].hight/2),z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f(game_o.npc[npc_count].x_pos+(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos-(game_o.npc[npc_count].height/2),z_pos);
+            glTexCoord2i( 0, 1 );glVertex3f(game_o.npc[npc_count].x_pos+(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos+(game_o.npc[npc_count].height/2),z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f(game_o.npc[npc_count].x_pos-(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos+(game_o.npc[npc_count].height/2),z_pos);
+            glTexCoord2i( 1, 0 );glVertex3f(game_o.npc[npc_count].x_pos-(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos-(game_o.npc[npc_count].height/2),z_pos);
             glEnd();
             glColor4f(1.0f,1.0f,1.0f,1.0f);
         }
@@ -588,10 +588,10 @@ int display_game(void)
             else bind_texture(game_o.projectile[game_o.player.side_weapon].image);
             glLoadIdentity();
             glBegin( GL_QUADS );
-            glTexCoord2i( 1, 0 );glVertex3f(game_o.player.bullet[count].x_pos+(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos-(game_o.player.bullet[count].hight/2), z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f(game_o.player.bullet[count].x_pos+(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos+(game_o.player.bullet[count].hight/2), z_pos);
-            glTexCoord2i( 0, 1 );glVertex3f(game_o.player.bullet[count].x_pos-(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos+(game_o.player.bullet[count].hight/2), z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f(game_o.player.bullet[count].x_pos-(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos-(game_o.player.bullet[count].hight/2), z_pos);
+            glTexCoord2i( 1, 0 );glVertex3f(game_o.player.bullet[count].x_pos+(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos-(game_o.player.bullet[count].height/2), z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f(game_o.player.bullet[count].x_pos+(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos+(game_o.player.bullet[count].height/2), z_pos);
+            glTexCoord2i( 0, 1 );glVertex3f(game_o.player.bullet[count].x_pos-(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos+(game_o.player.bullet[count].height/2), z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f(game_o.player.bullet[count].x_pos-(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos-(game_o.player.bullet[count].height/2), z_pos);
             glEnd();
         }
     }
@@ -606,10 +606,10 @@ int display_game(void)
                 bind_texture(game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image);
                 glLoadIdentity();
                 glBegin( GL_QUADS );
-                glTexCoord2i( 1, 0 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos+(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos-(game_o.supportship[supportship_count].bullet[bullet_count].hight/2), z_pos);
-                glTexCoord2i( 1, 1 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos+(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos+(game_o.supportship[supportship_count].bullet[bullet_count].hight/2), z_pos);
-                glTexCoord2i( 0, 1 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos-(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos+(game_o.supportship[supportship_count].bullet[bullet_count].hight/2), z_pos);
-                glTexCoord2i( 0, 0 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos-(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos-(game_o.supportship[supportship_count].bullet[bullet_count].hight/2), z_pos);
+                glTexCoord2i( 1, 0 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos+(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos-(game_o.supportship[supportship_count].bullet[bullet_count].height/2), z_pos);
+                glTexCoord2i( 1, 1 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos+(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos+(game_o.supportship[supportship_count].bullet[bullet_count].height/2), z_pos);
+                glTexCoord2i( 0, 1 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos-(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos+(game_o.supportship[supportship_count].bullet[bullet_count].height/2), z_pos);
+                glTexCoord2i( 0, 0 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos-(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos-(game_o.supportship[supportship_count].bullet[bullet_count].height/2), z_pos);
                 glEnd();
             }
         }
@@ -623,10 +623,10 @@ int display_game(void)
         if (game_o.explosion[count].active)
         {
             glBegin( GL_QUADS );
-            glTexCoord2i( 1, 0 );glVertex3f(game_o.explosion[count].x_pos+(game_o.explosion[count].width/2),game_o.explosion[count].y_pos-(game_o.explosion[count].hight/2),z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f(game_o.explosion[count].x_pos+(game_o.explosion[count].width/2),game_o.explosion[count].y_pos+(game_o.explosion[count].hight/2),z_pos);
-            glTexCoord2i( 0, 1 );glVertex3f(game_o.explosion[count].x_pos-(game_o.explosion[count].width/2),game_o.explosion[count].y_pos+(game_o.explosion[count].hight/2),z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f(game_o.explosion[count].x_pos-(game_o.explosion[count].width/2),game_o.explosion[count].y_pos-(game_o.explosion[count].hight/2),z_pos);
+            glTexCoord2i( 1, 0 );glVertex3f(game_o.explosion[count].x_pos+(game_o.explosion[count].width/2),game_o.explosion[count].y_pos-(game_o.explosion[count].height/2),z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f(game_o.explosion[count].x_pos+(game_o.explosion[count].width/2),game_o.explosion[count].y_pos+(game_o.explosion[count].height/2),z_pos);
+            glTexCoord2i( 0, 1 );glVertex3f(game_o.explosion[count].x_pos-(game_o.explosion[count].width/2),game_o.explosion[count].y_pos+(game_o.explosion[count].height/2),z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f(game_o.explosion[count].x_pos-(game_o.explosion[count].width/2),game_o.explosion[count].y_pos-(game_o.explosion[count].height/2),z_pos);
             glEnd();
         }
     }
@@ -639,20 +639,20 @@ int display_game(void)
         bind_texture(game_o.thruster[game_o.player.thrusters].image); //player thrusters
         glLoadIdentity();
         glBegin( GL_QUADS );
-        glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/2)-0.190f,game_o.player.y_pos-(game_o.player.hight/2), 0.035f );
-        glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/2)-0.190f,game_o.player.y_pos+(game_o.player.hight/2), 0.035f );
-        glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2)-0.190f,game_o.player.y_pos+(game_o.player.hight/2), 0.035f );
-        glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2)-0.190f,game_o.player.y_pos-(game_o.player.hight/2), 0.035f );
+        glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/2)-0.190f,game_o.player.y_pos-(game_o.player.height/2), 0.035f );
+        glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/2)-0.190f,game_o.player.y_pos+(game_o.player.height/2), 0.035f );
+        glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2)-0.190f,game_o.player.y_pos+(game_o.player.height/2), 0.035f );
+        glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2)-0.190f,game_o.player.y_pos-(game_o.player.height/2), 0.035f );
         glEnd();
     }
 
     bind_texture(game_o.player.image); //player starship
     glLoadIdentity();
     glBegin( GL_QUADS );
-    glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/2),game_o.player.y_pos-(game_o.player.hight/2), 0.03f );
-    glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/2),game_o.player.y_pos+(game_o.player.hight/2), 0.03f );
-    glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2),game_o.player.y_pos+(game_o.player.hight/2), 0.03f );
-    glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2),game_o.player.y_pos-(game_o.player.hight/2), 0.03f );
+    glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/2),game_o.player.y_pos-(game_o.player.height/2), 0.03f );
+    glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/2),game_o.player.y_pos+(game_o.player.height/2), 0.03f );
+    glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2),game_o.player.y_pos+(game_o.player.height/2), 0.03f );
+    glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/2),game_o.player.y_pos-(game_o.player.height/2), 0.03f );
     glEnd();
 
     if (game_o.player.front_weapon > -1)
@@ -660,10 +660,10 @@ int display_game(void)
         bind_texture(game_o.player.front_weapon+211); //player starship front weapon
         glLoadIdentity();
         glBegin( GL_QUADS );
-        glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/8)+0.053f,game_o.player.y_pos-(game_o.player.hight/8), 0.025f );
-        glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/8)+0.053f,game_o.player.y_pos+(game_o.player.hight/8), 0.025f );
-        glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/8)+0.078f,game_o.player.y_pos+(game_o.player.hight/8), 0.025f );
-        glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/8)+0.078f,game_o.player.y_pos-(game_o.player.hight/8), 0.025f );
+        glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/8)+0.053f,game_o.player.y_pos-(game_o.player.height/8), 0.025f );
+        glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/8)+0.053f,game_o.player.y_pos+(game_o.player.height/8), 0.025f );
+        glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/8)+0.078f,game_o.player.y_pos+(game_o.player.height/8), 0.025f );
+        glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/8)+0.078f,game_o.player.y_pos-(game_o.player.height/8), 0.025f );
         glEnd();
     }
 
@@ -672,16 +672,16 @@ int display_game(void)
         bind_texture(game_o.player.side_weapon+211); //player starship side weapons
         glLoadIdentity();
         glBegin( GL_QUADS );
-        glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.hight/6)+0.075f, 0.025f );
-        glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/6)+0.067f,game_o.player.y_pos+(game_o.player.hight/6)+0.075f, 0.025f );
-        glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos+(game_o.player.hight/6)+0.075f, 0.025f );
-        glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.hight/6)+0.075f, 0.025f );
+        glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.height/6)+0.075f, 0.025f );
+        glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/6)+0.067f,game_o.player.y_pos+(game_o.player.height/6)+0.075f, 0.025f );
+        glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos+(game_o.player.height/6)+0.075f, 0.025f );
+        glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.height/6)+0.075f, 0.025f );
         glEnd();
         glBegin( GL_QUADS );
-        glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.hight/6)-0.075f, 0.025f );
-        glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/6)+0.067f,game_o.player.y_pos+(game_o.player.hight/6)-0.075f, 0.025f );
-        glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos+(game_o.player.hight/6)-0.075f, 0.025f );
-        glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.hight/6)-0.075f, 0.025f );
+        glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.height/6)-0.075f, 0.025f );
+        glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/6)+0.067f,game_o.player.y_pos+(game_o.player.height/6)-0.075f, 0.025f );
+        glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos+(game_o.player.height/6)-0.075f, 0.025f );
+        glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/6)+0.067f,game_o.player.y_pos-(game_o.player.height/6)-0.075f, 0.025f );
         glEnd();
     }
     if (game_o.player.front_shield > -1)
@@ -689,10 +689,10 @@ int display_game(void)
         bind_texture(game_o.shield[game_o.player.front_shield].image); //player starship shield
         glLoadIdentity();
         glBegin( GL_QUADS );
-        glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/1.5),game_o.player.y_pos-(game_o.player.hight/1.5), 0.02f );
-        glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos+(game_o.player.width/1.5),game_o.player.y_pos+(game_o.player.hight/1.5), 0.02f );
-        glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/1.5),game_o.player.y_pos+(game_o.player.hight/1.5), 0.02f );
-        glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos-(game_o.player.width/1.5),game_o.player.y_pos-(game_o.player.hight/1.5), 0.02f );
+        glTexCoord2i( 1, 0 );glVertex3f(game_o.player.x_pos+(game_o.player.width/1.5),game_o.player.y_pos-(game_o.player.height/1.5), 0.02f );
+        glTexCoord2i( 1, 1 );glVertex3f(game_o.player.x_pos+(game_o.player.width/1.5),game_o.player.y_pos+(game_o.player.height/1.5), 0.02f );
+        glTexCoord2i( 0, 1 );glVertex3f(game_o.player.x_pos-(game_o.player.width/1.5),game_o.player.y_pos+(game_o.player.height/1.5), 0.02f );
+        glTexCoord2i( 0, 0 );glVertex3f(game_o.player.x_pos-(game_o.player.width/1.5),game_o.player.y_pos-(game_o.player.height/1.5), 0.02f );
         glEnd();
     }
     glColor4f(1.0f,1.0f,1.0f,1.0f);//------------------------------------------------
@@ -707,8 +707,8 @@ int display_game(void)
             glBegin( GL_QUADS );
             glTexCoord2i( 0, 1 );glVertex3f(0.89f +((game_o.npc[npc_count].health/game_o.enemy[game_o.npc[npc_count].type_npc].health)/10),1.0f -0.025f-npc_num, 0.001f);
             glTexCoord2i( 0, 0 );glVertex3f(0.89f +((game_o.npc[npc_count].health/game_o.enemy[game_o.npc[npc_count].type_npc].health)/10),1.0f +0.025f-npc_num, 0.001f);
-            glTexCoord2i( 1, 0 );glVertex3f(0.89f                ,1.0f +0.025f-npc_num, 0.001f);
-            glTexCoord2i( 1, 1 );glVertex3f(0.89f                ,1.0f -0.025f-npc_num, 0.001f);
+            glTexCoord2i( 1, 0 );glVertex3f(0.89f                                                                                         ,1.0f +0.025f-npc_num, 0.001f);
+            glTexCoord2i( 1, 1 );glVertex3f(0.89f                                                                                         ,1.0f -0.025f-npc_num, 0.001f);
             glEnd();
         }
     }
@@ -721,10 +721,10 @@ int display_game(void)
         if (game_o.powerup[count].active)
         {
             glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f(game_o.powerup[count].x_pos+(game_o.powerup[count].width/2),game_o.powerup[count].y_pos-(game_o.powerup[count].hight/2),z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f(game_o.powerup[count].x_pos+(game_o.powerup[count].width/2),game_o.powerup[count].y_pos+(game_o.powerup[count].hight/2),z_pos);
-            glTexCoord2i( 1, 0 );glVertex3f(game_o.powerup[count].x_pos-(game_o.powerup[count].width/2),game_o.powerup[count].y_pos+(game_o.powerup[count].hight/2),z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f(game_o.powerup[count].x_pos-(game_o.powerup[count].width/2),game_o.powerup[count].y_pos-(game_o.powerup[count].hight/2),z_pos);
+            glTexCoord2i( 0, 1 );glVertex3f(game_o.powerup[count].x_pos+(game_o.powerup[count].width/2),game_o.powerup[count].y_pos-(game_o.powerup[count].height/2),z_pos);
+            glTexCoord2i( 0, 0 );glVertex3f(game_o.powerup[count].x_pos+(game_o.powerup[count].width/2),game_o.powerup[count].y_pos+(game_o.powerup[count].height/2),z_pos);
+            glTexCoord2i( 1, 0 );glVertex3f(game_o.powerup[count].x_pos-(game_o.powerup[count].width/2),game_o.powerup[count].y_pos+(game_o.powerup[count].height/2),z_pos);
+            glTexCoord2i( 1, 1 );glVertex3f(game_o.powerup[count].x_pos-(game_o.powerup[count].width/2),game_o.powerup[count].y_pos-(game_o.powerup[count].height/2),z_pos);
             glEnd();
         }
     }
@@ -732,33 +732,13 @@ int display_game(void)
     for (int count = MAX_COINS;count >=1;count--)  // coin
     {
         z_pos = 0.002f + (0.0002*(count+MAX_POWERUPS));
-        bind_texture(game_o.coin[count].image);
-        glLoadIdentity();
-        if (game_o.coin[count].active)
-        {
-            glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f(game_o.coin[count].x_pos+(game_o.coin[count].width/2),game_o.coin[count].y_pos-(game_o.coin[count].hight/2),z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f(game_o.coin[count].x_pos+(game_o.coin[count].width/2),game_o.coin[count].y_pos+(game_o.coin[count].hight/2),z_pos);
-            glTexCoord2i( 1, 0 );glVertex3f(game_o.coin[count].x_pos-(game_o.coin[count].width/2),game_o.coin[count].y_pos+(game_o.coin[count].hight/2),z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f(game_o.coin[count].x_pos-(game_o.coin[count].width/2),game_o.coin[count].y_pos-(game_o.coin[count].hight/2),z_pos);
-            glEnd();
-        }
+        if (game_o.coin[count].active) texture.coin_powerup.draw(game_o.coin[count].x_pos,game_o.coin[count].y_pos,z_pos,game_o.coin[count].width,game_o.coin[count].height);
     }
 
    for (int count = MAX_WEXPS;count >=1;count--)  // wexp
    {
       z_pos = 0.002f + (0.0002*(count+MAX_POWERUPS+MAX_COINS));
-      bind_texture(game_o.wexp[count].image);
-      glLoadIdentity();
-      if (game_o.wexp[count].active)
-      {
-         glBegin( GL_QUADS );
-         glTexCoord2i( 0, 1 );glVertex3f(game_o.wexp[count].x_pos+(game_o.wexp[count].width/2),game_o.wexp[count].y_pos-(game_o.wexp[count].hight/2),z_pos);
-         glTexCoord2i( 0, 0 );glVertex3f(game_o.wexp[count].x_pos+(game_o.wexp[count].width/2),game_o.wexp[count].y_pos+(game_o.wexp[count].hight/2),z_pos);
-         glTexCoord2i( 1, 0 );glVertex3f(game_o.wexp[count].x_pos-(game_o.wexp[count].width/2),game_o.wexp[count].y_pos+(game_o.wexp[count].hight/2),z_pos);
-         glTexCoord2i( 1, 1 );glVertex3f(game_o.wexp[count].x_pos-(game_o.wexp[count].width/2),game_o.wexp[count].y_pos-(game_o.wexp[count].hight/2),z_pos);
-         glEnd();
-      }
+      if (game_o.wexp[count].active) texture.wexp_powerup.draw(game_o.wexp[count].x_pos,game_o.wexp[count].y_pos,z_pos,game_o.wexp[count].width,game_o.wexp[count].height);
    }
     texture.health_bar.draw (-0.6f +((game_o.player.health/game_o.player.max_health)/10),0.9375f, 0.001f,((game_o.player.health/game_o.player.max_health)/5), 0.075f); //player health bar
 

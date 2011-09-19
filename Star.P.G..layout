@@ -2,16 +2,16 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Windows" />
 	<File name="src\NPC.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="903" topLine="0" />
+		<Cursor1 position="37498" topLine="0" />
 	</File>
 	<File name="src\NPC.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="901" topLine="60" />
+		<Cursor1 position="1849" topLine="60" />
 	</File>
 	<File name="src\PC.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1179" topLine="0" />
+		<Cursor1 position="52977" topLine="776" />
 	</File>
 	<File name="src\PC.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="903" topLine="0" />
+		<Cursor1 position="1419" topLine="0" />
 	</File>
 	<File name="src\RAGE\background.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="6569" topLine="146" />
@@ -119,13 +119,13 @@
 		<Cursor1 position="932" topLine="0" />
 	</File>
 	<File name="src\bullets.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1009" topLine="16" />
+		<Cursor1 position="1321" topLine="27" />
 	</File>
 	<File name="src\explosions.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="903" topLine="0" />
+		<Cursor1 position="2623" topLine="85" />
 	</File>
 	<File name="src\explosions.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="903" topLine="13" />
+		<Cursor1 position="1197" topLine="24" />
 	</File>
 	<File name="src\game.cpp" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="50147" topLine="709" />
@@ -170,10 +170,10 @@
 		<Cursor1 position="903" topLine="1" />
 	</File>
 	<File name="src\powerups.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1034" topLine="21" />
+		<Cursor1 position="5196" topLine="117" />
 	</File>
 	<File name="src\powerups.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1100" topLine="0" />
+		<Cursor1 position="1629" topLine="0" />
 	</File>
 	<File name="src\projectiles.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="34656" topLine="733" />
@@ -194,10 +194,10 @@
 		<Cursor1 position="903" topLine="7" />
 	</File>
 	<File name="src\support_ships.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="901" topLine="0" />
+		<Cursor1 position="43735" topLine="581" />
 	</File>
 	<File name="src\support_ships.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1136" topLine="29" />
+		<Cursor1 position="1143" topLine="46" />
 	</File>
 	<File name="src\thrusters.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="903" topLine="6" />
@@ -212,6 +212,6 @@
 		<Cursor1 position="903" topLine="0" />
 	</File>
 	<File name="src\waves.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="903" topLine="7" />
+		<Cursor1 position="1006" topLine="23" />
 	</File>
 </CodeBlocks_layout_file>

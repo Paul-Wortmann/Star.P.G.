@@ -137,7 +137,7 @@ int supportship_class::spawn_bullet(int location, int direction_x, int direction
             supportship_class::bullet[bullet_count].y_dir   = direction_y;
             supportship_class::bullet[bullet_count].x_speed = game_o.projectile[supportship_class::bullet[bullet_count].warhead].speed;
             supportship_class::bullet[bullet_count].y_speed = game_o.projectile[supportship_class::bullet[bullet_count].warhead].speed;
-            supportship_class::bullet[bullet_count].hight   = game_o.projectile[supportship_class::bullet[bullet_count].warhead].height;
+            supportship_class::bullet[bullet_count].height   = game_o.projectile[supportship_class::bullet[bullet_count].warhead].height;
             supportship_class::bullet[bullet_count].width   = game_o.projectile[supportship_class::bullet[bullet_count].warhead].width;
         }
     }
@@ -246,8 +246,8 @@ void supportship_class::process(bool spawn_bullet)
                         supportship_class::bullet[bullet_count].x_pos += supportship_class::bullet[bullet_count].x_speed;
                         if((supportship_class::bullet[bullet_count].x_pos > ( 1.0f+supportship_class::bullet[bullet_count].width/2))
                         || (supportship_class::bullet[bullet_count].x_pos < (-1.0f-supportship_class::bullet[bullet_count].width/2))
-                        || (supportship_class::bullet[bullet_count].y_pos > ( 1.0f+supportship_class::bullet[bullet_count].hight/2))
-                        || (supportship_class::bullet[bullet_count].y_pos < (-1.0f-supportship_class::bullet[bullet_count].hight/2)))
+                        || (supportship_class::bullet[bullet_count].y_pos > ( 1.0f+supportship_class::bullet[bullet_count].height/2))
+                        || (supportship_class::bullet[bullet_count].y_pos < (-1.0f-supportship_class::bullet[bullet_count].height/2)))
                         {
                             supportship_class::bullet[bullet_count].active = false;
                             supportship_class::bullet[bullet_count].x_pos  = 2.0f;
@@ -313,13 +313,13 @@ void supportship_class::process(bool spawn_bullet)
                             supportship_class::bullet[bullet_count].x_pos  = 2.0f;
                             supportship_class::bullet[bullet_count].y_pos  = 2.0f;
                         }
-                        if (supportship_class::bullet[bullet_count].y_pos > (1.0f+supportship_class::bullet[bullet_count].hight/2))
+                        if (supportship_class::bullet[bullet_count].y_pos > (1.0f+supportship_class::bullet[bullet_count].height/2))
                         {
                             supportship_class::bullet[bullet_count].active = false;
                             supportship_class::bullet[bullet_count].x_pos  = 2.0f;
                             supportship_class::bullet[bullet_count].y_pos  = 2.0f;
                         }
-                        if (supportship_class::bullet[bullet_count].y_pos < (-1.0f-supportship_class::bullet[bullet_count].hight/2))
+                        if (supportship_class::bullet[bullet_count].y_pos < (-1.0f-supportship_class::bullet[bullet_count].height/2))
                         {
                             supportship_class::bullet[bullet_count].active = false;
                             supportship_class::bullet[bullet_count].x_pos  = 2.0f;
@@ -390,7 +390,7 @@ void supportship_class::process(bool spawn_bullet)
                         if (supportship_class::bullet[bullet_count].y_dir == 0)
                         {
                             supportship_class::bullet[bullet_count].y_pos -= supportship_class::bullet[bullet_count].y_speed*0.25;
-                            if (supportship_class::bullet[bullet_count].y_pos < (-1.0f-supportship_class::bullet[bullet_count].hight/2))
+                            if (supportship_class::bullet[bullet_count].y_pos < (-1.0f-supportship_class::bullet[bullet_count].height/2))
                             {
                                 supportship_class::bullet[bullet_count].active = false;
                                 supportship_class::bullet[bullet_count].x_pos  = 2.0f;
@@ -400,7 +400,7 @@ void supportship_class::process(bool spawn_bullet)
                         if (supportship_class::bullet[bullet_count].y_dir == 2)
                         {
                             supportship_class::bullet[bullet_count].y_pos -= supportship_class::bullet[bullet_count].y_speed*0.75f;
-                            if (supportship_class::bullet[bullet_count].y_pos < (-1.0f-supportship_class::bullet[bullet_count].hight/2))
+                            if (supportship_class::bullet[bullet_count].y_pos < (-1.0f-supportship_class::bullet[bullet_count].height/2))
                             {
                                 supportship_class::bullet[bullet_count].active = false;
                                 supportship_class::bullet[bullet_count].x_pos  = 2.0f;
@@ -410,7 +410,7 @@ void supportship_class::process(bool spawn_bullet)
                         if (supportship_class::bullet[bullet_count].y_dir == 4)
                         {
                             supportship_class::bullet[bullet_count].y_pos -= supportship_class::bullet[bullet_count].y_speed*1.25f;
-                            if (supportship_class::bullet[bullet_count].y_pos < (-1.0f-supportship_class::bullet[bullet_count].hight/2))
+                            if (supportship_class::bullet[bullet_count].y_pos < (-1.0f-supportship_class::bullet[bullet_count].height/2))
                             {
                                 supportship_class::bullet[bullet_count].active = false;
                                 supportship_class::bullet[bullet_count].x_pos  = 2.0f;
@@ -420,7 +420,7 @@ void supportship_class::process(bool spawn_bullet)
                         if (supportship_class::bullet[bullet_count].y_dir == 1)
                         {
                             supportship_class::bullet[bullet_count].y_pos += supportship_class::bullet[bullet_count].y_speed*0.25;
-                            if (supportship_class::bullet[bullet_count].y_pos > (1.0f+supportship_class::bullet[bullet_count].hight/2))
+                            if (supportship_class::bullet[bullet_count].y_pos > (1.0f+supportship_class::bullet[bullet_count].height/2))
                             {
                                 supportship_class::bullet[bullet_count].active = false;
                                 supportship_class::bullet[bullet_count].x_pos  = 2.0f;
@@ -430,7 +430,7 @@ void supportship_class::process(bool spawn_bullet)
                         if (supportship_class::bullet[bullet_count].y_dir == 3)
                         {
                             supportship_class::bullet[bullet_count].y_pos += supportship_class::bullet[bullet_count].y_speed*0.75f;
-                            if (supportship_class::bullet[bullet_count].y_pos > (1.0f+supportship_class::bullet[bullet_count].hight/2))
+                            if (supportship_class::bullet[bullet_count].y_pos > (1.0f+supportship_class::bullet[bullet_count].height/2))
                             {
                                 supportship_class::bullet[bullet_count].active = false;
                                 supportship_class::bullet[bullet_count].x_pos  = 2.0f;
@@ -440,7 +440,7 @@ void supportship_class::process(bool spawn_bullet)
                         if (supportship_class::bullet[bullet_count].y_dir == 5)
                         {
                             supportship_class::bullet[bullet_count].y_pos += supportship_class::bullet[bullet_count].y_speed*1.25f;
-                            if (supportship_class::bullet[bullet_count].y_pos > (1.0f+supportship_class::bullet[bullet_count].hight/2))
+                            if (supportship_class::bullet[bullet_count].y_pos > (1.0f+supportship_class::bullet[bullet_count].height/2))
                             {
                                 supportship_class::bullet[bullet_count].active = false;
                                 supportship_class::bullet[bullet_count].x_pos  = 2.0f;
@@ -455,7 +455,7 @@ void supportship_class::process(bool spawn_bullet)
             {
                 if ((game_o.npc[npc_count].active) and (supportship_class::bullet[bullet_count].active))// check player supportship bullets / npc collisions...
                 {
-                    if (game.physics.quadrangle_collision(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].hight,supportship_class::bullet[bullet_count].x_pos,supportship_class::bullet[bullet_count].y_pos,supportship_class::bullet[bullet_count].width,supportship_class::bullet[bullet_count].hight))
+                    if (game.physics.quadrangle_collision(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height,supportship_class::bullet[bullet_count].x_pos,supportship_class::bullet[bullet_count].y_pos,supportship_class::bullet[bullet_count].width,supportship_class::bullet[bullet_count].height))
                     {
                         game_o.npc[npc_count].health -= game_o.projectile[supportship_class::bullet[bullet_count].warhead].damage;
                         if (game_o.npc[npc_count].health <= 0)
@@ -499,7 +499,7 @@ void supportship_class::process(bool spawn_bullet)
                 {
                     if ((game_o.npc[npc_count].bullet[npc_bullet_num].active) and (supportship_class::bullet[bullet_count].active))
                     {
-                        if (game.physics.quadrangle_collision(game_o.npc[npc_count].bullet[npc_bullet_num].x_pos,game_o.npc[npc_count].bullet[npc_bullet_num].y_pos,game_o.npc[npc_count].bullet[npc_bullet_num].width,game_o.npc[npc_count].bullet[npc_bullet_num].hight,supportship_class::bullet[bullet_count].x_pos,supportship_class::bullet[bullet_count].y_pos,supportship_class::bullet[bullet_count].width,supportship_class::bullet[bullet_count].hight))
+                        if (game.physics.quadrangle_collision(game_o.npc[npc_count].bullet[npc_bullet_num].x_pos,game_o.npc[npc_count].bullet[npc_bullet_num].y_pos,game_o.npc[npc_count].bullet[npc_bullet_num].width,game_o.npc[npc_count].bullet[npc_bullet_num].height,supportship_class::bullet[bullet_count].x_pos,supportship_class::bullet[bullet_count].y_pos,supportship_class::bullet[bullet_count].width,supportship_class::bullet[bullet_count].height))
                         {
                             spawn_explosion(game_o.npc[npc_count].bullet[npc_bullet_num].x_pos,game_o.npc[npc_count].bullet[npc_bullet_num].y_pos,0.25f);
                             sound.explosion_001.play();
@@ -588,13 +588,13 @@ void supportship_class::process(bool spawn_bullet)
             supportship_level_count = 0;
             if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x < game_o.player.x_pos)                             game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x += game_o.supportship[supportship_count].movement_speed;
             if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x > game_o.player.x_pos)                             game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x -= game_o.supportship[supportship_count].movement_speed;
-            if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y < game_o.player.y_pos-((game_o.player.hight/3)*2)) game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y += game_o.supportship[supportship_count].movement_speed;
-            if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y > game_o.player.y_pos-((game_o.player.hight/3)*2)) game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y -= game_o.supportship[supportship_count].movement_speed;
+            if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y < game_o.player.y_pos-((game_o.player.height/3)*2)) game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y += game_o.supportship[supportship_count].movement_speed;
+            if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y > game_o.player.y_pos-((game_o.player.height/3)*2)) game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y -= game_o.supportship[supportship_count].movement_speed;
             supportship_level_count = 1;
             if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x < game_o.player.x_pos)                             game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x += game_o.supportship[supportship_count].movement_speed;
             if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x > game_o.player.x_pos)                             game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x -= game_o.supportship[supportship_count].movement_speed;
-            if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y < game_o.player.y_pos+((game_o.player.hight/3)*2)) game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y += game_o.supportship[supportship_count].movement_speed;
-            if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y > game_o.player.y_pos+((game_o.player.hight/3)*2)) game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y -= game_o.supportship[supportship_count].movement_speed;
+            if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y < game_o.player.y_pos+((game_o.player.height/3)*2)) game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y += game_o.supportship[supportship_count].movement_speed;
+            if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y > game_o.player.y_pos+((game_o.player.height/3)*2)) game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y -= game_o.supportship[supportship_count].movement_speed;
         }
         if (game_o.supportship[supportship_count].rotate_follow)/// rotate - follow
         {
@@ -604,8 +604,8 @@ void supportship_class::process(bool spawn_bullet)
                 {
                     game_o.supportship[supportship_count].supportship_pos[supportship_level_count].angle+= 0.00872664625f;
                     if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].angle > 6.28318531f) game_o.supportship[supportship_count].supportship_pos[supportship_level_count].angle = 0.0f;
-                    game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x = game.physics.rotate_point_2D_x(game_o.player.x_pos,game_o.player.y_pos,game_o.player.x_pos+game_o.player.width,game_o.player.y_pos+game_o.player.hight,game.physics.radians_to_degrees(game_o.supportship[supportship_count].supportship_pos[supportship_level_count].angle));
-                    game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y = game.physics.rotate_point_2D_y(game_o.player.x_pos,game_o.player.y_pos,game_o.player.x_pos+game_o.player.width,game_o.player.y_pos+game_o.player.hight,game.physics.radians_to_degrees(game_o.supportship[supportship_count].supportship_pos[supportship_level_count].angle));
+                    game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x = game.physics.rotate_point_2D_x(game_o.player.x_pos,game_o.player.y_pos,game_o.player.x_pos+game_o.player.width,game_o.player.y_pos+game_o.player.height,game.physics.radians_to_degrees(game_o.supportship[supportship_count].supportship_pos[supportship_level_count].angle));
+                    game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y = game.physics.rotate_point_2D_y(game_o.player.x_pos,game_o.player.y_pos,game_o.player.x_pos+game_o.player.width,game_o.player.y_pos+game_o.player.height,game.physics.radians_to_degrees(game_o.supportship[supportship_count].supportship_pos[supportship_level_count].angle));
                 }
                 else
                 {

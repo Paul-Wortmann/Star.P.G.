@@ -44,7 +44,7 @@ struct player_class
     float          x_vel;
     float          y_vel;
     float          width;
-    float          hight;
+    float          height;
     float          health;
     float          health_regen_rate;
     float          max_health;
