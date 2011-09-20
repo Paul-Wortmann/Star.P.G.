@@ -641,7 +641,7 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1316440327 source:c:\_git_\star.p.g\src\game.cpp
+1316532310 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"RAGE/rage.hpp"
 	"load_resources.hpp"
@@ -1404,7 +1404,7 @@
 1316423455 c:\_git_\star.p.g\src\pc.hpp
 	"bullets.hpp"
 
-1316439786 source:c:\_git_\star.p.g\src\support_ships.cpp
+1316441304 source:c:\_git_\star.p.g\src\support_ships.cpp
 	"RAGE/rage.hpp"
 	"support_ships.hpp"
 	"load_resources.hpp"
