@@ -635,7 +635,79 @@ int display_game(void)
         if (game_o.player.bullet[count].active)
         {
             z_pos = 0.05f + (0.001*count);
-            if (game_o.player.bullet[count].location < 3) bind_texture(game_o.projectile[game_o.player.front_weapon].image);
+            if (game_o.player.bullet[count].location < 3) // player front weapon
+            {
+                if (game_o.player.front_weapon ==  0) texture.projectile_000.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon ==  1) texture.projectile_001.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon ==  2) texture.projectile_002.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon ==  3) texture.projectile_003.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon ==  4) texture.projectile_004.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon ==  5) texture.projectile_005.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon ==  6) texture.projectile_006.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon ==  7) texture.projectile_007.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon ==  8) texture.projectile_008.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon ==  9) texture.projectile_009.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 10) texture.projectile_010.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 11) texture.projectile_011.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 12) texture.projectile_012.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 13) texture.projectile_013.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 14) texture.projectile_014.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 15) texture.projectile_015.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 16) texture.projectile_016.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 17) texture.projectile_017.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 18) texture.projectile_018.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 19) texture.projectile_019.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 20) texture.projectile_020.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 21) texture.projectile_021.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 22) texture.projectile_022.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 23) texture.projectile_023.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 24) texture.projectile_024.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 25) texture.projectile_025.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 26) texture.projectile_026.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 27) texture.projectile_027.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 28) texture.projectile_028.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 29) texture.projectile_029.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 30) texture.projectile_030.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.front_weapon == 31) texture.projectile_031.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+            }
+            else // player side weapon
+            {
+                if (game_o.player.side_weapon ==  0) texture.projectile_000.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon ==  1) texture.projectile_001.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon ==  2) texture.projectile_002.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon ==  3) texture.projectile_003.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon ==  4) texture.projectile_004.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon ==  5) texture.projectile_005.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon ==  6) texture.projectile_006.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon ==  7) texture.projectile_007.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon ==  8) texture.projectile_008.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon ==  9) texture.projectile_009.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 10) texture.projectile_010.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 11) texture.projectile_011.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 12) texture.projectile_012.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 13) texture.projectile_013.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 14) texture.projectile_014.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 15) texture.projectile_015.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 16) texture.projectile_016.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 17) texture.projectile_017.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 18) texture.projectile_018.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 19) texture.projectile_019.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 20) texture.projectile_020.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 21) texture.projectile_021.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 22) texture.projectile_022.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 23) texture.projectile_023.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 24) texture.projectile_024.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 25) texture.projectile_025.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 26) texture.projectile_026.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 27) texture.projectile_027.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 28) texture.projectile_028.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 29) texture.projectile_029.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 30) texture.projectile_030.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+                if (game_o.player.side_weapon == 31) texture.projectile_031.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
+            }
+/*
+
+                bind_texture(game_o.projectile[game_o.player.front_weapon].image);
             else bind_texture(game_o.projectile[game_o.player.side_weapon].image);
             glLoadIdentity();
             glBegin( GL_QUADS );
@@ -644,10 +716,11 @@ int display_game(void)
             glTexCoord2i( 0, 1 );glVertex3f(game_o.player.bullet[count].x_pos-(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos+(game_o.player.bullet[count].height/2), z_pos);
             glTexCoord2i( 0, 0 );glVertex3f(game_o.player.bullet[count].x_pos-(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos-(game_o.player.bullet[count].height/2), z_pos);
             glEnd();
+*/
         }
     }
 
-    for (int supportship_count = 0;supportship_count < MAX_SUPPORTSHIPS;supportship_count++)//display supportship bullets
+    for (int supportship_count = 0;supportship_count < MAX_SUPPORTSHIPS;supportship_count++)//display support ship bullets
     {
         for (int bullet_count = 0;bullet_count < MAX_BULLETS;bullet_count++)
         {
