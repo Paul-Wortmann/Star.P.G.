@@ -35,14 +35,16 @@ extern  game_class game;
 
 texture_class::texture_class()
 {
-    texture_class::width            = DEFAULT_FRAME_WIDTH;
-    texture_class::height           = DEFAULT_FRAME_HEIGHT;
-    texture_class::rotate_able      = false;
-    texture_class::rotate_speed     = 0.0f;
-    texture_class::rotate_direction = 0;
-    texture_class::angle            = 0.0f;
-    texture_class::frame_num        = 0;
-    texture_class::frame_max        = 0;
+    texture_class::width             = DEFAULT_FRAME_WIDTH;
+    texture_class::height            = DEFAULT_FRAME_HEIGHT;
+    texture_class::rotate_able       = false;
+    texture_class::rotate_speed      = 0.0f;
+    texture_class::rotate_direction  = 0;
+    texture_class::angle             = 0.0f;
+    texture_class::frame_num         = 0;
+    texture_class::frame_max         = 0;
+    texture_class::frame_delay       = 0;
+    texture_class::frame_delay_count = 0;
     for (int frame_count = 0; frame_count < MAX_FRAMES; frame_count++)
     {
         texture_class::frame[frame_count].active = false;
@@ -173,6 +175,7 @@ bool texture_class::load_spritesheet(std::string file_name, int index_number)
 
 void texture_class::process(void)
 {
+    //process rotation
     if(texture_class::rotate_able)
     {
         if(texture_class::rotate_direction == 0)
@@ -186,8 +189,14 @@ void texture_class::process(void)
             if (texture_class::angle < 0.0f) texture_class::angle = 6.2832f;
         }
     }
-    texture_class::frame_num++;
-    if (texture_class::frame_num > texture_class::frame_max) texture_class::frame_num = 0;
+    // process frames
+    texture_class::frame_delay_count++;
+    if (texture_class::frame_delay_count > texture_class::frame_delay)
+    {
+        texture_class::frame_delay_count = 0;
+        texture_class::frame_num++;
+        if (texture_class::frame_num > texture_class::frame_max) texture_class::frame_num = 0;
+    }
 };
 
 void texture_class::draw(float pos_x, float pos_y, float pos_z, float width, float height, int   angle)

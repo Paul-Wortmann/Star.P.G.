@@ -48,6 +48,8 @@ class texture_class
         float           rotate_speed;
         int             rotate_direction;
         float           angle;
+        int             frame_delay;
+        int             frame_delay_count;
         int             frame_num;
         int             frame_max;
         frame_type      frame[MAX_FRAMES];
