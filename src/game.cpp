@@ -631,7 +631,7 @@ int display_game(void)
         }
     }
 //----------------------------------------------------------------------------------------
-
+up from here...
 
     draw_supportships(); // support ships
 
