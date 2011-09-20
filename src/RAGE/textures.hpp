@@ -62,6 +62,7 @@ class texture_class
         void     draw(float pos_x, float pos_y, float pos_z, float width, float height, int   angle);
         void     draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle);
         void     draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle, float alpha);
+        void     draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle, float red, float green, float blue, float alpha);
 };
 
 #endif //TEXTURES_H

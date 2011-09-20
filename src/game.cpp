@@ -587,33 +587,47 @@ int display_game(void)
                 if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_030.ref_number) texture.projectile_030.draw(game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
                 if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_031.ref_number) texture.projectile_031.draw(game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
             }
-/*
-            bind_texture(game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image);
-            glLoadIdentity();
-            if (game_o.npc[npc_count].bullet[bullet_count].active)
-            {
-                glBegin( GL_QUADS );
-                glTexCoord2i( 0, 1 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos+(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos-(game_o.npc[npc_count].bullet[bullet_count].height/2),z_pos);
-                glTexCoord2i( 0, 0 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos+(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos+(game_o.npc[npc_count].bullet[bullet_count].height/2),z_pos);
-                glTexCoord2i( 1, 0 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos-(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos+(game_o.npc[npc_count].bullet[bullet_count].height/2),z_pos);
-                glTexCoord2i( 1, 1 );glVertex3f(game_o.npc[npc_count].bullet[bullet_count].x_pos-(game_o.npc[npc_count].bullet[bullet_count].width/2),game_o.npc[npc_count].bullet[bullet_count].y_pos-(game_o.npc[npc_count].bullet[bullet_count].height/2),z_pos);
-                glEnd();
-            }
-*/
         }
         z_pos = 0.04f + (0.0001*npc_count); // npc's
         if (game_o.npc[npc_count].active)
         {
-            if (game_o.npc[npc_count].damaged > (game_o.npc_damage_duration/5)) glColor4f(1.0f,0.0f,0.0f,0.6f);
-            bind_texture(game_o.enemy[game_o.npc[npc_count].type_npc].image);
-            glLoadIdentity();
-            glBegin( GL_QUADS );
-            glTexCoord2i( 1, 1 );glVertex3f(game_o.npc[npc_count].x_pos+(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos-(game_o.npc[npc_count].height/2),z_pos);
-            glTexCoord2i( 0, 1 );glVertex3f(game_o.npc[npc_count].x_pos+(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos+(game_o.npc[npc_count].height/2),z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f(game_o.npc[npc_count].x_pos-(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos+(game_o.npc[npc_count].height/2),z_pos);
-            glTexCoord2i( 1, 0 );glVertex3f(game_o.npc[npc_count].x_pos-(game_o.npc[npc_count].width/2),game_o.npc[npc_count].y_pos-(game_o.npc[npc_count].height/2),z_pos);
-            glEnd();
-            glColor4f(1.0f,1.0f,1.0f,1.0f);
+            float temp_r = 1.0f;
+            float temp_g = 1.0f;
+            float temp_b = 1.0f;
+            float temp_a = 1.0f;
+            if (game_o.npc[npc_count].damaged > (game_o.npc_damage_duration/5))
+            {
+                temp_r = 1.0f;
+                temp_g = 0.0f;
+                temp_b = 0.0f;
+                temp_a = 0.6f;
+            }
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_000.ref_number) texture.ship_000.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_001.ref_number) texture.ship_001.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_002.ref_number) texture.ship_002.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_003.ref_number) texture.ship_003.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_004.ref_number) texture.ship_004.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_005.ref_number) texture.ship_005.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_006.ref_number) texture.ship_006.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_007.ref_number) texture.ship_007.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_008.ref_number) texture.ship_008.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_009.ref_number) texture.ship_009.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_010.ref_number) texture.ship_010.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_011.ref_number) texture.ship_011.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_012.ref_number) texture.ship_012.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_013.ref_number) texture.ship_013.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_014.ref_number) texture.ship_014.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_015.ref_number) texture.ship_015.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_016.ref_number) texture.ship_016.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_017.ref_number) texture.ship_017.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_018.ref_number) texture.ship_018.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_019.ref_number) texture.ship_019.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_020.ref_number) texture.ship_020.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_021.ref_number) texture.ship_021.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_022.ref_number) texture.ship_022.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_023.ref_number) texture.ship_023.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_024.ref_number) texture.ship_024.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_025.ref_number) texture.ship_025.draw(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height, 90.0f,temp_r,temp_g,temp_b,temp_a);
         }
     }
     for (int count =0;count < MAX_BULLETS;count++) //player bullets

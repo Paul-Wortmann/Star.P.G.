@@ -219,8 +219,19 @@ void texture_class::draw(float pos_x, float pos_y, float pos_z, float width, flo
 void texture_class::draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle, float alpha)
 {
     texture_class::angle = angle;
-    glColor4f (1.0f, 1.0f, 1.0f,alpha);
+    glColor4f (1.0f, 1.0f, 1.0f, alpha);
     texture_class::draw(pos_x,pos_y,pos_z,width,height);
     glColor4f (1.0f, 1.0f, 1.0f,1.0f);
 };
+
+void texture_class::draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle, float red, float green, float blue, float alpha)
+{
+    texture_class::angle = angle;
+    glColor4f (red, green, blue, alpha);
+    texture_class::draw(pos_x,pos_y,pos_z,width,height);
+    glColor4f (1.0f, 1.0f, 1.0f,1.0f);
+};
+
+
+
 
