@@ -705,21 +705,8 @@ int display_game(void)
                 if (game_o.player.side_weapon == 30) texture.projectile_030.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
                 if (game_o.player.side_weapon == 31) texture.projectile_031.draw(game_o.player.bullet[count].x_pos,game_o.player.bullet[count].y_pos,z_pos,game_o.player.bullet[count].width,game_o.player.bullet[count].height);
             }
-/*
-
-                bind_texture(game_o.projectile[game_o.player.front_weapon].image);
-            else bind_texture(game_o.projectile[game_o.player.side_weapon].image);
-            glLoadIdentity();
-            glBegin( GL_QUADS );
-            glTexCoord2i( 1, 0 );glVertex3f(game_o.player.bullet[count].x_pos+(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos-(game_o.player.bullet[count].height/2), z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f(game_o.player.bullet[count].x_pos+(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos+(game_o.player.bullet[count].height/2), z_pos);
-            glTexCoord2i( 0, 1 );glVertex3f(game_o.player.bullet[count].x_pos-(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos+(game_o.player.bullet[count].height/2), z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f(game_o.player.bullet[count].x_pos-(game_o.player.bullet[count].width/2),game_o.player.bullet[count].y_pos-(game_o.player.bullet[count].height/2), z_pos);
-            glEnd();
-*/
         }
     }
-
     for (int supportship_count = 0;supportship_count < MAX_SUPPORTSHIPS;supportship_count++)//display support ship bullets
     {
         for (int bullet_count = 0;bullet_count < MAX_BULLETS;bullet_count++)
@@ -727,18 +714,42 @@ int display_game(void)
             if (game_o.supportship[supportship_count].bullet[bullet_count].active)
             {
                 z_pos = 0.05f + (0.001*bullet_count);
-                bind_texture(game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image);
-                glLoadIdentity();
-                glBegin( GL_QUADS );
-                glTexCoord2i( 1, 0 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos+(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos-(game_o.supportship[supportship_count].bullet[bullet_count].height/2), z_pos);
-                glTexCoord2i( 1, 1 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos+(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos+(game_o.supportship[supportship_count].bullet[bullet_count].height/2), z_pos);
-                glTexCoord2i( 0, 1 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos-(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos+(game_o.supportship[supportship_count].bullet[bullet_count].height/2), z_pos);
-                glTexCoord2i( 0, 0 );glVertex3f(game_o.supportship[supportship_count].bullet[bullet_count].x_pos-(game_o.supportship[supportship_count].bullet[bullet_count].width/2),game_o.supportship[supportship_count].bullet[bullet_count].y_pos-(game_o.supportship[supportship_count].bullet[bullet_count].height/2), z_pos);
-                glEnd();
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_000.ref_number) texture.projectile_000.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_001.ref_number) texture.projectile_001.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_002.ref_number) texture.projectile_002.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_003.ref_number) texture.projectile_003.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_004.ref_number) texture.projectile_004.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_005.ref_number) texture.projectile_005.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_006.ref_number) texture.projectile_006.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_007.ref_number) texture.projectile_007.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_008.ref_number) texture.projectile_008.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_009.ref_number) texture.projectile_009.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_010.ref_number) texture.projectile_010.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_011.ref_number) texture.projectile_011.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_012.ref_number) texture.projectile_012.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_013.ref_number) texture.projectile_013.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_014.ref_number) texture.projectile_014.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_015.ref_number) texture.projectile_015.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_016.ref_number) texture.projectile_016.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_017.ref_number) texture.projectile_017.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_018.ref_number) texture.projectile_018.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_019.ref_number) texture.projectile_019.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_020.ref_number) texture.projectile_020.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_021.ref_number) texture.projectile_021.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_022.ref_number) texture.projectile_022.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_023.ref_number) texture.projectile_023.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_024.ref_number) texture.projectile_024.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_025.ref_number) texture.projectile_025.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_026.ref_number) texture.projectile_026.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_027.ref_number) texture.projectile_027.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_028.ref_number) texture.projectile_028.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_029.ref_number) texture.projectile_029.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_030.ref_number) texture.projectile_030.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_031.ref_number) texture.projectile_031.draw(game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height);
             }
         }
     }
-
+// change from below....
     for (int count =MAX_EXPLOSIONS;count >=0;count--)  // explosions
     {
         z_pos = 0.001f + (0.0001*count);
@@ -754,59 +765,67 @@ int display_game(void)
             glEnd();
         }
     }
-//----------------------------------------------------------------------------------------
 //up from here...
-
     draw_supportships(); // support ships
-
-    if ((game_o.immune) && (game_o.immunity_state == 0)) glColor4f(1.0f,0.0f,0.0f,0.6f);
+    //----------------------------------------------------------------------------------------
+    float temp_r = 1.0f;
+    float temp_g = 1.0f;
+    float temp_b = 1.0f;
+    float temp_a = 1.0f;
+    if ((game_o.immune) && (game_o.immunity_state == 0))
+    {
+        temp_r = 1.0f;
+        temp_g = 0.0f;
+        temp_b = 0.0f;
+        temp_a = 0.6f;
+    }
     if (game_o.player.thrusters > -1)//player starship
     {
         if (game_o.player.thrusters== 0) //player thrusters
         {
-            texture.thruster_000.draw(game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,270.0f);
+            texture.thruster_000.draw(game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,270.0f,temp_r,temp_g,temp_b,temp_a);
         }
         if (game_o.player.thrusters== 1)
         {
-            texture.thruster_001.draw(game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,270.0f);
+            texture.thruster_001.draw(game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,270.0f,temp_r,temp_g,temp_b,temp_a);
         }
         if (game_o.player.thrusters== 2)
         {
-            texture.thruster_002.draw(game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,270.0f);
+            texture.thruster_002.draw(game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,270.0f,temp_r,temp_g,temp_b,temp_a);
         }
         if (game_o.player.thrusters== 3)
         {
-            texture.thruster_003.draw(game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,270.0f);
+            texture.thruster_003.draw(game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,270.0f,temp_r,temp_g,temp_b,temp_a);
         }
     }
     //player starship
-    if (game_o.player.image == texture.ship_025.ref_number) texture.ship_025.draw(game_o.player.x_pos,game_o.player.y_pos, 0.030f,game_o.player.width,game_o.player.height,270.0f);
+    if (game_o.player.image == texture.ship_025.ref_number) texture.ship_025.draw(game_o.player.x_pos,game_o.player.y_pos, 0.030f,game_o.player.width,game_o.player.height,270.0f,temp_r,temp_g,temp_b,temp_a);
 
     if (game_o.player.front_weapon > -1)//player starship front weapon
     {
         if (game_o.player.front_weapon == 0)
         {
-            texture.weapon_000.draw(game_o.player.x_pos+0.076f,game_o.player.y_pos, 0.025f,game_o.player.width/6,game_o.player.height/6,270.0f);
+            texture.weapon_000.draw(game_o.player.x_pos+0.076f,game_o.player.y_pos, 0.025f,game_o.player.width/6,game_o.player.height/6,270.0f,temp_r,temp_g,temp_b,temp_a);
         }
         if (game_o.player.front_weapon == 1)
         {
-            texture.weapon_001.draw(game_o.player.x_pos+0.076f,game_o.player.y_pos, 0.025f,game_o.player.width/6,game_o.player.height/6,270.0f);
+            texture.weapon_001.draw(game_o.player.x_pos+0.076f,game_o.player.y_pos, 0.025f,game_o.player.width/6,game_o.player.height/6,270.0f,temp_r,temp_g,temp_b,temp_a);
         }
         if (game_o.player.front_weapon == 2)
         {
-            texture.weapon_002.draw(game_o.player.x_pos+0.076f,game_o.player.y_pos, 0.025f,game_o.player.width/6,game_o.player.height/6,270.0f);
+            texture.weapon_002.draw(game_o.player.x_pos+0.076f,game_o.player.y_pos, 0.025f,game_o.player.width/6,game_o.player.height/6,270.0f,temp_r,temp_g,temp_b,temp_a);
         }
         if (game_o.player.front_weapon == 3)
         {
-            texture.weapon_003.draw(game_o.player.x_pos+0.076f,game_o.player.y_pos, 0.025f,game_o.player.width/6,game_o.player.height/6,270.0f);
+            texture.weapon_003.draw(game_o.player.x_pos+0.076f,game_o.player.y_pos, 0.025f,game_o.player.width/6,game_o.player.height/6,270.0f,temp_r,temp_g,temp_b,temp_a);
         }
         if (game_o.player.front_weapon == 4)
         {
-            texture.weapon_004.draw(game_o.player.x_pos+0.076f,game_o.player.y_pos, 0.025f,game_o.player.width/6,game_o.player.height/6,270.0f);
+            texture.weapon_004.draw(game_o.player.x_pos+0.076f,game_o.player.y_pos, 0.025f,game_o.player.width/6,game_o.player.height/6,270.0f,temp_r,temp_g,temp_b,temp_a);
         }
         if (game_o.player.front_weapon == 5)
         {
-            texture.weapon_005.draw(game_o.player.x_pos+0.076f,game_o.player.y_pos, 0.025f,game_o.player.width/6,game_o.player.height/6,270.0f);
+            texture.weapon_005.draw(game_o.player.x_pos+0.076f,game_o.player.y_pos, 0.025f,game_o.player.width/6,game_o.player.height/6,270.0f,temp_r,temp_g,temp_b,temp_a);
         }
     }
 
@@ -814,44 +833,45 @@ int display_game(void)
     {
         if (game_o.player.side_weapon == 0)
         {
-            texture.weapon_000.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos+0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f);
-            texture.weapon_000.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos-0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f);
+            texture.weapon_000.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos+0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f,temp_r,temp_g,temp_b,temp_a);
+            texture.weapon_000.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos-0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f,temp_r,temp_g,temp_b,temp_a);
         }
         if (game_o.player.side_weapon == 1)
         {
-            texture.weapon_001.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos+0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f);
-            texture.weapon_001.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos-0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f);
+            texture.weapon_001.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos+0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f,temp_r,temp_g,temp_b,temp_a);
+            texture.weapon_001.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos-0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f,temp_r,temp_g,temp_b,temp_a);
         }
         if (game_o.player.side_weapon == 2)
         {
-            texture.weapon_002.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos+0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f);
-            texture.weapon_002.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos-0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f);
+            texture.weapon_002.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos+0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f,temp_r,temp_g,temp_b,temp_a);
+            texture.weapon_002.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos-0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f,temp_r,temp_g,temp_b,temp_a);
         }
         if (game_o.player.side_weapon == 3)
         {
-            texture.weapon_003.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos+0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f);
-            texture.weapon_003.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos-0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f);
+            texture.weapon_003.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos+0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f,temp_r,temp_g,temp_b,temp_a);
+            texture.weapon_003.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos-0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f,temp_r,temp_g,temp_b,temp_a);
         }
         if (game_o.player.side_weapon == 4)
         {
-            texture.weapon_004.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos+0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f);
-            texture.weapon_004.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos-0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f);
+            texture.weapon_004.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos+0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f,temp_r,temp_g,temp_b,temp_a);
+            texture.weapon_004.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos-0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f,temp_r,temp_g,temp_b,temp_a);
         }
         if (game_o.player.side_weapon == 5)
         {
-            texture.weapon_005.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos+0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f);
-            texture.weapon_005.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos-0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f);
+            texture.weapon_005.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos+0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f,temp_r,temp_g,temp_b,temp_a);
+            texture.weapon_005.draw(game_o.player.x_pos+0.067f,game_o.player.y_pos-0.075f, 0.025f,game_o.player.width/3,game_o.player.height/3,270.0f,temp_r,temp_g,temp_b,temp_a);
         }
     }
     if (game_o.player.front_shield > -1) // player starship shield
     {
-        if (game_o.shield[game_o.player.front_shield].image == texture.shield_000.ref_number) texture.shield_000.draw(game_o.player.x_pos,game_o.player.y_pos, 0.02f,(game_o.player.width/1.5)*2,(game_o.player.height/1.5)*2);
-        if (game_o.shield[game_o.player.front_shield].image == texture.shield_001.ref_number) texture.shield_001.draw(game_o.player.x_pos,game_o.player.y_pos, 0.02f,(game_o.player.width/1.5)*2,(game_o.player.height/1.5)*2);
-        if (game_o.shield[game_o.player.front_shield].image == texture.shield_002.ref_number) texture.shield_002.draw(game_o.player.x_pos,game_o.player.y_pos, 0.02f,(game_o.player.width/1.5)*2,(game_o.player.height/1.5)*2);
-        if (game_o.shield[game_o.player.front_shield].image == texture.shield_003.ref_number) texture.shield_003.draw(game_o.player.x_pos,game_o.player.y_pos, 0.02f,(game_o.player.width/1.5)*2,(game_o.player.height/1.5)*2);
-        if (game_o.shield[game_o.player.front_shield].image == texture.shield_004.ref_number) texture.shield_004.draw(game_o.player.x_pos,game_o.player.y_pos, 0.02f,(game_o.player.width/1.5)*2,(game_o.player.height/1.5)*2);
+        if (game_o.shield[game_o.player.front_shield].image == texture.shield_000.ref_number) texture.shield_000.draw(game_o.player.x_pos,game_o.player.y_pos, 0.02f,(game_o.player.width/1.5)*2,(game_o.player.height/1.5)*2,0.0f,temp_r,temp_g,temp_b,temp_a);
+        if (game_o.shield[game_o.player.front_shield].image == texture.shield_001.ref_number) texture.shield_001.draw(game_o.player.x_pos,game_o.player.y_pos, 0.02f,(game_o.player.width/1.5)*2,(game_o.player.height/1.5)*2,0.0f,temp_r,temp_g,temp_b,temp_a);
+        if (game_o.shield[game_o.player.front_shield].image == texture.shield_002.ref_number) texture.shield_002.draw(game_o.player.x_pos,game_o.player.y_pos, 0.02f,(game_o.player.width/1.5)*2,(game_o.player.height/1.5)*2,0.0f,temp_r,temp_g,temp_b,temp_a);
+        if (game_o.shield[game_o.player.front_shield].image == texture.shield_003.ref_number) texture.shield_003.draw(game_o.player.x_pos,game_o.player.y_pos, 0.02f,(game_o.player.width/1.5)*2,(game_o.player.height/1.5)*2,0.0f,temp_r,temp_g,temp_b,temp_a);
+        if (game_o.shield[game_o.player.front_shield].image == texture.shield_004.ref_number) texture.shield_004.draw(game_o.player.x_pos,game_o.player.y_pos, 0.02f,(game_o.player.width/1.5)*2,(game_o.player.height/1.5)*2,0.0f,temp_r,temp_g,temp_b,temp_a);
     }
-    glColor4f(1.0f,1.0f,1.0f,1.0f);//------------------------------------------------
+    glColor4f(1.0f,1.0f,1.0f,1.0f);
+    //------------------------------------------------
 
     float  npc_num   = 0.0f;
     float  temp_size = 0.0f;
