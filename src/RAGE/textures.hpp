@@ -48,8 +48,9 @@ class texture_class
         float           rotate_speed;
         int             rotate_direction;
         float           angle;
-        int             frame_delay;
-        int             frame_delay_count;
+        float           frame_delay;
+        float           frame_delay_count;
+        float           frame_delay_max;
         int             frame_num;
         int             frame_max;
         frame_type      frame[MAX_FRAMES];
@@ -65,6 +66,7 @@ class texture_class
         void     draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle);
         void     draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle, float alpha);
         void     draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle, float red, float green, float blue, float alpha);
+        void     draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle, int frame);
 };
 
 #endif //TEXTURES_H

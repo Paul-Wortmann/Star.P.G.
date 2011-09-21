@@ -749,24 +749,16 @@ int display_game(void)
             }
         }
     }
-// change from below....
-// need to complete the sprite sheet loader before completing the conversion of this code... :O
     for (int count =MAX_EXPLOSIONS;count >=0;count--)  // explosions
     {
         z_pos = 0.001f + (0.0001*count);
-        bind_texture(game_o.explosion[count].image + game_o.explosion[count].frame);
-        glLoadIdentity();
         if (game_o.explosion[count].active)
         {
-            glBegin( GL_QUADS );
-            glTexCoord2i( 1, 0 );glVertex3f(game_o.explosion[count].x_pos+(game_o.explosion[count].width/2),game_o.explosion[count].y_pos-(game_o.explosion[count].height/2),z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f(game_o.explosion[count].x_pos+(game_o.explosion[count].width/2),game_o.explosion[count].y_pos+(game_o.explosion[count].height/2),z_pos);
-            glTexCoord2i( 0, 1 );glVertex3f(game_o.explosion[count].x_pos-(game_o.explosion[count].width/2),game_o.explosion[count].y_pos+(game_o.explosion[count].height/2),z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f(game_o.explosion[count].x_pos-(game_o.explosion[count].width/2),game_o.explosion[count].y_pos-(game_o.explosion[count].height/2),z_pos);
-            glEnd();
+            if (game_o.explosion[count].image == texture.explosion_00.ref_number) texture.explosion_00.draw(game_o.explosion[count].x_pos,game_o.explosion[count].y_pos,z_pos,game_o.explosion[count].width,game_o.explosion[count].height,0.0f,game_o.explosion[count].frame);
+            if (game_o.explosion[count].image == texture.explosion_01.ref_number) texture.explosion_01.draw(game_o.explosion[count].x_pos,game_o.explosion[count].y_pos,z_pos,game_o.explosion[count].width,game_o.explosion[count].height,0.0f,game_o.explosion[count].frame);
+            if (game_o.explosion[count].image == texture.explosion_02.ref_number) texture.explosion_02.draw(game_o.explosion[count].x_pos,game_o.explosion[count].y_pos,z_pos,game_o.explosion[count].width,game_o.explosion[count].height,0.0f,game_o.explosion[count].frame);
         }
     }
-    //up from here...
     draw_supportships(); // support ships
     //----------------------------------------------------------------------------------------
     float temp_r = 1.0f;

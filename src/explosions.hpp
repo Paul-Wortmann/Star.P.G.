@@ -30,10 +30,13 @@ const int   MAX_EXPLOSIONS     = 32;
 struct explosion_class
 {
     public:
-    int   animation;
     bool  active;
-    int   frame;
     int   image;
+    int   frame;
+    int   frame_max;
+    float frame_delay;
+    float frame_delay_count;
+    float frame_delay_max;
     int   sound;
     float x_pos;
     float y_pos;

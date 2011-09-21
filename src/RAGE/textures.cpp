@@ -43,8 +43,9 @@ texture_class::texture_class()
     texture_class::angle             = 0.0f;
     texture_class::frame_num         = 0;
     texture_class::frame_max         = 0;
-    texture_class::frame_delay       = 0;
-    texture_class::frame_delay_count = 0;
+    texture_class::frame_delay       = 0.0f;
+    texture_class::frame_delay_count = 0.0f;
+    texture_class::frame_delay_max   = 0.0f;
     for (int frame_count = 0; frame_count < MAX_FRAMES; frame_count++)
     {
         texture_class::frame[frame_count].active = false;
@@ -123,6 +124,7 @@ bool texture_class::load_spritesheet(std::string file_name, int index_number)
         frames_x = sprite_sheet->w / texture_class::width;
         frames_y = sprite_sheet->h / texture_class::height;
         num_sprites = frames_x * frames_y;
+        texture_class::frame_max = num_sprites-1;
         number_of_colors = sprite_sheet->format->BytesPerPixel;
         if (number_of_colors == 4)
         {
@@ -165,7 +167,6 @@ bool texture_class::load_spritesheet(std::string file_name, int index_number)
     else
     {
         return_value = false;
-        //game.log.File_Write("SDL could not load image.",File_Name);
         SDL_Quit();
     }
     if ( sprite_sheet ) SDL_FreeSurface( sprite_sheet );
@@ -190,10 +191,10 @@ void texture_class::process(void)
         }
     }
     // process frames
-    texture_class::frame_delay_count++;
-    if (texture_class::frame_delay_count > texture_class::frame_delay)
+    texture_class::frame_delay_count += texture_class::frame_delay;
+    if (texture_class::frame_delay_count > texture_class::frame_delay_max)
     {
-        texture_class::frame_delay_count = 0;
+        texture_class::frame_delay_count = 0.0f;
         texture_class::frame_num++;
         if (texture_class::frame_num > texture_class::frame_max) texture_class::frame_num = 0;
     }
@@ -241,6 +242,12 @@ void texture_class::draw(float pos_x, float pos_y, float pos_z, float width, flo
     glColor4f (1.0f, 1.0f, 1.0f,1.0f);
 };
 
+void texture_class::draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle, int frame)
+{
+    texture_class::frame_num = frame;
+    texture_class::angle     = angle;
+    texture_class::draw(pos_x,pos_y,pos_z,width,height);
+};
 
 
 

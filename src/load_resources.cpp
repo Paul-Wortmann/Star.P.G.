@@ -338,9 +338,9 @@ bool load_textures(void)
     texture.save_game_highlighted_04.load_image("data/textures/menu/save_game_highlighted_04.png",texture_count);texture_count++;
     texture.save_game_highlighted_05.load_image("data/textures/menu/save_game_highlighted_05.png",texture_count);texture_count++;
 
-    texture.explosion_00.load_image("data/textures/explosions/explosion_00/explosion_00.png",texture_count);texture_count++;
-    texture.explosion_01.load_image("data/textures/explosions/explosion_00/explosion_01.png",texture_count);texture_count++;
-    texture.explosion_02.load_image("data/textures/explosions/explosion_00/explosion_02.png",texture_count);texture_count++;
+    texture.explosion_00.load_spritesheet("data/textures/explosions/explosion_00.png",texture_count);texture_count++;
+    texture.explosion_01.load_spritesheet("data/textures/explosions/explosion_01.png",texture_count);texture_count++;
+    texture.explosion_02.load_spritesheet("data/textures/explosions/explosion_02.png",texture_count);texture_count++;
     texture.explosion_03.load_image("data/textures/explosions/explosion_00/explosion_03.png",texture_count);texture_count++;
     texture.explosion_04.load_image("data/textures/explosions/explosion_00/explosion_04.png",texture_count);texture_count++;
     texture.explosion_05.load_image("data/textures/explosions/explosion_00/explosion_05.png",texture_count);texture_count++;
