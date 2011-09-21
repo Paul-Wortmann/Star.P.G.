@@ -114,8 +114,6 @@ int main(int argc, char *argv[])
   joystick = SDL_JoystickOpen(0);
   game.log.File_Write("Initializing game system...");
   init_game(false);
-  game.log.File_Write("Initializing menu system...");
-  init_menu();
   game.log.File_Write("Initializing projectiles...");
   init_player_bullets();
   game.log.File_Write("Initializing explosions...");
@@ -134,6 +132,8 @@ int main(int argc, char *argv[])
   game.log.File_Write("Loading resources...");
   loading_screen_display("data/textures/misc/loading_screen.png");
   load_resources();
+  game.log.File_Write("Initializing menu system...");
+  init_menu();
   init_projectiles(false);
   init_powerups();
   init_shields(false);
@@ -215,10 +215,10 @@ int main(int argc, char *argv[])
                 game.menu_level              = 8;
                 game.config.menu_delay_count = 0;
                 music.level_pd.play();
-                game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 84);
-                game.background.set_data ( 2, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 84);
-                game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 73);
-                game.background.set_data ( 4, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 73);
+                game.background.set_data  ( 2, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_019.ref_number);
+                game.background.set_data  ( 1, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_008.ref_number);
+                game.background.set_active( 3, false);
+                game.background.set_active( 4, false);
                 game.background.set_movement_type(BOUNCE);
                 game.log.File_Write("User terminated due to insufficient health...better luck next time buddy!");
             }
@@ -366,16 +366,16 @@ int main(int argc, char *argv[])
         SDL_GL_SwapBuffers();
     }
 //----------------------------------- Exit -------------------------------------
-    game.log.File_Write("Saving config...");
+    game.log.File_Write("Saving configuration...");
     game.config.File_Set("Star.P.G..cfg");
     game.config.File_Clear();
     game.config.File_Write();
     game.log.File_Write("\n");
-    game.log.File_Write("Shuting down...");
+    game.log.File_Write("Shutting down...");
     game.log.File_Write("---------------\n");
     game.log.File_Write("Unloading fonts...");
     TTF_Quit();
-    game.log.File_Write("Shuting down audio system...");
+    game.log.File_Write("Shutting down audio system...");
     Mix_CloseAudio();
 //    game.log.File_Write("PhysicsFS deinit...");
 //    PHYSFS_deinit();

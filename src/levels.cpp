@@ -22,12 +22,14 @@
  * @date 2011-09-03
  */
 
+#include "load_resources.hpp"
 #include "RAGE/rage.hpp"
 #include "levels.hpp"
 #include "game.hpp"
 
-extern game_type  game_o;
-extern game_class game;
+extern game_type     game_o;
+extern game_class    game;
+extern texture_type  texture;
 
 void init_levels(void)
 {
@@ -80,46 +82,46 @@ int init_game_level(int level_no)
     init_waves();
     game_o.wave[0].active = true;
 
-   if (level_no == 0) // Taranis
-   {
-      game_o.level                             = level_no;
-      game_o.level_npc_type                    = 0;
-      game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 66);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 66);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 96);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 96);
-      game_o.speed                             = 0.015f;
-      game_o.npc_spawn_rate                    = 300;
-      game_o.npc_spawn_rate_count              = 300;
-      game_o.npc_projectile_spawn_rate         = 50;
-      game_o.victory_kills                     = 128;
-      game_o.victory_spawened                  = 1;
-      game_o.victory_score                     = 0;
-      game_o.wave[ 0].wave_size                = 0.25f;
-      game_o.wave[ 0].npc_type                 = 0;
-      game_o.wave[ 0].spawn_pattern            = 0;
-      game_o.wave[ 1].npc_type                 = 0;
-      game_o.wave[ 1].spawn_pattern            = 7;
-      game_o.wave[ 2].npc_type                 = 0;
-      game_o.wave[ 2].spawn_pattern            = 8;
-      game_o.wave[ 3].npc_type                 = 0;
-      game_o.wave[ 3].spawn_pattern            = 10;
-      game_o.wave[ 4].npc_type                 = 0;
-      game_o.wave[ 4].spawn_pattern            = 11;
-      game_o.level_waves                       = 4;
-   }
+    if (level_no == 0) // Taranis
+    {
+        game_o.level                             = level_no;
+        game_o.level_npc_type                    = 0;
+        game_o.level_boss_level                  = false;
+        game.music_track                         = level_no;
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_001.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_001.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_031.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_031.ref_number);
+        game_o.speed                             = 0.015f;
+        game_o.npc_spawn_rate                    = 300;
+        game_o.npc_spawn_rate_count              = 300;
+        game_o.npc_projectile_spawn_rate         = 50;
+        game_o.victory_kills                     = 128;
+        game_o.victory_spawened                  = 1;
+        game_o.victory_score                     = 0;
+        game_o.wave[ 0].wave_size                = 0.25f;
+        game_o.wave[ 0].npc_type                 = 0;
+        game_o.wave[ 0].spawn_pattern            = 0;
+        game_o.wave[ 1].npc_type                 = 0;
+        game_o.wave[ 1].spawn_pattern            = 7;
+        game_o.wave[ 2].npc_type                 = 0;
+        game_o.wave[ 2].spawn_pattern            = 8;
+        game_o.wave[ 3].npc_type                 = 0;
+        game_o.wave[ 3].spawn_pattern            = 10;
+        game_o.wave[ 4].npc_type                 = 0;
+        game_o.wave[ 4].spawn_pattern            = 11;
+        game_o.level_waves                       = 4;
+    }
    if (level_no == 1) // Teutates
    {
       game_o.level                             = level_no;
       game_o.level_npc_type                    = 1;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 66);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 66);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 95);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 95);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_001.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_001.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_030.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_030.ref_number);
       game_o.speed                             = 0.050f;
       game_o.npc_spawn_rate                    = 280;
       game_o.npc_spawn_rate_count              = 280;
@@ -154,10 +156,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 2;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 66);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 66);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 94);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 94);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_001.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_001.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_029.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_029.ref_number);
       game_o.speed                             = 0.055f;
       game_o.npc_spawn_rate                    = 270;
       game_o.npc_spawn_rate_count              = 270;
@@ -200,10 +202,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 3;
       game_o.level_boss_level                  = true;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 65);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 65);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 94);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 94);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_000.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_000.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_029.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_029.ref_number);
       game_o.speed                             = 0.060f;
       game_o.npc_spawn_rate                    = 1;
       game_o.npc_spawn_rate_count              = 1;
@@ -218,10 +220,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 4;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 67);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 67);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 93);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 93);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_002.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_002.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_028.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_028.ref_number);
       game_o.speed                             = 0.065f;
       game_o.npc_spawn_rate                    = 480;
       game_o.npc_spawn_rate_count              = 480;
@@ -243,10 +245,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 5;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 67);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 67);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 92);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 92);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_002.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_002.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_027.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_027.ref_number);
       game_o.speed                             = 0.070f;
       game_o.npc_spawn_rate                    = 460;
       game_o.npc_spawn_rate_count              = 460;
@@ -267,10 +269,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 6;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 67);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 67);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 91);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 91);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_002.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_002.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_026.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_026.ref_number);
       game_o.speed                             = 0.075f;
       game_o.npc_spawn_rate                    = 420;
       game_o.npc_spawn_rate_count              = 420;
@@ -293,10 +295,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 7;
       game_o.level_boss_level                  = true;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 64);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 64);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 91);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 91);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.menu_background_001.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.menu_background_001.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_026.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_026.ref_number);
       game_o.speed                             = 0.080f;
       game_o.npc_spawn_rate                    = 1;
       game_o.npc_spawn_rate_count              = 1;
@@ -311,10 +313,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 8;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 68);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 68);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 89);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 89);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_003.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_003.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_024.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_024.ref_number);
       game_o.speed                             = 0.085f;
       game_o.npc_spawn_rate                    = 250;
       game_o.npc_spawn_rate_count              = 250;
@@ -332,10 +334,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 9;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 68);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 68);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 88);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 88);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_003.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_003.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_023.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_023.ref_number);
       game_o.speed                             = 0.090f;
       game_o.npc_spawn_rate                    = 250;
       game_o.npc_spawn_rate_count              = 250;
@@ -361,10 +363,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 10;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 68);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 68);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 87);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 87);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_003.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_003.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_022.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_022.ref_number);
       game_o.speed                             = 0.095f;
       game_o.npc_spawn_rate                    = 320;
       game_o.npc_spawn_rate_count              = 320;
@@ -387,10 +389,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 11;
       game_o.level_boss_level                  = true;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 65);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 65);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 87);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 87);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_000.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_000.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_022.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_022.ref_number);
       game_o.speed                             = 0.100f;
       game_o.npc_spawn_rate                    = 1;
       game_o.npc_spawn_rate_count              = 1;
@@ -405,10 +407,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 12;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 69);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 69);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 86);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 86);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_004.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_004.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_021.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_021.ref_number);
       game_o.speed                             = 0.105f;
       game_o.npc_spawn_rate                    = 280;
       game_o.npc_spawn_rate_count              = 280;
@@ -427,10 +429,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 13;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 69);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 69);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 85);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 85);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_004.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_004.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_020.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_020.ref_number);
       game_o.speed                             = 0.110f;
       game_o.npc_spawn_rate                    = 420;
       game_o.npc_spawn_rate_count              = 420;
@@ -450,10 +452,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 14;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 69);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 69);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 84);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 84);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_004.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_004.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_019.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_019.ref_number);
       game_o.speed                             = 0.115f;
       game_o.npc_spawn_rate                    = 320;
       game_o.npc_spawn_rate_count              = 320;
@@ -479,10 +481,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 15;
       game_o.level_boss_level                  = true;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 65);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 65);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 83);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 83);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_000.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_000.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_018.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_018.ref_number);
       game_o.speed                             = 0.120f;
       game_o.npc_spawn_rate                    = 1;
       game_o.npc_spawn_rate_count              = 1;
@@ -497,10 +499,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 16;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 70);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 70);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 82);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 82);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_005.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_005.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_017.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_017.ref_number);
       game_o.speed                             = 0.125f;
       game_o.npc_spawn_rate                    = 220;
       game_o.npc_spawn_rate_count              = 220;
@@ -519,10 +521,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 17;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 70);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 70);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 81);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 81);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_005.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_005.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_016.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_016.ref_number);
       game_o.speed                             = 0.130f;
       game_o.npc_spawn_rate                    = 220;
       game_o.npc_spawn_rate_count              = 220;
@@ -543,10 +545,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 18;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 70);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 70);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 80);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 80);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_005.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_005.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_015.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_015.ref_number);
       game_o.speed                             = 0.135f;
       game_o.npc_spawn_rate                    = 220;
       game_o.npc_spawn_rate_count              = 220;
@@ -569,10 +571,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 19;
       game_o.level_boss_level                  = true;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 70);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 70);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 79);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 79);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_005.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_005.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_014.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_014.ref_number);
       game_o.speed                             = 0.140f;
       game_o.npc_spawn_rate                    = 1;
       game_o.npc_spawn_rate_count              = 1;
@@ -587,10 +589,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 20;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 71);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 71);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 78);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 78);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_006.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_006.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_013.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_013.ref_number);
       game_o.speed                             = 0.145f;
       game_o.npc_spawn_rate                    = 120;
       game_o.npc_spawn_rate_count              = 120;
@@ -610,10 +612,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 21;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 71);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 71);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 77);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 77);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_006.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_006.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_012.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_012.ref_number);
       game_o.speed                             = 0.150f;
       game_o.npc_spawn_rate                    = 120;
       game_o.npc_spawn_rate_count              = 120;
@@ -644,10 +646,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 22;
       game_o.level_boss_level                  = false;
       game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 71);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 71);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 76);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 76);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_006.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_006.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_011.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_011.ref_number);
       game_o.speed                             = 0.155f;
       game_o.npc_spawn_rate                    = 120;
       game_o.npc_spawn_rate_count              = 120;
@@ -690,10 +692,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 23;
       game_o.level_boss_level                  = true;
       game.music_track                         = level_no+1;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 71);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 71);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 75);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 75);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_006.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_006.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_010.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_010.ref_number);
       game_o.speed                             = 0.160f;
       game_o.npc_spawn_rate                    = 1;
       game_o.npc_spawn_rate_count              = 1;
@@ -708,10 +710,10 @@ int init_game_level(int level_no)
       game_o.level_npc_type                    = 24;
       game_o.level_boss_level                  = true;
       game.music_track                         = level_no+1;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, 72);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, 72);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 74);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, 74);
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_007.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_007.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_009.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_009.ref_number);
       game_o.speed                             = 0.165f;
       game_o.npc_spawn_rate                    = 1;
       game_o.npc_spawn_rate_count              = 1;

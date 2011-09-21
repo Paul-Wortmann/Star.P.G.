@@ -341,6 +341,7 @@ bool load_textures(void)
     texture.explosion_00.load_spritesheet("data/textures/explosions/explosion_00.png",texture_count);texture_count++;
     texture.explosion_01.load_spritesheet("data/textures/explosions/explosion_01.png",texture_count);texture_count++;
     texture.explosion_02.load_spritesheet("data/textures/explosions/explosion_02.png",texture_count);texture_count++;
+/*
     texture.explosion_03.load_image("data/textures/explosions/explosion_00/explosion_03.png",texture_count);texture_count++;
     texture.explosion_04.load_image("data/textures/explosions/explosion_00/explosion_04.png",texture_count);texture_count++;
     texture.explosion_05.load_image("data/textures/explosions/explosion_00/explosion_05.png",texture_count);texture_count++;
@@ -363,7 +364,7 @@ bool load_textures(void)
     texture.explosion_22.load_image("data/textures/explosions/explosion_00/explosion_22.png",texture_count);texture_count++;
     texture.explosion_23.load_image("data/textures/explosions/explosion_00/explosion_23.png",texture_count);texture_count++;
     texture.explosion_24.load_image("data/textures/explosions/explosion_00/explosion_24.png",texture_count);texture_count++;
-
+*/
     texture.health_bar.load_image("data/textures/misc/health_bar.png",texture_count);texture_count++;
 
     texture.weapon_000.load_image("data/textures/weapons/weapon_000.png",texture_count);texture_count++;
@@ -518,7 +519,7 @@ bool load_textures(void)
     texture.powerup_sideship_03.load_image("data/textures/powerups/powerup_sideship_03.png",texture_count);texture_count++;
     texture.touchscreen_arrow.load_image("data/textures/misc/touchscreen_arrow.png",texture_count);texture_count++;
     texture.touchscreen_button.load_image("data/textures/misc/touchscreen_button.png",texture_count);texture_count++;
-
+/*
     texture.explosion_101.load_image("data/textures/explosions/explosion_01/explosion_01.png",texture_count);texture_count++;
     texture.explosion_102.load_image("data/textures/explosions/explosion_01/explosion_02.png",texture_count);texture_count++;
     texture.explosion_103.load_image("data/textures/explosions/explosion_01/explosion_03.png",texture_count);texture_count++;
@@ -574,7 +575,7 @@ bool load_textures(void)
     texture.explosion_228.load_image("data/textures/explosions/explosion_02/explosion_28.png",texture_count);texture_count++;
     texture.explosion_229.load_image("data/textures/explosions/explosion_02/explosion_29.png",texture_count);texture_count++;
     texture.explosion_230.load_image("data/textures/explosions/explosion_02/explosion_30.png",texture_count);texture_count++;
-
+*/
     texture.menu_background_002.load_image("data/textures/menu/menu_background_00.png",texture_count);texture_count++;
     texture.menu_background_003.load_image("data/textures/menu/menu_background_01.png",texture_count);texture_count++;
     texture.red_button.load_image("data/textures/menu/red_button.png",texture_count);texture_count++;

@@ -50,8 +50,8 @@ extern  game_type                game_o;
 int init_menu   (void)
 {
     //------ setup menu background -----------
-    game.background.set_data ( 1, 1, 0, 1.0f, 0.0f, 0.0005f, 0.00040f, 63);
-    game.background.set_data ( 2, 1, 1, 0.0f, 1.0f, 0.0010f, 0.00095f, 64);
+    game.background.set_data ( 1, 1, 0, 1.0f, 0.0f, 0.0005f, 0.00040f, texture.menu_background_001.ref_number);
+    game.background.set_data ( 2, 1, 1, 0.0f, 1.0f, 0.0010f, 0.00095f, texture.menu_background_000.ref_number);
     game.background.set_movement_type(BOUNCE);
     //------ setup "main" menu -----------
     main_menu.set_menu_title(L"Main Menu         ");
@@ -1380,10 +1380,10 @@ int process_menu(void)
                     game.game_active      = false;
                     game.menu_active      = false;
                     game.nlvl_active      = false;
-                    game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0015f, 0.0015f, 63);
-                    game.background.set_data ( 2, 1, 1, 0.0f, 0.0f, 0.0015f, 0.0015f, 63);
-                    game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0025f, 64);
-                    game.background.set_data ( 4, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0025f, 64);
+                    game.background.set_data ( 1, 1, 0, 1.0f, 0.0f, 0.0005f, 0.00040f, texture.menu_background_001.ref_number);
+                    game.background.set_data ( 2, 1, 1, 0.0f, 1.0f, 0.0010f, 0.00095f, texture.menu_background_000.ref_number);
+                    game.background.set_active( 3,false);
+                    game.background.set_active( 4,false);
                     game.background.set_movement_type(BOUNCE);
                     game.log.File_Write("Player just completed the game, proceeding to Outro!");
                 }
@@ -1426,10 +1426,10 @@ int process_menu(void)
                     game.game_active      = false;
                     game.menu_active      = false;
                     game.nlvl_active      = false;
-                    game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0015f, 0.0015f, 63);
-                    game.background.set_data ( 2, 1, 1, 0.0f, 0.0f, 0.0015f, 0.0015f, 63);
-                    game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0025f, 64);
-                    game.background.set_data ( 4, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0025f, 64);
+                    game.background.set_data ( 1, 1, 0, 1.0f, 0.0f, 0.0005f, 0.00040f, texture.menu_background_001.ref_number);
+                    game.background.set_data ( 2, 1, 1, 0.0f, 1.0f, 0.0010f, 0.00095f, texture.menu_background_000.ref_number);
+                    game.background.set_active( 3,false);
+                    game.background.set_active( 4,false);
                     game.background.set_movement_type(BOUNCE);
                     game.log.File_Write("Player just completed the game, proceeding to Outro!");
                 }
@@ -1469,10 +1469,10 @@ int process_menu(void)
                     game.game_active      = false;
                     game.menu_active      = false;
                     game.nlvl_active      = false;
-                    game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0015f, 0.0015f, 63);
-                    game.background.set_data ( 2, 1, 1, 0.0f, 0.0f, 0.0015f, 0.0015f, 63);
-                    game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0025f, 64);
-                    game.background.set_data ( 4, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0025f, 64);
+                    game.background.set_data ( 1, 1, 0, 1.0f, 0.0f, 0.0005f, 0.00040f, texture.menu_background_001.ref_number);
+                    game.background.set_data ( 2, 1, 1, 0.0f, 1.0f, 0.0010f, 0.00095f, texture.menu_background_000.ref_number);
+                    game.background.set_active( 3,false);
+                    game.background.set_active( 4,false);
                     game.background.set_movement_type(BOUNCE);
                     game.log.File_Write("Player just completed the game, proceeding to Outro!");
                 }

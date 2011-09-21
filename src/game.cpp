@@ -262,10 +262,10 @@ int process_game(void)
         game.game_active      = false;
         game.nlvl_active      = true;
         game.music_next_track = true;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0015f, 0.0015f, 63);
-        game.background.set_data ( 2, 1, 1, 0.0f, 0.0f, 0.0015f, 0.0015f, 63);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 64);
-        game.background.set_data ( 4, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, 64);
+        game.background.set_data  ( 1, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.menu_background_001.ref_number);
+        game.background.set_data  ( 2, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.menu_background_000.ref_number);
+        game.background.set_active( 3, false);
+        game.background.set_active( 4, false);
         game.background.set_movement_type(BOUNCE);
     }
    if  (random(game_o.powerup[1 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup

@@ -26,6 +26,8 @@
 #include "../load_resources.hpp"
 #include "background.hpp"
 
+extern texture_type texture;
+
 background_class::background_class       (void)
 {
     for(int layer_count = 1; layer_count < MAX_LAYERS+1; layer_count++)
@@ -172,126 +174,44 @@ void background_class::process           (void)
 void background_class::draw             (void)
 {
     float z_pos = 0.15f;
-    if (background_class::get_movement_type() == BOUNCE)
+    for(int layer_count = MAX_LAYERS; layer_count > 0; layer_count--)
     {
-        for(int layer_count = 1; layer_count < MAX_LAYERS; layer_count++)
+        if(background_class::layer[layer_count].active)
         {
-            if(background_class::layer[layer_count].active)
-            {
-                bind_texture(background_class::layer[layer_count].image);
-                glLoadIdentity();
-                glBegin( GL_QUADS );
-	            glTexCoord2i( 0, 1 );glVertex3f(-2.0f + background_class::layer[layer_count].pos_x,-2.0f + background_class::layer[layer_count].pos_y, z_pos );
-    	        glTexCoord2i( 0, 0 );glVertex3f(-2.0f + background_class::layer[layer_count].pos_x, 2.0f + background_class::layer[layer_count].pos_y, z_pos );
-	            glTexCoord2i( 1, 0 );glVertex3f( 2.0f + background_class::layer[layer_count].pos_x, 2.0f + background_class::layer[layer_count].pos_y, z_pos );
-	            glTexCoord2i( 1, 1 );glVertex3f( 2.0f + background_class::layer[layer_count].pos_x,-2.0f + background_class::layer[layer_count].pos_y, z_pos );
-                glEnd();
-            }
+            if (background_class::layer[layer_count].image == texture.menu_background_000.ref_number) texture.menu_background_000.draw(background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.menu_background_001.ref_number) texture.menu_background_001.draw(background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_000.ref_number)      texture.background_000.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_001.ref_number)      texture.background_001.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_002.ref_number)      texture.background_002.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_003.ref_number)      texture.background_003.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_004.ref_number)      texture.background_004.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_005.ref_number)      texture.background_005.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_006.ref_number)      texture.background_006.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_007.ref_number)      texture.background_007.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_008.ref_number)      texture.background_008.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_009.ref_number)      texture.background_009.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_010.ref_number)      texture.background_010.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_011.ref_number)      texture.background_011.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_012.ref_number)      texture.background_012.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_013.ref_number)      texture.background_013.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_014.ref_number)      texture.background_014.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_015.ref_number)      texture.background_015.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_016.ref_number)      texture.background_016.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_017.ref_number)      texture.background_017.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_018.ref_number)      texture.background_018.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_019.ref_number)      texture.background_019.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_020.ref_number)      texture.background_020.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_021.ref_number)      texture.background_021.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_022.ref_number)      texture.background_022.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_023.ref_number)      texture.background_023.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_024.ref_number)      texture.background_024.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_025.ref_number)      texture.background_025.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_026.ref_number)      texture.background_026.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_027.ref_number)      texture.background_027.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_028.ref_number)      texture.background_028.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_029.ref_number)      texture.background_029.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_030.ref_number)      texture.background_030.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::layer[layer_count].image == texture.background_031.ref_number)      texture.background_031.draw     (background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
         }
     }
-    if (background_class::get_movement_type() == SCROLL)
-    {
-        //---------------------------------- display backgrounds ---------------------------------------------------------------------
-        if (background_class::layer[4].pos_x >= background_class::layer[3].pos_x)
-        {
-            z_pos = 0.16f;
-            bind_texture(background_class::layer[4].image);
-            glLoadIdentity();
-            glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f( 2.000f + background_class::layer[3].pos_x,-2.000f + background_class::layer[4].pos_y,z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f( 2.000f + background_class::layer[3].pos_x, 2.000f + background_class::layer[4].pos_y,z_pos);
-            glTexCoord2i( 1, 0 );glVertex3f( 2.000f + background_class::layer[4].pos_x, 2.000f + background_class::layer[4].pos_y,z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f( 2.000f + background_class::layer[4].pos_x,-2.000f + background_class::layer[4].pos_y,z_pos);
-            glEnd();
-        }
-        else
-        {
-            z_pos = 0.16f;
-            bind_texture(background_class::layer[4].image);
-            glLoadIdentity();
-            glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f(-2.000f + background_class::layer[4].pos_x,-2.000f + background_class::layer[4].pos_y,z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f(-2.000f + background_class::layer[4].pos_x, 2.000f + background_class::layer[4].pos_y,z_pos);
-            glTexCoord2i( 1, 0 );glVertex3f(-2.000f + background_class::layer[3].pos_x, 2.000f + background_class::layer[4].pos_y,z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f(-2.000f + background_class::layer[3].pos_x,-2.000f + background_class::layer[4].pos_y,z_pos);
-            glEnd();
-        }
-        if (background_class::layer[3].pos_x >= background_class::layer[4].pos_x)
-        {
-            z_pos = 0.16f;
-            bind_texture(background_class::layer[3].image);
-            glLoadIdentity();
-            glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f( 2.000f + background_class::layer[4].pos_x,-2.000f + background_class::layer[3].pos_y,z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f( 2.000f + background_class::layer[4].pos_x, 2.000f + background_class::layer[3].pos_y,z_pos);
-            glTexCoord2i( 1, 0 );glVertex3f( 2.000f + background_class::layer[3].pos_x, 2.000f + background_class::layer[3].pos_y,z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f( 2.000f + background_class::layer[3].pos_x,-2.000f + background_class::layer[3].pos_y,z_pos);
-            glEnd();
-        }
-        else
-        {
-            z_pos = 0.16f;
-            bind_texture(background_class::layer[3].image);
-            glLoadIdentity();
-            glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f(-2.000f + background_class::layer[3].pos_x,-2.000f + background_class::layer[3].pos_y,z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f(-2.000f + background_class::layer[3].pos_x, 2.000f + background_class::layer[3].pos_y,z_pos);
-            glTexCoord2i( 1, 0 );glVertex3f(-2.000f + background_class::layer[4].pos_x, 2.000f + background_class::layer[3].pos_y,z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f(-2.000f + background_class::layer[4].pos_x,-2.000f + background_class::layer[3].pos_y,z_pos);
-            glEnd();
-        }
-        //------------------------------------------- display effects layer ------------------------------------------------------
-        if (background_class::layer[2].pos_x >= background_class::layer[1].pos_x)
-        {
-            z_pos = 0.15f;
-            bind_texture(background_class::layer[2].image);
-            glLoadIdentity();
-            glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f( 2.000f + background_class::layer[1].pos_x,-2.000f + background_class::layer[2].pos_y,z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f( 2.000f + background_class::layer[1].pos_x, 2.000f + background_class::layer[2].pos_y,z_pos);
-            glTexCoord2i( 1, 0 );glVertex3f( 2.000f + background_class::layer[2].pos_x, 2.000f + background_class::layer[2].pos_y,z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f( 2.000f + background_class::layer[2].pos_x,-2.000f + background_class::layer[2].pos_y,z_pos);
-            glEnd();
-        }
-        else
-        {
-            z_pos = 0.15f;
-            bind_texture(background_class::layer[2].image);
-            glLoadIdentity();
-            glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f(-2.000f + background_class::layer[2].pos_x,-2.000f + background_class::layer[2].pos_y,z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f(-2.000f + background_class::layer[2].pos_x, 2.000f + background_class::layer[2].pos_y,z_pos);
-            glTexCoord2i( 1, 0 );glVertex3f(-2.000f + background_class::layer[1].pos_x, 2.000f + background_class::layer[2].pos_y,z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f(-2.000f + background_class::layer[1].pos_x,-2.000f + background_class::layer[2].pos_y,z_pos);
-            glEnd();
-        }
-        if (background_class::layer[1].pos_x >= background_class::layer[2].pos_x)
-        {
-            z_pos = 0.15f;
-            bind_texture(background_class::layer[1].image);
-            glLoadIdentity();
-            glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f( 2.000f + background_class::layer[2].pos_x,-2.000f + background_class::layer[1].pos_y,z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f( 2.000f + background_class::layer[2].pos_x, 2.000f + background_class::layer[1].pos_y,z_pos);
-            glTexCoord2i( 1, 0 );glVertex3f( 2.000f + background_class::layer[1].pos_x, 2.000f + background_class::layer[1].pos_y,z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f( 2.000f + background_class::layer[1].pos_x,-2.000f + background_class::layer[1].pos_y,z_pos);
-            glEnd();
-        }
-        else
-        {
-            z_pos = 0.15f;
-            bind_texture(background_class::layer[1].image);
-            glLoadIdentity();
-            glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f(-2.000f + background_class::layer[1].pos_x,-2.000f + background_class::layer[1].pos_y,z_pos);
-            glTexCoord2i( 0, 0 );glVertex3f(-2.000f + background_class::layer[1].pos_x, 2.000f + background_class::layer[1].pos_y,z_pos);
-            glTexCoord2i( 1, 0 );glVertex3f(-2.000f + background_class::layer[2].pos_x, 2.000f + background_class::layer[1].pos_y,z_pos);
-            glTexCoord2i( 1, 1 );glVertex3f(-2.000f + background_class::layer[2].pos_x,-2.000f + background_class::layer[1].pos_y,z_pos);
-            glEnd();
-        }
-        //--------------------------------------------------------------------------------------------------------------------------------------
-    }
-};
-
-
-
+}
