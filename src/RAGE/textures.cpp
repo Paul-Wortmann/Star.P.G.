@@ -27,11 +27,13 @@
 #include <SDL/SDL_image.h>
 #include "textures.hpp"
 #include "rage.hpp"
+#include "../load_resources.hpp"
 
 #define GL_BGR  0x80E0
 #define GL_BGRA 0x80E1
 
-extern  game_class game;
+extern  game_class   game;
+extern  texture_type texture;
 
 texture_class::texture_class()
 {

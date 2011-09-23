@@ -306,7 +306,7 @@ int init_menu   (void)
     options_menu.set_image_background(texture.menu_background_003.ref_number);
     options_menu.set_button_zoom(true,0.04f,0.005f);
     options_menu.set_button_images(texture.menu_background_003.ref_number,texture.menu_background_003.ref_number,texture.menu_background_003.ref_number,texture.level_preview_locked.ref_number,texture.selection_box.ref_number,texture.slider_normal.ref_number,texture.slider_highlighted.ref_number,texture.arrow_button_normal.ref_number,texture.arrow_button_highlighted.ref_number,texture.arrow_button_disabled.ref_number);
-    options_menu.set_toggle_button_images(399,398,397,396);
+    options_menu.set_toggle_button_images(texture.green_button_highlighted.ref_number,texture.green_button.ref_number,texture.red_button_highlighted.ref_number,texture.red_button.ref_number);
     options_menu.set_color_normal(128,128,255,255);
     options_menu.set_color_highlighted(192,192,255,255);
     options_menu.set_color_disabled(064,064,128,128);

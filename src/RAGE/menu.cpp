@@ -28,6 +28,8 @@
 
 extern  game_class               game;
 extern  font_type                font;
+extern  texture_type             texture;
+extern  int                      JUSTIFY_STATE;
 
 button_class::button_class(void)
 {
@@ -252,41 +254,42 @@ float button_class::get_zoom_speed(void)
 void button_class::draw(void)
 {
     float delta_x = 0.0f;
+    float temp_x  = 0.0f;
+    float temp_y  = 0.0f;
+    float temp_z  = 0.0f;
+    float temp_w  = 0.0f;
+    float temp_h  = 0.0f;
     if ((button_class::type == NORMAL) || (button_class::type == TOGGLE)) //----- normal / toggle button -----
     {
+        temp_x  = button_class::pos_x;
+        temp_y  = button_class::pos_y;
+        temp_z  = button_class::pos_z;
+        temp_w  = button_class::width  + button_class::get_zoom_size_counter();
+        temp_h  = button_class::height + button_class::get_zoom_size_counter();
         if (!button_class::active) return;
-        if (!button_class::enabled) bind_texture(button_class::image_disabled);
+        if (!button_class::enabled) draw_texture(button_class::image_disabled,temp_x,temp_y,temp_z,temp_w,temp_h);
         else
         {
-            if (button_class::highlighted) bind_texture(button_class::image_highlighted);
-            else bind_texture(button_class::image_normal);
+            if (button_class::highlighted) draw_texture(button_class::image_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
+            else draw_texture(button_class::image_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
         };
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        glTexCoord2i( 0, 1 );glVertex3f(button_class::pos_x-(button_class::width/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_y-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 0, 0 );glVertex3f(button_class::pos_x-(button_class::width/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_y+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 0 );glVertex3f(button_class::pos_x+(button_class::width/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_y+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 1 );glVertex3f(button_class::pos_x+(button_class::width/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_y-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glEnd();
         if (button_class::type == TOGGLE) //----- toggle button -----
         {
+            temp_x  = button_class::pos_x+(button_class::width/2)-(button_class::height/2);
+            temp_y  = button_class::pos_y;
+            temp_z  = button_class::pos_z;
+            temp_w  = button_class::height + button_class::get_zoom_size_counter();
+            temp_h  = button_class::height + button_class::get_zoom_size_counter();
             if (button_class::toggle_data)
             {
-                if (button_class::highlighted) bind_texture(button_class::image_toggle_true_highlighted);
-                else bind_texture(button_class::image_toggle_true_normal);
+                if (button_class::highlighted) draw_texture(button_class::image_toggle_true_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
+                else draw_texture(button_class::image_toggle_true_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
             }
             else
             {
-                if (button_class::highlighted) bind_texture(button_class::image_toggle_false_highlighted);
-                else bind_texture(button_class::image_toggle_false_normal);
+                if (button_class::highlighted) draw_texture(button_class::image_toggle_false_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
+                else draw_texture(button_class::image_toggle_false_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
             }
-            glLoadIdentity();
-            glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f(button_class::pos_x+(button_class::width/2)-(button_class::get_zoom_size_counter()/2)-(button_class::height/1),button_class::pos_y-(button_class::height/4)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-            glTexCoord2i( 0, 0 );glVertex3f(button_class::pos_x+(button_class::width/2)-(button_class::get_zoom_size_counter()/2)-(button_class::height/1),button_class::pos_y+(button_class::height/4)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-            glTexCoord2i( 1, 0 );glVertex3f(button_class::pos_x+(button_class::width/2)+(button_class::get_zoom_size_counter()/2)-(button_class::height/2),button_class::pos_y+(button_class::height/4)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-            glTexCoord2i( 1, 1 );glVertex3f(button_class::pos_x+(button_class::width/2)+(button_class::get_zoom_size_counter()/2)-(button_class::height/2),button_class::pos_y-(button_class::height/4)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-            glEnd();
         };
         switch(button_class::get_font())
         {
@@ -312,40 +315,36 @@ void button_class::draw(void)
     };
     if (button_class::type == CLOSE) //----- close button -----
     {
-        if (button_class::highlighted) bind_texture(button_class::image_highlighted);
-        else bind_texture(button_class::image_normal);
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        glTexCoord2i( 0, 1 );glVertex3f(button_class::pos_x-(button_class::width/2),button_class::pos_y-(button_class::height/2),button_class::pos_z);
-        glTexCoord2i( 0, 0 );glVertex3f(button_class::pos_x-(button_class::width/2),button_class::pos_y+(button_class::height/2),button_class::pos_z);
-        glTexCoord2i( 1, 0 );glVertex3f(button_class::pos_x+(button_class::width/2),button_class::pos_y+(button_class::height/2),button_class::pos_z);
-        glTexCoord2i( 1, 1 );glVertex3f(button_class::pos_x+(button_class::width/2),button_class::pos_y-(button_class::height/2),button_class::pos_z);
-        glEnd();
+        temp_x  = button_class::pos_x;
+        temp_y  = button_class::pos_y;
+        temp_z  = button_class::pos_z;
+        temp_w  = button_class::width;
+        temp_h  = button_class::height;
+
+        if (button_class::highlighted) draw_texture(button_class::image_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
+        else draw_texture(button_class::image_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
     }
+
     if (button_class::type == CHOICE) //----- choice button -----
     {
         if(button_class::number_of_visible_choices < button_class::number_of_choices)
         {
             // --- left  arrow ---
-            if (button_class::get_arrow_left_highlighted()) bind_texture(button_class::image_arrow_highlighted);
-            else bind_texture(button_class::image_arrow_normal);
-            glLoadIdentity();
-            glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f(button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
-            glTexCoord2i( 0, 0 );glVertex3f(button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
-            glTexCoord2i( 1, 0 );glVertex3f(button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
-            glTexCoord2i( 1, 1 );glVertex3f(button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
-            glEnd();
+            temp_x  = button_class::arrow_left_pos_x;
+            temp_y  = button_class::arrow_left_pos_y;
+            temp_z  = button_class::pos_z;
+            temp_w  = button_class::arrow_width  + button_class::get_arrow_left_zoom_size_counter();
+            temp_h  = button_class::arrow_height + button_class::get_arrow_left_zoom_size_counter();
+            if (button_class::get_arrow_left_highlighted()) draw_texture(button_class::image_arrow_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
+            else draw_texture(button_class::image_arrow_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
             // --- right arrow ---
-            if (button_class::get_arrow_right_highlighted()) bind_texture(button_class::image_arrow_highlighted);
-            else bind_texture(button_class::image_arrow_normal);
-            glLoadIdentity();
-            glBegin( GL_QUADS );
-            glTexCoord2i( 1, 0 );glVertex3f(button_class::arrow_right_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
-            glTexCoord2i( 1, 1 );glVertex3f(button_class::arrow_right_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
-            glTexCoord2i( 0, 1 );glVertex3f(button_class::arrow_right_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
-            glTexCoord2i( 0, 0 );glVertex3f(button_class::arrow_right_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
-            glEnd();
+            temp_x  = button_class::arrow_right_pos_x;
+            temp_y  = button_class::arrow_right_pos_y;
+            temp_z  = button_class::pos_z;
+            temp_w  = button_class::arrow_width  + button_class::get_arrow_right_zoom_size_counter();
+            temp_h  = button_class::arrow_height + button_class::get_arrow_right_zoom_size_counter();
+            if (button_class::get_arrow_right_highlighted()) draw_texture(button_class::image_arrow_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h,180.0f);
+            else draw_texture(button_class::image_arrow_normal,temp_x,temp_y,temp_z,temp_w,temp_h,180.0f);
         }
         // --- Show current selection ---
         delta_x = (button_class::arrow_width/3) *4;
@@ -355,15 +354,13 @@ void button_class::draw(void)
             {
                 if (button_class::choice_position+choice_count == (button_class::current_choice+2))
                 {
-                    float selector_size = button_class::arrow_width/20;
-                    bind_texture(button_class::image_selector);
-                    glLoadIdentity();
-                    glBegin( GL_QUADS );
-                    glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-selector_size-(button_class::arrow_width/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::arrow_left_pos_y-selector_size-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::pos_z);
-                    glTexCoord2i( 0, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x-selector_size-(button_class::arrow_width/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::arrow_left_pos_y+selector_size+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::pos_z);
-                    glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+selector_size+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::arrow_left_pos_y+selector_size+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::pos_z);
-                    glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+selector_size+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::arrow_left_pos_y-selector_size-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::pos_z);
-                    glEnd();
+                    float selector_size = button_class::arrow_width/10;
+                    temp_x  = delta_x+button_class::arrow_left_pos_x;
+                    temp_y  = button_class::arrow_left_pos_y;
+                    temp_z  = button_class::pos_z;
+                    temp_w  = button_class::arrow_width  + selector_size + button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count);
+                    temp_h  = button_class::arrow_height + selector_size + button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count);
+                    draw_texture(button_class::image_selector,temp_x,temp_y,temp_z,temp_w,temp_h);
                 }
                 delta_x += (button_class::arrow_width/2) *3;
             }
@@ -374,15 +371,13 @@ void button_class::draw(void)
         {
             if (button_class::choice_data[button_class::choice_position+choice_count].active)
             {
-                if (button_class::choice_data[button_class::choice_position+choice_count].enabled) bind_texture(button_class::choice_data[button_class::choice_position+choice_count].image_ref);
-                else bind_texture(button_class::image_choice_disabled);
-                glLoadIdentity();
-                glBegin( GL_QUADS );
-                glTexCoord2i( 0, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::pos_z);
-                glTexCoord2i( 0, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::pos_z);
-                glTexCoord2i( 1, 0 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::pos_z);
-                glTexCoord2i( 1, 1 );glVertex3f(delta_x+button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count)/2),button_class::pos_z);
-                glEnd();
+                temp_x  = delta_x+button_class::arrow_left_pos_x;
+                temp_y  = button_class::arrow_left_pos_y;
+                temp_z  = button_class::pos_z;
+                temp_w  = button_class::arrow_width  + button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count);
+                temp_h  = button_class::arrow_height + button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count);
+                if (button_class::choice_data[button_class::choice_position+choice_count].enabled) draw_texture(button_class::choice_data[button_class::choice_position+choice_count].image_ref,temp_x,temp_y,temp_z,temp_w,temp_h);
+                else draw_texture(button_class::image_choice_disabled,temp_x,temp_y,temp_z,temp_w,temp_h);
                 delta_x += (button_class::arrow_width/2) *3;
             }
         }
@@ -408,35 +403,30 @@ void button_class::draw(void)
     if (button_class::type == SLIDER) //----- slider button -----
     {
         // --- left  arrow ---
-        if (button_class::get_arrow_left_highlighted()) bind_texture(button_class::image_arrow_highlighted);
-        else bind_texture(button_class::image_arrow_normal);
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        glTexCoord2i( 0, 1 );glVertex3f(button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 0, 0 );glVertex3f(button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 0 );glVertex3f(button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 1 );glVertex3f(button_class::arrow_left_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_left_zoom_size_counter()/2),button_class::arrow_left_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_left_zoom_size_counter()/2),button_class::pos_z);
-        glEnd();
+        temp_x  = button_class::arrow_left_pos_x;
+        temp_y  = button_class::arrow_left_pos_y;
+        temp_z  = button_class::pos_z;
+        temp_w  = button_class::arrow_width  + button_class::get_arrow_left_zoom_size_counter();
+        temp_h  = button_class::arrow_height + button_class::get_arrow_left_zoom_size_counter();
+        if (button_class::get_arrow_left_highlighted()) draw_texture(button_class::image_arrow_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
+        else draw_texture(button_class::image_arrow_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
         // --- right arrow ---
-        if (button_class::get_arrow_right_highlighted()) bind_texture(button_class::image_arrow_highlighted);
-        else bind_texture(button_class::image_arrow_normal);
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        glTexCoord2i( 1, 0 );glVertex3f(button_class::arrow_right_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 1 );glVertex3f(button_class::arrow_right_pos_x-(button_class::arrow_width/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 0, 1 );glVertex3f(button_class::arrow_right_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y+(button_class::arrow_height/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 0, 0 );glVertex3f(button_class::arrow_right_pos_x+(button_class::arrow_width/2)+(button_class::get_arrow_right_zoom_size_counter()/2),button_class::arrow_right_pos_y-(button_class::arrow_height/2)-(button_class::get_arrow_right_zoom_size_counter()/2),button_class::pos_z);
-        glEnd();
+        temp_x  = button_class::arrow_right_pos_x;
+        temp_y  = button_class::arrow_right_pos_y;
+        temp_z  = button_class::pos_z;
+        temp_w  = button_class::arrow_width  + button_class::get_arrow_right_zoom_size_counter();
+        temp_h  = button_class::arrow_height + button_class::get_arrow_right_zoom_size_counter();
+        if (button_class::get_arrow_right_highlighted()) draw_texture(button_class::image_arrow_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h,180.0f);
+        else draw_texture(button_class::image_arrow_normal,temp_x,temp_y,temp_z,temp_w,temp_h,180.0f);
         // --- slider bar ---
-        if (button_class::highlighted) bind_texture(button_class::image_slider_highlighted);
-        else bind_texture(button_class::image_slider_normal);
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        glTexCoord2i( 0, 1 );glVertex3f(button_class::pos_x-((button_class::width/200)*70)-(button_class::get_zoom_size_counter()/2),button_class::pos_y-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 0, 0 );glVertex3f(button_class::pos_x-((button_class::width/200)*70)-(button_class::get_zoom_size_counter()/2),button_class::pos_y+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 0 );glVertex3f(button_class::pos_x-((button_class::width/200)*70)+(((button_class::width/200)*140)*((float)button_class::slider_position/(float)button_class::slider_position_max))+(button_class::get_zoom_size_counter()/2),button_class::pos_y+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glTexCoord2i( 1, 1 );glVertex3f(button_class::pos_x-((button_class::width/200)*70)+(((button_class::width/200)*140)*((float)button_class::slider_position/(float)button_class::slider_position_max))+(button_class::get_zoom_size_counter()/2),button_class::pos_y-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-        glEnd();
+        delta_x  = (((button_class::width/200)*140)*((float)button_class::slider_position/(float)button_class::slider_position_max));
+        temp_x   = button_class::pos_x - ((button_class::width/200)*70) + (delta_x/2);
+        temp_y   = button_class::pos_y;
+        temp_z   = button_class::pos_z;
+        temp_w   = delta_x + button_class::get_zoom_size_counter();
+        temp_h   = button_class::height + button_class::get_zoom_size_counter();
+        if (button_class::highlighted) draw_texture(button_class::image_slider_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h,0.0f);
+        else draw_texture(button_class::image_slider_normal,temp_x,temp_y,temp_z,temp_w,temp_h,0.0f);
         std::wstring temp_label = button_class::label;
         switch(button_class::get_font()) //write selected level name
         {
@@ -454,21 +444,18 @@ void button_class::draw(void)
     if(button_class::type == ACHIEVE) // Achieve button
     {
         float delta_x = 0.0f;
+        temp_x  = button_class::pos_x;
+        temp_y  = button_class::pos_y;
+        temp_z  = button_class::pos_z;
+        temp_w  = button_class::height + button_class::get_zoom_size_counter();
+        temp_h  = button_class::height + button_class::get_zoom_size_counter();
         for (int achieve_count = 0; achieve_count < button_class::achieve_data; achieve_count++)
         {
             delta_x =(button_class::pos_x - (button_class::width/2)) + ((button_class::width/(float)button_class::achieve_data) * (float)achieve_count)+ (button_class::width/2/(float)button_class::achieve_data);
-            if(button_class::achieve_position > achieve_count) bind_texture(button_class::image_achieve_highlighted);
-            else bind_texture(button_class::image_achieve_normal);
-            glLoadIdentity();
-            glBegin( GL_QUADS );
-            glTexCoord2i( 0, 1 );glVertex3f(delta_x-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_y-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-            glTexCoord2i( 0, 0 );glVertex3f(delta_x-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_y+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-            glTexCoord2i( 1, 0 );glVertex3f(delta_x+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_y+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-            glTexCoord2i( 1, 1 );glVertex3f(delta_x+(button_class::height/2)+(button_class::get_zoom_size_counter()/2),button_class::pos_y-(button_class::height/2)-(button_class::get_zoom_size_counter()/2),button_class::pos_z);
-            glEnd();
 
+            if(button_class::achieve_position > achieve_count) draw_texture(button_class::image_achieve_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
+            else draw_texture(button_class::image_achieve_normal,temp_x+delta_x,temp_y,temp_z,temp_w,temp_h);
         }
-
         std::wstring temp_label = button_class::label;
         switch(button_class::get_font()) //write selected level name
         {
@@ -988,14 +975,7 @@ void menu_class::set_image_background(int bi)
 
 void menu_class::draw(void)
 {
-    bind_texture(menu_class::image_background);
-    glLoadIdentity();
-    glBegin( GL_QUADS );
-    glTexCoord2i( 0, 1 );glVertex3f(menu_class::pos_x-menu_class::width/2,menu_class::pos_y-menu_class::height/2,menu_class::pos_z);
-    glTexCoord2i( 0, 0 );glVertex3f(menu_class::pos_x-menu_class::width/2,menu_class::pos_y+menu_class::height/2,menu_class::pos_z);
-    glTexCoord2i( 1, 0 );glVertex3f(menu_class::pos_x+menu_class::width/2,menu_class::pos_y+menu_class::height/2,menu_class::pos_z);
-    glTexCoord2i( 1, 1 );glVertex3f(menu_class::pos_x+menu_class::width/2,menu_class::pos_y-menu_class::height/2,menu_class::pos_z);
-    glEnd();
+    draw_texture(menu_class::image_background,menu_class::pos_x,menu_class::pos_y,menu_class::pos_z,menu_class::width,menu_class::height);
     switch(menu_class::menu_font) // title text
     {
         case 1:
