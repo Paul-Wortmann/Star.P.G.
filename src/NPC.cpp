@@ -384,8 +384,6 @@ int kill_npc(int npc_num)
    game_o.npc[npc_num].active     = false;
    game_o.npc[npc_num].x_pos      = -2.0f;
    game_o.npc[npc_num].y_pos      = -2.0f;
-   game_o.npc[npc_num].movement   = game_o.enemy[game_o.npc[npc_num].type_npc].movement;
-   game_o.npc[npc_num].movement   = game_o.enemy[game_o.npc[npc_num].type_npc].movement;
    del_active_npc(npc_num);
    return(0);
 }
@@ -416,7 +414,7 @@ int init_npcs(int type_npc)
       game_o.npc[npc_count].projectiles         = game_o.enemy[game_o.npc[npc_count].type_npc].projectiles;
       game_o.npc[npc_count].health              = game_o.enemy[game_o.npc[npc_count].type_npc].health;
       game_o.npc[npc_count].width               = game_o.enemy[game_o.npc[npc_count].type_npc].size_w;
-      game_o.npc[npc_count].height               = game_o.enemy[game_o.npc[npc_count].type_npc].size_h;
+      game_o.npc[npc_count].height              = game_o.enemy[game_o.npc[npc_count].type_npc].size_h;
       game_o.npc[npc_count].x_speed             = game_o.enemy[game_o.npc[npc_count].type_npc].speed;
       game_o.npc[npc_count].y_speed             = game_o.enemy[game_o.npc[npc_count].type_npc].speed;
       game_o.npc[npc_count].movement            = game_o.enemy[game_o.npc[npc_count].type_npc].movement;
