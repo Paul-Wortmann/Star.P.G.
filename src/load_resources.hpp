@@ -126,7 +126,6 @@ struct music_type
 
 struct texture_type
 {
-    int           justify;
     texture_class bar_001;
     texture_class bar_001_highlighted;
     texture_class bar_002;
@@ -288,19 +287,6 @@ struct texture_type
     texture_class level_preview_23;
     texture_class level_preview_24;
     texture_class level_preview_locked;
-
-    texture_class save_game_00;
-    texture_class save_game_01;
-    texture_class save_game_02;
-    texture_class save_game_03;
-    texture_class save_game_04;
-    texture_class save_game_05;
-    texture_class save_game_highlighted_00;
-    texture_class save_game_highlighted_01;
-    texture_class save_game_highlighted_02;
-    texture_class save_game_highlighted_03;
-    texture_class save_game_highlighted_04;
-    texture_class save_game_highlighted_05;
 
     texture_class explosion_00;
     texture_class explosion_01;

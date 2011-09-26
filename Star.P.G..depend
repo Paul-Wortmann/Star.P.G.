@@ -894,7 +894,7 @@
 	"load_resources.hpp"
 	"RAGE/rage.hpp"
 
-1316765284 c:\_git_\star.p.g\src\load_resources.hpp
+1317008858 c:\_git_\star.p.g\src\load_resources.hpp
 	"RAGE/rage.hpp"
 	"RAGE/sound.hpp"
 	"RAGE/music.hpp"
@@ -1385,7 +1385,7 @@
 1315663924 c:\_git_\star.p.g\src\projectiles.hpp
 	<string>
 
-1317006754 source:c:\_git_\star.p.g\src\npc.cpp
+1317008468 source:c:\_git_\star.p.g\src\npc.cpp
 	"RAGE/rage.hpp"
 	"NPC.hpp"
 	"load_resources.hpp"

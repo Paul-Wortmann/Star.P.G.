@@ -309,19 +309,6 @@ bool load_textures(void)
     texture.level_preview_24.load_image("data/textures/levels/level_preview_24.png",texture_count);texture_count++;
     texture.level_preview_locked.load_image("data/textures/levels/level_preview_locked.png",texture_count);texture_count++;
 
-    texture.save_game_00.load_image("data/textures/menu/save_game_00.png",texture_count);texture_count++;
-    texture.save_game_01.load_image("data/textures/menu/save_game_01.png",texture_count);texture_count++;
-    texture.save_game_02.load_image("data/textures/menu/save_game_02.png",texture_count);texture_count++;
-    texture.save_game_03.load_image("data/textures/menu/save_game_03.png",texture_count);texture_count++;
-    texture.save_game_04.load_image("data/textures/menu/save_game_04.png",texture_count);texture_count++;
-    texture.save_game_05.load_image("data/textures/menu/save_game_05.png",texture_count);texture_count++;
-    texture.save_game_highlighted_00.load_image("data/textures/menu/save_game_highlighted_00.png",texture_count);texture_count++;
-    texture.save_game_highlighted_01.load_image("data/textures/menu/save_game_highlighted_01.png",texture_count);texture_count++;
-    texture.save_game_highlighted_02.load_image("data/textures/menu/save_game_highlighted_02.png",texture_count);texture_count++;
-    texture.save_game_highlighted_03.load_image("data/textures/menu/save_game_highlighted_03.png",texture_count);texture_count++;
-    texture.save_game_highlighted_04.load_image("data/textures/menu/save_game_highlighted_04.png",texture_count);texture_count++;
-    texture.save_game_highlighted_05.load_image("data/textures/menu/save_game_highlighted_05.png",texture_count);texture_count++;
-
     texture.explosion_00.load_spritesheet("data/textures/explosions/explosion_00.png",texture_count);texture_count++;
     texture.explosion_01.load_spritesheet("data/textures/explosions/explosion_01.png",texture_count);texture_count++;
     texture.explosion_02.load_spritesheet("data/textures/explosions/explosion_02.png",texture_count);texture_count++;
@@ -372,6 +359,7 @@ bool load_textures(void)
     texture.projectile_028.load_image("data/textures/projectiles/projectile_028.png",texture_count);texture_count++;
     texture.projectile_029.load_image("data/textures/projectiles/projectile_029.png",texture_count);texture_count++;
     texture.projectile_030.load_image("data/textures/projectiles/projectile_030.png",texture_count);texture_count++;
+    texture.projectile_031.load_image("data/textures/projectiles/projectile_031.png",texture_count);texture_count++;
 
     texture.ship_000.load_image("data/textures/ships/ship_000.png",texture_count);texture_count++;
     texture.ship_001.load_image("data/textures/ships/ship_001.png",texture_count);texture_count++;
@@ -403,6 +391,7 @@ bool load_textures(void)
     texture.thruster_000.load_image("data/textures/thrusters/thruster_000.png",texture_count);texture_count++;
     texture.thruster_001.load_image("data/textures/thrusters/thruster_001.png",texture_count);texture_count++;
     texture.thruster_002.load_image("data/textures/thrusters/thruster_002.png",texture_count);texture_count++;
+    texture.thruster_003.load_image("data/textures/thrusters/thruster_003.png",texture_count);texture_count++;
 
     texture.selection_box.load_image("data/textures/misc/selection_box.png",texture_count);texture_count++;
     texture.none.load_image("data/textures/misc/none.png",texture_count);texture_count++;
@@ -464,7 +453,6 @@ bool load_textures(void)
     texture.enter_for_next_level.load_image("data/textures/menu/enter_for_next_level.png",texture_count);texture_count++;
     texture.new_level_unlocked.load_image("data/textures/menu/new_level_unlocked.png",texture_count);texture_count++;
 
-    texture.thruster_003.load_image("data/textures/thrusters/thruster_003.png",texture_count);texture_count++;
     texture.coin_powerup.load_image("data/textures/powerups/coin_powerup.png",texture_count);texture_count++;
     texture.wexp_powerup.load_image("data/textures/powerups/wexp_powerup.png",texture_count);texture_count++;
     texture.credits_00.load_image("data/textures/misc/credits_00.png",texture_count);texture_count++;
@@ -495,7 +483,6 @@ bool load_textures(void)
     texture.slider_normal.load_image("data/textures/menu/slider_normal.png",texture_count);texture_count++;
     texture.slider_highlighted.load_image("data/textures/menu/slider_highlighted.png",texture_count);texture_count++;
     texture.resolution_icon.load_image("data/textures/menu/resolution_icon.png",texture_count);texture_count++;
-    texture.projectile_031.load_image("data/textures/projectiles/projectile_031.png",texture_count);texture_count++;
     game.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
 };
@@ -688,19 +675,6 @@ bool draw_texture(int texture_number, float x, float y, float z, float w, float 
     if (texture_number == texture.level_preview_23.ref_number) texture.level_preview_23.draw(x,y,z,w,h,angle);
     if (texture_number == texture.level_preview_24.ref_number) texture.level_preview_24.draw(x,y,z,w,h,angle);
     if (texture_number == texture.level_preview_locked.ref_number) texture.level_preview_locked.draw(x,y,z,w,h,angle);
-
-    if (texture_number == texture.save_game_00.ref_number) texture.save_game_00.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.save_game_01.ref_number) texture.save_game_01.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.save_game_02.ref_number) texture.save_game_02.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.save_game_03.ref_number) texture.save_game_03.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.save_game_04.ref_number) texture.save_game_04.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.save_game_05.ref_number) texture.save_game_05.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.save_game_highlighted_00.ref_number) texture.save_game_highlighted_00.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.save_game_highlighted_01.ref_number) texture.save_game_highlighted_01.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.save_game_highlighted_02.ref_number) texture.save_game_highlighted_02.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.save_game_highlighted_03.ref_number) texture.save_game_highlighted_03.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.save_game_highlighted_04.ref_number) texture.save_game_highlighted_04.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.save_game_highlighted_05.ref_number) texture.save_game_highlighted_05.draw(x,y,z,w,h,angle);
 
     if (texture_number == texture.explosion_00.ref_number) texture.explosion_00.draw(x,y,z,w,h,angle);
     if (texture_number == texture.explosion_01.ref_number) texture.explosion_01.draw(x,y,z,w,h,angle);
