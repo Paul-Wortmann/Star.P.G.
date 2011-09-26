@@ -1,6 +1,16 @@
+V0.19 - (xx-10-2011) -> Estimated late October due to university exams...2011-10-21~?
+Improved "support ships", more movement types implemented.
+Reworked all drawing code to go through texture_class::texture.xxx.draw();
+Improved rendering, angles are also now supported.
+Implemented pre-generated sin/cos look up tables for faster calculations.
+Bosses now have big health bars.
+Removed some redundant game resources, loading should now be slightly faster.
+Many tweaks and and a few bug fixes.
+LOC - xxxxx
+
 V0.18 - (03-09-2011)
 Improved "support ships"
-Created some varaiety with regards to NPC speed and size.
+Created some variety with regards to NPC speed and size.
 Did a major code clean up.
 New pause button for touch screen support.
 New death,next_level,outro screens created.
