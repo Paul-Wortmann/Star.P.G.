@@ -134,6 +134,7 @@ int main(int argc, char *argv[])
   load_resources();
   game.log.File_Write("Initializing menu system...");
   init_menu();
+  init_in_game_message_class();
   init_projectiles(false);
   init_powerups();
   init_shields(false);

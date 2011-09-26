@@ -32,31 +32,31 @@ extern  game_type                game_o;
 
 void  init_in_game_message_class  (void)
 {
-    game_o.paused.init(288);
-    game_o.saved.init(289);
-    game_o.loaded.init(290);
-    game_o.a_score.init(309);
-    game_o.a_kills.init(308);
-    game_o.p_actinium_shields.init(310);
-    game_o.p_blasters.init(311);
-    game_o.p_burst_lasers.init(312);
-    game_o.p_chain_guns.init(313);
-    game_o.p_convolution_thrusters.init(314);
-    game_o.p_health.init(315);
-    game_o.p_ion_cannons.init(316);
-    game_o.p_iridium_shileds.init(317);
-    game_o.p_maelstrom_thrusters.init(318);
-    game_o.p_plasma_rockets.init(319);
-    game_o.p_rail_turrets.init(320);
-    game_o.p_rubidium_shields.init(321);
-    game_o.p_seismic_thrusters.init(322);
-    game_o.p_shield_level_up.init(323);
-    game_o.p_tantalum_shields.init(324);
-    game_o.p_terbium_shields.init(325);
-    game_o.p_thrusters_level_up.init(326);
-    game_o.p_vortex_thrusters.init(327);
-    game_o.p_weapon_level_up.init(328);
-    game_o.d_level_end.init(333);
+    game_o.paused.init                 (texture.game_paused.ref_number);
+    game_o.saved.init                  (texture.game_saved.ref_number);
+    game_o.loaded.init                 (texture.game_loaded.ref_number);
+    game_o.a_score.init                (texture.score_achievement.ref_number);
+    game_o.a_kills.init                (texture.kills_achievement.ref_number);
+    game_o.p_actinium_shields.init     (texture.actinium_shields.ref_number);
+    game_o.p_blasters.init             (texture.blasters.ref_number);
+    game_o.p_burst_lasers.init         (texture.burst_lasers.ref_number);
+    game_o.p_chain_guns.init           (texture.chain_guns.ref_number);
+    game_o.p_convolution_thrusters.init(texture.convolution_thrusters.ref_number);
+    game_o.p_health.init               (texture.health.ref_number);
+    game_o.p_ion_cannons.init          (texture.ion_cannons.ref_number);
+    game_o.p_iridium_shileds.init      (texture.iridium_shileds.ref_number);
+    game_o.p_maelstrom_thrusters.init  (texture.maelstrom_thrusters.ref_number);
+    game_o.p_plasma_rockets.init       (texture.plasma_rockets.ref_number);
+    game_o.p_rail_turrets.init         (texture.rail_turrets.ref_number);
+    game_o.p_rubidium_shields.init     (texture.rubidium_shields.ref_number);
+    game_o.p_seismic_thrusters.init    (texture.seismic_thrusters.ref_number);
+    game_o.p_shield_level_up.init      (texture.shield_level_up.ref_number);
+    game_o.p_tantalum_shields.init     (texture.tantalum_shields.ref_number);
+    game_o.p_terbium_shields.init      (texture.terbium_shields.ref_number);
+    game_o.p_thrusters_level_up.init   (texture.thrusters_level_up.ref_number);
+    game_o.p_vortex_thrusters.init     (texture.vortex_thrusters.ref_number);
+    game_o.p_weapon_level_up.init      (texture.weapon_level_up.ref_number);
+    game_o.d_level_end.init            (texture.level_completed.ref_number);
 };
 
 void  in_game_message_class::set_image  (int image_ref)
@@ -93,31 +93,31 @@ void  in_game_message_class::spawn (void)
 
 void  in_game_message_class::draw  (void)
 {
-    if (in_game_message_class::image == 288) texture.game_paused.draw          ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 289) texture.game_saved.draw           ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 290) texture.game_loaded.draw          ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 309) texture.score_achievement.draw    ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 308) texture.kills_achievement.draw    ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 310) texture.actinium_shields.draw     ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 311) texture.blasters.draw             ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 312) texture.burst_lasers.draw         ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 313) texture.chain_guns.draw           ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 314) texture.convolution_thrusters.draw( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 315) texture.health.draw               ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 316) texture.ion_cannons.draw          ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 317) texture.iridium_shileds.draw      ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 318) texture.maelstrom_thrusters.draw  ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 319) texture.plasma_rockets.draw       ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 320) texture.rail_turrets.draw         ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 321) texture.rubidium_shields.draw     ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 322) texture.seismic_thrusters.draw    ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 323) texture.shield_level_up.draw      ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 324) texture.tantalum_shields.draw     ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 325) texture.terbium_shields.draw      ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 326) texture.thrusters_level_up.draw   ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 327) texture.vortex_thrusters.draw     ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 328) texture.weapon_level_up.draw      ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-    if (in_game_message_class::image == 333) texture.level_completed.draw      ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.game_paused.ref_number)           texture.game_paused.draw          ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.game_saved.ref_number)            texture.game_saved.draw           ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.game_loaded.ref_number)           texture.game_loaded.draw          ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.score_achievement.ref_number)     texture.score_achievement.draw    ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.kills_achievement.ref_number)     texture.kills_achievement.draw    ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.actinium_shields.ref_number)      texture.actinium_shields.draw     ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.blasters.ref_number)              texture.blasters.draw             ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.burst_lasers.ref_number)          texture.burst_lasers.draw         ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.chain_guns.ref_number)            texture.chain_guns.draw           ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.convolution_thrusters.ref_number) texture.convolution_thrusters.draw( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.health.ref_number)                texture.health.draw               ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.ion_cannons.ref_number)           texture.ion_cannons.draw          ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.iridium_shileds.ref_number)       texture.iridium_shileds.draw      ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.maelstrom_thrusters.ref_number)   texture.maelstrom_thrusters.draw  ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.plasma_rockets.ref_number)        texture.plasma_rockets.draw       ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.rail_turrets.ref_number)          texture.rail_turrets.draw         ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.rubidium_shields.ref_number)      texture.rubidium_shields.draw     ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.seismic_thrusters.ref_number)     texture.seismic_thrusters.draw    ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.shield_level_up.ref_number)       texture.shield_level_up.draw      ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.tantalum_shields.ref_number)      texture.tantalum_shields.draw     ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.terbium_shields.ref_number)       texture.terbium_shields.draw      ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.thrusters_level_up.ref_number)    texture.thrusters_level_up.draw   ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.vortex_thrusters.ref_number)      texture.vortex_thrusters.draw     ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.weapon_level_up.ref_number)       texture.weapon_level_up.draw      ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
+    if (in_game_message_class::image == texture.level_completed.ref_number)       texture.level_completed.draw      ( 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
 };
 
 void  in_game_message_class::process(void)
