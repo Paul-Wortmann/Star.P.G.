@@ -268,17 +268,17 @@ int process_game(void)
         game.background.set_active( 4, false);
         game.background.set_movement_type(BOUNCE);
     }
-   if  (random(game_o.powerup[1 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup
-   if ((random(game_o.powerup[8 ].spawn_rate) <= 5)&& (!boss_level())) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb powerup
+   if  (random(game_o.powerup[1 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health power-up
+   if ((random(game_o.powerup[8 ].spawn_rate) <= 5)&& (!boss_level())) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb power-up
 
-   if ((game_o.level >=  4) && (random(game_o.powerup[9 ].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn supportship 0 powerup
-   if ((game_o.level >=  7) && (random(game_o.powerup[10].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),10);//spawn supportship 1 powerup
-   if ((game_o.level >= 11) && (random(game_o.powerup[11].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),11);//spawn supportship 2 powerup
-   if ((game_o.level >= 15) && (random(game_o.powerup[12].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),12);//spawn supportship 3 powerup
+   if ((game_o.level >=  4) && (random(game_o.powerup[9 ].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn support ship 0 power-up
+   if ((game_o.level >=  7) && (random(game_o.powerup[10].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),10);//spawn support ship 1 power-up
+   if ((game_o.level >= 11) && (random(game_o.powerup[11].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),11);//spawn support ship 2 power-up
+   if ((game_o.level >= 15) && (random(game_o.powerup[12].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),12);//spawn support ship 3 power-up
 
-   if ((game_o.shield[game_o.player.front_shield].level  < 3) && (random(game_o.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),2);//spawn shield lvl powerup
-   if ((game_o.thruster[game_o.player.thrusters].level   < 3) && (random(game_o.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster lvl powerup
-   // if player missed boss weapon drops enable random spawning of powerups to keep consistency
+   if ((game_o.shield[game_o.player.front_shield].level  < 3) && (random(game_o.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),2);//spawn shield level power-up
+   if ((game_o.thruster[game_o.player.thrusters].level   < 3) && (random(game_o.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster level power-up
+   // if player missed boss weapon drops enable random spawning of power-ups to keep consistency
    if ((game_o.level >=  4) && (!game_o.projectile[1].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
    if ((game_o.level >=  7) && (!game_o.projectile[2].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
    if ((game_o.level >= 11) && (!game_o.projectile[3].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
@@ -296,16 +296,16 @@ int process_game(void)
    if ((game_o.level >= 23) && (!game_o.thruster[2].active) && (random(game_o.powerup[5].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
    game_o.npc_spawn_rate_count++;
    game_o.npc_spawn_rate_count += random_dec()/4;
-   if (game_o.npc_spawn_rate_count >= game_o.npc_spawn_rate)
-   {
-      game_o.npc_spawn_rate_count = 0;
-      if ((!game_o.level_boss_level) && (!game_o.level_end_time) && (game_o.wave_spawnable)) spawn_wave();
-      if (game_o.level_boss_level && (game_o.level_spawened == 0))
-      {
-         spawn_npc(1.0f,random_GLcoord(),game_o.level_npc_type,0,0.0f,0.0f);
-         game_o.level_spawened += 1;
-      }
-   }
+    if (game_o.npc_spawn_rate_count >= game_o.npc_spawn_rate)
+    {
+        game_o.npc_spawn_rate_count = 0;
+        if (game_o.level_boss_level && (game_o.level_spawened == 0))
+        {
+            spawn_npc(1.0f,random_GLcoord(),game_o.level_npc_type,0,0.0f,0.0f);
+            game_o.level_spawened += 1;
+        }
+        if ((!game_o.level_boss_level) && (!game_o.level_end_time) && (game_o.wave_spawnable)) spawn_wave();
+    }
    for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)//npc spawn bullet
    {
       if (game_o.npc[npc_count].active)

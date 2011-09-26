@@ -71,7 +71,7 @@ void init_enemies(bool re_init)
         game_o.enemy[2 ].speed       = (game_o.projectile[game_o.enemy[2 ].weapon].speed/2) - 0.0005f;
         game_o.enemy[3 ].image       = texture.ship_003.ref_number;
         game_o.enemy[3 ].health      = 100.0f;
-        game_o.enemy[3 ].movement    = 2;//boss, avoid player, move up n down, stay far right  ---- Cantide ----
+        game_o.enemy[3 ].movement    = 8;//boss, avoid player, move up n down, stay far right  ---- Cantide ----
         game_o.enemy[3 ].weapon      = 9;
         game_o.enemy[3 ].projectiles = 6;
         game_o.enemy[3 ].size_h      = 0.8f;
@@ -511,6 +511,23 @@ int proccess_npcs(void)
             if (game_o.npc[npc_count].x_pos <  -1.0f) kill_npc(npc_count);
             if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) < game_o.npc[npc_count].formation_target) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
             if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) > game_o.npc[npc_count].formation_target) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
+         }
+         if (game_o.npc[npc_count].movement == 8)// move in an oscillating sine wave and stay far right
+         {
+            game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
+            if (game_o.npc[npc_count].x_pos < ((1.0f) - (game_o.npc[npc_count].width/2))) game_o.npc[npc_count].x_pos = ((1.0f)- (game_o.npc[npc_count].width/2));
+            if (game_o.npc[npc_count].y_direction ==  1) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
+            if (game_o.npc[npc_count].y_direction == -1) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
+            if ((game_o.npc[npc_count].y_pos) < (-1.0f + (game_o.npc[npc_count].height/2)))
+            {
+                game_o.npc[npc_count].y_pos = (-1.0f + (game_o.npc[npc_count].height/2));
+                game_o.npc[npc_count].y_direction *= -1;
+            }
+            if ((game_o.npc[npc_count].y_pos) > ( 1.0f - (game_o.npc[npc_count].height/2)))
+            {
+                game_o.npc[npc_count].y_pos = ( 1.0f - (game_o.npc[npc_count].height/2));
+                game_o.npc[npc_count].y_direction *= -1;
+            }
          }
       }
    }
