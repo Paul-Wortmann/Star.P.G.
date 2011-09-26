@@ -126,53 +126,7 @@ struct music_type
 
 struct texture_type
 {
-    texture_class bar_001;
-    texture_class bar_001_highlighted;
-    texture_class bar_002;
-    texture_class bar_002_highlighted;
-    texture_class customize_starship;
-    texture_class customize_starship_highlighted;
-    texture_class front_weapon;
-    texture_class front_weapon_highlighted;
-    texture_class fullscreen;
-    texture_class fullscreen_highlighted;
-    texture_class game_menu;
-    texture_class game_menu_highlighted;
-    texture_class load_game;
-    texture_class load_game_highlighted;
     texture_class logo;
-    texture_class main_menu;
-    texture_class main_menu_highlighted;
-    texture_class music_volume;
-    texture_class music_volume_highlighted;
-    texture_class new_game;
-    texture_class new_game_highlighted;
-    texture_class off;
-    texture_class off_highlighted;
-    texture_class on;
-    texture_class on_highlighted;
-    texture_class options;
-    texture_class options_highlighted;
-    texture_class options_menu;
-    texture_class options_menu_highlighted;
-    texture_class quit_game;
-    texture_class quit_game_highlighted;
-    texture_class resolution;
-    texture_class resolution_highlighted;
-    texture_class resume_game;
-    texture_class resume_game_highlighted;
-    texture_class save_game;
-    texture_class save_game_highlighted;
-    texture_class shield;
-    texture_class shield_highlighted;
-    texture_class side_weapon;
-    texture_class side_weapon_highlighted;
-    texture_class sound_volume;
-    texture_class sound_volume_highlighted;
-    texture_class star_map;
-    texture_class star_map_highlighted;
-    texture_class thrusters;
-    texture_class thrusters_highlighted;
 
     texture_class menu_background_000;
     texture_class menu_background_001;
@@ -390,12 +344,6 @@ struct texture_type
     texture_class weapon_lvlup_powerup;
     texture_class weapon_new_powerup;
 
-    texture_class achievements;
-    texture_class achievements_highlighted;
-    texture_class score;
-    texture_class score_highlighted;
-    texture_class kills;
-    texture_class kills_highlighted;
     texture_class grey_star;
     texture_class bronze_star;
     texture_class silver_star;
@@ -425,10 +373,8 @@ struct texture_type
 
     texture_class game_over;
     texture_class logo_red;
-    texture_class press_enter_for_the_main_menu;
     texture_class explosion_001;
     texture_class level_completed;
-    texture_class enter_for_next_level;
     texture_class new_level_unlocked;
     texture_class thruster_003;
     texture_class coin_powerup;

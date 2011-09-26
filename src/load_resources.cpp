@@ -147,53 +147,7 @@ bool load_music(void)
 bool load_textures(void)
 {
     int texture_count = 0;
-    texture.bar_001.load_image("data/textures/menu/bar_001.png",texture_count);texture_count++;
-    texture.bar_001_highlighted.load_image("data/textures/menu/bar_001_highlighted.png",texture_count);texture_count++;
-    texture.bar_002.load_image("data/textures/menu/bar_002.png",texture_count);texture_count++;
-    texture.bar_002_highlighted.load_image("data/textures/menu/bar_002_highlighted.png",texture_count);texture_count++;
-    texture.customize_starship.load_image("data/textures/menu/customize_starship.png",texture_count);texture_count++;
-    texture.customize_starship_highlighted.load_image("data/textures/menu/customize_starship_highlighted.png",texture_count);texture_count++;
-    texture.front_weapon.load_image("data/textures/menu/front_weapon.png",texture_count);texture_count++;
-    texture.front_weapon_highlighted.load_image("data/textures/menu/front_weapon_highlighted.png",texture_count);texture_count++;
-    texture.fullscreen.load_image("data/textures/menu/fullscreen.png",texture_count);texture_count++;
-    texture.fullscreen_highlighted.load_image("data/textures/menu/fullscreen_highlighted.png",texture_count);texture_count++;
-    texture.game_menu.load_image("data/textures/menu/game_menu.png",texture_count);texture_count++;
-    texture.game_menu_highlighted.load_image("data/textures/menu/game_menu_highlighted.png",texture_count);texture_count++;
-    texture.load_game.load_image("data/textures/menu/load_game.png",texture_count);texture_count++;
-    texture.load_game_highlighted.load_image("data/textures/menu/load_game_highlighted.png",texture_count);texture_count++;
     texture.logo.load_image("data/textures/menu/logo.png",texture_count);texture_count++;
-    texture.main_menu.load_image("data/textures/menu/main_menu.png",texture_count);texture_count++;
-    texture.main_menu_highlighted.load_image("data/textures/menu/main_menu_highlighted.png",texture_count);texture_count++;
-    texture.music_volume.load_image("data/textures/menu/music_volume.png",texture_count);texture_count++;
-    texture.music_volume_highlighted.load_image("data/textures/menu/music_volume_highlighted.png",texture_count);texture_count++;
-    texture.new_game.load_image("data/textures/menu/new_game.png",texture_count);texture_count++;
-    texture.new_game_highlighted.load_image("data/textures/menu/new_game_highlighted.png",texture_count);texture_count++;
-    texture.off.load_image("data/textures/menu/off.png",texture_count);texture_count++;
-    texture.off_highlighted.load_image("data/textures/menu/off_highlighted.png",texture_count);texture_count++;
-    texture.on.load_image("data/textures/menu/on.png",texture_count);texture_count++;
-    texture.on_highlighted.load_image("data/textures/menu/on_highlighted.png",texture_count);texture_count++;
-    texture.options.load_image("data/textures/menu/options.png",texture_count);texture_count++;
-    texture.options_highlighted.load_image("data/textures/menu/options_highlighted.png",texture_count);texture_count++;
-    texture.options_menu.load_image("data/textures/menu/options_menu.png",texture_count);texture_count++;
-    texture.options_menu_highlighted.load_image("data/textures/menu/options_menu_highlighted.png",texture_count);texture_count++;
-    texture.quit_game.load_image("data/textures/menu/quit_game.png",texture_count);texture_count++;
-    texture.quit_game_highlighted.load_image("data/textures/menu/quit_game_highlighted.png",texture_count);texture_count++;
-    texture.resolution.load_image("data/textures/menu/resolution.png",texture_count);texture_count++;
-    texture.resolution_highlighted.load_image("data/textures/menu/resolution_highlighted.png",texture_count);texture_count++;
-    texture.resume_game.load_image("data/textures/menu/resume_game.png",texture_count);texture_count++;
-    texture.resume_game_highlighted.load_image("data/textures/menu/resume_game_highlighted.png",texture_count);texture_count++;
-    texture.save_game.load_image("data/textures/menu/save_game.png",texture_count);texture_count++;
-    texture.save_game_highlighted.load_image("data/textures/menu/save_game_highlighted.png",texture_count);texture_count++;
-    texture.shield.load_image("data/textures/menu/shield.png",texture_count);texture_count++;
-    texture.shield_highlighted.load_image("data/textures/menu/shield_highlighted.png",texture_count);texture_count++;
-    texture.side_weapon.load_image("data/textures/menu/side_weapon.png",texture_count);texture_count++;
-    texture.side_weapon_highlighted.load_image("data/textures/menu/side_weapon_highlighted.png",texture_count);texture_count++;
-    texture.sound_volume.load_image("data/textures/menu/sound_volume.png",texture_count);texture_count++;
-    texture.sound_volume_highlighted.load_image("data/textures/menu/sound_volume_highlighted.png",texture_count);texture_count++;
-    texture.star_map.load_image("data/textures/menu/star_map.png",texture_count);texture_count++;
-    texture.star_map_highlighted.load_image("data/textures/menu/star_map_highlighted.png",texture_count);texture_count++;
-    texture.thrusters.load_image("data/textures/menu/thrusters.png",texture_count);texture_count++;
-    texture.thrusters_highlighted.load_image("data/textures/menu/thrusters_highlighted.png",texture_count);texture_count++;
 
     texture.menu_background_000.load_image("data/textures/backgrounds/menu_background_000.png",texture_count);texture_count++;
     texture.menu_background_001.load_image("data/textures/backgrounds/menu_background_001.png",texture_count);texture_count++;
@@ -411,12 +365,6 @@ bool load_textures(void)
     texture.weapon_lvlup_powerup.load_image("data/textures/powerups/weapon_lvlup_powerup.png",texture_count);texture_count++;
     texture.weapon_new_powerup.load_image("data/textures/powerups/weapon_new_powerup.png",texture_count);texture_count++;
 
-    texture.achievements.load_image("data/textures/menu/achievements.png",texture_count);texture_count++;
-    texture.achievements_highlighted.load_image("data/textures/menu/achievements_highlighted.png",texture_count);texture_count++;
-    texture.score.load_image("data/textures/menu/score.png",texture_count);texture_count++;
-    texture.score_highlighted.load_image("data/textures/menu/score_highlighted.png",texture_count);texture_count++;
-    texture.kills.load_image("data/textures/menu/kills.png",texture_count);texture_count++;
-    texture.kills_highlighted.load_image("data/textures/menu/kills_highlighted.png",texture_count);texture_count++;
     texture.grey_star.load_image("data/textures/menu/grey_star.png",texture_count);texture_count++;
     texture.bronze_star.load_image("data/textures/menu/bronze_star.png",texture_count);texture_count++;
     texture.silver_star.load_image("data/textures/menu/silver_star.png",texture_count);texture_count++;
@@ -447,10 +395,8 @@ bool load_textures(void)
 
     texture.game_over.load_image("data/textures/menu/game_over.png",texture_count);texture_count++;
     texture.logo_red.load_image("data/textures/menu/logo_red.png",texture_count);texture_count++;
-    texture.press_enter_for_the_main_menu.load_image("data/textures/menu/press_enter_for_the_main_menu.png",texture_count);texture_count++;
     texture.explosion_001.load_image("data/textures/misc/explosion_001.png",texture_count);texture_count++;
     texture.level_completed.load_image("data/textures/menu/level_completed.png",texture_count);texture_count++;
-    texture.enter_for_next_level.load_image("data/textures/menu/enter_for_next_level.png",texture_count);texture_count++;
     texture.new_level_unlocked.load_image("data/textures/menu/new_level_unlocked.png",texture_count);texture_count++;
 
     texture.coin_powerup.load_image("data/textures/powerups/coin_powerup.png",texture_count);texture_count++;
@@ -514,53 +460,7 @@ bool draw_texture(int texture_number, float x, float y, float z, float w, float 
 
 bool draw_texture(int texture_number, float x, float y, float z, float w, float h, float angle)
 {
-    if (texture_number == texture.bar_001.ref_number) texture.bar_001.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.bar_001_highlighted.ref_number) texture.bar_001_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.bar_002.ref_number) texture.bar_002.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.bar_002_highlighted.ref_number) texture.bar_002_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.customize_starship.ref_number) texture.customize_starship.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.customize_starship_highlighted.ref_number) texture.customize_starship_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.front_weapon.ref_number) texture.front_weapon.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.front_weapon_highlighted.ref_number) texture.front_weapon_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.fullscreen.ref_number) texture.fullscreen.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.fullscreen_highlighted.ref_number) texture.fullscreen_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.game_menu.ref_number) texture.game_menu.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.game_menu_highlighted.ref_number) texture.game_menu_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.load_game.ref_number) texture.load_game.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.load_game_highlighted.ref_number) texture.load_game_highlighted.draw(x,y,z,w,h,angle);
     if (texture_number == texture.logo.ref_number) texture.logo.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.main_menu.ref_number) texture.main_menu.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.main_menu_highlighted.ref_number) texture.main_menu_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.music_volume.ref_number) texture.music_volume.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.music_volume_highlighted.ref_number) texture.music_volume_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.new_game.ref_number) texture.new_game.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.new_game_highlighted.ref_number) texture.new_game_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.off.ref_number) texture.off.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.off_highlighted.ref_number) texture.off_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.on.ref_number) texture.on.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.on_highlighted.ref_number) texture.on_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.options.ref_number) texture.options.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.options_highlighted.ref_number) texture.options_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.options_menu.ref_number) texture.options_menu.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.options_menu_highlighted.ref_number) texture.options_menu_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.quit_game.ref_number) texture.quit_game.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.quit_game_highlighted.ref_number) texture.quit_game_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.resolution.ref_number) texture.resolution.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.resolution_highlighted.ref_number) texture.resolution_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.resume_game.ref_number) texture.resume_game.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.resume_game_highlighted.ref_number) texture.resume_game_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.save_game.ref_number) texture.save_game.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.save_game_highlighted.ref_number) texture.save_game_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.shield.ref_number) texture.shield.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.shield_highlighted.ref_number) texture.shield_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.side_weapon.ref_number) texture.side_weapon.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.side_weapon_highlighted.ref_number) texture.side_weapon_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.sound_volume.ref_number) texture.sound_volume.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.sound_volume_highlighted.ref_number) texture.sound_volume_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.star_map.ref_number) texture.star_map.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.star_map_highlighted.ref_number) texture.star_map_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.thrusters.ref_number) texture.thrusters.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.thrusters_highlighted.ref_number) texture.thrusters_highlighted.draw(x,y,z,w,h,angle);
 
     if (texture_number == texture.menu_background_000.ref_number) texture.menu_background_000.draw(x,y,z,w,h,angle);
     if (texture_number == texture.menu_background_001.ref_number) texture.menu_background_001.draw(x,y,z,w,h,angle);
@@ -778,12 +678,6 @@ bool draw_texture(int texture_number, float x, float y, float z, float w, float 
     if (texture_number == texture.weapon_lvlup_powerup.ref_number) texture.weapon_lvlup_powerup.draw(x,y,z,w,h,angle);
     if (texture_number == texture.weapon_new_powerup.ref_number) texture.weapon_new_powerup.draw(x,y,z,w,h,angle);
 
-    if (texture_number == texture.achievements.ref_number) texture.achievements.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.achievements_highlighted.ref_number) texture.achievements_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.score.ref_number) texture.score.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.score_highlighted.ref_number) texture.score_highlighted.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.kills.ref_number) texture.kills.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.kills_highlighted.ref_number) texture.kills_highlighted.draw(x,y,z,w,h,angle);
     if (texture_number == texture.grey_star.ref_number) texture.grey_star.draw(x,y,z,w,h,angle);
     if (texture_number == texture.bronze_star.ref_number) texture.bronze_star.draw(x,y,z,w,h,angle);
     if (texture_number == texture.silver_star.ref_number) texture.silver_star.draw(x,y,z,w,h,angle);
@@ -813,10 +707,8 @@ bool draw_texture(int texture_number, float x, float y, float z, float w, float 
 
     if (texture_number == texture.game_over.ref_number) texture.game_over.draw(x,y,z,w,h,angle);
     if (texture_number == texture.logo_red.ref_number) texture.logo_red.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.press_enter_for_the_main_menu.ref_number) texture.press_enter_for_the_main_menu.draw(x,y,z,w,h,angle);
     if (texture_number == texture.explosion_001.ref_number) texture.explosion_001.draw(x,y,z,w,h,angle);
     if (texture_number == texture.level_completed.ref_number) texture.level_completed.draw(x,y,z,w,h,angle);
-    if (texture_number == texture.enter_for_next_level.ref_number) texture.enter_for_next_level.draw(x,y,z,w,h,angle);
     if (texture_number == texture.new_level_unlocked.ref_number) texture.new_level_unlocked.draw(x,y,z,w,h,angle);
     if (texture_number == texture.thruster_003.ref_number) texture.thruster_003.draw(x,y,z,w,h,angle);
     if (texture_number == texture.coin_powerup.ref_number) texture.coin_powerup.draw(x,y,z,w,h,angle);
