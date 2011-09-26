@@ -694,7 +694,17 @@ void  draw_supportships       (void)
     }
 };
 
-
+void  pos_supportships        (float x_pos, float y_pos)
+{
+    for (int supportship_count = 0;supportship_count < MAX_SUPPORTSHIPS;supportship_count++)
+    {
+        for (int supportship_level_count = 0;supportship_level_count < MAX_SUPPORTSHIP_LEVELS-1;supportship_level_count++)
+        {
+            game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x = x_pos;
+            game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y = y_pos;
+        };
+    };
+};
 
 
 

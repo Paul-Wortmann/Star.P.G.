@@ -68,5 +68,6 @@ void  init_supportships       (int number_of_ships, float x_pos, float y_pos);
 void  process_supportships    (bool spawn_bullet);
 void  kill_supportship_bullets(void);
 void  draw_supportships       (void);
+void  pos_supportships        (float x_pos, float y_pos);
 
 #endif //SUPPORT_SHIPS_H
