@@ -19,7 +19,7 @@
  * @email   physhex@gmail.com
  * @website www.physhexgames.co.nr
  * @license GPL
- * @date 2011-09-03
+ * @date    2011-09-03
  */
 
 #include "load_resources.hpp"
@@ -88,10 +88,6 @@ int init_game_level(int level_no)
         game_o.level_npc_type                    = 0;
         game_o.level_boss_level                  = false;
         game.music_track                         = level_no;
-        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_001.ref_number);
-        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_001.ref_number);
-        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_031.ref_number);
-        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_031.ref_number);
         game_o.speed                             = 0.015f;
         game_o.npc_spawn_rate                    = 300;
         game_o.npc_spawn_rate_count              = 300;
@@ -111,109 +107,113 @@ int init_game_level(int level_no)
         game_o.wave[ 4].npc_type                 = 0;
         game_o.wave[ 4].spawn_pattern            = 11;
         game_o.level_waves                       = 4;
+        game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_001.ref_number);
+        game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_001.ref_number);
+        game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_031.ref_number);
+        game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_031.ref_number);
     }
    if (level_no == 1) // Teutates
    {
-      game_o.level                             = level_no;
-      game_o.level_npc_type                    = 1;
-      game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+        game_o.level                             = level_no;
+        game_o.level_npc_type                    = 1;
+        game_o.level_boss_level                  = false;
+        game.music_track                         = level_no;
+        game_o.speed                             = 0.050f;
+        game_o.npc_spawn_rate                    = 280;
+        game_o.npc_spawn_rate_count              = 280;
+        game_o.npc_projectile_spawn_rate         = 50;
+        game_o.victory_kills                     = 128;
+        game_o.victory_spawened                  = 0;
+        game_o.victory_score                     = 0;
+        game_o.wave[ 0].wave_size                = 0.25f;
+        game_o.wave[ 0].npc_type                 = 0;
+        game_o.wave[ 0].spawn_pattern            = 0;
+        game_o.wave[ 1].npc_type                 = 1;
+        game_o.wave[ 1].spawn_pattern            = 11;
+        game_o.wave[ 2].npc_type                 = 0;
+        game_o.wave[ 2].spawn_pattern            = 7;
+        game_o.wave[ 3].npc_type                 = 1;
+        game_o.wave[ 3].spawn_pattern            = 10;
+        game_o.wave[ 4].npc_type                 = 0;
+        game_o.wave[ 4].spawn_pattern            = 8;
+        game_o.wave[ 5].npc_type                 = 1;
+        game_o.wave[ 5].spawn_pattern            = 8;
+        game_o.wave[ 6].npc_type                 = 0;
+        game_o.wave[ 6].spawn_pattern            = 10;
+        game_o.wave[ 7].npc_type                 = 1;
+        game_o.wave[ 7].spawn_pattern            = 7;
+        game_o.wave[ 8].npc_type                 = 0;
+        game_o.wave[ 8].spawn_pattern            = 11;
+        game_o.level_waves                       = 8;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_001.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_001.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_030.ref_number);
         game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_030.ref_number);
-      game_o.speed                             = 0.050f;
-      game_o.npc_spawn_rate                    = 280;
-      game_o.npc_spawn_rate_count              = 280;
-      game_o.npc_projectile_spawn_rate         = 50;
-      game_o.victory_kills                     = 128;
-      game_o.victory_spawened                  = 0;
-      game_o.victory_score                     = 0;
-      game_o.wave[ 0].wave_size                = 0.25f;
-      game_o.wave[ 0].npc_type                 = 0;
-      game_o.wave[ 0].spawn_pattern            = 0;
-      game_o.wave[ 1].npc_type                 = 1;
-      game_o.wave[ 1].spawn_pattern            = 11;
-      game_o.wave[ 2].npc_type                 = 0;
-      game_o.wave[ 2].spawn_pattern            = 7;
-      game_o.wave[ 3].npc_type                 = 1;
-      game_o.wave[ 3].spawn_pattern            = 10;
-      game_o.wave[ 4].npc_type                 = 0;
-      game_o.wave[ 4].spawn_pattern            = 8;
-      game_o.wave[ 5].npc_type                 = 1;
-      game_o.wave[ 5].spawn_pattern            = 8;
-      game_o.wave[ 6].npc_type                 = 0;
-      game_o.wave[ 6].spawn_pattern            = 10;
-      game_o.wave[ 7].npc_type                 = 1;
-      game_o.wave[ 7].spawn_pattern            = 7;
-      game_o.wave[ 8].npc_type                 = 0;
-      game_o.wave[ 8].spawn_pattern            = 11;
-      game_o.level_waves                       = 8;
    }
    if (level_no == 2) // Esus
    {
-      game_o.level                             = level_no;
-      game_o.level_npc_type                    = 2;
-      game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+        game_o.level                             = level_no;
+        game_o.level_npc_type                    = 2;
+        game_o.level_boss_level                  = false;
+        game.music_track                         = level_no;
+        game_o.speed                             = 0.055f;
+        game_o.npc_spawn_rate                    = 270;
+        game_o.npc_spawn_rate_count              = 270;
+        game_o.npc_projectile_spawn_rate         = 50;
+        game_o.victory_kills                     = 256;
+        game_o.victory_spawened                  = 0;
+        game_o.victory_score                     = 0;
+        game_o.wave[ 0].wave_size                = 0.25f;
+        game_o.wave[ 0].npc_type                 = 0;
+        game_o.wave[ 0].spawn_pattern            = 0;
+        game_o.wave[ 1].npc_type                 = 1;
+        game_o.wave[ 1].spawn_pattern            = 11;
+        game_o.wave[ 2].npc_type                 = 2;
+        game_o.wave[ 2].spawn_pattern            = 2;
+        game_o.wave[ 3].npc_type                 = 0;
+        game_o.wave[ 3].spawn_pattern            = 7;
+        game_o.wave[ 4].npc_type                 = 1;
+        game_o.wave[ 4].spawn_pattern            = 10;
+        game_o.wave[ 5].npc_type                 = 2;
+        game_o.wave[ 5].spawn_pattern            = 7;
+        game_o.wave[ 6].npc_type                 = 0;
+        game_o.wave[ 6].spawn_pattern            = 8;
+        game_o.wave[ 7].npc_type                 = 1;
+        game_o.wave[ 7].spawn_pattern            = 8;
+        game_o.wave[ 8].npc_type                 = 2;
+        game_o.wave[ 8].spawn_pattern            = 11;
+        game_o.wave[ 9].npc_type                 = 0;
+        game_o.wave[ 9].spawn_pattern            = 10;
+        game_o.wave[10].npc_type                 = 1;
+        game_o.wave[10].spawn_pattern            = 7;
+        game_o.wave[11].npc_type                 = 2;
+        game_o.wave[11].spawn_pattern            = 10;
+        game_o.wave[12].npc_type                 = 0;
+        game_o.wave[12].spawn_pattern            = 11;
+        game_o.level_waves                       = 12;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_001.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_001.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_029.ref_number);
         game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_029.ref_number);
-      game_o.speed                             = 0.055f;
-      game_o.npc_spawn_rate                    = 270;
-      game_o.npc_spawn_rate_count              = 270;
-      game_o.npc_projectile_spawn_rate         = 50;
-      game_o.victory_kills                     = 256;
-      game_o.victory_spawened                  = 0;
-      game_o.victory_score                     = 0;
-      game_o.wave[ 0].wave_size                = 0.25f;
-      game_o.wave[ 0].npc_type                 = 0;
-      game_o.wave[ 0].spawn_pattern            = 0;
-      game_o.wave[ 1].npc_type                 = 1;
-      game_o.wave[ 1].spawn_pattern            = 11;
-      game_o.wave[ 2].npc_type                 = 2;
-      game_o.wave[ 2].spawn_pattern            = 2;
-      game_o.wave[ 3].npc_type                 = 0;
-      game_o.wave[ 3].spawn_pattern            = 7;
-      game_o.wave[ 4].npc_type                 = 1;
-      game_o.wave[ 4].spawn_pattern            = 10;
-      game_o.wave[ 5].npc_type                 = 2;
-      game_o.wave[ 5].spawn_pattern            = 7;
-      game_o.wave[ 6].npc_type                 = 0;
-      game_o.wave[ 6].spawn_pattern            = 8;
-      game_o.wave[ 7].npc_type                 = 1;
-      game_o.wave[ 7].spawn_pattern            = 8;
-      game_o.wave[ 8].npc_type                 = 2;
-      game_o.wave[ 8].spawn_pattern            = 11;
-      game_o.wave[ 9].npc_type                 = 0;
-      game_o.wave[ 9].spawn_pattern            = 10;
-      game_o.wave[10].npc_type                 = 1;
-      game_o.wave[10].spawn_pattern            = 7;
-      game_o.wave[11].npc_type                 = 2;
-      game_o.wave[11].spawn_pattern            = 10;
-      game_o.wave[12].npc_type                 = 0;
-      game_o.wave[12].spawn_pattern            = 11;
-      game_o.level_waves                       = 12;
    }
    if (level_no == 3) // Cantidious - BOSS 1
    {
-      game_o.level                             = level_no;
-      game_o.level_npc_type                    = 3;
-      game_o.level_boss_level                  = true;
-      game.music_track                         = level_no;
+        game_o.level                             = level_no;
+        game_o.level_npc_type                    = 3;
+        game_o.level_boss_level                  = true;
+        game.music_track                         = level_no;
+        game_o.speed                             = 0.060f;
+        game_o.npc_spawn_rate                    = 1;
+        game_o.npc_spawn_rate_count              = 1;
+        game_o.npc_projectile_spawn_rate         = 10;
+        game_o.victory_kills                     = 1;
+        game_o.victory_spawened                  = 0;
+        game_o.victory_score                     = 0;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_000.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_000.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_029.ref_number);
         game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_029.ref_number);
-      game_o.speed                             = 0.060f;
-      game_o.npc_spawn_rate                    = 1;
-      game_o.npc_spawn_rate_count              = 1;
-      game_o.npc_projectile_spawn_rate         = 10;
-      game_o.victory_kills                     = 1;
-      game_o.victory_spawened                  = 0;
-      game_o.victory_score                     = 0;
-   } /// add / ballence game below !!!
+   } /// add / balance game below !!!
    if (level_no == 4) // Vulcan
    {
       game_o.level                             = level_no;
