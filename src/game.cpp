@@ -38,13 +38,13 @@ extern  game_class       game;
 
 int init_game(bool re_init)
 {
-    game.game_paused                       = false;
-    game.game_active                       = false;
-    game.game_resume                       = false;
-    game.outr_active                       = false;
-    game.menu_active                       = true;
-    game.pdie_active                       = false;
-    game.nlvl_active                       = false;
+    game.game_paused                         = false;
+    game.game_active                         = false;
+    game.game_resume                         = false;
+    game.outr_active                         = false;
+    game.menu_active                         = true;
+    game.pdie_active                         = false;
+    game.nlvl_active                         = false;
 
     game_o.anc_enabled                       =  false;
     game_o.fps_enabled                       =  false;
@@ -110,6 +110,7 @@ int init_game(bool re_init)
     init_wexp();
     init_levels();
     init_explosions();
+    game_o.rumble.init();
     return(0);
 };
 
@@ -121,6 +122,7 @@ int process_game(void)
     float temp_x            = 0.0f;
     float temp_y            = 0.0f;
     int   temp_r            = 0;
+    if (game_o.rumble.active) game_o.rumble.process();
     game_o.player.health += game_o.player.health_regen_rate;
     if (game_o.player.health > game_o.player.max_health) game_o.player.health = game_o.player.max_health;
     game.background.process();
@@ -128,135 +130,135 @@ int process_game(void)
     if (game_o.player.y_pos >= 0.75f) return_data = game.background.scroll_up();
     if(return_data)
     {
-            for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+        for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+        {
+            for (int bullet_count = 0; bullet_count < MAX_BULLETS; bullet_count++)
             {
-                for (int bullet_count = 0; bullet_count < MAX_BULLETS; bullet_count++)
-                {
-                   game_o.npc[npc_count].bullet[bullet_count].y_pos  -= (game.background.get_scroll_y(1));
-                }
-                game_o.npc[npc_count].y_pos -= (game.background.get_scroll_y(1));
+                game_o.npc[npc_count].bullet[bullet_count].y_pos  -= (game.background.get_scroll_y(1));
             }
-            for (int player_bullet_num = 0; player_bullet_num < MAX_BULLETS; player_bullet_num++)
+            game_o.npc[npc_count].y_pos -= (game.background.get_scroll_y(1));
+        }
+        for (int player_bullet_num = 0; player_bullet_num < MAX_BULLETS; player_bullet_num++)
+        {
+            if (game_o.player.bullet[player_bullet_num].active)
             {
-               if (game_o.player.bullet[player_bullet_num].active)
-               {
-                  game_o.player.bullet[player_bullet_num].y_pos -= (game.background.get_scroll_y(1));
-               }
+                game_o.player.bullet[player_bullet_num].y_pos -= (game.background.get_scroll_y(1));
             }
-            for (int count =0;count < MAX_EXPLOSIONS;count++)
+        }
+        for (int count =0;count < MAX_EXPLOSIONS;count++)
+        {
+            if(game_o.explosion[count].active)
             {
-               if(game_o.explosion[count].active)
-               {
-                  game_o.explosion[count].y_pos -= (game.background.get_scroll_y(1));
-               }
+                game_o.explosion[count].y_pos -= (game.background.get_scroll_y(1));
             }
-            for (int count = 0; count < MAX_WEXPS; count++)
+        }
+        for (int count = 0; count < MAX_WEXPS; count++)
+        {
+            if (game_o.wexp[count].active)
             {
-               if (game_o.wexp[count].active)
-               {
-                  game_o.wexp[count].y_pos -= (game.background.get_scroll_y(1));
-               }
+                game_o.wexp[count].y_pos -= (game.background.get_scroll_y(1));
             }
-            for (int count = 0; count < MAX_COINS; count++)
+        }
+        for (int count = 0; count < MAX_COINS; count++)
+        {
+            if (game_o.coin[count].active)
             {
-               if (game_o.coin[count].active)
-               {
-                  game_o.coin[count].y_pos -= (game.background.get_scroll_y(1));
-               }
+                game_o.coin[count].y_pos -= (game.background.get_scroll_y(1));
             }
-            for (int count = 1; count < MAX_POWERUPS; count++)
+        }
+        for (int count = 1; count < MAX_POWERUPS; count++)
+        {
+            if (game_o.powerup[count].active)
             {
-               if (game_o.powerup[count].active)
-               {
-                  game_o.powerup[count].y_pos -= (game.background.get_scroll_y(1));
-               }
+                game_o.powerup[count].y_pos -= (game.background.get_scroll_y(1));
             }
-         }
-   return_data = false;
-   if (game_o.player.y_pos <= -0.75f) return_data = game.background.scroll_down();
-   if(return_data)
+        }
+    }
+    return_data = false;
+    if (game_o.player.y_pos <= -0.75f) return_data = game.background.scroll_down();
+    if(return_data)
     {
-            for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+        for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+        {
+            for (int bullet_count = 0; bullet_count < MAX_BULLETS; bullet_count++)
             {
-                for (int bullet_count = 0; bullet_count < MAX_BULLETS; bullet_count++)
-                {
-                   game_o.npc[npc_count].bullet[bullet_count].y_pos  += (game.background.get_scroll_y(1));
-                }
-                game_o.npc[npc_count].y_pos += (game.background.get_scroll_y(1));
+                game_o.npc[npc_count].bullet[bullet_count].y_pos  += (game.background.get_scroll_y(1));
             }
-            for (int player_bullet_num = 0; player_bullet_num < MAX_BULLETS; player_bullet_num++)
+            game_o.npc[npc_count].y_pos += (game.background.get_scroll_y(1));
+        }
+        for (int player_bullet_num = 0; player_bullet_num < MAX_BULLETS; player_bullet_num++)
+        {
+            if (game_o.player.bullet[player_bullet_num].active)
             {
-               if (game_o.player.bullet[player_bullet_num].active)
-               {
-                  game_o.player.bullet[player_bullet_num].y_pos += (game.background.get_scroll_y(1));
-               }
+                game_o.player.bullet[player_bullet_num].y_pos += (game.background.get_scroll_y(1));
             }
-            for (int count =0;count < MAX_EXPLOSIONS;count++)
+        }
+        for (int count =0;count < MAX_EXPLOSIONS;count++)
+        {
+            if(game_o.explosion[count].active)
             {
-               if(game_o.explosion[count].active)
-               {
-                  game_o.explosion[count].y_pos += (game.background.get_scroll_y(1));
-               }
+                game_o.explosion[count].y_pos += (game.background.get_scroll_y(1));
             }
-            for (int count = 0; count < MAX_WEXPS; count++)
+        }
+        for (int count = 0; count < MAX_WEXPS; count++)
+        {
+            if (game_o.wexp[count].active)
             {
-               if (game_o.wexp[count].active)
-               {
-                  game_o.wexp[count].y_pos += (game.background.get_scroll_y(1));
-               }
+                game_o.wexp[count].y_pos += (game.background.get_scroll_y(1));
             }
-            for (int count = 0; count < MAX_COINS; count++)
+        }
+        for (int count = 0; count < MAX_COINS; count++)
+        {
+            if (game_o.coin[count].active)
             {
-               if (game_o.coin[count].active)
-               {
-                  game_o.coin[count].y_pos += (game.background.get_scroll_y(1));
-               }
+                game_o.coin[count].y_pos += (game.background.get_scroll_y(1));
             }
-            for (int count = 1; count < MAX_POWERUPS; count++)
+        }
+        for (int count = 1; count < MAX_POWERUPS; count++)
+        {
+            if (game_o.powerup[count].active)
             {
-               if (game_o.powerup[count].active)
-               {
-                  game_o.powerup[count].y_pos += (game.background.get_scroll_y(1));
-               }
+                game_o.powerup[count].y_pos += (game.background.get_scroll_y(1));
             }
-         }
-   game_o.p_actinium_shields.process();
-   game_o.p_blasters.process();
-   game_o.p_burst_lasers.process();
-   game_o.p_chain_guns.process();
-   game_o.p_convolution_thrusters.process();
-   game_o.p_health.process();
-   game_o.p_ion_cannons.process();
-   game_o.p_iridium_shileds.process();
-   game_o.p_maelstrom_thrusters.process();
-   game_o.p_plasma_rockets.process();
-   game_o.p_rail_turrets.process();
-   game_o.p_rubidium_shields.process();
-   game_o.p_seismic_thrusters.process();
-   game_o.p_shield_level_up.process();
-   game_o.p_tantalum_shields.process();
-   game_o.p_terbium_shields.process();
-   game_o.p_thrusters_level_up.process();
-   game_o.p_vortex_thrusters.process();
-   game_o.p_weapon_level_up.process();
-   achievement_kills_process();
-   achievement_score_process();
-   game_o.paused.process();
-   game_o.loaded.process();
-   game_o.saved.process();
-   process_player(0);
-   proccess_player_bullets();
-   game_o.fw_rof_count++;
-   if(game_o.fw_rof_count > game_o.projectile[game_o.player.front_weapon].rate_of_fire) game_o.fw_rof_count = game_o.projectile[game_o.player.front_weapon].rate_of_fire;
-   game_o.sw_rof_count++;
-   if(game_o.sw_rof_count > game_o.projectile[game_o.player.side_weapon].rate_of_fire)  game_o.sw_rof_count = game_o.projectile[game_o.player.side_weapon].rate_of_fire;
-   proccess_npcs();
-   process_waves();
-   proccess_npc_bullets();
-   proccess_explosions();
-   proccess_powerups();
-   proccess_coin();
-   proccess_wexp();
+        }
+    }
+    game_o.p_actinium_shields.process();
+    game_o.p_blasters.process();
+    game_o.p_burst_lasers.process();
+    game_o.p_chain_guns.process();
+    game_o.p_convolution_thrusters.process();
+    game_o.p_health.process();
+    game_o.p_ion_cannons.process();
+    game_o.p_iridium_shileds.process();
+    game_o.p_maelstrom_thrusters.process();
+    game_o.p_plasma_rockets.process();
+    game_o.p_rail_turrets.process();
+    game_o.p_rubidium_shields.process();
+    game_o.p_seismic_thrusters.process();
+    game_o.p_shield_level_up.process();
+    game_o.p_tantalum_shields.process();
+    game_o.p_terbium_shields.process();
+    game_o.p_thrusters_level_up.process();
+    game_o.p_vortex_thrusters.process();
+    game_o.p_weapon_level_up.process();
+    achievement_kills_process();
+    achievement_score_process();
+    game_o.paused.process();
+    game_o.loaded.process();
+    game_o.saved.process();
+    process_player(0);
+    proccess_player_bullets();
+    game_o.fw_rof_count++;
+    if(game_o.fw_rof_count > game_o.projectile[game_o.player.front_weapon].rate_of_fire) game_o.fw_rof_count = game_o.projectile[game_o.player.front_weapon].rate_of_fire;
+    game_o.sw_rof_count++;
+    if(game_o.sw_rof_count > game_o.projectile[game_o.player.side_weapon].rate_of_fire)  game_o.sw_rof_count = game_o.projectile[game_o.player.side_weapon].rate_of_fire;
+    proccess_npcs();
+    process_waves();
+    proccess_npc_bullets();
+    proccess_explosions();
+    proccess_powerups();
+    proccess_coin();
+    proccess_wexp();
     if (level_completed())
     {
         game.game_active      = false;
@@ -268,34 +270,34 @@ int process_game(void)
         game.background.set_active( 4, false);
         game.background.set_movement_type(BOUNCE);
     }
-   if  (random(game_o.powerup[1 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health power-up
-   if ((random(game_o.powerup[8 ].spawn_rate) <= 5)&& (!boss_level())) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb power-up
+    if  (random(game_o.powerup[1 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health power-up
+    if ((random(game_o.powerup[8 ].spawn_rate) <= 5)&& (!boss_level())) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb power-up
 
-   if ((game_o.level >=  4) && (random(game_o.powerup[9 ].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn support ship 0 power-up
-   if ((game_o.level >=  7) && (random(game_o.powerup[10].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),10);//spawn support ship 1 power-up
-   if ((game_o.level >= 11) && (random(game_o.powerup[11].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),11);//spawn support ship 2 power-up
-   if ((game_o.level >= 15) && (random(game_o.powerup[12].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),12);//spawn support ship 3 power-up
+    if ((game_o.level >=  4) && (random(game_o.powerup[9 ].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn support ship 0 power-up
+    if ((game_o.level >=  7) && (random(game_o.powerup[10].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),10);//spawn support ship 1 power-up
+    if ((game_o.level >= 11) && (random(game_o.powerup[11].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),11);//spawn support ship 2 power-up
+    if ((game_o.level >= 15) && (random(game_o.powerup[12].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),12);//spawn support ship 3 power-up
 
-   if ((game_o.shield[game_o.player.front_shield].level  < 3) && (random(game_o.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),2);//spawn shield level power-up
-   if ((game_o.thruster[game_o.player.thrusters].level   < 3) && (random(game_o.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster level power-up
-   // if player missed boss weapon drops enable random spawning of power-ups to keep consistency
-   if ((game_o.level >=  4) && (!game_o.projectile[1].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
-   if ((game_o.level >=  7) && (!game_o.projectile[2].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
-   if ((game_o.level >= 11) && (!game_o.projectile[3].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
-   if ((game_o.level >= 15) && (!game_o.projectile[4].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
-   if ((game_o.level >= 19) && (!game_o.projectile[5].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+    if ((game_o.shield[game_o.player.front_shield].level  < 3) && (random(game_o.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),2);//spawn shield level power-up
+    if ((game_o.thruster[game_o.player.thrusters].level   < 3) && (random(game_o.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster level power-up
+    // if player missed boss weapon drops enable random spawning of power-ups to keep consistency
+    if ((game_o.level >=  4) && (!game_o.projectile[1].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+    if ((game_o.level >=  7) && (!game_o.projectile[2].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+    if ((game_o.level >= 11) && (!game_o.projectile[3].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+    if ((game_o.level >= 15) && (!game_o.projectile[4].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+    if ((game_o.level >= 19) && (!game_o.projectile[5].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
 
-   if ((game_o.level >=  7) && (!game_o.shield[0].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
-   if ((game_o.level >= 11) && (!game_o.shield[1].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
-   if ((game_o.level >= 15) && (!game_o.shield[2].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
-   if ((game_o.level >= 19) && (!game_o.shield[3].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
-   if ((game_o.level >= 23) && (!game_o.shield[4].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+    if ((game_o.level >=  7) && (!game_o.shield[0].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+    if ((game_o.level >= 11) && (!game_o.shield[1].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+    if ((game_o.level >= 15) && (!game_o.shield[2].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+    if ((game_o.level >= 19) && (!game_o.shield[3].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+    if ((game_o.level >= 23) && (!game_o.shield[4].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
 
-   if ((game_o.level >= 15) && (!game_o.thruster[0].active) && (random(game_o.powerup[5].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
-   if ((game_o.level >= 19) && (!game_o.thruster[1].active) && (random(game_o.powerup[5].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
-   if ((game_o.level >= 23) && (!game_o.thruster[2].active) && (random(game_o.powerup[5].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
-   game_o.npc_spawn_rate_count++;
-   game_o.npc_spawn_rate_count += random_dec()/4;
+    if ((game_o.level >= 15) && (!game_o.thruster[0].active) && (random(game_o.powerup[5].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
+    if ((game_o.level >= 19) && (!game_o.thruster[1].active) && (random(game_o.powerup[5].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
+    if ((game_o.level >= 23) && (!game_o.thruster[2].active) && (random(game_o.powerup[5].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
+    game_o.npc_spawn_rate_count++;
+    game_o.npc_spawn_rate_count += random_dec()/4;
     if (game_o.npc_spawn_rate_count >= game_o.npc_spawn_rate)
     {
         game_o.npc_spawn_rate_count = 0;
@@ -306,237 +308,238 @@ int process_game(void)
         }
         if ((!game_o.level_boss_level) && (!game_o.level_end_time) && (game_o.wave_spawnable)) spawn_wave();
     }
-   for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)//npc spawn bullet
-   {
-      if (game_o.npc[npc_count].active)
-      {
-         if (random(game_o.npc_projectile_spawn_rate) == 5)
-         {
-            if (game_o.npc[npc_count].projectiles == 1)
-            {
-               spawn_npc_bullet(npc_count,1);
-            }
-            if (game_o.npc[npc_count].projectiles == 2)
-            {
-               spawn_npc_bullet(npc_count,0);
-               spawn_npc_bullet(npc_count,2);
-            }
-            if (game_o.npc[npc_count].projectiles == 3)
-            {
-               spawn_npc_bullet(npc_count,0);
-               spawn_npc_bullet(npc_count,1);
-               spawn_npc_bullet(npc_count,2);
-            }
-            if (game_o.npc[npc_count].projectiles == 4)
-            {
-               spawn_npc_bullet(npc_count,0);
-               spawn_npc_bullet(npc_count,2);
-               spawn_npc_bullet(npc_count,5);
-               spawn_npc_bullet(npc_count,6);
-            }
-            if (game_o.npc[npc_count].projectiles == 5)
-            {
-               spawn_npc_bullet(npc_count,1);
-               spawn_npc_bullet(npc_count,5);
-               spawn_npc_bullet(npc_count,6);
-               spawn_npc_bullet(npc_count,7);
-               spawn_npc_bullet(npc_count,8);
-            }
-            if (game_o.npc[npc_count].projectiles == 6)
-            {
-               spawn_npc_bullet(npc_count,0);
-               spawn_npc_bullet(npc_count,2);
-               spawn_npc_bullet(npc_count,3);
-               spawn_npc_bullet(npc_count,5);
-               spawn_npc_bullet(npc_count,6);
-               spawn_npc_bullet(npc_count,8);
-            }
-            if (game_o.npc[npc_count].projectiles == 7)
-            {
-               spawn_npc_bullet(npc_count,1);
-               spawn_npc_bullet(npc_count,3);
-               spawn_npc_bullet(npc_count,4);
-               spawn_npc_bullet(npc_count,5);
-               spawn_npc_bullet(npc_count,6);
-               spawn_npc_bullet(npc_count,7);
-               spawn_npc_bullet(npc_count,8);
-            }
-            if (game_o.npc[npc_count].projectiles == 8)
-            {
-               spawn_npc_bullet(npc_count,0);
-               spawn_npc_bullet(npc_count,2);
-               spawn_npc_bullet(npc_count,3);
-               spawn_npc_bullet(npc_count,4);
-               spawn_npc_bullet(npc_count,5);
-               spawn_npc_bullet(npc_count,6);
-               spawn_npc_bullet(npc_count,7);
-               spawn_npc_bullet(npc_count,8);
-            }
-            if (game_o.npc[npc_count].projectiles == 9)
-            {
-               spawn_npc_bullet(npc_count,0);
-               spawn_npc_bullet(npc_count,1);
-               spawn_npc_bullet(npc_count,2);
-               spawn_npc_bullet(npc_count,3);
-               spawn_npc_bullet(npc_count,4);
-               spawn_npc_bullet(npc_count,5);
-               spawn_npc_bullet(npc_count,6);
-               spawn_npc_bullet(npc_count,7);
-               spawn_npc_bullet(npc_count,8);
-            }
-         if (game_o.npc[npc_count].bullet[0].warhead ==  0) sound.projectile_000.play();
-         if (game_o.npc[npc_count].bullet[0].warhead ==  1) sound.projectile_001.play();
-         if (game_o.npc[npc_count].bullet[0].warhead ==  2) sound.projectile_002.play();
-         if (game_o.npc[npc_count].bullet[0].warhead ==  3) sound.projectile_003.play();
-         if (game_o.npc[npc_count].bullet[0].warhead ==  4) sound.projectile_004.play();
-         if (game_o.npc[npc_count].bullet[0].warhead ==  5) sound.projectile_005.play();
-         if (game_o.npc[npc_count].bullet[0].warhead ==  6) sound.projectile_006.play();
-         if (game_o.npc[npc_count].bullet[0].warhead ==  7) sound.projectile_007.play();
-         if (game_o.npc[npc_count].bullet[0].warhead ==  8) sound.projectile_008.play();
-         if (game_o.npc[npc_count].bullet[0].warhead ==  9) sound.projectile_009.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 10) sound.projectile_010.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 11) sound.projectile_011.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 12) sound.projectile_012.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 13) sound.projectile_013.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 14) sound.projectile_014.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 15) sound.projectile_015.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 16) sound.projectile_016.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 17) sound.projectile_017.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 18) sound.projectile_018.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 19) sound.projectile_019.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 20) sound.projectile_020.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 21) sound.projectile_021.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 22) sound.projectile_022.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 23) sound.projectile_023.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 24) sound.projectile_024.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 25) sound.projectile_025.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 26) sound.projectile_026.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 27) sound.projectile_027.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 28) sound.projectile_028.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 29) sound.projectile_029.play();
-         if (game_o.npc[npc_count].bullet[0].warhead == 30) sound.projectile_030.play();
-         }
-      }
-   }
-   if (game_o.level_end_time) game_o.d_level_end.process();
-   if ((game_o.level_end_time) && (game_o.level_end_phase == 0)) //level outro
-   {
-     game_o.player.health = 0.100f;
-     for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) //kill all npcs
-     {
-         sound.explosion_005.play();
-         if (game_o.npc[npc_count].active)
-         {
-            spawn_explosion(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,0.50f);
-            kill_npc(npc_count);
-         }
-     }
-     for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)//kill all npc bullets
-     {
-        for (int bullet_count = 0; bullet_count < MAX_BULLETS; bullet_count++)
+    for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)//npc spawn bullet
+    {
+        if (game_o.npc[npc_count].active)
         {
-           if (game_o.npc[npc_count].bullet[bullet_count].active)
-           {
-              spawn_explosion(game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,0.125f);
-              kill_npc_bullet(npc_count,bullet_count);
-           }
+            if (random(game_o.npc_projectile_spawn_rate) == 5)
+            {
+                if (game_o.npc[npc_count].projectiles == 1)
+                {
+                    spawn_npc_bullet(npc_count,1);
+                }
+                if (game_o.npc[npc_count].projectiles == 2)
+                {
+                    spawn_npc_bullet(npc_count,0);
+                    spawn_npc_bullet(npc_count,2);
+                }
+                if (game_o.npc[npc_count].projectiles == 3)
+                {
+                    spawn_npc_bullet(npc_count,0);
+                    spawn_npc_bullet(npc_count,1);
+                    spawn_npc_bullet(npc_count,2);
+                }
+                if (game_o.npc[npc_count].projectiles == 4)
+                {
+                    spawn_npc_bullet(npc_count,0);
+                    spawn_npc_bullet(npc_count,2);
+                    spawn_npc_bullet(npc_count,5);
+                    spawn_npc_bullet(npc_count,6);
+                }
+                if (game_o.npc[npc_count].projectiles == 5)
+                {
+                    spawn_npc_bullet(npc_count,1);
+                    spawn_npc_bullet(npc_count,5);
+                    spawn_npc_bullet(npc_count,6);
+                    spawn_npc_bullet(npc_count,7);
+                    spawn_npc_bullet(npc_count,8);
+                }
+                if (game_o.npc[npc_count].projectiles == 6)
+                {
+                    spawn_npc_bullet(npc_count,0);
+                    spawn_npc_bullet(npc_count,2);
+                    spawn_npc_bullet(npc_count,3);
+                    spawn_npc_bullet(npc_count,5);
+                    spawn_npc_bullet(npc_count,6);
+                    spawn_npc_bullet(npc_count,8);
+                }
+                if (game_o.npc[npc_count].projectiles == 7)
+                {
+                    spawn_npc_bullet(npc_count,1);
+                    spawn_npc_bullet(npc_count,3);
+                    spawn_npc_bullet(npc_count,4);
+                    spawn_npc_bullet(npc_count,5);
+                    spawn_npc_bullet(npc_count,6);
+                    spawn_npc_bullet(npc_count,7);
+                    spawn_npc_bullet(npc_count,8);
+                }
+                if (game_o.npc[npc_count].projectiles == 8)
+                {
+                    spawn_npc_bullet(npc_count,0);
+                    spawn_npc_bullet(npc_count,2);
+                    spawn_npc_bullet(npc_count,3);
+                    spawn_npc_bullet(npc_count,4);
+                    spawn_npc_bullet(npc_count,5);
+                    spawn_npc_bullet(npc_count,6);
+                    spawn_npc_bullet(npc_count,7);
+                    spawn_npc_bullet(npc_count,8);
+                }
+                if (game_o.npc[npc_count].projectiles == 9)
+                {
+                    spawn_npc_bullet(npc_count,0);
+                    spawn_npc_bullet(npc_count,1);
+                    spawn_npc_bullet(npc_count,2);
+                    spawn_npc_bullet(npc_count,3);
+                    spawn_npc_bullet(npc_count,4);
+                    spawn_npc_bullet(npc_count,5);
+                    spawn_npc_bullet(npc_count,6);
+                    spawn_npc_bullet(npc_count,7);
+                    spawn_npc_bullet(npc_count,8);
+                }
+                if (game_o.npc[npc_count].bullet[0].warhead ==  0) sound.projectile_000.play();
+                if (game_o.npc[npc_count].bullet[0].warhead ==  1) sound.projectile_001.play();
+                if (game_o.npc[npc_count].bullet[0].warhead ==  2) sound.projectile_002.play();
+                if (game_o.npc[npc_count].bullet[0].warhead ==  3) sound.projectile_003.play();
+                if (game_o.npc[npc_count].bullet[0].warhead ==  4) sound.projectile_004.play();
+                if (game_o.npc[npc_count].bullet[0].warhead ==  5) sound.projectile_005.play();
+                if (game_o.npc[npc_count].bullet[0].warhead ==  6) sound.projectile_006.play();
+                if (game_o.npc[npc_count].bullet[0].warhead ==  7) sound.projectile_007.play();
+                if (game_o.npc[npc_count].bullet[0].warhead ==  8) sound.projectile_008.play();
+                if (game_o.npc[npc_count].bullet[0].warhead ==  9) sound.projectile_009.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 10) sound.projectile_010.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 11) sound.projectile_011.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 12) sound.projectile_012.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 13) sound.projectile_013.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 14) sound.projectile_014.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 15) sound.projectile_015.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 16) sound.projectile_016.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 17) sound.projectile_017.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 18) sound.projectile_018.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 19) sound.projectile_019.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 20) sound.projectile_020.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 21) sound.projectile_021.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 22) sound.projectile_022.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 23) sound.projectile_023.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 24) sound.projectile_024.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 25) sound.projectile_025.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 26) sound.projectile_026.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 27) sound.projectile_027.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 28) sound.projectile_028.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 29) sound.projectile_029.play();
+                if (game_o.npc[npc_count].bullet[0].warhead == 30) sound.projectile_030.play();
+            }
         }
-     }
-     temp_r = random_int();
-     if (temp_r < 6000) //spawn explosion with coin / wexp
-     {
-        temp_x = random_double();
-        temp_y = random_double();
+    }
+    if (game_o.level_end_time) game_o.d_level_end.process();
+    if ((game_o.level_end_time) && (game_o.level_end_phase == 0)) //level end phase
+    {
+        if(!game_o.rumble.active) game_o.rumble.start();
+        game_o.player.health = 0.100f;
+        for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) //kill all npcs
+        {
+            sound.explosion_005.play();
+            if (game_o.npc[npc_count].active)
+            {
+                spawn_explosion(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,0.50f);
+                kill_npc(npc_count);
+            }
+        }
+        for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)//kill all npc bullets
+        {
+            for (int bullet_count = 0; bullet_count < MAX_BULLETS; bullet_count++)
+            {
+                if (game_o.npc[npc_count].bullet[bullet_count].active)
+                {
+                    spawn_explosion(game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,0.125f);
+                    kill_npc_bullet(npc_count,bullet_count);
+                }
+            }
+        }
         temp_r = random_int();
-        if (temp_r < 8000) //spawn explosion + coin
+        if (temp_r < 6000) //spawn explosion with coin / wexp
         {
-           spawn_explosion(temp_x,temp_y,0.25f);
-           sound.explosion_005.play();
-           spawn_coin(temp_x,temp_y,1.5f);
-        }
-        if ((temp_r > 8000) && (temp_r < 16000)) //spawn explosion + coin
-        {
-           spawn_explosion(temp_x,temp_y,0.25f);
-           sound.explosion_005.play();
-           spawn_wexp(temp_x,temp_y,1.5f);
-        }
-     }
-     if (!game_o.powerups_spawened)
-     {
-        if ((game_o.level_boss_level) && (game_o.level_locked[game_o.level + 1]))//if its first time to kill a boss spawn some powerups!!
-        {
-            if (game_o.level == 3)
+            temp_x = random_double();
+            temp_y = random_double();
+            temp_r = random_int();
+            if (temp_r < 8000) //spawn explosion + coin
             {
-                spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
-                spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster level power-up
-                spawn_powerup(1.0f,random_GLcoord(),7);//new weapon
+                spawn_explosion(temp_x,temp_y,0.25f);
+                sound.explosion_005.play();
+                spawn_coin(temp_x,temp_y,1.5f);
             }
-            if (game_o.level == 7)
+            if ((temp_r > 8000) && (temp_r < 16000)) //spawn explosion + coin
             {
-                spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
-                spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new power-up
-                spawn_powerup(1.0f,random_GLcoord(),7);//new weapon
-            }
-            if (game_o.level == 11)
-            {
-                spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
-                spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new power-up
-                spawn_powerup(1.0f,random_GLcoord(),7);//new weapon
-            }
-            if (game_o.level == 15)
-            {
-                spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
-                spawn_powerup(1.0f,random_GLcoord(),5);//spawn thruster new power-up
-                spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new power-up
-                spawn_powerup(1.0f,random_GLcoord(),7);//new weapon
-            }
-            if (game_o.level == 19)
-            {
-                spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
-                spawn_powerup(1.0f,random_GLcoord(),5);//spawn thruster new power-up
-                spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new power-up
-                spawn_powerup(1.0f,random_GLcoord(),7);//new weapon
-            }
-            if (game_o.level == 23)
-            {
-                spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
-                spawn_powerup(1.0f,random_GLcoord(),5);//spawn thruster new power-up
-                spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new power-up
-                spawn_powerup(1.0f,random_GLcoord(),6);//spawn weapon level power-up
+                spawn_explosion(temp_x,temp_y,0.25f);
+                sound.explosion_005.play();
+                spawn_wexp(temp_x,temp_y,1.5f);
             }
         }
-        else
+        if (!game_o.powerups_spawened)
         {
-           // spawn power-ups if level is too low, ie. player missed the power up last level or in game or it hasn't spawned in game
-           if ((game_o.level >=  4) && (!game_o.projectile[1].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
-           if ((game_o.level >=  7) && (!game_o.projectile[2].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
-           if ((game_o.level >= 11) && (!game_o.projectile[3].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
-           if ((game_o.level >= 15) && (!game_o.projectile[4].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
-           if ((game_o.level >= 19) && (!game_o.projectile[5].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+            if ((game_o.level_boss_level) && (game_o.level_locked[game_o.level + 1]))//if its first time to kill a boss spawn some powerups!!
+            {
+                if (game_o.level == 3)
+                {
+                    spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
+                    spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster level power-up
+                    spawn_powerup(1.0f,random_GLcoord(),7);//new weapon
+                }
+                if (game_o.level == 7)
+                {
+                    spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
+                    spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new power-up
+                    spawn_powerup(1.0f,random_GLcoord(),7);//new weapon
+                }
+                if (game_o.level == 11)
+                {
+                    spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
+                    spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new power-up
+                    spawn_powerup(1.0f,random_GLcoord(),7);//new weapon
+                }
+                if (game_o.level == 15)
+                {
+                    spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
+                    spawn_powerup(1.0f,random_GLcoord(),5);//spawn thruster new power-up
+                    spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new power-up
+                    spawn_powerup(1.0f,random_GLcoord(),7);//new weapon
+                }
+                if (game_o.level == 19)
+                {
+                    spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
+                    spawn_powerup(1.0f,random_GLcoord(),5);//spawn thruster new power-up
+                    spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new power-up
+                    spawn_powerup(1.0f,random_GLcoord(),7);//new weapon
+                }
+                if (game_o.level == 23)
+                {
+                    spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
+                    spawn_powerup(1.0f,random_GLcoord(),5);//spawn thruster new power-up
+                    spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new power-up
+                    spawn_powerup(1.0f,random_GLcoord(),6);//spawn weapon level power-up
+                }
+            }
+            else
+            {
+                // spawn power-ups if level is too low, ie. player missed the power up last level or in game or it hasn't spawned in game
+                if ((game_o.level >=  4) && (!game_o.projectile[1].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+                if ((game_o.level >=  7) && (!game_o.projectile[2].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+                if ((game_o.level >= 11) && (!game_o.projectile[3].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+                if ((game_o.level >= 15) && (!game_o.projectile[4].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+                if ((game_o.level >= 19) && (!game_o.projectile[5].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
 
-           if ((game_o.level >=  7) && (!game_o.shield[0].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
-           if ((game_o.level >= 11) && (!game_o.shield[1].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
-           if ((game_o.level >= 15) && (!game_o.shield[2].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
-           if ((game_o.level >= 19) && (!game_o.shield[3].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
-           if ((game_o.level >= 23) && (!game_o.shield[4].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+                if ((game_o.level >=  7) && (!game_o.shield[0].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+                if ((game_o.level >= 11) && (!game_o.shield[1].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+                if ((game_o.level >= 15) && (!game_o.shield[2].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+                if ((game_o.level >= 19) && (!game_o.shield[3].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+                if ((game_o.level >= 23) && (!game_o.shield[4].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
 
-           if ((game_o.level >= 15) && (!game_o.thruster[0].active)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
-           if ((game_o.level >= 19) && (!game_o.thruster[1].active)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
-           if ((game_o.level >= 23) && (!game_o.thruster[2].active)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
-           spawn_powerup(1.0f,random_GLcoord(),1);//spawn health powerup
-           spawn_powerup(1.0f,random_GLcoord(),2);//spawn shield lvl powerup
-           spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster lvl powerup
+                if ((game_o.level >= 15) && (!game_o.thruster[0].active)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
+                if ((game_o.level >= 19) && (!game_o.thruster[1].active)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
+                if ((game_o.level >= 23) && (!game_o.thruster[2].active)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
+                spawn_powerup(1.0f,random_GLcoord(),1);//spawn health powerup
+                spawn_powerup(1.0f,random_GLcoord(),2);//spawn shield lvl powerup
+                spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster lvl powerup
+            }
+            game_o.powerups_spawened = true;
         }
-     game_o.powerups_spawened = true;
-     }
-     if (!game_o.level_end_display_active) game_o.d_level_end.spawn();
-  }
-   if ((game_o.level_end_time) && (game_o.level_end_phase == 1)) //level outro
-   {
-     game_o.player.health = 0.100f;
-     process_player(1024);//warp player out
-   }
-   return(0);
+        if (!game_o.level_end_display_active) game_o.d_level_end.spawn();
+    }
+    if ((game_o.level_end_time) && (game_o.level_end_phase == 1)) //level outro
+    {
+        game_o.player.health = 0.100f;
+        process_player(1024);//warp player out
+    }
+    return(0);
 };
 /*----------------------------------------------------------------------------*/
 int display_game(void)

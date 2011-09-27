@@ -28,10 +28,12 @@
 #include "textures.hpp"
 #include "rage.hpp"
 #include "../load_resources.hpp"
+#include "../game.hpp"
 
 #define GL_BGR  0x80E0
 #define GL_BGRA 0x80E1
 
+extern  game_type    game_o;
 extern  game_class   game;
 extern  texture_type texture;
 
@@ -216,6 +218,11 @@ void texture_class::draw(float pos_x, float pos_y, float pos_z, float width, flo
 
 void texture_class::draw(float pos_x, float pos_y, float pos_z, float width, float height)
 {
+    if(game_o.rumble.active)
+    {
+        pos_x += game_o.rumble.counter_x;
+        pos_y += game_o.rumble.counter_y;
+    }
     glPushMatrix();
     glBindTexture( GL_TEXTURE_2D, texture_class::frame[texture_class::frame_num].data);
     glLoadIdentity();

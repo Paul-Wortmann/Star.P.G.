@@ -124,6 +124,8 @@
 		<Unit filename="src\projectiles.hpp" />
 		<Unit filename="src\save_data.cpp" />
 		<Unit filename="src\save_data.hpp" />
+		<Unit filename="src\screen_rumble.cpp" />
+		<Unit filename="src\screen_rumble.hpp" />
 		<Unit filename="src\shields.cpp" />
 		<Unit filename="src\shields.hpp" />
 		<Unit filename="src\support_ships.cpp" />

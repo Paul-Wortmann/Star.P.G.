@@ -263,22 +263,27 @@ int main(int argc, char *argv[])
               };
         //if (game_o.cheats_enabled == true)
         {
-          if (game.io.key_0) game_o.victory_kills = game_o.level_kills;  //complete level
-          if (game.io.key_1) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health powerup
-          if (game.io.key_2) spawn_powerup(1.0f,random_GLcoord(), 2);//spawn shield lvl powerup
-          if (game.io.key_3) spawn_powerup(1.0f,random_GLcoord(), 3);//spawn shield new powerup
-          if (game.io.key_4) spawn_powerup(1.0f,random_GLcoord(), 4);//spawn thruster lvl powerup
-          if (game.io.key_5) spawn_powerup(1.0f,random_GLcoord(), 5);//spawn thruster new powerup
-          if (game.io.key_6) spawn_powerup(1.0f,random_GLcoord(), 6);//spawn weapon lvl powerup
-          if (game.io.key_7) spawn_powerup(1.0f,random_GLcoord(), 7);//spawn weapon new powerup
-          if (game.io.key_8) unlock_levels();                        //unlock all levels
-          if (game.io.key_9) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb powerup
-          if (game.io.key_a) game_o.anc_enabled   = !game_o.anc_enabled; //toggle active NPC count display
-          if (game.io.key_f) game_o.fps_enabled   = !game_o.fps_enabled; //toggle active NPC count display
-          if (game.io.key_q) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn supportship 0 powerup
-          if (game.io.key_w) spawn_powerup(1.0f,random_GLcoord(),10);//spawn supportship 1 powerup
-          if (game.io.key_e) spawn_powerup(1.0f,random_GLcoord(),11);//spawn supportship 2 powerup
-          if (game.io.key_r) spawn_powerup(1.0f,random_GLcoord(),12);//spawn supportship 3 powerup
+            if (game.io.key_0) game_o.victory_kills = game_o.level_kills;  //complete level
+            if (game.io.key_1) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health power-up
+            if (game.io.key_2) spawn_powerup(1.0f,random_GLcoord(), 2);//spawn shield level power-up
+            if (game.io.key_3) spawn_powerup(1.0f,random_GLcoord(), 3);//spawn shield new power-up
+            if (game.io.key_4) spawn_powerup(1.0f,random_GLcoord(), 4);//spawn thruster level power-up
+            if (game.io.key_5) spawn_powerup(1.0f,random_GLcoord(), 5);//spawn thruster new power-up
+            if (game.io.key_6) spawn_powerup(1.0f,random_GLcoord(), 6);//spawn weapon level power-up
+            if (game.io.key_7) spawn_powerup(1.0f,random_GLcoord(), 7);//spawn weapon new power-up
+            if (game.io.key_8) unlock_levels();                        //unlock all levels
+            if (game.io.key_9) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb power-up
+            if (game.io.key_a) game_o.anc_enabled   = !game_o.anc_enabled; //toggle active NPC count display
+            if (game.io.key_f) game_o.fps_enabled   = !game_o.fps_enabled; //toggle active NPC count display
+            if (game.io.key_q) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn support ship 0 power-up
+            if (game.io.key_w) spawn_powerup(1.0f,random_GLcoord(),10);//spawn support ship 1 power-up
+            if (game.io.key_e) spawn_powerup(1.0f,random_GLcoord(),11);//spawn support ship 2 power-up
+            if (game.io.key_r) spawn_powerup(1.0f,random_GLcoord(),12);//spawn support ship 3 power-up
+            if (game.io.key_s)
+            {
+                if (!game_o.rumble.active) sound.explosion_001.play();
+                if (!game_o.rumble.active) game_o.rumble.start(); // shake the screen about.
+            }
         }
         if (game.io.shoot)
         {

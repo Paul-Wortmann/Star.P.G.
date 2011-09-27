@@ -641,7 +641,7 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1317007772 source:c:\_git_\star.p.g\src\game.cpp
+1317139302 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"RAGE/rage.hpp"
 	"load_resources.hpp"
@@ -672,7 +672,7 @@
 
 1310910430 hpp"
 
-1317005321 source:c:\_git_\star.p.g\src\levels.cpp
+1317050838 source:c:\_git_\star.p.g\src\levels.cpp
 	"load_resources.hpp"
 	"RAGE/rage.hpp"
 	"levels.hpp"
@@ -680,7 +680,7 @@
 
 1309768119 c:\_git_\star.p.g\src\levels.h
 
-1317049617 source:c:\_git_\star.p.g\src\main.cpp
+1317138853 source:c:\_git_\star.p.g\src\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -774,7 +774,7 @@
 
 1310897251 c:\_git_\star.p.g\src\graphics.hpp
 
-1316090934 c:\_git_\star.p.g\src\game.hpp
+1317135634 c:\_git_\star.p.g\src\game.hpp
 	<string>
 	<SDL/SDL.h>
 	"PC.hpp"
@@ -789,6 +789,7 @@
 	"achievements.hpp"
 	"support_ships.hpp"
 	"in_game_messages.hpp"
+	"screen_rumble.hpp"
 
 1310897251 c:\_git_\star.p.g\src\sounds.hpp
 	<SDL/SDL_mixer.h>
@@ -914,13 +915,14 @@
 	<GL/gl.h>
 	<string>
 
-1316782581 source:c:\_git_\star.p.g\src\rage\textures.cpp
+1317138415 source:c:\_git_\star.p.g\src\rage\textures.cpp
 	<GL/gl.h>
 	<SDL/SDL.h>
 	<SDL/SDL_image.h>
 	"textures.hpp"
 	"rage.hpp"
 	"../load_resources.hpp"
+	"../game.hpp"
 
 1315052706 source:c:\_git_\star.p.g\src\rage\savegame.cpp
 	<fstream>
@@ -1406,7 +1408,7 @@
 1316423455 c:\_git_\star.p.g\src\pc.hpp
 	"bullets.hpp"
 
-1316441304 source:c:\_git_\star.p.g\src\support_ships.cpp
+1317051049 source:c:\_git_\star.p.g\src\support_ships.cpp
 	"RAGE/rage.hpp"
 	"support_ships.hpp"
 	"load_resources.hpp"
@@ -1486,4 +1488,9 @@
 	"load_resources.hpp"
 	"game.hpp"
 	"misc.hpp"
+
+1317139302 c:\_git_\star.p.g\src\screen_rumble.hpp
+
+1317139612 source:c:\_git_\star.p.g\src\screen_rumble.cpp
+	"screen_rumble.hpp"
 

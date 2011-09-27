@@ -92,7 +92,7 @@
 		<Cursor1 position="935" topLine="0" />
 	</File>
 	<File name="src\RAGE\textures.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="10155" topLine="218" />
+		<Cursor1 position="8926" topLine="207" />
 	</File>
 	<File name="src\RAGE\textures.hpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1233" topLine="19" />
@@ -128,10 +128,10 @@
 		<Cursor1 position="1137" topLine="14" />
 	</File>
 	<File name="src\game.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="15116" topLine="294" />
+		<Cursor1 position="104740" topLine="987" />
 	</File>
 	<File name="src\game.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="5383" topLine="110" />
+		<Cursor1 position="1142" topLine="25" />
 	</File>
 	<File name="src\in_game_messages.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="4550" topLine="66" />
@@ -151,8 +151,8 @@
 	<File name="src\load_resources.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="10590" topLine="330" />
 	</File>
-	<File name="src\main.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="5422" topLine="120" />
+	<File name="src\main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="11872" topLine="259" />
 	</File>
 	<File name="src\main.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="903" topLine="0" />
@@ -187,14 +187,20 @@
 	<File name="src\save_data.hpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1039" topLine="0" />
 	</File>
+	<File name="src\screen_rumble.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="1457" topLine="19" />
+	</File>
+	<File name="src\screen_rumble.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="1259" topLine="10" />
+	</File>
 	<File name="src\shields.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="910" topLine="28" />
 	</File>
 	<File name="src\shields.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="903" topLine="7" />
 	</File>
-	<File name="src\support_ships.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="51747" topLine="0" />
+	<File name="src\support_ships.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="53672" topLine="674" />
 	</File>
 	<File name="src\support_ships.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="2444" topLine="35" />
