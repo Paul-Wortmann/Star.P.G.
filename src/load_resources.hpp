@@ -419,8 +419,8 @@ bool load_resources(void);
 bool load_sounds(void);
 bool load_music(void);
 bool load_textures(void);
-bool draw_texture(int texture_number, float x, float y, float z, float w, float h);
-bool draw_texture(int texture_number, float x, float y, float z, float w, float h, float angle);
+bool draw_texture(bool r, int texture_number, float x, float y, float z, float w, float h);
+bool draw_texture(bool r, int texture_number, float x, float y, float z, float w, float h, float angle);
 bool load_fonts(void);
 
 bool loading_screen_display(std::string file_name);

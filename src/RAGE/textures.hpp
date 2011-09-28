@@ -61,12 +61,12 @@ class texture_class
         bool     load_image      (std::string file_name, int index_number);
         bool     load_spritesheet(std::string file_name, int index_number);
         void     process(void);
-        void     draw(float pos_x, float pos_y, float pos_z, float width, float height);
-        void     draw(float pos_x, float pos_y, float pos_z, float width, float height, int   angle);
-        void     draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle);
-        void     draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle, float alpha);
-        void     draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle, float red, float green, float blue, float alpha);
-        void     draw(float pos_x, float pos_y, float pos_z, float width, float height, float angle, int frame);
+        void     draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height);
+        void     draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, int   angle);
+        void     draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, float angle);
+        void     draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, float angle, float alpha);
+        void     draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, float angle, float red, float green, float blue, float alpha);
+        void     draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, float angle, int frame);
 };
 
 #endif //TEXTURES_H

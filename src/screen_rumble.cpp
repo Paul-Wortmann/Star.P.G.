@@ -90,6 +90,16 @@ bool  rumble_class::start(void)
     rumble_class::active  = true;
 };
 
+bool  rumble_class::start(float magnitude, int duration)
+{
+    rumble_class::init();
+    rumble_class::active       = true;
+    rumble_class::maximum      = duration;
+    rumble_class::max_x        = magnitude;
+    rumble_class::max_y        = magnitude/3;
+    rumble_class::speed_x      = magnitude/2;
+    rumble_class::speed_y      = magnitude/6;
+};
 
 
 

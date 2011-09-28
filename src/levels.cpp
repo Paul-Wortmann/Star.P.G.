@@ -51,6 +51,7 @@ int unlock_levels(void)
 
 int init_game_level(int level_no)
 {
+    game_o.level_end_rumble                  = true;
     game_o.bomb_delay_count                  = 0;
     game_o.immune                            = true;
     game_o.immunity_state                    = 0;

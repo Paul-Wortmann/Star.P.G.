@@ -43,6 +43,7 @@
 
 struct game_type
 {
+    bool                        level_end_rumble;
     rumble_class                rumble;
     int                         npc_damage_duration;
     bool                        cheats_enabled;

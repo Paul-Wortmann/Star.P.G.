@@ -42,6 +42,7 @@ struct rumble_class
         bool  init(void);
         bool  process(void);
         bool  start(void);
+        bool  start(float magnitude, int duration);
 };
 
 #endif //SCREEN_RUMBLE_H

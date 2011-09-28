@@ -267,11 +267,11 @@ void button_class::draw(void)
         temp_w  = button_class::width  + button_class::get_zoom_size_counter();
         temp_h  = button_class::height + button_class::get_zoom_size_counter();
         if (!button_class::active) return;
-        if (!button_class::enabled) draw_texture(button_class::image_disabled,temp_x,temp_y,temp_z,temp_w,temp_h);
+        if (!button_class::enabled) draw_texture(false,button_class::image_disabled,temp_x,temp_y,temp_z,temp_w,temp_h);
         else
         {
-            if (button_class::highlighted) draw_texture(button_class::image_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
-            else draw_texture(button_class::image_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
+            if (button_class::highlighted) draw_texture(false,button_class::image_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
+            else draw_texture(false,button_class::image_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
         };
         if (button_class::type == TOGGLE) //----- toggle button -----
         {
@@ -282,13 +282,13 @@ void button_class::draw(void)
             temp_h  = button_class::height + button_class::get_zoom_size_counter();
             if (button_class::toggle_data)
             {
-                if (button_class::highlighted) draw_texture(button_class::image_toggle_true_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
-                else draw_texture(button_class::image_toggle_true_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
+                if (button_class::highlighted) draw_texture(false,button_class::image_toggle_true_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
+                else draw_texture(false,button_class::image_toggle_true_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
             }
             else
             {
-                if (button_class::highlighted) draw_texture(button_class::image_toggle_false_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
-                else draw_texture(button_class::image_toggle_false_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
+                if (button_class::highlighted) draw_texture(false,button_class::image_toggle_false_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
+                else draw_texture(false,button_class::image_toggle_false_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
             }
         };
         switch(button_class::get_font())
@@ -321,8 +321,8 @@ void button_class::draw(void)
         temp_w  = button_class::width;
         temp_h  = button_class::height;
 
-        if (button_class::highlighted) draw_texture(button_class::image_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
-        else draw_texture(button_class::image_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
+        if (button_class::highlighted) draw_texture(false,button_class::image_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
+        else draw_texture(false,button_class::image_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
     }
 
     if (button_class::type == CHOICE) //----- choice button -----
@@ -335,16 +335,16 @@ void button_class::draw(void)
             temp_z  = button_class::pos_z;
             temp_w  = button_class::arrow_width  + button_class::get_arrow_left_zoom_size_counter();
             temp_h  = button_class::arrow_height + button_class::get_arrow_left_zoom_size_counter();
-            if (button_class::get_arrow_left_highlighted()) draw_texture(button_class::image_arrow_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
-            else draw_texture(button_class::image_arrow_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
+            if (button_class::get_arrow_left_highlighted()) draw_texture(false,button_class::image_arrow_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
+            else draw_texture(false,button_class::image_arrow_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
             // --- right arrow ---
             temp_x  = button_class::arrow_right_pos_x;
             temp_y  = button_class::arrow_right_pos_y;
             temp_z  = button_class::pos_z;
             temp_w  = button_class::arrow_width  + button_class::get_arrow_right_zoom_size_counter();
             temp_h  = button_class::arrow_height + button_class::get_arrow_right_zoom_size_counter();
-            if (button_class::get_arrow_right_highlighted()) draw_texture(button_class::image_arrow_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h,180.0f);
-            else draw_texture(button_class::image_arrow_normal,temp_x,temp_y,temp_z,temp_w,temp_h,180.0f);
+            if (button_class::get_arrow_right_highlighted()) draw_texture(false,button_class::image_arrow_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h,180.0f);
+            else draw_texture(false,button_class::image_arrow_normal,temp_x,temp_y,temp_z,temp_w,temp_h,180.0f);
         }
         // --- Show current selection ---
         delta_x = (button_class::arrow_width/3) *4;
@@ -360,7 +360,7 @@ void button_class::draw(void)
                     temp_z  = button_class::pos_z;
                     temp_w  = button_class::arrow_width  + selector_size + button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count);
                     temp_h  = button_class::arrow_height + selector_size + button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count);
-                    draw_texture(button_class::image_selector,temp_x,temp_y,temp_z,temp_w,temp_h);
+                    draw_texture(false,button_class::image_selector,temp_x,temp_y,temp_z,temp_w,temp_h);
                 }
                 delta_x += (button_class::arrow_width/2) *3;
             }
@@ -376,8 +376,8 @@ void button_class::draw(void)
                 temp_z  = button_class::pos_z;
                 temp_w  = button_class::arrow_width  + button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count);
                 temp_h  = button_class::arrow_height + button_class::get_choice_zoom_size_counter(button_class::choice_position+choice_count);
-                if (button_class::choice_data[button_class::choice_position+choice_count].enabled) draw_texture(button_class::choice_data[button_class::choice_position+choice_count].image_ref,temp_x,temp_y,temp_z,temp_w,temp_h);
-                else draw_texture(button_class::image_choice_disabled,temp_x,temp_y,temp_z,temp_w,temp_h);
+                if (button_class::choice_data[button_class::choice_position+choice_count].enabled) draw_texture(false,button_class::choice_data[button_class::choice_position+choice_count].image_ref,temp_x,temp_y,temp_z,temp_w,temp_h);
+                else draw_texture(false,button_class::image_choice_disabled,temp_x,temp_y,temp_z,temp_w,temp_h);
                 delta_x += (button_class::arrow_width/2) *3;
             }
         }
@@ -408,16 +408,16 @@ void button_class::draw(void)
         temp_z  = button_class::pos_z;
         temp_w  = button_class::arrow_width  + button_class::get_arrow_left_zoom_size_counter();
         temp_h  = button_class::arrow_height + button_class::get_arrow_left_zoom_size_counter();
-        if (button_class::get_arrow_left_highlighted()) draw_texture(button_class::image_arrow_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
-        else draw_texture(button_class::image_arrow_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
+        if (button_class::get_arrow_left_highlighted()) draw_texture(false,button_class::image_arrow_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
+        else draw_texture(false,button_class::image_arrow_normal,temp_x,temp_y,temp_z,temp_w,temp_h);
         // --- right arrow ---
         temp_x  = button_class::arrow_right_pos_x;
         temp_y  = button_class::arrow_right_pos_y;
         temp_z  = button_class::pos_z;
         temp_w  = button_class::arrow_width  + button_class::get_arrow_right_zoom_size_counter();
         temp_h  = button_class::arrow_height + button_class::get_arrow_right_zoom_size_counter();
-        if (button_class::get_arrow_right_highlighted()) draw_texture(button_class::image_arrow_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h,180.0f);
-        else draw_texture(button_class::image_arrow_normal,temp_x,temp_y,temp_z,temp_w,temp_h,180.0f);
+        if (button_class::get_arrow_right_highlighted()) draw_texture(false,button_class::image_arrow_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h,180.0f);
+        else draw_texture(false,button_class::image_arrow_normal,temp_x,temp_y,temp_z,temp_w,temp_h,180.0f);
         // --- slider bar ---
         delta_x  = (((button_class::width/200)*140)*((float)button_class::slider_position/(float)button_class::slider_position_max));
         temp_x   = button_class::pos_x - ((button_class::width/200)*70) + (delta_x/2);
@@ -425,8 +425,8 @@ void button_class::draw(void)
         temp_z   = button_class::pos_z;
         temp_w   = delta_x + button_class::get_zoom_size_counter();
         temp_h   = button_class::height + button_class::get_zoom_size_counter();
-        if (button_class::highlighted) draw_texture(button_class::image_slider_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h,0.0f);
-        else draw_texture(button_class::image_slider_normal,temp_x,temp_y,temp_z,temp_w,temp_h,0.0f);
+        if (button_class::highlighted) draw_texture(false,button_class::image_slider_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h,0.0f);
+        else draw_texture(false,button_class::image_slider_normal,temp_x,temp_y,temp_z,temp_w,temp_h,0.0f);
         std::wstring temp_label = button_class::label;
         switch(button_class::get_font()) //write selected level name
         {
@@ -453,8 +453,8 @@ void button_class::draw(void)
         {
             delta_x =(button_class::pos_x - (button_class::width/2)) + ((button_class::width/(float)button_class::achieve_data) * (float)achieve_count)+ (button_class::width/2/(float)button_class::achieve_data);
 
-            if(button_class::achieve_position > achieve_count) draw_texture(button_class::image_achieve_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
-            else draw_texture(button_class::image_achieve_normal,temp_x+delta_x,temp_y,temp_z,temp_w,temp_h);
+            if(button_class::achieve_position > achieve_count) draw_texture(false,button_class::image_achieve_highlighted,temp_x,temp_y,temp_z,temp_w,temp_h);
+            else draw_texture(false,button_class::image_achieve_normal,temp_x+delta_x,temp_y,temp_z,temp_w,temp_h);
         }
         std::wstring temp_label = button_class::label;
         switch(button_class::get_font()) //write selected level name
@@ -975,7 +975,7 @@ void menu_class::set_image_background(int bi)
 
 void menu_class::draw(void)
 {
-    draw_texture(menu_class::image_background,menu_class::pos_x,menu_class::pos_y,menu_class::pos_z,menu_class::width,menu_class::height);
+    draw_texture(false,menu_class::image_background,menu_class::pos_x,menu_class::pos_y,menu_class::pos_z,menu_class::width,menu_class::height);
     switch(menu_class::menu_font) // title text
     {
         case 1:
