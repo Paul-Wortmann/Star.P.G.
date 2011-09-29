@@ -87,7 +87,7 @@ int init_game(bool re_init)
     game_o.player.x_vel                      =  0.0f;
     game_o.player.y_vel                      =  0.0f;
     game_o.player.width                      =  0.2f;
-    game_o.player.height                      =  0.2f;
+    game_o.player.height                     =  0.2f;
     game_o.player.health                     =  0.100f;
     game_o.player.health_regen_rate          =  0.00005f;
     game_o.player.max_health                 =  0.100f;
@@ -110,7 +110,6 @@ int init_game(bool re_init)
     init_wexp();
     init_levels();
     init_explosions();
-    game_o.rumble.init();
     return(0);
 };
 
