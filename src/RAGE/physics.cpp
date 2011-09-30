@@ -118,6 +118,16 @@ float  physics_class::rotate_point_2D_y(float cx,float cy,float px,float py,int 
   return(((px-cx) * physics_class::sin_table[angle] + (py-cy) * physics_class::cos_table[angle])+cy);
 }
 
+float  physics_class::move_speed_angle_2D_x    (float  x, float s,  float dr)
+{
+    return(x + (s*physics_class::sin_table[(int)physics_class::radians_to_degrees(dr)]));
+};
+
+float  physics_class::move_speed_angle_2D_y    (float  y, float s,  float dr)
+{
+    return(y + (s*physics_class::cos_table[(int)physics_class::radians_to_degrees(dr)]));
+};
+
 float  physics_class::degrees_to_radians   (float degrees)
 {
     return(degrees * (M_PI/180));

@@ -31,25 +31,27 @@ class physics_class
     public:
         float  sin_table[360];
         float  cos_table[360];
-               physics_class        (void);
-        bool   cube_collision       (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2);
-        bool   quadrangle_collision (float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2);
-        bool   circle_collision     (float a_x, float a_y, float a_r, float b_x, float b_y, float b_r);
-        bool   sphere_collision     (float x1, float y1, float z1, float r1, float x2, float y2, float z2, float r2);
-        float  distance_2D          (float x1, float y1, float x2, float y2);
-        float  distance_3D          (float x1, float y1, float z1, float x2, float y2, float z2);
-        bool   point_in_quadrangle  (float qx, float qw, float qy, float qh, float px, float py);
-        bool   point_in_diamond     (float dx, float dw, float dws, float dy, float dh, float dhs, float px, float py);
-        float  line_slope_2D        (float x1, float y1, float x2, float y2);
-        float  line_angle           (float x1, float y1, float x2, float y2);
-        float  line_point_2D_x      (float x1, float distance, float angle);
-        float  line_point_2D_y      (float y1, float distance, float angle);
-        float  rotate_point_2D_x    (float cx, float cy, float px, float py, int angle);
-        float  rotate_point_2D_y    (float cx, float cy, float px, float py, int angle);
-        float  degrees_to_radians   (float degrees);
-        float  radians_to_degrees   (float radians);
-        void   generate_sin_table   (void);
-        void   generate_cos_table   (void);
+               physics_class            (void);
+        bool   cube_collision           (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2);
+        bool   quadrangle_collision     (float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2);
+        bool   circle_collision         (float x1, float y1, float r1, float x2, float y2, float r2);
+        bool   sphere_collision         (float x1, float y1, float z1, float r1, float x2, float y2, float z2, float r2);
+        float  distance_2D              (float x1, float y1, float x2, float y2);
+        float  distance_3D              (float x1, float y1, float z1, float x2, float y2, float z2);
+        bool   point_in_quadrangle      (float qx, float qw, float qy, float qh, float px, float py);
+        bool   point_in_diamond         (float dx, float dw, float dws, float dy, float dh, float dhs, float px, float py);
+        float  line_slope_2D            (float x1, float y1, float x2, float y2);
+        float  line_angle               (float x1, float y1, float x2, float y2);
+        float  line_point_2D_x          (float x1, float distance, float angle);
+        float  line_point_2D_y          (float y1, float distance, float angle);
+        float  rotate_point_2D_x        (float cx, float cy, float px, float py, int angle);
+        float  rotate_point_2D_y        (float cx, float cy, float px, float py, int angle);
+        float  move_speed_angle_2D_x    (float  x, float s,  float dr);
+        float  move_speed_angle_2D_y    (float  y, float s,  float dr);
+        float  degrees_to_radians       (float degrees);
+        float  radians_to_degrees       (float radians);
+        void   generate_sin_table       (void);
+        void   generate_cos_table       (void);
 };
 
 #endif //PHYSICS_H
