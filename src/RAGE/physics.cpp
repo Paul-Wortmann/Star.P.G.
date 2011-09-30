@@ -26,7 +26,13 @@
 #include "physics.hpp"
 #include <math.h>
 
-bool  physics_class::cube_collision       (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2)
+      physics_class::physics_class         (void)
+{
+    physics_class::generate_sin_table();
+    physics_class::generate_cos_table();
+};
+
+bool  physics_class::cube_collision        (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2)
 {
 if (((x1-(w1/2) < x2+(w2/2)) && (x2+(w2/2) > x1-(w1/2))) && ((x2-(w2/2) < x1+(w1/2)) && (x1+(w1/2) > x2-(w2/2)))
  && ((y1-(h1/2) < y2+(h2/2)) && (y2+(h2/2) > y1-(h1/2))) && ((y2-(h2/2) < y1+(h1/2)) && (y1+(h1/2) > y2-(h2/2)))
@@ -94,12 +100,12 @@ float  physics_class::line_angle(float x1, float y1, float x2, float y2)
 
 float  physics_class::line_point_2D_x(float x1, float distance, float angle)
 {
-    return(x1 + distance*cos(angle));
+    return(x1 + distance*physics_class::cos_table[(int)angle]);
 };
 
 float physics_class::line_point_2D_y(float y1, float distance, float angle)
 {
-    return(y1 + distance*sin(angle));
+    return(y1 + distance*physics_class::sin_table[(int)angle]);
 };
 
 float  physics_class::rotate_point_2D_x(float cx,float cy,float px,float py,int angle)

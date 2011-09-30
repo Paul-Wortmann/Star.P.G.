@@ -31,6 +31,7 @@ class physics_class
     public:
         float  sin_table[360];
         float  cos_table[360];
+               physics_class        (void);
         bool   cube_collision       (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2);
         bool   quadrangle_collision (float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2);
         bool   circle_collision     (float a_x, float a_y, float a_r, float b_x, float b_y, float b_r);

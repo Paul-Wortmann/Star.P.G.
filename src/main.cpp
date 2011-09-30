@@ -127,8 +127,6 @@ int main(int argc, char *argv[])
   game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
   seed_rand();
   TTF_Init();
-  game.physics.generate_cos_table();
-  game.physics.generate_sin_table();
   game.log.File_Write("Loading resources...");
   loading_screen_display("data/textures/misc/loading_screen.png");
   load_resources();
