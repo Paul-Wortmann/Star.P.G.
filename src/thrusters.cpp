@@ -33,7 +33,7 @@ void init_thrusters(bool re_init)
 {
     if (re_init)
     {
-        for (int thruster_count = 0; thruster_count <= MAX_THRUSTERS; thruster_count++)
+        for (int thruster_count = 0; thruster_count < MAX_THRUSTERS; thruster_count++)
         {
             game_o.thruster[thruster_count].active       = false;
             game_o.thruster[thruster_count].experience   = 0;
@@ -52,7 +52,7 @@ void init_thrusters(bool re_init)
         game_o.thruster[0].image          = texture.thrusters_000.ref_number;
         game_o.thruster[0].thrust         = 0.002f;
         game_o.thruster[0].frame          = 0;
-        game_o.thruster[0].frame_max      = 30;//texture.thrusters_000.frame_max;
+        game_o.thruster[0].frame_max      = texture.thrusters_000.frame_max;
 
         game_o.thruster[1].name           = L"Seismic Thrusters";
         game_o.thruster[1].active         = false;
@@ -61,8 +61,11 @@ void init_thrusters(bool re_init)
         game_o.thruster[1].level_2        = 1024;
         game_o.thruster[1].level_3        = 2048;
         game_o.thruster[1].experience     = 0;
-        game_o.thruster[1].image          = texture.thruster_001.ref_number;
+        game_o.thruster[1].image          = texture.thrusters_001.ref_number;
         game_o.thruster[1].thrust         = 0.004f;
+        game_o.thruster[1].frame          = 0;
+        game_o.thruster[1].frame_max      = texture.thrusters_001.frame_max;
+
         game_o.thruster[2].name           = L"Vortex Thrusters";
         game_o.thruster[2].active         = false;
         game_o.thruster[2].level          = 0;
@@ -70,8 +73,11 @@ void init_thrusters(bool re_init)
         game_o.thruster[2].level_2        = 2048;
         game_o.thruster[2].level_3        = 4096;
         game_o.thruster[2].experience     = 0;
-        game_o.thruster[2].image          = texture.thruster_002.ref_number;
+        game_o.thruster[2].image          = texture.thrusters_002.ref_number;
         game_o.thruster[2].thrust         = 0.006f;
+        game_o.thruster[2].frame          = 0;
+        game_o.thruster[2].frame_max      = texture.thrusters_002.frame_max;
+
         game_o.thruster[3].name           = L"Convolution Thrusters";
         game_o.thruster[3].active         = false;
         game_o.thruster[3].level          = 0;
@@ -79,8 +85,10 @@ void init_thrusters(bool re_init)
         game_o.thruster[3].level_2        = 4096;
         game_o.thruster[3].level_3        = 8192;
         game_o.thruster[3].experience     = 0;
-        game_o.thruster[3].image          = texture.thruster_003.ref_number;
+        game_o.thruster[3].image          = texture.thrusters_003.ref_number;
         game_o.thruster[3].thrust         = 0.008f;
+        game_o.thruster[3].frame          = 0;
+        game_o.thruster[3].frame_max      = texture.thrusters_003.frame_max;
     }
 };
 

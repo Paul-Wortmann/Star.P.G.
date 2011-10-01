@@ -323,9 +323,9 @@ struct texture_type
     texture_class ship_025;
 
     texture_class thrusters_000;
-    texture_class thruster_000;
-    texture_class thruster_001;
-    texture_class thruster_002;
+    texture_class thrusters_001;
+    texture_class thrusters_002;
+    texture_class thrusters_003;
 
     texture_class selection_box;
     texture_class none;

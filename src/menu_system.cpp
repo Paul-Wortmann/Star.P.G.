@@ -179,14 +179,15 @@ int init_menu   (void)
     customize_starship_menu.set_button_choice_data(3, 5,game_o.shield[ 3].image,game_o.shield[ 3].name, true, game_o.shield[ 3].active);
     customize_starship_menu.set_button_choice_data(3, 6,game_o.shield[ 4].image,game_o.shield[ 4].name, true, game_o.shield[ 4].active);
     customize_starship_menu.set_button_data  ( 4,L"Thrusters        ");
-    customize_starship_menu.set_number_of_choices(4,4);
-    customize_starship_menu.set_number_of_visible_choices(4,4);
+    customize_starship_menu.set_number_of_choices(4,5);
+    customize_starship_menu.set_number_of_visible_choices(4,5);
     customize_starship_menu.set_button_choice_position(4,1);
     customize_starship_menu.set_button_current_choice(4,game_o.player.thrusters);
     customize_starship_menu.set_button_choice_data(4, 1,texture.none.ref_number,L"None              ", true,true);
     customize_starship_menu.set_button_choice_data(4, 2,game_o.thruster[ 0].image,game_o.thruster[ 0].name, true, game_o.thruster[ 0].active);
     customize_starship_menu.set_button_choice_data(4, 3,game_o.thruster[ 1].image,game_o.thruster[ 1].name, true, game_o.thruster[ 1].active);
     customize_starship_menu.set_button_choice_data(4, 4,game_o.thruster[ 2].image,game_o.thruster[ 2].name, true, game_o.thruster[ 2].active);
+    customize_starship_menu.set_button_choice_data(4, 5,game_o.thruster[ 3].image,game_o.thruster[ 3].name, true, game_o.thruster[ 3].active);
     customize_starship_menu.set_button_data   ( 5,L"Support Ships    ");
     customize_starship_menu.set_button_enabled( 5,false);
     customize_starship_menu.set_button_active ( 6,false);
@@ -646,6 +647,7 @@ int process_menu(void)
         customize_starship_menu.set_button_choice_data(4, 2,game_o.thruster[ 0].image, true, game_o.thruster[ 0].active);
         customize_starship_menu.set_button_choice_data(4, 3,game_o.thruster[ 1].image, true, game_o.thruster[ 1].active);
         customize_starship_menu.set_button_choice_data(4, 4,game_o.thruster[ 2].image, true, game_o.thruster[ 2].active);
+        customize_starship_menu.set_button_choice_data(4, 5,game_o.thruster[ 3].image, true, game_o.thruster[ 3].active);
         customize_starship_menu.set_button_current_choice(1,game_o.player.front_weapon);
         customize_starship_menu.set_button_current_choice(2,game_o.player.side_weapon);
         customize_starship_menu.set_button_current_choice(3,game_o.player.front_shield);
@@ -654,7 +656,7 @@ int process_menu(void)
         switch (activated_button)
         {
             case 101://Choice 1 selected
-                if ( game_o.projectile[customize_starship_menu.get_button_choice_position(1) + 0 -2].active)
+                //if ( game_o.projectile[customize_starship_menu.get_button_choice_position(1) + 0 -2].active)
                 {
                     game_o.player.front_weapon = customize_starship_menu.get_button_choice_position(1) + 0 -2;
                     sound.menu_select.play();
@@ -689,7 +691,7 @@ int process_menu(void)
                 }
             break;
             case 201://Choice 1 selected
-                if ( game_o.projectile[customize_starship_menu.get_button_choice_position(2) + 0 -2].active)
+                //if ( game_o.projectile[customize_starship_menu.get_button_choice_position(2) + 0 -2].active)
                 {
                     game_o.player.side_weapon = customize_starship_menu.get_button_choice_position(2) + 0 -2;
                     sound.menu_select.play();
@@ -724,7 +726,7 @@ int process_menu(void)
                 }
             break;
             case 301://Choice 1 selected
-                if ( game_o.projectile[customize_starship_menu.get_button_choice_position(3) + 0 -1].active)
+                //if ( game_o.projectile[customize_starship_menu.get_button_choice_position(3) + 0 -1].active)
                 {
                     game_o.player.front_shield = customize_starship_menu.get_button_choice_position(3) + 0 -2;
                     sound.menu_select.play();
@@ -759,7 +761,7 @@ int process_menu(void)
                 }
             break;
             case 401://Choice 1 selected
-                if ( game_o.projectile[customize_starship_menu.get_button_choice_position(4) + 0 -1].active)
+                //if ( game_o.projectile[customize_starship_menu.get_button_choice_position(4) + 0 -1].active)
                 {
                     game_o.player.thrusters = customize_starship_menu.get_button_choice_position(4) + 0 -2;
                     sound.menu_select.play();

@@ -197,7 +197,7 @@ int proccess_powerups(void)
                 case 5://get new thrusters
                     {
                        bool done = false;
-                       for (int t_count = 0; t_count < MAX_THRUSTERS-1; t_count++)
+                       for (int t_count = 0; t_count < MAX_THRUSTERS; t_count++)
                        {
                            if ((!game_o.thruster[t_count].active) and (!done))
                            {

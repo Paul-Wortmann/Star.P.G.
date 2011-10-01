@@ -343,10 +343,9 @@ bool load_textures(void)
     texture.ship_025.load_image("data/textures/ships/ship_025.png",texture_count);texture_count++;
 
     texture.thrusters_000.load_spritesheet("data/textures/thrusters/thrusters_000.png",texture_count,64,64);texture_count++;
-    texture.thruster_000.load_image("data/textures/thrusters/thruster_000.png",texture_count);texture_count++;
-    texture.thruster_001.load_image("data/textures/thrusters/thruster_001.png",texture_count);texture_count++;
-    texture.thruster_002.load_image("data/textures/thrusters/thruster_002.png",texture_count);texture_count++;
-    texture.thruster_003.load_image("data/textures/thrusters/thruster_003.png",texture_count);texture_count++;
+    texture.thrusters_001.load_spritesheet("data/textures/thrusters/thrusters_001.png",texture_count,64,64);texture_count++;
+    texture.thrusters_002.load_spritesheet("data/textures/thrusters/thrusters_002.png",texture_count,64,64);texture_count++;
+    texture.thrusters_003.load_spritesheet("data/textures/thrusters/thrusters_003.png",texture_count,64,64);texture_count++;
 
     texture.selection_box.load_image("data/textures/misc/selection_box.png",texture_count);texture_count++;
     texture.none.load_image("data/textures/misc/none.png",texture_count);texture_count++;
@@ -633,9 +632,9 @@ bool proc_textures(void)
     texture.ship_025.process();
 
     texture.thrusters_000.process();
-    texture.thruster_000.process();
-    texture.thruster_001.process();
-    texture.thruster_002.process();
+    texture.thrusters_001.process();
+    texture.thrusters_002.process();
+    texture.thrusters_003.process();
 
     texture.selection_box.process();
     texture.none.process();
@@ -944,9 +943,9 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == texture.ship_025.ref_number) texture.ship_025.draw(r,x,y,z,w,h,angle);
 
     if (texture_number == texture.thrusters_000.ref_number) texture.thrusters_000.draw(r,x,y,z,w,h,angle);
-    if (texture_number == texture.thruster_000.ref_number) texture.thruster_000.draw(r,x,y,z,w,h,angle);
-    if (texture_number == texture.thruster_001.ref_number) texture.thruster_001.draw(r,x,y,z,w,h,angle);
-    if (texture_number == texture.thruster_002.ref_number) texture.thruster_002.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.thrusters_001.ref_number) texture.thrusters_001.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.thrusters_002.ref_number) texture.thrusters_002.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.thrusters_003.ref_number) texture.thrusters_003.draw(r,x,y,z,w,h,angle);
 
     if (texture_number == texture.selection_box.ref_number) texture.selection_box.draw(r,x,y,z,w,h,angle);
     if (texture_number == texture.none.ref_number) texture.none.draw(r,x,y,z,w,h,angle);
