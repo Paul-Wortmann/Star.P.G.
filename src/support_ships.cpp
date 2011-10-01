@@ -19,10 +19,10 @@
  * @email   physhex@gmail.com
  * @website www.physhexgames.co.nr
  * @license GPL
- * @date 2011-09-15
+ * @date 2011-10-01
  */
 
-#include "RAGE/rage.hpp"
+#include "core/core.hpp"
 #include "support_ships.hpp"
 #include "load_resources.hpp"
 #include "game.hpp"

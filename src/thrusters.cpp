@@ -19,7 +19,7 @@
  * @email   physhex@gmail.com
  * @website www.physhexgames.co.nr
  * @license GPL
- * @date 2011-09-03
+ * @date 2011-10-01
  */
 
 #include "load_resources.hpp"
@@ -33,11 +33,11 @@ void init_thrusters(bool re_init)
 {
     if (re_init)
     {
-        for (int count = 0; count <= MAX_THRUSTERS; count++)
+        for (int thruster_count = 0; thruster_count <= MAX_THRUSTERS; thruster_count++)
         {
-            game_o.thruster[count].active       = false;
-            game_o.thruster[count].experience   = 0;
-            game_o.thruster[count].level        = 0;
+            game_o.thruster[thruster_count].active       = false;
+            game_o.thruster[thruster_count].experience   = 0;
+            game_o.thruster[thruster_count].level        = 0;
         }
     }
     else
@@ -49,8 +49,11 @@ void init_thrusters(bool re_init)
         game_o.thruster[0].level_2        = 512;
         game_o.thruster[0].level_3        = 1024;
         game_o.thruster[0].experience     = 0;
-        game_o.thruster[0].image          = texture.thruster_000.ref_number;
+        game_o.thruster[0].image          = texture.thrusters_000.ref_number;
         game_o.thruster[0].thrust         = 0.002f;
+        game_o.thruster[0].frame          = 0;
+        game_o.thruster[0].frame_max      = 30;//texture.thrusters_000.frame_max;
+
         game_o.thruster[1].name           = L"Seismic Thrusters";
         game_o.thruster[1].active         = false;
         game_o.thruster[1].level          = 0;
@@ -78,6 +81,15 @@ void init_thrusters(bool re_init)
         game_o.thruster[3].experience     = 0;
         game_o.thruster[3].image          = texture.thruster_003.ref_number;
         game_o.thruster[3].thrust         = 0.008f;
+    }
+};
+
+void proc_thrusters(void)
+{
+    for (int thruster_count = 0; thruster_count < MAX_THRUSTERS; thruster_count++)
+    {
+        game_o.thruster[thruster_count].frame++;
+        if (game_o.thruster[thruster_count].frame > game_o.thruster[thruster_count].frame_max) game_o.thruster[thruster_count].frame = 0;
     }
 };
 

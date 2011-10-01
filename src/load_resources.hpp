@@ -1,35 +1,35 @@
 /**
  * Copyright (C) 2011 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
- * This file is part of R.A.G.E. (RoboPaul's Adaptable Game Engine)
+ * This file is part of Star.P.G.
  *
- * R.A.G.E. (RoboPaul's Adaptable Game Engine) is free software: you can redistribute it and/or modify
+ * Star.P.G. is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * R.A.G.E. (RoboPaul's Adaptable Game Engine) is distributed in the hope that it will be useful,
+ * Star.P.G. is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with R.A.G.E. (RoboPaul's Adaptable Game Engine) If not, see <http://www.gnu.org/licenses/>.
+ * along with Star.P.G. If not, see <http://www.gnu.org/licenses/>.
  *
  * @author  Paul Wortmann
  * @email   physhex@gmail.com
  * @website www.physhexgames.co.nr
  * @license GPL
- * @date 2011-09-03
+ * @date 2011-10-01
  */
 
 #ifndef LOAD_RESOURCES_H
 #define LOAD_RESOURCES_H
 
-#include "RAGE/rage.hpp"
-#include "RAGE/sound.hpp"
-#include "RAGE/music.hpp"
-#include "RAGE/textures.hpp"
-#include "RAGE/font.hpp"
+#include "core/core.hpp"
+#include "core/sound.hpp"
+#include "core/music.hpp"
+#include "core/textures.hpp"
+#include "core/font.hpp"
 
 struct sound_type
 {
@@ -322,6 +322,7 @@ struct texture_type
     texture_class ship_024;
     texture_class ship_025;
 
+    texture_class thrusters_000;
     texture_class thruster_000;
     texture_class thruster_001;
     texture_class thruster_002;
@@ -419,6 +420,7 @@ bool load_resources(void);
 bool load_sounds(void);
 bool load_music(void);
 bool load_textures(void);
+bool proc_textures(void);
 bool draw_texture(bool r, int texture_number, float x, float y, float z, float w, float h);
 bool draw_texture(bool r, int texture_number, float x, float y, float z, float w, float h, float angle);
 bool load_fonts(void);

@@ -19,7 +19,7 @@
  * @email   physhex@gmail.com
  * @website www.physhexgames.co.nr
  * @license GPL
- * @date 2011-09-03
+ * @date 2011-10-01
  */
 
 #ifndef THRUSTERS_H
@@ -41,8 +41,11 @@ class thruster_class
     float        experience;
     int          image;
     float        thrust;
+    int          frame;
+    int          frame_max;
 };
 
 void init_thrusters(bool re_init);
+void proc_thrusters(void);
 
 #endif //THRUSTERS_H

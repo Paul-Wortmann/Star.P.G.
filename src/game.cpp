@@ -19,12 +19,12 @@
  * @email   physhex@gmail.com
  * @website www.physhexgames.co.nr
  * @license GPL
- * @date 2011-09-03
+ * @date 2011-10-01
  */
 
 
 #include <SDL/SDL.h>
-#include "RAGE/rage.hpp"
+#include "core/core.hpp"
 #include "load_resources.hpp"
 #include "game.hpp"
 #include "misc.hpp"
@@ -258,6 +258,7 @@ int process_game(void)
     proccess_powerups();
     proccess_coin();
     proccess_wexp();
+    proc_thrusters();
     if (level_completed())
     {
         game.game_active      = false;
@@ -741,23 +742,13 @@ int display_game(void)
         temp_a = 0.6f;
     }
     if (game_o.player.thrusters > -1)//player starship
-    {
-        if (game_o.player.thrusters== 0) //player thrusters
-        {
-            texture.thruster_000.draw(true,game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,270.0f,temp_r,temp_g,temp_b,temp_a);
-        }
-        if (game_o.player.thrusters== 1)
-        {
-            texture.thruster_001.draw(true,game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,270.0f,temp_r,temp_g,temp_b,temp_a);
-        }
-        if (game_o.player.thrusters== 2)
-        {
-            texture.thruster_002.draw(true,game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,270.0f,temp_r,temp_g,temp_b,temp_a);
-        }
-        if (game_o.player.thrusters== 3)
-        {
-            texture.thruster_003.draw(true,game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,270.0f,temp_r,temp_g,temp_b,temp_a);
-        }
+    {//player thrusters
+        if (game_o.thruster[game_o.player.thrusters].image == texture.thrusters_000.ref_number) texture.thrusters_000.draw(true,game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,90.0f,temp_r,temp_g,temp_b,temp_a,game_o.thruster[game_o.player.thrusters].frame);
+
+        if (game_o.thruster[game_o.player.thrusters].image == texture.thruster_000.ref_number) texture.thruster_000.draw(true,game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,270.0f,temp_r,temp_g,temp_b,temp_a);
+        if (game_o.thruster[game_o.player.thrusters].image == texture.thruster_001.ref_number) texture.thruster_000.draw(true,game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,270.0f,temp_r,temp_g,temp_b,temp_a);
+        if (game_o.thruster[game_o.player.thrusters].image == texture.thruster_002.ref_number) texture.thruster_000.draw(true,game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,270.0f,temp_r,temp_g,temp_b,temp_a);
+        if (game_o.thruster[game_o.player.thrusters].image == texture.thruster_003.ref_number) texture.thruster_000.draw(true,game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,270.0f,temp_r,temp_g,temp_b,temp_a);
     }
     //player starship
     if (game_o.player.image == texture.ship_025.ref_number) texture.ship_025.draw(true,game_o.player.x_pos,game_o.player.y_pos, 0.030f,game_o.player.width,game_o.player.height,270.0f,temp_r,temp_g,temp_b,temp_a);

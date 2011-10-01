@@ -1,30 +1,30 @@
 /**
  * Copyright (C) 2011 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
- * This file is part of R.A.G.E. (RoboPaul's Adaptable Game Engine)
+ * This file is part of Star.P.G.
  *
- * R.A.G.E. (RoboPaul's Adaptable Game Engine) is free software: you can redistribute it and/or modify
+ * Star.P.G. is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * R.A.G.E. (RoboPaul's Adaptable Game Engine) is distributed in the hope that it will be useful,
+ * Star.P.G. is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with R.A.G.E. (RoboPaul's Adaptable Game Engine) If not, see <http://www.gnu.org/licenses/>.
+ * along with Star.P.G. If not, see <http://www.gnu.org/licenses/>.
  *
  * @author  Paul Wortmann
  * @email   physhex@gmail.com
  * @website www.physhexgames.co.nr
  * @license GPL
- * @date 2011-09-03
+ * @date 2011-10-01
  */
 
 #include <SDL/SDL.h>
 #include "load_resources.hpp"
-#include "RAGE/rage.hpp"
+#include "core/core.hpp"
 
 extern game_class        game;
        sound_type        sound;
@@ -342,6 +342,7 @@ bool load_textures(void)
     texture.ship_024.load_image("data/textures/ships/ship_024.png",texture_count);texture_count++;
     texture.ship_025.load_image("data/textures/ships/ship_025.png",texture_count);texture_count++;
 
+    texture.thrusters_000.load_spritesheet("data/textures/thrusters/thrusters_000.png",texture_count,64,64);texture_count++;
     texture.thruster_000.load_image("data/textures/thrusters/thruster_000.png",texture_count);texture_count++;
     texture.thruster_001.load_image("data/textures/thrusters/thruster_001.png",texture_count);texture_count++;
     texture.thruster_002.load_image("data/textures/thrusters/thruster_002.png",texture_count);texture_count++;
@@ -429,8 +430,294 @@ bool load_textures(void)
     texture.slider_normal.load_image("data/textures/menu/slider_normal.png",texture_count);texture_count++;
     texture.slider_highlighted.load_image("data/textures/menu/slider_highlighted.png",texture_count);texture_count++;
     texture.resolution_icon.load_image("data/textures/menu/resolution_icon.png",texture_count);texture_count++;
-    game.log.File_Write("Texture files loaded -> ",texture_count);
+    game.log.File_Write("Text    texture.ure files loaded -> ",texture_count);
     return(true);
+};
+
+bool proc_textures(void)
+{
+    texture.logo.process();
+
+    texture.menu_background_000.process();
+    texture.menu_background_001.process();
+    texture.background_000.process();
+    texture.background_001.process();
+    texture.background_002.process();
+    texture.background_003.process();
+    texture.background_004.process();
+    texture.background_005.process();
+    texture.background_006.process();
+    texture.background_007.process();
+    texture.background_008.process();
+    texture.background_009.process();
+    texture.background_010.process();
+    texture.background_011.process();
+    texture.background_012.process();
+    texture.background_013.process();
+    texture.background_014.process();
+    texture.background_015.process();
+    texture.background_016.process();
+    texture.background_017.process();
+    texture.background_018.process();
+    texture.background_019.process();
+    texture.background_020.process();
+    texture.background_021.process();
+    texture.background_022.process();
+    texture.background_023.process();
+    texture.background_024.process();
+    texture.background_025.process();
+    texture.background_026.process();
+    texture.background_027.process();
+    texture.background_028.process();
+    texture.background_029.process();
+    texture.background_030.process();
+    texture.background_031.process();
+
+    texture.level_00.process();
+    texture.level_01.process();
+    texture.level_02.process();
+    texture.level_03.process();
+    texture.level_04.process();
+    texture.level_05.process();
+    texture.level_06.process();
+    texture.level_07.process();
+    texture.level_08.process();
+    texture.level_09.process();
+    texture.level_10.process();
+    texture.level_11.process();
+    texture.level_12.process();
+    texture.level_13.process();
+    texture.level_14.process();
+    texture.level_15.process();
+    texture.level_16.process();
+    texture.level_17.process();
+    texture.level_18.process();
+    texture.level_19.process();
+    texture.level_20.process();
+    texture.level_21.process();
+    texture.level_22.process();
+    texture.level_23.process();
+    texture.level_24.process();
+
+    texture.level_highlighted_00.process();
+    texture.level_highlighted_01.process();
+    texture.level_highlighted_02.process();
+    texture.level_highlighted_03.process();
+    texture.level_highlighted_04.process();
+    texture.level_highlighted_05.process();
+    texture.level_highlighted_06.process();
+    texture.level_highlighted_07.process();
+    texture.level_highlighted_08.process();
+    texture.level_highlighted_09.process();
+    texture.level_highlighted_10.process();
+    texture.level_highlighted_11.process();
+    texture.level_highlighted_12.process();
+    texture.level_highlighted_13.process();
+    texture.level_highlighted_14.process();
+    texture.level_highlighted_15.process();
+    texture.level_highlighted_16.process();
+    texture.level_highlighted_17.process();
+    texture.level_highlighted_18.process();
+    texture.level_highlighted_19.process();
+    texture.level_highlighted_20.process();
+    texture.level_highlighted_21.process();
+    texture.level_highlighted_22.process();
+    texture.level_highlighted_23.process();
+    texture.level_highlighted_24.process();
+
+    texture.level_preview_00.process();
+    texture.level_preview_01.process();
+    texture.level_preview_02.process();
+    texture.level_preview_03.process();
+    texture.level_preview_04.process();
+    texture.level_preview_05.process();
+    texture.level_preview_06.process();
+    texture.level_preview_07.process();
+    texture.level_preview_08.process();
+    texture.level_preview_09.process();
+    texture.level_preview_10.process();
+    texture.level_preview_11.process();
+    texture.level_preview_12.process();
+    texture.level_preview_13.process();
+    texture.level_preview_14.process();
+    texture.level_preview_15.process();
+    texture.level_preview_16.process();
+    texture.level_preview_17.process();
+    texture.level_preview_18.process();
+    texture.level_preview_19.process();
+    texture.level_preview_20.process();
+    texture.level_preview_21.process();
+    texture.level_preview_22.process();
+    texture.level_preview_23.process();
+    texture.level_preview_24.process();
+    texture.level_preview_locked.process();
+
+    texture.explosion_00.process();
+    texture.explosion_01.process();
+    texture.explosion_02.process();
+    texture.explosion_03.process();
+
+    texture.health_bar.process();
+
+    texture.weapon_000.process();
+    texture.weapon_001.process();
+    texture.weapon_002.process();
+    texture.weapon_003.process();
+    texture.weapon_004.process();
+    texture.weapon_005.process();
+
+    texture.shield_000.process();
+    texture.shield_001.process();
+    texture.shield_002.process();
+    texture.shield_003.process();
+    texture.shield_004.process();
+
+    texture.projectile_000.process();
+    texture.projectile_001.process();
+    texture.projectile_002.process();
+    texture.projectile_003.process();
+    texture.projectile_004.process();
+    texture.projectile_005.process();
+    texture.projectile_006.process();
+    texture.projectile_007.process();
+    texture.projectile_008.process();
+    texture.projectile_009.process();
+    texture.projectile_010.process();
+    texture.projectile_011.process();
+    texture.projectile_012.process();
+    texture.projectile_013.process();
+    texture.projectile_014.process();
+    texture.projectile_015.process();
+    texture.projectile_016.process();
+    texture.projectile_017.process();
+    texture.projectile_018.process();
+    texture.projectile_019.process();
+    texture.projectile_020.process();
+    texture.projectile_021.process();
+    texture.projectile_022.process();
+    texture.projectile_023.process();
+    texture.projectile_024.process();
+    texture.projectile_025.process();
+    texture.projectile_026.process();
+    texture.projectile_027.process();
+    texture.projectile_028.process();
+    texture.projectile_029.process();
+    texture.projectile_030.process();
+    texture.projectile_031.process();
+
+    texture.ship_000.process();
+    texture.ship_001.process();
+    texture.ship_002.process();
+    texture.ship_003.process();
+    texture.ship_004.process();
+    texture.ship_005.process();
+    texture.ship_006.process();
+    texture.ship_007.process();
+    texture.ship_008.process();
+    texture.ship_009.process();
+    texture.ship_010.process();
+    texture.ship_011.process();
+    texture.ship_012.process();
+    texture.ship_013.process();
+    texture.ship_014.process();
+    texture.ship_015.process();
+    texture.ship_016.process();
+    texture.ship_017.process();
+    texture.ship_018.process();
+    texture.ship_019.process();
+    texture.ship_020.process();
+    texture.ship_021.process();
+    texture.ship_022.process();
+    texture.ship_023.process();
+    texture.ship_024.process();
+    texture.ship_025.process();
+
+    texture.thrusters_000.process();
+    texture.thruster_000.process();
+    texture.thruster_001.process();
+    texture.thruster_002.process();
+
+    texture.selection_box.process();
+    texture.none.process();
+    texture.locked.process();
+    texture.weapon_bar.process();
+    texture.shield_bar.process();
+    texture.thruster_bar.process();
+    texture.game_paused.process();
+    texture.game_saved.process();
+    texture.game_loaded.process();
+
+    texture.health_powerup.process();
+    texture.shield_lvlup_powerup.process();
+    texture.shield_new_powerup.process();
+    texture.thruster_lvlup_powerup.process();
+    texture.thruster_new_powerup.process();
+    texture.weapon_lvlup_powerup.process();
+    texture.weapon_new_powerup.process();
+
+    texture.grey_star.process();
+    texture.bronze_star.process();
+    texture.silver_star.process();
+    texture.gold_star.process();
+    texture.kills_achievement.process();
+    texture.score_achievement.process();
+
+    texture.actinium_shields.process();
+    texture.blasters.process();
+    texture.burst_lasers.process();
+    texture.chain_guns.process();
+    texture.convolution_thrusters.process();
+    texture.health.process();
+    texture.ion_cannons.process();
+    texture.iridium_shileds.process();
+    texture.maelstrom_thrusters.process();
+    texture.plasma_rockets.process();
+    texture.rail_turrets.process();
+    texture.rubidium_shields.process();
+    texture.seismic_thrusters.process();
+    texture.shield_level_up.process();
+    texture.tantalum_shields.process();
+    texture.terbium_shields.process();
+    texture.thrusters_level_up.process();
+    texture.vortex_thrusters.process();
+    texture.weapon_level_up.process();
+
+    texture.game_over.process();
+    texture.logo_red.process();
+    texture.explosion_001.process();
+    texture.level_completed.process();
+    texture.new_level_unlocked.process();
+    texture.thruster_003.process();
+    texture.coin_powerup.process();
+    texture.wexp_powerup.process();
+    texture.credits_00.process();
+    texture.level_progress_bar.process();
+    texture.bomb_powerup.process();
+    texture.sideship_00.process();
+    texture.sideship_01.process();
+    texture.sideship_02.process();
+    texture.sideship_03.process();
+    texture.powerup_sideship_00.process();
+    texture.powerup_sideship_01.process();
+    texture.powerup_sideship_02.process();
+    texture.powerup_sideship_03.process();
+    texture.touchscreen_arrow.process();
+    texture.touchscreen_button.process();
+
+    texture.menu_background_002.process();
+    texture.menu_background_003.process();
+    texture.red_button.process();
+    texture.red_button_highlighted.process();
+    texture.green_button.process();
+    texture.green_button_highlighted.process();
+    texture.blue_button.process();
+    texture.blue_button_highlighted.process();
+    texture.arrow_button_normal.process();
+    texture.arrow_button_highlighted.process();
+    texture.arrow_button_disabled.process();
+    texture.slider_normal.process();
+    texture.slider_highlighted.process();
+    texture.resolution_icon.process();
 };
 
 bool load_fonts(void)
@@ -656,6 +943,7 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == texture.ship_024.ref_number) texture.ship_024.draw(r,x,y,z,w,h,angle);
     if (texture_number == texture.ship_025.ref_number) texture.ship_025.draw(r,x,y,z,w,h,angle);
 
+    if (texture_number == texture.thrusters_000.ref_number) texture.thrusters_000.draw(r,x,y,z,w,h,angle);
     if (texture_number == texture.thruster_000.ref_number) texture.thruster_000.draw(r,x,y,z,w,h,angle);
     if (texture_number == texture.thruster_001.ref_number) texture.thruster_001.draw(r,x,y,z,w,h,angle);
     if (texture_number == texture.thruster_002.ref_number) texture.thruster_002.draw(r,x,y,z,w,h,angle);
