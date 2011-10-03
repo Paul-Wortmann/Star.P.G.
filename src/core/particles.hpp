@@ -91,6 +91,15 @@ class emitter_class
         void            draw(void);
 };
 
+void init_emitters(void);
+void proc_emitters(void);
+void draw_emitters(void);
+int  spawn_emitter(void);
+void set_emitter_pos     (int emitter_num, float x, float y, float z);
+void set_emitter_state   (int emitter_num, bool  active, bool always_on);
+void set_emitter_movement(int emitter_num, float vm, float ax, float ay, float az, float dr, float fx, float fy, float fz);
+void set_emitter_color   (int emitter_num, float csr, float csg, float csb, float cer, float ceg, float ceb);
+void set_emitter_rates   (int emitter_num, float sf, float sfc, float pr);
 #endif //PARTICLES_H
 
 

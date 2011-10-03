@@ -137,6 +137,7 @@ int main(int argc, char *argv[])
     init_powerups();
     init_shields(false);
     init_game(false);
+    init_emitters();
     game.log.File_Write("Starting game...");
     game.log.File_Write("---------------\n");
 //----------------------------------- Main loop --------------------------------
@@ -145,8 +146,9 @@ int main(int argc, char *argv[])
     for(int quit = 0; !quit;)
     {
         proc_textures();
-        if (game.status_quit_active) quit = 1;
+        proc_emitters();
         events_process();
+        if (game.status_quit_active) quit = 1;
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 //****************************************** MENU *****************************************
         if (game.menu_active)

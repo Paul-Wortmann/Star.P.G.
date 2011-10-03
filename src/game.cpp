@@ -719,6 +719,7 @@ int display_game(void)
         }
     }
     draw_explosions();   // explosions
+    draw_emitters();     // draw all particle effects
     draw_supportships(); // support ships
     //----------------------------------------------------------------------------------------
     float temp_r = 1.0f;

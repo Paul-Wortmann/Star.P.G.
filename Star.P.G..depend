@@ -641,7 +641,7 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1317624363 source:c:\_git_\star.p.g\src\game.cpp
+1317644121 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"core/core.hpp"
 	"load_resources.hpp"
@@ -680,7 +680,7 @@
 
 1309768119 c:\_git_\star.p.g\src\levels.h
 
-1317473275 source:c:\_git_\star.p.g\src\main.cpp
+1317644083 source:c:\_git_\star.p.g\src\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -1640,8 +1640,10 @@
 	"SDL/SDL.h"
 	"timer.hpp"
 
-1317641870 c:\_git_\star.p.g\src\core\particles.hpp
+1317645260 c:\_git_\star.p.g\src\core\particles.hpp
 
-1317612615 source:c:\_git_\star.p.g\src\core\particles.cpp
+1317643958 source:c:\_git_\star.p.g\src\core\particles.cpp
 	"particles.hpp"
+	"core.hpp"
+	"../load_resources.hpp"
 

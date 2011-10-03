@@ -186,11 +186,103 @@ void  emitter_class::draw(void)
     };
 };
 
+void init_emitters(void)
+{
+    for (int emitter_count = 0; emitter_count < MAX_EMITTERS; emitter_count++)
+    {
+        if (game.emitter[emitter_count].active)
+        {
+            game.emitter[emitter_count].init();
+        }
+    }
+};
 
+void proc_emitters(void)
+{
+    for (int emitter_count = 0; emitter_count < MAX_EMITTERS; emitter_count++)
+    {
+        if (game.emitter[emitter_count].active)
+        {
+            game.emitter[emitter_count].process();
+        }
+    }
+};
 
+void draw_emitters(void)
+{
+    for (int emitter_count = 0; emitter_count < MAX_EMITTERS; emitter_count++)
+    {
+        if (game.emitter[emitter_count].active)
+        {
+            game.emitter[emitter_count].draw();
+        }
+    }
+};
 
+int spawn_emitter(void)
+{
+    bool spawned     = false;
+    int  emitter_ref = 0;
+    for (int emitter_count = 0; emitter_count < MAX_EMITTERS; emitter_count++)
+    {
+        if (!game.emitter[emitter_count].active)
+        {
+            spawned = true;
+            emitter_ref = emitter_count;
+            game.emitter[emitter_count].active = true;
+        }
+    }
+    return(emitter_ref);
+};
 
+void set_emitter_pos(int emitter_num, float x, float y, float z)
+{
+    game.emitter[emitter_num].pos_x = x;
+    game.emitter[emitter_num].pos_y = y;
+    game.emitter[emitter_num].pos_z = z;
+};
 
+void set_emitter_state(int emitter_num, bool active, bool always_on)
+{
+    game.emitter[emitter_num].active    = active;
+    game.emitter[emitter_num].always_on = always_on;
+};
+
+void set_emitter_image(int emitter_num, int i_ref, float w, float h)
+{
+    game.emitter[emitter_num].image_reference = i_ref;
+    game.emitter[emitter_num].width           = w;
+    game.emitter[emitter_num].height          = h;
+};
+
+void set_emitter_movement(int emitter_num, float vm, float ax, float ay, float az, float dr, float fx, float fy, float fz)
+{
+    game.emitter[emitter_num].velocity_max          = vm;
+    game.emitter[emitter_num].acceleration_x        = ax;
+    game.emitter[emitter_num].acceleration_y        = ay;
+    game.emitter[emitter_num].acceleration_z        = az;
+    game.emitter[emitter_num].direction             = dr;
+    game.emitter[emitter_num].force_x               = fx;
+    game.emitter[emitter_num].force_y               = fy;
+    game.emitter[emitter_num].force_z               = fz;
+};
+
+void set_emitter_color(int emitter_num, float csr, float csg, float csb, float cer, float ceg, float ceb)
+{
+    game.emitter[emitter_num].color_start_r         = csr;
+    game.emitter[emitter_num].color_start_g         = csg;
+    game.emitter[emitter_num].color_start_b         = csb;
+    game.emitter[emitter_num].color_stop_r          = cer;
+    game.emitter[emitter_num].color_stop_g          = ceg;
+    game.emitter[emitter_num].color_stop_b          = ceb;
+};
+
+void set_emitter_rates(int emitter_num, float sf, float sfc, float pr)
+{
+    game.emitter[emitter_num].spawn_frequency       = sf;
+    game.emitter[emitter_num].spawn_frequency_count = sfc;
+    game.emitter[emitter_num].particle_TTL_rate     = pr;
+};
 
 
 
