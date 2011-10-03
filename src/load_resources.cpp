@@ -430,7 +430,23 @@ bool load_textures(void)
     texture.slider_normal.load_image("data/textures/menu/slider_normal.png",texture_count);texture_count++;
     texture.slider_highlighted.load_image("data/textures/menu/slider_highlighted.png",texture_count);texture_count++;
     texture.resolution_icon.load_image("data/textures/menu/resolution_icon.png",texture_count);texture_count++;
-    game.log.File_Write("Text    texture.ure files loaded -> ",texture_count);
+    texture.particle_000.load_image("data/textures/particles/particle_000.png",texture_count);texture_count++;
+    texture.particle_001.load_image("data/textures/particles/particle_001.png",texture_count);texture_count++;
+    texture.particle_002.load_image("data/textures/particles/particle_002.png",texture_count);texture_count++;
+    texture.particle_003.load_image("data/textures/particles/particle_003.png",texture_count);texture_count++;
+    texture.particle_004.load_image("data/textures/particles/particle_004.png",texture_count);texture_count++;
+    texture.particle_005.load_image("data/textures/particles/particle_005.png",texture_count);texture_count++;
+    texture.particle_006.load_image("data/textures/particles/particle_006.png",texture_count);texture_count++;
+    texture.particle_007.load_image("data/textures/particles/particle_007.png",texture_count);texture_count++;
+    texture.particle_008.load_image("data/textures/particles/particle_008.png",texture_count);texture_count++;
+    texture.particle_009.load_image("data/textures/particles/particle_009.png",texture_count);texture_count++;
+    texture.particle_010.load_image("data/textures/particles/particle_010.png",texture_count);texture_count++;
+    texture.particle_011.load_image("data/textures/particles/particle_011.png",texture_count);texture_count++;
+    texture.particle_012.load_image("data/textures/particles/particle_012.png",texture_count);texture_count++;
+    texture.particle_013.load_image("data/textures/particles/particle_013.png",texture_count);texture_count++;
+    texture.particle_014.load_image("data/textures/particles/particle_014.png",texture_count);texture_count++;
+    texture.particle_015.load_image("data/textures/particles/particle_015.png",texture_count);texture_count++;
+    game.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
 };
 

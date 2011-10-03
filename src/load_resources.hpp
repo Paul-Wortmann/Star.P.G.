@@ -408,6 +408,22 @@ struct texture_type
     texture_class slider_normal;
     texture_class slider_highlighted;
     texture_class resolution_icon;
+    texture_class particle_000;
+    texture_class particle_001;
+    texture_class particle_002;
+    texture_class particle_003;
+    texture_class particle_004;
+    texture_class particle_005;
+    texture_class particle_006;
+    texture_class particle_007;
+    texture_class particle_008;
+    texture_class particle_009;
+    texture_class particle_010;
+    texture_class particle_011;
+    texture_class particle_012;
+    texture_class particle_013;
+    texture_class particle_014;
+    texture_class particle_015;
 };
 
 struct font_type

@@ -890,12 +890,12 @@
 	"core.hpp"
 	"sound.hpp"
 
-1317624170 source:c:\_git_\star.p.g\src\load_resources.cpp
+1317642673 source:c:\_git_\star.p.g\src\load_resources.cpp
 	<SDL/SDL.h>
 	"load_resources.hpp"
 	"core/core.hpp"
 
-1317478701 c:\_git_\star.p.g\src\load_resources.hpp
+1317642526 c:\_git_\star.p.g\src\load_resources.hpp
 	"core/core.hpp"
 	"core/sound.hpp"
 	"core/music.hpp"
