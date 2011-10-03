@@ -718,16 +718,7 @@ int display_game(void)
             }
         }
     }
-    for (int count =MAX_EXPLOSIONS;count >=0;count--)  // explosions
-    {
-        z_pos = 0.001f + (0.0001*count);
-        if (game_o.explosion[count].active)
-        {
-            if (game_o.explosion[count].image == texture.explosion_00.ref_number) texture.explosion_00.draw(true,game_o.explosion[count].x_pos,game_o.explosion[count].y_pos,z_pos,game_o.explosion[count].width,game_o.explosion[count].height,0.0f,game_o.explosion[count].frame);
-            if (game_o.explosion[count].image == texture.explosion_01.ref_number) texture.explosion_01.draw(true,game_o.explosion[count].x_pos,game_o.explosion[count].y_pos,z_pos,game_o.explosion[count].width,game_o.explosion[count].height,0.0f,game_o.explosion[count].frame);
-            if (game_o.explosion[count].image == texture.explosion_02.ref_number) texture.explosion_02.draw(true,game_o.explosion[count].x_pos,game_o.explosion[count].y_pos,z_pos,game_o.explosion[count].width,game_o.explosion[count].height,0.0f,game_o.explosion[count].frame);
-        }
-    }
+    draw_explosions();   // explosions
     draw_supportships(); // support ships
     //----------------------------------------------------------------------------------------
     float temp_r = 1.0f;

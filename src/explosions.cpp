@@ -31,8 +31,8 @@
 extern  sound_type       sound;
 extern  music_type       music;
 extern  texture_type     texture;
-extern  game_type  game_o;
-extern  game_class game;
+extern  game_type        game_o;
+extern  game_class       game;
 
 int spawn_explosion(float x_position, float y_position, float size)
 {
@@ -44,26 +44,33 @@ int spawn_explosion(float x_position, float y_position, float size)
        if (!spawn_done and !game_o.explosion[explosion_num].active)
        {
            game_o.explosion[explosion_num].image               = texture.explosion_00.ref_number;
-           if ((temp_type >=   0) && (temp_type <  33))
+           if ((temp_type >=   0) && (temp_type <  25))
            {
                game_o.explosion[explosion_num].image           = texture.explosion_00.ref_number;
                game_o.explosion[explosion_num].frame_max       = texture.explosion_00.frame_max;
                game_o.explosion[explosion_num].frame_delay     = texture.explosion_00.frame_delay;
                game_o.explosion[explosion_num].frame_delay_max = texture.explosion_00.frame_delay_max;
            }
-           if ((temp_type >=  34) && (temp_type <  66))
+           if ((temp_type >=  25) && (temp_type <  50))
            {
                game_o.explosion[explosion_num].image           = texture.explosion_01.ref_number;
                game_o.explosion[explosion_num].frame_max       = texture.explosion_01.frame_max;
                game_o.explosion[explosion_num].frame_delay     = texture.explosion_01.frame_delay;
                game_o.explosion[explosion_num].frame_delay_max = texture.explosion_01.frame_delay_max;
            }
-           if ((temp_type >=  67) && (temp_type < 101))
+           if ((temp_type >=  50) && (temp_type < 75))
            {
                game_o.explosion[explosion_num].image           = texture.explosion_02.ref_number;
                game_o.explosion[explosion_num].frame_max       = texture.explosion_02.frame_max;
                game_o.explosion[explosion_num].frame_delay     = texture.explosion_02.frame_delay;
                game_o.explosion[explosion_num].frame_delay_max = texture.explosion_02.frame_delay_max;
+           }
+           if ((temp_type >= 75) && (temp_type < 101))
+           {
+               game_o.explosion[explosion_num].image           = texture.explosion_03.ref_number;
+               game_o.explosion[explosion_num].frame_max       = texture.explosion_03.frame_max;
+               game_o.explosion[explosion_num].frame_delay     = texture.explosion_03.frame_delay;
+               game_o.explosion[explosion_num].frame_delay_max = texture.explosion_03.frame_delay_max;
            }
            if (game_o.explosion[explosion_num].frame_max < 24)
            {
@@ -141,5 +148,20 @@ int proccess_explosions(void)
     return(0);
 };
 
+void draw_explosions(void)
+{
+    float z_pos;
+    for (int count =MAX_EXPLOSIONS;count >=0;count--)
+    {
+        z_pos = 0.001f + (0.0001*count);
+        if (game_o.explosion[count].active)
+        {
+            if (game_o.explosion[count].image == texture.explosion_00.ref_number) texture.explosion_00.draw(true,game_o.explosion[count].x_pos,game_o.explosion[count].y_pos,z_pos,game_o.explosion[count].width,game_o.explosion[count].height,0.0f,game_o.explosion[count].frame);
+            if (game_o.explosion[count].image == texture.explosion_01.ref_number) texture.explosion_01.draw(true,game_o.explosion[count].x_pos,game_o.explosion[count].y_pos,z_pos,game_o.explosion[count].width,game_o.explosion[count].height,0.0f,game_o.explosion[count].frame);
+            if (game_o.explosion[count].image == texture.explosion_02.ref_number) texture.explosion_02.draw(true,game_o.explosion[count].x_pos,game_o.explosion[count].y_pos,z_pos,game_o.explosion[count].width,game_o.explosion[count].height,0.0f,game_o.explosion[count].frame);
+            if (game_o.explosion[count].image == texture.explosion_03.ref_number) texture.explosion_03.draw(true,game_o.explosion[count].x_pos,game_o.explosion[count].y_pos,z_pos,game_o.explosion[count].width,game_o.explosion[count].height,0.0f,game_o.explosion[count].frame);
+        }
+    }
+};
 
 

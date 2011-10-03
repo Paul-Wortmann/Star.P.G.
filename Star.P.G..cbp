@@ -92,6 +92,8 @@
 		<Unit filename="src\core\music.hpp" />
 		<Unit filename="src\core\network.cpp" />
 		<Unit filename="src\core\network.hpp" />
+		<Unit filename="src\core\particles.cpp" />
+		<Unit filename="src\core\particles.hpp" />
 		<Unit filename="src\core\physics.cpp" />
 		<Unit filename="src\core\physics.hpp" />
 		<Unit filename="src\core\savegame.cpp" />

@@ -22,33 +22,45 @@
  * @date 2011-10-01
  */
 
-#ifndef EXPLOSIONS_H
-#define EXPLOSIONS_H
+#ifndef PARTICLES_H
+#define PARTICLES_H
 
-const int   MAX_EXPLOSIONS     = 32;
+const int   MAX_PARTICLES        = 128;
+const int   MAX_EMITTERS         = 16;
 
-struct explosion_class
+class particle_class
 {
     public:
-    bool  active;
-    int   image;
-    int   frame;
-    int   frame_max;
-    float frame_delay;
-    float frame_delay_count;
-    float frame_delay_max;
-    int   sound;
-    float x_pos;
-    float y_pos;
-    float width;
-    float height;
-    float size;
+        bool  active;
+        int   image_reference;
+        float pos_x;
+        float pos_y;
+        float pos_z;
+        float velocity;
+        float acceleration;
+        float direction;
+        float color;
+        float color_start;
+        float color_stop;
+        float TTL;
+        float TTL_rate;
 };
 
-int  spawn_explosion    (float x_position, float y_position, float size);
-int  kill_explosion     (int   explosion_num);
-int  init_explosions    (void);
-int  proccess_explosions(void);
-void draw_explosions    (void);
+class emitter_class
+{
+    public:
+        bool  active;
+        float TTL;
+        float TTL_count;
+};
 
-#endif //EXPLOSIONS_H
+#endif //PARTICLES_H
+
+
+
+
+
+
+
+
+

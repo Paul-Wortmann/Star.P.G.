@@ -37,6 +37,7 @@
 #include "menu.hpp"
 #include "io.hpp"
 #include "background.hpp"
+#include "particles.hpp"
 
 class game_class
 {
@@ -73,6 +74,7 @@ class game_class
         network_class     network;
         timer_class       timer;
         background_class  background;
+        emitter_class     emitter[MAX_EMITTERS];
          game_class(void);
         ~game_class(void);
 };

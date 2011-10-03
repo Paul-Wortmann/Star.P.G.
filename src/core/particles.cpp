@@ -22,33 +22,6 @@
  * @date 2011-10-01
  */
 
-#ifndef EXPLOSIONS_H
-#define EXPLOSIONS_H
+#include "particles.hpp"
 
-const int   MAX_EXPLOSIONS     = 32;
 
-struct explosion_class
-{
-    public:
-    bool  active;
-    int   image;
-    int   frame;
-    int   frame_max;
-    float frame_delay;
-    float frame_delay_count;
-    float frame_delay_max;
-    int   sound;
-    float x_pos;
-    float y_pos;
-    float width;
-    float height;
-    float size;
-};
-
-int  spawn_explosion    (float x_position, float y_position, float size);
-int  kill_explosion     (int   explosion_num);
-int  init_explosions    (void);
-int  proccess_explosions(void);
-void draw_explosions    (void);
-
-#endif //EXPLOSIONS_H

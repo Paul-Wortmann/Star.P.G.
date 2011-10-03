@@ -266,6 +266,7 @@ bool load_textures(void)
     texture.explosion_00.load_spritesheet("data/textures/explosions/explosion_00.png",texture_count);texture_count++;
     texture.explosion_01.load_spritesheet("data/textures/explosions/explosion_01.png",texture_count);texture_count++;
     texture.explosion_02.load_spritesheet("data/textures/explosions/explosion_02.png",texture_count);texture_count++;
+    texture.explosion_03.load_spritesheet("data/textures/explosions/explosion_03.png",texture_count);texture_count++;
 
     texture.health_bar.load_image("data/textures/misc/health_bar.png",texture_count);texture_count++;
 
