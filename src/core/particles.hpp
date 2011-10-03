@@ -32,26 +32,63 @@ class particle_class
 {
     public:
         bool  active;
-        int   image_reference;
         float pos_x;
         float pos_y;
         float pos_z;
-        float velocity;
-        float acceleration;
-        float direction;
-        float color;
-        float color_start;
-        float color_stop;
+        float velocity_x;
+        float velocity_y;
+        float velocity_z;
+        float velocity_max;
+        float acceleration_x;
+        float acceleration_y;
+        float acceleration_z;
+        float direction; //2D
+        float force_x;
+        float force_y;
+        float force_z;
+        float color_r;
+        float color_g;
+        float color_b;
         float TTL;
         float TTL_rate;
+        void  init(void);
+        void  process(void);
 };
 
 class emitter_class
 {
     public:
-        bool  active;
-        float TTL;
-        float TTL_count;
+        particle_class  particle[MAX_PARTICLES];
+        bool            active;
+        bool            always_on;
+        int             image_reference;
+        float           width;
+        float           height;
+        float           pos_x;
+        float           pos_y;
+        float           pos_z;
+        float           velocity_max;
+        float           acceleration_x;
+        float           acceleration_y;
+        float           acceleration_z;
+        float           direction;
+        float           force_x;
+        float           force_y;
+        float           force_z;
+        float           color_start_r;
+        float           color_start_g;
+        float           color_start_b;
+        float           color_stop_r;
+        float           color_stop_g;
+        float           color_stop_b;
+        int             spawn_frequency;
+        int             spawn_frequency_count;
+        int             TTL;
+        int             TTL_count;
+        float           particle_TTL_rate;
+        void            init(void);
+        void            process(void);
+        void            draw(void);
 };
 
 #endif //PARTICLES_H
