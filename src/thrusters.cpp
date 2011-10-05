@@ -53,6 +53,14 @@ void init_thrusters(bool re_init)
         game_o.thruster[0].thrust         = 0.002f;
         game_o.thruster[0].frame          = 0;
         game_o.thruster[0].frame_max      = texture.thrusters_000.frame_max;
+        game_o.thruster[0].fire.init();
+        game_o.thruster[0].fire.set_emitter_state    (true , true, 128);
+        game_o.thruster[0].fire.set_emitter_pos      (0.0f , 0.0f, 0.06f);
+        game_o.thruster[0].fire.set_emitter_image    (texture.particle_000.ref_number, 0.055f, 0.055f);
+        game_o.thruster[0].fire.set_emitter_movement (0.02f, 0.0025f,  0.0025f, 0.0025f, 270,50, 0.0f, 0.0f, 0.0f);
+        game_o.thruster[0].fire.set_emitter_rates    (0, 0, 0.075f, 8);
+        game_o.thruster[0].fire.set_emitter_color    (1.0f, 1.0f, 0.0f, 1.0f , 0.0f, 0.0f);
+        game_o.thruster[0].fire.set_emitter_velocity (0.0f,0.0f,0.0f );
 
         game_o.thruster[1].name           = L"Seismic Thrusters";
         game_o.thruster[1].active         = false;
@@ -65,6 +73,14 @@ void init_thrusters(bool re_init)
         game_o.thruster[1].thrust         = 0.004f;
         game_o.thruster[1].frame          = 0;
         game_o.thruster[1].frame_max      = texture.thrusters_001.frame_max;
+        game_o.thruster[1].fire.init();
+        game_o.thruster[1].fire.set_emitter_state    (true , true, 128);
+        game_o.thruster[1].fire.set_emitter_pos      (0.0f , 0.0f, 0.06f);
+        game_o.thruster[1].fire.set_emitter_image    (texture.particle_000.ref_number, 0.055f, 0.055f);
+        game_o.thruster[1].fire.set_emitter_movement (0.02f, 0.0002f,  0.0002f, 0.0002f, 270,30, 0.0f, 0.0f, 0.0f);
+        game_o.thruster[1].fire.set_emitter_rates    (0, 0, 0.015f, 8);
+        game_o.thruster[1].fire.set_emitter_color    (1.0f, 1.0f, 0.0f, 1.0f , 0.0f, 0.0f);
+        game_o.thruster[1].fire.set_emitter_velocity (0.0f,0.0f,0.0f );
 
         game_o.thruster[2].name           = L"Vortex Thrusters";
         game_o.thruster[2].active         = false;
@@ -77,6 +93,14 @@ void init_thrusters(bool re_init)
         game_o.thruster[2].thrust         = 0.006f;
         game_o.thruster[2].frame          = 0;
         game_o.thruster[2].frame_max      = texture.thrusters_002.frame_max;
+        game_o.thruster[2].fire.init();
+        game_o.thruster[2].fire.set_emitter_state    (true , true, 128);
+        game_o.thruster[2].fire.set_emitter_pos      (0.0f , 0.0f, 0.06f);
+        game_o.thruster[2].fire.set_emitter_image    (texture.particle_000.ref_number, 0.055f, 0.055f);
+        game_o.thruster[2].fire.set_emitter_movement (0.02f, 0.0002f,  0.0002f, 0.0002f, 270,30, 0.0f, 0.0f, 0.0f);
+        game_o.thruster[2].fire.set_emitter_rates    (0, 0, 0.015f, 8);
+        game_o.thruster[2].fire.set_emitter_color    (1.0f, 1.0f, 0.0f, 1.0f , 0.0f, 0.0f);
+        game_o.thruster[2].fire.set_emitter_velocity (0.0f,0.0f,0.0f );
 
         game_o.thruster[3].name           = L"Convolution Thrusters";
         game_o.thruster[3].active         = false;
@@ -89,6 +113,14 @@ void init_thrusters(bool re_init)
         game_o.thruster[3].thrust         = 0.008f;
         game_o.thruster[3].frame          = 0;
         game_o.thruster[3].frame_max      = texture.thrusters_003.frame_max;
+        game_o.thruster[3].fire.init();
+        game_o.thruster[3].fire.set_emitter_state    (true , true, 128);
+        game_o.thruster[3].fire.set_emitter_pos      (0.0f , 0.0f, 0.06f);
+        game_o.thruster[3].fire.set_emitter_image    (texture.particle_000.ref_number, 0.055f, 0.055f);
+        game_o.thruster[3].fire.set_emitter_movement (0.02f, 0.0002f,  0.0002f, 0.0002f, 270,30, 0.0f, 0.0f, 0.0f);
+        game_o.thruster[3].fire.set_emitter_rates    (0, 0, 0.015f, 8);
+        game_o.thruster[3].fire.set_emitter_color    (1.0f, 1.0f, 0.0f, 1.0f , 0.0f, 0.0f);
+        game_o.thruster[3].fire.set_emitter_velocity (0.0f,0.0f,0.0f );
     }
 };
 
@@ -96,8 +128,14 @@ void proc_thrusters(void)
 {
     for (int thruster_count = 0; thruster_count < MAX_THRUSTERS; thruster_count++)
     {
+        game_o.thruster[thruster_count].fire.process();
         game_o.thruster[thruster_count].frame++;
         if (game_o.thruster[thruster_count].frame > game_o.thruster[thruster_count].frame_max) game_o.thruster[thruster_count].frame = 0;
     }
+};
+
+void draw_thrusters(void)
+{
+    game_o.thruster[game_o.player.thrusters].fire.draw();
 };
 

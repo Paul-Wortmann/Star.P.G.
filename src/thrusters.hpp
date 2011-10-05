@@ -25,6 +25,7 @@
 #ifndef THRUSTERS_H
 #define THRUSTERS_H
 
+#include "core/core.hpp"
 #include <string>
 
 const int   MAX_THRUSTERS      = 4;
@@ -32,20 +33,23 @@ const int   MAX_THRUSTERS      = 4;
 class thruster_class
 {
     public:
-    std::wstring name;
-    bool         active;
-    int          level;
-    float        level_1;
-    float        level_2;
-    float        level_3;
-    float        experience;
-    int          image;
-    float        thrust;
-    int          frame;
-    int          frame_max;
+    std::wstring  name;
+    bool          active;
+    int           level;
+    float         level_1;
+    float         level_2;
+    float         level_3;
+    float         experience;
+    int           image;
+    float         thrust;
+    int           frame;
+    int           frame_max;
+    emitter_class fire;
+    emitter_class smoke;
 };
 
 void init_thrusters(bool re_init);
 void proc_thrusters(void);
+void draw_thrusters(void);
 
 #endif //THRUSTERS_H

@@ -137,7 +137,6 @@ int main(int argc, char *argv[])
     init_powerups();
     init_shields(false);
     init_game(false);
-    init_emitters();
     game.log.File_Write("Starting game...");
     game.log.File_Write("---------------\n");
 //----------------------------------- Main loop --------------------------------

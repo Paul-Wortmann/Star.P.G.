@@ -110,6 +110,7 @@ int init_game(bool re_init)
     init_wexp();
     init_levels();
     init_explosions();
+    init_emitters();
     return(0);
 };
 
@@ -246,6 +247,10 @@ int process_game(void)
     game_o.loaded.process();
     game_o.saved.process();
     process_player(0);
+    if (game_o.player.thrusters >= 0)
+    {
+        game_o.thruster[game_o.player.thrusters].fire.set_emitter_pos      (game_o.player.x_pos-(game_o.player.width/3), game_o.player.y_pos, 0.06f);
+    }
     proccess_player_bullets();
     game_o.fw_rof_count++;
     if(game_o.fw_rof_count > game_o.projectile[game_o.player.front_weapon].rate_of_fire) game_o.fw_rof_count = game_o.projectile[game_o.player.front_weapon].rate_of_fire;
@@ -735,10 +740,13 @@ int display_game(void)
     }
     if (game_o.player.thrusters > -1)//player starship
     {//player thrusters
+        draw_thrusters();
+        /*
         if (game_o.thruster[game_o.player.thrusters].image == texture.thrusters_000.ref_number) texture.thrusters_000.draw(true,game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,90.0f,temp_r,temp_g,temp_b,temp_a,game_o.thruster[game_o.player.thrusters].frame);
         if (game_o.thruster[game_o.player.thrusters].image == texture.thrusters_001.ref_number) texture.thrusters_001.draw(true,game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width/2,game_o.player.height,90.0f,temp_r,temp_g,temp_b,temp_a,game_o.thruster[game_o.player.thrusters].frame);
         if (game_o.thruster[game_o.player.thrusters].image == texture.thrusters_002.ref_number) texture.thrusters_002.draw(true,game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,90.0f,temp_r,temp_g,temp_b,temp_a,game_o.thruster[game_o.player.thrusters].frame);
         if (game_o.thruster[game_o.player.thrusters].image == texture.thrusters_003.ref_number) texture.thrusters_003.draw(true,game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width*1.5,game_o.player.height,90.0f,temp_r,temp_g,temp_b,temp_a,game_o.thruster[game_o.player.thrusters].frame);
+        */
     }
     //player starship
     if (game_o.player.image == texture.ship_025.ref_number) texture.ship_025.draw(true,game_o.player.x_pos,game_o.player.y_pos, 0.030f,game_o.player.width,game_o.player.height,270.0f,temp_r,temp_g,temp_b,temp_a);
