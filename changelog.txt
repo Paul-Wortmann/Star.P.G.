@@ -1,5 +1,6 @@
 V0.19 - (xx-10-2011)
-Started work on a particle engine, future versions will have better effects.
+Converted thrusters to use particle engine.
+Implemented a particle engine..
 Added animated thruster flames.
 Implemented sprite-sheet handling, adapted explosions to utilize this new feature.
 Added a screen rumble class, and utilized on boss death.

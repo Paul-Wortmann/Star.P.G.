@@ -249,7 +249,8 @@ int process_game(void)
     process_player(0);
     if (game_o.player.thrusters >= 0)
     {
-        game_o.thruster[game_o.player.thrusters].fire.set_emitter_pos      (game_o.player.x_pos-(game_o.player.width/3), game_o.player.y_pos, 0.06f);
+        game_o.thruster[game_o.player.thrusters].smoke.set_emitter_pos      (game_o.player.x_pos-(game_o.player.width/3), game_o.player.y_pos, 0.06f);
+        game_o.thruster[game_o.player.thrusters].fire.set_emitter_pos       (game_o.player.x_pos-(game_o.player.width/3), game_o.player.y_pos, 0.06f);
     }
     proccess_player_bullets();
     game_o.fw_rof_count++;

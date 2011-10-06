@@ -641,7 +641,7 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1317823910 source:c:\_git_\star.p.g\src\game.cpp
+1317900654 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"core/core.hpp"
 	"load_resources.hpp"
@@ -1441,7 +1441,7 @@
 	"shields.hpp"
 	"game.hpp"
 
-1317824232 source:c:\_git_\star.p.g\src\thrusters.cpp
+1317902323 source:c:\_git_\star.p.g\src\thrusters.cpp
 	"load_resources.hpp"
 	"thrusters.hpp"
 	"game.hpp"
