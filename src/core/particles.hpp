@@ -62,11 +62,14 @@ class emitter_class
         bool            active;
         bool            always_on;
         int             image_reference;
-        float           width;
-        float           height;
+        float           image_width;
+        float           image_height;
         float           pos_x;
         float           pos_y;
         float           pos_z;
+        float           size_x;
+        float           size_y;
+        float           size_z;
         float           velocity_max;
         float           acceleration_x;
         float           acceleration_y;
@@ -101,6 +104,7 @@ class emitter_class
         void            set_emitter_rates    (int   sf , int   sfc, float pr , int sq);
         void            set_emitter_color    (float csr, float csg, float csb, float cer, float ceg, float ceb);
         void            set_emitter_velocity (float vx , float vy , float vz );
+        void            set_emitter_size     (float sx , float sy , float sz );
         void            init(void);
         void            process(void);
         void            draw(void);
@@ -117,6 +121,7 @@ void set_emitter_movement (int emitter_num, float vm , float ax , float ay , flo
 void set_emitter_rates    (int emitter_num, int   sf , int   sfc, float pr , int sq);
 void set_emitter_color    (int emitter_num, float csr, float csg, float csb, float cer, float ceg, float ceb);
 void set_emitter_velocity (int emitter_num, float vx , float vy , float vz );
+
 #endif //PARTICLES_H
 
 

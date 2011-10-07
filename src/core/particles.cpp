@@ -102,8 +102,8 @@ void emitter_class::set_emitter_state    (bool  active, bool always_on, int ttl)
 void emitter_class::set_emitter_image    (int i_ref, float w  , float h  )
 {
     emitter_class::image_reference       = i_ref;
-    emitter_class::width                 = w;
-    emitter_class::height                = h;
+    emitter_class::image_width           = w;
+    emitter_class::image_height          = h;
 };
 
 void emitter_class::set_emitter_movement (float vm , float ax , float ay , float az , float dr , int   sr , float fx , float fy , float fz )
@@ -148,6 +148,13 @@ void emitter_class::set_emitter_velocity (float vx , float vy , float vz )
     emitter_class::velocity_z            = vz;
 };
 
+void emitter_class::set_emitter_size     (float sx , float sy , float sz )
+{
+    emitter_class::size_x = sx;
+    emitter_class::size_y = sy;
+    emitter_class::size_z = sz;
+};
+
 void  emitter_class::init(void)
 {
     for (int particle_count = 0; particle_count < MAX_PARTICLES; particle_count++)
@@ -157,11 +164,14 @@ void  emitter_class::init(void)
     emitter_class::active                = false;
     emitter_class::always_on             = false;
     emitter_class::image_reference       = 0;
-    emitter_class::width                 = 0.0f;
-    emitter_class::height                = 0.0f;
+    emitter_class::image_width           = 0.0f;
+    emitter_class::image_height          = 0.0f;
     emitter_class::pos_x                 = 0.0f;
     emitter_class::pos_y                 = 0.0f;
     emitter_class::pos_z                 = 0.0f;
+    emitter_class::size_x                = 0.0f;
+    emitter_class::size_y                = 0.0f;
+    emitter_class::size_z                = 0.0f;
     emitter_class::velocity_max          = 0.0f;
     emitter_class::acceleration_x        = 0.0f;
     emitter_class::acceleration_y        = 0.0f;
@@ -208,9 +218,15 @@ void  emitter_class::process(void)
                     {
                         spawned--;
                         emitter_class::particle[particle_count].active         = true;
-                        emitter_class::particle[particle_count].pos_x          = emitter_class::pos_x + ((rand()% 200)/10000); // add random!!! 1%?
-                        emitter_class::particle[particle_count].pos_y          = emitter_class::pos_y + ((rand()% 200)/10000); // add random!!! 1%?
-                        emitter_class::particle[particle_count].pos_z          = emitter_class::pos_z + ((rand()% 200)/10000); // add random!!! 1%?
+                        float rx = emitter_class::size_x;
+                              rx = (rx*rand()/(RAND_MAX + 1.0)) - (rx/2);
+                        float ry = emitter_class::size_y;
+                              ry = (ry*rand()/(RAND_MAX + 1.0)) - (ry/2);
+                        float rz = emitter_class::size_z;
+                              rz = (rz*rand()/(RAND_MAX + 1.0)) - (rz/2);
+                        emitter_class::particle[particle_count].pos_x          = emitter_class::pos_x + rx + ((rand()% 200)/10000); // add random!!! 1%?
+                        emitter_class::particle[particle_count].pos_y          = emitter_class::pos_y + ry + ((rand()% 200)/10000); // add random!!! 1%?
+                        emitter_class::particle[particle_count].pos_z          = emitter_class::pos_z + rz + ((rand()% 200)/10000); // add random!!! 1%?
                         emitter_class::particle[particle_count].velocity_max   = emitter_class::velocity_max + ((rand()% 100)/10000); // add random!!! 1%?
                         emitter_class::particle[particle_count].velocity_x     = emitter_class::velocity_x + ((rand()% 500)/10000); // add random!!! 5%?
                         emitter_class::particle[particle_count].velocity_y     = emitter_class::velocity_y + ((rand()% 500)/10000); // add random!!! 5%?
@@ -255,22 +271,22 @@ void  emitter_class::draw(void)
         {
             if (emitter_class::particle[particle_count].active)
             {
-                if (emitter_class::image_reference == texture.particle_000.ref_number) texture.particle_000.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::width,emitter_class::height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
-                if (emitter_class::image_reference == texture.particle_001.ref_number) texture.particle_001.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::width,emitter_class::height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
-                if (emitter_class::image_reference == texture.particle_002.ref_number) texture.particle_002.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::width,emitter_class::height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
-                if (emitter_class::image_reference == texture.particle_003.ref_number) texture.particle_003.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::width,emitter_class::height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
-                if (emitter_class::image_reference == texture.particle_004.ref_number) texture.particle_004.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::width,emitter_class::height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
-                if (emitter_class::image_reference == texture.particle_005.ref_number) texture.particle_005.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::width,emitter_class::height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
-                if (emitter_class::image_reference == texture.particle_006.ref_number) texture.particle_006.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::width,emitter_class::height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
-                if (emitter_class::image_reference == texture.particle_007.ref_number) texture.particle_007.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::width,emitter_class::height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
-                if (emitter_class::image_reference == texture.particle_008.ref_number) texture.particle_008.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::width,emitter_class::height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
-                if (emitter_class::image_reference == texture.particle_009.ref_number) texture.particle_009.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::width,emitter_class::height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
-                if (emitter_class::image_reference == texture.particle_010.ref_number) texture.particle_010.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::width,emitter_class::height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
-                if (emitter_class::image_reference == texture.particle_011.ref_number) texture.particle_011.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::width,emitter_class::height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
-                if (emitter_class::image_reference == texture.particle_012.ref_number) texture.particle_012.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::width,emitter_class::height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
-                if (emitter_class::image_reference == texture.particle_013.ref_number) texture.particle_013.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::width,emitter_class::height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
-                if (emitter_class::image_reference == texture.particle_014.ref_number) texture.particle_014.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::width,emitter_class::height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
-                if (emitter_class::image_reference == texture.particle_015.ref_number) texture.particle_015.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::width,emitter_class::height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.particle_000.ref_number) texture.particle_000.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.particle_001.ref_number) texture.particle_001.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.particle_002.ref_number) texture.particle_002.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.particle_003.ref_number) texture.particle_003.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.particle_004.ref_number) texture.particle_004.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.particle_005.ref_number) texture.particle_005.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.particle_006.ref_number) texture.particle_006.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.particle_007.ref_number) texture.particle_007.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.particle_008.ref_number) texture.particle_008.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.particle_009.ref_number) texture.particle_009.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.particle_010.ref_number) texture.particle_010.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.particle_011.ref_number) texture.particle_011.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.particle_012.ref_number) texture.particle_012.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.particle_013.ref_number) texture.particle_013.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.particle_014.ref_number) texture.particle_014.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.particle_015.ref_number) texture.particle_015.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,0.0f,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
             }
         };
     };
@@ -342,8 +358,8 @@ void set_emitter_state(int emitter_num, bool active, bool always_on, int ttl)
 void set_emitter_image(int emitter_num, int i_ref, float w, float h)
 {
     game.emitter[emitter_num].image_reference       = i_ref;
-    game.emitter[emitter_num].width                 = w;
-    game.emitter[emitter_num].height                = h;
+    game.emitter[emitter_num].image_width           = w;
+    game.emitter[emitter_num].image_height          = h;
 };
 
 void set_emitter_movement(int emitter_num, float vm, float ax, float ay, float az, float dr, int   sr, float fx, float fy, float fz)

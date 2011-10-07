@@ -61,6 +61,7 @@ void init_thrusters(bool re_init)
         game_o.thruster[0].fire.set_emitter_rates    (0, 0, 0.075f, 8);
         game_o.thruster[0].fire.set_emitter_color    (0.0f, 0.0f, 1.0f, 0.75f , 0.75f, 0.75f);
         game_o.thruster[0].fire.set_emitter_velocity (0.0f,0.0f,0.0f );
+        game_o.thruster[0].fire.set_emitter_size     (0.0f,0.025f,0.0f );
         game_o.thruster[0].smoke.init();
         game_o.thruster[0].smoke.set_emitter_state    (true , true, 4);
         game_o.thruster[0].smoke.set_emitter_pos      (0.0f , 0.0f, 0.06f);
