@@ -25,6 +25,8 @@
 #ifndef PARTICLES_H
 #define PARTICLES_H
 
+#include <string>
+
 const int   MAX_PARTICLES        = 2048;
 const int   MAX_EMITTERS         = 16;
 
@@ -99,6 +101,7 @@ class emitter_class
         float           particle_TTL_rate;
         void            set_emitter_pos      (float x  , float y  , float z  );
         void            set_emitter_state    (bool  active, bool always_on, int ttl);
+        void            set_emitter_image    (int i_ref);
         void            set_emitter_image    (int i_ref, float w  , float h  );
         void            set_emitter_movement (float vm , float ax , float ay , float az , float dr , int   sr , float fx , float fy , float fz );
         void            set_emitter_rates    (int   sf , int   sfc, float pr , int sq);
@@ -108,6 +111,8 @@ class emitter_class
         void            init(void);
         void            process(void);
         void            draw(void);
+        void            load(std::string file_name);
+        void            save(std::string file_name);
 };
 
 void init_emitters(void);

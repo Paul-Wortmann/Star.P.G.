@@ -161,8 +161,8 @@ bool  config_file_class::File_Write_Data  (std::string config_key, bool config_d
 
 bool  config_file_class::File_Write   (void)
 {
-    config_file_class::File_Write_Data("Star.P.G. - config file");
-    config_file_class::File_Write_Data("-----------------------");
+    config_file_class::File_Write_Data(" Star.P.G. - config file #");
+    config_file_class::File_Write_Data(" ----------------------- #");
     config_file_class::File_Write_Data("Joystick_Sensitivity",config_file_class::joystick_sensitivity);
     config_file_class::File_Write_Data("Display_Fullscreen  ",config_file_class::Display_Fullscreen);
     config_file_class::File_Write_Data("Display_Touchscreen ",config_file_class::Display_Touchscreen);

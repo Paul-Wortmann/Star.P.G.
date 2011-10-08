@@ -22,6 +22,10 @@
  * @date 2011-10-01
  */
 
+#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
 #include "particles.hpp"
 #include "core.hpp"
 #include "../load_resources.hpp"
@@ -97,6 +101,11 @@ void emitter_class::set_emitter_state    (bool  active, bool always_on, int ttl)
     emitter_class::active                = active;
     emitter_class::always_on             = always_on;
     emitter_class::TTL                   = ttl;
+};
+
+void emitter_class::set_emitter_image    (int i_ref)
+{
+    emitter_class::image_reference       = i_ref;
 };
 
 void emitter_class::set_emitter_image    (int i_ref, float w  , float h  )
@@ -290,6 +299,236 @@ void  emitter_class::draw(void)
             }
         };
     };
+};
+
+void  emitter_class::load(std::string file_name)
+{
+    char         temp_char = ' ';
+    float        temp_float;
+    std::string  temp_string_key;
+    std::string  temp_string_value;
+    int          count;
+    std::string  data_line;
+    std::fstream particle_file(file_name.c_str(),std::ios::in|std::ios::binary);
+    if (particle_file.is_open())
+    {
+        while ( particle_file.good() )
+        {
+            getline(particle_file,data_line);
+            {
+                temp_char = data_line[0];
+                if((temp_char != '#') && (data_line.length() > 2))
+                {
+                    temp_char         = '#';
+                    temp_string_key   = "";
+                    temp_string_value = "";
+                    count = 0;
+                    while(temp_char != ' ')
+                    {
+                        temp_char = data_line[count];
+                        if(temp_char != ' ') temp_string_key += temp_char;
+                        count++;
+                        if(count > data_line.length()) (temp_char = ' ');
+                    }
+                    while((temp_char == ' ') || (temp_char == '='))
+                    {
+                        temp_char = data_line[count];
+                        count++;
+                        if(count > data_line.length()) (temp_char = '#');
+                    }
+                    count--;
+                    while(temp_char != ' ')
+                    {
+                        temp_char = data_line[count];
+                        if(temp_char != ' ') temp_string_value += temp_char;
+                        count++;
+                        if(count > data_line.length()) (temp_char = ' ');
+                    }
+                    temp_float = atof(temp_string_value.c_str());
+                    if (temp_string_key == "Start_Active")
+                    {
+                        if ((int)temp_float == 1) emitter_class::active = true;
+                        else emitter_class::active = false;
+                    }
+                    if (temp_string_key == "Always_On")
+                    {
+                        if ((int)temp_float == 1) emitter_class::always_on = true;
+                        else emitter_class::always_on = false;
+                    }
+                    if (temp_string_key == "Image_Reference")
+                    {
+                        if ((int)temp_float != 0)
+                        {
+                            emitter_class::image_reference = (int)temp_float;
+                        }
+                    }
+                    if (temp_string_key == "Image_Width")
+                    {
+                        emitter_class::image_width = temp_float;
+                    }
+                    if (temp_string_key == "Image_Height")
+                    {
+                        emitter_class::image_height = temp_float;
+                    }
+                    if (temp_string_key == "Position_X")
+                    {
+                        emitter_class::pos_x = temp_float;
+                    }
+                    if (temp_string_key == "Position_Y")
+                    {
+                        emitter_class::pos_y = temp_float;
+                    }
+                    if (temp_string_key == "Position_Z")
+                    {
+                        emitter_class::pos_z = temp_float;
+                    }
+                    if (temp_string_key == "Size_X")
+                    {
+                        emitter_class::size_x = temp_float;
+                    }
+                    if (temp_string_key == "Size_Y")
+                    {
+                        emitter_class::size_y = temp_float;
+                    }
+                    if (temp_string_key == "Size_Z")
+                    {
+                        emitter_class::size_z = temp_float;
+                    }
+                    if (temp_string_key == "Velocity_MAX")
+                    {
+                        emitter_class::velocity_max = temp_float;
+                    }
+                    if (temp_string_key == "Velocity_X")
+                    {
+                        emitter_class::velocity_x = temp_float;
+                    }
+                    if (temp_string_key == "Velocity_Y")
+                    {
+                        emitter_class::velocity_y = temp_float;
+                    }
+                    if (temp_string_key == "Velocity_Z")
+                    {
+                        emitter_class::velocity_z = temp_float;
+                    }
+                    if (temp_string_key == "Acceleration_X")
+                    {
+                        emitter_class::acceleration_x = temp_float;
+                    }
+                    if (temp_string_key == "Acceleration_Y")
+                    {
+                        emitter_class::acceleration_y = temp_float;
+                    }
+                    if (temp_string_key == "Acceleration_Z")
+                    {
+                        emitter_class::acceleration_z = temp_float;
+                    }
+                    if (temp_string_key == "Direction")
+                    {
+                        emitter_class::direction = temp_float;
+                    }
+                    if (temp_string_key == "Spray_Radius")
+                    {
+                        emitter_class::spray_radius = (int)temp_float;
+                    }
+                    if (temp_string_key == "Force_X")
+                    {
+                        emitter_class::force_x = temp_float;
+                    }
+                    if (temp_string_key == "Force_Y")
+                    {
+                        emitter_class::force_y = temp_float;
+                    }
+                    if (temp_string_key == "Force_Z")
+                    {
+                        emitter_class::force_z = temp_float;
+                    }
+                    if (temp_string_key == "Color_Start_R")
+                    {
+                        emitter_class::color_start_r = temp_float;
+                    }
+                    if (temp_string_key == "Color_Start_G")
+                    {
+                        emitter_class::color_start_g = temp_float;
+                    }
+                    if (temp_string_key == "Color_Start_B")
+                    {
+                        emitter_class::color_start_b = temp_float;
+                    }
+                    if (temp_string_key == "Color_End_R")
+                    {
+                        emitter_class::color_end_r = temp_float;
+                    }
+                    if (temp_string_key == "Color_End_G")
+                    {
+                        emitter_class::color_end_g = temp_float;
+                    }
+                    if (temp_string_key == "Color_End_B")
+                    {
+                        emitter_class::color_end_b = temp_float;
+                    }
+                    if (temp_string_key == "Color_Rate_R")
+                    {
+                        emitter_class::color_rate_r = temp_float;
+                    }
+                    if (temp_string_key == "Color_Rate_G")
+                    {
+                        emitter_class::color_rate_g = temp_float;
+                    }
+                    if (temp_string_key == "Color_Rate_B")
+                    {
+                        emitter_class::color_rate_b = temp_float;
+                    }
+                    if (temp_string_key == "Spawn_Frequency")
+                    {
+                        emitter_class::spawn_frequency = (int)temp_float;
+                    }
+                    if (temp_string_key == "Spawn_Frequency_Count")
+                    {
+                        emitter_class::spawn_frequency_count = (int)temp_float;
+                    }
+                    if (temp_string_key == "Spawn_Quantity")
+                    {
+                        emitter_class::spawn_quantity = (int)temp_float;
+                    }
+                    if (temp_string_key == "Time_To_Live")
+                    {
+                        emitter_class::TTL = (int)temp_float;
+                    }
+                    if (temp_string_key == "Time_To_Live_Count")
+                    {
+                        emitter_class::TTL_count = (int)temp_float;
+                    }
+                    if (temp_string_key == "Particle_TTL_Rate")
+                    {
+                        emitter_class::particle_TTL_rate = temp_float;
+                    }
+                }
+            }
+        }
+        particle_file.close();
+    }
+    emitter_class::color_rate_r = (emitter_class::color_start_r - emitter_class::color_end_r) / (1.0f / emitter_class::particle_TTL_rate);
+    emitter_class::color_rate_g = (emitter_class::color_start_g - emitter_class::color_end_g) / (1.0f / emitter_class::particle_TTL_rate);
+    emitter_class::color_rate_b = (emitter_class::color_start_b - emitter_class::color_end_b) / (1.0f / emitter_class::particle_TTL_rate);
+};
+
+void  emitter_class::save(std::string file_name)
+{
+/*
+    config_file_class::File_Write_Data("Star.P.G. - config file");
+    config_file_class::File_Write_Data("-----------------------");
+    config_file_class::File_Write_Data("Joystick_Sensitivity",config_file_class::joystick_sensitivity);
+    config_file_class::File_Write_Data("Display_Fullscreen  ",config_file_class::Display_Fullscreen);
+    config_file_class::File_Write_Data("Display_Touchscreen ",config_file_class::Display_Touchscreen);
+    config_file_class::File_Write_Data("Display_X_Resolution",config_file_class::Display_X_Resolution);
+    config_file_class::File_Write_Data("Display_Y_Resolution",config_file_class::Display_Y_Resolution);
+    config_file_class::File_Write_Data("Display_BPS         ",config_file_class::Display_BPS);
+    config_file_class::File_Write_Data("Audio_Rate          ",config_file_class::Audio_Rate);
+    config_file_class::File_Write_Data("Audio_Channels      ",config_file_class::Audio_Channels);
+    config_file_class::File_Write_Data("Audio_Buffers       ",config_file_class::Audio_Buffers);
+    config_file_class::File_Write_Data("Audio_Music_Volume  ",config_file_class::Audio_Music_Volume);
+    config_file_class::File_Write_Data("Audio_Sound_Volume  ",config_file_class::Audio_Sound_Volume);
+*/
 };
 
 void init_emitters(void)

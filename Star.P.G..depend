@@ -641,7 +641,7 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1317998060 source:c:\_git_\star.p.g\src\game.cpp
+1318002901 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"core/core.hpp"
 	"load_resources.hpp"
@@ -1441,7 +1441,7 @@
 	"shields.hpp"
 	"game.hpp"
 
-1317996421 source:c:\_git_\star.p.g\src\thrusters.cpp
+1318068674 source:c:\_git_\star.p.g\src\thrusters.cpp
 	"load_resources.hpp"
 	"thrusters.hpp"
 	"game.hpp"
@@ -1570,7 +1570,7 @@
 	"../load_resources.hpp"
 	"background.hpp"
 
-1317473359 source:c:\_git_\star.p.g\src\core\config.cpp
+1318072374 source:c:\_git_\star.p.g\src\core\config.cpp
 	<fstream>
 	<stdio.h>
 	<stdlib.h>
@@ -1641,9 +1641,14 @@
 	"SDL/SDL.h"
 	"timer.hpp"
 
-1317993840 c:\_git_\star.p.g\src\core\particles.hpp
+1318070532 c:\_git_\star.p.g\src\core\particles.hpp
+	<string>
 
-1317996293 source:c:\_git_\star.p.g\src\core\particles.cpp
+1318088384 source:c:\_git_\star.p.g\src\core\particles.cpp
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
 	"particles.hpp"
 	"core.hpp"
 	"../load_resources.hpp"

@@ -54,22 +54,11 @@ void init_thrusters(bool re_init)
         game_o.thruster[0].frame          = 0;
         game_o.thruster[0].frame_max      = texture.thrusters_000.frame_max;
         game_o.thruster[0].fire.init();
-        game_o.thruster[0].fire.set_emitter_state    (true , true, 32);
-        game_o.thruster[0].fire.set_emitter_pos      (0.0f , 0.0f, 0.06f);
-        game_o.thruster[0].fire.set_emitter_image    (texture.particle_000.ref_number, 0.055f, 0.055f);
-        game_o.thruster[0].fire.set_emitter_movement (0.02f, 0.0025f,  0.0025f, 0.0025f, 270,50, 0.0f, 0.0f, 0.0f);
-        game_o.thruster[0].fire.set_emitter_rates    (0, 0, 0.075f, 8);
-        game_o.thruster[0].fire.set_emitter_color    (0.0f, 0.0f, 1.0f, 0.75f , 0.75f, 0.75f);
-        game_o.thruster[0].fire.set_emitter_velocity (0.0f,0.0f,0.0f );
-        game_o.thruster[0].fire.set_emitter_size     (0.0f,0.025f,0.0f );
+        game_o.thruster[0].fire.set_emitter_image(texture.particle_000.ref_number);
+        game_o.thruster[0].fire.load("data/particle_systems/thruster_000_fire.txt");
         game_o.thruster[0].smoke.init();
-        game_o.thruster[0].smoke.set_emitter_state    (true , true, 4);
-        game_o.thruster[0].smoke.set_emitter_pos      (0.0f , 0.0f, 0.06f);
-        game_o.thruster[0].smoke.set_emitter_image    (texture.particle_002.ref_number, 0.075f, 0.075f);
-        game_o.thruster[0].smoke.set_emitter_movement (0.01f, 0.001f,  0.001f, 0.001f, 270,50, 0.0f, 0.0f, 0.0f);
-        game_o.thruster[0].smoke.set_emitter_rates    (2, 0, 0.0250f, 8);
-        game_o.thruster[0].smoke.set_emitter_color    (0.7f, 0.7f, 0.7f, 0.0f , 0.0f, 0.0f);
-        game_o.thruster[0].smoke.set_emitter_velocity (0.0f,0.0f,0.0f );
+        game_o.thruster[0].smoke.set_emitter_image(texture.particle_002.ref_number);
+        game_o.thruster[0].smoke.load("data/particle_systems/thruster_000_smoke.txt");
 
         game_o.thruster[1].name           = L"Seismic Thrusters";
         game_o.thruster[1].active         = false;
