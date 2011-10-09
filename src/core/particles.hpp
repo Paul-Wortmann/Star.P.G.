@@ -112,7 +112,6 @@ class emitter_class
         void            process(void);
         void            draw(void);
         void            load(std::string file_name);
-        void            save(std::string file_name);
 };
 
 void init_emitters(void);

@@ -1,12 +1,12 @@
 #|--------------------------------|
-#| Smoke test                      |
+#| Fire 003                       |
 #|--------------------------------|
 
 Start_Active          = 1.0
 Always_On             = 1.0
 Image_Reference       = 0.0
-Image_Width           = 0.075
-Image_Height          = 0.075
+Image_Width           = 0.055
+Image_Height          = 0.055
 Position_X            = 0.0
 Position_Y            = 0.0
 Position_Z            = 0.06
@@ -17,27 +17,27 @@ Velocity_MAX          = 0.01
 Velocity_X            = 0.0
 Velocity_Y            = 0.0
 Velocity_Z            = 0.0
-Acceleration_X        = 0.001
-Acceleration_Y        = 0.001
-Acceleration_Z        = 0.001
+Acceleration_X        = 0.0025
+Acceleration_Y        = 0.0025
+Acceleration_Z        = 0.0025
 Direction             = 270.0
-Spray_Radius          = 50.0
+Spray_Radius          = 40.0
 Force_X               = 0.0
 Force_Y               = 0.0
 Force_Z               = 0.0
-Color_Start_R         = 0.7
-Color_Start_G         = 0.7
-Color_Start_B         = 0.7
-Color_End_R           = 0.0
-Color_End_G           = 0.0
-Color_End_B           = 0.0
+Color_Start_R         = 0.0
+Color_Start_G         = 1.0
+Color_Start_B         = 0.0
+Color_End_R           = 1.0
+Color_End_G           = 1.0
+Color_End_B           = 1.0
 Color_Rate_R          = 0.0
 Color_Rate_G          = 0.0
 Color_Rate_B          = 0.0
 Spawn_Frequency       = 0.0
 Spawn_Frequency_Count = 0.0
 Spawn_Quantity        = 8.0
-Time_To_Live          = 4.0
+Time_To_Live          = 32.0
 Time_To_Live_Count    = 0.0
-Particle_TTL_Rate     = 0.025
+Particle_TTL_Rate     = 0.085
 

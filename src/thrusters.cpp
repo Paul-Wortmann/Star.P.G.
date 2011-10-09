@@ -55,10 +55,10 @@ void init_thrusters(bool re_init)
         game_o.thruster[0].frame_max      = texture.thrusters_000.frame_max;
         game_o.thruster[0].fire.init();
         game_o.thruster[0].fire.set_emitter_image(texture.particle_000.ref_number);
-        game_o.thruster[0].fire.load("data/particle_systems/thruster_000_fire.txt");
+        game_o.thruster[0].fire.load("data/configuration/particle_systems/thruster_000_fire.txt");
         game_o.thruster[0].smoke.init();
         game_o.thruster[0].smoke.set_emitter_image(texture.particle_002.ref_number);
-        game_o.thruster[0].smoke.load("data/particle_systems/thruster_000_smoke.txt");
+        game_o.thruster[0].smoke.load("data/configuration/particle_systems/thruster_000_smoke.txt");
 
         game_o.thruster[1].name           = L"Seismic Thrusters";
         game_o.thruster[1].active         = false;
@@ -72,21 +72,11 @@ void init_thrusters(bool re_init)
         game_o.thruster[1].frame          = 0;
         game_o.thruster[1].frame_max      = texture.thrusters_001.frame_max;
         game_o.thruster[1].fire.init();
-        game_o.thruster[1].fire.set_emitter_state    (true , true, 32);
-        game_o.thruster[1].fire.set_emitter_pos      (0.0f , 0.0f, 0.06f);
-        game_o.thruster[1].fire.set_emitter_image    (texture.particle_000.ref_number, 0.055f, 0.055f);
-        game_o.thruster[1].fire.set_emitter_movement (0.02f, 0.0025f,  0.0025f, 0.0025f, 270,40, 0.0f, 0.0f, 0.0f);
-        game_o.thruster[1].fire.set_emitter_rates    (0, 0, 0.075f, 8);
-        game_o.thruster[1].fire.set_emitter_color    (1.0f, 1.0f, 0.0f, 1.0f , 0.0f, 0.0f);
-        game_o.thruster[1].fire.set_emitter_velocity (0.0f,0.0f,0.0f );
+        game_o.thruster[1].fire.set_emitter_image(texture.particle_000.ref_number);
+        game_o.thruster[1].fire.load("data/configuration/particle_systems/thruster_001_fire.txt");
         game_o.thruster[1].smoke.init();
-        game_o.thruster[1].smoke.set_emitter_state    (true , true, 4);
-        game_o.thruster[1].smoke.set_emitter_pos      (0.0f , 0.0f, 0.06f);
-        game_o.thruster[1].smoke.set_emitter_image    (texture.particle_002.ref_number, 0.075f, 0.075f);
-        game_o.thruster[1].smoke.set_emitter_movement (0.01f, 0.001f,  0.001f, 0.001f, 270,50, 0.0f, 0.0f, 0.0f);
-        game_o.thruster[1].smoke.set_emitter_rates    (2, 0, 0.0250f, 8);
-        game_o.thruster[1].smoke.set_emitter_color    (0.7f, 0.7f, 0.7f, 0.0f , 0.0f, 0.0f);
-        game_o.thruster[1].smoke.set_emitter_velocity (0.0f,0.0f,0.0f );
+        game_o.thruster[1].smoke.set_emitter_image(texture.particle_002.ref_number);
+        game_o.thruster[1].smoke.load("data/configuration/particle_systems/thruster_001_smoke.txt");
 
         game_o.thruster[2].name           = L"Vortex Thrusters";
         game_o.thruster[2].active         = false;
@@ -100,21 +90,11 @@ void init_thrusters(bool re_init)
         game_o.thruster[2].frame          = 0;
         game_o.thruster[2].frame_max      = texture.thrusters_002.frame_max;
         game_o.thruster[2].fire.init();
-        game_o.thruster[2].fire.set_emitter_state    (true , true, 32);
-        game_o.thruster[2].fire.set_emitter_pos      (0.0f , 0.0f, 0.06f);
-        game_o.thruster[2].fire.set_emitter_image    (texture.particle_000.ref_number, 0.055f, 0.055f);
-        game_o.thruster[2].fire.set_emitter_movement (0.02f, 0.0025f,  0.0025f, 0.0025f, 270,40, 0.0f, 0.0f, 0.0f);
-        game_o.thruster[2].fire.set_emitter_rates    (0, 0, 0.075f, 8);
-        game_o.thruster[2].fire.set_emitter_color    (0.5f, 0.5f, 0.0f, 1.0f , 0.0f, 0.0f);
-        game_o.thruster[2].fire.set_emitter_velocity (0.0f,0.0f,0.0f );
+        game_o.thruster[2].fire.set_emitter_image(texture.particle_000.ref_number);
+        game_o.thruster[2].fire.load("data/configuration/particle_systems/thruster_002_fire.txt");
         game_o.thruster[2].smoke.init();
-        game_o.thruster[2].smoke.set_emitter_state    (true , true, 4);
-        game_o.thruster[2].smoke.set_emitter_pos      (0.0f , 0.0f, 0.06f);
-        game_o.thruster[2].smoke.set_emitter_image    (texture.particle_002.ref_number, 0.075f, 0.075f);
-        game_o.thruster[2].smoke.set_emitter_movement (0.01f, 0.001f,  0.001f, 0.001f, 270,50, 0.0f, 0.0f, 0.0f);
-        game_o.thruster[2].smoke.set_emitter_rates    (2, 0, 0.0250f, 8);
-        game_o.thruster[2].smoke.set_emitter_color    (0.7f, 0.7f, 0.7f, 0.0f , 0.0f, 0.0f);
-        game_o.thruster[2].smoke.set_emitter_velocity (0.0f,0.0f,0.0f );
+        game_o.thruster[2].smoke.set_emitter_image(texture.particle_002.ref_number);
+        game_o.thruster[2].smoke.load("data/configuration/particle_systems/thruster_002_smoke.txt");
 
         game_o.thruster[3].name           = L"Convolution Thrusters";
         game_o.thruster[3].active         = false;
@@ -128,21 +108,11 @@ void init_thrusters(bool re_init)
         game_o.thruster[3].frame          = 0;
         game_o.thruster[3].frame_max      = texture.thrusters_003.frame_max;
         game_o.thruster[3].fire.init();
-        game_o.thruster[3].fire.set_emitter_state    (true , true, 32);
-        game_o.thruster[3].fire.set_emitter_pos      (0.0f , 0.0f, 0.06f);
-        game_o.thruster[3].fire.set_emitter_image    (texture.particle_000.ref_number, 0.055f, 0.055f);
-        game_o.thruster[3].fire.set_emitter_movement (0.02f, 0.0025f,  0.0025f, 0.0025f, 270,40, 0.0f, 0.0f, 0.0f);
-        game_o.thruster[3].fire.set_emitter_rates    (0, 0, 0.075f, 8);
-        game_o.thruster[3].fire.set_emitter_color    (0.0f, 0.0f, 1.0f, 0.1f , 0.1f, 0.3f);
-        game_o.thruster[3].fire.set_emitter_velocity (0.0f,0.0f,0.0f );
+        game_o.thruster[3].fire.set_emitter_image(texture.particle_000.ref_number);
+        game_o.thruster[3].fire.load("data/configuration/particle_systems/thruster_003_fire.txt");
         game_o.thruster[3].smoke.init();
-        game_o.thruster[3].smoke.set_emitter_state    (true , true, 4);
-        game_o.thruster[3].smoke.set_emitter_pos      (0.0f , 0.0f, 0.06f);
-        game_o.thruster[3].smoke.set_emitter_image    (texture.particle_002.ref_number, 0.075f, 0.075f);
-        game_o.thruster[3].smoke.set_emitter_movement (0.01f, 0.001f,  0.001f, 0.001f, 270,50, 0.0f, 0.0f, 0.0f);
-        game_o.thruster[3].smoke.set_emitter_rates    (2, 0, 0.0250f, 8);
-        game_o.thruster[3].smoke.set_emitter_color    (0.7f, 0.7f, 0.7f, 0.0f , 0.0f, 0.0f);
-        game_o.thruster[3].smoke.set_emitter_velocity (0.0f,0.0f,0.0f );
+        game_o.thruster[3].smoke.set_emitter_image(texture.particle_002.ref_number);
+        game_o.thruster[3].smoke.load("data/configuration/particle_systems/thruster_003_smoke.txt");
     }
 };
 

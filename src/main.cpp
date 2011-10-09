@@ -144,6 +144,9 @@ int main(int argc, char *argv[])
     game.LastTicks = game.timer.getticks();
     for(int quit = 0; !quit;)
     {
+        game.config.process(false);
+        if (game.config.mouse_autohide) SDL_ShowCursor(SDL_DISABLE);
+        else SDL_ShowCursor(SDL_ENABLE);
         proc_textures();
         proc_emitters();
         events_process();
@@ -152,6 +155,7 @@ int main(int argc, char *argv[])
 //****************************************** MENU *****************************************
         if (game.menu_active)
         {
+            SDL_ShowCursor(SDL_ENABLE);
             if (game.music_next_track)
             {
                 music.menu_00.play();

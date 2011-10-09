@@ -512,25 +512,6 @@ void  emitter_class::load(std::string file_name)
     emitter_class::color_rate_b = (emitter_class::color_start_b - emitter_class::color_end_b) / (1.0f / emitter_class::particle_TTL_rate);
 };
 
-void  emitter_class::save(std::string file_name)
-{
-/*
-    config_file_class::File_Write_Data("Star.P.G. - config file");
-    config_file_class::File_Write_Data("-----------------------");
-    config_file_class::File_Write_Data("Joystick_Sensitivity",config_file_class::joystick_sensitivity);
-    config_file_class::File_Write_Data("Display_Fullscreen  ",config_file_class::Display_Fullscreen);
-    config_file_class::File_Write_Data("Display_Touchscreen ",config_file_class::Display_Touchscreen);
-    config_file_class::File_Write_Data("Display_X_Resolution",config_file_class::Display_X_Resolution);
-    config_file_class::File_Write_Data("Display_Y_Resolution",config_file_class::Display_Y_Resolution);
-    config_file_class::File_Write_Data("Display_BPS         ",config_file_class::Display_BPS);
-    config_file_class::File_Write_Data("Audio_Rate          ",config_file_class::Audio_Rate);
-    config_file_class::File_Write_Data("Audio_Channels      ",config_file_class::Audio_Channels);
-    config_file_class::File_Write_Data("Audio_Buffers       ",config_file_class::Audio_Buffers);
-    config_file_class::File_Write_Data("Audio_Music_Volume  ",config_file_class::Audio_Music_Volume);
-    config_file_class::File_Write_Data("Audio_Sound_Volume  ",config_file_class::Audio_Sound_Volume);
-*/
-};
-
 void init_emitters(void)
 {
     for (int emitter_count = 0; emitter_count < MAX_EMITTERS; emitter_count++)

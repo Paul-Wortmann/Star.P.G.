@@ -145,6 +145,7 @@ bool events_process(void)
     //-------------------- Mouse events-------------------------------
        if (game.event.type == SDL_MOUSEMOTION)
        {
+           game.config.process(true);
            game.io.mouse_x      = game.graphics.res_to_gl(game.event.motion.x,game.config.mouse_resolution_x);
            game.io.mouse_y      = game.graphics.res_to_gl(game.event.motion.y,game.config.mouse_resolution_y);
            game.io.mouse_xrel   = game.graphics.res_to_gl(game.event.motion.xrel,game.config.mouse_resolution_x);

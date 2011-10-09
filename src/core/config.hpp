@@ -32,6 +32,9 @@ class config_file_class
     private:
         const char *Config_File;
     public:
+        bool  mouse_autohide;
+        int   mouse_autohide_timer;
+        int   mouse_autohide_timer_count;
         int   menu_delay;
         int   menu_delay_count;
         int   mouse_resolution_x;
@@ -53,6 +56,7 @@ class config_file_class
 
               config_file_class(void);
              ~config_file_class(void);
+        void  process          (bool set_active);
         bool  File_Set         (std::string file_name);
         bool  Set_Defaults     (void);
         bool  File_Clear       (void);

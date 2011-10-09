@@ -29,24 +29,27 @@
 
 config_file_class::config_file_class(void)
 {
-    config_file_class::menu_delay           = 128;
-    config_file_class::menu_delay_count     = 0;
-    config_file_class::joystick_sensitivity = 6400;
-    config_file_class::joystick_enabled     = false;
-    config_file_class::joystick_no_buttons  = 0;
-    config_file_class::Display_resolution   = 0;
-    config_file_class::Display_X_Resolution = 640;
-    config_file_class::Display_Y_Resolution = 480;
-    config_file_class::Display_BPS          = 32;
-    config_file_class::Display_Fullscreen   = false;
-    config_file_class::Display_Touchscreen  = false;
-    config_file_class::Audio_Rate           = 44100;
-    config_file_class::Audio_Channels       = 32;
-    config_file_class::Audio_Buffers        = 2048;
-    config_file_class::Audio_Music_Volume   = 32;
-    config_file_class::Audio_Sound_Volume   = 64;
-    config_file_class::mouse_resolution_x   = config_file_class::Display_X_Resolution;
-    config_file_class::mouse_resolution_y   = config_file_class::Display_Y_Resolution;
+    config_file_class::mouse_autohide             = false;
+    config_file_class::mouse_autohide_timer       = 128;
+    config_file_class::mouse_autohide_timer_count = 0;
+    config_file_class::menu_delay                 = 128;
+    config_file_class::menu_delay_count           = 0;
+    config_file_class::joystick_sensitivity       = 6400;
+    config_file_class::joystick_enabled           = false;
+    config_file_class::joystick_no_buttons        = 0;
+    config_file_class::Display_resolution         = 0;
+    config_file_class::Display_X_Resolution       = 640;
+    config_file_class::Display_Y_Resolution       = 480;
+    config_file_class::Display_BPS                = 32;
+    config_file_class::Display_Fullscreen         = false;
+    config_file_class::Display_Touchscreen        = false;
+    config_file_class::Audio_Rate                 = 44100;
+    config_file_class::Audio_Channels             = 32;
+    config_file_class::Audio_Buffers              = 2048;
+    config_file_class::Audio_Music_Volume         = 32;
+    config_file_class::Audio_Sound_Volume         = 64;
+    config_file_class::mouse_resolution_x         = config_file_class::Display_X_Resolution;
+    config_file_class::mouse_resolution_y         = config_file_class::Display_Y_Resolution;
     if ((config_file_class::Display_X_Resolution ==  640) && (config_file_class::Display_Y_Resolution ==  480)) config_file_class::Display_resolution = 0;
     if ((config_file_class::Display_X_Resolution ==  800) && (config_file_class::Display_Y_Resolution ==  600)) config_file_class::Display_resolution = 1;
     if ((config_file_class::Display_X_Resolution == 1024) && (config_file_class::Display_Y_Resolution ==  768)) config_file_class::Display_resolution = 2;
@@ -64,6 +67,24 @@ config_file_class::~config_file_class(void)
 
 };
 
+void config_file_class::process(bool set_active)
+{
+    if (set_active)
+    {
+        config_file_class::mouse_autohide = false;
+        config_file_class::mouse_autohide_timer_count = 0;
+    }
+    if(!config_file_class::mouse_autohide)
+    {
+        config_file_class::mouse_autohide_timer_count++;
+        if (config_file_class::mouse_autohide_timer_count > config_file_class::mouse_autohide_timer)
+        {
+            config_file_class::mouse_autohide = true;
+            config_file_class::mouse_autohide_timer_count = config_file_class::mouse_autohide_timer;
+        }
+    }
+};
+
 bool config_file_class::File_Set(std::string file_name)
 {
     config_file_class::Config_File = file_name.c_str();
@@ -72,22 +93,25 @@ bool config_file_class::File_Set(std::string file_name)
 
 bool  config_file_class::Set_Defaults (void)
 {
-    config_file_class::menu_delay           = 128;
-    config_file_class::menu_delay_count     = 0;
-    config_file_class::joystick_sensitivity = 6400;
-    config_file_class::joystick_enabled     = false;
-    config_file_class::joystick_no_buttons  = 0;
-    config_file_class::Display_resolution   = 0;
-    config_file_class::Display_X_Resolution = 640;
-    config_file_class::Display_Y_Resolution = 480;
-    config_file_class::Display_BPS          = 32;
-    config_file_class::Display_Fullscreen   = false;
-    config_file_class::Display_Touchscreen  = false;
-    config_file_class::Audio_Rate           = 44100;
-    config_file_class::Audio_Channels       = 32;
-    config_file_class::Audio_Buffers        = 2048;
-    config_file_class::Audio_Music_Volume   = 32;
-    config_file_class::Audio_Sound_Volume   = 32;
+    config_file_class::mouse_autohide             = false;
+    config_file_class::mouse_autohide_timer       = 128;
+    config_file_class::mouse_autohide_timer_count = 0;
+    config_file_class::menu_delay                 = 128;
+    config_file_class::menu_delay_count           = 0;
+    config_file_class::joystick_sensitivity       = 6400;
+    config_file_class::joystick_enabled           = false;
+    config_file_class::joystick_no_buttons        = 0;
+    config_file_class::Display_resolution         = 0;
+    config_file_class::Display_X_Resolution       = 640;
+    config_file_class::Display_Y_Resolution       = 480;
+    config_file_class::Display_BPS                = 32;
+    config_file_class::Display_Fullscreen         = false;
+    config_file_class::Display_Touchscreen        = false;
+    config_file_class::Audio_Rate                 = 44100;
+    config_file_class::Audio_Channels             = 32;
+    config_file_class::Audio_Buffers              = 2048;
+    config_file_class::Audio_Music_Volume         = 32;
+    config_file_class::Audio_Sound_Volume         = 32;
     if ((config_file_class::Display_X_Resolution ==  640) && (config_file_class::Display_Y_Resolution ==  480)) config_file_class::Display_resolution = 0;
     if ((config_file_class::Display_X_Resolution ==  800) && (config_file_class::Display_Y_Resolution ==  600)) config_file_class::Display_resolution = 1;
     if ((config_file_class::Display_X_Resolution == 1024) && (config_file_class::Display_Y_Resolution ==  768)) config_file_class::Display_resolution = 2;
