@@ -27,8 +27,8 @@
 
 #include "bullets.hpp"
 
-const int   MAX_ENEMYS         = 32;
-const int   MAX_NPCS           = 32;
+const int   MAX_ENEMYS                   = 32;
+const int   MAX_NPCS                     = 32;
 
 struct enemy_type
 {
@@ -38,6 +38,7 @@ struct enemy_type
    float         speed;
    int           movement;
    int           weapon;
+   int           weapon2;
    int           projectiles;
    float         size_w;
    float         size_h;
@@ -49,6 +50,7 @@ struct npc_type
    int           damaged;
    int           type_npc;
    int           weapon;
+   int           weapon2;
    int           projectiles;
    float         x_pos;
    float         y_pos;
@@ -67,7 +69,8 @@ struct npc_type
    int           movement;
    int           x_direction;
    int           y_direction;
-   bullet_type   bullet[MAX_BULLETS];
+   bullet_type   bullet [MAX_BULLETS];
+   bullet_type   bullet2[MAX_BULLETS];
 };
 
 struct active_npc_type
@@ -87,11 +90,13 @@ int  spawn_npc            (float x_position, float y_position, int type_npc, int
 int  kill_npc             (int npc_num);
 int  init_npcs            (int type_npc);
 int  proccess_npcs        (void);
-int  spawn_npc_bullet_num (int npc_num, int npc_bullet_num, int location);
-int  spawn_npc_bullet     (int npc_num, int location);
-int  kill_npc_bullet      (int npc_num, int npc_bullet_num);
+int  spawn_npc_bullet_num (int npc_num, int weapon, int npc_bullet_num, int location);
+int  spawn_npc_bullet     (int npc_num, int weapon, int location);
+int  kill_npc_bullet      (int npc_num, int weapon, int npc_bullet_num);
 int  init_npc_bullets     (void);
 int  proccess_npc_bullets (void);
+int  init_npc_bullets2    (void);
+int  proccess_npc_bullets2(void);
 
 #endif //NPC_H
 

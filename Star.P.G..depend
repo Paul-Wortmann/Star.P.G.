@@ -641,7 +641,7 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1318339943 source:c:\_git_\star.p.g\src\game.cpp
+1318346825 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"core/core.hpp"
 	"load_resources.hpp"
@@ -774,7 +774,7 @@
 
 1310897251 c:\_git_\star.p.g\src\graphics.hpp
 
-1318002901 c:\_git_\star.p.g\src\game.hpp
+1318345697 c:\_git_\star.p.g\src\game.hpp
 	<string>
 	<SDL/SDL.h>
 	"PC.hpp"
@@ -790,6 +790,7 @@
 	"support_ships.hpp"
 	"in_game_messages.hpp"
 	"screen_rumble.hpp"
+	"debris.hpp"
 
 1310897251 c:\_git_\star.p.g\src\sounds.hpp
 	<SDL/SDL_mixer.h>
@@ -1387,17 +1388,17 @@
 1317473593 c:\_git_\star.p.g\src\projectiles.hpp
 	<string>
 
-1318336243 source:c:\_git_\star.p.g\src\npc.cpp
+1318346865 source:c:\_git_\star.p.g\src\npc.cpp
 	"core/core.hpp"
 	"NPC.hpp"
 	"load_resources.hpp"
 	"game.hpp"
 	"misc.hpp"
 
-1317473593 c:\_git_\star.p.g\src\npc.hpp
+1318347104 c:\_git_\star.p.g\src\npc.hpp
 	"bullets.hpp"
 
-1318339262 source:c:\_git_\star.p.g\src\pc.cpp
+1318341968 source:c:\_git_\star.p.g\src\pc.cpp
 	"core/core.hpp"
 	"PC.hpp"
 	"NPC.hpp"
@@ -1408,7 +1409,7 @@
 1318335235 c:\_git_\star.p.g\src\pc.hpp
 	"bullets.hpp"
 
-1317473275 source:c:\_git_\star.p.g\src\support_ships.cpp
+1318342061 source:c:\_git_\star.p.g\src\support_ships.cpp
 	"core/core.hpp"
 	"support_ships.hpp"
 	"load_resources.hpp"
@@ -1457,7 +1458,7 @@
 
 1317473593 c:\_git_\star.p.g\src\powerups.hpp
 
-1318339658 source:c:\_git_\star.p.g\src\powerups.cpp
+1318345900 source:c:\_git_\star.p.g\src\powerups.cpp
 	"core/core.hpp"
 	"powerups.hpp"
 	"load_resources.hpp"
@@ -1628,7 +1629,7 @@
 	"core.hpp"
 	"sound.hpp"
 
-1317473359 source:c:\_git_\star.p.g\src\core\textures.cpp
+1318346598 source:c:\_git_\star.p.g\src\core\textures.cpp
 	<GL/gl.h>
 	<SDL/SDL.h>
 	<SDL/SDL_image.h>
@@ -1652,4 +1653,9 @@
 	"particles.hpp"
 	"core.hpp"
 	"../load_resources.hpp"
+
+1318345654 c:\_git_\star.p.g\src\debris.hpp
+
+1318345656 source:c:\_git_\star.p.g\src\debris.cpp
+	"debris.hpp"
 

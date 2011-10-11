@@ -682,7 +682,7 @@ int proccess_player_bullets(void)
                         spawn_explosion(game_o.npc[npc_count].bullet[npc_bullet_num].x_pos,game_o.npc[npc_count].bullet[npc_bullet_num].y_pos,0.25f);
                         sound.explosion_001.play();
                         kill_player_bullet(player_bullet_num);
-                        kill_npc_bullet(npc_count,npc_bullet_num);
+                        kill_npc_bullet(npc_count,1,npc_bullet_num);
                         game_o.score += game_o.npc[npc_count].type_npc + 1;
                         game_o.level_score += game_o.npc[npc_count].type_npc + 1;;
                      }

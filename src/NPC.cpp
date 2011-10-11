@@ -422,6 +422,7 @@ int init_npcs(int type_npc)
       game_o.npc[npc_count].y_direction         = 1;
    }
    init_npc_bullets();
+   init_npc_bullets2();
    return(0);
 }
 /*----------------------------------------------------------------------------*/
@@ -531,9 +532,11 @@ int proccess_npcs(void)
          }
       }
    }
+    proccess_npc_bullets();
+    proccess_npc_bullets2();
 }
 /*----------------------------------------------------------------------------*/
-int spawn_npc_bullet_num(int npc_num, int npc_bullet_num, int location)
+int spawn_npc_bullet_num(int npc_num, int weapon, int npc_bullet_num, int location)
 {
    if (npc_bullet_num > MAX_BULLETS) npc_bullet_num  = MAX_BULLETS;
    game_o.npc[npc_num].bullet[npc_bullet_num].active   = true;
@@ -561,7 +564,7 @@ int spawn_npc_bullet_num(int npc_num, int npc_bullet_num, int location)
 
    switch (game_o.projectile[game_o.npc[npc_num].bullet[npc_bullet_num].warhead].movement)
       {
-         case 0: //staright
+         case 0: //straight
             game_o.npc[npc_num].bullet[npc_bullet_num].straight       = true;
             game_o.npc[npc_num].bullet[npc_bullet_num].homeing_00     = false;
             game_o.npc[npc_num].bullet[npc_bullet_num].homeing_01     = false;
@@ -611,7 +614,7 @@ int spawn_npc_bullet_num(int npc_num, int npc_bullet_num, int location)
             game_o.npc[npc_num].bullet[npc_bullet_num].wave_speed     = game_o.projectile[game_o.npc[npc_num].bullet[npc_bullet_num].warhead].wave_velocity;
             game_o.npc[npc_num].bullet[npc_bullet_num].wave_direction = 1;
          break;
-         default://staright
+         default://straight
             game_o.npc[npc_num].bullet[npc_bullet_num].straight       = true;
             game_o.npc[npc_num].bullet[npc_bullet_num].homeing_00     = false;
             game_o.npc[npc_num].bullet[npc_bullet_num].homeing_01     = false;
@@ -625,21 +628,21 @@ int spawn_npc_bullet_num(int npc_num, int npc_bullet_num, int location)
    return(0);
 }
 /*----------------------------------------------------------------------------*/
-int spawn_npc_bullet(int npc_num, int location)
+int spawn_npc_bullet(int npc_num, int weapon, int location)
 {
    bool spawn_done = 0;
    for (int npc_bullet_num = 0; npc_bullet_num < MAX_BULLETS; npc_bullet_num++)
    {
        if (!spawn_done and !game_o.npc[npc_num].bullet[npc_bullet_num].active)
        {
-           spawn_npc_bullet_num(npc_num,npc_bullet_num,location);
+           spawn_npc_bullet_num(npc_num,1,npc_bullet_num,location);
            spawn_done = 1;
        }
    }
  return(0);
 }
 /*----------------------------------------------------------------------------*/
-int kill_npc_bullet(int npc_num, int npc_bullet_num)
+int kill_npc_bullet(int npc_num, int weapon, int npc_bullet_num)
 {
   if (npc_bullet_num > MAX_BULLETS) npc_bullet_num = MAX_BULLETS;
   game_o.npc[npc_num].bullet[npc_bullet_num].active  = false;
@@ -738,12 +741,12 @@ int proccess_npc_bullets(void)
                 else game_o.npc[npc_count].bullet[bullet_count].y_pos -= game_o.npc[npc_count].bullet[bullet_count].wave_speed;
             }
          }
-         if (game_o.npc[npc_count].bullet[bullet_count].x_pos < (-1.0f - game_o.npc[npc_count].bullet[bullet_count].width)) kill_npc_bullet(npc_count,bullet_count);
+         if (game_o.npc[npc_count].bullet[bullet_count].x_pos < (-1.0f - game_o.npc[npc_count].bullet[bullet_count].width)) kill_npc_bullet(npc_count,1,bullet_count);
          // check player starship / npc bullet collisions...
          if ((game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.height,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height)) && (!game_o.immune))
          {
             spawn_explosion(game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,0.125f);
-            kill_npc_bullet(npc_count,bullet_count);
+            kill_npc_bullet(npc_count,1,bullet_count);
             sound.shield_hit.play();//player shield hit
             game_o.player.shield -= (0.005f+game_o.shield[game_o.player.front_shield].absorption+(0.0001f*game_o.shield[game_o.player.front_shield].level));
             if (game_o.player.shield < 0.0f) game_o.player.health += game_o.player.shield;
@@ -784,4 +787,34 @@ int proccess_npc_bullets(void)
    return(0);
 }
 /*----------------------------------------------------------------------------*/
+
+
+int  init_npc_bullets2    (void)
+{
+   for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+   {
+      for (int bullet_count = 0; bullet_count < MAX_BULLETS; bullet_count++)
+      {
+         game_o.npc[npc_count].bullet2[bullet_count].active   = false;
+         game_o.npc[npc_count].bullet2[bullet_count].x_pos    = -2.0f;
+         game_o.npc[npc_count].bullet2[bullet_count].y_pos    = -2.0f;
+         game_o.npc[npc_count].bullet2[bullet_count].x_speed  = game_o.enemy[game_o.npc[npc_count].type_npc].speed;
+         game_o.npc[npc_count].bullet2[bullet_count].y_speed  = game_o.enemy[game_o.npc[npc_count].type_npc].speed;
+         game_o.npc[npc_count].bullet2[bullet_count].width    = 0.05f;
+         game_o.npc[npc_count].bullet2[bullet_count].height   = 0.05f;
+         game_o.npc[npc_count].bullet2[bullet_count].warhead  = game_o.enemy[game_o.npc[npc_count].type_npc].weapon2;
+         game_o.npc[npc_count].bullet2[bullet_count].location = 0;
+      }
+   }
+   return(0);
+};
+
+int  proccess_npc_bullets2(void)
+{
+
+};
+
+
+
+
 

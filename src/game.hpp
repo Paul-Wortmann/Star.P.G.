@@ -40,9 +40,11 @@
 #include "support_ships.hpp"
 #include "in_game_messages.hpp"
 #include "screen_rumble.hpp"
+#include "debris.hpp"
 
 struct game_type
 {
+    debris_class                debris;
     bool                        level_end_rumble;
     rumble_class                rumble;
     int                         npc_damage_duration;

@@ -495,7 +495,7 @@ void supportship_class::process(bool spawn_bullet)
                         }
                     }
                 }
-                for (int npc_bullet_num =0;npc_bullet_num < MAX_BULLETS-1;npc_bullet_num++) // check player supportship bullets / npc bullets for collisions...
+                for (int npc_bullet_num =0;npc_bullet_num < MAX_BULLETS-1;npc_bullet_num++) // check player support ship bullets / npc bullets for collisions...
                 {
                     if ((game_o.npc[npc_count].bullet[npc_bullet_num].active) and (supportship_class::bullet[bullet_count].active))
                     {
@@ -506,7 +506,7 @@ void supportship_class::process(bool spawn_bullet)
                             supportship_class::bullet[bullet_count].active = false;
                             supportship_class::bullet[bullet_count].x_pos  = 2.0f;
                             supportship_class::bullet[bullet_count].y_pos  = 2.0f;
-                            kill_npc_bullet(npc_count,npc_bullet_num);
+                            kill_npc_bullet(npc_count,1,npc_bullet_num);
                             game_o.score += game_o.npc[npc_count].type_npc + 1;
                             game_o.level_score += game_o.npc[npc_count].type_npc + 1;;
                         }

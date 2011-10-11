@@ -104,6 +104,8 @@
 		<Unit filename="src\core\textures.hpp" />
 		<Unit filename="src\core\timer.cpp" />
 		<Unit filename="src\core\timer.hpp" />
+		<Unit filename="src\debris.cpp" />
+		<Unit filename="src\debris.hpp" />
 		<Unit filename="src\explosions.cpp" />
 		<Unit filename="src\explosions.hpp" />
 		<Unit filename="src\game.cpp" />

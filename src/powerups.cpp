@@ -147,7 +147,7 @@ int proccess_powerups(void)
             {
                 case 1: //health 100%
                     {
-                       game_o.player.health = 0.100f;
+                       game_o.player.health = game_o.player.max_health;
                        game_o.p_health.spawn();
                     }
                 break;
@@ -443,7 +443,7 @@ int  use_bomb_powerup(void)
     }
     if (boss_level())
     {
-        for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) //dammage all npcs
+        for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) //damage all npcs
         {
             sound.explosion_005.play();
             if (game_o.npc[npc_count].active)
@@ -465,7 +465,8 @@ int  use_bomb_powerup(void)
             if (game_o.npc[npc_count].bullet[bullet_count].active)
             {
                 spawn_explosion(game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,0.125f);
-                kill_npc_bullet(npc_count,bullet_count);
+                kill_npc_bullet(npc_count,1,bullet_count);
+                kill_npc_bullet(npc_count,2,bullet_count);
             }
         }
     }
