@@ -80,23 +80,7 @@ int init_game(bool re_init)
     game_o.speed                             =  0.045f;
     game_o.fw_rof_count                      =  0;
     game_o.sw_rof_count                      =  0;
-    game_o.player.x_pos                      = -0.9f;
-    game_o.player.y_pos                      =  0.0f;
-    game_o.player.x_dir                      =  0.0f;
-    game_o.player.y_dir                      =  0.0f;
-    game_o.player.x_vel                      =  0.0f;
-    game_o.player.y_vel                      =  0.0f;
-    game_o.player.width                      =  0.2f;
-    game_o.player.height                     =  0.2f;
-    game_o.player.health                     =  0.100f;
-    game_o.player.health_regen_rate          =  0.00005f;
-    game_o.player.max_health                 =  0.100f;
-    game_o.player.image                      =  texture.ship_025.ref_number; // change game_draw(); code for drawing player if you change this!!!!
-    game_o.player.front_weapon               =  0;
-    game_o.player.side_weapon                =  0;
-    game_o.player.front_shield               = -1;
-    game_o.player.thrusters                  = -1;
-
+    init_player();
     init_achievements();
     init_projectiles(re_init);
     init_shields    (re_init);
@@ -123,8 +107,6 @@ int process_game(void)
     float temp_y            = 0.0f;
     int   temp_r            = 0;
     if (game_o.rumble.active) game_o.rumble.process();
-    game_o.player.health += game_o.player.health_regen_rate;
-    if (game_o.player.health > game_o.player.max_health) game_o.player.health = game_o.player.max_health;
     game.background.process();
     return_data = false;
     if (game_o.player.y_pos >= 0.75f) return_data = game.background.scroll_up();
@@ -841,7 +823,7 @@ int display_game(void)
         }
     }
 
-    for (int count = MAX_POWERUPS;count >=1;count--)  // powerups
+    for (int count = MAX_POWERUPS;count >=1;count--)  // power-ups
     {
         z_pos = 0.002f + (0.0002*count);
         if (game_o.powerup[count].active)
@@ -867,12 +849,11 @@ int display_game(void)
         if (game_o.coin[count].active) texture.coin_powerup.draw(true,game_o.coin[count].x_pos,game_o.coin[count].y_pos,z_pos,game_o.coin[count].width,game_o.coin[count].height);
     }
 
-   for (int count = MAX_WEXPS;count >=1;count--)  // wexp
+   for (int count = MAX_WEXPS;count >=1;count--)  // weapon experience
    {
       z_pos = 0.002f + (0.0002*(count+MAX_POWERUPS+MAX_COINS));
       if (game_o.wexp[count].active) texture.wexp_powerup.draw(true,game_o.wexp[count].x_pos,game_o.wexp[count].y_pos,z_pos,game_o.wexp[count].width,game_o.wexp[count].height);
    }
-    texture.health_bar.draw (false,-0.6f +((game_o.player.health/game_o.player.max_health)/10), 0.9375f, 0.001f,((game_o.player.health/game_o.player.max_health)/5), 0.075f); //player health bar
 
     if (game_o.number_bombs > 0) texture.bomb_powerup.draw(false,-0.960f, 0.9375f, 0.001f, 0.075f, 0.075f); // bomb icons
     if (game_o.number_bombs > 1) texture.bomb_powerup.draw(false,-0.885f, 0.9375f, 0.001f, 0.075f, 0.075f); // bomb icons
@@ -881,88 +862,91 @@ int display_game(void)
     if (game_o.number_bombs > 4) texture.bomb_powerup.draw(false,-0.660f, 0.9375f, 0.001f, 0.075f, 0.075f); // bomb icons
     if (game_o.number_bombs > 5) texture.bomb_powerup.draw(false,-0.585f, 0.9375f, 0.001f, 0.075f, 0.075f); // bomb icons
 
+    texture.health_bar.draw (false,-0.6f   +((game_o.player.health/game_o.player.max_health)/10), 0.9375f, 0.001f,((game_o.player.health/game_o.player.max_health)/5), 0.075f); //player health bar
+    texture.shield_bar.draw (false,-0.375f +((game_o.player.shield/game_o.player.max_shield)/10), 0.9375f, 0.001f,((game_o.player.shield/game_o.player.max_shield)/5), 0.075f); //player shield bar
+
     if (game_o.player.front_weapon > -1)
     {
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_000.ref_number) texture.projectile_000.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_001.ref_number) texture.projectile_001.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_002.ref_number) texture.projectile_002.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_003.ref_number) texture.projectile_003.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_004.ref_number) texture.projectile_004.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_005.ref_number) texture.projectile_005.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_006.ref_number) texture.projectile_006.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_007.ref_number) texture.projectile_007.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_008.ref_number) texture.projectile_008.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_009.ref_number) texture.projectile_009.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_010.ref_number) texture.projectile_010.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_011.ref_number) texture.projectile_011.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_012.ref_number) texture.projectile_012.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_013.ref_number) texture.projectile_013.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_014.ref_number) texture.projectile_014.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_015.ref_number) texture.projectile_015.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_016.ref_number) texture.projectile_016.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_017.ref_number) texture.projectile_017.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_018.ref_number) texture.projectile_018.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_019.ref_number) texture.projectile_019.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_020.ref_number) texture.projectile_020.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_021.ref_number) texture.projectile_021.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_022.ref_number) texture.projectile_022.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_023.ref_number) texture.projectile_023.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_024.ref_number) texture.projectile_024.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_025.ref_number) texture.projectile_025.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_026.ref_number) texture.projectile_026.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_027.ref_number) texture.projectile_027.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_028.ref_number) texture.projectile_028.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_029.ref_number) texture.projectile_029.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_030.ref_number) texture.projectile_030.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_031.ref_number) texture.projectile_031.draw(false,-0.3475f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_000.ref_number) texture.projectile_000.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_001.ref_number) texture.projectile_001.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_002.ref_number) texture.projectile_002.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_003.ref_number) texture.projectile_003.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_004.ref_number) texture.projectile_004.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_005.ref_number) texture.projectile_005.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_006.ref_number) texture.projectile_006.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_007.ref_number) texture.projectile_007.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_008.ref_number) texture.projectile_008.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_009.ref_number) texture.projectile_009.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_010.ref_number) texture.projectile_010.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_011.ref_number) texture.projectile_011.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_012.ref_number) texture.projectile_012.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_013.ref_number) texture.projectile_013.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_014.ref_number) texture.projectile_014.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_015.ref_number) texture.projectile_015.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_016.ref_number) texture.projectile_016.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_017.ref_number) texture.projectile_017.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_018.ref_number) texture.projectile_018.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_019.ref_number) texture.projectile_019.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_020.ref_number) texture.projectile_020.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_021.ref_number) texture.projectile_021.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_022.ref_number) texture.projectile_022.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_023.ref_number) texture.projectile_023.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_024.ref_number) texture.projectile_024.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_025.ref_number) texture.projectile_025.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_026.ref_number) texture.projectile_026.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_027.ref_number) texture.projectile_027.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_028.ref_number) texture.projectile_028.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_029.ref_number) texture.projectile_029.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_030.ref_number) texture.projectile_030.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.front_weapon].image == texture.projectile_031.ref_number) texture.projectile_031.draw(false,-0.125f, 0.9375f, 0.001f, 0.075f, 0.075f); // front weapon picture next to the exp bar
 
         if (game_o.projectile[game_o.player.front_weapon].level == 0) temp_val = ((game_o.projectile[game_o.player.front_weapon].experience / game_o.projectile[game_o.player.front_weapon].level_1)/5);
         if (game_o.projectile[game_o.player.front_weapon].level == 1) temp_val = ((game_o.projectile[game_o.player.front_weapon].experience / game_o.projectile[game_o.player.front_weapon].level_2)/5);
         if (game_o.projectile[game_o.player.front_weapon].level == 2) temp_val = ((game_o.projectile[game_o.player.front_weapon].experience / game_o.projectile[game_o.player.front_weapon].level_3)/5);
         if (game_o.projectile[game_o.player.front_weapon].level == 3) temp_val = 0.2f;
-        texture.weapon_bar.draw (false,-0.3f +(temp_val/2), 0.9375f, 0.001f,temp_val, 0.075f);// front weapon exp bar
+        texture.weapon_bar.draw (false,-0.075f +(temp_val/2), 0.9375f, 0.001f,temp_val, 0.075f);// front weapon exp bar
     }
 
     if (game_o.player.side_weapon > -1)
     {
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_000.ref_number) texture.projectile_000.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_001.ref_number) texture.projectile_001.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_002.ref_number) texture.projectile_002.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_003.ref_number) texture.projectile_003.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_004.ref_number) texture.projectile_004.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_005.ref_number) texture.projectile_005.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_006.ref_number) texture.projectile_006.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_007.ref_number) texture.projectile_007.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_008.ref_number) texture.projectile_008.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_009.ref_number) texture.projectile_009.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_010.ref_number) texture.projectile_010.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_011.ref_number) texture.projectile_011.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_012.ref_number) texture.projectile_012.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_013.ref_number) texture.projectile_013.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_014.ref_number) texture.projectile_014.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_015.ref_number) texture.projectile_015.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_016.ref_number) texture.projectile_016.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_017.ref_number) texture.projectile_017.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_018.ref_number) texture.projectile_018.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_019.ref_number) texture.projectile_019.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_020.ref_number) texture.projectile_020.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_021.ref_number) texture.projectile_021.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_022.ref_number) texture.projectile_022.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_023.ref_number) texture.projectile_023.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_024.ref_number) texture.projectile_024.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_025.ref_number) texture.projectile_025.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_026.ref_number) texture.projectile_026.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_027.ref_number) texture.projectile_027.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_028.ref_number) texture.projectile_028.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_029.ref_number) texture.projectile_029.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_030.ref_number) texture.projectile_030.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
-        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_031.ref_number) texture.projectile_031.draw(false,-0.0475f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_000.ref_number) texture.projectile_000.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_001.ref_number) texture.projectile_001.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_002.ref_number) texture.projectile_002.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_003.ref_number) texture.projectile_003.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_004.ref_number) texture.projectile_004.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_005.ref_number) texture.projectile_005.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_006.ref_number) texture.projectile_006.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_007.ref_number) texture.projectile_007.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_008.ref_number) texture.projectile_008.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_009.ref_number) texture.projectile_009.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_010.ref_number) texture.projectile_010.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_011.ref_number) texture.projectile_011.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_012.ref_number) texture.projectile_012.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_013.ref_number) texture.projectile_013.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_014.ref_number) texture.projectile_014.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_015.ref_number) texture.projectile_015.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_016.ref_number) texture.projectile_016.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_017.ref_number) texture.projectile_017.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_018.ref_number) texture.projectile_018.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_019.ref_number) texture.projectile_019.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_020.ref_number) texture.projectile_020.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_021.ref_number) texture.projectile_021.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_022.ref_number) texture.projectile_022.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_023.ref_number) texture.projectile_023.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_024.ref_number) texture.projectile_024.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_025.ref_number) texture.projectile_025.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_026.ref_number) texture.projectile_026.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_027.ref_number) texture.projectile_027.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_028.ref_number) texture.projectile_028.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_029.ref_number) texture.projectile_029.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_030.ref_number) texture.projectile_030.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
+        if(game_o.projectile[game_o.player.side_weapon].image == texture.projectile_031.ref_number) texture.projectile_031.draw(false, 0.175f, 0.9375f, 0.001f, 0.075f, 0.075f); // side weapon picture next to the exp bar
 
         if (game_o.projectile[game_o.player.side_weapon].level == 0) temp_val = ((game_o.projectile[game_o.player.side_weapon].experience / game_o.projectile[game_o.player.side_weapon].level_1)/5);
         if (game_o.projectile[game_o.player.side_weapon].level == 1) temp_val = ((game_o.projectile[game_o.player.side_weapon].experience / game_o.projectile[game_o.player.side_weapon].level_2)/5);
         if (game_o.projectile[game_o.player.side_weapon].level == 2) temp_val = ((game_o.projectile[game_o.player.side_weapon].experience / game_o.projectile[game_o.player.side_weapon].level_3)/5);
         if (game_o.projectile[game_o.player.side_weapon].level == 3) temp_val = 0.2f;
-        texture.weapon_bar.draw (false,0.0f +(temp_val/2),0.9375f, 0.001f,temp_val, 0.075f);// side weapon exp bar
+        texture.weapon_bar.draw (false,0.225f +(temp_val/2),0.9375f, 0.001f,temp_val, 0.075f);// side weapon exp bar
     }
     temp_val = (1.95f*((float)game_o.level_kills/(float)game_o.victory_kills));
     texture.level_progress_bar.draw (false,-0.975f +(temp_val/2),-0.965f, 0.001f,temp_val, 0.025f);// level progress bar
@@ -1005,11 +989,16 @@ int display_game(void)
     if (game_o.p_weapon_level_up.active)        game_o.p_weapon_level_up.draw();
     if (game_o.d_level_end.active)              game_o.d_level_end.draw();
 
+    font.font_1.Write(185,185,185,64,-0.575f, 0.91f,"Health - ", (int)(game_o.player.health*1000));
+    font.font_1.Write(185,185,185,64,-0.355f, 0.91f,"Shield - ", (int)(game_o.player.shield*1000));
+    font.font_1.Write(185,185,185,64,-0.05f , 0.91f,"Front");
+    font.font_1.Write(185,185,185,64, 0.25f , 0.91f,"Side ");
+
     font.font_1.Write(255,255,255,64,-0.98f,-0.95f,"Score - ", game_o.score);
     font.font_1.Write(255,255,255,64,-0.98f,-0.91f,"Kills - ", game_o.kills);
-    if (game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.40f, 0.95f,"Active NPCs - ",  game_o.active_npc_count);
-    if (game_o.fps_enabled &&  game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.40f, 0.90f,"FPS - ",  game.FPS);
-    if (game_o.fps_enabled && !game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.40f, 0.95f,"FPS - ",  game.FPS);
+    if (game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.50f, 0.95f,"Active NPCs - ",  game_o.active_npc_count);
+    if (game_o.fps_enabled &&  game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.50f, 0.90f,"FPS - ",  game.FPS);
+    if (game_o.fps_enabled && !game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.50f, 0.95f,"FPS - ",  game.FPS);
     glPopMatrix();
     return(1);
 };

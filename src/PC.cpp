@@ -35,6 +35,29 @@ extern  texture_type     texture;
 extern  game_type  game_o;
 extern  game_class game;
 
+int   init_player            (void)
+{
+    game_o.player.shield                     =  0.100f;
+    game_o.player.shield_regen_rate          =  0.000025f;
+    game_o.player.max_shield                 =  0.011f;
+    game_o.player.x_pos                      = -0.9f;
+    game_o.player.y_pos                      =  0.0f;
+    game_o.player.x_dir                      =  0.0f;
+    game_o.player.y_dir                      =  0.0f;
+    game_o.player.x_vel                      =  0.0f;
+    game_o.player.y_vel                      =  0.0f;
+    game_o.player.width                      =  0.2f;
+    game_o.player.height                     =  0.2f;
+    game_o.player.health                     =  0.100f;
+    game_o.player.health_regen_rate          =  0.00005f;
+    game_o.player.max_health                 =  0.100f;
+    game_o.player.image                      =  texture.ship_025.ref_number; // change game_draw(); code for drawing player if you change this!!!!
+    game_o.player.front_weapon               =  0;
+    game_o.player.side_weapon                =  0;
+    game_o.player.front_shield               = -1;
+    game_o.player.thrusters                  = -1;
+};
+
 /*----------------------------------------------------------------------------*/
 int spawn_player_bullet_num(int player_bullet_num, int location)
 {
@@ -671,140 +694,148 @@ int proccess_player_bullets(void)
    }
 }
 /*----------------------------------------------------------------------------*/
+
 float thruster_offset(void)
 {
    if (game_o.player.thrusters < 0) return(0.0f);
    else return(0.03f);
 };
+
 /*----------------------------------------------------------------------------*/
 int process_player(int command)
 {
-   game_o.immunity_delay_count++;
-   if (game_o.immunity_delay_count < game_o.immunity_delay)
-   {
-       if ((game_o.immunity_delay_count >   0) && (game_o.immunity_delay_count <  16)) game_o.immunity_state = 0;
-       if ((game_o.immunity_delay_count >  16) && (game_o.immunity_delay_count <  32)) game_o.immunity_state = 1;
-       if ((game_o.immunity_delay_count >  32) && (game_o.immunity_delay_count <  48)) game_o.immunity_state = 0;
-       if ((game_o.immunity_delay_count >  48) && (game_o.immunity_delay_count <  64)) game_o.immunity_state = 1;
-       if ((game_o.immunity_delay_count >  64) && (game_o.immunity_delay_count <  80)) game_o.immunity_state = 0;
-       if ((game_o.immunity_delay_count >  80) && (game_o.immunity_delay_count <  96)) game_o.immunity_state = 1;
-       if ((game_o.immunity_delay_count >  96) && (game_o.immunity_delay_count < 112)) game_o.immunity_state = 0;
-       if ((game_o.immunity_delay_count > 112) && (game_o.immunity_delay_count < 128)) game_o.immunity_state = 1;
-       if ((game_o.immunity_delay_count > 128) && (game_o.immunity_delay_count < 144)) game_o.immunity_state = 0;
-       if ((game_o.immunity_delay_count > 144) && (game_o.immunity_delay_count < 160)) game_o.immunity_state = 1;
-       if ((game_o.immunity_delay_count > 160) && (game_o.immunity_delay_count < 176)) game_o.immunity_state = 0;
-       if ((game_o.immunity_delay_count > 176) && (game_o.immunity_delay_count < 192)) game_o.immunity_state = 1;
-       if ((game_o.immunity_delay_count > 192) && (game_o.immunity_delay_count < 208)) game_o.immunity_state = 0;
-       if ((game_o.immunity_delay_count > 208) && (game_o.immunity_delay_count < 224)) game_o.immunity_state = 1;
-       if ((game_o.immunity_delay_count > 224) && (game_o.immunity_delay_count < 240)) game_o.immunity_state = 0;
-       if ((game_o.immunity_delay_count > 240) && (game_o.immunity_delay_count < 256)) game_o.immunity_state = 1;
-   }
-   if (game_o.immunity_delay_count > game_o.immunity_delay)
-       {
+    if (game_o.player.shield < 0.0f) game_o.player.shield = 0.0f;
+    game_o.player.shield += game_o.player.shield_regen_rate; // shield regeneration
+    if (game_o.player.shield > game_o.player.max_shield) game_o.player.shield = game_o.player.max_shield;
+    game_o.player.health += game_o.player.health_regen_rate; // health regeneration
+    if (game_o.player.health > game_o.player.max_health) game_o.player.health = game_o.player.max_health;
+    game_o.immunity_delay_count++;
+    if (game_o.immunity_delay_count < game_o.immunity_delay)
+    {
+        if ((game_o.immunity_delay_count >   0) && (game_o.immunity_delay_count <  16)) game_o.immunity_state = 0;
+        if ((game_o.immunity_delay_count >  16) && (game_o.immunity_delay_count <  32)) game_o.immunity_state = 1;
+        if ((game_o.immunity_delay_count >  32) && (game_o.immunity_delay_count <  48)) game_o.immunity_state = 0;
+        if ((game_o.immunity_delay_count >  48) && (game_o.immunity_delay_count <  64)) game_o.immunity_state = 1;
+        if ((game_o.immunity_delay_count >  64) && (game_o.immunity_delay_count <  80)) game_o.immunity_state = 0;
+        if ((game_o.immunity_delay_count >  80) && (game_o.immunity_delay_count <  96)) game_o.immunity_state = 1;
+        if ((game_o.immunity_delay_count >  96) && (game_o.immunity_delay_count < 112)) game_o.immunity_state = 0;
+        if ((game_o.immunity_delay_count > 112) && (game_o.immunity_delay_count < 128)) game_o.immunity_state = 1;
+        if ((game_o.immunity_delay_count > 128) && (game_o.immunity_delay_count < 144)) game_o.immunity_state = 0;
+        if ((game_o.immunity_delay_count > 144) && (game_o.immunity_delay_count < 160)) game_o.immunity_state = 1;
+        if ((game_o.immunity_delay_count > 160) && (game_o.immunity_delay_count < 176)) game_o.immunity_state = 0;
+        if ((game_o.immunity_delay_count > 176) && (game_o.immunity_delay_count < 192)) game_o.immunity_state = 1;
+        if ((game_o.immunity_delay_count > 192) && (game_o.immunity_delay_count < 208)) game_o.immunity_state = 0;
+        if ((game_o.immunity_delay_count > 208) && (game_o.immunity_delay_count < 224)) game_o.immunity_state = 1;
+        if ((game_o.immunity_delay_count > 224) && (game_o.immunity_delay_count < 240)) game_o.immunity_state = 0;
+        if ((game_o.immunity_delay_count > 240) && (game_o.immunity_delay_count < 256)) game_o.immunity_state = 1;
+    }
+    if (game_o.immunity_delay_count > game_o.immunity_delay)
+        {
             game_o.immunity_delay_count = game_o.immunity_delay;
             game_o.immune = false;
-       }
-   //level up our trusters, only if used! :)
-   if ((command == 3) && (game_o.thruster[game_o.player.thrusters].level <= 2) && (game_o.player.thrusters >= 0))
-   {
-       game_o.thruster[game_o.player.thrusters].experience++;
-       if (game_o.thruster[game_o.player.thrusters].level == 0)
-       {
-           if (game_o.thruster[game_o.player.thrusters].experience >= game_o.thruster[game_o.player.thrusters].level_1)
-           {
-              game_o.p_thrusters_level_up.spawn();
-              game_o.thruster[game_o.player.thrusters].experience = 0;
-              game_o.thruster[game_o.player.thrusters].level++;
-           }
-       }
-       if (game_o.thruster[game_o.player.thrusters].level == 1)
-       {
-           if (game_o.thruster[game_o.player.thrusters].experience >= game_o.thruster[game_o.player.thrusters].level_2)
-           {
-              game_o.p_thrusters_level_up.spawn();
-              game_o.thruster[game_o.player.thrusters].experience = 0;
-              game_o.thruster[game_o.player.thrusters].level++;
-           }
-       }
-       if (game_o.thruster[game_o.player.thrusters].level == 2)
-       {
-           if (game_o.thruster[game_o.player.thrusters].experience >= game_o.thruster[game_o.player.thrusters].level_3)
-           {
-              game_o.p_thrusters_level_up.spawn();
-              game_o.thruster[game_o.player.thrusters].experience = 0;
-              game_o.thruster[game_o.player.thrusters].level++;
-           }
-       }
-   }
-   if (game_o.level_end_phase == 1)
-   {
-      if (game_o.player.y_pos >  0.0f) game_o.player.y_pos -= (0.020 + game_o.thruster[game_o.player.thrusters].thrust);
-      if (game_o.player.y_pos <  0.0f) game_o.player.y_pos += (0.020 + game_o.thruster[game_o.player.thrusters].thrust);
-      game_o.player.x_pos += (0.020 + game_o.thruster[game_o.player.thrusters].thrust) + (game_o.level_end_count / 1000);
-   }
-   else
-   {
-      switch (command)
-      {
-         case 1://Up
-             game_o.player.y_dir =  1;
-             game_o.player.y_vel += (0.0025f + game_o.thruster[game_o.player.thrusters].thrust + (0.0001f*game_o.thruster[game_o.player.thrusters].level));
-             if (game_o.player.y_vel > MAX_VELOCITY) game_o.player.y_vel = MAX_VELOCITY;
-         break;
-         case 2://Down
-             game_o.player.y_dir = -1;
-             game_o.player.y_vel -= (0.0025f + game_o.thruster[game_o.player.thrusters].thrust + (0.0001f*game_o.thruster[game_o.player.thrusters].level));
-             if (game_o.player.y_vel < (-1*MAX_VELOCITY)) game_o.player.y_vel = (-1*MAX_VELOCITY);
-         break;
-         case 3://right
-             game_o.player.x_dir =  1;
-             game_o.player.x_vel += (0.0025f + game_o.thruster[game_o.player.thrusters].thrust + (0.0001f*game_o.thruster[game_o.player.thrusters].level));
-             if (game_o.player.x_vel > MAX_VELOCITY) game_o.player.x_vel = MAX_VELOCITY;
-         break;
-         case 4://Left
-             game_o.player.x_dir = -1;
-             game_o.player.x_vel -= (0.0025f + game_o.thruster[game_o.player.thrusters].thrust + (0.0001f*game_o.thruster[game_o.player.thrusters].level));
-             if (game_o.player.x_vel < (-1*MAX_VELOCITY)) game_o.player.x_vel = (-1*MAX_VELOCITY);
-         break;
-         default:
-         break;
-      }
-         if (game_o.player.y_dir ==  1)
-         {
-             if (game_o.player.y_vel > 0.0f) game_o.player.y_vel -= 0.00025f;
-             if (game_o.player.y_vel < 0.0f) game_o.player.y_vel  = 0.0f;
-         };
-         if (game_o.player.y_dir == -1)
-         {
-             if (game_o.player.y_vel < 0.0f) game_o.player.y_vel += 0.00025f;
-             if (game_o.player.y_vel > 0.0f) game_o.player.y_vel  = 0.0f;
-         };
-         if (game_o.player.x_dir ==  1)
-         {
-             if (game_o.player.x_vel > 0.0f) game_o.player.x_vel -= 0.00025f;
-             if (game_o.player.x_vel < 0.0f) game_o.player.x_vel  = 0.0f;
-         };
-         if (game_o.player.x_dir == -1)
-         {
-             if (game_o.player.x_vel < 0.0f) game_o.player.x_vel += 0.00025f;
-             if (game_o.player.x_vel > 0.0f) game_o.player.x_vel  = 0.0f;
-         };
-         game_o.player.y_pos += game_o.player.y_vel;
-         if (game_o.player.y_pos >  (1.0f -(game_o.player.height/2))) game_o.player.y_pos = (1.0f -(game_o.player.height/2));
-         if (game_o.player.y_pos < -(1.0f -(game_o.player.height/2))) game_o.player.y_pos = -(1.0f -(game_o.player.height/2));
-         game_o.player.x_pos += game_o.player.x_vel;
-         if (game_o.player.x_pos >  (1.0f -(game_o.player.width/2))) game_o.player.x_pos = (1.0f -(game_o.player.width/2));
-         if (game_o.player.x_pos < -(1.0f - (game_o.player.width/2) - thruster_offset())) game_o.player.x_pos = -(1.0f -(game_o.player.width/2) - thruster_offset());
-   }
-   if (!game_o.immune)
-   {
-        for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) // player npc collision?
+        }
+   //level up our thrusters, only if used! :)
+    if ((command == 3) && (game_o.thruster[game_o.player.thrusters].level <= 2) && (game_o.player.thrusters >= 0))
+    {
+        game_o.thruster[game_o.player.thrusters].experience++;
+        if (game_o.thruster[game_o.player.thrusters].level == 0)
+        {
+            if (game_o.thruster[game_o.player.thrusters].experience >= game_o.thruster[game_o.player.thrusters].level_1)
+            {
+                game_o.p_thrusters_level_up.spawn();
+                game_o.thruster[game_o.player.thrusters].experience = 0;
+                game_o.thruster[game_o.player.thrusters].level++;
+            }
+        }
+        if (game_o.thruster[game_o.player.thrusters].level == 1)
+        {
+            if (game_o.thruster[game_o.player.thrusters].experience >= game_o.thruster[game_o.player.thrusters].level_2)
+            {
+                game_o.p_thrusters_level_up.spawn();
+                game_o.thruster[game_o.player.thrusters].experience = 0;
+                game_o.thruster[game_o.player.thrusters].level++;
+            }
+        }
+        if (game_o.thruster[game_o.player.thrusters].level == 2)
+        {
+            if (game_o.thruster[game_o.player.thrusters].experience >= game_o.thruster[game_o.player.thrusters].level_3)
+            {
+                game_o.p_thrusters_level_up.spawn();
+                game_o.thruster[game_o.player.thrusters].experience = 0;
+                game_o.thruster[game_o.player.thrusters].level++;
+            }
+        }
+    }
+    if (game_o.level_end_phase == 1)
+    {
+        if (game_o.player.y_pos >  0.0f) game_o.player.y_pos -= (0.020 + game_o.thruster[game_o.player.thrusters].thrust);
+        if (game_o.player.y_pos <  0.0f) game_o.player.y_pos += (0.020 + game_o.thruster[game_o.player.thrusters].thrust);
+        game_o.player.x_pos += (0.020 + game_o.thruster[game_o.player.thrusters].thrust) + (game_o.level_end_count / 1000);
+    }
+    else
+    {
+        switch (command)
+        {
+            case 1://Up
+                game_o.player.y_dir =  1;
+                game_o.player.y_vel += (0.0025f + game_o.thruster[game_o.player.thrusters].thrust + (0.0001f*game_o.thruster[game_o.player.thrusters].level));
+                if (game_o.player.y_vel > MAX_VELOCITY) game_o.player.y_vel = MAX_VELOCITY;
+            break;
+            case 2://Down
+                game_o.player.y_dir = -1;
+                game_o.player.y_vel -= (0.0025f + game_o.thruster[game_o.player.thrusters].thrust + (0.0001f*game_o.thruster[game_o.player.thrusters].level));
+                if (game_o.player.y_vel < (-1*MAX_VELOCITY)) game_o.player.y_vel = (-1*MAX_VELOCITY);
+            break;
+            case 3://right
+                game_o.player.x_dir =  1;
+                game_o.player.x_vel += (0.0025f + game_o.thruster[game_o.player.thrusters].thrust + (0.0001f*game_o.thruster[game_o.player.thrusters].level));
+                if (game_o.player.x_vel > MAX_VELOCITY) game_o.player.x_vel = MAX_VELOCITY;
+            break;
+            case 4://Left
+                game_o.player.x_dir = -1;
+                game_o.player.x_vel -= (0.0025f + game_o.thruster[game_o.player.thrusters].thrust + (0.0001f*game_o.thruster[game_o.player.thrusters].level));
+                if (game_o.player.x_vel < (-1*MAX_VELOCITY)) game_o.player.x_vel = (-1*MAX_VELOCITY);
+            break;
+            default:
+            break;
+        }
+        if (game_o.player.y_dir ==  1)
+        {
+            if (game_o.player.y_vel > 0.0f) game_o.player.y_vel -= 0.00025f;
+            if (game_o.player.y_vel < 0.0f) game_o.player.y_vel  = 0.0f;
+        };
+        if (game_o.player.y_dir == -1)
+        {
+            if (game_o.player.y_vel < 0.0f) game_o.player.y_vel += 0.00025f;
+            if (game_o.player.y_vel > 0.0f) game_o.player.y_vel  = 0.0f;
+        };
+        if (game_o.player.x_dir ==  1)
+        {
+            if (game_o.player.x_vel > 0.0f) game_o.player.x_vel -= 0.00025f;
+            if (game_o.player.x_vel < 0.0f) game_o.player.x_vel  = 0.0f;
+        };
+        if (game_o.player.x_dir == -1)
+        {
+            if (game_o.player.x_vel < 0.0f) game_o.player.x_vel += 0.00025f;
+            if (game_o.player.x_vel > 0.0f) game_o.player.x_vel  = 0.0f;
+        };
+        game_o.player.y_pos += game_o.player.y_vel;
+        if (game_o.player.y_pos >  (1.0f -(game_o.player.height/2))) game_o.player.y_pos = (1.0f -(game_o.player.height/2));
+        if (game_o.player.y_pos < -(1.0f -(game_o.player.height/2))) game_o.player.y_pos = -(1.0f -(game_o.player.height/2));
+        game_o.player.x_pos += game_o.player.x_vel;
+        if (game_o.player.x_pos >  (1.0f -(game_o.player.width/2))) game_o.player.x_pos = (1.0f -(game_o.player.width/2));
+        if (game_o.player.x_pos < -(1.0f - (game_o.player.width/2) - thruster_offset())) game_o.player.x_pos = -(1.0f -(game_o.player.width/2) - thruster_offset());
+    }
+    if (!game_o.immune)
+    {
+        for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) // player - NPC collision?
         {
             if (game.physics.quadrangle_collision(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,game_o.npc[npc_count].width,game_o.npc[npc_count].height,game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.height))
             {
                 sound.shield_hit.play();//player shield hit
                 game_o.npc[npc_count].health -= game_o.projectile[game_o.player.front_weapon].damage;
-                game_o.player.health -= ((game_o.enemy[game_o.npc[npc_count].type_npc].health / 5000.0f) - game_o.shield[game_o.player.front_shield].absorption);
+                game_o.player.shield -= ((game_o.enemy[game_o.npc[npc_count].type_npc].health / 5000.0f) - game_o.shield[game_o.player.front_shield].absorption);
+                if (game_o.player.shield < 0.0f) game_o.player.health += game_o.player.shield;
                 if (game_o.npc[npc_count].health < 0)
                 {
                     spawn_explosion(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,0.50f);

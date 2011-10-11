@@ -151,7 +151,7 @@ int proccess_powerups(void)
                        game_o.p_health.spawn();
                     }
                 break;
-                case 2://shield lvl up
+                case 2://shield level up
                     {
                        if (game_o.player.front_shield >= 0)
                        {
@@ -163,26 +163,61 @@ int proccess_powerups(void)
                        }
                     }
                 break;
-                case 3://get new shield
+                case 3://gain a new shield
                     {
-                       bool done = false;
-                       for (int s_count = 0; s_count < MAX_SHIELDS; s_count++)
-                       {
-                           if ((!game_o.shield[s_count].active) and (!done))
-                           {
-                               game_o.player.front_shield = s_count;
-                               game_o.shield[s_count].active = true;
-                               done = true;
-                               if (game_o.player.front_shield == 0) game_o.p_terbium_shields.spawn();
-                               if (game_o.player.front_shield == 1) game_o.p_iridium_shileds.spawn();
-                               if (game_o.player.front_shield == 2) game_o.p_rubidium_shields.spawn();
-                               if (game_o.player.front_shield == 3) game_o.p_tantalum_shields.spawn();
-                               if (game_o.player.front_shield == 4) game_o.p_actinium_shields.spawn();
-                           }
-                       }
+                        bool done = false;
+                        for (int s_count = 0; s_count < MAX_SHIELDS; s_count++)
+                        {
+                            if ((!game_o.shield[s_count].active) and (!done))
+                            {
+                                game_o.player.front_shield = s_count;
+                                game_o.shield[s_count].active = true;
+                                done = true;
+                                if (game_o.player.front_shield == 0)
+                                {
+                                    game_o.player.shield_regen_rate   = 0.00005f;
+                                    game_o.player.max_shield          = 0.100f;
+                                    game_o.player.health_regen_rate   = 0.000075f;
+                                    game_o.player.max_health          = 0.200f;
+                                    game_o.p_terbium_shields.spawn();
+                                }
+                                if (game_o.player.front_shield == 1)
+                                {
+                                    game_o.player.shield_regen_rate   = 0.000075f;
+                                    game_o.player.max_shield          = 0.150f;
+                                    game_o.player.health_regen_rate   = 0.0001f;
+                                    game_o.player.max_health          = 0.250f;
+                                    game_o.p_iridium_shileds.spawn();
+                                }
+                                if (game_o.player.front_shield == 2)
+                                {
+                                    game_o.player.shield_regen_rate   = 0.0001f;
+                                    game_o.player.max_shield          = 0.200f;
+                                    game_o.player.health_regen_rate   = 0.000125f;
+                                    game_o.player.max_health          = 0.300f;
+                                    game_o.p_rubidium_shields.spawn();
+                                }
+                                if (game_o.player.front_shield == 3)
+                                {
+                                    game_o.player.shield_regen_rate   = 0.000125f;
+                                    game_o.player.max_shield          = 0.250f;
+                                    game_o.player.health_regen_rate   = 0.00015f;
+                                    game_o.player.max_health          = 0.350f;
+                                    game_o.p_tantalum_shields.spawn();
+                                }
+                                if (game_o.player.front_shield == 4)
+                                {
+                                    game_o.player.shield_regen_rate   = 0.00015f;
+                                    game_o.player.max_shield          = 0.300f;
+                                    game_o.player.health_regen_rate   = 0.000175f;
+                                    game_o.player.max_health          = 0.400f;
+                                    game_o.p_actinium_shields.spawn();
+                                }
+                            }
+                        }
                     }
                 break;
-                case 4://thrusters lvl up
+                case 4://thrusters level up
                     {
                        if (game_o.player.thrusters >= 0)
                        {

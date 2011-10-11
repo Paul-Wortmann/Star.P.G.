@@ -45,6 +45,9 @@ struct player_class
     float          y_vel;
     float          width;
     float          height;
+    float          shield;
+    float          shield_regen_rate;
+    float          max_shield;
     float          health;
     float          health_regen_rate;
     float          max_health;

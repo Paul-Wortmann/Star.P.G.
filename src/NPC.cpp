@@ -745,7 +745,8 @@ int proccess_npc_bullets(void)
             spawn_explosion(game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,0.125f);
             kill_npc_bullet(npc_count,bullet_count);
             sound.shield_hit.play();//player shield hit
-            game_o.player.health -= (0.005f+game_o.shield[game_o.player.front_shield].absorption+(0.0001f*game_o.shield[game_o.player.front_shield].level));
+            game_o.player.shield -= (0.005f+game_o.shield[game_o.player.front_shield].absorption+(0.0001f*game_o.shield[game_o.player.front_shield].level));
+            if (game_o.player.shield < 0.0f) game_o.player.health += game_o.player.shield;
             if ((game_o.shield[game_o.player.front_shield].level <= 2) && (game_o.player.front_shield >= 0))
             {
                 game_o.shield[game_o.player.front_shield].experience++;
