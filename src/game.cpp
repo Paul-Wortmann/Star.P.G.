@@ -415,7 +415,7 @@ int process_game(void)
             game_o.level_end_rumble = false;
             game_o.rumble.start(0.025,300);
         }
-        game_o.player.health = 0.100f;
+        game_o.player.health = game_o.player.max_health;
         for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) //kill all npcs
         {
             sound.explosion_005.play();
