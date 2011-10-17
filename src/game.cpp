@@ -418,7 +418,6 @@ int process_game(void)
         game_o.player.health = game_o.player.max_health;
         for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) //kill all npcs
         {
-            sound.explosion_005.play();
             if (game_o.npc[npc_count].active)
             {
                 spawn_explosion(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,0.50f);
@@ -445,13 +444,11 @@ int process_game(void)
             if (temp_r < 8000) //spawn explosion + coin
             {
                 spawn_explosion(temp_x,temp_y,0.25f);
-                sound.explosion_005.play();
                 spawn_coin(temp_x,temp_y,1.5f);
             }
             if ((temp_r > 8000) && (temp_r < 16000)) //spawn explosion + coin
             {
                 spawn_explosion(temp_x,temp_y,0.25f);
-                sound.explosion_005.play();
                 spawn_wexp(temp_x,temp_y,1.5f);
             }
         }

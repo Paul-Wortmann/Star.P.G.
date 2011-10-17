@@ -30,13 +30,14 @@
 
 class sound_class
 {
-    int        sound_channel;
-    Mix_Chunk *sound_data;
+    int           sound_channel;
+    Mix_Chunk    *sound_data;
     public:
+    int           ref_number;
     sound_class();
    ~sound_class();
     void play(void);
-    void load(std::string file_name);
+    void load(std::string file_name, int index_number);
 };
 
 #endif

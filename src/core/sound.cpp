@@ -27,22 +27,23 @@
 
 sound_class::sound_class()
 {
-    sound_channel = -1;
+    sound_class::sound_channel = -1;
 };
 
 sound_class::~sound_class()
 {
     Mix_HaltChannel(-1);
-    Mix_FreeChunk(sound_data);
+    Mix_FreeChunk(sound_class::sound_data);
 };
 
-void sound_class::load(std::string file_name)
+void sound_class::load(std::string file_name, int index_number)
 {
-    sound_data = Mix_LoadWAV(file_name.c_str());
+    sound_class::ref_number =  index_number;
+    sound_class::sound_data = Mix_LoadWAV(file_name.c_str());
 };
 
 void sound_class::play(void)
 {
-    sound_channel = Mix_PlayChannel(-1, sound_data, 0);
+    sound_class::sound_channel = Mix_PlayChannel(-1, sound_data, 0);
 };
 

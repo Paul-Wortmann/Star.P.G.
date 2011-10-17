@@ -474,7 +474,6 @@ void supportship_class::process(bool spawn_bullet)
                                 ;
                             }
                             spawn_explosion(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,0.50f);
-                            sound.explosion_001.play();
                             kill_npc(npc_count);
                             game_o.score += (game_o.npc[npc_count].type_npc + 1) * 10;
                             game_o.level_score += (game_o.npc[npc_count].type_npc + 1) * 10;
@@ -502,7 +501,6 @@ void supportship_class::process(bool spawn_bullet)
                         if (game.physics.quadrangle_collision(game_o.npc[npc_count].bullet[npc_bullet_num].x_pos,game_o.npc[npc_count].bullet[npc_bullet_num].y_pos,game_o.npc[npc_count].bullet[npc_bullet_num].width,game_o.npc[npc_count].bullet[npc_bullet_num].height,supportship_class::bullet[bullet_count].x_pos,supportship_class::bullet[bullet_count].y_pos,supportship_class::bullet[bullet_count].width,supportship_class::bullet[bullet_count].height))
                         {
                             spawn_explosion(game_o.npc[npc_count].bullet[npc_bullet_num].x_pos,game_o.npc[npc_count].bullet[npc_bullet_num].y_pos,0.25f);
-                            sound.explosion_001.play();
                             supportship_class::bullet[bullet_count].active = false;
                             supportship_class::bullet[bullet_count].x_pos  = 2.0f;
                             supportship_class::bullet[bullet_count].y_pos  = 2.0f;

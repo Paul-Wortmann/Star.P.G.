@@ -42,6 +42,8 @@ struct sound_type
     sound_class explosion_003;
     sound_class explosion_004;
     sound_class explosion_005;
+    sound_class explosion_006;
+    sound_class explosion_007;
     sound_class projectile_000;
     sound_class projectile_001;
     sound_class projectile_002;

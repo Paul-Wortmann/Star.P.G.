@@ -108,7 +108,7 @@ bool  config_file_class::Set_Defaults (void)
     config_file_class::Display_Fullscreen         = false;
     config_file_class::Display_Touchscreen        = false;
     config_file_class::Audio_Rate                 = 44100;
-    config_file_class::Audio_Channels             = 32;
+    config_file_class::Audio_Channels             = 64;
     config_file_class::Audio_Buffers              = 2048;
     config_file_class::Audio_Music_Volume         = 32;
     config_file_class::Audio_Sound_Volume         = 32;

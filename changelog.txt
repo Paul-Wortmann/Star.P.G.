@@ -1,4 +1,6 @@
-V0.19 - (xx-10-2011)
+V1.0 - (11-11-2011)
+Added more explosion sounds and made them random.
+Added Shield bar, and better on screen information.
 Converted thrusters to use particle engine.
 Implemented a particle engine..
 Added animated thruster flames.

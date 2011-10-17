@@ -37,7 +37,6 @@ struct explosion_class
     float frame_delay;
     float frame_delay_count;
     float frame_delay_max;
-    int   sound;
     float x_pos;
     float y_pos;
     float width;

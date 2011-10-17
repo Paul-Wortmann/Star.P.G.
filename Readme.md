@@ -31,6 +31,7 @@ PARTICULAR PURPOSE.  See the gpl.txt file for more details.
 Features
 --------
 - Customizable spaceship.
+- Particle engine.
 - Six unique experience based weapons with three levels, all
   having unique sounds, movements and power-ups.
 - Five different shields.
