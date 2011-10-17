@@ -448,6 +448,16 @@ bool load_textures(void)
     texture.particle_013.load_image("data/textures/particles/particle_013.png",texture_count);texture_count++;
     texture.particle_014.load_image("data/textures/particles/particle_014.png",texture_count);texture_count++;
     texture.particle_015.load_image("data/textures/particles/particle_015.png",texture_count);texture_count++;
+
+    texture.shrapnel_00.load_image("data/textures/shrapnel/shrapnel_00.png",texture_count);texture_count++;
+    texture.shrapnel_01.load_image("data/textures/shrapnel/shrapnel_01.png",texture_count);texture_count++;
+    texture.shrapnel_02.load_image("data/textures/shrapnel/shrapnel_02.png",texture_count);texture_count++;
+    texture.shrapnel_03.load_image("data/textures/shrapnel/shrapnel_03.png",texture_count);texture_count++;
+    texture.shrapnel_04.load_image("data/textures/shrapnel/shrapnel_04.png",texture_count);texture_count++;
+    texture.shrapnel_05.load_image("data/textures/shrapnel/shrapnel_05.png",texture_count);texture_count++;
+    texture.shrapnel_06.load_image("data/textures/shrapnel/shrapnel_06.png",texture_count);texture_count++;
+    texture.shrapnel_07.load_image("data/textures/shrapnel/shrapnel_07.png",texture_count);texture_count++;
+
     game.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
 };
@@ -736,6 +746,15 @@ bool proc_textures(void)
     texture.slider_normal.process();
     texture.slider_highlighted.process();
     texture.resolution_icon.process();
+
+    texture.shrapnel_00.process();
+    texture.shrapnel_01.process();
+    texture.shrapnel_02.process();
+    texture.shrapnel_03.process();
+    texture.shrapnel_04.process();
+    texture.shrapnel_05.process();
+    texture.shrapnel_06.process();
+    texture.shrapnel_07.process();
 };
 
 bool load_fonts(void)
@@ -1048,6 +1067,14 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == texture.slider_highlighted.ref_number) texture.slider_highlighted.draw(r,x,y,z,w,h,angle);
     if (texture_number == texture.resolution_icon.ref_number) texture.resolution_icon.draw(r,x,y,z,w,h,angle);
 
+    if (texture_number == texture.shrapnel_00.ref_number) texture.shrapnel_00.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.shrapnel_01.ref_number) texture.shrapnel_01.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.shrapnel_02.ref_number) texture.shrapnel_02.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.shrapnel_03.ref_number) texture.shrapnel_03.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.shrapnel_04.ref_number) texture.shrapnel_04.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.shrapnel_05.ref_number) texture.shrapnel_05.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.shrapnel_06.ref_number) texture.shrapnel_06.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.shrapnel_07.ref_number) texture.shrapnel_07.draw(r,x,y,z,w,h,angle);
 
     return(true);
 };

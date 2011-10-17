@@ -36,18 +36,30 @@ extern  game_class       game;
 
 int spawn_explosion(float x_position, float y_position, float size)
 {
-    int  temp_type  = random_cen();
     bool spawn_done = 0;
     int  explosion_num;
+    int  temp_type  = random_cen();//randomize for sound choice.
     if ((temp_type >=   0) && (temp_type <   25)) sound.explosion_001.play();
     if ((temp_type >=  25) && (temp_type <   50)) sound.explosion_002.play();
     if ((temp_type >=  50) && (temp_type <   75)) sound.explosion_006.play();
     if ((temp_type >=  75) && (temp_type <= 100)) sound.explosion_007.play();
-    temp_type  = random_cen();//re-randomize for sprite choice.
     for  (explosion_num = 0; explosion_num < MAX_EXPLOSIONS;explosion_num++)
     {
         if (!spawn_done and !game_o.explosion[explosion_num].active)
         {
+            game_o.explosion[explosion_num].shrapnel.init();
+            game_o.explosion[explosion_num].shrapnel.load("data/configuration/particle_systems/shrapnel.txt");
+            temp_type  = random_cen();//re-randomize for shrapnel choice.
+            game_o.explosion[explosion_num].shrapnel.set_emitter_pos(x_position,y_position,0.01f);
+            if ((temp_type >=   0) && (temp_type <   13)) game_o.explosion[explosion_num].shrapnel.set_emitter_image(texture.shrapnel_00.ref_number);
+            if ((temp_type >=  13) && (temp_type <   25)) game_o.explosion[explosion_num].shrapnel.set_emitter_image(texture.shrapnel_01.ref_number);
+            if ((temp_type >=  25) && (temp_type <   38)) game_o.explosion[explosion_num].shrapnel.set_emitter_image(texture.shrapnel_02.ref_number);
+            if ((temp_type >=  38) && (temp_type <   50)) game_o.explosion[explosion_num].shrapnel.set_emitter_image(texture.shrapnel_03.ref_number);
+            if ((temp_type >=  50) && (temp_type <   63)) game_o.explosion[explosion_num].shrapnel.set_emitter_image(texture.shrapnel_04.ref_number);
+            if ((temp_type >=  63) && (temp_type <   75)) game_o.explosion[explosion_num].shrapnel.set_emitter_image(texture.shrapnel_05.ref_number);
+            if ((temp_type >=  75) && (temp_type <   88)) game_o.explosion[explosion_num].shrapnel.set_emitter_image(texture.shrapnel_06.ref_number);
+            if ((temp_type >=  88) && (temp_type <= 100)) game_o.explosion[explosion_num].shrapnel.set_emitter_image(texture.shrapnel_07.ref_number);
+            temp_type  = random_cen();//re-randomize for sprite choice.
             game_o.explosion[explosion_num].image               = texture.explosion_00.ref_number;
             if ((temp_type >=   0) && (temp_type <  25))
             {
@@ -107,6 +119,7 @@ int kill_explosion(int explosion_num)
     game_o.explosion[explosion_num].x_pos     = 0.0f;
     game_o.explosion[explosion_num].y_pos     = 0.0f;
     game_o.explosion[explosion_num].size      = 0.0f;
+    game_o.explosion[explosion_num].shrapnel.kill();
     return(0);
 };
 
@@ -124,6 +137,7 @@ int init_explosions(void)
         game_o.explosion[count].x_pos             = 0.0f;
         game_o.explosion[count].y_pos             = 0.0f;
         game_o.explosion[count].size              = 0.0f;
+        game_o.explosion[count].shrapnel.init();
     }
     return(0);
 };
@@ -132,6 +146,7 @@ int proccess_explosions(void)
 {
     for (int count =0;count < MAX_EXPLOSIONS;count++)
     {
+        game_o.explosion[count].shrapnel.process();
         if(game_o.explosion[count].active)
         {
             game_o.explosion[count].x_pos -= (game.background.get_scroll_x(1)*2);
@@ -156,6 +171,7 @@ void draw_explosions(void)
     float z_pos;
     for (int count =MAX_EXPLOSIONS;count >=0;count--)
     {
+        game_o.explosion[count].shrapnel.draw();
         z_pos = 0.001f + (0.0001*count);
         if (game_o.explosion[count].active)
         {

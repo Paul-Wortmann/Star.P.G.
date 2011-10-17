@@ -148,7 +148,6 @@ int main(int argc, char *argv[])
         if (game.config.mouse_autohide) SDL_ShowCursor(SDL_DISABLE);
         else SDL_ShowCursor(SDL_ENABLE);
         proc_textures();
-        proc_emitters();
         events_process();
         if (game.status_quit_active) quit = 1;
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

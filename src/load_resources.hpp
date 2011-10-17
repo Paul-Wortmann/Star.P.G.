@@ -426,6 +426,15 @@ struct texture_type
     texture_class particle_013;
     texture_class particle_014;
     texture_class particle_015;
+
+    texture_class shrapnel_00;
+    texture_class shrapnel_01;
+    texture_class shrapnel_02;
+    texture_class shrapnel_03;
+    texture_class shrapnel_04;
+    texture_class shrapnel_05;
+    texture_class shrapnel_06;
+    texture_class shrapnel_07;
 };
 
 struct font_type

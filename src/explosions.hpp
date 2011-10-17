@@ -30,18 +30,19 @@ const int   MAX_EXPLOSIONS     = 32;
 struct explosion_class
 {
     public:
-    bool  active;
-    int   image;
-    int   frame;
-    int   frame_max;
-    float frame_delay;
-    float frame_delay_count;
-    float frame_delay_max;
-    float x_pos;
-    float y_pos;
-    float width;
-    float height;
-    float size;
+    bool           active;
+    int            image;
+    int            frame;
+    int            frame_max;
+    float          frame_delay;
+    float          frame_delay_count;
+    float          frame_delay_max;
+    float          x_pos;
+    float          y_pos;
+    float          width;
+    float          height;
+    float          size;
+    emitter_class  shrapnel;
 };
 
 int  spawn_explosion    (float x_position, float y_position, float size);

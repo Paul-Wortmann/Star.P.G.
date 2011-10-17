@@ -45,6 +45,8 @@ class particle_class
         float acceleration_y;
         float acceleration_z;
         float direction; //2D
+        float rotation_rate;
+        float rotation;
         float force_x;
         float force_y;
         float force_z;
@@ -54,6 +56,7 @@ class particle_class
         float TTL;
         float TTL_rate;
         void  init(void);
+        void  kill(void);
         void  process(void);
 };
 
@@ -80,6 +83,8 @@ class emitter_class
         float           velocity_y;
         float           velocity_z;
         float           direction;
+        float           rotation_rate;
+        float           rotation;
         int             spray_radius;
         float           force_x;
         float           force_y;
@@ -103,28 +108,18 @@ class emitter_class
         void            set_emitter_state    (bool  active, bool always_on, int ttl);
         void            set_emitter_image    (int i_ref);
         void            set_emitter_image    (int i_ref, float w  , float h  );
+        void            set_emitter_rotation (float r  , float rr );
         void            set_emitter_movement (float vm , float ax , float ay , float az , float dr , int   sr , float fx , float fy , float fz );
         void            set_emitter_rates    (int   sf , int   sfc, float pr , int sq);
         void            set_emitter_color    (float csr, float csg, float csb, float cer, float ceg, float ceb);
         void            set_emitter_velocity (float vx , float vy , float vz );
         void            set_emitter_size     (float sx , float sy , float sz );
         void            init(void);
+        void            kill(void);
         void            process(void);
         void            draw(void);
         void            load(std::string file_name);
 };
-
-void init_emitters(void);
-void proc_emitters(void);
-void draw_emitters(void);
-int  spawn_emitter(void);
-void set_emitter_pos      (int emitter_num, float x  , float y  , float z  );
-void set_emitter_state    (int emitter_num, bool  active, bool always_on, int ttl);
-void set_emitter_image    (int emitter_num, int i_ref, float w  , float h  );
-void set_emitter_movement (int emitter_num, float vm , float ax , float ay , float az , float dr , int   sr , float fx , float fy , float fz );
-void set_emitter_rates    (int emitter_num, int   sf , int   sfc, float pr , int sq);
-void set_emitter_color    (int emitter_num, float csr, float csg, float csb, float cer, float ceg, float ceb);
-void set_emitter_velocity (int emitter_num, float vx , float vy , float vz );
 
 #endif //PARTICLES_H
 
