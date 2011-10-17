@@ -246,6 +246,7 @@ void  emitter_class::process(void)
         {
             emitter_class::TTL_count++;
             if (emitter_class::TTL_count > TTL) emitter_class::active = false;
+            emitter_class::TTL_count = 0;
         }
         else emitter_class::active = true;
         emitter_class::spawn_frequency_count++;
@@ -253,6 +254,7 @@ void  emitter_class::process(void)
         {
             emitter_class::spawn_frequency_count = 0;
             int spawned = emitter_class::spawn_quantity;
+            if (emitter_class::active == false) spawned = 0;
             for (int particle_count = 0; particle_count < MAX_PARTICLES; particle_count++)
             {
                 if (spawned > 0)
@@ -267,8 +269,9 @@ void  emitter_class::process(void)
                               ry = (ry*rand()/(RAND_MAX + 1.0)) - (ry/2);
                         float rz = emitter_class::size_z;
                               rz = (rz*rand()/(RAND_MAX + 1.0)) - (rz/2);
+                        emitter_class::particle[particle_count].rotation       = emitter_class::rotation_rate + ((rand()% 200)/10000); // add random!!! 1%?
                         emitter_class::particle[particle_count].rotation_rate  = emitter_class::rotation_rate + ((rand()% 200)/10000); // add random!!! 1%?
-                        if (rand()%100 > 50) emitter_class::particle[particle_count].rotation_rate * -1;
+                        if (rand()%100 > 50) emitter_class::particle[particle_count].rotation_rate *= -1;
                         emitter_class::particle[particle_count].pos_x          = emitter_class::pos_x + rx + ((rand()% 200)/10000); // add random!!! 1%?
                         emitter_class::particle[particle_count].pos_y          = emitter_class::pos_y + ry + ((rand()% 200)/10000); // add random!!! 1%?
                         emitter_class::particle[particle_count].pos_z          = emitter_class::pos_z + rz + ((rand()% 200)/10000); // add random!!! 1%?
@@ -332,6 +335,15 @@ void  emitter_class::draw(void)
                 if (emitter_class::image_reference == texture.particle_013.ref_number) texture.particle_013.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,emitter_class::particle[particle_count].rotation,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
                 if (emitter_class::image_reference == texture.particle_014.ref_number) texture.particle_014.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,emitter_class::particle[particle_count].rotation,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
                 if (emitter_class::image_reference == texture.particle_015.ref_number) texture.particle_015.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,emitter_class::particle[particle_count].rotation,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+
+                if (emitter_class::image_reference == texture.shrapnel_00.ref_number) texture.shrapnel_00.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,emitter_class::particle[particle_count].rotation,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.shrapnel_01.ref_number) texture.shrapnel_01.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,emitter_class::particle[particle_count].rotation,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.shrapnel_02.ref_number) texture.shrapnel_02.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,emitter_class::particle[particle_count].rotation,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.shrapnel_03.ref_number) texture.shrapnel_03.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,emitter_class::particle[particle_count].rotation,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.shrapnel_04.ref_number) texture.shrapnel_04.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,emitter_class::particle[particle_count].rotation,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.shrapnel_05.ref_number) texture.shrapnel_05.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,emitter_class::particle[particle_count].rotation,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.shrapnel_06.ref_number) texture.shrapnel_06.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,emitter_class::particle[particle_count].rotation,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
+                if (emitter_class::image_reference == texture.shrapnel_07.ref_number) texture.shrapnel_07.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,emitter_class::particle[particle_count].rotation,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
             }
         };
     };
@@ -462,6 +474,14 @@ void  emitter_class::load(std::string file_name)
                     {
                         emitter_class::direction = temp_float;
                     }
+                    if (temp_string_key == "Rotation")
+                    {
+                        emitter_class::rotation = temp_float;
+                    }
+                    if (temp_string_key == "Rotation_Rate")
+                    {
+                        emitter_class::rotation_rate = temp_float;
+                    }
                     if (temp_string_key == "Spray_Radius")
                     {
                         emitter_class::spray_radius = (int)temp_float;
@@ -547,3 +567,7 @@ void  emitter_class::load(std::string file_name)
     emitter_class::color_rate_g = (emitter_class::color_start_g - emitter_class::color_end_g) / (1.0f / emitter_class::particle_TTL_rate);
     emitter_class::color_rate_b = (emitter_class::color_start_b - emitter_class::color_end_b) / (1.0f / emitter_class::particle_TTL_rate);
 };
+
+
+
+

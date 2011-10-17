@@ -48,9 +48,9 @@ int spawn_explosion(float x_position, float y_position, float size)
         if (!spawn_done and !game_o.explosion[explosion_num].active)
         {
             game_o.explosion[explosion_num].shrapnel.init();
-            game_o.explosion[explosion_num].shrapnel.load("data/configuration/particle_systems/shrapnel.txt");
+            game_o.explosion[explosion_num].shrapnel.load("data/configuration/particle_systems/shrapnel_00.txt");
             temp_type  = random_cen();//re-randomize for shrapnel choice.
-            game_o.explosion[explosion_num].shrapnel.set_emitter_pos(x_position,y_position,0.01f);
+            game_o.explosion[explosion_num].shrapnel.set_emitter_pos(x_position,y_position,0.001f);
             if ((temp_type >=   0) && (temp_type <   13)) game_o.explosion[explosion_num].shrapnel.set_emitter_image(texture.shrapnel_00.ref_number);
             if ((temp_type >=  13) && (temp_type <   25)) game_o.explosion[explosion_num].shrapnel.set_emitter_image(texture.shrapnel_01.ref_number);
             if ((temp_type >=  25) && (temp_type <   38)) game_o.explosion[explosion_num].shrapnel.set_emitter_image(texture.shrapnel_02.ref_number);
@@ -157,8 +157,9 @@ int proccess_explosions(void)
                 game_o.explosion[count].frame++;
                 if (game_o.explosion[count].frame > game_o.explosion[count].frame_max)
                 {
-                    game_o.explosion[count].active  = false;
-                    game_o.explosion[count].frame   = 0;
+                    game_o.explosion[count].shrapnel.active  = false;
+                    game_o.explosion[count].active           = false;
+                    game_o.explosion[count].frame            = 0;
                 }
             }
         }
