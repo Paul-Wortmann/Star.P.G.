@@ -641,10 +641,11 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1318867676 source:c:\_git_\star.p.g\src\game.cpp
+1319457493 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"core/core.hpp"
 	"load_resources.hpp"
+	"menu_system.hpp"
 	"game.hpp"
 	"misc.hpp"
 
@@ -680,7 +681,7 @@
 
 1309768119 c:\_git_\star.p.g\src\levels.h
 
-1318865494 source:c:\_git_\star.p.g\src\main.cpp
+1319457443 source:c:\_git_\star.p.g\src\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -1170,7 +1171,7 @@
 
 1317473593 c:\_git_\star.p.g\src\menu_system.hpp
 
-1317999668 source:c:\_git_\star.p.g\src\menu_system.cpp
+1319458660 source:c:\_git_\star.p.g\src\menu_system.cpp
 	"menu_system.hpp"
 	"game.hpp"
 	"core/core.hpp"
@@ -1551,7 +1552,7 @@
 1317473395 c:\_git_\star.p.g\src\core\font.hpp
 	<SDL/SDL_ttf.h>
 
-1317473426 c:\_git_\star.p.g\src\core\menu.hpp
+1319456103 c:\_git_\star.p.g\src\core\menu.hpp
 	<string>
 
 1317473395 c:\_git_\star.p.g\src\core\io.hpp
@@ -1604,7 +1605,7 @@
 	<stdio.h>
 	"log.hpp"
 
-1317473359 source:c:\_git_\star.p.g\src\core\menu.cpp
+1319456105 source:c:\_git_\star.p.g\src\core\menu.cpp
 	"menu.hpp"
 	"core.hpp"
 	"../load_resources.hpp"

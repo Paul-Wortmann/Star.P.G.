@@ -1332,6 +1332,9 @@ int process_menu(void)
                 game.io.escape               = false;
                 game.music_next_track        = true;
                 game.log.File_Write("Entering main menu, from game over menu. - button 1 selected.");
+                main_menu.set_keyboard_delay_count(0);
+                main_menu.set_mouse_delay_count(0);
+                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
             break;
             case 65533://menu choice changed
                 sound.menu_move.play();
@@ -1347,6 +1350,9 @@ int process_menu(void)
                 game.io.escape               = false;
                 game.music_next_track        = true;
                 game.log.File_Write("Entering main menu, from game over menu. - button 1 selected.");
+                main_menu.set_keyboard_delay_count(0);
+                main_menu.set_mouse_delay_count(0);
+                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
             break;
             case 65535://Return to main menu
                 sound.menu_select.play();
@@ -1359,6 +1365,9 @@ int process_menu(void)
                 game.io.escape               = false;
                 game.music_next_track        = true;
                 game.log.File_Write("Entering main menu, from game over menu. - button 1 selected.");
+                main_menu.set_keyboard_delay_count(0);
+                main_menu.set_mouse_delay_count(0);
+                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
             break;
             default:
             break;
@@ -1403,6 +1412,13 @@ int process_menu(void)
                     game.background.set_active( 3,false);
                     game.background.set_active( 4,false);
                     game.background.set_movement_type(BOUNCE);
+                    SDL_WarpMouse(game.graphics.gl_to_res(outro_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(outro_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                    game.io.space  = false;
+                    game.io.enter  = false;
+                    game.io.select = false;
+                    main_menu.set_keyboard_delay(128);
+                    main_menu.set_keyboard_delay_count(0);
+                    main_menu.set_mouse_delay_count(0);
                     game.log.File_Write("Player just completed the game, proceeding to Outro!");
                 }
                 else
@@ -1449,6 +1465,13 @@ int process_menu(void)
                     game.background.set_active( 3,false);
                     game.background.set_active( 4,false);
                     game.background.set_movement_type(BOUNCE);
+                    SDL_WarpMouse(game.graphics.gl_to_res(outro_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(outro_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                    game.io.space  = false;
+                    game.io.enter  = false;
+                    game.io.select = false;
+                    main_menu.set_keyboard_delay(128);
+                    main_menu.set_keyboard_delay_count(0);
+                    main_menu.set_mouse_delay_count(0);
                     game.log.File_Write("Player just completed the game, proceeding to Outro!");
                 }
                 else
@@ -1492,6 +1515,13 @@ int process_menu(void)
                     game.background.set_active( 3,false);
                     game.background.set_active( 4,false);
                     game.background.set_movement_type(BOUNCE);
+                    SDL_WarpMouse(game.graphics.gl_to_res(outro_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(outro_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                    game.io.space  = false;
+                    game.io.enter  = false;
+                    game.io.select = false;
+                    main_menu.set_keyboard_delay(128);
+                    main_menu.set_keyboard_delay_count(0);
+                    main_menu.set_mouse_delay_count(0);
                     game.log.File_Write("Player just completed the game, proceeding to Outro!");
                 }
                 else
@@ -1526,6 +1556,13 @@ int process_menu(void)
                 game.nlvl_active             = false;
                 game.io.escape               = false;
                 game.music_next_track        = true;
+                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                game.io.space  = false;
+                game.io.enter  = false;
+                game.io.select = false;
+                main_menu.set_keyboard_delay(128);
+                main_menu.set_keyboard_delay_count(0);
+                main_menu.set_mouse_delay_count(0);
                 game.log.File_Write("Entering main menu, from outro menu. - button 1 selected.");
             break;
             case 65533://menu choice changed
@@ -1542,6 +1579,13 @@ int process_menu(void)
                 game.nlvl_active             = false;
                 game.io.escape               = false;
                 game.music_next_track        = true;
+                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                game.io.space  = false;
+                game.io.enter  = false;
+                game.io.select = false;
+                main_menu.set_keyboard_delay(128);
+                main_menu.set_keyboard_delay_count(0);
+                main_menu.set_mouse_delay_count(0);
                 game.log.File_Write("Entering main menu, from outro menu. - button 1 selected.");
             break;
             case 65535://Return to main menu
@@ -1555,6 +1599,13 @@ int process_menu(void)
                 game.nlvl_active             = false;
                 game.io.escape               = false;
                 game.music_next_track        = true;
+                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                game.io.space  = false;
+                game.io.enter  = false;
+                game.io.select = false;
+                main_menu.set_keyboard_delay(128);
+                main_menu.set_keyboard_delay_count(0);
+                main_menu.set_mouse_delay_count(0);
                 game.log.File_Write("Entering main menu, from outro menu. - button 1 selected.");
             break;
             default:
@@ -1575,6 +1626,13 @@ int process_menu(void)
                 game.io.escape        = false;
                 game.io.select        = false;
                 game.io.pause         = false;
+                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                game.io.space  = false;
+                game.io.enter  = false;
+                game.io.select = false;
+                main_menu.set_keyboard_delay(128);
+                main_menu.set_keyboard_delay_count(0);
+                main_menu.set_mouse_delay_count(0);
                 game.log.File_Write("Entering game menu, from pause menu. - button 1 selected.");
             break;
             case 65533://menu choice changed
@@ -1587,6 +1645,13 @@ int process_menu(void)
                 game.io.escape        = false;
                 game.io.select        = false;
                 game.io.pause         = false;
+                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                game.io.space  = false;
+                game.io.enter  = false;
+                game.io.select = false;
+                main_menu.set_keyboard_delay(128);
+                main_menu.set_keyboard_delay_count(0);
+                main_menu.set_mouse_delay_count(0);
                 game.log.File_Write("Entering game menu, from pause menu. - button 1 selected.");
             break;
             case 65535://Return to game
@@ -1596,6 +1661,13 @@ int process_menu(void)
                 game.io.escape        = false;
                 game.io.select        = false;
                 game.io.pause         = false;
+                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                game.io.space  = false;
+                game.io.enter  = false;
+                game.io.select = false;
+                main_menu.set_keyboard_delay(128);
+                main_menu.set_keyboard_delay_count(0);
+                main_menu.set_mouse_delay_count(0);
                 game.log.File_Write("Entering game menu, from pause menu. - button 1 selected.");
             break;
             default:

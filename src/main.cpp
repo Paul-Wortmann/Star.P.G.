@@ -46,6 +46,10 @@ extern menu_type         menu;
 extern game_type         game_o;
 extern game_class        game;
 extern TTF_Font         *font;
+extern menu_class        pause_menu;
+extern menu_class        game_over_menu;
+extern menu_class        next_level_menu;
+extern menu_class        outro_menu;
 
 const char App_Name[] = ("Star.P.G V1.0 - www.physhexgames.co.nr");
 const char App_Icon[] = "data/icon.bmp";
@@ -224,6 +228,7 @@ int main(int argc, char *argv[])
                 game.background.set_active( 3, false);
                 game.background.set_active( 4, false);
                 game.background.set_movement_type(BOUNCE);
+                SDL_WarpMouse(game.graphics.gl_to_res(game_over_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(game_over_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
                 game.log.File_Write("User terminated due to insufficient health...better luck next time buddy!");
             }
         if (game.io.escape)
@@ -254,16 +259,19 @@ int main(int argc, char *argv[])
                 game_o.number_bombs--;
                 use_bomb_powerup();
                 game_o.bomb_delay_count = 0;
+                if (!game_o.rumble.active) sound.explosion_001.play();
+                if (!game_o.rumble.active) game_o.rumble.start(); // shake the screen about.
             }
         }
         if (game.io.pause)
-              {
-                 game.game_paused = true;
-                 game.game_active = false;
-                 game_o.paused.spawn();
-                 game.io.pause    = false;
-                 game.menu_level = 11;
-              };
+        {
+            game_o.paused.spawn();
+            game.game_paused = true;
+            game.game_active = false;
+            game.io.pause    = false;
+            game.menu_level  = 11;
+            SDL_WarpMouse(game.graphics.gl_to_res(pause_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(pause_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+        };
         //if (game_o.cheats_enabled == true)
         {
             if (game.io.key_0) game_o.victory_kills = game_o.level_kills;  //complete level

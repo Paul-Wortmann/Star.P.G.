@@ -7,7 +7,7 @@ About
 -----
 Star.P.G. is an arcade style, side scrolling shooter.
 
-It was just supposed to be a one month game project...now its almost a year in the making. :P
+It was just supposed to be a one month game project...now it is over a year in the making. :P
 Star.P.G. is a personal project, I never intended or for that matter wish for help on the code for this game. 
 For me it is an enjoyable experience writing the code and learning from it.
 If you are interested in modifying the code, you are welcome to fork my game and make a derivative from it. (I think after V1.0 I will be open to contributions)
@@ -56,8 +56,8 @@ More information can be found in the changelog.txt file.
 
 Compiling
 ---------
-Included are the project files for usage with the Code::Blocks IDE.
-Required are also the SDL librarys.
+Included are the project files for use with the Code::Blocks IDE. (http://www.codeblocks.org/)
+Also required are the SDL librarys.
 
 Usage
 -----
@@ -85,5 +85,11 @@ Contact
 -------
 - Paul Wortmann: physhex@gamil.com
 - Website: http://www.physhexgames.co.nr
+- Downloads: https://sourceforge.net/projects/starpg/
 - Development, bug reports, feature requests and general questions are handled on GitHub: https://github.com/Paul-Wortmann/Star.P.G.
 
+Final words:
+---------
+Although I could continue adding to this game and polishing it further, I have decided to cease working on this game from version 1.0. I may however add to the game in the future or create a sequel....but for now I wish to try my hands at making an Action RPG.
+I hope you enjoy this game as much as I have enjoyed creating it!
+Paul.

@@ -339,6 +339,8 @@ class menu_class
         void  set_button_spacing_auto(void);
         void  set_button_spacing_auto(float button_offset);
         void  set_button_x_pos(float xp);
+        float get_button_x_pos(int button_number);
+        float get_button_y_pos(int button_number);
         float get_menu_x_pos(void);
         void  set_button_y_pos(float yp);
         float get_menu_y_pos(void);
