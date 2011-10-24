@@ -35,7 +35,7 @@
 		<Cursor1 position="908" topLine="0" />
 	</File>
 	<File name="src\core\background.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="908" topLine="0" />
+		<Cursor1 position="906" topLine="21" />
 	</File>
 	<File name="src\core\config.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="5168" topLine="95" />
@@ -73,8 +73,8 @@
 	<File name="src\core\log.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="908" topLine="0" />
 	</File>
-	<File name="src\core\menu.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="85050" topLine="1821" />
+	<File name="src\core\menu.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="100103" topLine="2029" />
 	</File>
 	<File name="src\core\menu.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="15039" topLine="324" />
@@ -137,7 +137,7 @@
 		<Cursor1 position="8648" topLine="0" />
 	</File>
 	<File name="src\explosions.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1411" topLine="17" />
+		<Cursor1 position="1036" topLine="17" />
 	</File>
 	<File name="src\game.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1240" topLine="21" />
@@ -193,10 +193,10 @@
 	<File name="src\projectiles.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1531" topLine="27" />
 	</File>
-	<File name="src\save_data.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\save_data.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="908" topLine="0" />
 	</File>
-	<File name="src\save_data.hpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\save_data.hpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="908" topLine="0" />
 	</File>
 	<File name="src\screen_rumble.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

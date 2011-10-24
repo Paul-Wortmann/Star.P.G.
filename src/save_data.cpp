@@ -120,7 +120,18 @@ void update_save_data(void)
     }
     for (int count = 0; count <= MAX_EXPLOSIONS; count++)
     {
-        save_data.explosion[count] = game_o.explosion[count];
+        save_data.explosion[count].active            = game_o.explosion[count].active;
+        save_data.explosion[count].image             = game_o.explosion[count].image;
+        save_data.explosion[count].frame             = game_o.explosion[count].frame;
+        save_data.explosion[count].frame_max         = game_o.explosion[count].frame_max;
+        save_data.explosion[count].frame_delay       = game_o.explosion[count].frame_delay;
+        save_data.explosion[count].frame_delay_count = game_o.explosion[count].frame_delay_count;
+        save_data.explosion[count].frame_delay_max   = game_o.explosion[count].frame_delay_max;
+        save_data.explosion[count].x_pos             = game_o.explosion[count].x_pos;
+        save_data.explosion[count].y_pos             = game_o.explosion[count].y_pos;
+        save_data.explosion[count].width             = game_o.explosion[count].width;
+        save_data.explosion[count].height            = game_o.explosion[count].height;
+        save_data.explosion[count].size              = game_o.explosion[count].size;
     }
     for (int count = 0; count <= MAX_POWERUPS; count++)
     {
@@ -150,7 +161,7 @@ void update_save_data(void)
         save_data.background.layer[count].scroll_rate_y = game.background.get_scroll_y(count);
     }
     save_data.background.movement_type = game.background.get_movement_type();
-    save_data.save_version = 1;
+    save_data.save_version = 100;
 };
 
 void update_game_data(void)
@@ -252,7 +263,18 @@ void update_game_data(void)
     }
     for (int count = 0; count <= MAX_EXPLOSIONS; count++)
     {
-        game_o.explosion[count] = save_data.explosion[count];
+        game_o.explosion[count].active            = save_data.explosion[count].active;
+        game_o.explosion[count].image             = save_data.explosion[count].image;
+        game_o.explosion[count].frame             = save_data.explosion[count].frame;
+        game_o.explosion[count].frame_max         = save_data.explosion[count].frame_max;
+        game_o.explosion[count].frame_delay       = save_data.explosion[count].frame_delay;
+        game_o.explosion[count].frame_delay_count = save_data.explosion[count].frame_delay_count;
+        game_o.explosion[count].frame_delay_max   = save_data.explosion[count].frame_delay_max;
+        game_o.explosion[count].x_pos             = save_data.explosion[count].x_pos;
+        game_o.explosion[count].y_pos             = save_data.explosion[count].y_pos;
+        game_o.explosion[count].width             = save_data.explosion[count].width;
+        game_o.explosion[count].height            = save_data.explosion[count].height;
+        game_o.explosion[count].size              = save_data.explosion[count].size;
     }
     for (int count = 0; count <= MAX_POWERUPS; count++)
     {
