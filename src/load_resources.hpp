@@ -33,8 +33,10 @@
 
 struct sound_type
 {
-    sound_class menu_move;
-    sound_class menu_select;
+    sound_class menu_move_00;
+    sound_class menu_move_01;
+    sound_class menu_select_00;
+    sound_class menu_select_01;
     sound_class bullet_001;
     sound_class bullet_002;
     sound_class explosion_001;

@@ -44,17 +44,19 @@ bool load_resources(void)
 bool load_sounds(void)
 {
     int sfx_count = 0;
-    sound.menu_move.load  ("data/sounds/menu_move.wav",sfx_count);  sfx_count++;
-    sound.menu_select.load("data/sounds/menu_select.wav",sfx_count);sfx_count++;
-    sound.bullet_001.load("data/sounds/bullet_001.wav",sfx_count);sfx_count++;
-    sound.bullet_002.load("data/sounds/bullet_002.wav",sfx_count);sfx_count++;
-    sound.explosion_001.load("data/sounds/explosion_001.wav",sfx_count);sfx_count++;
-    sound.explosion_002.load("data/sounds/explosion_002.wav",sfx_count);sfx_count++;
-    sound.explosion_003.load("data/sounds/explosion_003.wav",sfx_count);sfx_count++;
-    sound.explosion_004.load("data/sounds/explosion_004.wav",sfx_count);sfx_count++;
-    sound.explosion_005.load("data/sounds/explosion_005.wav",sfx_count);sfx_count++;
-    sound.explosion_006.load("data/sounds/explosion_006.wav",sfx_count);sfx_count++;
-    sound.explosion_007.load("data/sounds/explosion_007.wav",sfx_count);sfx_count++;
+    sound.menu_move_00.load  ("data/sounds/menu_move_00.wav",sfx_count)  ;sfx_count++;
+    sound.menu_move_01.load  ("data/sounds/menu_move_01.wav",sfx_count)  ;sfx_count++;
+    sound.menu_select_00.load("data/sounds/menu_select_00.wav",sfx_count);sfx_count++;
+    sound.menu_select_01.load("data/sounds/menu_select_01.wav",sfx_count);sfx_count++;
+    sound.bullet_001.load    ("data/sounds/bullet_001.wav",sfx_count)    ;sfx_count++;
+    sound.bullet_002.load    ("data/sounds/bullet_002.wav",sfx_count)    ;sfx_count++;
+    sound.explosion_001.load ("data/sounds/explosion_001.wav",sfx_count) ;sfx_count++;
+    sound.explosion_002.load ("data/sounds/explosion_002.wav",sfx_count) ;sfx_count++;
+    sound.explosion_003.load ("data/sounds/explosion_003.wav",sfx_count) ;sfx_count++;
+    sound.explosion_004.load ("data/sounds/explosion_004.wav",sfx_count) ;sfx_count++;
+    sound.explosion_005.load ("data/sounds/explosion_005.wav",sfx_count) ;sfx_count++;
+    sound.explosion_006.load ("data/sounds/explosion_006.wav",sfx_count) ;sfx_count++;
+    sound.explosion_007.load ("data/sounds/explosion_007.wav",sfx_count) ;sfx_count++;
     sound.projectile_000.load("data/sounds/projectile_000.wav",sfx_count);sfx_count++;
     sound.projectile_001.load("data/sounds/projectile_001.wav",sfx_count);sfx_count++;
     sound.projectile_002.load("data/sounds/projectile_002.wav",sfx_count);sfx_count++;

@@ -614,7 +614,7 @@ int proccess_player_bullets(void)
                      game_o.kills += 1;
                      game_o.level_kills += 1;
                   }
-                 else sound.menu_move.play();
+                 else sound.menu_move_00.play();
                }
                for (int npc_bullet_num =0;npc_bullet_num < MAX_BULLETS;npc_bullet_num++) // check player bullets / npc bullet collisions...
                {

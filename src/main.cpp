@@ -216,7 +216,7 @@ int main(int argc, char *argv[])
             }
             if (game_o.player.health < 0)
             {
-                sound.menu_select.play();
+                sound.menu_select_00.play();
                 game.game_active             = false;
                 game.game_resume             = false;
                 game.pdie_active             = true;
@@ -233,7 +233,7 @@ int main(int argc, char *argv[])
             }
         if (game.io.escape)
         {
-            sound.menu_select.play();
+            sound.menu_select_01.play();
             game.music_next_track        = true;
             game.game_active             = false;
             game.menu_level              = 1;

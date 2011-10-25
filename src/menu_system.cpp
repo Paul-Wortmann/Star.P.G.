@@ -433,29 +433,29 @@ int process_menu(void)
         switch (activated_button)
         {
             case 1://Star Map
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 2;
                 game.log.File_Write("Entering 'Star Map' menu.");
             break;
             case 2://Customize Starship
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 3;
                 game.log.File_Write("Entering 'Customize Starship' menu.");
             break;
             case 3://Achievements
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 4;
                 game.log.File_Write("Entering 'Achievements' menu.");
             break;
             case 4://Load Game
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 5;
                 game.log.File_Write("Entering 'Load Game' menu.");
             break;
             case 5://Save Game
                 if (game.game_resume)
                 {
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                     game.menu_level = 6;
                     game.log.File_Write("Entering 'Save Game' menu.");
                 }
@@ -463,7 +463,7 @@ int process_menu(void)
             case 6://Resume Game
                 if (game.game_resume)
                 {
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                     game.music_next_track = true;
                     game.game_active      = true;
                     game.menu_active      = false;
@@ -471,28 +471,28 @@ int process_menu(void)
                 }
             break;
             case 7://Options
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 7;
                 game.log.File_Write("Entering 'Options' menu.");
             break;
             case 8://NA
             break;
             case 9://Quit Game
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.status_quit_active = true;
                 game.log.File_Write("User terminating game - 'Quit Game' selected!");
             break;
             case 65533://only move no select.
-                sound.menu_move.play();
+                sound.menu_move_01.play();
             break;
             case 65534:// escape pressed on keyboard.
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.status_quit_active = true;
                 game.io.escape               = false;
                 game.log.File_Write("User terminating game - keyboard escape pressed!");
             break;
             case 65535:// close button clicked.
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.status_quit_active = true;
                 game.log.File_Write("User terminating game - clicked escape button!");
             break;
@@ -535,7 +535,7 @@ int process_menu(void)
             case 101://Choice 1 selected
                 if (!game_o.level_locked[star_map_menu.get_button_choice_position(1) + 0 -1])
                 {
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                     game.music_next_track = true;
                     game_o.level = star_map_menu.get_button_choice_position(1) + 0 -1;
                     init_game_level(game_o.level);
@@ -547,7 +547,7 @@ int process_menu(void)
             case 102://Choice 2 selected
                 if (!game_o.level_locked[star_map_menu.get_button_choice_position(1) + 1 -1])
                 {
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                     game.music_next_track = true;
                     game_o.level = star_map_menu.get_button_choice_position(1) + 1 -1;
                     init_game_level(game_o.level);
@@ -559,7 +559,7 @@ int process_menu(void)
             case 103://Choice 3 selected
                 if (!game_o.level_locked[star_map_menu.get_button_choice_position(1) + 2 -1])
                 {
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                     game.music_next_track = true;
                     game_o.level = star_map_menu.get_button_choice_position(1) + 2 -1;
                     init_game_level(game_o.level);
@@ -571,7 +571,7 @@ int process_menu(void)
             case 104://Choice 4 selected
                 if (!game_o.level_locked[star_map_menu.get_button_choice_position(1) + 3 -1])
                 {
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                     game.music_next_track = true;
                     game_o.level = star_map_menu.get_button_choice_position(1) + 3 -1;
                     init_game_level(game_o.level);
@@ -583,7 +583,7 @@ int process_menu(void)
             case 105://Choice 5 selected
                 if (!game_o.level_locked[star_map_menu.get_button_choice_position(1) + 4 -1])
                 {
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                     game.music_next_track = true;
                     game_o.level = star_map_menu.get_button_choice_position(1) + 4 -1;
                     init_game_level(game_o.level);
@@ -601,21 +601,21 @@ int process_menu(void)
                 if (star_map_menu.get_button_choice_position(1) >= star_map_menu.get_number_of_choices(1)-(star_map_menu.get_number_of_visible_choices(1)-1)) star_map_menu.set_button_choice_position(1,star_map_menu.get_number_of_choices(1)-(star_map_menu.get_number_of_visible_choices(1)-1));
             break;
             case 3://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.log.File_Write("Entering main menu, from Star_Map menu. - button selected.");
             break;
             case 65533://menu choice changed
-                sound.menu_move.play();
+                sound.menu_move_01.play();
             break;
             case 65534://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.io.escape               = false;
                 game.log.File_Write("Entering main menu, from Star_Map menu. - escape preses.");
             break;
             case 65535://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.log.File_Write("Entering main menu, from Star_Map menu. - button clicked.");
             break;
@@ -659,7 +659,7 @@ int process_menu(void)
                 if (game_o.player.front_weapon != customize_starship_menu.get_button_choice_position(1) + 0 -2)
                 {
                     game_o.player.front_weapon = customize_starship_menu.get_button_choice_position(1) + 0 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 102://Choice 2 selected
@@ -667,7 +667,7 @@ int process_menu(void)
                  && (game_o.player.front_weapon != customize_starship_menu.get_button_choice_position(1) + 1 -2))
                 {
                     game_o.player.front_weapon = customize_starship_menu.get_button_choice_position(1) + 1 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 103://Choice 3 selected
@@ -675,7 +675,7 @@ int process_menu(void)
                  && (game_o.player.front_weapon != customize_starship_menu.get_button_choice_position(1) + 2 -2))
                 {
                     game_o.player.front_weapon = customize_starship_menu.get_button_choice_position(1) + 2 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 104://Choice 4 selected
@@ -683,7 +683,7 @@ int process_menu(void)
                  && (game_o.player.front_weapon != customize_starship_menu.get_button_choice_position(1) + 3 -2))
                 {
                     game_o.player.front_weapon = customize_starship_menu.get_button_choice_position(1) + 3 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 105://Choice 5 selected
@@ -691,14 +691,14 @@ int process_menu(void)
                  && (game_o.player.front_weapon != customize_starship_menu.get_button_choice_position(1) + 4 -2))
                 {
                     game_o.player.front_weapon = customize_starship_menu.get_button_choice_position(1) + 4 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 201://Choice 1 selected
                 if (game_o.player.side_weapon != customize_starship_menu.get_button_choice_position(2) + 0 -2)
                 {
                     game_o.player.side_weapon = customize_starship_menu.get_button_choice_position(2) + 0 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 202://Choice 2 selected
@@ -706,7 +706,7 @@ int process_menu(void)
                  && (game_o.player.side_weapon != customize_starship_menu.get_button_choice_position(2) + 1 -2))
                 {
                     game_o.player.side_weapon = customize_starship_menu.get_button_choice_position(2) + 1 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 203://Choice 3 selected
@@ -714,7 +714,7 @@ int process_menu(void)
                  && (game_o.player.side_weapon != customize_starship_menu.get_button_choice_position(2) + 2 -2))
                 {
                     game_o.player.side_weapon = customize_starship_menu.get_button_choice_position(2) + 2 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 204://Choice 4 selected
@@ -722,7 +722,7 @@ int process_menu(void)
                  && (game_o.player.side_weapon != customize_starship_menu.get_button_choice_position(2) + 3 -2))
                 {
                     game_o.player.side_weapon = customize_starship_menu.get_button_choice_position(2) + 3 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 205://Choice 5 selected
@@ -730,14 +730,14 @@ int process_menu(void)
                  && (game_o.player.side_weapon != customize_starship_menu.get_button_choice_position(2) + 4 -2))
                 {
                     game_o.player.side_weapon = customize_starship_menu.get_button_choice_position(2) + 4 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 301://Choice 1 selected
                 if (game_o.player.front_shield != customize_starship_menu.get_button_choice_position(3) + 0 -2)
                 {
                     game_o.player.front_shield = customize_starship_menu.get_button_choice_position(3) + 0 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 302://Choice 2 selected
@@ -745,7 +745,7 @@ int process_menu(void)
                  && (game_o.player.front_shield != customize_starship_menu.get_button_choice_position(3) + 1 -2))
                 {
                     game_o.player.front_shield = customize_starship_menu.get_button_choice_position(3) + 1 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 303://Choice 3 selected
@@ -753,7 +753,7 @@ int process_menu(void)
                  && (game_o.player.front_shield != customize_starship_menu.get_button_choice_position(3) + 2 -2))
                 {
                     game_o.player.front_shield = customize_starship_menu.get_button_choice_position(3) + 2 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 304://Choice 4 selected
@@ -761,7 +761,7 @@ int process_menu(void)
                  && (game_o.player.front_shield != customize_starship_menu.get_button_choice_position(3) + 3 -2))
                 {
                     game_o.player.front_shield = customize_starship_menu.get_button_choice_position(3) + 3 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 305://Choice 5 selected
@@ -769,14 +769,14 @@ int process_menu(void)
                  && (game_o.player.front_shield != customize_starship_menu.get_button_choice_position(3) + 4 -2))
                 {
                     game_o.player.front_shield = customize_starship_menu.get_button_choice_position(3) + 4 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 401://Choice 1 selected
                 if (game_o.player.thrusters != customize_starship_menu.get_button_choice_position(4) + 0 -2)
                 {
                     game_o.player.thrusters = customize_starship_menu.get_button_choice_position(4) + 0 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 402://Choice 2 selected
@@ -784,7 +784,7 @@ int process_menu(void)
                  && (game_o.player.thrusters != customize_starship_menu.get_button_choice_position(4) + 1 -2))
                 {
                     game_o.player.thrusters = customize_starship_menu.get_button_choice_position(4) + 1 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 403://Choice 3 selected
@@ -792,7 +792,7 @@ int process_menu(void)
                  && (game_o.player.thrusters != customize_starship_menu.get_button_choice_position(4) + 2 -2))
                 {
                     game_o.player.thrusters = customize_starship_menu.get_button_choice_position(4) + 2 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 404://Choice 4 selected
@@ -800,7 +800,7 @@ int process_menu(void)
                  && (game_o.player.thrusters != customize_starship_menu.get_button_choice_position(4) + 3 -2))
                 {
                     game_o.player.thrusters = customize_starship_menu.get_button_choice_position(4) + 3 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 405://Choice 5 selected
@@ -808,11 +808,11 @@ int process_menu(void)
                  && (game_o.player.thrusters != customize_starship_menu.get_button_choice_position(4) + 4 -2))
                 {
                     game_o.player.thrusters = customize_starship_menu.get_button_choice_position(4) + 4 -2;
-                    sound.menu_select.play();
+                    sound.menu_select_01.play();
                 }
             break;
             case 7://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.log.File_Write("Entering main menu, from Customize_Starship menu. - button selected.");
             break;
@@ -849,16 +849,16 @@ int process_menu(void)
                 if (customize_starship_menu.get_button_choice_position(4) >= customize_starship_menu.get_number_of_choices(4)-(customize_starship_menu.get_number_of_visible_choices(4)-1)) customize_starship_menu.set_button_choice_position(4,customize_starship_menu.get_number_of_choices(4)-(customize_starship_menu.get_number_of_visible_choices(4)-1));
             break;
             case 65533://menu choice changed
-                sound.menu_move.play();
+                sound.menu_move_01.play();
             break;
             case 65534://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.io.escape               = false;
                 game.log.File_Write("Entering main menu, from Customize_Starship menu. - escape preses.");
             break;
             case 65535://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.log.File_Write("Entering main menu, from Customize_Starship menu. - button clicked.");
             break;
@@ -879,21 +879,21 @@ int process_menu(void)
 
             break;
             case 4://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.log.File_Write("Entering main menu, from Achievements menu. - button selected.");
             break;
             case 65533://menu choice changed
-                sound.menu_move.play();
+                sound.menu_move_01.play();
             break;
             case 65534://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.io.escape               = false;
                 game.log.File_Write("Entering main menu, from Achievements menu. - escape preses.");
             break;
             case 65535://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.log.File_Write("Entering main menu, from Achievements menu. - button clicked.");
             break;
@@ -920,7 +920,7 @@ int process_menu(void)
                         game.menu_active = false;
                         game.log.File_Write("Resuming game");
                         game.music_next_track = true;
-                        sound.menu_select.play();
+                        sound.menu_select_01.play();
                     }
                 }
             break;
@@ -936,7 +936,7 @@ int process_menu(void)
                         game.menu_active = false;
                         game.log.File_Write("Resuming game");
                         game.music_next_track = true;
-                        sound.menu_select.play();
+                        sound.menu_select_01.play();
                     }
                 }
             break;
@@ -952,7 +952,7 @@ int process_menu(void)
                         game.menu_active = false;
                         game.log.File_Write("Resuming game");
                         game.music_next_track = true;
-                        sound.menu_select.play();
+                        sound.menu_select_01.play();
                     }
                 }
             break;
@@ -968,7 +968,7 @@ int process_menu(void)
                         game.menu_active = false;
                         game.log.File_Write("Resuming game");
                         game.music_next_track = true;
-                        sound.menu_select.play();
+                        sound.menu_select_01.play();
                     }
                 }
             break;
@@ -984,7 +984,7 @@ int process_menu(void)
                         game.menu_active = false;
                         game.log.File_Write("Resuming game");
                         game.music_next_track = true;
-                        sound.menu_select.play();
+                        sound.menu_select_01.play();
                     }
                 }
             break;
@@ -1000,7 +1000,7 @@ int process_menu(void)
                         game.menu_active = false;
                         game.log.File_Write("Resuming game");
                         game.music_next_track = true;
-                        sound.menu_select.play();
+                        sound.menu_select_01.play();
                     }
                 }
             break;
@@ -1016,26 +1016,26 @@ int process_menu(void)
                         game.menu_active = false;
                         game.log.File_Write("Resuming game");
                         game.music_next_track = true;
-                        sound.menu_select.play();
+                        sound.menu_select_01.play();
                     }
                 }
             break;
             case 9://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.log.File_Write("Entering main menu, from load menu. - button selected.");
             break;
             case 65533://menu choice changed
-                sound.menu_move.play();
+                sound.menu_move_01.play();
             break;
             case 65534://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.io.escape               = false;
                 game.log.File_Write("Entering main menu, from load menu. - escape preses.");
             break;
             case 65535://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.log.File_Write("Entering main menu, from load menu. - button clicked.");
             break;
@@ -1059,7 +1059,7 @@ int process_menu(void)
                 game.menu_active = false;
                 game.log.File_Write("Resuming game");
                 game.music_next_track = true;
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 load_menu.button[1].set_enabled(true);
             break;
             case 2://Save Slot 2 selected.
@@ -1071,7 +1071,7 @@ int process_menu(void)
                 game.menu_active = false;
                 game.log.File_Write("Resuming game");
                 game.music_next_track = true;
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 load_menu.button[2].set_enabled(true);
             break;
             case 3://Save Slot 3 selected.
@@ -1083,7 +1083,7 @@ int process_menu(void)
                 game.menu_active = false;
                 game.log.File_Write("Resuming game");
                 game.music_next_track = true;
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 load_menu.button[3].set_enabled(true);
             break;
             case 4://Save Slot 4 selected.
@@ -1095,7 +1095,7 @@ int process_menu(void)
                 game.menu_active = false;
                 game.log.File_Write("Resuming game");
                 game.music_next_track = true;
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 load_menu.button[4].set_enabled(true);
             break;
             case 5://Save Slot 5 selected.
@@ -1107,7 +1107,7 @@ int process_menu(void)
                 game.menu_active = false;
                 game.log.File_Write("Resuming game");
                 game.music_next_track = true;
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 load_menu.button[5].set_enabled(true);
             break;
             case 6://Save Slot 6 selected.
@@ -1119,7 +1119,7 @@ int process_menu(void)
                 game.menu_active = false;
                 game.log.File_Write("Resuming game");
                 game.music_next_track = true;
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 load_menu.button[6].set_enabled(true);
             break;
             case 7://Save Slot 7 selected.
@@ -1131,25 +1131,25 @@ int process_menu(void)
                 game.menu_active = false;
                 game.log.File_Write("Resuming game");
                 game.music_next_track = true;
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 load_menu.button[7].set_enabled(true);
             break;
             case 9://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.log.File_Write("Entering main menu, from save menu. - button selected.");
             break;
             case 65533://menu choice changed
-                sound.menu_move.play();
+                sound.menu_move_01.play();
             break;
             case 65534://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.io.escape               = false;
                 game.log.File_Write("Entering main menu, from save menu. - escape preses.");
             break;
             case 65535://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.log.File_Write("Entering main menu, from save menu. - button clicked.");
             break;
@@ -1242,21 +1242,21 @@ int process_menu(void)
                 if (options_menu.get_button_choice_position(3) >= options_menu.get_number_of_choices(3)-(options_menu.get_number_of_visible_choices(3)-1)) options_menu.set_button_choice_position(3,options_menu.get_number_of_choices(3)-(options_menu.get_number_of_visible_choices(3)-1));
             break;
             case 6://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.log.File_Write("Entering main menu, from Options menu. - button selected.");
             break;
             case 65533://menu choice changed
-                sound.menu_move.play();
+                sound.menu_move_01.play();
             break;
             case 65534://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.io.escape               = false;
                 game.log.File_Write("Entering main menu, from Options menu. - escape preses.");
             break;
             case 65535://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level = 1;
                 game.log.File_Write("Entering main menu, from Options menu. - button clicked.");
             break;
@@ -1322,7 +1322,7 @@ int process_menu(void)
         switch (activated_button)
         {
             case 1://Button 1 selected.
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level              = 1;
                 game.menu_active             = true;
                 game.pdie_active             = false;
@@ -1337,10 +1337,10 @@ int process_menu(void)
                 SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
             break;
             case 65533://menu choice changed
-                sound.menu_move.play();
+                sound.menu_move_01.play();
             break;
             case 65534://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level              = 1;
                 game.menu_active             = true;
                 game.pdie_active             = false;
@@ -1355,7 +1355,7 @@ int process_menu(void)
                 SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
             break;
             case 65535://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level              = 1;
                 game.menu_active             = true;
                 game.pdie_active             = false;
@@ -1382,7 +1382,7 @@ int process_menu(void)
         switch (activated_button)
         {
             case 1://Button 1 selected.
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game_o.level++;
                 if (game_o.level > 24) // killed last boss!
                 {
@@ -1432,10 +1432,10 @@ int process_menu(void)
                 game.io.escape   = false;
             break;
             case 65533://menu choice changed
-                sound.menu_move.play();
+                sound.menu_move_01.play();
             break;
             case 65534://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game_o.level++;
                 if (game_o.level > 24) // killed last boss!
                 {
@@ -1485,7 +1485,7 @@ int process_menu(void)
                 game.io.escape   = false;
             break;
             case 65535://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game_o.level++;
                 if (game_o.level > 24) // killed last boss!
                 {
@@ -1546,7 +1546,7 @@ int process_menu(void)
         switch (activated_button)
         {
             case 1://Button 1 selected.
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level              = 1;
                 game.menu_active             = true;
                 game.outr_active             = false;
@@ -1566,10 +1566,10 @@ int process_menu(void)
                 game.log.File_Write("Entering main menu, from outro menu. - button 1 selected.");
             break;
             case 65533://menu choice changed
-                sound.menu_move.play();
+                sound.menu_move_01.play();
             break;
             case 65534://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level              = 1;
                 game.menu_active             = true;
                 game.outr_active             = false;
@@ -1589,7 +1589,7 @@ int process_menu(void)
                 game.log.File_Write("Entering main menu, from outro menu. - button 1 selected.");
             break;
             case 65535://Return to main menu
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.menu_level              = 1;
                 game.menu_active             = true;
                 game.outr_active             = false;
@@ -1620,7 +1620,7 @@ int process_menu(void)
         switch (activated_button)
         {
             case 1://Button 1 selected.
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.game_paused      = false;
                 game.game_active      = true;
                 game.io.escape        = false;
@@ -1636,10 +1636,10 @@ int process_menu(void)
                 game.log.File_Write("Entering game menu, from pause menu. - button 1 selected.");
             break;
             case 65533://menu choice changed
-                sound.menu_move.play();
+                sound.menu_move_01.play();
             break;
             case 65534://Return to game
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.game_paused      = false;
                 game.game_active      = true;
                 game.io.escape        = false;
@@ -1655,7 +1655,7 @@ int process_menu(void)
                 game.log.File_Write("Entering game menu, from pause menu. - button 1 selected.");
             break;
             case 65535://Return to game
-                sound.menu_select.play();
+                sound.menu_select_01.play();
                 game.game_paused      = false;
                 game.game_active      = true;
                 game.io.escape        = false;

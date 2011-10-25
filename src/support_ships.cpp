@@ -490,7 +490,7 @@ void supportship_class::process(bool spawn_bullet)
                             supportship_class::bullet[bullet_count].active = false;
                             supportship_class::bullet[bullet_count].x_pos  = 2.0f;
                             supportship_class::bullet[bullet_count].y_pos  = 2.0f;
-                            sound.menu_move.play();
+                            sound.menu_move_00.play();
                         }
                     }
                 }

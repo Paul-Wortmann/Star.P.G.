@@ -26,16 +26,18 @@ Various graphics resources were created and/or modified with GIMP. (http://www.g
 ---------
   Sound
 ---------
-explosion_006.wav from http://opengameart.org/content/2-explosions (explode.wav)     Sounds (c) by Michel Baradari apollo-music.de
+explosion_006.wav  from http://opengameart.org/content/2-explosions (explode.wav)     Sounds (c) by Michel Baradari apollo-music.de
 
 Licensed under CC BY 3.0 http://creativecommons.org/licenses/by/3.0/
 
 Hosted on opengameart.org
-explosion_006.wav from http://opengameart.org/content/2-explosions (explodemini.wav) Sounds (c) by Michel Baradari apollo-music.de
+explosion_006.wav  from http://opengameart.org/content/2-explosions (explodemini.wav) Sounds (c) by Michel Baradari apollo-music.de
 
 Licensed under CC BY 3.0 http://creativecommons.org/licenses/by/3.0/
 
 Hosted on opengameart.org
+menu_move_01.wav   from http://opengameart.org/content/interface-beeps CC0 Bart Kelsey.
+menu_select_01.wav from http://opengameart.org/content/interface-beeps CC0 Bart Kelsey.
 
 ---------
   Music
