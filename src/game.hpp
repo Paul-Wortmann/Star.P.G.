@@ -44,6 +44,7 @@
 
 struct game_type
 {
+    level_class                 level[MAX_LEVELS];
     debris_class                debris;
     bool                        level_end_rumble;
     rumble_class                rumble;
@@ -59,12 +60,8 @@ struct game_type
     bool                        anc_enabled;
     bool                        fps_enabled;
     int                         exp_rate;
-    int                         level_locked[MAX_LEVELS];
-    int                         level;
-    int                         level_waves;
+    int                         current_level;
     bool                        wave_spawnable;
-    int                         level_npc_type;
-    bool                        level_boss_level;
     int                         score;
     int                         kills;
     int                         level_kills;
@@ -90,7 +87,6 @@ struct game_type
     int                         npc_spawn_rate;
     int                         npc_spawn_rate_count;
     int                         npc_projectile_spawn_rate;
-    wave_class                  wave[MAX_WAVES];
     player_class                player;
     supportship_class           supportship[MAX_SUPPORTSHIPS];
     enemy_type                  enemy[MAX_ENEMYS];

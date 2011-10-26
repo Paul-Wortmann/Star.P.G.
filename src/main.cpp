@@ -126,7 +126,7 @@ int main(int argc, char *argv[])
     init_active_npcs();
     init_npc_bullets();
     init_npcs(0);
-    game_o.level = 0;
+    game_o.current_level = 0;
     game.log.File_Write("Initializing OpenGL...");
     game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
     seed_rand();
@@ -260,7 +260,7 @@ int main(int argc, char *argv[])
                 use_bomb_powerup();
                 game_o.bomb_delay_count = 0;
                 if (!game_o.rumble.active) sound.explosion_001.play();
-                if (!game_o.rumble.active) game_o.rumble.start(); // shake the screen about.
+                if (!game_o.rumble.active) game_o.rumble.start(0.025f,45); // shake the screen about.
             }
         }
         if (game.io.pause)

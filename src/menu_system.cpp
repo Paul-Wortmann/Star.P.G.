@@ -98,31 +98,31 @@ int init_menu   (void)
     star_map_menu.set_number_of_visible_choices(1,5);
     star_map_menu.set_button_choice_position(1,1);
     star_map_menu.set_button_current_choice(1,-100);
-    star_map_menu.set_button_choice_data(1, 1,texture.level_preview_00.ref_number,L"Taranis           ", true,!game_o.level_locked[ 0]);
-    star_map_menu.set_button_choice_data(1, 2,texture.level_preview_01.ref_number,L"Teutates          ", true,!game_o.level_locked[ 1]);
-    star_map_menu.set_button_choice_data(1, 3,texture.level_preview_02.ref_number,L"Esus              ", true,!game_o.level_locked[ 2]);
-    star_map_menu.set_button_choice_data(1, 4,texture.level_preview_03.ref_number,L"Cantidious        ", true,!game_o.level_locked[ 3]);
-    star_map_menu.set_button_choice_data(1, 5,texture.level_preview_04.ref_number,L"Vulcan            ", true,!game_o.level_locked[ 4]);
-    star_map_menu.set_button_choice_data(1, 6,texture.level_preview_05.ref_number,L"Bacchus           ", true,!game_o.level_locked[ 5]);
-    star_map_menu.set_button_choice_data(1, 7,texture.level_preview_06.ref_number,L"Janus             ", true,!game_o.level_locked[ 6]);
-    star_map_menu.set_button_choice_data(1, 8,texture.level_preview_07.ref_number,L"Wrathorn          ", true,!game_o.level_locked[ 7]);
-    star_map_menu.set_button_choice_data(1, 9,texture.level_preview_08.ref_number,L"Tartarus          ", true,!game_o.level_locked[ 8]);
-    star_map_menu.set_button_choice_data(1,10,texture.level_preview_09.ref_number,L"Erebus            ", true,!game_o.level_locked[ 9]);
-    star_map_menu.set_button_choice_data(1,11,texture.level_preview_10.ref_number,L"Nyx               ", true,!game_o.level_locked[10]);
-    star_map_menu.set_button_choice_data(1,12,texture.level_preview_11.ref_number,L"Dediun            ", true,!game_o.level_locked[11]);
-    star_map_menu.set_button_choice_data(1,13,texture.level_preview_12.ref_number,L"Niflheim          ", true,!game_o.level_locked[12]);
-    star_map_menu.set_button_choice_data(1,14,texture.level_preview_13.ref_number,L"Muspelhiem        ", true,!game_o.level_locked[13]);
-    star_map_menu.set_button_choice_data(1,15,texture.level_preview_14.ref_number,L"Hel               ", true,!game_o.level_locked[14]);
-    star_map_menu.set_button_choice_data(1,16,texture.level_preview_15.ref_number,L"Paganite          ", true,!game_o.level_locked[15]);
-    star_map_menu.set_button_choice_data(1,17,texture.level_preview_16.ref_number,L"Pixiu             ", true,!game_o.level_locked[16]);
-    star_map_menu.set_button_choice_data(1,18,texture.level_preview_17.ref_number,L"Xiao              ", true,!game_o.level_locked[17]);
-    star_map_menu.set_button_choice_data(1,19,texture.level_preview_18.ref_number,L"Fuxi              ", true,!game_o.level_locked[18]);
-    star_map_menu.set_button_choice_data(1,20,texture.level_preview_19.ref_number,L"Haxorific         ", true,!game_o.level_locked[19]);
-    star_map_menu.set_button_choice_data(1,21,texture.level_preview_20.ref_number,L"Byakko            ", true,!game_o.level_locked[20]);
-    star_map_menu.set_button_choice_data(1,22,texture.level_preview_21.ref_number,L"Enenra            ", true,!game_o.level_locked[21]);
-    star_map_menu.set_button_choice_data(1,23,texture.level_preview_22.ref_number,L"Tengu             ", true,!game_o.level_locked[22]);
-    star_map_menu.set_button_choice_data(1,24,texture.level_preview_23.ref_number,L"Robonoid          ", true,!game_o.level_locked[23]);
-    star_map_menu.set_button_choice_data(1,25,texture.level_preview_24.ref_number,L"Oyabun            ", true,!game_o.level_locked[24]);
+    star_map_menu.set_button_choice_data(1, 1,texture.level_preview_00.ref_number,L"Taranis           ", true,!game_o.level[ 0].locked);
+    star_map_menu.set_button_choice_data(1, 2,texture.level_preview_01.ref_number,L"Teutates          ", true,!game_o.level[ 1].locked);
+    star_map_menu.set_button_choice_data(1, 3,texture.level_preview_02.ref_number,L"Esus              ", true,!game_o.level[ 2].locked);
+    star_map_menu.set_button_choice_data(1, 4,texture.level_preview_03.ref_number,L"Cantidious        ", true,!game_o.level[ 3].locked);
+    star_map_menu.set_button_choice_data(1, 5,texture.level_preview_04.ref_number,L"Vulcan            ", true,!game_o.level[ 4].locked);
+    star_map_menu.set_button_choice_data(1, 6,texture.level_preview_05.ref_number,L"Bacchus           ", true,!game_o.level[ 5].locked);
+    star_map_menu.set_button_choice_data(1, 7,texture.level_preview_06.ref_number,L"Janus             ", true,!game_o.level[ 6].locked);
+    star_map_menu.set_button_choice_data(1, 8,texture.level_preview_07.ref_number,L"Wrathorn          ", true,!game_o.level[ 7].locked);
+    star_map_menu.set_button_choice_data(1, 9,texture.level_preview_08.ref_number,L"Tartarus          ", true,!game_o.level[ 8].locked);
+    star_map_menu.set_button_choice_data(1,10,texture.level_preview_09.ref_number,L"Erebus            ", true,!game_o.level[ 9].locked);
+    star_map_menu.set_button_choice_data(1,11,texture.level_preview_10.ref_number,L"Nyx               ", true,!game_o.level[10].locked);
+    star_map_menu.set_button_choice_data(1,12,texture.level_preview_11.ref_number,L"Dediun            ", true,!game_o.level[11].locked);
+    star_map_menu.set_button_choice_data(1,13,texture.level_preview_12.ref_number,L"Niflheim          ", true,!game_o.level[12].locked);
+    star_map_menu.set_button_choice_data(1,14,texture.level_preview_13.ref_number,L"Muspelhiem        ", true,!game_o.level[13].locked);
+    star_map_menu.set_button_choice_data(1,15,texture.level_preview_14.ref_number,L"Hel               ", true,!game_o.level[14].locked);
+    star_map_menu.set_button_choice_data(1,16,texture.level_preview_15.ref_number,L"Paganite          ", true,!game_o.level[15].locked);
+    star_map_menu.set_button_choice_data(1,17,texture.level_preview_16.ref_number,L"Pixiu             ", true,!game_o.level[16].locked);
+    star_map_menu.set_button_choice_data(1,18,texture.level_preview_17.ref_number,L"Xiao              ", true,!game_o.level[17].locked);
+    star_map_menu.set_button_choice_data(1,19,texture.level_preview_18.ref_number,L"Fuxi              ", true,!game_o.level[18].locked);
+    star_map_menu.set_button_choice_data(1,20,texture.level_preview_19.ref_number,L"Haxorific         ", true,!game_o.level[19].locked);
+    star_map_menu.set_button_choice_data(1,21,texture.level_preview_20.ref_number,L"Byakko            ", true,!game_o.level[20].locked);
+    star_map_menu.set_button_choice_data(1,22,texture.level_preview_21.ref_number,L"Enenra            ", true,!game_o.level[21].locked);
+    star_map_menu.set_button_choice_data(1,23,texture.level_preview_22.ref_number,L"Tengu             ", true,!game_o.level[22].locked);
+    star_map_menu.set_button_choice_data(1,24,texture.level_preview_23.ref_number,L"Robonoid          ", true,!game_o.level[23].locked);
+    star_map_menu.set_button_choice_data(1,25,texture.level_preview_24.ref_number,L"Oyabun            ", true,!game_o.level[24].locked);
     star_map_menu.set_button_active( 2,false);
     star_map_menu.set_button_data  ( 3,L"Main Menu        ");
     star_map_menu.set_buttons_auto();
@@ -504,92 +504,92 @@ int process_menu(void)
     activated_button = -1;
     if (game.menu_level == 2)
     {
-        star_map_menu.set_button_choice_enabled(1, 1,!game_o.level_locked[ 0]);
-        star_map_menu.set_button_choice_enabled(1, 2,!game_o.level_locked[ 1]);
-        star_map_menu.set_button_choice_enabled(1, 3,!game_o.level_locked[ 2]);
-        star_map_menu.set_button_choice_enabled(1, 4,!game_o.level_locked[ 3]);
-        star_map_menu.set_button_choice_enabled(1, 5,!game_o.level_locked[ 4]);
-        star_map_menu.set_button_choice_enabled(1, 6,!game_o.level_locked[ 5]);
-        star_map_menu.set_button_choice_enabled(1, 7,!game_o.level_locked[ 6]);
-        star_map_menu.set_button_choice_enabled(1, 8,!game_o.level_locked[ 7]);
-        star_map_menu.set_button_choice_enabled(1, 9,!game_o.level_locked[ 8]);
-        star_map_menu.set_button_choice_enabled(1,10,!game_o.level_locked[ 9]);
-        star_map_menu.set_button_choice_enabled(1,11,!game_o.level_locked[10]);
-        star_map_menu.set_button_choice_enabled(1,12,!game_o.level_locked[11]);
-        star_map_menu.set_button_choice_enabled(1,13,!game_o.level_locked[12]);
-        star_map_menu.set_button_choice_enabled(1,14,!game_o.level_locked[13]);
-        star_map_menu.set_button_choice_enabled(1,15,!game_o.level_locked[14]);
-        star_map_menu.set_button_choice_enabled(1,16,!game_o.level_locked[15]);
-        star_map_menu.set_button_choice_enabled(1,17,!game_o.level_locked[16]);
-        star_map_menu.set_button_choice_enabled(1,18,!game_o.level_locked[17]);
-        star_map_menu.set_button_choice_enabled(1,19,!game_o.level_locked[18]);
-        star_map_menu.set_button_choice_enabled(1,20,!game_o.level_locked[19]);
-        star_map_menu.set_button_choice_enabled(1,21,!game_o.level_locked[20]);
-        star_map_menu.set_button_choice_enabled(1,22,!game_o.level_locked[21]);
-        star_map_menu.set_button_choice_enabled(1,23,!game_o.level_locked[22]);
-        star_map_menu.set_button_choice_enabled(1,24,!game_o.level_locked[23]);
-        star_map_menu.set_button_choice_enabled(1,25,!game_o.level_locked[24]);
+        star_map_menu.set_button_choice_enabled(1, 1,!game_o.level[ 0].locked);
+        star_map_menu.set_button_choice_enabled(1, 2,!game_o.level[ 1].locked);
+        star_map_menu.set_button_choice_enabled(1, 3,!game_o.level[ 2].locked);
+        star_map_menu.set_button_choice_enabled(1, 4,!game_o.level[ 3].locked);
+        star_map_menu.set_button_choice_enabled(1, 5,!game_o.level[ 4].locked);
+        star_map_menu.set_button_choice_enabled(1, 6,!game_o.level[ 5].locked);
+        star_map_menu.set_button_choice_enabled(1, 7,!game_o.level[ 6].locked);
+        star_map_menu.set_button_choice_enabled(1, 8,!game_o.level[ 7].locked);
+        star_map_menu.set_button_choice_enabled(1, 9,!game_o.level[ 8].locked);
+        star_map_menu.set_button_choice_enabled(1,10,!game_o.level[ 9].locked);
+        star_map_menu.set_button_choice_enabled(1,11,!game_o.level[10].locked);
+        star_map_menu.set_button_choice_enabled(1,12,!game_o.level[11].locked);
+        star_map_menu.set_button_choice_enabled(1,13,!game_o.level[12].locked);
+        star_map_menu.set_button_choice_enabled(1,14,!game_o.level[13].locked);
+        star_map_menu.set_button_choice_enabled(1,15,!game_o.level[14].locked);
+        star_map_menu.set_button_choice_enabled(1,16,!game_o.level[15].locked);
+        star_map_menu.set_button_choice_enabled(1,17,!game_o.level[16].locked);
+        star_map_menu.set_button_choice_enabled(1,18,!game_o.level[17].locked);
+        star_map_menu.set_button_choice_enabled(1,19,!game_o.level[18].locked);
+        star_map_menu.set_button_choice_enabled(1,20,!game_o.level[19].locked);
+        star_map_menu.set_button_choice_enabled(1,21,!game_o.level[20].locked);
+        star_map_menu.set_button_choice_enabled(1,22,!game_o.level[21].locked);
+        star_map_menu.set_button_choice_enabled(1,23,!game_o.level[22].locked);
+        star_map_menu.set_button_choice_enabled(1,24,!game_o.level[23].locked);
+        star_map_menu.set_button_choice_enabled(1,25,!game_o.level[24].locked);
         activated_button = star_map_menu.process();
         switch (activated_button)
         {
             case 101://Choice 1 selected
-                if (!game_o.level_locked[star_map_menu.get_button_choice_position(1) + 0 -1])
+                if (!game_o.level[star_map_menu.get_button_choice_position(1) + 0 -1].locked)
                 {
                     sound.menu_select_01.play();
                     game.music_next_track = true;
-                    game_o.level = star_map_menu.get_button_choice_position(1) + 0 -1;
-                    init_game_level(game_o.level);
+                    game_o.current_level = star_map_menu.get_button_choice_position(1) + 0 -1;
+                    init_game_level(game_o.current_level);
                     game.game_active = true;
                     game.menu_active = false;
-                    game.log.File_Write("Starting level ",game_o.level);
+                    game.log.File_Write("Starting level ",game_o.current_level);
                 }
             break;
             case 102://Choice 2 selected
-                if (!game_o.level_locked[star_map_menu.get_button_choice_position(1) + 1 -1])
+                if (!game_o.level[star_map_menu.get_button_choice_position(1) + 1 -1].locked)
                 {
                     sound.menu_select_01.play();
                     game.music_next_track = true;
-                    game_o.level = star_map_menu.get_button_choice_position(1) + 1 -1;
-                    init_game_level(game_o.level);
+                    game_o.current_level = star_map_menu.get_button_choice_position(1) + 1 -1;
+                    init_game_level(game_o.current_level);
                     game.game_active = true;
                     game.menu_active = false;
-                    game.log.File_Write("Starting level ",game_o.level);
+                    game.log.File_Write("Starting level ",game_o.current_level);
                 }
             break;
             case 103://Choice 3 selected
-                if (!game_o.level_locked[star_map_menu.get_button_choice_position(1) + 2 -1])
+                if (!game_o.level[star_map_menu.get_button_choice_position(1) + 2 -1].locked)
                 {
                     sound.menu_select_01.play();
                     game.music_next_track = true;
-                    game_o.level = star_map_menu.get_button_choice_position(1) + 2 -1;
-                    init_game_level(game_o.level);
+                    game_o.current_level = star_map_menu.get_button_choice_position(1) + 2 -1;
+                    init_game_level(game_o.current_level);
                     game.game_active = true;
                     game.menu_active = false;
-                    game.log.File_Write("Starting level ",game_o.level);
+                    game.log.File_Write("Starting level ",game_o.current_level);
                 }
             break;
             case 104://Choice 4 selected
-                if (!game_o.level_locked[star_map_menu.get_button_choice_position(1) + 3 -1])
+                if (!game_o.level[star_map_menu.get_button_choice_position(1) + 3 -1].locked)
                 {
                     sound.menu_select_01.play();
                     game.music_next_track = true;
-                    game_o.level = star_map_menu.get_button_choice_position(1) + 3 -1;
-                    init_game_level(game_o.level);
+                    game_o.current_level = star_map_menu.get_button_choice_position(1) + 3 -1;
+                    init_game_level(game_o.current_level);
                     game.game_active = true;
                     game.menu_active = false;
-                    game.log.File_Write("Starting level ",game_o.level);
+                    game.log.File_Write("Starting level ",game_o.current_level);
                 }
             break;
             case 105://Choice 5 selected
-                if (!game_o.level_locked[star_map_menu.get_button_choice_position(1) + 4 -1])
+                if (!game_o.level[star_map_menu.get_button_choice_position(1) + 4 -1].locked)
                 {
                     sound.menu_select_01.play();
                     game.music_next_track = true;
-                    game_o.level = star_map_menu.get_button_choice_position(1) + 4 -1;
-                    init_game_level(game_o.level);
+                    game_o.current_level = star_map_menu.get_button_choice_position(1) + 4 -1;
+                    init_game_level(game_o.current_level);
                     game.game_active = true;
                     game.menu_active = false;
-                    game.log.File_Write("Starting level ",game_o.level);
+                    game.log.File_Write("Starting level ",game_o.current_level);
                 }
             break;
             case 4001://left arrow on button 1
@@ -1383,11 +1383,11 @@ int process_menu(void)
         {
             case 1://Button 1 selected.
                 sound.menu_select_01.play();
-                game_o.level++;
-                if (game_o.level > 24) // killed last boss!
+                game_o.current_level++;
+                if (game_o.current_level > 24) // killed last boss!
                 {
                     outro_time = true;
-                    game_o.level = 24;
+                    game_o.current_level = 24;
                     if (!game_o.completed)
                     {
                         for(int count = 0; count < MAX_ENEMYS; count++) //finished the game, now its twice as hard! ;)
@@ -1398,8 +1398,8 @@ int process_menu(void)
                         game_o.completed = true;
                     }
                 }
-                if (game_o.level_locked[game_o.level]) game_o.level_locked[game_o.level] = false;
-                init_game_level(game_o.level);
+                if (game_o.level[game_o.current_level].locked) game_o.level[game_o.current_level].locked = false;
+                init_game_level(game_o.current_level);
                 if (outro_time)
                 {
                     game.music_next_track = true;
@@ -1436,11 +1436,11 @@ int process_menu(void)
             break;
             case 65534://Return to main menu
                 sound.menu_select_01.play();
-                game_o.level++;
-                if (game_o.level > 24) // killed last boss!
+                game_o.current_level++;
+                if (game_o.current_level > 24) // killed last boss!
                 {
                     outro_time = true;
-                    game_o.level = 24;
+                    game_o.current_level = 24;
                     if (!game_o.completed)
                     {
                         for(int count = 0; count < MAX_ENEMYS; count++) //finished the game, now its twice as hard! ;)
@@ -1451,8 +1451,8 @@ int process_menu(void)
                         game_o.completed = true;
                     }
                 }
-                if (game_o.level_locked[game_o.level]) game_o.level_locked[game_o.level] = false;
-                init_game_level(game_o.level);
+                if (game_o.level[game_o.current_level].locked) game_o.level[game_o.current_level].locked = false;
+                init_game_level(game_o.current_level);
                 if (outro_time)
                 {
                     game.music_next_track = true;
@@ -1486,11 +1486,11 @@ int process_menu(void)
             break;
             case 65535://Return to main menu
                 sound.menu_select_01.play();
-                game_o.level++;
-                if (game_o.level > 24) // killed last boss!
+                game_o.current_level++;
+                if (game_o.current_level > 24) // killed last boss!
                 {
                     outro_time = true;
-                    game_o.level = 24;
+                    game_o.current_level = 24;
                     if (!game_o.completed)
                     {
                         for(int count = 0; count < MAX_ENEMYS; count++) //finished the game, now its twice as hard! ;)
@@ -1501,8 +1501,8 @@ int process_menu(void)
                         game_o.completed = true;
                     }
                 }
-                if (game_o.level_locked[game_o.level]) game_o.level_locked[game_o.level] = false;
-                init_game_level(game_o.level);
+                if (game_o.level[game_o.current_level].locked) game_o.level[game_o.current_level].locked = false;
+                init_game_level(game_o.current_level);
                 if (outro_time)
                 {
                     game.music_next_track = true;
@@ -1701,10 +1701,10 @@ int diplay_menu (void)
 /*-----------------------------------------------------------------------------*/
     if (game.menu_level == 9) //Next level screen
     {
-        int level_t = game_o.level + 1;
+        int level_t = game_o.current_level + 1;
         if (level_t > 24) level_t = 24;
         texture.level_completed.draw(false, 0.0f, 0.65f, 0.0f, 1.0f, 0.2f); //Congratulations
-        if (game_o.level_locked[level_t])
+        if (game_o.level[level_t].locked)
         {
             texture.new_level_unlocked.draw(false, 0.0f, 0.45f, 0.0f, 1.0f, 0.2f); //Congratulations
         }

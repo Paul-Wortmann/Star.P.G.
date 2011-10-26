@@ -91,9 +91,9 @@ int init_game(bool re_init)
     init_in_game_message_class();
     init_player_bullets();
     init_supportships(2,game_o.player.x_pos,game_o.player.y_pos);
-    init_waves();
     init_coin();
     init_wexp();
+    init_waves();
     init_levels();
     init_explosions();
     return(0);
@@ -262,40 +262,40 @@ int process_game(void)
     if  (random(game_o.powerup[1 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health power-up
     if ((random(game_o.powerup[8 ].spawn_rate) <= 5)&& (!boss_level())) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb power-up
 
-    if ((game_o.level >=  4) && (random(game_o.powerup[9 ].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn support ship 0 power-up
-    if ((game_o.level >=  7) && (random(game_o.powerup[10].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),10);//spawn support ship 1 power-up
-    if ((game_o.level >= 11) && (random(game_o.powerup[11].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),11);//spawn support ship 2 power-up
-    if ((game_o.level >= 15) && (random(game_o.powerup[12].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),12);//spawn support ship 3 power-up
+    if ((game_o.current_level >=  4) && (random(game_o.powerup[9 ].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn support ship 0 power-up
+    if ((game_o.current_level >=  7) && (random(game_o.powerup[10].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),10);//spawn support ship 1 power-up
+    if ((game_o.current_level >= 11) && (random(game_o.powerup[11].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),11);//spawn support ship 2 power-up
+    if ((game_o.current_level >= 15) && (random(game_o.powerup[12].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),12);//spawn support ship 3 power-up
 
     if ((game_o.shield[game_o.player.front_shield].level  < 3) && (random(game_o.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),2);//spawn shield level power-up
     if ((game_o.thruster[game_o.player.thrusters].level   < 3) && (random(game_o.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster level power-up
     // if player missed boss weapon drops enable random spawning of power-ups to keep consistency
-    if ((game_o.level >=  4) && (!game_o.projectile[1].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
-    if ((game_o.level >=  7) && (!game_o.projectile[2].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
-    if ((game_o.level >= 11) && (!game_o.projectile[3].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
-    if ((game_o.level >= 15) && (!game_o.projectile[4].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
-    if ((game_o.level >= 19) && (!game_o.projectile[5].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+    if ((game_o.current_level >=  4) && (!game_o.projectile[1].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+    if ((game_o.current_level >=  7) && (!game_o.projectile[2].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+    if ((game_o.current_level >= 11) && (!game_o.projectile[3].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+    if ((game_o.current_level >= 15) && (!game_o.projectile[4].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+    if ((game_o.current_level >= 19) && (!game_o.projectile[5].active) && (random(game_o.powerup[7].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
 
-    if ((game_o.level >=  7) && (!game_o.shield[0].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
-    if ((game_o.level >= 11) && (!game_o.shield[1].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
-    if ((game_o.level >= 15) && (!game_o.shield[2].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
-    if ((game_o.level >= 19) && (!game_o.shield[3].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
-    if ((game_o.level >= 23) && (!game_o.shield[4].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+    if ((game_o.current_level >=  7) && (!game_o.shield[0].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+    if ((game_o.current_level >= 11) && (!game_o.shield[1].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+    if ((game_o.current_level >= 15) && (!game_o.shield[2].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+    if ((game_o.current_level >= 19) && (!game_o.shield[3].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+    if ((game_o.current_level >= 23) && (!game_o.shield[4].active) && (random(game_o.powerup[3].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
 
-    if ((game_o.level >= 15) && (!game_o.thruster[0].active) && (random(game_o.powerup[5].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
-    if ((game_o.level >= 19) && (!game_o.thruster[1].active) && (random(game_o.powerup[5].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
-    if ((game_o.level >= 23) && (!game_o.thruster[2].active) && (random(game_o.powerup[5].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
+    if ((game_o.current_level >= 15) && (!game_o.thruster[0].active) && (random(game_o.powerup[5].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
+    if ((game_o.current_level >= 19) && (!game_o.thruster[1].active) && (random(game_o.powerup[5].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
+    if ((game_o.current_level >= 23) && (!game_o.thruster[2].active) && (random(game_o.powerup[5].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
     game_o.npc_spawn_rate_count++;
     game_o.npc_spawn_rate_count += random_dec()/4;
     if (game_o.npc_spawn_rate_count >= game_o.npc_spawn_rate)
     {
         game_o.npc_spawn_rate_count = 0;
-        if (game_o.level_boss_level && (game_o.level_spawened == 0))
+        if (game_o.level[game_o.current_level].BOSS && (game_o.level_spawened == 0))
         {
-            spawn_npc(1.0f,random_GLcoord(),game_o.level_npc_type,0,0.0f,0.0f);
+            spawn_npc(1.0f,random_GLcoord(),game_o.level[game_o.current_level].NPC_type,0,0.0f,0.0f);
             game_o.level_spawened += 1;
         }
-        if ((!game_o.level_boss_level) && (!game_o.level_end_time) && (game_o.wave_spawnable)) spawn_wave();
+        if ((!game_o.level[game_o.current_level].BOSS) && (!game_o.level_end_time) && (game_o.wave_spawnable)) spawn_wave();
     }
     for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)//npc spawn bullet
     {
@@ -456,41 +456,41 @@ int process_game(void)
         }
         if (!game_o.powerups_spawened)
         {
-            if ((game_o.level_boss_level) && (game_o.level_locked[game_o.level + 1]))//if its first time to kill a boss spawn some powerups!!
+            if ((game_o.level[game_o.current_level].BOSS) && (game_o.level[game_o.current_level + 1].locked))//if its first time to kill a boss spawn some powerups!!
             {
-                if (game_o.level == 3)
+                if (game_o.current_level == 3)
                 {
                     spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
                     spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster level power-up
                     spawn_powerup(1.0f,random_GLcoord(),7);//new weapon
                 }
-                if (game_o.level == 7)
+                if (game_o.current_level == 7)
                 {
                     spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
                     spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new power-up
                     spawn_powerup(1.0f,random_GLcoord(),7);//new weapon
                 }
-                if (game_o.level == 11)
+                if (game_o.current_level == 11)
                 {
                     spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
                     spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new power-up
                     spawn_powerup(1.0f,random_GLcoord(),7);//new weapon
                 }
-                if (game_o.level == 15)
-                {
-                    spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
-                    spawn_powerup(1.0f,random_GLcoord(),5);//spawn thruster new power-up
-                    spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new power-up
-                    spawn_powerup(1.0f,random_GLcoord(),7);//new weapon
-                }
-                if (game_o.level == 19)
+                if (game_o.current_level == 15)
                 {
                     spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
                     spawn_powerup(1.0f,random_GLcoord(),5);//spawn thruster new power-up
                     spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new power-up
                     spawn_powerup(1.0f,random_GLcoord(),7);//new weapon
                 }
-                if (game_o.level == 23)
+                if (game_o.current_level == 19)
+                {
+                    spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
+                    spawn_powerup(1.0f,random_GLcoord(),5);//spawn thruster new power-up
+                    spawn_powerup(1.0f,random_GLcoord(),3);//spawn shield new power-up
+                    spawn_powerup(1.0f,random_GLcoord(),7);//new weapon
+                }
+                if (game_o.current_level == 23)
                 {
                     spawn_powerup(1.0f,random_GLcoord(),1);//spawn health power-up
                     spawn_powerup(1.0f,random_GLcoord(),5);//spawn thruster new power-up
@@ -501,21 +501,21 @@ int process_game(void)
             else
             {
                 // spawn power-ups if level is too low, ie. player missed the power up last level or in game or it hasn't spawned in game
-                if ((game_o.level >=  4) && (!game_o.projectile[1].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
-                if ((game_o.level >=  7) && (!game_o.projectile[2].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
-                if ((game_o.level >= 11) && (!game_o.projectile[3].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
-                if ((game_o.level >= 15) && (!game_o.projectile[4].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
-                if ((game_o.level >= 19) && (!game_o.projectile[5].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+                if ((game_o.current_level >=  4) && (!game_o.projectile[1].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+                if ((game_o.current_level >=  7) && (!game_o.projectile[2].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+                if ((game_o.current_level >= 11) && (!game_o.projectile[3].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+                if ((game_o.current_level >= 15) && (!game_o.projectile[4].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
+                if ((game_o.current_level >= 19) && (!game_o.projectile[5].active)) spawn_powerup(1.0f,random_GLcoord(),7); // spawn new weapon
 
-                if ((game_o.level >=  7) && (!game_o.shield[0].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
-                if ((game_o.level >= 11) && (!game_o.shield[1].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
-                if ((game_o.level >= 15) && (!game_o.shield[2].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
-                if ((game_o.level >= 19) && (!game_o.shield[3].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
-                if ((game_o.level >= 23) && (!game_o.shield[4].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+                if ((game_o.current_level >=  7) && (!game_o.shield[0].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+                if ((game_o.current_level >= 11) && (!game_o.shield[1].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+                if ((game_o.current_level >= 15) && (!game_o.shield[2].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+                if ((game_o.current_level >= 19) && (!game_o.shield[3].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
+                if ((game_o.current_level >= 23) && (!game_o.shield[4].active)) spawn_powerup(1.0f,random_GLcoord(),3); // spawn new shield
 
-                if ((game_o.level >= 15) && (!game_o.thruster[0].active)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
-                if ((game_o.level >= 19) && (!game_o.thruster[1].active)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
-                if ((game_o.level >= 23) && (!game_o.thruster[2].active)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
+                if ((game_o.current_level >= 15) && (!game_o.thruster[0].active)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
+                if ((game_o.current_level >= 19) && (!game_o.thruster[1].active)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
+                if ((game_o.current_level >= 23) && (!game_o.thruster[2].active)) spawn_powerup(1.0f,random_GLcoord(),5); // spawn new thruster
                 spawn_powerup(1.0f,random_GLcoord(),1);//spawn health powerup
                 spawn_powerup(1.0f,random_GLcoord(),2);//spawn shield lvl powerup
                 spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster lvl powerup

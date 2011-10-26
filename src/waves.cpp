@@ -37,19 +37,19 @@ extern  game_class       game;
 /*----------------------------------------------------------------------------*/
 int  init_waves     (void)
 {
-   game_o.level_waves = 0;
-   for(int wave_count = 0; wave_count < MAX_WAVES; wave_count++)
-   {
-      game_o.wave[wave_count].active         = false;
-      game_o.wave[wave_count].leader_num     = 0;
-      game_o.wave[wave_count].npc_type       = 0;
-      game_o.wave[wave_count].target_kills   = 0;
-      game_o.wave[wave_count].count_kills    = 0;
-      game_o.wave[wave_count].target_spawned = 0;
-      game_o.wave[wave_count].count_spawned  = 0;
-      game_o.wave[wave_count].spawn_pattern  = 0;
-   }
-   return(0);
+    for(int wave_count = 0; wave_count < MAX_WAVES; wave_count++)
+    {
+        game_o.level[game_o.current_level].number_of_waves                 = 0;
+        game_o.level[game_o.current_level].wave[wave_count].active         = false;
+        game_o.level[game_o.current_level].wave[wave_count].leader_num     = 0;
+        game_o.level[game_o.current_level].wave[wave_count].npc_type       = 0;
+        game_o.level[game_o.current_level].wave[wave_count].target_kills   = 0;
+        game_o.level[game_o.current_level].wave[wave_count].count_kills    = 0;
+        game_o.level[game_o.current_level].wave[wave_count].target_spawned = 0;
+        game_o.level[game_o.current_level].wave[wave_count].count_spawned  = 0;
+        game_o.level[game_o.current_level].wave[wave_count].spawn_pattern  = 0;
+    }
+    return(0);
 };
 /*----------------------------------------------------------------------------*/
 int get_next_active_wave(void)
@@ -57,7 +57,7 @@ int get_next_active_wave(void)
     int temp_int = 0;
     for(int wave_count = 0;wave_count < MAX_WAVES;wave_count++)
     {
-        if (game_o.wave[wave_count].active) temp_int = wave_count;
+        if (game_o.level[game_o.current_level].wave[wave_count].active) temp_int = wave_count;
     }
     return(temp_int);
 }
@@ -66,143 +66,143 @@ int spawn_wave(void)
 {
    float temp_float = 0.0f;
    int   wave_count = get_next_active_wave();
-   if(game_o.wave[wave_count].spawn_pattern == 0)
+   if(game_o.level[game_o.current_level].wave[wave_count].spawn_pattern == 0)
    {
       temp_float = random_GLcoord();
-      if (temp_float > ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1))) temp_float = ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1));
-      if (temp_float < (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1))) temp_float = (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1));
-      spawn_npc(1.0f+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,temp_float+game_o.enemy[game_o.wave[wave_count].npc_type].size_h,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,+game_o.enemy[game_o.wave[wave_count].npc_type].size_h);
-      spawn_npc(1.0f,temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,0.0f,0.0f);
-      spawn_npc(1.0f+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,temp_float-game_o.enemy[game_o.wave[wave_count].npc_type].size_h,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,-game_o.enemy[game_o.wave[wave_count].npc_type].size_h);
+      if (temp_float > ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1))) temp_float = ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1));
+      if (temp_float < (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1))) temp_float = (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1));
+      spawn_npc(1.0f+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,temp_float+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h);
+      spawn_npc(1.0f,temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,0.0f,0.0f);
+      spawn_npc(1.0f+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,temp_float-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h);
       game_o.level_spawened += 3;
       game_o.wave_spawnable = false;
    }
-   if(game_o.wave[wave_count].spawn_pattern == 1)
+   if(game_o.level[game_o.current_level].wave[wave_count].spawn_pattern == 1)
    {
       temp_float = random_GLcoord();
-      if (temp_float > ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      if (temp_float < (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      spawn_npc(1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2),temp_float+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*2),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,+game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2,+game_o.enemy[game_o.wave[wave_count].npc_type].size_h*2);
-      spawn_npc(1.0f+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,temp_float+game_o.enemy[game_o.wave[wave_count].npc_type].size_h,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,+game_o.enemy[game_o.wave[wave_count].npc_type].size_h);
-      spawn_npc(1.0f,temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,0.0f,0.0f);
-      spawn_npc(1.0f+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,temp_float-game_o.enemy[game_o.wave[wave_count].npc_type].size_h,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,-game_o.enemy[game_o.wave[wave_count].npc_type].size_h);
-      spawn_npc(1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2),temp_float-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*2),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,-game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2,-game_o.enemy[game_o.wave[wave_count].npc_type].size_h*2);
+      if (temp_float > ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      if (temp_float < (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      spawn_npc(1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2),temp_float+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*2),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*2);
+      spawn_npc(1.0f+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,temp_float+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h);
+      spawn_npc(1.0f,temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,0.0f,0.0f);
+      spawn_npc(1.0f+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,temp_float-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h);
+      spawn_npc(1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2),temp_float-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*2),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2,-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*2);
       game_o.level_spawened += 5;
       game_o.wave_spawnable = false;
    }
-   if(game_o.wave[wave_count].spawn_pattern == 2)
+   if(game_o.level[game_o.current_level].wave[wave_count].spawn_pattern == 2)
    {
       temp_float = random_GLcoord();
-      if (temp_float > ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1))) temp_float = ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1));
-      if (temp_float < (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1))) temp_float = (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1));
-      spawn_npc(1.0f+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,temp_float+game_o.enemy[game_o.wave[wave_count].npc_type].size_h,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,+game_o.enemy[game_o.wave[wave_count].npc_type].size_h);
-      spawn_npc(1.0f,temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,0.0f,0.0f);
-      spawn_npc(1.0f+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,temp_float-game_o.enemy[game_o.wave[wave_count].npc_type].size_h,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,-game_o.enemy[game_o.wave[wave_count].npc_type].size_h);
-      spawn_npc(1.0f+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,0.0f);
+      if (temp_float > ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1))) temp_float = ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1));
+      if (temp_float < (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1))) temp_float = (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1));
+      spawn_npc(1.0f+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,temp_float+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h);
+      spawn_npc(1.0f,temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,0.0f,0.0f);
+      spawn_npc(1.0f+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,temp_float-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h);
+      spawn_npc(1.0f+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,0.0f);
       game_o.level_spawened += 4;
       game_o.wave_spawnable = false;
    }
-   if(game_o.wave[wave_count].spawn_pattern == 3)
+   if(game_o.level[game_o.current_level].wave[wave_count].spawn_pattern == 3)
    {
       temp_float = random_GLcoord();
-      if (temp_float > ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      if (temp_float < (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      spawn_npc(1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_w*3),temp_float+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.5f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,+game_o.enemy[game_o.wave[wave_count].npc_type].size_w*3,+game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.5f);
-      spawn_npc(1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2),temp_float+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.0f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,+game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2,+game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.0f);
-      spawn_npc(1.0f+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,temp_float+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*0.5f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,+game_o.enemy[game_o.wave[wave_count].npc_type].size_h*0.5f);
-      spawn_npc(1.0f,temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,0.0f,0.0f);
-      spawn_npc(1.0f+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,temp_float-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*0.5f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,-game_o.enemy[game_o.wave[wave_count].npc_type].size_h*0.5f);
-      spawn_npc(1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2),temp_float-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.0f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,+game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2,-game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.0f);
-      spawn_npc(1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_w*3),temp_float-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.5f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,+game_o.enemy[game_o.wave[wave_count].npc_type].size_w*3,-game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.5f);
+      if (temp_float > ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      if (temp_float < (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      spawn_npc(1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*3),temp_float+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.5f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*3,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.5f);
+      spawn_npc(1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2),temp_float+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.0f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.0f);
+      spawn_npc(1.0f+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,temp_float+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*0.5f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*0.5f);
+      spawn_npc(1.0f,temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,0.0f,0.0f);
+      spawn_npc(1.0f+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,temp_float-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*0.5f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*0.5f);
+      spawn_npc(1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2),temp_float-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.0f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2,-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.0f);
+      spawn_npc(1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*3),temp_float-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.5f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*3,-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.5f);
       game_o.level_spawened += 7;
       game_o.wave_spawnable = false;
    }
-   if(game_o.wave[wave_count].spawn_pattern == 4)
+   if(game_o.level[game_o.current_level].wave[wave_count].spawn_pattern == 4)
    {
       temp_float = random_GLcoord();
-      if (temp_float > ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      if (temp_float < (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      spawn_npc(1.0f+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,temp_float+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*0.5f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,+game_o.enemy[game_o.wave[wave_count].npc_type].size_h*0.5f);
-      spawn_npc(1.0f,temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,0.0f,0.0f);
-      spawn_npc(1.0f+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,temp_float-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*0.5f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,-game_o.enemy[game_o.wave[wave_count].npc_type].size_h*0.5f);
+      if (temp_float > ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      if (temp_float < (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      spawn_npc(1.0f+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,temp_float+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*0.5f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*0.5f);
+      spawn_npc(1.0f,temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,0.0f,0.0f);
+      spawn_npc(1.0f+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,temp_float-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*0.5f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*0.5f);
       game_o.level_spawened += 3;
       game_o.wave_spawnable = false;
    }
-   if(game_o.wave[wave_count].spawn_pattern == 5)
+   if(game_o.level[game_o.current_level].wave[wave_count].spawn_pattern == 5)
    {
       temp_float = random_GLcoord();
-      if (temp_float > ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      if (temp_float < (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      spawn_npc(1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2),temp_float+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.0f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2,+game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.0f);
-      spawn_npc(1.0f+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,temp_float+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*0.5f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,game_o.enemy[game_o.wave[wave_count].npc_type].size_w,+game_o.enemy[game_o.wave[wave_count].npc_type].size_h*0.5f);
-      spawn_npc(1.0f,temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,0.0f,0.0f);
-      spawn_npc(1.0f+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,temp_float-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*0.5f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,game_o.enemy[game_o.wave[wave_count].npc_type].size_w,-game_o.enemy[game_o.wave[wave_count].npc_type].size_h*0.5f);
-      spawn_npc(1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2),temp_float-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.0f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2,-game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.0f);
+      if (temp_float > ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      if (temp_float < (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      spawn_npc(1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2),temp_float+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.0f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.0f);
+      spawn_npc(1.0f+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,temp_float+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*0.5f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*0.5f);
+      spawn_npc(1.0f,temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,0.0f,0.0f);
+      spawn_npc(1.0f+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,temp_float-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*0.5f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*0.5f);
+      spawn_npc(1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2),temp_float-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.0f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2,-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.0f);
       game_o.level_spawened += 5;
       game_o.wave_spawnable = false;
    }
-   if(game_o.wave[wave_count].spawn_pattern == 6)
+   if(game_o.level[game_o.current_level].wave[wave_count].spawn_pattern == 6)
    {
       temp_float = random_GLcoord();
-      if (temp_float > ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      if (temp_float < (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      spawn_npc(1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2),temp_float+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.0f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2,+game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.0f);
-      spawn_npc(1.0f,temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,0.0f,0.0f);
-      spawn_npc(1.0f+game_o.enemy[game_o.wave[wave_count].npc_type].size_w,temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,game_o.enemy[game_o.wave[wave_count].npc_type].size_w,0.0f);
-      spawn_npc(1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2),temp_float-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.0f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2,-game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.0f);
+      if (temp_float > ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      if (temp_float < (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      spawn_npc(1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2),temp_float+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.0f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.0f);
+      spawn_npc(1.0f,temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,0.0f,0.0f);
+      spawn_npc(1.0f+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w,0.0f);
+      spawn_npc(1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2),temp_float-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.0f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2,-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.0f);
       game_o.level_spawened += 4;
       game_o.wave_spawnable = false;
    }
-   if(game_o.wave[wave_count].spawn_pattern == 7)
+   if(game_o.level[game_o.current_level].wave[wave_count].spawn_pattern == 7)
    {
       temp_float = random_GLcoord();
-      if (temp_float > ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      if (temp_float < (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      spawn_npc(1.0f,temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,0.0f,0.0f);
+      if (temp_float > ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      if (temp_float < (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      spawn_npc(1.0f,temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,0.0f,0.0f);
       game_o.level_spawened += 1;
       game_o.wave_spawnable = false;
    }
-   if(game_o.wave[wave_count].spawn_pattern == 8)
+   if(game_o.level[game_o.current_level].wave[wave_count].spawn_pattern == 8)
    {
       temp_float = random_GLcoord();
-      if (temp_float > ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      if (temp_float < (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      spawn_npc(1.0f,temp_float+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*0.5f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,0.0f,+game_o.enemy[game_o.wave[wave_count].npc_type].size_h*0.5f);
-      spawn_npc(1.0f,temp_float-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*0.5f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,0.0f,-game_o.enemy[game_o.wave[wave_count].npc_type].size_h*0.5f);
+      if (temp_float > ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      if (temp_float < (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      spawn_npc(1.0f,temp_float+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*0.5f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,0.0f,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*0.5f);
+      spawn_npc(1.0f,temp_float-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*0.5f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,0.0f,-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*0.5f);
       game_o.level_spawened += 2;
       game_o.wave_spawnable = false;
    }
-   if(game_o.wave[wave_count].spawn_pattern == 9)
+   if(game_o.level[game_o.current_level].wave[wave_count].spawn_pattern == 9)
    {
       temp_float = random_GLcoord();
-      if (temp_float > ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      if (temp_float < (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      spawn_npc(1.0f,temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,0.0f,0.0f);
-      spawn_npc(1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_w*0.75f),temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,game_o.enemy[game_o.wave[wave_count].npc_type].size_w*0.75f,0.0f);
-      spawn_npc(1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_w*1.50f),temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,game_o.enemy[game_o.wave[wave_count].npc_type].size_w*1.50f,0.0f);
-      spawn_npc(1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2.25f),temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,game_o.enemy[game_o.wave[wave_count].npc_type].size_w*2.25f,0.0f);
+      if (temp_float > ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      if (temp_float < (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      spawn_npc(1.0f,temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,0.0f,0.0f);
+      spawn_npc(1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*0.75f),temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*0.75f,0.0f);
+      spawn_npc(1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*1.50f),temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*1.50f,0.0f);
+      spawn_npc(1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2.25f),temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*2.25f,0.0f);
       game_o.level_spawened += 4;
       game_o.wave_spawnable = false;
    }
-   if(game_o.wave[wave_count].spawn_pattern == 10)
+   if(game_o.level[game_o.current_level].wave[wave_count].spawn_pattern == 10)
    {
       temp_float = random_GLcoord();
-      if (temp_float > ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      if (temp_float < (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      spawn_npc(1.0f,temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,0.0f,0.0f);
-      spawn_npc(1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_w*0.75f),temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,game_o.enemy[game_o.wave[wave_count].npc_type].size_w*0.75f,0.0f);
-      spawn_npc(1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_w*1.50f),temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,game_o.enemy[game_o.wave[wave_count].npc_type].size_w*1.50f,0.0f);
+      if (temp_float > ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      if (temp_float < (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      spawn_npc(1.0f,temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,0.0f,0.0f);
+      spawn_npc(1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*0.75f),temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*0.75f,0.0f);
+      spawn_npc(1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*1.50f),temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_w*1.50f,0.0f);
       game_o.level_spawened += 3;
       game_o.wave_spawnable = false;
    }
-   if(game_o.wave[wave_count].spawn_pattern == 11)
+   if(game_o.level[game_o.current_level].wave[wave_count].spawn_pattern == 11)
    {
       temp_float = random_GLcoord();
-      if (temp_float > ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      if (temp_float < (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*3));
-      spawn_npc(1.0f,temp_float+(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.0f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,0.0f,+game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.0f);
-      spawn_npc(1.0f,temp_float,game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,0.0f,0.0f);
-      spawn_npc(1.0f,temp_float-(game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.0f),game_o.wave[wave_count].npc_type,game_o.wave[wave_count].spawn_pattern,0.0f,-game_o.enemy[game_o.wave[wave_count].npc_type].size_h*1.0f);
+      if (temp_float > ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = ( 1.0f-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      if (temp_float < (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3))) temp_float = (-1.0f+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*3));
+      spawn_npc(1.0f,temp_float+(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.0f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,0.0f,+game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.0f);
+      spawn_npc(1.0f,temp_float,game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,0.0f,0.0f);
+      spawn_npc(1.0f,temp_float-(game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.0f),game_o.level[game_o.current_level].wave[wave_count].npc_type,game_o.level[game_o.current_level].wave[wave_count].spawn_pattern,0.0f,-game_o.enemy[game_o.level[game_o.current_level].wave[wave_count].npc_type].size_h*1.0f);
       game_o.level_spawened += 3;
       game_o.wave_spawnable = false;
    }
@@ -212,11 +212,11 @@ int   process_waves(void)
 {
     for(int wave_count = 0;wave_count < MAX_WAVES;wave_count++)
     {
-        if ((game_o.wave[wave_count].active) && (!game_o.wave_spawnable))
+        if ((game_o.level[game_o.current_level].wave[wave_count].active) && (!game_o.wave_spawnable))
         {
-            game_o.wave[wave_count].active = false;
-            if (wave_count >= game_o.level_waves) game_o.wave[0].active = true;
-            else game_o.wave[wave_count+1].active = true;
+            game_o.level[game_o.current_level].wave[wave_count].active = false;
+            if (wave_count >= game_o.level[game_o.current_level].number_of_waves) game_o.level[game_o.current_level].wave[0].active = true;
+            else game_o.level[game_o.current_level].wave[wave_count+1].active = true;
             game_o.wave_spawnable = true;
         }
     }

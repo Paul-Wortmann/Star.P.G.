@@ -1,0 +1,15 @@
+# ------------------------------------ #
+#|   Level 03  - Cantidious - BOSS 1  |#
+# ____________________________________ #
+
+NPC_Type                  = 3
+BOSS                      = 1
+Music_Track               = 3
+Background_00             = 00
+Background_01             = 29
+Speed                     = 0.060
+NPC_Spawn_Rate            = 1
+NPC_Projectile_Spawn_Rate = 10
+Victory_Kills             = 1
+Victory_Spawned           = 0
+Victory_Score             = 0

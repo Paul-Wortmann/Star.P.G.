@@ -25,10 +25,35 @@
 #ifndef LEVELS_H
 #define LEVELS_H
 
+#include "waves.hpp"
+
 const int   MAX_LEVELS = 25;
+
+class level_class
+{
+    public:
+        int        background_00;
+        int        background_01;
+        int        music_track;
+        bool       locked;
+        float      speed;
+        bool       BOSS;
+        int        NPC_type;
+        int        NPC_spawn_rate;
+        int        NPC_spawn_rate_count;
+        int        NPC_projectile_spawn_rate;
+        int        victory_kills;
+        int        victory_spawened;
+        int        victory_score;
+        int        number_of_waves;
+        wave_class wave[MAX_WAVES];
+        void       load(std::string file_name);
+};
 
 int  unlock_levels(void);
 int  init_game_level(int level_no);
+int  load_level(std::string file_name);
+void set_level_background(int layer_number, int image_reference);
 void init_levels(void);
 bool level_completed(void);
 bool boss_level(void);

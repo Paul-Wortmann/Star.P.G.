@@ -53,11 +53,8 @@ void update_save_data(void)
     save_data.outr_active = game.outr_active;
     save_data.status_quit_active = game.status_quit_active;
     save_data.exp_rate = game_o.exp_rate;
-    save_data.level = game_o.level;
-    save_data.level_waves = game_o.level_waves;
+    save_data.current_level = game_o.current_level;
     save_data.wave_spawnable = game_o.wave_spawnable;
-    save_data.level_npc_type = game_o.level_npc_type;
-    save_data.level_boss_level = game_o.level_boss_level;
     save_data.score = game_o.score;
     save_data.kills = game_o.kills;
     save_data.level_kills = game_o.level_kills;
@@ -88,11 +85,7 @@ void update_save_data(void)
     save_data.achivement = game_o.achivement;
     for (int count = 0; count <= MAX_LEVELS; count++)
     {
-        save_data.level_locked[count] = game_o.level_locked[count];
-    }
-    for (int count = 0; count <= MAX_WAVES; count++)
-    {
-        save_data.wave[count] = game_o.wave[count];
+        save_data.level_locked[count] = game_o.level[count].locked;
     }
     for (int count = 0; count <= MAX_SUPPORTSHIPS; count++)
     {
@@ -166,8 +159,8 @@ void update_save_data(void)
 
 void update_game_data(void)
 {
-    game_o.level = save_data.level;
-    init_game_level(save_data.level);
+    game_o.current_level = save_data.current_level;
+    init_game_level(save_data.current_level);
 /*
     for (int count = 0; count <= MAX_LAYERS+1; count++)
     {
@@ -197,10 +190,7 @@ void update_game_data(void)
     game.outr_active = save_data.outr_active;
     game.status_quit_active = save_data.status_quit_active;
     game_o.exp_rate = save_data.exp_rate;
-    game_o.level_waves = save_data.level_waves;
     game_o.wave_spawnable = save_data.wave_spawnable;
-    game_o.level_npc_type = save_data.level_npc_type;
-    game_o.level_boss_level = save_data.level_boss_level;
     game_o.score = save_data.score;
     game_o.kills = save_data.kills;
     game_o.level_kills = save_data.level_kills;
@@ -231,11 +221,7 @@ void update_game_data(void)
     game_o.achivement = save_data.achivement;
     for (int count = 0; count <= MAX_LEVELS; count++)
     {
-        game_o.level_locked[count] = save_data.level_locked[count];
-    }
-    for (int count = 0; count <= MAX_WAVES; count++)
-    {
-        game_o.wave[count] = save_data.wave[count];
+        game_o.level[count].locked = save_data.level_locked[count];
     }
     for (int count = 0; count <= MAX_SUPPORTSHIPS; count++)
     {

@@ -71,11 +71,8 @@ struct save_data_type
    bool                 status_quit_active;
    int                  exp_rate;
    int                  level_locked[MAX_LEVELS];
-   int                  level;
-   int                  level_waves;
+   int                  current_level;
    bool                 wave_spawnable;
-   int                  level_npc_type;
-   bool                 level_boss_level;
    int                  score;
    int                  kills;
    int                  level_kills;
@@ -101,7 +98,6 @@ struct save_data_type
    int                  npc_spawn_rate;
    int                  npc_spawn_rate_count;
    int                  npc_projectile_spawn_rate;
-   wave_class           wave[MAX_WAVES];
    player_class         player;
    supportship_class    supportship[MAX_SUPPORTSHIPS];
    enemy_type           enemy[MAX_ENEMYS];

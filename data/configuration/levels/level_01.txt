@@ -1,0 +1,35 @@
+# ------------------------ #
+#|   Level 01  - Teutates |#
+# ________________________ #
+
+NPC_Type                  = 1
+BOSS                      = 0
+Music_Track               = 1
+Background_00             = 01
+Background_01             = 30
+Speed                     = 0.050
+NPC_Spawn_Rate            = 280
+NPC_Projectile_Spawn_Rate = 50
+Victory_Kills             = 128
+Victory_Spawned           = 1
+Victory_Score             = 0
+Number_Of_Waves           = 9
+Wave_00_Wave_Size         = 0.25
+Wave_00_NPC_Type          = 0
+Wave_00_Spawn_Pattern     = 0
+Wave_01_NPC_Type          = 1
+Wave_01_Spawn_Pattern     = 11
+Wave_02_NPC_Type          = 0
+Wave_02_Spawn_Pattern     = 7
+Wave_03_NPC_Type          = 1
+Wave_03_Spawn_Pattern     = 10
+Wave_04_NPC_Type          = 0
+Wave_04_Spawn_Pattern     = 8
+Wave_05_NPC_Type          = 1
+Wave_05_Spawn_Pattern     = 8
+Wave_06_NPC_Type          = 0
+Wave_06_Spawn_Pattern     = 10
+Wave_07_NPC_Type          = 1
+Wave_07_Spawn_Pattern     = 7
+Wave_08_NPC_Type          = 0
+Wave_08_Spawn_Pattern     = 11

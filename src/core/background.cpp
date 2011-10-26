@@ -46,7 +46,7 @@ int   background_class::get_movement_type (void)
     return(background_class::movemennt_type);
 };
 
-void background_class::set_data          (int layer_number, int dx, int dy, int px, int py, float srx, float sry, int image_ref)
+void background_class::set_data          (int layer_number, int dx, int dy, float px, float py, float srx, float sry, int image_ref)
 {
     background_class::layer[layer_number].active        = true;
     background_class::layer[layer_number].dir_x         = dx;

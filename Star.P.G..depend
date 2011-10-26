@@ -641,7 +641,7 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1319457493 source:c:\_git_\star.p.g\src\game.cpp
+1319632864 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"core/core.hpp"
 	"load_resources.hpp"
@@ -673,7 +673,11 @@
 
 1310910430 hpp"
 
-1318339860 source:c:\_git_\star.p.g\src\levels.cpp
+1319632999 source:c:\_git_\star.p.g\src\levels.cpp
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
 	"load_resources.hpp"
 	"core/core.hpp"
 	"levels.hpp"
@@ -681,7 +685,7 @@
 
 1309768119 c:\_git_\star.p.g\src\levels.h
 
-1319544410 source:c:\_git_\star.p.g\src\main.cpp
+1319633551 source:c:\_git_\star.p.g\src\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -775,7 +779,7 @@
 
 1310897251 c:\_git_\star.p.g\src\graphics.hpp
 
-1318345697 c:\_git_\star.p.g\src\game.hpp
+1319632724 c:\_git_\star.p.g\src\game.hpp
 	<string>
 	<SDL/SDL.h>
 	"PC.hpp"
@@ -807,7 +811,8 @@
 
 1317473593 c:\_git_\star.p.g\src\misc.hpp
 
-1317473593 c:\_git_\star.p.g\src\levels.hpp
+1319631946 c:\_git_\star.p.g\src\levels.hpp
+	"waves.hpp"
 
 1317473593 c:\_git_\star.p.g\src\main.hpp
 
@@ -936,14 +941,14 @@
 
 1315053024 c:\_git_\star.p.g\src\rage\savegame.hpp
 
-1317473593 c:\_git_\star.p.g\src\save_data.hpp
+1319630557 c:\_git_\star.p.g\src\save_data.hpp
 	"core/core.hpp"
 	"core/savegame.hpp"
 	"game.hpp"
 
 1311166714 game.hpp"
 
-1319460582 source:c:\_git_\star.p.g\src\save_data.cpp
+1319630566 source:c:\_git_\star.p.g\src\save_data.cpp
 	"save_data.hpp"
 	"core/core.hpp"
 	"game.hpp"
@@ -1171,7 +1176,7 @@
 
 1317473593 c:\_git_\star.p.g\src\menu_system.hpp
 
-1319544835 source:c:\_git_\star.p.g\src\menu_system.cpp
+1319624415 source:c:\_git_\star.p.g\src\menu_system.cpp
 	"menu_system.hpp"
 	"game.hpp"
 	"core/core.hpp"
@@ -1389,7 +1394,7 @@
 1317473593 c:\_git_\star.p.g\src\projectiles.hpp
 	<string>
 
-1318347081 source:c:\_git_\star.p.g\src\npc.cpp
+1319613733 source:c:\_git_\star.p.g\src\npc.cpp
 	"core/core.hpp"
 	"NPC.hpp"
 	"load_resources.hpp"
@@ -1468,7 +1473,7 @@
 
 1317473594 c:\_git_\star.p.g\src\waves.hpp
 
-1317473168 source:c:\_git_\star.p.g\src\waves.cpp
+1319632989 source:c:\_git_\star.p.g\src\waves.cpp
 	"core/core.hpp"
 	"waves.hpp"
 	"load_resources.hpp"
@@ -1557,7 +1562,7 @@
 
 1317473395 c:\_git_\star.p.g\src\core\io.hpp
 
-1317473395 c:\_git_\star.p.g\src\core\background.hpp
+1319631824 c:\_git_\star.p.g\src\core\background.hpp
 
 1319609591 c:\_git_\star.p.g\src\core\music.hpp
 	<SDL/SDL_mixer.h>
@@ -1567,7 +1572,7 @@
 	<GL/gl.h>
 	<string>
 
-1317473301 source:c:\_git_\star.p.g\src\core\background.cpp
+1319631827 source:c:\_git_\star.p.g\src\core\background.cpp
 	"core.hpp"
 	"../load_resources.hpp"
 	"background.hpp"

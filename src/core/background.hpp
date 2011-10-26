@@ -51,7 +51,7 @@ class background_class
         background_class        (void);
         void  set_movement_type (int type_data);
         int   get_movement_type (void);
-        void  set_data          (int layer_number, int dx, int dy, int px, int py, float srx, float sry, int image_ref);
+        void  set_data          (int layer_number, int dx, int dy, float px, float py, float srx, float sry, int image_ref);
         void  set_image         (int layer_number, int image_ref);
         void  set_active        (int layer_number, bool bool_data);
         bool  get_active        (int layer_number);
