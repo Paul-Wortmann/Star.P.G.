@@ -27,9 +27,10 @@
 #include "levels.hpp"
 #include "game.hpp"
 
-extern game_type     game_o;
-extern game_class    game;
-extern texture_type  texture;
+extern game_type         game_o;
+extern game_class        game;
+extern texture_type      texture;
+extern music_type        music;
 
 void init_levels(void)
 {
@@ -88,10 +89,9 @@ int init_game_level(int level_no)
 
     if (level_no == 0) // Taranis
     {
-        game_o.level                             = level_no;
         game_o.level_npc_type                    = 0;
         game_o.level_boss_level                  = false;
-        game.music_track                         = level_no;
+        game.music_track                         = music.level_00.ref_number;
         game_o.speed                             = 0.015f;
         game_o.npc_spawn_rate                    = 300;
         game_o.npc_spawn_rate_count              = 300;
@@ -118,10 +118,9 @@ int init_game_level(int level_no)
     }
    if (level_no == 1) // Teutates
    {
-        game_o.level                             = level_no;
         game_o.level_npc_type                    = 1;
         game_o.level_boss_level                  = false;
-        game.music_track                         = level_no;
+        game.music_track                         = music.level_01.ref_number;
         game_o.speed                             = 0.050f;
         game_o.npc_spawn_rate                    = 280;
         game_o.npc_spawn_rate_count              = 280;
@@ -156,10 +155,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 2) // Esus
    {
-        game_o.level                             = level_no;
         game_o.level_npc_type                    = 2;
         game_o.level_boss_level                  = false;
-        game.music_track                         = level_no;
+        game.music_track                         = music.level_02.ref_number;
         game_o.speed                             = 0.055f;
         game_o.npc_spawn_rate                    = 270;
         game_o.npc_spawn_rate_count              = 270;
@@ -202,10 +200,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 3) // Cantidious - BOSS 1
    {
-        game_o.level                             = level_no;
         game_o.level_npc_type                    = 3;
         game_o.level_boss_level                  = true;
-        game.music_track                         = level_no;
+        game.music_track                         = music.level_03.ref_number;
         game_o.speed                             = 0.060f;
         game_o.npc_spawn_rate                    = 1;
         game_o.npc_spawn_rate_count              = 1;
@@ -220,10 +217,9 @@ int init_game_level(int level_no)
    } /// add / balance game below !!!
    if (level_no == 4) // Vulcan
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 4;
       game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_04.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_002.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_002.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_028.ref_number);
@@ -245,10 +241,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 5) // Bacchus
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 5;
       game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_05.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_002.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_002.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_027.ref_number);
@@ -269,10 +264,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 6) // Janus
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 6;
       game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_06.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_002.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_002.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_026.ref_number);
@@ -295,10 +289,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 7) // Wrathorn - BOSS 2
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 7;
       game_o.level_boss_level                  = true;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_07.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.menu_background_001.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.menu_background_001.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_026.ref_number);
@@ -313,10 +306,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 8) // Tartarus
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 8;
       game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_08.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_003.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_003.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_024.ref_number);
@@ -334,10 +326,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 9) // Erebus
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 9;
       game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_09.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_003.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_003.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_023.ref_number);
@@ -363,10 +354,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 10) // Nyx
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 10;
       game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_10.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_003.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_003.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_022.ref_number);
@@ -389,10 +379,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 11) // Dediun - BOSS 3
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 11;
       game_o.level_boss_level                  = true;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_11.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_000.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_000.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_022.ref_number);
@@ -407,10 +396,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 12) // Niflheim
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 12;
       game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_12.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_004.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_004.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_021.ref_number);
@@ -429,10 +417,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 13) // Muspelhiem
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 13;
       game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_13.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_004.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_004.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_020.ref_number);
@@ -452,10 +439,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 14) // Hel
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 14;
       game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_14.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_004.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_004.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_019.ref_number);
@@ -481,10 +467,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 15) // Paganite - BOSS 4
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 15;
       game_o.level_boss_level                  = true;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_15.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_000.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_000.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_018.ref_number);
@@ -499,10 +484,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 16) // Pixiu
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 16;
       game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_16.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_005.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_005.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_017.ref_number);
@@ -521,10 +505,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 17) // Xiao
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 17;
       game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_17.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_005.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_005.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_016.ref_number);
@@ -545,10 +528,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 18) // Fuxi
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 18;
       game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_18.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_005.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_005.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_015.ref_number);
@@ -571,10 +553,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 19) // Haxorific - BOSS 5
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 19;
       game_o.level_boss_level                  = true;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_19.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_005.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_005.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_014.ref_number);
@@ -589,10 +570,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 20) // Byakko
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 20;
       game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_20.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_006.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_006.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_013.ref_number);
@@ -612,10 +592,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 21) // Enenra
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 21;
       game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_21.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_006.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_006.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_012.ref_number);
@@ -646,10 +625,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 22) // Tengu
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 22;
       game_o.level_boss_level                  = false;
-      game.music_track                         = level_no;
+      game.music_track                         = music.level_22.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_006.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_006.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_011.ref_number);
@@ -692,10 +670,9 @@ int init_game_level(int level_no)
    }
    if (level_no == 23) // Robonoid - BOSS 6
    {
-      game_o.level                             = level_no;
       game_o.level_npc_type                    = 23;
       game_o.level_boss_level                  = true;
-      game.music_track                         = level_no+1;
+      game.music_track                         = music.level_23.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_006.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_006.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_010.ref_number);
@@ -708,24 +685,24 @@ int init_game_level(int level_no)
       game_o.victory_spawened                  = 0;
       game_o.victory_score                     = 0;
    }
-   if (level_no == 24) // Oyabun - BOSS 7 (final)
-   {
-      game_o.level                             = level_no;
-      game_o.level_npc_type                    = 24;
-      game_o.level_boss_level                  = true;
-      game.music_track                         = level_no+1;
+    if (level_no == 24) // Oyabun - BOSS 7 (final)
+    {
+        game_o.level_npc_type                    = 24;
+        game_o.level_boss_level                  = true;
+        game.music_track                         = music.level_24.ref_number;
         game.background.set_data ( 1, 1, 1, 0.0f, 0.0f, 0.0050f, 0.0050f, texture.background_007.ref_number);
         game.background.set_data ( 2, 1, 1, 4.0f, 0.0f, 0.0050f, 0.0050f, texture.background_007.ref_number);
         game.background.set_data ( 3, 1, 1, 0.0f, 0.0f, 0.0020f, 0.0020f, texture.background_009.ref_number);
         game.background.set_data ( 4, 1, 1, 4.0f, 0.0f, 0.0020f, 0.0020f, texture.background_009.ref_number);
-      game_o.speed                             = 0.165f;
-      game_o.npc_spawn_rate                    = 1;
-      game_o.npc_spawn_rate_count              = 1;
-      game_o.npc_projectile_spawn_rate         = 10;
-      game_o.victory_kills                     = 1;
-      game_o.victory_spawened                  = 0;
-      game_o.victory_score                     = 0;
-   }
+        game_o.speed                             = 0.165f;
+        game_o.npc_spawn_rate                    = 1;
+        game_o.npc_spawn_rate_count              = 1;
+        game_o.npc_projectile_spawn_rate         = 10;
+        game_o.victory_kills                     = 1;
+        game_o.victory_spawened                  = 0;
+        game_o.victory_score                     = 0;
+    }
+    game_o.level                             = level_no;
     game.background.set_movement_type(SCROLL);
     init_npcs(game_o.level_npc_type);
     return(0);
