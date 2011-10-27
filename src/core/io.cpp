@@ -439,7 +439,7 @@ bool events_process(void)
        }
     }
     //---------------------------------------------------------------------------------------------
-    if ((game.io.joystick_button_0) || (game.io.space) || (game.io.enter)) game.io.select = true; else game.io.select = false;
+    if ((game.io.joystick_button_0) || (game.io.enter)) game.io.select = true; else game.io.select = false;
     if ((game.io.joystick_button_1) || (game.io.space) || (game.io.mouse_button_left)) game.io.shoot   = true; else game.io.shoot  = false;
     if ((game.io.joystick_button_2) || (game.io.key_p)) game.io.pause   = true; else game.io.pause  = false;
     if ((game.io.joystick_button_3) || (game.io.escape)) game.io.escape = true; else game.io.escape = false;
