@@ -57,6 +57,7 @@ class projectile_class
     void         init(void);
     void         init(std::wstring name,bool active,int exp,int lvl,float l1,float l2,float l3,float l4,float l5,float l6,int img,int snd,float dmg,float spd,float hlth,int rof,int mov,float ws,float wv,float s);
     void         init(bool active,int exp,int lvl);
+    void         load(std::string file_name);
 };
 
 void init_projectiles(bool re_init);

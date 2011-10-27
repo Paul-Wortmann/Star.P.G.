@@ -22,6 +22,11 @@
  * @date 2011-10-01
  */
 
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
 #include "load_resources.hpp"
 #include "core/core.hpp"
 #include "projectiles.hpp"
@@ -29,6 +34,7 @@
 
 extern   game_type game_o;
 extern   texture_type      texture;
+extern   sound_type        sound;
 
 void projectile_class::init(void)
 {
@@ -84,6 +90,76 @@ void projectile_class::init(bool active,int exp,int lvl)
     projectile_class::experience    = exp;
 };
 
+void projectile_class::load(std::string file_name)
+{
+    char         temp_char = ' ';
+    float        temp_float_data;
+    int          temp_int_data;
+    bool         temp_bool_data;
+    std::string  temp_string_data;
+    std::string  temp_string_key;
+    std::string  temp_string_value;
+    int          count;
+    std::string  data_line;
+    std::fstream projectile_file(file_name.c_str(),std::ios::in|std::ios::binary);
+    if (projectile_file.is_open())
+    {
+        while ( projectile_file.good() )
+        {
+            getline(projectile_file,data_line);
+            {
+                temp_char = data_line[0];
+                if((temp_char != '#') && (data_line.length() > 2))
+                {
+                    temp_char         = '#';
+                    temp_string_key   = "";
+                    temp_string_value = "";
+                    count = 0;
+                    while(temp_char != ' ')
+                    {
+                        temp_char = data_line[count];
+                        if(temp_char != ' ') temp_string_key += temp_char;
+                        count++;
+                        if(count > data_line.length()) (temp_char = ' ');
+                    }
+                    while((temp_char == ' ') || (temp_char == '='))
+                    {
+                        temp_char = data_line[count];
+                        count++;
+                        if(count > data_line.length()) (temp_char = '#');
+                    }
+                    count--;
+                    while(temp_char != ' ')
+                    {
+                        temp_char = data_line[count];
+                        if(temp_char != ' ') temp_string_value += temp_char;
+                        count++;
+                        if(count > data_line.length()) (temp_char = ' ');
+                    }
+                    temp_string_data = temp_string_value.c_str();
+                    temp_float_data  = atof(temp_string_value.c_str());
+                    temp_int_data    = atoi(temp_string_value.c_str());
+                    if (temp_int_data == 1) temp_bool_data = true;
+                    else temp_bool_data = false;
+                    if (temp_string_key == "Name")
+                    {
+                        /*
+                        size_t origsize = strlen(temp_string_data.c_str()) + 1;
+                        const size_t newsize = 100;
+                        size_t convertedChars = 0;
+                        wchar_t wcstring[newsize];
+                        mbstowcs_s(&convertedChars, wcstring, origsize, temp_string_data, _TRUNCATE);
+                        wcscat_s(wcstring, L" (wchar_t *)");
+                        projectile_class::name = wcstring;
+                        */
+                    }
+                }
+            }
+        }
+        projectile_file.close();
+    }
+};
+
 void init_projectiles(bool re_init)
 {
     if (re_init)
@@ -96,7 +172,7 @@ void init_projectiles(bool re_init)
     }
     else
     {
-    //game_o.projectile[ 0].init(L"Blasters",true,0,0,1024.0f,2048.0f,4096.0f,8192.0f,16384.0f,32768.0f,222,7,2.5f,0.003f,10.0f,25,3,0.125f,0.00015f,0.075f);
+        game_o.projectile[ 0].load("data/configuration/projectiles/projectile_00.txt");
 
     game_o.projectile[ 0].name          = L"Blasters";
     game_o.projectile[ 0].active        = true;
@@ -106,7 +182,7 @@ void init_projectiles(bool re_init)
     game_o.projectile[ 0].level_2       = 2048.0f;
     game_o.projectile[ 0].level_3       = 4096.0f;
     game_o.projectile[ 0].image         = texture.projectile_000.ref_number;
-    game_o.projectile[ 0].sound         = 7;
+    game_o.projectile[ 0].sound         = 7; //sound.projectile_000.ref_number;
     game_o.projectile[ 0].damage        = 2.5f;
     game_o.projectile[ 0].speed         = 0.003f;
     game_o.projectile[ 0].health        = 10;

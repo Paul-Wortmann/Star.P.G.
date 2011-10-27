@@ -1,0 +1,20 @@
+# ------------------- #
+#|   Projectile 00   |#
+# ___________________ #
+
+Name          = Blasters
+Level_1       = 1024.0
+Level_2       = 2048.0
+Level_3       = 4096.0
+Image         = 0
+Sound         = 7
+Damage        = 2.5
+Speed         = 0.003
+Health        = 10
+ROF           = 25
+Movement      = 3
+Wave_Size     = 0.125
+Wave_Velocity = 0.00015
+Width         = 0.075
+Height        = 0.075
+
