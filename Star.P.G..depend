@@ -898,7 +898,7 @@
 	"core.hpp"
 	"sound.hpp"
 
-1319609494 source:c:\_git_\star.p.g\src\load_resources.cpp
+1319902819 source:c:\_git_\star.p.g\src\load_resources.cpp
 	<SDL/SDL.h>
 	"load_resources.hpp"
 	"core/core.hpp"
@@ -1426,7 +1426,7 @@
 1317473594 c:\_git_\star.p.g\src\support_ships.hpp
 	"bullets.hpp"
 
-1319895643 source:c:\_git_\star.p.g\src\projectiles.cpp
+1319896500 source:c:\_git_\star.p.g\src\projectiles.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>

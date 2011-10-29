@@ -323,9 +323,9 @@ bool load_textures(void)
     texture.projectile_029.load_image("data/textures/projectiles/projectile_029.png",texture_count);texture_count++;
     texture.projectile_030.load_image("data/textures/projectiles/projectile_030.png",texture_count);texture_count++;
     texture.projectile_031.load_image("data/textures/projectiles/projectile_031.png",texture_count);texture_count++;
-    texture.projectile_031.load_image("data/textures/projectiles/projectile_032.png",texture_count);texture_count++;
-    texture.projectile_031.load_image("data/textures/projectiles/projectile_033.png",texture_count);texture_count++;
-    texture.projectile_031.load_image("data/textures/projectiles/projectile_034.png",texture_count);texture_count++;
+    texture.projectile_032.load_image("data/textures/projectiles/projectile_032.png",texture_count);texture_count++;
+    texture.projectile_033.load_image("data/textures/projectiles/projectile_033.png",texture_count);texture_count++;
+    texture.projectile_034.load_image("data/textures/projectiles/projectile_034.png",texture_count);texture_count++;
 
     texture.ship_000.load_image("data/textures/ships/ship_000.png",texture_count);texture_count++;
     texture.ship_001.load_image("data/textures/ships/ship_001.png",texture_count);texture_count++;

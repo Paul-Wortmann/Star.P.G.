@@ -140,7 +140,7 @@
 		<Cursor1 position="996" topLine="17" />
 	</File>
 	<File name="src\game.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="3929" topLine="67" />
+		<Cursor1 position="105123" topLine="660" />
 	</File>
 	<File name="src\game.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="3461" topLine="75" />
@@ -158,10 +158,10 @@
 		<Cursor1 position="1762" topLine="24" />
 	</File>
 	<File name="src\load_resources.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="71700" topLine="943" />
+		<Cursor1 position="27955" topLine="259" />
 	</File>
 	<File name="src\load_resources.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="9670" topLine="297" />
+		<Cursor1 position="9636" topLine="0" />
 	</File>
 	<File name="src\main.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="12488" topLine="238" />
@@ -187,11 +187,11 @@
 	<File name="src\powerups.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="908" topLine="0" />
 	</File>
-	<File name="src\projectiles.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="6243" topLine="133" />
+	<File name="src\projectiles.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="9491" topLine="79" />
 	</File>
-	<File name="src\projectiles.hpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1073" topLine="18" />
+	<File name="src\projectiles.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="1330" topLine="24" />
 	</File>
 	<File name="src\save_data.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="9176" topLine="179" />
@@ -212,10 +212,10 @@
 		<Cursor1 position="908" topLine="0" />
 	</File>
 	<File name="src\support_ships.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="30972" topLine="473" />
+		<Cursor1 position="53137" topLine="612" />
 	</File>
 	<File name="src\support_ships.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="908" topLine="0" />
+		<Cursor1 position="2428" topLine="30" />
 	</File>
 	<File name="src\thrusters.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="2299" topLine="0" />
