@@ -158,10 +158,10 @@
 		<Cursor1 position="1762" topLine="24" />
 	</File>
 	<File name="src\load_resources.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="932" topLine="15" />
+		<Cursor1 position="71700" topLine="943" />
 	</File>
 	<File name="src\load_resources.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="3014" topLine="94" />
+		<Cursor1 position="9670" topLine="297" />
 	</File>
 	<File name="src\main.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="12488" topLine="238" />
@@ -176,10 +176,10 @@
 		<Cursor1 position="901" topLine="15" />
 	</File>
 	<File name="src\misc.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1979" topLine="75" />
+		<Cursor1 position="2543" topLine="97" />
 	</File>
 	<File name="src\misc.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="908" topLine="0" />
+		<Cursor1 position="1432" topLine="8" />
 	</File>
 	<File name="src\powerups.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="6804" topLine="123" />
@@ -190,7 +190,7 @@
 	<File name="src\projectiles.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="6243" topLine="133" />
 	</File>
-	<File name="src\projectiles.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\projectiles.hpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1073" topLine="18" />
 	</File>
 	<File name="src\save_data.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

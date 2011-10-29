@@ -77,6 +77,10 @@ struct sound_type
     sound_class projectile_028;
     sound_class projectile_029;
     sound_class projectile_030;
+    sound_class projectile_031;
+    sound_class projectile_032;
+    sound_class projectile_033;
+    sound_class projectile_034;
     sound_class shield_hit;
     sound_class powerup_01;
     sound_class powerup_02;
@@ -298,6 +302,9 @@ struct texture_type
     texture_class projectile_029;
     texture_class projectile_030;
     texture_class projectile_031;
+    texture_class projectile_032;
+    texture_class projectile_033;
+    texture_class projectile_034;
 
     texture_class ship_000;
     texture_class ship_001;

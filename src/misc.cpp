@@ -26,6 +26,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string>
+#include <algorithm>
 #include <sstream>
 #include <fstream>
 #include "misc.hpp"
@@ -117,3 +118,18 @@ int nextpoweroftwo(int x)
 	double logbase2 = log(x) / log(2);
 	return round(pow(2,ceil(logbase2)));
 };
+
+std::wstring StringToWString(const std::string& s)
+{
+    std::wstring temp(s.length(),L' ');
+    std::copy(s.begin(), s.end(), temp.begin());
+    return temp;
+}
+
+
+std::string WStringToString(const std::wstring& s)
+{
+    std::string temp(s.length(), ' ');
+    std::copy(s.begin(), s.end(), temp.begin());
+    return temp;
+}

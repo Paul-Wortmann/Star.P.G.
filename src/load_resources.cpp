@@ -88,6 +88,10 @@ bool load_sounds(void)
     sound.projectile_028.load("data/sounds/projectile_028.wav",sfx_count);sfx_count++;
     sound.projectile_029.load("data/sounds/projectile_029.wav",sfx_count);sfx_count++;
     sound.projectile_030.load("data/sounds/projectile_030.wav",sfx_count);sfx_count++;
+    sound.projectile_031.load("data/sounds/projectile_031.wav",sfx_count);sfx_count++;
+    sound.projectile_032.load("data/sounds/projectile_032.wav",sfx_count);sfx_count++;
+    sound.projectile_033.load("data/sounds/projectile_033.wav",sfx_count);sfx_count++;
+    sound.projectile_034.load("data/sounds/projectile_034.wav",sfx_count);sfx_count++;
     sound.shield_hit.load("data/sounds/shield_hit.wav",sfx_count);sfx_count++;
     sound.powerup_01.load("data/sounds/powerup_01.wav",sfx_count);sfx_count++;
     sound.powerup_02.load("data/sounds/powerup_02.wav",sfx_count);sfx_count++;
@@ -319,6 +323,9 @@ bool load_textures(void)
     texture.projectile_029.load_image("data/textures/projectiles/projectile_029.png",texture_count);texture_count++;
     texture.projectile_030.load_image("data/textures/projectiles/projectile_030.png",texture_count);texture_count++;
     texture.projectile_031.load_image("data/textures/projectiles/projectile_031.png",texture_count);texture_count++;
+    texture.projectile_031.load_image("data/textures/projectiles/projectile_032.png",texture_count);texture_count++;
+    texture.projectile_031.load_image("data/textures/projectiles/projectile_033.png",texture_count);texture_count++;
+    texture.projectile_031.load_image("data/textures/projectiles/projectile_034.png",texture_count);texture_count++;
 
     texture.ship_000.load_image("data/textures/ships/ship_000.png",texture_count);texture_count++;
     texture.ship_001.load_image("data/textures/ships/ship_001.png",texture_count);texture_count++;
@@ -634,6 +641,9 @@ bool proc_textures(void)
     texture.projectile_029.process();
     texture.projectile_030.process();
     texture.projectile_031.process();
+    texture.projectile_032.process();
+    texture.projectile_033.process();
+    texture.projectile_034.process();
 
     texture.ship_000.process();
     texture.ship_001.process();
@@ -954,6 +964,9 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == texture.projectile_029.ref_number) texture.projectile_029.draw(r,x,y,z,w,h,angle);
     if (texture_number == texture.projectile_030.ref_number) texture.projectile_030.draw(r,x,y,z,w,h,angle);
     if (texture_number == texture.projectile_031.ref_number) texture.projectile_031.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.projectile_032.ref_number) texture.projectile_032.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.projectile_033.ref_number) texture.projectile_033.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.projectile_034.ref_number) texture.projectile_034.draw(r,x,y,z,w,h,angle);
 
     if (texture_number == texture.ship_000.ref_number) texture.ship_000.draw(r,x,y,z,w,h,angle);
     if (texture_number == texture.ship_001.ref_number) texture.ship_001.draw(r,x,y,z,w,h,angle);
