@@ -89,7 +89,7 @@ struct game_type
     int                         npc_projectile_spawn_rate;
     player_class                player;
     supportship_class           supportship[MAX_SUPPORTSHIPS];
-    enemy_type                  enemy[MAX_ENEMYS];
+    enemy_class                  enemy[MAX_ENEMYS];
     npc_type                    npc[MAX_NPCS];
     projectile_class            projectile[MAX_PROJECTILES];
     shield_class                shield[MAX_SHIELDS];

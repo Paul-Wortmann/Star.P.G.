@@ -641,7 +641,7 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1319632864 source:c:\_git_\star.p.g\src\game.cpp
+1319903524 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"core/core.hpp"
 	"load_resources.hpp"
@@ -780,7 +780,7 @@
 
 1310897251 c:\_git_\star.p.g\src\graphics.hpp
 
-1319632724 c:\_git_\star.p.g\src\game.hpp
+1319951509 c:\_git_\star.p.g\src\game.hpp
 	<string>
 	<SDL/SDL.h>
 	"PC.hpp"
@@ -942,7 +942,7 @@
 
 1315053024 c:\_git_\star.p.g\src\rage\savegame.hpp
 
-1319630557 c:\_git_\star.p.g\src\save_data.hpp
+1319951525 c:\_git_\star.p.g\src\save_data.hpp
 	"core/core.hpp"
 	"core/savegame.hpp"
 	"game.hpp"
@@ -1395,14 +1395,19 @@
 1319717441 c:\_git_\star.p.g\src\projectiles.hpp
 	<string>
 
-1319613733 source:c:\_git_\star.p.g\src\npc.cpp
+1319952539 source:c:\_git_\star.p.g\src\npc.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
 	"core/core.hpp"
 	"NPC.hpp"
 	"load_resources.hpp"
 	"game.hpp"
 	"misc.hpp"
 
-1318347104 c:\_git_\star.p.g\src\npc.hpp
+1319952453 c:\_git_\star.p.g\src\npc.hpp
 	"bullets.hpp"
 
 1319544840 source:c:\_git_\star.p.g\src\pc.cpp
@@ -1480,7 +1485,7 @@
 
 1317473594 c:\_git_\star.p.g\src\waves.hpp
 
-1319632989 source:c:\_git_\star.p.g\src\waves.cpp
+1319952588 source:c:\_git_\star.p.g\src\waves.cpp
 	"core/core.hpp"
 	"waves.hpp"
 	"load_resources.hpp"

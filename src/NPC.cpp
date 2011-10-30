@@ -22,6 +22,11 @@
  * @date 2011-10-01
  */
 
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
 #include "core/core.hpp"
 #include "NPC.hpp"
 #include "load_resources.hpp"
@@ -34,6 +39,108 @@ extern  texture_type     texture;
 extern  game_type  game_o;
 extern  game_class game;
 
+void enemy_class::load(std::string file_name)
+{
+    char         temp_char = ' ';
+    float        temp_float_data;
+    int          temp_int_data;
+    bool         temp_bool_data;
+    std::string  temp_string_data;
+    std::string  temp_string_key;
+    std::string  temp_string_value;
+    int          count;
+    std::string  data_line;
+    std::fstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
+    if (script_file.is_open())
+    {
+        while ( script_file.good() )
+        {
+            getline(script_file,data_line);
+            {
+                temp_char = data_line[0];
+                if((temp_char != '#') && (data_line.length() > 2))
+                {
+                    temp_char         = '#';
+                    temp_string_key   = "";
+                    temp_string_value = "";
+                    count = 0;
+                    while(temp_char != ' ')
+                    {
+                        temp_char = data_line[count];
+                        if(temp_char != ' ') temp_string_key += temp_char;
+                        count++;
+                        if(count > data_line.length()) (temp_char = ' ');
+                    }
+                    while((temp_char == ' ') || (temp_char == '='))
+                    {
+                        temp_char = data_line[count];
+                        count++;
+                        if(count > data_line.length()) (temp_char = '#');
+                    }
+                    count--;
+                    while(temp_char != ' ')
+                    {
+                        temp_char = data_line[count];
+                        if(temp_char != ' ') temp_string_value += temp_char;
+                        count++;
+                        if(count > data_line.length()) (temp_char = ' ');
+                    }
+                    temp_string_data = temp_string_value.c_str();
+                    temp_float_data  = atof(temp_string_value.c_str());
+                    temp_int_data    = atoi(temp_string_value.c_str());
+                    if (temp_int_data == 1) temp_bool_data = true;
+                    else temp_bool_data = false;
+                    if (temp_string_key == "Name")
+                    {
+                        enemy_class::name = StringToWString(temp_string_data);
+                    }
+                    if (temp_string_key == "Image")
+                    {
+                        enemy_class::image = temp_int_data;
+                    }
+                    if (temp_string_key == "Sound")
+                    {
+                        enemy_class::sound = temp_int_data;
+                    }
+                    if (temp_string_key == "Health")
+                    {
+                        enemy_class::health = temp_float_data;
+                    }
+                    if (temp_string_key == "Speed")
+                    {
+                        enemy_class::speed = temp_float_data;
+                    }
+                    if (temp_string_key == "Movement")
+                    {
+                        enemy_class::movement = temp_int_data;
+                    }
+                    if (temp_string_key == "Weapon_1")
+                    {
+                        enemy_class::weapon_1 = temp_int_data;
+                    }
+                    if (temp_string_key == "Weapon_2")
+                    {
+                        enemy_class::weapon_2 = temp_int_data;
+                    }
+                    if (temp_string_key == "Projectiles")
+                    {
+                        enemy_class::projectiles = temp_int_data;
+                    }
+                    if (temp_string_key == "Width")
+                    {
+                        enemy_class::width = temp_float_data;
+                    }
+                    if (temp_string_key == "Height")
+                    {
+                        enemy_class::height = temp_float_data;
+                    }
+                }
+            }
+        }
+        script_file.close();
+    }
+};
+
 void init_enemies(bool re_init)
 {
     if(re_init)
@@ -42,231 +149,81 @@ void init_enemies(bool re_init)
     }
     else
     {
-        game_o.enemy[0 ].image       = texture.ship_000.ref_number;
-        game_o.enemy[0 ].health      = 05.0f;
-        game_o.enemy[0 ].movement    = 0;//move straight forward
-        game_o.enemy[0 ].weapon      = 6;
-        game_o.enemy[0 ].projectiles = 1;
-        game_o.enemy[0 ].size_h      = 0.1f;
-        game_o.enemy[0 ].size_w      = 0.1f;
-        game_o.enemy[0 ].sound       = 0;
-        game_o.enemy[0 ].speed       = (game_o.projectile[game_o.enemy[0 ].weapon].speed/2) + 0.0005f;
-        game_o.enemy[1 ].image       = texture.ship_001.ref_number;
-        game_o.enemy[1 ].health      = 10.0f;
-        game_o.enemy[1 ].movement    = 7;//move to position player was in on spawn
-        game_o.enemy[1 ].weapon      = 7;
-        game_o.enemy[1 ].projectiles = 2;
-        game_o.enemy[1 ].size_h      = 0.15f;
-        game_o.enemy[1 ].size_w      = 0.15f;
-        game_o.enemy[1 ].sound       = 0;
-        game_o.enemy[1 ].speed       = (game_o.projectile[game_o.enemy[1 ].weapon].speed/2) + 0.002f;
-        game_o.enemy[2 ].image       = texture.ship_002.ref_number;
-        game_o.enemy[2 ].health      = 15.0f;
-        game_o.enemy[2 ].movement    = 5; //wave motion
-        game_o.enemy[2 ].weapon      = 8;
-        game_o.enemy[2 ].projectiles = 3;
-        game_o.enemy[2 ].size_h      = 0.225f;
-        game_o.enemy[2 ].size_w      = 0.225f;
-        game_o.enemy[2 ].sound       = 0;
-        game_o.enemy[2 ].speed       = (game_o.projectile[game_o.enemy[2 ].weapon].speed/2) - 0.0005f;
-        game_o.enemy[3 ].image       = texture.ship_003.ref_number;
-        game_o.enemy[3 ].health      = 100.0f;
-        game_o.enemy[3 ].movement    = 8;//boss, avoid player, move up n down, stay far right  ---- Cantide ----
-        game_o.enemy[3 ].weapon      = 9;
-        game_o.enemy[3 ].projectiles = 6;
-        game_o.enemy[3 ].size_h      = 0.8f;
-        game_o.enemy[3 ].size_w      = 0.4f;
-        game_o.enemy[3 ].sound       = 0;
-        game_o.enemy[3 ].speed       = (game_o.projectile[game_o.enemy[3 ].weapon].speed/2);
-        game_o.enemy[4 ].image       = texture.ship_004.ref_number;
-        game_o.enemy[4 ].health      = 50.0f;
-        game_o.enemy[4 ].movement    = 5;//wave motion
-        game_o.enemy[4 ].weapon      = 10;
-        game_o.enemy[4 ].projectiles = 2;
-        game_o.enemy[4 ].size_h      = 0.2f;
-        game_o.enemy[4 ].size_w      = 0.2f;
-        game_o.enemy[4 ].sound       = 0;
-        game_o.enemy[4 ].speed       = (game_o.projectile[game_o.enemy[4 ].weapon].speed/2) + 0.003f;
-        game_o.enemy[5 ].image       = texture.ship_005.ref_number;
-        game_o.enemy[5 ].health      = 30.0f;
-        game_o.enemy[5 ].movement    = 3;
-        game_o.enemy[5 ].weapon      = 11;
-        game_o.enemy[5 ].projectiles = 4;
-        game_o.enemy[5 ].size_h      = 0.15f;
-        game_o.enemy[5 ].size_w      = 0.15f;
-        game_o.enemy[5 ].sound       = 0;
-        game_o.enemy[5 ].speed       = (game_o.projectile[game_o.enemy[5 ].weapon].speed/2) - 0.0005f;
-        game_o.enemy[6 ].image       = texture.ship_006.ref_number;
-        game_o.enemy[6 ].health      = 70.0f;
-        game_o.enemy[6 ].movement    = 4; // wave
-        game_o.enemy[6 ].weapon      = 12;
-        game_o.enemy[6 ].projectiles = 6;
-        game_o.enemy[6 ].size_h      = 0.225f;
-        game_o.enemy[6 ].size_w      = 0.225f;
-        game_o.enemy[6 ].sound       = 0;
-        game_o.enemy[6 ].speed       = (game_o.projectile[game_o.enemy[6 ].weapon].speed/2);
-        game_o.enemy[7 ].image       = texture.ship_007.ref_number;
-        game_o.enemy[7 ].health      = 500.0f;
-        game_o.enemy[7 ].movement    = 2;//boss   --- Wrathorn ---
-        game_o.enemy[7 ].weapon      = 13;
-        game_o.enemy[7 ].projectiles = 9;
-        game_o.enemy[7 ].size_h      = 0.8f;
-        game_o.enemy[7 ].size_w      = 0.4f;
-        game_o.enemy[7 ].sound       = 0;
-        game_o.enemy[7 ].speed       = (game_o.projectile[game_o.enemy[7 ].weapon].speed/2);
-        game_o.enemy[8 ].image       = texture.ship_008.ref_number;
-        game_o.enemy[8 ].health      = 80.0f;
-        game_o.enemy[8 ].movement    = 0; // just move forward only
-        game_o.enemy[8 ].weapon      = 14;
-        game_o.enemy[8 ].projectiles = 2;
-        game_o.enemy[8 ].size_h      = 0.175f;
-        game_o.enemy[8 ].size_w      = 0.175f;
-        game_o.enemy[8 ].sound       = 0;
-        game_o.enemy[8 ].speed       = (game_o.projectile[game_o.enemy[8 ].weapon].speed/2);
-        game_o.enemy[9 ].image       = texture.ship_009.ref_number;
-        game_o.enemy[9 ].health      = 100.0f;
-        game_o.enemy[9 ].movement    = 1; // home in on player
-        game_o.enemy[9 ].weapon      = 15;
-        game_o.enemy[9 ].projectiles = 4;
-        game_o.enemy[9 ].size_h      = 0.25f;
-        game_o.enemy[9 ].size_w      = 0.25f;
-        game_o.enemy[9 ].sound       = 0;
-        game_o.enemy[9 ].speed       = (game_o.projectile[game_o.enemy[9 ].weapon].speed/2);
+        game_o.enemy[ 0].load("data/configuration/enemies/enemy_00.txt");
+        game_o.enemy[ 0].image       = texture.ship_000.ref_number;
+        game_o.enemy[ 0].speed       = (game_o.projectile[game_o.enemy[ 0].weapon_1].speed/2) + game_o.enemy[ 0].speed;
+        game_o.enemy[ 1].load("data/configuration/enemies/enemy_01.txt");
+        game_o.enemy[ 1].image       = texture.ship_001.ref_number;
+        game_o.enemy[ 1].speed       = (game_o.projectile[game_o.enemy[ 1].weapon_1].speed/2) + game_o.enemy[ 1].speed;
+        game_o.enemy[ 2].load("data/configuration/enemies/enemy_02.txt");
+        game_o.enemy[ 2].image       = texture.ship_002.ref_number;
+        game_o.enemy[ 2].speed       = (game_o.projectile[game_o.enemy[ 2].weapon_1].speed/2) + game_o.enemy[ 2].speed;
+        game_o.enemy[ 3].load("data/configuration/enemies/enemy_03.txt");
+        game_o.enemy[ 3].image       = texture.ship_003.ref_number;
+        game_o.enemy[ 3].speed       = (game_o.projectile[game_o.enemy[ 3].weapon_1].speed/2) + game_o.enemy[ 3].speed;
+        game_o.enemy[ 4].load("data/configuration/enemies/enemy_04.txt");
+        game_o.enemy[ 4].image       = texture.ship_004.ref_number;
+        game_o.enemy[ 4].speed       = (game_o.projectile[game_o.enemy[ 4].weapon_1].speed/2) + game_o.enemy[ 4].speed;
+        game_o.enemy[ 5].load("data/configuration/enemies/enemy_05.txt");
+        game_o.enemy[ 5].image       = texture.ship_005.ref_number;
+        game_o.enemy[ 5].speed       = (game_o.projectile[game_o.enemy[ 5].weapon_1].speed/2) + game_o.enemy[ 5].speed;
+        game_o.enemy[ 6].load("data/configuration/enemies/enemy_06.txt");
+        game_o.enemy[ 6].image       = texture.ship_006.ref_number;
+        game_o.enemy[ 6].speed       = (game_o.projectile[game_o.enemy[ 6].weapon_1].speed/2) + game_o.enemy[ 6].speed;
+        game_o.enemy[ 7].load("data/configuration/enemies/enemy_07.txt");
+        game_o.enemy[ 7].image       = texture.ship_007.ref_number;
+        game_o.enemy[ 7].speed       = (game_o.projectile[game_o.enemy[ 7].weapon_1].speed/2) + game_o.enemy[ 7].speed;
+        game_o.enemy[ 8].load("data/configuration/enemies/enemy_08.txt");
+        game_o.enemy[ 8].image       = texture.ship_008.ref_number;
+        game_o.enemy[ 8].speed       = (game_o.projectile[game_o.enemy[ 8].weapon_1].speed/2) + game_o.enemy[ 8].speed;
+        game_o.enemy[ 9].load("data/configuration/enemies/enemy_09.txt");
+        game_o.enemy[ 9].image       = texture.ship_009.ref_number;
+        game_o.enemy[ 9].speed       = (game_o.projectile[game_o.enemy[ 9].weapon_1].speed/2) + game_o.enemy[ 9].speed;
+        game_o.enemy[10].load("data/configuration/enemies/enemy_10.txt");
         game_o.enemy[10].image       = texture.ship_010.ref_number;
-        game_o.enemy[10].health      = 100.0f;
-        game_o.enemy[10].movement    = 6;//fast wave motion
-        game_o.enemy[10].weapon      = 16;
-        game_o.enemy[10].projectiles = 6;
-        game_o.enemy[10].size_h      = 0.215f;
-        game_o.enemy[10].size_w      = 0.215f;
-        game_o.enemy[10].sound       = 0;
-        game_o.enemy[10].speed       = (game_o.projectile[game_o.enemy[10].weapon].speed/2);
+        game_o.enemy[10].speed       = (game_o.projectile[game_o.enemy[10].weapon_1].speed/2) + game_o.enemy[10].speed;
+        game_o.enemy[11].load("data/configuration/enemies/enemy_11.txt");
         game_o.enemy[11].image       = texture.ship_011.ref_number;
-        game_o.enemy[11].health      = 2000.0f;
-        game_o.enemy[11].movement    = 2;//boss
-        game_o.enemy[11].weapon      = 17;
-        game_o.enemy[11].projectiles = 9;
-        game_o.enemy[11].size_h      = 0.8f;
-        game_o.enemy[11].size_w      = 0.4f;
-        game_o.enemy[11].sound       = 0;
-        game_o.enemy[11].speed       = (game_o.projectile[game_o.enemy[11].weapon].speed/2);
+        game_o.enemy[11].speed       = (game_o.projectile[game_o.enemy[11].weapon_1].speed/2) + game_o.enemy[11].speed;
+        game_o.enemy[12].load("data/configuration/enemies/enemy_12.txt");
         game_o.enemy[12].image       = texture.ship_012.ref_number;
-        game_o.enemy[12].health      = 120.0f;
-        game_o.enemy[12].movement    = 4; // wave
-        game_o.enemy[12].weapon      = 18;
-        game_o.enemy[12].projectiles = 2;
-        game_o.enemy[12].size_h      = 0.15f;
-        game_o.enemy[12].size_w      = 0.15f;
-        game_o.enemy[12].sound       = 0;
-        game_o.enemy[12].speed       = (game_o.projectile[game_o.enemy[12].weapon].speed/2);   init_powerups();
+        game_o.enemy[12].speed       = (game_o.projectile[game_o.enemy[12].weapon_1].speed/2) + game_o.enemy[12].speed;
+        game_o.enemy[13].load("data/configuration/enemies/enemy_13.txt");
         game_o.enemy[13].image       = texture.ship_013.ref_number;
-        game_o.enemy[13].health      = 120.0f;
-        game_o.enemy[13].movement    = 0; // only forward
-        game_o.enemy[13].weapon      = 19;
-        game_o.enemy[13].projectiles = 3;
-        game_o.enemy[13].size_h      = 0.2f;
-        game_o.enemy[13].size_w      = 0.1f;
-        game_o.enemy[13].sound       = 0;
-        game_o.enemy[13].speed       = (game_o.projectile[game_o.enemy[13].weapon].speed/2);   init_powerups();
+        game_o.enemy[13].speed       = (game_o.projectile[game_o.enemy[13].weapon_1].speed/2) + game_o.enemy[13].speed;
+        game_o.enemy[14].load("data/configuration/enemies/enemy_14.txt");
         game_o.enemy[14].image       = texture.ship_014.ref_number;
-        game_o.enemy[14].health      = 120.0f;
-        game_o.enemy[14].movement    = 5; // wave action
-        game_o.enemy[14].weapon      = 20;
-        game_o.enemy[14].projectiles = 5;
-        game_o.enemy[14].size_h      = 0.25f;
-        game_o.enemy[14].size_w      = 0.2f;
-        game_o.enemy[14].sound       = 0;
-        game_o.enemy[14].speed       = (game_o.projectile[game_o.enemy[14].weapon].speed/2);   init_powerups();
+        game_o.enemy[14].speed       = (game_o.projectile[game_o.enemy[14].weapon_1].speed/2) + game_o.enemy[14].speed;
+        game_o.enemy[15].load("data/configuration/enemies/enemy_15.txt");
         game_o.enemy[15].image       = texture.ship_015.ref_number;
-        game_o.enemy[15].health      = 2000.0f;
-        game_o.enemy[15].movement    = 2; //boss
-        game_o.enemy[15].weapon      = 21;
-        game_o.enemy[15].projectiles = 9;
-        game_o.enemy[15].size_h      = 0.8f;
-        game_o.enemy[15].size_w      = 0.4f;
-        game_o.enemy[15].sound       = 0;
-        game_o.enemy[15].speed       = (game_o.projectile[game_o.enemy[15].weapon].speed/2);
+        game_o.enemy[15].speed       = (game_o.projectile[game_o.enemy[15].weapon_1].speed/2) + game_o.enemy[15].speed;
+        game_o.enemy[16].load("data/configuration/enemies/enemy_16.txt");
         game_o.enemy[16].image       = texture.ship_016.ref_number;
-        game_o.enemy[16].health      = 130.0f;
-        game_o.enemy[16].movement    = 6; // fast wave action
-        game_o.enemy[16].weapon      = 22;
-        game_o.enemy[16].projectiles = 2;
-        game_o.enemy[16].size_h      = 0.2f;
-        game_o.enemy[16].size_w      = 0.2f;
-        game_o.enemy[16].sound       = 0;
-        game_o.enemy[16].speed       = (game_o.projectile[game_o.enemy[16].weapon].speed/2);   init_powerups();
+        game_o.enemy[16].speed       = (game_o.projectile[game_o.enemy[16].weapon_1].speed/2) + game_o.enemy[16].speed;
+        game_o.enemy[17].load("data/configuration/enemies/enemy_17.txt");
         game_o.enemy[17].image       = texture.ship_017.ref_number;
-        game_o.enemy[17].health      = 140.0f;
-        game_o.enemy[17].movement    = 1; // home in on player
-        game_o.enemy[17].weapon      = 23;
-        game_o.enemy[17].projectiles = 3;
-        game_o.enemy[17].size_h      = 0.2f;
-        game_o.enemy[17].size_w      = 0.2f;
-        game_o.enemy[17].sound       = 0;
-        game_o.enemy[17].speed       = (game_o.projectile[game_o.enemy[17].weapon].speed/2);   init_powerups();
+        game_o.enemy[17].speed       = (game_o.projectile[game_o.enemy[17].weapon_1].speed/2) + game_o.enemy[17].speed;
+        game_o.enemy[18].load("data/configuration/enemies/enemy_18.txt");
         game_o.enemy[18].image       = texture.ship_018.ref_number;
-        game_o.enemy[18].health      = 150.0f;
-        game_o.enemy[18].movement    = 3; // avoid then attack
-        game_o.enemy[18].weapon      = 24;
-        game_o.enemy[18].projectiles = 5;
-        game_o.enemy[18].size_h      = 0.2f;
-        game_o.enemy[18].size_w      = 0.2f;
-        game_o.enemy[18].sound       = 0;
-        game_o.enemy[18].speed       = (game_o.projectile[game_o.enemy[18].weapon].speed/2);   init_powerups();
+        game_o.enemy[18].speed       = (game_o.projectile[game_o.enemy[18].weapon_1].speed/2) + game_o.enemy[18].speed;
+        game_o.enemy[19].load("data/configuration/enemies/enemy_19.txt");
         game_o.enemy[19].image       = texture.ship_019.ref_number;
-        game_o.enemy[19].health      = 3000.0f;
-        game_o.enemy[19].movement    = 2; // boss
-        game_o.enemy[19].weapon      = 25;
-        game_o.enemy[19].projectiles = 9;
-        game_o.enemy[19].size_h      = 0.8f;
-        game_o.enemy[19].size_w      = 0.4f;
-        game_o.enemy[19].sound       = 0;
-        game_o.enemy[19].speed       = (game_o.projectile[game_o.enemy[19].weapon].speed/2);   init_npcs(0);
+        game_o.enemy[19].speed       = (game_o.projectile[game_o.enemy[19].weapon_1].speed/2) + game_o.enemy[19].speed;
+        game_o.enemy[20].load("data/configuration/enemies/enemy_20.txt");
         game_o.enemy[20].image       = texture.ship_020.ref_number;
-        game_o.enemy[20].health      = 150.0f;
-        game_o.enemy[20].movement    = 1;//home in on player
-        game_o.enemy[20].weapon      = 26;
-        game_o.enemy[20].projectiles = 2;
-        game_o.enemy[20].size_h      = 0.2f;
-        game_o.enemy[20].size_w      = 0.2f;
-        game_o.enemy[20].sound       = 0;
-        game_o.enemy[20].speed       = (game_o.projectile[game_o.enemy[20].weapon].speed/2);   init_powerups();
+        game_o.enemy[20].speed       = (game_o.projectile[game_o.enemy[20].weapon_1].speed/2) + game_o.enemy[20].speed;
+        game_o.enemy[21].load("data/configuration/enemies/enemy_21.txt");
         game_o.enemy[21].image       = texture.ship_021.ref_number;
-        game_o.enemy[21].health      = 160.0f;
-        game_o.enemy[21].movement    = 5; // wave action
-        game_o.enemy[21].weapon      = 27;
-        game_o.enemy[21].projectiles = 3;
-        game_o.enemy[21].size_h      = 0.2f;
-        game_o.enemy[21].size_w      = 0.2f;
-        game_o.enemy[21].sound       = 0;
-        game_o.enemy[21].speed       = (game_o.projectile[game_o.enemy[21].weapon].speed/2);   init_powerups();
-        game_o.enemy[22].image       = texture.ship_022.ref_number;
-        game_o.enemy[22].health      = 170.0f;
-        game_o.enemy[22].movement    = 3; // avoid n attack
-        game_o.enemy[22].weapon      = 28;
-        game_o.enemy[22].projectiles = 5;
-        game_o.enemy[22].size_h      = 0.2f;
-        game_o.enemy[22].size_w      = 0.2f;
-        game_o.enemy[22].sound       = 0;
-        game_o.enemy[22].speed       = (game_o.projectile[game_o.enemy[22].weapon].speed/2);   init_powerups();
+        game_o.enemy[21].speed       = (game_o.projectile[game_o.enemy[21].weapon_1].speed/2) + game_o.enemy[21].speed;
+        game_o.enemy[22].load("data/configuration/enemies/enemy_22.txt");
+        game_o.enemy[22].image       = texture.ship_002.ref_number;
+        game_o.enemy[22].speed       = (game_o.projectile[game_o.enemy[22].weapon_1].speed/2) + game_o.enemy[22].speed;
+        game_o.enemy[23].load("data/configuration/enemies/enemy_23.txt");
         game_o.enemy[23].image       = texture.ship_023.ref_number;
-        game_o.enemy[23].health      = 6000.0f;
-        game_o.enemy[23].movement    = 2;
-        game_o.enemy[23].weapon      = 29;
-        game_o.enemy[23].projectiles = 9;
-        game_o.enemy[23].size_h      = 0.8f;
-        game_o.enemy[23].size_w      = 0.4f;
-        game_o.enemy[23].sound       = 0;
-        game_o.enemy[23].speed       = (game_o.projectile[game_o.enemy[23].weapon].speed/2);   init_npcs(0);
+        game_o.enemy[23].speed       = (game_o.projectile[game_o.enemy[23].weapon_1].speed/2) + game_o.enemy[23].speed;
+        game_o.enemy[24].load("data/configuration/enemies/enemy_24.txt");
         game_o.enemy[24].image       = texture.ship_024.ref_number;
-        game_o.enemy[24].health      = 12000.0f;
-        game_o.enemy[24].movement    = 2;
-        game_o.enemy[24].weapon      = 30;
-        game_o.enemy[24].projectiles = 9;
-        game_o.enemy[24].size_h      = 1.2f;
-        game_o.enemy[24].size_w      = 0.8f;
-        game_o.enemy[24].sound       = 0;
-        game_o.enemy[24].speed       = (game_o.projectile[game_o.enemy[24].weapon].speed/2);   init_npcs(0);   game_o.active_npc_count = 0;
+        game_o.enemy[24].speed       = (game_o.projectile[game_o.enemy[24].weapon_1].speed/2) + game_o.enemy[24].speed;
     }
 };
 
@@ -362,11 +319,11 @@ int spawn_npc(float x_position, float y_position, int type_npc, int type_formati
           game_o.npc[npc_num].formation_type      = type_formation;
           game_o.npc[npc_num].formation_ofset_x   = x_formation_ofset;
           game_o.npc[npc_num].formation_ofset_y   = y_formation_ofset;
-          game_o.npc[npc_num].weapon              = game_o.enemy[game_o.npc[npc_num].type_npc].weapon;
+          game_o.npc[npc_num].weapon_1            = game_o.enemy[game_o.npc[npc_num].type_npc].weapon_1;
           game_o.npc[npc_num].projectiles         = game_o.enemy[game_o.npc[npc_num].type_npc].projectiles;
           game_o.npc[npc_num].health              = game_o.enemy[game_o.npc[npc_num].type_npc].health;
-          game_o.npc[npc_num].width               = game_o.enemy[game_o.npc[npc_num].type_npc].size_w;
-          game_o.npc[npc_num].height              = game_o.enemy[game_o.npc[npc_num].type_npc].size_h;
+          game_o.npc[npc_num].width               = game_o.enemy[game_o.npc[npc_num].type_npc].width;
+          game_o.npc[npc_num].height              = game_o.enemy[game_o.npc[npc_num].type_npc].height;
           game_o.npc[npc_num].x_speed             = game_o.enemy[game_o.npc[npc_num].type_npc].speed;
           game_o.npc[npc_num].y_speed             = game_o.enemy[game_o.npc[npc_num].type_npc].speed;
           game_o.npc[npc_num].movement            = game_o.enemy[game_o.npc[npc_num].type_npc].movement;
@@ -410,11 +367,11 @@ int init_npcs(int type_npc)
       game_o.npc[npc_count].formation_type      = 0;
       game_o.npc[npc_count].formation_ofset_x   = 0.0f;
       game_o.npc[npc_count].formation_ofset_y   = 0.0f;
-      game_o.npc[npc_count].weapon              = game_o.enemy[game_o.npc[npc_count].type_npc].weapon;
+      game_o.npc[npc_count].weapon_1             = game_o.enemy[game_o.npc[npc_count].type_npc].weapon_1;
       game_o.npc[npc_count].projectiles         = game_o.enemy[game_o.npc[npc_count].type_npc].projectiles;
       game_o.npc[npc_count].health              = game_o.enemy[game_o.npc[npc_count].type_npc].health;
-      game_o.npc[npc_count].width               = game_o.enemy[game_o.npc[npc_count].type_npc].size_w;
-      game_o.npc[npc_count].height              = game_o.enemy[game_o.npc[npc_count].type_npc].size_h;
+      game_o.npc[npc_count].width               = game_o.enemy[game_o.npc[npc_count].type_npc].width;
+      game_o.npc[npc_count].height              = game_o.enemy[game_o.npc[npc_count].type_npc].height;
       game_o.npc[npc_count].x_speed             = game_o.enemy[game_o.npc[npc_count].type_npc].speed;
       game_o.npc[npc_count].y_speed             = game_o.enemy[game_o.npc[npc_count].type_npc].speed;
       game_o.npc[npc_count].movement            = game_o.enemy[game_o.npc[npc_count].type_npc].movement;
@@ -541,7 +498,7 @@ int spawn_npc_bullet_num(int npc_num, int weapon, int npc_bullet_num, int locati
    if (npc_bullet_num > MAX_BULLETS) npc_bullet_num  = MAX_BULLETS;
    game_o.npc[npc_num].bullet[npc_bullet_num].active   = true;
    game_o.npc[npc_num].bullet[npc_bullet_num].location = location;
-   game_o.npc[npc_num].bullet[npc_bullet_num].warhead  = game_o.npc[npc_num].weapon;
+   game_o.npc[npc_num].bullet[npc_bullet_num].warhead  = game_o.npc[npc_num].weapon_1;
    if (location == 0) game_o.npc[npc_num].bullet[npc_bullet_num].x_pos = (game_o.npc[npc_num].x_pos - (game_o.npc[npc_num].width/3));  // 1   straight - top
    if (location == 1) game_o.npc[npc_num].bullet[npc_bullet_num].x_pos = (game_o.npc[npc_num].x_pos - (game_o.npc[npc_num].width/2));  //  2  straight - mid
    if (location == 2) game_o.npc[npc_num].bullet[npc_bullet_num].x_pos = (game_o.npc[npc_num].x_pos - (game_o.npc[npc_num].width/3));  //   3 straight - bot
@@ -664,7 +621,7 @@ int init_npc_bullets(void)
          game_o.npc[npc_count].bullet[bullet_count].y_speed  = game_o.enemy[game_o.npc[npc_count].type_npc].speed;
          game_o.npc[npc_count].bullet[bullet_count].width    = 0.05f;
          game_o.npc[npc_count].bullet[bullet_count].height   = 0.05f;
-         game_o.npc[npc_count].bullet[bullet_count].warhead  = game_o.enemy[game_o.npc[npc_count].type_npc].weapon;
+         game_o.npc[npc_count].bullet[bullet_count].warhead  = game_o.enemy[game_o.npc[npc_count].type_npc].weapon_1;
          game_o.npc[npc_count].bullet[bullet_count].location = 0;
       }
    }
@@ -802,7 +759,7 @@ int  init_npc_bullets2    (void)
          game_o.npc[npc_count].bullet2[bullet_count].y_speed  = game_o.enemy[game_o.npc[npc_count].type_npc].speed;
          game_o.npc[npc_count].bullet2[bullet_count].width    = 0.05f;
          game_o.npc[npc_count].bullet2[bullet_count].height   = 0.05f;
-         game_o.npc[npc_count].bullet2[bullet_count].warhead  = game_o.enemy[game_o.npc[npc_count].type_npc].weapon2;
+         game_o.npc[npc_count].bullet2[bullet_count].warhead  = game_o.enemy[game_o.npc[npc_count].type_npc].weapon_2;
          game_o.npc[npc_count].bullet2[bullet_count].location = 0;
       }
    }

@@ -30,18 +30,21 @@
 const int   MAX_ENEMYS                   = 32;
 const int   MAX_NPCS                     = 32;
 
-struct enemy_type
+class enemy_class
 {
-   int           image;
-   int           sound;
-   float         health;
-   float         speed;
-   int           movement;
-   int           weapon;
-   int           weapon2;
-   int           projectiles;
-   float         size_w;
-   float         size_h;
+    public:
+        std::wstring  name;
+        int           image;
+        int           sound;
+        float         health;
+        float         speed;
+        int           movement;
+        int           weapon_1;
+        int           weapon_2;
+        int           projectiles;
+        float         width;
+        float         height;
+        void          load(std::string file_name);
 };
 
 struct npc_type
@@ -49,8 +52,8 @@ struct npc_type
    bool          active;
    int           damaged;
    int           type_npc;
-   int           weapon;
-   int           weapon2;
+   int           weapon_1;
+   int           weapon_2;
    int           projectiles;
    float         x_pos;
    float         y_pos;

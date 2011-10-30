@@ -1,0 +1,15 @@
+# --------------- #
+#|  Enemy - 00   |#
+# _______________ #
+
+Name        = Enemy 00 
+Image       = 0
+Sound       = 0
+Health      = 05.0
+Speed       = 0.0005
+Movement    = 0
+Weapon_1    = 6
+Weapon_2    = 0
+Projectiles = 1
+Width       = 0.1
+Height      = 0.1
