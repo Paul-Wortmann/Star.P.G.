@@ -41,9 +41,11 @@
 #include "in_game_messages.hpp"
 #include "screen_rumble.hpp"
 #include "debris.hpp"
+#include "language.hpp"
 
 struct game_type
 {
+    language_class              language;
     level_class                 level[MAX_LEVELS];
     debris_class                debris;
     bool                        level_end_rumble;

@@ -22,6 +22,7 @@
  * @date 2011-10-01
  */
 
+#include <locale>
 #include <SDL/SDL.h>
 #include <SDL/SDL_main.h>
 #include <SDL/SDL_ttf.h>
@@ -61,6 +62,7 @@ SDL_Surface             *App_Icon_Surface;
 //----------------------------------- Main -------------------------------------
 int main(int argc, char *argv[])
 {
+    std::locale::global( std::locale( "" ) );
     events_init();
     game.log.File_Set("Star.P.G..log");
     game.log.File_Clear();
@@ -141,6 +143,7 @@ int main(int argc, char *argv[])
     init_powerups();
     init_shields(false);
     init_game(false);
+    game_o.language.load("data/configuration/languages/english.txt");
     game.log.File_Write("Starting game...");
     game.log.File_Write("---------------\n");
 //----------------------------------- Main loop --------------------------------

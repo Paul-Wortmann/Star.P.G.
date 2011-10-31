@@ -641,7 +641,7 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1319903524 source:c:\_git_\star.p.g\src\game.cpp
+1319985748 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"core/core.hpp"
 	"load_resources.hpp"
@@ -685,7 +685,8 @@
 
 1309768119 c:\_git_\star.p.g\src\levels.h
 
-1319633551 source:c:\_git_\star.p.g\src\main.cpp
+1320031476 source:c:\_git_\star.p.g\src\main.cpp
+	<locale>
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>
@@ -780,7 +781,7 @@
 
 1310897251 c:\_git_\star.p.g\src\graphics.hpp
 
-1319951509 c:\_git_\star.p.g\src\game.hpp
+1319985635 c:\_git_\star.p.g\src\game.hpp
 	<string>
 	<SDL/SDL.h>
 	"PC.hpp"
@@ -797,6 +798,7 @@
 	"in_game_messages.hpp"
 	"screen_rumble.hpp"
 	"debris.hpp"
+	"language.hpp"
 
 1310897251 c:\_git_\star.p.g\src\sounds.hpp
 	<SDL/SDL_mixer.h>
@@ -1175,9 +1177,9 @@
 
 1312447645 esources.hpp"
 
-1317473593 c:\_git_\star.p.g\src\menu_system.hpp
+1319986961 c:\_git_\star.p.g\src\menu_system.hpp
 
-1319624415 source:c:\_git_\star.p.g\src\menu_system.cpp
+1319986961 source:c:\_git_\star.p.g\src\menu_system.cpp
 	"menu_system.hpp"
 	"game.hpp"
 	"core/core.hpp"
@@ -1395,7 +1397,7 @@
 1319717441 c:\_git_\star.p.g\src\projectiles.hpp
 	<string>
 
-1319952539 source:c:\_git_\star.p.g\src\npc.cpp
+1319953232 source:c:\_git_\star.p.g\src\npc.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -1546,7 +1548,7 @@
 	"background.hpp"
 	"particles.hpp"
 
-1317473426 c:\_git_\star.p.g\src\core\log.hpp
+1320030911 c:\_git_\star.p.g\src\core\log.hpp
 	<string>
 
 1318164436 c:\_git_\star.p.g\src\core\config.hpp
@@ -1617,9 +1619,12 @@
 	"../game.hpp"
 	"io.hpp"
 
-1317473359 source:c:\_git_\star.p.g\src\core\log.cpp
+1320030911 source:c:\_git_\star.p.g\src\core\log.cpp
+	<iostream>
 	<fstream>
 	<stdio.h>
+	<stdlib.h>
+	<string>
 	"log.hpp"
 
 1319459295 source:c:\_git_\star.p.g\src\core\menu.cpp
@@ -1676,4 +1681,18 @@
 
 1318345656 source:c:\_git_\star.p.g\src\debris.cpp
 	"debris.hpp"
+
+1319985562 c:\_git_\star.p.g\src\language.hpp
+	<string>
+
+1320030935 source:c:\_git_\star.p.g\src\language.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"misc.hpp"
+	"language.hpp"
+	"menu_system.hpp"
+	"core/core.hpp"
 

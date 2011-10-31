@@ -22,8 +22,11 @@
  * @date 2011-10-01
  */
 
+#include <iostream>
 #include <fstream>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string>
 #include "log.hpp"
 
 log_file_class::log_file_class(void)
@@ -186,6 +189,20 @@ bool log_file_class::File_Write(std::string log_data_1, const char log_data_2[])
     {
         logfile << log_data_1;
         logfile << log_data_2;
+        logfile << "\n";
+        logfile.close();
+    }
+    else return(false);
+    return(true);
+};
+
+bool log_file_class::File_Write(std::wstring log_data_1, std::wstring log_data_2)
+{
+    std::wfstream logfile(log_file_class::Log_File,std::ios::out|std::ios::app);
+    if (logfile.is_open())
+    {
+        logfile.write(log_data_1.c_str(), log_data_1.size());
+        logfile.write(log_data_2.c_str(), log_data_2.size());
         logfile << "\n";
         logfile.close();
     }
