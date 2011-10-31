@@ -49,6 +49,11 @@ bool font_class::Set_File(std::string filename)
     font_class::font_data = TTF_OpenFont(filename.c_str(), 12);
 };
 
+bool font_class::Set_File(std::string filename, int pt_size)
+{
+    font_class::font_data = TTF_OpenFont(filename.c_str(), pt_size);
+};
+
 bool font_class::Write(int r,int g,int b,int a,float x,float y,std::string text,int int_data)
 {
     GLuint texture_data;
@@ -235,19 +240,28 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs
 
 bool font_class::Write(int r,int g,int b,int a,float x,float y,std::wstring text,int int_data)
 {
-    GLuint texture_data;
-    GLenum texture_format;
-    GLint  nOfColors;
-    float  width;
-    float  height;
-    const char *write_data;
-    std::string string_data( text.begin(), text.end() );
-    std::stringstream temp_string;
+    GLuint             texture_data;
+    GLenum             texture_format;
+    GLint              nOfColors;
+    float              width;
+    float              height;
+    std::string        string_data;
+    std::stringstream  temp_string;
     temp_string << int_data;
-    string_data += temp_string.str();
-    write_data = string_data.c_str();
+    string_data = temp_string.str();
+    Uint16* write_data = new Uint16[text.length()+string_data.length()+1];
+    for (size_t length_count = 0; length_count < text.length()-1; ++length_count)
+    {
+        write_data[length_count] = text[length_count];
+    }
+    int length_count_2 = 0;
+    for (size_t length_count = text.length(); length_count < (text.length()+string_data.length()); ++length_count)
+    {
+        write_data[length_count] = text[length_count_2];
+        length_count_2++;
+    }
     SDL_Color font_color = {b,g,r,a};
-    SDL_Surface *font_string = TTF_RenderText_Blended(font_class::font_data,write_data,font_color);
+    SDL_Surface *font_string = TTF_RenderUNICODE_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
     width  = ((font_string->w / game.config.Display_X_Resolution ) -1);
@@ -282,19 +296,28 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,std::wstring text
 
 bool font_class::Write(int r,int g,int b,int a,float x,float y,std::wstring text,float float_data)
 {
-    GLuint texture_data;
-    GLenum texture_format;
-    GLint  nOfColors;
-    float  width;
-    float  height;
-    const char *write_data;
-    std::string string_data( text.begin(), text.end() );
-    std::stringstream temp_string;
+    GLuint             texture_data;
+    GLenum             texture_format;
+    GLint              nOfColors;
+    float              width;
+    float              height;
+    std::string        string_data;
+    std::stringstream  temp_string;
     temp_string << float_data;
-    string_data += temp_string.str();
-    write_data = string_data.c_str();
+    string_data = temp_string.str();
+    Uint16* write_data = new Uint16[text.length()+string_data.length()+1];
+    for (size_t length_count = 0; length_count < text.length()-1; ++length_count)
+    {
+        write_data[length_count] = text[length_count];
+    }
+    int length_count_2 = 0;
+    for (size_t length_count = text.length(); length_count < (text.length()+string_data.length()); ++length_count)
+    {
+        write_data[length_count] = text[length_count_2];
+        length_count_2++;
+    }
     SDL_Color font_color = {b,g,r,a};
-    SDL_Surface *font_string = TTF_RenderText_Blended(font_class::font_data,write_data,font_color);
+    SDL_Surface *font_string = TTF_RenderUNICODE_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
     width  = ((font_string->w / game.config.Display_X_Resolution ) -1);
@@ -329,18 +352,19 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,std::wstring text
 
 bool font_class::Write(int r,int g,int b,int a,float x,float y,std::wstring text)
 {
-    GLuint texture_data;
-    GLenum texture_format;
-    GLint  nOfColors;
-    float  width;
-    float  height;
-    const char *write_data;
-    std::string string_data( text.begin(), text.end() );
-    std::stringstream temp_string;
-    string_data += temp_string.str();
-    write_data = string_data.c_str();
+    GLuint         texture_data;
+    GLenum         texture_format;
+    GLint          nOfColors;
+    float          width;
+    float          height;
+    Uint16* write_data = new Uint16[text.length()+1];
+    for (size_t length_count = 0; length_count < text.length()-1; ++length_count)
+    {
+        write_data[length_count] = text[length_count];
+    }
+    int length_count_2 = 0;
     SDL_Color font_color = {b,g,r,a};
-    SDL_Surface *font_string = TTF_RenderText_Blended(font_class::font_data,write_data,font_color);
+    SDL_Surface *font_string = TTF_RenderUNICODE_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
     width  = ((font_string->w / game.config.Display_X_Resolution) -1);
@@ -375,18 +399,21 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,std::wstring text
 
 bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::wstring text)
 {
-    GLuint texture_data;
-    GLenum texture_format;
-    GLint  nOfColors;
-    float  width;
-    float  height;
-    const char *write_data;
-    std::string string_data( text.begin(), text.end() );
-    std::stringstream temp_string;
-    string_data += temp_string.str();
-    write_data = string_data.c_str();
+    GLuint         texture_data;
+    GLenum         texture_format;
+    GLint          nOfColors;
+    float          width;
+    float          height;
+    Uint16* write_data = new Uint16[text.length()+1];
+    for (size_t length_count = 0; length_count < text.length()-1; ++length_count)
+    {
+        write_data[length_count] = text[length_count];
+    }
+    Uint16 write_data_2[]={L'あ','e','l','l','o',' ','W','o','r','l','d','!'};kghfk
+
+    int length_count_2 = 0;
     SDL_Color font_color = {b,g,r,a};
-    SDL_Surface *font_string = TTF_RenderText_Blended(font_class::font_data,write_data,font_color);
+    SDL_Surface *font_string = TTF_RenderUNICODE_Blended(font_class::font_data,write_data_2,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
     width  = ((font_string->w / game.config.Display_X_Resolution) -1);
@@ -423,19 +450,28 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs
 
 bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::wstring text,int int_data)
 {
-    GLuint texture_data;
-    GLenum texture_format;
-    GLint  nOfColors;
-    float  width;
-    float  height;
-    const char *write_data;
-    std::string string_data( text.begin(), text.end() );
-    std::stringstream temp_string;
+    GLuint             texture_data;
+    GLenum             texture_format;
+    GLint              nOfColors;
+    float              width;
+    float              height;
+    std::string        string_data;
+    std::stringstream  temp_string;
     temp_string << int_data;
-    string_data += temp_string.str();
-    write_data = string_data.c_str();
+    string_data = temp_string.str();
+    Uint16* write_data = new Uint16[text.length()+string_data.length()+1];
+    for (size_t length_count = 0; length_count < text.length()-1; ++length_count)
+    {
+        write_data[length_count] = text[length_count];
+    }
+    int length_count_2 = 0;
+    for (size_t length_count = text.length(); length_count < (text.length()+string_data.length()); ++length_count)
+    {
+        write_data[length_count] = text[length_count_2];
+        length_count_2++;
+    }
     SDL_Color font_color = {b,g,r,a};
-    SDL_Surface *font_string = TTF_RenderText_Blended(font_class::font_data,write_data,font_color);
+    SDL_Surface *font_string = TTF_RenderUNICODE_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
     width  = ((font_string->w / game.config.Display_X_Resolution) -1);
@@ -472,19 +508,28 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs
 
 bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::wstring text,float float_data)
 {
-    GLuint texture_data;
-    GLenum texture_format;
-    GLint  nOfColors;
-    float  width;
-    float  height;
-    const char *write_data;
-    std::string string_data( text.begin(), text.end() );
-    std::stringstream temp_string;
+    GLuint             texture_data;
+    GLenum             texture_format;
+    GLint              nOfColors;
+    float              width;
+    float              height;
+    std::string        string_data;
+    std::stringstream  temp_string;
     temp_string << float_data;
-    string_data += temp_string.str();
-    write_data = string_data.c_str();
+    string_data = temp_string.str();
+    Uint16* write_data = new Uint16[text.length()+string_data.length()+1];
+    for (size_t length_count = 0; length_count < text.length()-1; ++length_count)
+    {
+        write_data[length_count] = text[length_count];
+    }
+    int length_count_2 = 0;
+    for (size_t length_count = text.length(); length_count < (text.length()+string_data.length()); ++length_count)
+    {
+        write_data[length_count] = text[length_count_2];
+        length_count_2++;
+    }
     SDL_Color font_color = {b,g,r,a};
-    SDL_Surface *font_string = TTF_RenderText_Blended(font_class::font_data,write_data,font_color);
+    SDL_Surface *font_string = TTF_RenderUNICODE_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
     width  = ((font_string->w / game.config.Display_X_Resolution) -1);

@@ -1568,7 +1568,7 @@
 
 1317473426 c:\_git_\star.p.g\src\core\savegame.hpp
 
-1317473395 c:\_git_\star.p.g\src\core\font.hpp
+1320037014 c:\_git_\star.p.g\src\core\font.hpp
 	<SDL/SDL_ttf.h>
 
 1319456103 c:\_git_\star.p.g\src\core\menu.hpp
@@ -1685,7 +1685,7 @@
 1319985562 c:\_git_\star.p.g\src\language.hpp
 	<string>
 
-1320030935 source:c:\_git_\star.p.g\src\language.cpp
+1320032209 source:c:\_git_\star.p.g\src\language.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
