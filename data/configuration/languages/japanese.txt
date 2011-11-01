@@ -2,7 +2,7 @@
 #|   Language - Japanese  |#
 # ________________________ #
 
-Main_Menu           = "    マインメーヌ    "
+Main_Menu           = "   メインメニュー   "
 Star_Map            = "星の地図            "
 Customize_Starship  = "宇宙船を構成します  "
 Achievements        = "成果                "
