@@ -33,7 +33,7 @@ const int   MAX_NPCS                     = 32;
 class enemy_class
 {
     public:
-        std::wstring  name;
+        std::string   name;
         int           image;
         int           sound;
         float         health;

@@ -33,7 +33,7 @@ const int   MAX_THRUSTERS      = 4;
 class thruster_class
 {
     public:
-    std::wstring  name;
+    std::string   name;
     bool          active;
     int           level;
     float         level_1;

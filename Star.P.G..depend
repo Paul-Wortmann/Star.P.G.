@@ -1179,7 +1179,7 @@
 
 1319986961 c:\_git_\star.p.g\src\menu_system.hpp
 
-1319986961 source:c:\_git_\star.p.g\src\menu_system.cpp
+1320149096 source:c:\_git_\star.p.g\src\menu_system.cpp
 	"menu_system.hpp"
 	"game.hpp"
 	"core/core.hpp"
@@ -1394,10 +1394,10 @@
 
 1316090442 c:\_git_\star.p.g\src\rage\background.hpp
 
-1319717441 c:\_git_\star.p.g\src\projectiles.hpp
+1320147925 c:\_git_\star.p.g\src\projectiles.hpp
 	<string>
 
-1319953232 source:c:\_git_\star.p.g\src\npc.cpp
+1320148124 source:c:\_git_\star.p.g\src\npc.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -1409,7 +1409,7 @@
 	"game.hpp"
 	"misc.hpp"
 
-1319952453 c:\_git_\star.p.g\src\npc.hpp
+1320148095 c:\_git_\star.p.g\src\npc.hpp
 	"bullets.hpp"
 
 1319544840 source:c:\_git_\star.p.g\src\pc.cpp
@@ -1433,7 +1433,7 @@
 1317473594 c:\_git_\star.p.g\src\support_ships.hpp
 	"bullets.hpp"
 
-1319896500 source:c:\_git_\star.p.g\src\projectiles.cpp
+1320148251 source:c:\_git_\star.p.g\src\projectiles.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -1450,19 +1450,19 @@
 1317473275 source:c:\_git_\star.p.g\src\bullets.cpp
 	"bullets.hpp"
 
-1317473594 c:\_git_\star.p.g\src\shields.hpp
+1320147963 c:\_git_\star.p.g\src\shields.hpp
 	<string>
 
-1317823596 c:\_git_\star.p.g\src\thrusters.hpp
+1320147945 c:\_git_\star.p.g\src\thrusters.hpp
 	"core/core.hpp"
 	<string>
 
-1318338985 source:c:\_git_\star.p.g\src\shields.cpp
+1320148271 source:c:\_git_\star.p.g\src\shields.cpp
 	"load_resources.hpp"
 	"shields.hpp"
 	"game.hpp"
 
-1318149955 source:c:\_git_\star.p.g\src\thrusters.cpp
+1320148289 source:c:\_git_\star.p.g\src\thrusters.cpp
 	"load_resources.hpp"
 	"thrusters.hpp"
 	"game.hpp"
@@ -1568,10 +1568,10 @@
 
 1317473426 c:\_git_\star.p.g\src\core\savegame.hpp
 
-1320037014 c:\_git_\star.p.g\src\core\font.hpp
+1320149025 c:\_git_\star.p.g\src\core\font.hpp
 	<SDL/SDL_ttf.h>
 
-1319456103 c:\_git_\star.p.g\src\core\menu.hpp
+1320147651 c:\_git_\star.p.g\src\core\menu.hpp
 	<string>
 
 1317473395 c:\_git_\star.p.g\src\core\io.hpp
@@ -1600,7 +1600,7 @@
 1317473359 source:c:\_git_\star.p.g\src\core\core.cpp
 	"core.hpp"
 
-1317473359 source:c:\_git_\star.p.g\src\core\font.cpp
+1320153631 source:c:\_git_\star.p.g\src\core\font.cpp
 	<SDL/SDL_ttf.h>
 	<SDL/SDL_ttf.h>
 	<GL/gl.h>
@@ -1627,7 +1627,7 @@
 	<string>
 	"log.hpp"
 
-1319459295 source:c:\_git_\star.p.g\src\core\menu.cpp
+1320147728 source:c:\_git_\star.p.g\src\core\menu.cpp
 	"menu.hpp"
 	"core.hpp"
 	"../load_resources.hpp"
@@ -1685,7 +1685,7 @@
 1319985562 c:\_git_\star.p.g\src\language.hpp
 	<string>
 
-1320032209 source:c:\_git_\star.p.g\src\language.cpp
+1320154088 source:c:\_git_\star.p.g\src\language.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>

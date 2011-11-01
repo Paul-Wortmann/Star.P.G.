@@ -39,7 +39,7 @@ extern   sound_type        sound;
 
 void projectile_class::init(void)
 {
-    projectile_class::name          = L"data_not_set";
+    projectile_class::name          = "data_not_set";
     projectile_class::active        = false;
     projectile_class::level         = 0;
     projectile_class::experience    = 0;
@@ -59,7 +59,7 @@ void projectile_class::init(void)
     projectile_class::height        = 0.075f;
 };
 
-void projectile_class::init(std::wstring name,bool active,int exp,int lvl,float l1,float l2,float l3,float l4,float l5,float l6,int img,int snd,float dmg,float spd,float hlth,int rof,int mov,float ws,float wv,float s)
+void projectile_class::init(std::string name,bool active,int exp,int lvl,float l1,float l2,float l3,float l4,float l5,float l6,int img,int snd,float dmg,float spd,float hlth,int rof,int mov,float ws,float wv,float s)
 {
     projectile_class::name          = name;
     projectile_class::active        = active;
@@ -144,7 +144,7 @@ void projectile_class::load(std::string file_name)
                     else temp_bool_data = false;
                     if (temp_string_key == "Name")
                     {
-                        projectile_class::name = StringToWString(temp_string_data);
+                        projectile_class::name = temp_string_data;
                     }
                     if (temp_string_key == "Active")
                     {

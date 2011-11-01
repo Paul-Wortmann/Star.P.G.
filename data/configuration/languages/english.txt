@@ -1,9 +1,6 @@
-# ----------------------- #
+ï»¿# ----------------------- #
 #|   Language - English  |#
 # _______________________ #
 
-Main_Menu_2         = "    Main menu      "
-Main_Menu           = "    ƒ}ƒCƒ“ƒ[ƒk      "
-
-
+Main_Menu           = "    Main menu      "
 

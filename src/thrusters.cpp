@@ -42,7 +42,7 @@ void init_thrusters(bool re_init)
     }
     else
     {
-        game_o.thruster[0].name           = L"Maelstrom Thrusters";
+        game_o.thruster[0].name           = "Maelstrom Thrusters";
         game_o.thruster[0].active         = false;
         game_o.thruster[0].level          = 0;
         game_o.thruster[0].level_1        = 256;
@@ -60,7 +60,7 @@ void init_thrusters(bool re_init)
         game_o.thruster[0].smoke.set_emitter_image(texture.particle_002.ref_number);
         game_o.thruster[0].smoke.load("data/configuration/particle_systems/thruster_000_smoke.txt");
 
-        game_o.thruster[1].name           = L"Seismic Thrusters";
+        game_o.thruster[1].name           = "Seismic Thrusters";
         game_o.thruster[1].active         = false;
         game_o.thruster[1].level          = 0;
         game_o.thruster[1].level_1        = 512;
@@ -78,7 +78,7 @@ void init_thrusters(bool re_init)
         game_o.thruster[1].smoke.set_emitter_image(texture.particle_002.ref_number);
         game_o.thruster[1].smoke.load("data/configuration/particle_systems/thruster_001_smoke.txt");
 
-        game_o.thruster[2].name           = L"Vortex Thrusters";
+        game_o.thruster[2].name           = "Vortex Thrusters";
         game_o.thruster[2].active         = false;
         game_o.thruster[2].level          = 0;
         game_o.thruster[2].level_1        = 1024;
@@ -96,7 +96,7 @@ void init_thrusters(bool re_init)
         game_o.thruster[2].smoke.set_emitter_image(texture.particle_002.ref_number);
         game_o.thruster[2].smoke.load("data/configuration/particle_systems/thruster_002_smoke.txt");
 
-        game_o.thruster[3].name           = L"Convolution Thrusters";
+        game_o.thruster[3].name           = "Convolution Thrusters";
         game_o.thruster[3].active         = false;
         game_o.thruster[3].level          = 0;
         game_o.thruster[3].level_1        = 2048;

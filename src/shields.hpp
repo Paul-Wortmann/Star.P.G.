@@ -32,7 +32,7 @@ const int   MAX_SHIELDS        = 5;
 class shield_class
 {
     public:
-    std::wstring name;
+    std::string  name;
     bool         active;
     int          level;
     float        level_1;

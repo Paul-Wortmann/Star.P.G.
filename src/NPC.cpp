@@ -92,7 +92,7 @@ void enemy_class::load(std::string file_name)
                     else temp_bool_data = false;
                     if (temp_string_key == "Name")
                     {
-                        enemy_class::name = StringToWString(temp_string_data);
+                        enemy_class::name = temp_string_data;
                     }
                     if (temp_string_key == "Image")
                     {
