@@ -30,30 +30,30 @@
 class config_file_class
 {
     private:
-        const char *Config_File;
+        const char  *Config_File;
     public:
-        bool  mouse_autohide;
-        int   mouse_autohide_timer;
-        int   mouse_autohide_timer_count;
-        int   menu_delay;
-        int   menu_delay_count;
-        int   mouse_resolution_x;
-        int   mouse_resolution_y;
-        int   joystick_sensitivity;
-        bool  joystick_enabled;
-        int   joystick_no_buttons;
-        int   Display_resolution;
-        int   Display_X_Resolution;
-        int   Display_Y_Resolution;
-        int   Display_BPS;
-        bool  Display_Fullscreen;
-        bool  Display_Touchscreen;
-        int   Audio_Rate;
-        int   Audio_Channels;
-        int   Audio_Buffers;
-        int   Audio_Music_Volume;
-        int   Audio_Sound_Volume;
-
+        bool         mouse_autohide;
+        int          mouse_autohide_timer;
+        int          mouse_autohide_timer_count;
+        int          menu_delay;
+        int          menu_delay_count;
+        int          mouse_resolution_x;
+        int          mouse_resolution_y;
+        int          joystick_sensitivity;
+        bool         joystick_enabled;
+        int          joystick_no_buttons;
+        int          Display_resolution;
+        int          Display_X_Resolution;
+        int          Display_Y_Resolution;
+        int          Display_BPS;
+        bool         Display_Fullscreen;
+        bool         Display_Touchscreen;
+        int          Audio_Rate;
+        int          Audio_Channels;
+        int          Audio_Buffers;
+        int          Audio_Music_Volume;
+        int          Audio_Sound_Volume;
+        std::string  language;
               config_file_class(void);
              ~config_file_class(void);
         void  process          (bool set_active);
@@ -64,6 +64,7 @@ class config_file_class
         bool  File_Write_Data  (std::string config_comment);
         bool  File_Write_Data  (std::string config_key, int  config_data_int);
         bool  File_Write_Data  (std::string config_key, bool config_data_bool);
+        bool  File_Write_Data  (std::string config_key, std::string config_string_bool);
         bool  File_Write       (void);
         bool  Process_Data     (std::string data_line);
         bool  File_Read        (void);

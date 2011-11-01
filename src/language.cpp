@@ -39,6 +39,7 @@ extern  game_class                game;
 
 void language_class::load(std::string file_name)
 {
+    game.log.File_Write("Loading language file ->",file_name);
     char           temp_char_UTF8   = ' ';
     short          temp_char_UTF16  = ' ';
     int            temp_char_UTF32  = ' ';

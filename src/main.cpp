@@ -143,7 +143,7 @@ int main(int argc, char *argv[])
     init_powerups();
     init_shields(false);
     init_game(false);
-    game_o.language.load("data/configuration/languages/english.txt");
+    game_o.language.load("data/configuration/languages/"+game.config.language+".txt");
     game.log.File_Write("Starting game...");
     game.log.File_Write("---------------\n");
 //----------------------------------- Main loop --------------------------------

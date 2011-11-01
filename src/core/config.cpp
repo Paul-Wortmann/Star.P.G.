@@ -48,6 +48,7 @@ config_file_class::config_file_class(void)
     config_file_class::Audio_Buffers              = 2048;
     config_file_class::Audio_Music_Volume         = 32;
     config_file_class::Audio_Sound_Volume         = 64;
+    config_file_class::language                   = "english";
     config_file_class::mouse_resolution_x         = config_file_class::Display_X_Resolution;
     config_file_class::mouse_resolution_y         = config_file_class::Display_Y_Resolution;
     if ((config_file_class::Display_X_Resolution ==  640) && (config_file_class::Display_Y_Resolution ==  480)) config_file_class::Display_resolution = 0;
@@ -112,6 +113,7 @@ bool  config_file_class::Set_Defaults (void)
     config_file_class::Audio_Buffers              = 2048;
     config_file_class::Audio_Music_Volume         = 32;
     config_file_class::Audio_Sound_Volume         = 32;
+    config_file_class::language                   = "english";
     if ((config_file_class::Display_X_Resolution ==  640) && (config_file_class::Display_Y_Resolution ==  480)) config_file_class::Display_resolution = 0;
     if ((config_file_class::Display_X_Resolution ==  800) && (config_file_class::Display_Y_Resolution ==  600)) config_file_class::Display_resolution = 1;
     if ((config_file_class::Display_X_Resolution == 1024) && (config_file_class::Display_Y_Resolution ==  768)) config_file_class::Display_resolution = 2;
@@ -183,6 +185,21 @@ bool  config_file_class::File_Write_Data  (std::string config_key, bool config_d
     return(true);
 };
 
+bool  config_file_class::File_Write_Data  (std::string config_key, std::string config_string_bool)
+{
+    std::fstream configfile(config_file_class::Config_File,std::ios::out|std::ios::app);
+    if (configfile.is_open())
+    {
+        configfile << config_key;
+        configfile << " = ";
+        configfile << config_string_bool;
+        configfile << "\n";
+        configfile.close();
+    }
+    else return(false);
+    return(true);
+};
+
 bool  config_file_class::File_Write   (void)
 {
     config_file_class::File_Write_Data(" Star.P.G. - config file #");
@@ -198,6 +215,7 @@ bool  config_file_class::File_Write   (void)
     config_file_class::File_Write_Data("Audio_Buffers       ",config_file_class::Audio_Buffers);
     config_file_class::File_Write_Data("Audio_Music_Volume  ",config_file_class::Audio_Music_Volume);
     config_file_class::File_Write_Data("Audio_Sound_Volume  ",config_file_class::Audio_Sound_Volume);
+    config_file_class::File_Write_Data("Language            ",config_file_class::language);
     return(true);
 };
 
@@ -229,12 +247,11 @@ bool config_file_class::Process_Data(std::string data_line)
             if(count > data_line.length()) (temp_char = '#');
         }
         count--;
-        while(temp_char != ' ')
+        while(count < data_line.length())
         {
             temp_char = data_line[count];
-            if(temp_char != ' ') temp_string_value += temp_char;
+            if ((temp_char != ' ') && (temp_char != '\r')) temp_string_value += temp_char;
             count++;
-            if(count > data_line.length()) (temp_char = ' ');
         }
         temp_int = atoi(temp_string_value.c_str());
         if (temp_string_key == "Joystick_Sensitivity")
@@ -282,6 +299,10 @@ bool config_file_class::Process_Data(std::string data_line)
         if (temp_string_key == "Display_Y_Resolution")
         {
             config_file_class::Display_Y_Resolution = temp_int;
+        }
+        if (temp_string_key == "Language")
+        {
+            config_file_class::language = temp_string_value.c_str();
         }
     }
     return(true);
