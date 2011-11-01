@@ -39,7 +39,6 @@ extern  game_class                game;
 
 void language_class::load(std::string file_name)
 {
-    game.log.File_Write("Loading language file ->",file_name);
     char           temp_char_UTF8   = ' ';
     short          temp_char_UTF16  = ' ';
     int            temp_char_UTF32  = ' ';
@@ -97,10 +96,15 @@ void language_class::load(std::string file_name)
                     temp_int_data    = (int)   atoi(temp_string_value.c_str());
                     if (temp_int_data == 1) temp_bool_data = true;
                     else temp_bool_data = false;
-                    if (temp_string_key == "Main_Menu")
-                    {
-                        main_menu.set_menu_title(temp_string_data);
-                    }
+                    if (temp_string_key == "Main_Menu")          language_class::text.main_menu          = temp_string_data;
+                    if (temp_string_key == "Star_Map")           language_class::text.star_map           = temp_string_data;
+                    if (temp_string_key == "Customize_Starship") language_class::text.customize_starship = temp_string_data;
+                    if (temp_string_key == "Achievements")       language_class::text.achievements       = temp_string_data;
+                    if (temp_string_key == "Load_Game")          language_class::text.load_game          = temp_string_data;
+                    if (temp_string_key == "Save_Game")          language_class::text.save_game          = temp_string_data;
+                    if (temp_string_key == "Resume_Game")        language_class::text.resume_game        = temp_string_data;
+                    if (temp_string_key == "Options")            language_class::text.options            = temp_string_data;
+                    if (temp_string_key == "Quit_Game")          language_class::text.quit_game          = temp_string_data;
                 }
             }
         }

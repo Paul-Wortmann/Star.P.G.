@@ -685,7 +685,7 @@
 
 1309768119 c:\_git_\star.p.g\src\levels.h
 
-1320155736 source:c:\_git_\star.p.g\src\main.cpp
+1320156503 source:c:\_git_\star.p.g\src\main.cpp
 	<locale>
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
@@ -1179,7 +1179,7 @@
 
 1319986961 c:\_git_\star.p.g\src\menu_system.hpp
 
-1320149096 source:c:\_git_\star.p.g\src\menu_system.cpp
+1320157002 source:c:\_git_\star.p.g\src\menu_system.cpp
 	"menu_system.hpp"
 	"game.hpp"
 	"core/core.hpp"
@@ -1682,10 +1682,10 @@
 1318345656 source:c:\_git_\star.p.g\src\debris.cpp
 	"debris.hpp"
 
-1319985562 c:\_git_\star.p.g\src\language.hpp
+1320157479 c:\_git_\star.p.g\src\language.hpp
 	<string>
 
-1320155488 source:c:\_git_\star.p.g\src\language.cpp
+1320157479 source:c:\_git_\star.p.g\src\language.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>

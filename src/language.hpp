@@ -27,10 +27,24 @@
 
 #include <string>
 
+struct text_type
+{
+    std::string    main_menu;
+    std::string    star_map;
+    std::string    customize_starship;
+    std::string    achievements;
+    std::string    load_game;
+    std::string    save_game;
+    std::string    resume_game;
+    std::string    options;
+    std::string    quit_game;
+};
+
 class language_class
 {
     public:
         void load(std::string file_name);
+        text_type text;
 };
 
 #endif //LANGUAGE_H

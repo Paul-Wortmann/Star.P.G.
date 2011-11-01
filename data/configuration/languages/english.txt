@@ -2,5 +2,12 @@
 #|   Language - English  |#
 # _______________________ #
 
-Main_Menu           = "    Main menu      "
-
+Main_Menu           = "     Main menu      "
+Star_Map            = "Star Map            "
+Customize_Starship  = "Customize Starship  "
+Achievements        = "Achievements        "
+Load_Game           = "Load Game           "
+Save_Game           = "Save Game           "
+Resume_Game         = "Resume Game         "
+Options             = "Options             "
+Quit_Game           = "Quit Game           "

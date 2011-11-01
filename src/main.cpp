@@ -85,6 +85,8 @@ int main(int argc, char *argv[])
     game.log.File_Write("Loading config...");
     game.config.File_Set("Star.P.G..cfg");
     game.config.File_Read();
+    game.log.File_Write("Loading language file -> data/configuration/languages/"+game.config.language+".txt");
+    game_o.language.load("data/configuration/languages/"+game.config.language+".txt");
  //----------------------------------- Start the PhysicsFS ----------------------
     //game.log.File_Write("Starting PhysicsFS...");
     //PHYSFS_init(argv[0]);
@@ -143,7 +145,6 @@ int main(int argc, char *argv[])
     init_powerups();
     init_shields(false);
     init_game(false);
-    game_o.language.load("data/configuration/languages/"+game.config.language+".txt");
     game.log.File_Write("Starting game...");
     game.log.File_Write("---------------\n");
 //----------------------------------- Main loop --------------------------------

@@ -2,7 +2,15 @@
 #|   Language - Japanese  |#
 # ________________________ #
 
-Main_Menu           = "    マインメーヌ      "
+Main_Menu           = "    マインメーヌ    "
+Star_Map            = "星の地図            "
+Customize_Starship  = "宇宙船を構成します  "
+Achievements        = "成果                "
+Load_Game           = "ゲームをロードする  "
+Save_Game           = "ゲームを保存する    "
+Resume_Game         = "ゲームを再開する    "
+Options             = "オプションのメニュー"
+Quit_Game           = "ゲームを終了します  "
 
 
 
