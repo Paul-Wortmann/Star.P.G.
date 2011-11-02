@@ -1179,7 +1179,7 @@
 
 1319986961 c:\_git_\star.p.g\src\menu_system.hpp
 
-1320157002 source:c:\_git_\star.p.g\src\menu_system.cpp
+1320216636 source:c:\_git_\star.p.g\src\menu_system.cpp
 	"menu_system.hpp"
 	"game.hpp"
 	"core/core.hpp"
@@ -1682,10 +1682,10 @@
 1318345656 source:c:\_git_\star.p.g\src\debris.cpp
 	"debris.hpp"
 
-1320157479 c:\_git_\star.p.g\src\language.hpp
+1320230086 c:\_git_\star.p.g\src\language.hpp
 	<string>
 
-1320157479 source:c:\_git_\star.p.g\src\language.cpp
+1320226878 source:c:\_git_\star.p.g\src\language.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>

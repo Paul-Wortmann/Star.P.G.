@@ -93,36 +93,36 @@ int init_menu   (void)
     star_map_menu.set_color_highlighted(192,192,255,255);
     star_map_menu.set_color_disabled(064,064,128,128);
     star_map_menu.set_number_of_buttons(3);
-    star_map_menu.set_button_data( 1,"Level Select      ");
+    star_map_menu.set_button_data( 1,game_o.language.text.level_select);
     star_map_menu.set_number_of_choices(1,25);
     star_map_menu.set_number_of_visible_choices(1,5);
     star_map_menu.set_button_choice_position(1,1);
     star_map_menu.set_button_current_choice(1,-100);
-    star_map_menu.set_button_choice_data(1, 1,texture.level_preview_00.ref_number,"Taranis           ", true,!game_o.level[ 0].locked);
-    star_map_menu.set_button_choice_data(1, 2,texture.level_preview_01.ref_number,"Teutates          ", true,!game_o.level[ 1].locked);
-    star_map_menu.set_button_choice_data(1, 3,texture.level_preview_02.ref_number,"Esus              ", true,!game_o.level[ 2].locked);
-    star_map_menu.set_button_choice_data(1, 4,texture.level_preview_03.ref_number,"Cantidious        ", true,!game_o.level[ 3].locked);
-    star_map_menu.set_button_choice_data(1, 5,texture.level_preview_04.ref_number,"Vulcan            ", true,!game_o.level[ 4].locked);
-    star_map_menu.set_button_choice_data(1, 6,texture.level_preview_05.ref_number,"Bacchus           ", true,!game_o.level[ 5].locked);
-    star_map_menu.set_button_choice_data(1, 7,texture.level_preview_06.ref_number,"Janus             ", true,!game_o.level[ 6].locked);
-    star_map_menu.set_button_choice_data(1, 8,texture.level_preview_07.ref_number,"Wrathorn          ", true,!game_o.level[ 7].locked);
-    star_map_menu.set_button_choice_data(1, 9,texture.level_preview_08.ref_number,"Tartarus          ", true,!game_o.level[ 8].locked);
-    star_map_menu.set_button_choice_data(1,10,texture.level_preview_09.ref_number,"Erebus            ", true,!game_o.level[ 9].locked);
-    star_map_menu.set_button_choice_data(1,11,texture.level_preview_10.ref_number,"Nyx               ", true,!game_o.level[10].locked);
-    star_map_menu.set_button_choice_data(1,12,texture.level_preview_11.ref_number,"Dediun            ", true,!game_o.level[11].locked);
-    star_map_menu.set_button_choice_data(1,13,texture.level_preview_12.ref_number,"Niflheim          ", true,!game_o.level[12].locked);
-    star_map_menu.set_button_choice_data(1,14,texture.level_preview_13.ref_number,"Muspelhiem        ", true,!game_o.level[13].locked);
-    star_map_menu.set_button_choice_data(1,15,texture.level_preview_14.ref_number,"Hel               ", true,!game_o.level[14].locked);
-    star_map_menu.set_button_choice_data(1,16,texture.level_preview_15.ref_number,"Paganite          ", true,!game_o.level[15].locked);
-    star_map_menu.set_button_choice_data(1,17,texture.level_preview_16.ref_number,"Pixiu             ", true,!game_o.level[16].locked);
-    star_map_menu.set_button_choice_data(1,18,texture.level_preview_17.ref_number,"Xiao              ", true,!game_o.level[17].locked);
-    star_map_menu.set_button_choice_data(1,19,texture.level_preview_18.ref_number,"Fuxi              ", true,!game_o.level[18].locked);
-    star_map_menu.set_button_choice_data(1,20,texture.level_preview_19.ref_number,"Haxorific         ", true,!game_o.level[19].locked);
-    star_map_menu.set_button_choice_data(1,21,texture.level_preview_20.ref_number,"Byakko            ", true,!game_o.level[20].locked);
-    star_map_menu.set_button_choice_data(1,22,texture.level_preview_21.ref_number,"Enenra            ", true,!game_o.level[21].locked);
-    star_map_menu.set_button_choice_data(1,23,texture.level_preview_22.ref_number,"Tengu             ", true,!game_o.level[22].locked);
-    star_map_menu.set_button_choice_data(1,24,texture.level_preview_23.ref_number,"Robonoid          ", true,!game_o.level[23].locked);
-    star_map_menu.set_button_choice_data(1,25,texture.level_preview_24.ref_number,"Oyabun            ", true,!game_o.level[24].locked);
+    star_map_menu.set_button_choice_data(1, 1,texture.level_preview_00.ref_number,game_o.language.text.level_name_00,true,!game_o.level[ 0].locked);
+    star_map_menu.set_button_choice_data(1, 2,texture.level_preview_01.ref_number,game_o.language.text.level_name_01,true,!game_o.level[ 1].locked);
+    star_map_menu.set_button_choice_data(1, 3,texture.level_preview_02.ref_number,game_o.language.text.level_name_02,true,!game_o.level[ 2].locked);
+    star_map_menu.set_button_choice_data(1, 4,texture.level_preview_03.ref_number,game_o.language.text.level_name_03,true,!game_o.level[ 3].locked);
+    star_map_menu.set_button_choice_data(1, 5,texture.level_preview_04.ref_number,game_o.language.text.level_name_04,true,!game_o.level[ 4].locked);
+    star_map_menu.set_button_choice_data(1, 6,texture.level_preview_05.ref_number,game_o.language.text.level_name_05,true,!game_o.level[ 5].locked);
+    star_map_menu.set_button_choice_data(1, 7,texture.level_preview_06.ref_number,game_o.language.text.level_name_06,true,!game_o.level[ 6].locked);
+    star_map_menu.set_button_choice_data(1, 8,texture.level_preview_07.ref_number,game_o.language.text.level_name_07,true,!game_o.level[ 7].locked);
+    star_map_menu.set_button_choice_data(1, 9,texture.level_preview_08.ref_number,game_o.language.text.level_name_08,true,!game_o.level[ 8].locked);
+    star_map_menu.set_button_choice_data(1,10,texture.level_preview_09.ref_number,game_o.language.text.level_name_09,true,!game_o.level[ 9].locked);
+    star_map_menu.set_button_choice_data(1,11,texture.level_preview_10.ref_number,game_o.language.text.level_name_10,true,!game_o.level[10].locked);
+    star_map_menu.set_button_choice_data(1,12,texture.level_preview_11.ref_number,game_o.language.text.level_name_11,true,!game_o.level[11].locked);
+    star_map_menu.set_button_choice_data(1,13,texture.level_preview_12.ref_number,game_o.language.text.level_name_12,true,!game_o.level[12].locked);
+    star_map_menu.set_button_choice_data(1,14,texture.level_preview_13.ref_number,game_o.language.text.level_name_13,true,!game_o.level[13].locked);
+    star_map_menu.set_button_choice_data(1,15,texture.level_preview_14.ref_number,game_o.language.text.level_name_14,true,!game_o.level[14].locked);
+    star_map_menu.set_button_choice_data(1,16,texture.level_preview_15.ref_number,game_o.language.text.level_name_15,true,!game_o.level[15].locked);
+    star_map_menu.set_button_choice_data(1,17,texture.level_preview_16.ref_number,game_o.language.text.level_name_16,true,!game_o.level[16].locked);
+    star_map_menu.set_button_choice_data(1,18,texture.level_preview_17.ref_number,game_o.language.text.level_name_17,true,!game_o.level[17].locked);
+    star_map_menu.set_button_choice_data(1,19,texture.level_preview_18.ref_number,game_o.language.text.level_name_18,true,!game_o.level[18].locked);
+    star_map_menu.set_button_choice_data(1,20,texture.level_preview_19.ref_number,game_o.language.text.level_name_19,true,!game_o.level[19].locked);
+    star_map_menu.set_button_choice_data(1,21,texture.level_preview_20.ref_number,game_o.language.text.level_name_20,true,!game_o.level[20].locked);
+    star_map_menu.set_button_choice_data(1,22,texture.level_preview_21.ref_number,game_o.language.text.level_name_21,true,!game_o.level[21].locked);
+    star_map_menu.set_button_choice_data(1,23,texture.level_preview_22.ref_number,game_o.language.text.level_name_22,true,!game_o.level[22].locked);
+    star_map_menu.set_button_choice_data(1,24,texture.level_preview_23.ref_number,game_o.language.text.level_name_23,true,!game_o.level[23].locked);
+    star_map_menu.set_button_choice_data(1,25,texture.level_preview_24.ref_number,game_o.language.text.level_name_24,true,!game_o.level[24].locked);
     star_map_menu.set_button_active( 2,false);
     star_map_menu.set_button_data  ( 3,game_o.language.text.main_menu);
     star_map_menu.set_buttons_auto();
@@ -143,52 +143,52 @@ int init_menu   (void)
     customize_starship_menu.set_color_highlighted(192,192,255,255);
     customize_starship_menu.set_color_disabled(064,064,128,128);
     customize_starship_menu.set_number_of_buttons(7);
-    customize_starship_menu.set_button_data  ( 1,"Front Weapon     ");
+    customize_starship_menu.set_button_data  ( 1,game_o.language.text.front_weapon);
     customize_starship_menu.set_number_of_choices(1,7);
     customize_starship_menu.set_number_of_visible_choices(1,5);
     customize_starship_menu.set_button_choice_position(1,1);
     customize_starship_menu.set_button_current_choice(1,game_o.player.front_weapon);
-    customize_starship_menu.set_button_choice_data(1, 1,texture.none.ref_number,"None              ", true,true);
+    customize_starship_menu.set_button_choice_data(1, 1,texture.none.ref_number,game_o.language.text.none, true,true);
     customize_starship_menu.set_button_choice_data(1, 2,game_o.projectile[ 0].image,game_o.projectile[ 0].name, true, game_o.projectile[ 0].active);
     customize_starship_menu.set_button_choice_data(1, 3,game_o.projectile[ 1].image,game_o.projectile[ 1].name, true, game_o.projectile[ 1].active);
     customize_starship_menu.set_button_choice_data(1, 4,game_o.projectile[ 2].image,game_o.projectile[ 2].name, true, game_o.projectile[ 2].active);
     customize_starship_menu.set_button_choice_data(1, 5,game_o.projectile[ 3].image,game_o.projectile[ 3].name, true, game_o.projectile[ 3].active);
     customize_starship_menu.set_button_choice_data(1, 6,game_o.projectile[ 4].image,game_o.projectile[ 4].name, true, game_o.projectile[ 4].active);
     customize_starship_menu.set_button_choice_data(1, 7,game_o.projectile[ 5].image,game_o.projectile[ 5].name, true, game_o.projectile[ 5].active);
-    customize_starship_menu.set_button_data  ( 2,"Side Weapon      ");
+    customize_starship_menu.set_button_data  ( 2,game_o.language.text.side_weapon);
     customize_starship_menu.set_number_of_choices(2,7);
     customize_starship_menu.set_number_of_visible_choices(2,5);
     customize_starship_menu.set_button_choice_position(2,1);
     customize_starship_menu.set_button_current_choice(2,game_o.player.side_weapon);
-    customize_starship_menu.set_button_choice_data(2, 1,texture.none.ref_number,"None              ", true,true);
+    customize_starship_menu.set_button_choice_data(2, 1,texture.none.ref_number,game_o.language.text.none, true,true);
     customize_starship_menu.set_button_choice_data(2, 2,game_o.projectile[ 0].image,game_o.projectile[ 0].name, true, game_o.projectile[ 0].active);
     customize_starship_menu.set_button_choice_data(2, 3,game_o.projectile[ 1].image,game_o.projectile[ 1].name, true, game_o.projectile[ 1].active);
     customize_starship_menu.set_button_choice_data(2, 4,game_o.projectile[ 2].image,game_o.projectile[ 2].name, true, game_o.projectile[ 2].active);
     customize_starship_menu.set_button_choice_data(2, 5,game_o.projectile[ 3].image,game_o.projectile[ 3].name, true, game_o.projectile[ 3].active);
     customize_starship_menu.set_button_choice_data(2, 6,game_o.projectile[ 4].image,game_o.projectile[ 4].name, true, game_o.projectile[ 4].active);
     customize_starship_menu.set_button_choice_data(2, 7,game_o.projectile[ 5].image,game_o.projectile[ 5].name, true, game_o.projectile[ 5].active);
-    customize_starship_menu.set_button_data  ( 3,"Shield           ");
+    customize_starship_menu.set_button_data  ( 3,game_o.language.text.shield);
     customize_starship_menu.set_number_of_choices(3,6);
     customize_starship_menu.set_number_of_visible_choices(3,5);
     customize_starship_menu.set_button_choice_position(3,1);
     customize_starship_menu.set_button_current_choice(3,game_o.player.front_shield);
-    customize_starship_menu.set_button_choice_data(3, 1,texture.none.ref_number,"None              ", true,true);
+    customize_starship_menu.set_button_choice_data(3, 1,texture.none.ref_number,game_o.language.text.none, true,true);
     customize_starship_menu.set_button_choice_data(3, 2,game_o.shield[ 0].image,game_o.shield[ 0].name, true, game_o.shield[ 0].active);
     customize_starship_menu.set_button_choice_data(3, 3,game_o.shield[ 1].image,game_o.shield[ 1].name, true, game_o.shield[ 1].active);
     customize_starship_menu.set_button_choice_data(3, 4,game_o.shield[ 2].image,game_o.shield[ 2].name, true, game_o.shield[ 2].active);
     customize_starship_menu.set_button_choice_data(3, 5,game_o.shield[ 3].image,game_o.shield[ 3].name, true, game_o.shield[ 3].active);
     customize_starship_menu.set_button_choice_data(3, 6,game_o.shield[ 4].image,game_o.shield[ 4].name, true, game_o.shield[ 4].active);
-    customize_starship_menu.set_button_data  ( 4,"Thrusters        ");
+    customize_starship_menu.set_button_data  ( 4,game_o.language.text.thrusters);
     customize_starship_menu.set_number_of_choices(4,5);
     customize_starship_menu.set_number_of_visible_choices(4,5);
     customize_starship_menu.set_button_choice_position(4,1);
     customize_starship_menu.set_button_current_choice(4,game_o.player.thrusters);
-    customize_starship_menu.set_button_choice_data(4, 1,texture.none.ref_number,"None              ", true,true);
+    customize_starship_menu.set_button_choice_data(4, 1,texture.none.ref_number,game_o.language.text.none, true,true);
     customize_starship_menu.set_button_choice_data(4, 2,game_o.thruster[ 0].image,game_o.thruster[ 0].name, true, game_o.thruster[ 0].active);
     customize_starship_menu.set_button_choice_data(4, 3,game_o.thruster[ 1].image,game_o.thruster[ 1].name, true, game_o.thruster[ 1].active);
     customize_starship_menu.set_button_choice_data(4, 4,game_o.thruster[ 2].image,game_o.thruster[ 2].name, true, game_o.thruster[ 2].active);
     customize_starship_menu.set_button_choice_data(4, 5,game_o.thruster[ 3].image,game_o.thruster[ 3].name, true, game_o.thruster[ 3].active);
-    customize_starship_menu.set_button_data   ( 5,"Support Ships    ");
+    customize_starship_menu.set_button_data   ( 5,game_o.language.text.support_ships);
     customize_starship_menu.set_button_enabled( 5,false);
     customize_starship_menu.set_button_active ( 6,false);
     customize_starship_menu.set_button_data   ( 7,game_o.language.text.main_menu);
@@ -211,11 +211,11 @@ int init_menu   (void)
     achievements_menu.set_color_highlighted(192,192,255,255);
     achievements_menu.set_color_disabled(064,064,128,128);
     achievements_menu.set_number_of_buttons(4);
-    achievements_menu.set_button_data     ( 1, "Score             ");
+    achievements_menu.set_button_data     ( 1, game_o.language.text.score);
     options_menu.set_button_type          ( 1, ACHIEVE);
     achievements_menu.set_achieve_data    ( 1, 7);
     achievements_menu.set_achieve_position( 1, 7);
-    achievements_menu.set_button_data     ( 2, "Kills             ");
+    achievements_menu.set_button_data     ( 2, game_o.language.text.kills);
     options_menu.set_button_type          ( 2, ACHIEVE);
     achievements_menu.set_achieve_data    ( 2, 7);
     achievements_menu.set_achieve_position( 2, 2);
@@ -225,7 +225,7 @@ int init_menu   (void)
     achievements_menu.set_close_button_data(texture.red_button.ref_number,texture.red_button_highlighted.ref_number);
     achievements_menu.set_title_data(game_o.language.text.achievements);//needs to be called last due to size generated by number of buttons etc....
     //------ setup "save game" menu -----------
-    save_menu.set_menu_title("Save Menu         ");
+    save_menu.set_menu_title(game_o.language.text.save_menu);
     save_menu.set_keyboard_delay(16);
     save_menu.set_mouse_delay(24);
     save_menu.set_pos(0.0f,-0.1f,0.001f);
@@ -238,20 +238,20 @@ int init_menu   (void)
     save_menu.set_color_highlighted(192,192,255,255);
     save_menu.set_color_disabled(064,064,128,128);
     save_menu.set_number_of_buttons(9);
-    save_menu.set_button_data  ( 1,"Save Slot 1       ");
-    save_menu.set_button_data  ( 2,"Save Slot 2       ");
-    save_menu.set_button_data  ( 3,"Save Slot 3       ");
-    save_menu.set_button_data  ( 4,"Save Slot 4       ");
-    save_menu.set_button_data  ( 5,"Save Slot 5       ");
-    save_menu.set_button_data  ( 6,"Save Slot 6       ");
-    save_menu.set_button_data  ( 7,"Save Slot 7       ");
+    save_menu.set_button_data  ( 1,game_o.language.text.save_slot_1);
+    save_menu.set_button_data  ( 2,game_o.language.text.save_slot_2);
+    save_menu.set_button_data  ( 3,game_o.language.text.save_slot_3);
+    save_menu.set_button_data  ( 4,game_o.language.text.save_slot_4);
+    save_menu.set_button_data  ( 5,game_o.language.text.save_slot_5);
+    save_menu.set_button_data  ( 6,game_o.language.text.save_slot_6);
+    save_menu.set_button_data  ( 7,game_o.language.text.save_slot_7);
     save_menu.set_button_active( 8,false);
     save_menu.set_button_data  ( 9,game_o.language.text.main_menu);
     save_menu.set_buttons_auto();
     save_menu.set_close_button_data(texture.red_button.ref_number,texture.red_button_highlighted.ref_number);
-    save_menu.set_title_data("Save Menu         ");//needs to be called last due to size generated by number of buttons etc....
+    save_menu.set_title_data(game_o.language.text.save_menu);//needs to be called last due to size generated by number of buttons etc....
     //------ setup "load game" menu -----------
-    load_menu.set_menu_title("Load Menu         ");
+    load_menu.set_menu_title(game_o.language.text.load_menu);
     load_menu.set_keyboard_delay(16);
     load_menu.set_mouse_delay(24);
     load_menu.set_pos(0.0f,-0.1f,0.001f);
@@ -264,18 +264,18 @@ int init_menu   (void)
     load_menu.set_color_highlighted(192,192,255,255);
     load_menu.set_color_disabled(064,064,128,128);
     load_menu.set_number_of_buttons(9);
-    load_menu.set_button_data  ( 1,"Save Slot 1       ");
-    load_menu.set_button_data  ( 2,"Save Slot 2       ");
-    load_menu.set_button_data  ( 3,"Save Slot 3       ");
-    load_menu.set_button_data  ( 4,"Save Slot 4       ");
-    load_menu.set_button_data  ( 5,"Save Slot 5       ");
-    load_menu.set_button_data  ( 6,"Save Slot 6       ");
-    load_menu.set_button_data  ( 7,"Save Slot 7       ");
+    load_menu.set_button_data  ( 1,game_o.language.text.save_slot_1);
+    load_menu.set_button_data  ( 2,game_o.language.text.save_slot_2);
+    load_menu.set_button_data  ( 3,game_o.language.text.save_slot_3);
+    load_menu.set_button_data  ( 4,game_o.language.text.save_slot_4);
+    load_menu.set_button_data  ( 5,game_o.language.text.save_slot_5);
+    load_menu.set_button_data  ( 6,game_o.language.text.save_slot_6);
+    load_menu.set_button_data  ( 7,game_o.language.text.save_slot_7);
     load_menu.set_button_active( 8,false);
     load_menu.set_button_data  ( 9,game_o.language.text.main_menu);
     load_menu.set_buttons_auto();
     load_menu.set_close_button_data(texture.red_button.ref_number,texture.red_button_highlighted.ref_number);
-    load_menu.set_title_data("Load Menu         ");//needs to be called last due to size generated by number of buttons etc....
+    load_menu.set_title_data(game_o.language.text.load_menu);//needs to be called last due to size generated by number of buttons etc....
     game.save_01.Assign_File("save/slot_01.sav");
     if (game.save_01.File_Exists()) load_menu.button[1].set_enabled(true);
     else load_menu.button[1].set_enabled(false);
@@ -312,28 +312,28 @@ int init_menu   (void)
     options_menu.set_color_highlighted(192,192,255,255);
     options_menu.set_color_disabled(064,064,128,128);
     options_menu.set_number_of_buttons(6);
-    options_menu.set_button_data  ( 1,"Sound Volume      ");
+    options_menu.set_button_data  ( 1,game_o.language.text.sound_volume);
     options_menu.set_button_type  ( 1,SLIDER);
     options_menu.set_button_slider_position(1,game.config.Audio_Sound_Volume);
     options_menu.set_button_slider_position_max(1,128);
-    options_menu.set_button_data  ( 2,"Music Volume      ");
+    options_menu.set_button_data  ( 2,game_o.language.text.music_volume);
     options_menu.set_button_type  ( 2,SLIDER);
     options_menu.set_button_slider_position(2,game.config.Audio_Music_Volume);
     options_menu.set_button_slider_position_max(2,128);
-    options_menu.set_button_data  ( 3,"Screen Resolution ");
+    options_menu.set_button_data  ( 3,game_o.language.text.screen_resolution);
     options_menu.set_number_of_choices(3,8);
     options_menu.set_number_of_visible_choices(3,5);
     options_menu.set_button_choice_position(3,1);
     options_menu.set_button_current_choice(3,game.config.Display_resolution);
-    options_menu.set_button_choice_data(3, 1,texture.resolution_icon.ref_number,"640 X 480         ", true, true);
-    options_menu.set_button_choice_data(3, 2,texture.resolution_icon.ref_number,"800 X 600         ", true, true);
-    options_menu.set_button_choice_data(3, 3,texture.resolution_icon.ref_number,"1024 X 768        ", true, true);
-    options_menu.set_button_choice_data(3, 4,texture.resolution_icon.ref_number,"1280 X 1024       ", true, true);
-    options_menu.set_button_choice_data(3, 5,texture.resolution_icon.ref_number,"1366 X 768        ", true, true);
-    options_menu.set_button_choice_data(3, 6,texture.resolution_icon.ref_number,"1440 X 900        ", true, true);
-    options_menu.set_button_choice_data(3, 7,texture.resolution_icon.ref_number,"1680 X 1050       ", true, true);
-    options_menu.set_button_choice_data(3, 8,texture.resolution_icon.ref_number,"1920 X 1080       ", true, true);
-    options_menu.set_button_data  ( 4,"Full Screen       ");
+    options_menu.set_button_choice_data(3, 1,texture.resolution_icon.ref_number,game_o.language.text.res_640_x_480,   true, true);
+    options_menu.set_button_choice_data(3, 2,texture.resolution_icon.ref_number,game_o.language.text.res_800_x_600,   true, true);
+    options_menu.set_button_choice_data(3, 3,texture.resolution_icon.ref_number,game_o.language.text.res_1024_x_768,  true, true);
+    options_menu.set_button_choice_data(3, 4,texture.resolution_icon.ref_number,game_o.language.text.res_1280_x_1024, true, true);
+    options_menu.set_button_choice_data(3, 5,texture.resolution_icon.ref_number,game_o.language.text.res_1366_x_768,  true, true);
+    options_menu.set_button_choice_data(3, 6,texture.resolution_icon.ref_number,game_o.language.text.res_1440_x_900,  true, true);
+    options_menu.set_button_choice_data(3, 7,texture.resolution_icon.ref_number,game_o.language.text.res_1680_x_1050, true, true);
+    options_menu.set_button_choice_data(3, 8,texture.resolution_icon.ref_number,game_o.language.text.res_1920_x_1080, true, true);
+    options_menu.set_button_data  ( 4,game_o.language.text.full_screen);
     options_menu.set_button_type  ( 4,TOGGLE);
     options_menu.set_button_active( 5,false);
     options_menu.set_button_data  ( 6,game_o.language.text.main_menu);
@@ -341,7 +341,7 @@ int init_menu   (void)
     options_menu.set_close_button_data(texture.red_button.ref_number,texture.red_button_highlighted.ref_number);
     options_menu.set_title_data(game_o.language.text.options);//needs to be called last due to size generated by number of buttons etc....
     //------ setup "game over" menu -----------
-    game_over_menu.set_menu_title("Game Over         ");
+    game_over_menu.set_menu_title(game_o.language.text.game_over);
     game_over_menu.set_keyboard_delay(16);
     game_over_menu.set_mouse_delay(24);
     game_over_menu.set_pos(0.0f,-0.85f,0.001f);
@@ -357,9 +357,9 @@ int init_menu   (void)
     game_over_menu.set_button_data  ( 1,game_o.language.text.main_menu);
     game_over_menu.set_buttons_auto();
     game_over_menu.set_close_button_data(texture.red_button.ref_number,texture.red_button_highlighted.ref_number);
-    game_over_menu.set_title_data("Game Over         ");//needs to be called last due to size generated by number of buttons etc....
+    game_over_menu.set_title_data(game_o.language.text.game_over);//needs to be called last due to size generated by number of buttons etc....
     //------ setup "next leve" menu -----------
-    next_level_menu.set_menu_title("Level Completed   ");
+    next_level_menu.set_menu_title(game_o.language.text.level_completed);
     next_level_menu.set_keyboard_delay(16);
     next_level_menu.set_mouse_delay(24);
     next_level_menu.set_pos(0.0f,-0.85f,0.001f);
@@ -372,12 +372,12 @@ int init_menu   (void)
     next_level_menu.set_color_highlighted(192,192,255,255);
     next_level_menu.set_color_disabled(064,064,128,128);
     next_level_menu.set_number_of_buttons(1);
-    next_level_menu.set_button_data  ( 1,"Next Level        ");
+    next_level_menu.set_button_data  ( 1,game_o.language.text.next_level);
     next_level_menu.set_buttons_auto();
     next_level_menu.set_close_button_data(texture.red_button.ref_number,texture.red_button_highlighted.ref_number);
-    next_level_menu.set_title_data("Level Completed   ");//needs to be called last due to size generated by number of buttons etc....
+    next_level_menu.set_title_data(game_o.language.text.level_completed);//needs to be called last due to size generated by number of buttons etc....
     //------ setup "outro" menu -----------
-    outro_menu.set_menu_title("Game Completed    ");
+    outro_menu.set_menu_title(game_o.language.text.game_completed);
     outro_menu.set_keyboard_delay(16);
     outro_menu.set_mouse_delay(24);
     outro_menu.set_pos(0.0f,-0.85f,0.001f);
@@ -393,9 +393,9 @@ int init_menu   (void)
     outro_menu.set_button_data  ( 1,game_o.language.text.main_menu);
     outro_menu.set_buttons_auto();
     outro_menu.set_close_button_data(texture.red_button.ref_number,texture.red_button_highlighted.ref_number);
-    outro_menu.set_title_data("Game Completed    ");//needs to be called last due to size generated by number of buttons etc....
+    outro_menu.set_title_data(game_o.language.text.game_completed);//needs to be called last due to size generated by number of buttons etc....
     //------ setup "pause" menu -----------
-    pause_menu.set_menu_title("Game Paused       ");
+    pause_menu.set_menu_title(game_o.language.text.game_paused);
     pause_menu.set_keyboard_delay(16);
     pause_menu.set_mouse_delay(24);
     pause_menu.set_pos(0.0f,-0.85f,0.001f);
@@ -411,7 +411,7 @@ int init_menu   (void)
     pause_menu.set_button_data  ( 1,game_o.language.text.resume_game);
     pause_menu.set_buttons_auto();
     pause_menu.set_close_button_data(texture.red_button.ref_number,texture.red_button_highlighted.ref_number);
-    pause_menu.set_title_data("Game Paused       ");//needs to be called last due to size generated by number of buttons etc....
+    pause_menu.set_title_data(game_o.language.text.game_paused);//needs to be called last due to size generated by number of buttons etc....
     return(0);
 };
 
