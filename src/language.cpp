@@ -115,6 +115,12 @@ language_class::language_class(void)
     language_class::text.UI_kills_            = "Kills - ";
     language_class::text.UI_active_NPCs_      = "Active NPCs - ";
     language_class::text.UI_FPS_              = "FPS - ";
+    language_class::text.NL_level_score_      = "Level Score - ";
+    language_class::text.NL_total_score_      = "Total Score - ";
+    language_class::text.NL_level_kills_      = "Level Kills - ";
+    language_class::text.NL_total_kills_      = "Total Kills - ";
+    language_class::text.NL_kill_rate_        = "Kill Rate   - ";
+    language_class::text.NL_percentage_sign   = "%";
 };
 
 void language_class::load(std::string file_name)
@@ -253,6 +259,12 @@ void language_class::load(std::string file_name)
                     if (temp_string_key == "UI_kills_")          language_class::text.UI_kills_          = temp_string_data;
                     if (temp_string_key == "UI_active_NPCs_")    language_class::text.UI_active_NPCs_    = temp_string_data;
                     if (temp_string_key == "UI_FPS_")            language_class::text.UI_FPS_            = temp_string_data;
+                    if (temp_string_key == "NL_Level_Score_")    language_class::text.NL_level_score_    = temp_string_data;
+                    if (temp_string_key == "NL_Total_Score_")    language_class::text.NL_total_score_    = temp_string_data;
+                    if (temp_string_key == "NL_Level_Kills_")    language_class::text.NL_level_kills_    = temp_string_data;
+                    if (temp_string_key == "NL_Total_Kills_")    language_class::text.NL_total_kills_    = temp_string_data;
+                    if (temp_string_key == "NL_Kill_Rate_")      language_class::text.NL_kill_rate_      = temp_string_data;
+                    if (temp_string_key == "NL_%")               language_class::text.NL_percentage_sign = temp_string_data;
                 }
             }
         }

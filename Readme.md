@@ -5,31 +5,17 @@ This is Star.P.G., a free/open source computer game.
 
 About
 -----
-Star.P.G. is an arcade style, side scrolling shooter.
+Star.P.G. is an arcade style, side scrolling space shooter.
 
 It was just supposed to be a one month game project...now it is over a year in the making. :P
-Star.P.G. is a personal project, I never intended or for that matter wish for help on the code for this game. 
-For me it is an enjoyable experience writing the code and learning from it.
-If you are interested in modifying the code, you are welcome to fork my game and make a derivative from it. (I think after V1.0 I will be open to contributions)
-I only placed Star.P.G. on the Internet in order to utilize the benefits of version control systems, and also in the unlikely event that it may be of use or interest to someone.
-I am not looking for help or contributions to the code. 
+Star.P.G. is a personal project,  an enjoyable experience writing the code and learning from it.
+I only placed Star.P.G. on the Internet in order to utilize the benefits of version control systems, and also as it may be of use or interest to someone.
+I am not currently looking for help or contributions to the code. 
 Although if you are an artist or musician, and wish to improve the games resources, I would be happy to include them and give due credit.
-
-License
--------
-Copyright (C) 2010-2011 Paul Wortmann.
-
-This program is free software: you can redistribute it and/or modify it under
-the terms of the GNU General Public License as published by the Free Software
-Foundation, either version 3 of the License, or (at your option) any later
-version. 
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.  See the gpl.txt file for more details. 
 
 Features
 --------
+- Multiple language support.
 - Customizable spaceship.
 - Particle engine.
 - Six unique experience based weapons with three levels, all
@@ -54,11 +40,6 @@ Features
 
 More information can be found in the changelog.txt file.
 
-Compiling
----------
-Included are the project files for use with the Code::Blocks IDE. (http://www.codeblocks.org/)
-Also required are the SDL librarys.
-
 Usage
 -----
 - "Left"    ->    Move starship left.
@@ -69,6 +50,18 @@ Usage
 - "B"       ->    Use a collected bomb.
 - "P"       ->    Pause.
 - "ESC"	    ->    Menu, Quit.
+
+Compiling
+---------
+Included are the project files for use with the Code::Blocks IDE. (http://www.codeblocks.org/)
+Also required are the SDL librarys.
+
+Multiple language support.
+---------------------
+You can set your desired language in the config file. (Star.P.G..cfg)
+The value to set should be identical to the language files name, excluding the ".txt". 
+ie. for "english.txt" set Language = english in the config file.
+Please note that language files have to be save in UTF-8 format, else they may fail to function correctly.
 
 Known bugs
 ----------
@@ -81,6 +74,19 @@ Credits
 -------
 This information can be found in the credits_license.txt file.
 
+License
+-------
+Copyright (C) 2010-2011 Paul Wortmann.
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version. 
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.  See the gpl.txt file for more details. 
+
 Contact
 -------
 - Paul Wortmann: physhex@gamil.com
@@ -90,6 +96,6 @@ Contact
 
 Final words:
 ---------
-Although I could continue adding to this game and polishing it further, I have decided to cease working on this game from version 1.0. I may however add to the game in the future or create a sequel....but for now I wish to try my hands at making an Action RPG.
+Although I could continue adding to this game and polishing it further, I have decided to cease working on this game from version 1.0. I may however add to the game in the future or create a sequel....but for now I wish to try my hand at making an Action RPG.
 I hope you enjoy this game as much as I have enjoyed creating it!
-Paul.
+Paul Wortmann. (RoboPaul)

@@ -79,7 +79,12 @@ UI_score_           = "Score - "
 UI_kills_           = "Kills - "
 UI_active_NPCs_     = "Active NPCs - "
 UI_FPS_             = "FPS - "
-
+NL_Level_Score_     = "Level score - "
+NL_Total_Score_     = "Total score - "
+NL_Level_Kills_     = "Level kills - "
+NL_Total_Kills_     = "Total kills - "
+NL_Kill_Rate_       = "Kill rate   - "
+NL_%                = "%"
 
 
 

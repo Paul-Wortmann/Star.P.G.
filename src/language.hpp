@@ -106,6 +106,12 @@ struct text_type
     std::string    UI_kills_;
     std::string    UI_active_NPCs_;
     std::string    UI_FPS_;
+    std::string    NL_level_score_;
+    std::string    NL_total_score_;
+    std::string    NL_level_kills_;
+    std::string    NL_total_kills_;
+    std::string    NL_kill_rate_;
+    std::string    NL_percentage_sign;
 };
 
 class language_class

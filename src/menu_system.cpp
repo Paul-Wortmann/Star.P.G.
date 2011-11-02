@@ -1735,11 +1735,11 @@ int diplay_menu (void)
         if(level_t == 23) texture.level_preview_23.draw(false, 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
         if(level_t == 24) texture.level_preview_24.draw(false, 0.0f,-0.20f, 0.0f, 1.0f, 1.0f);
 
-        font.font_1.Write(255,255,255,64,-1.00f,-0.00f,3,9,"Level score - ", game_o.level_score);
-        font.font_1.Write(255,255,255,64,-1.00f,-0.10f,3,9,"Total score - ", game_o.score);
-        font.font_1.Write(255,255,255,64,-1.00f,-0.20f,3,9,"Level kills - ", game_o.level_kills);
-        font.font_1.Write(255,255,255,64,-1.00f,-0.30f,3,9,"Total kills - ", game_o.kills);
-        font.font_1.Write(255,255,255,64,-1.00f,-0.40f,3,9,"Kill rate   - ./'",(((float)game_o.level_kills/(float)game_o.level_spawened)*100));
+        font.font_1.Write(255,255,255,64,-1.00f,-0.00f,3,9,game_o.language.text.NL_level_score_, game_o.level_score);
+        font.font_1.Write(255,255,255,64,-1.00f,-0.10f,3,9,game_o.language.text.NL_total_score_, game_o.score);
+        font.font_1.Write(255,255,255,64,-1.00f,-0.20f,3,9,game_o.language.text.NL_level_kills_, game_o.level_kills);
+        font.font_1.Write(255,255,255,64,-1.00f,-0.30f,3,9,game_o.language.text.NL_total_kills_, game_o.kills);
+        font.font_1.Write(255,255,255,64,-1.00f,-0.40f,3,9,game_o.language.text.NL_kill_rate_,(((float)game_o.level_kills/(float)game_o.level_spawened)*100),game_o.language.text.NL_percentage_sign);
     }
 /*-----------------------------------------------------------------------------*/
    if (game.menu_level == 10) //Outro screen
