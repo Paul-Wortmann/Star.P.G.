@@ -98,6 +98,7 @@ int init_menu   (void)
     star_map_menu.set_number_of_visible_choices(1,5);
     star_map_menu.set_button_choice_position(1,1);
     star_map_menu.set_button_current_choice(1,-100);
+    star_map_menu.set_button_disabled_text_label(game_o.language.text.menu_item_unavailable);
     star_map_menu.set_button_choice_data(1, 1,texture.level_preview_00.ref_number,game_o.language.text.level_name_00,true,!game_o.level[ 0].locked);
     star_map_menu.set_button_choice_data(1, 2,texture.level_preview_01.ref_number,game_o.language.text.level_name_01,true,!game_o.level[ 1].locked);
     star_map_menu.set_button_choice_data(1, 3,texture.level_preview_02.ref_number,game_o.language.text.level_name_02,true,!game_o.level[ 2].locked);
@@ -147,6 +148,7 @@ int init_menu   (void)
     customize_starship_menu.set_number_of_choices(1,7);
     customize_starship_menu.set_number_of_visible_choices(1,5);
     customize_starship_menu.set_button_choice_position(1,1);
+    customize_starship_menu.set_button_disabled_text_label(game_o.language.text.menu_item_unavailable);
     customize_starship_menu.set_button_current_choice(1,game_o.player.front_weapon);
     customize_starship_menu.set_button_choice_data(1, 1,texture.none.ref_number,game_o.language.text.none, true,true);
     customize_starship_menu.set_button_choice_data(1, 2,game_o.projectile[ 0].image,game_o.projectile[ 0].name, true, game_o.projectile[ 0].active);
@@ -324,6 +326,7 @@ int init_menu   (void)
     options_menu.set_number_of_choices(3,8);
     options_menu.set_number_of_visible_choices(3,5);
     options_menu.set_button_choice_position(3,1);
+    options_menu.set_button_disabled_text_label(game_o.language.text.menu_item_unavailable);
     options_menu.set_button_current_choice(3,game.config.Display_resolution);
     options_menu.set_button_choice_data(3, 1,texture.resolution_icon.ref_number,game_o.language.text.res_640_x_480,   true, true);
     options_menu.set_button_choice_data(3, 2,texture.resolution_icon.ref_number,game_o.language.text.res_800_x_600,   true, true);

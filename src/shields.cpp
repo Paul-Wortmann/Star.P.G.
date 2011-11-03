@@ -42,7 +42,7 @@ void init_shields(bool re_init)
     }
     else
     {
-        game_o.shield[0].name             = "Terbium Shields";
+        game_o.shield[0].name             = game_o.language.text.shield_name_00;
         game_o.shield[0].active           = false;
         game_o.shield[0].level            = 0;
         game_o.shield[0].level_1          = 256;
@@ -51,7 +51,7 @@ void init_shields(bool re_init)
         game_o.shield[0].experience       = 0;
         game_o.shield[0].image            = texture.shield_000.ref_number;
         game_o.shield[0].absorption       = 0.0005f;
-        game_o.shield[1].name             = "Iridium Shields";
+        game_o.shield[1].name             = game_o.language.text.shield_name_01;
         game_o.shield[1].active           = false;
         game_o.shield[1].level            = 0;
         game_o.shield[1].level_1          = 512;
@@ -60,7 +60,7 @@ void init_shields(bool re_init)
         game_o.shield[1].experience       = 0;
         game_o.shield[1].image            = texture.shield_001.ref_number;
         game_o.shield[1].absorption       = 0.0010f;
-        game_o.shield[2].name             = "Rubidium Shields";
+        game_o.shield[2].name             = game_o.language.text.shield_name_02;
         game_o.shield[2].active           = false;
         game_o.shield[2].level            = 0;
         game_o.shield[2].level_1          = 1024;
@@ -69,7 +69,7 @@ void init_shields(bool re_init)
         game_o.shield[2].experience       = 0;
         game_o.shield[2].image            = texture.shield_002.ref_number;
         game_o.shield[2].absorption       = 0.0015f;
-        game_o.shield[3].name             = "Tantalum Shields";
+        game_o.shield[3].name             = game_o.language.text.shield_name_03;
         game_o.shield[3].active           = false;
         game_o.shield[3].level            = 0;
         game_o.shield[3].level_1          = 2048;
@@ -78,7 +78,7 @@ void init_shields(bool re_init)
         game_o.shield[3].experience       = 0;
         game_o.shield[3].image            = texture.shield_003.ref_number;
         game_o.shield[3].absorption       = 0.0020f;
-        game_o.shield[4].name             = "Actinium Shields";
+        game_o.shield[4].name             = game_o.language.text.shield_name_04;
         game_o.shield[4].active           = false;
         game_o.shield[4].level            = 0;
         game_o.shield[4].level_1          = 4096;

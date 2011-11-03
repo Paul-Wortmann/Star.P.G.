@@ -46,7 +46,7 @@ class button_class
             bool         active;
             bool         enabled;
             int          image_ref;
-            std::string text_label;
+            std::string  text_label;
             bool         highlighted;
             float        zoom_size_counter;
         };
@@ -101,7 +101,8 @@ class button_class
         float            slider_width;
         float            slider_height;
         int              choice_position;
-        std::string     label;
+        std::string      label;
+        std::string      disabled_text_label;
         int              button_font;
         int              normal_color_r;
         int              normal_color_g;
@@ -133,6 +134,7 @@ class button_class
         float get_width(void);
         float get_height(void);
         void  set_label(std::string text);
+        void  set_disabled_text_label(std::string disabled_text_label);
         void  set_color_normal(int r, int g, int b, int a);
         void  set_color_highlighted(int r, int g, int b, int a);
         void  set_color_disabled(int r, int g, int b, int a);
@@ -290,7 +292,8 @@ class menu_class
         float         zoom_speed;
         float         height;
         float         width;
-        std::string  title_label;
+        std::string   title_label;
+        std::string   button_disabled_text_label;
         float         title_height;
         float         title_width;
         float         title_pos_x;
@@ -330,6 +333,7 @@ class menu_class
         void  set_button_data(int button_number);
         void  set_button_data(int button_number, std::string label);
         void  set_button_data(int button_number, std::string label,float x, float y, float z);
+        void  set_button_disabled_text_label(std::string disabled_text_label);
         void  set_button_data(void);
         void  set_button_size(float w, float h);
         void  set_number_of_buttons(int nob);

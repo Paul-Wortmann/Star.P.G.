@@ -385,7 +385,7 @@ void button_class::draw(void)
         for(int choice_count = 0; choice_count < button_class::get_number_of_visible_choices(); choice_count++)
         {
             if ((button_class::choice_data[button_class::choice_position+choice_count].highlighted) && ( button_class::choice_data[button_class::choice_position+choice_count].enabled)) temp_label = button_class::choice_data[button_class::choice_position+choice_count].text_label;//choices
-            if ((button_class::choice_data[button_class::choice_position+choice_count].highlighted) && (!button_class::choice_data[button_class::choice_position+choice_count].enabled)) temp_label = "Unavailable";//choices
+            if ((button_class::choice_data[button_class::choice_position+choice_count].highlighted) && (!button_class::choice_data[button_class::choice_position+choice_count].enabled)) temp_label = button_class::disabled_text_label;//choices
         }
         switch(button_class::get_font()) //write selected level name
         {
@@ -497,6 +497,11 @@ void button_class::set_zoom(bool bool_data, float zs)
 {
     button_class::zoom      = bool_data;
     button_class::zoom_size = zs;
+};
+
+void  button_class::set_disabled_text_label(std::string disabled_text_label)
+{
+    button_class::disabled_text_label = disabled_text_label;
 };
 
 void  button_class::set_zoom(bool bool_data, float zs, float zsp)
@@ -1440,6 +1445,16 @@ bool  menu_class::get_drag_active(void)
 {
     return(menu_class::drag_active);
 };
+
+void  menu_class::set_button_disabled_text_label(std::string disabled_text_label)
+{
+    menu_class::button_disabled_text_label = disabled_text_label;
+    for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
+    {
+        menu_class::button[button_count].set_disabled_text_label(disabled_text_label);
+    }
+};
+
 
 void  menu_class::set_title_data(std::string menu_title)
 {
