@@ -22,6 +22,11 @@
  * @date 2011-10-01
  */
 
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
 #include "load_resources.hpp"
 #include "thrusters.hpp"
 #include "game.hpp"
@@ -42,16 +47,9 @@ void init_thrusters(bool re_init)
     }
     else
     {
+        game_o.thruster[0].load("data/configuration/thrusters/thruster_00.txt");
         game_o.thruster[0].name           = game_o.language.text.thruster_name_00;
-        game_o.thruster[0].active         = false;
-        game_o.thruster[0].level          = 0;
-        game_o.thruster[0].level_1        = 256;
-        game_o.thruster[0].level_2        = 512;
-        game_o.thruster[0].level_3        = 1024;
-        game_o.thruster[0].experience     = 0;
         game_o.thruster[0].image          = texture.thrusters_000.ref_number;
-        game_o.thruster[0].thrust         = 0.002f;
-        game_o.thruster[0].frame          = 0;
         game_o.thruster[0].frame_max      = texture.thrusters_000.frame_max;
         game_o.thruster[0].fire.init();
         game_o.thruster[0].fire.set_emitter_image(texture.particle_000.ref_number);
@@ -60,16 +58,9 @@ void init_thrusters(bool re_init)
         game_o.thruster[0].smoke.set_emitter_image(texture.particle_002.ref_number);
         game_o.thruster[0].smoke.load("data/configuration/particle_systems/thruster_000_smoke.txt");
 
+        game_o.thruster[1].load("data/configuration/thrusters/thruster_01.txt");
         game_o.thruster[1].name           = game_o.language.text.thruster_name_01;
-        game_o.thruster[1].active         = false;
-        game_o.thruster[1].level          = 0;
-        game_o.thruster[1].level_1        = 512;
-        game_o.thruster[1].level_2        = 1024;
-        game_o.thruster[1].level_3        = 2048;
-        game_o.thruster[1].experience     = 0;
         game_o.thruster[1].image          = texture.thrusters_001.ref_number;
-        game_o.thruster[1].thrust         = 0.004f;
-        game_o.thruster[1].frame          = 0;
         game_o.thruster[1].frame_max      = texture.thrusters_001.frame_max;
         game_o.thruster[1].fire.init();
         game_o.thruster[1].fire.set_emitter_image(texture.particle_000.ref_number);
@@ -78,16 +69,9 @@ void init_thrusters(bool re_init)
         game_o.thruster[1].smoke.set_emitter_image(texture.particle_002.ref_number);
         game_o.thruster[1].smoke.load("data/configuration/particle_systems/thruster_001_smoke.txt");
 
+        game_o.thruster[2].load("data/configuration/thrusters/thruster_02.txt");
         game_o.thruster[2].name           = game_o.language.text.thruster_name_02;
-        game_o.thruster[2].active         = false;
-        game_o.thruster[2].level          = 0;
-        game_o.thruster[2].level_1        = 1024;
-        game_o.thruster[2].level_2        = 2048;
-        game_o.thruster[2].level_3        = 4096;
-        game_o.thruster[2].experience     = 0;
         game_o.thruster[2].image          = texture.thrusters_002.ref_number;
-        game_o.thruster[2].thrust         = 0.006f;
-        game_o.thruster[2].frame          = 0;
         game_o.thruster[2].frame_max      = texture.thrusters_002.frame_max;
         game_o.thruster[2].fire.init();
         game_o.thruster[2].fire.set_emitter_image(texture.particle_000.ref_number);
@@ -96,16 +80,10 @@ void init_thrusters(bool re_init)
         game_o.thruster[2].smoke.set_emitter_image(texture.particle_002.ref_number);
         game_o.thruster[2].smoke.load("data/configuration/particle_systems/thruster_002_smoke.txt");
 
+        game_o.thruster[3].load("data/configuration/thrusters/thruster_03.txt");
         game_o.thruster[3].name           = game_o.language.text.thruster_name_03;
         game_o.thruster[3].active         = false;
-        game_o.thruster[3].level          = 0;
-        game_o.thruster[3].level_1        = 2048;
-        game_o.thruster[3].level_2        = 4096;
-        game_o.thruster[3].level_3        = 8192;
-        game_o.thruster[3].experience     = 0;
         game_o.thruster[3].image          = texture.thrusters_003.ref_number;
-        game_o.thruster[3].thrust         = 0.008f;
-        game_o.thruster[3].frame          = 0;
         game_o.thruster[3].frame_max      = texture.thrusters_003.frame_max;
         game_o.thruster[3].fire.init();
         game_o.thruster[3].fire.set_emitter_image(texture.particle_000.ref_number);
@@ -133,3 +111,79 @@ void draw_thrusters(void)
     game_o.thruster[game_o.player.thrusters].fire.draw();
 };
 
+void thruster_class::load(std::string file_name)
+{
+    char           temp_char_UTF8   = ' ';
+    short          temp_char_UTF16  = ' ';
+    int            temp_char_UTF32  = ' ';
+    float          temp_float_data;
+    int            temp_int_data;
+    bool           temp_bool_data;
+    std::string    temp_string_data;
+    std::string    temp_string_key;
+    std::string    temp_string_value;
+    int            count;
+    std::string    data_line;
+    std::ifstream  script_file(file_name.c_str(),std::ios::in);
+    if (script_file.is_open())
+    {
+        while ( script_file.good() )
+        {
+            getline(script_file,data_line);
+            if (data_line.length() > 0)
+            {
+                if ('\r' == data_line.at(data_line.length()-1))
+                {
+                    data_line = data_line.substr(0, data_line.length()-1);
+                }
+            }
+            {
+                temp_char_UTF32 = data_line[0];
+                if((temp_char_UTF32 != '#') && (data_line.length() > 2))
+                {
+                    temp_char_UTF32   = '#';
+                    temp_string_key   = "";
+                    temp_string_value = "";
+                    count = 0;
+                    while(temp_char_UTF32 != ' ')
+                    {
+                        temp_char_UTF32 = data_line[count];
+                        if(temp_char_UTF32 != ' ') temp_string_key += temp_char_UTF32;
+                        count++;
+                        if(count > data_line.length()) (temp_char_UTF32 = ' ');
+                    }
+                    while((temp_char_UTF32 == ' ') || (temp_char_UTF32 == '='))
+                    {
+                        temp_char_UTF32 = data_line[count];
+                        count++;
+                        if(count > data_line.length()) (temp_char_UTF32 = '#');
+                    }
+                    count--;
+                    while(count < (data_line.length()-1))
+                    {
+                        temp_char_UTF32  = data_line[count];
+                        if (temp_char_UTF32 != '"') temp_string_value += temp_char_UTF32;
+                        count++;
+                    }
+                    temp_string_data = temp_string_value.c_str();
+                    temp_float_data  = (float) atof(temp_string_value.c_str());
+                    temp_int_data    = (int)   atoi(temp_string_value.c_str());
+                    if (temp_int_data == 1) temp_bool_data = true;
+                    else temp_bool_data = false;
+                    if (temp_string_key == "Name")        thruster_class::name = temp_string_data;
+                    if (temp_string_key == "Active")      thruster_class::name = temp_bool_data;
+                    if (temp_string_key == "Level")       thruster_class::name = temp_int_data;
+                    if (temp_string_key == "Level_1")     thruster_class::name = temp_float_data;
+                    if (temp_string_key == "Level_2")     thruster_class::name = temp_float_data;
+                    if (temp_string_key == "Level_3")     thruster_class::name = temp_float_data;
+                    if (temp_string_key == "Experience")  thruster_class::name = temp_float_data;
+                    if (temp_string_key == "Image")       thruster_class::name = temp_int_data;
+                    if (temp_string_key == "Thrust")      thruster_class::name = temp_float_data;
+                    if (temp_string_key == "Frame")       thruster_class::name = temp_int_data;
+                    if (temp_string_key == "Frame_Max")   thruster_class::name = temp_int_data;
+                }
+            }
+        }
+        script_file.close();
+    }
+};

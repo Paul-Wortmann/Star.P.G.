@@ -33,19 +33,20 @@ const int   MAX_THRUSTERS      = 4;
 class thruster_class
 {
     public:
-    std::string   name;
-    bool          active;
-    int           level;
-    float         level_1;
-    float         level_2;
-    float         level_3;
-    float         experience;
-    int           image;
-    float         thrust;
-    int           frame;
-    int           frame_max;
-    emitter_class fire;
-    emitter_class smoke;
+    std::string     name;
+    bool            active;
+    int             level;
+    float           level_1;
+    float           level_2;
+    float           level_3;
+    float           experience;
+    int             image;
+    float           thrust;
+    int             frame;
+    int             frame_max;
+    emitter_class   fire;
+    emitter_class   smoke;
+    void            load(std::string file_name);
 };
 
 void init_thrusters(bool re_init);

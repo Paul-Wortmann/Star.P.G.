@@ -951,7 +951,7 @@
 
 1311166714 game.hpp"
 
-1319630566 source:c:\_git_\star.p.g\src\save_data.cpp
+1320310728 source:c:\_git_\star.p.g\src\save_data.cpp
 	"save_data.hpp"
 	"core/core.hpp"
 	"game.hpp"
@@ -1453,7 +1453,7 @@
 1320147963 c:\_git_\star.p.g\src\shields.hpp
 	<string>
 
-1320147945 c:\_git_\star.p.g\src\thrusters.hpp
+1320311322 c:\_git_\star.p.g\src\thrusters.hpp
 	"core/core.hpp"
 	<string>
 
@@ -1462,7 +1462,12 @@
 	"shields.hpp"
 	"game.hpp"
 
-1320287438 source:c:\_git_\star.p.g\src\thrusters.cpp
+1320311963 source:c:\_git_\star.p.g\src\thrusters.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
 	"load_resources.hpp"
 	"thrusters.hpp"
 	"game.hpp"
