@@ -109,7 +109,16 @@ void update_save_data(void)
     }
     for (int count = 0; count <= MAX_THRUSTERS; count++)
     {
-        save_data.thruster[count] = game_o.thruster[count];
+        save_data.thruster[count].active     = game_o.thruster[count].active;
+        save_data.thruster[count].level      = game_o.thruster[count].level;
+        save_data.thruster[count].level_1    = game_o.thruster[count].level_1;
+        save_data.thruster[count].level_2    = game_o.thruster[count].level_2;
+        save_data.thruster[count].level_3    = game_o.thruster[count].level_3;
+        save_data.thruster[count].experience = game_o.thruster[count].experience;
+        save_data.thruster[count].thrust     = game_o.thruster[count].thrust;
+        save_data.thruster[count].image      = game_o.thruster[count].image;
+        save_data.thruster[count].frame      = game_o.thruster[count].frame;
+        save_data.thruster[count].frame_max  = game_o.thruster[count].frame_max;
     }
     for (int count = 0; count <= MAX_EXPLOSIONS; count++)
     {
@@ -245,7 +254,16 @@ void update_game_data(void)
     }
     for (int count = 0; count <= MAX_THRUSTERS; count++)
     {
-        game_o.thruster[count] = save_data.thruster[count];
+        game_o.thruster[count].active     = save_data.thruster[count].active;
+        game_o.thruster[count].level      = save_data.thruster[count].level;
+        game_o.thruster[count].level_1    = save_data.thruster[count].level_1;
+        game_o.thruster[count].level_2    = save_data.thruster[count].level_2;
+        game_o.thruster[count].level_3    = save_data.thruster[count].level_3;
+        game_o.thruster[count].experience = save_data.thruster[count].experience;
+        game_o.thruster[count].thrust     = save_data.thruster[count].thrust;
+        game_o.thruster[count].image      = save_data.thruster[count].image;
+        game_o.thruster[count].frame      = save_data.thruster[count].frame;
+        game_o.thruster[count].frame_max  = save_data.thruster[count].frame_max;
     }
     for (int count = 0; count <= MAX_EXPLOSIONS; count++)
     {
