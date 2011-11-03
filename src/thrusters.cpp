@@ -170,17 +170,17 @@ void thruster_class::load(std::string file_name)
                     temp_int_data    = (int)   atoi(temp_string_value.c_str());
                     if (temp_int_data == 1) temp_bool_data = true;
                     else temp_bool_data = false;
-                    if (temp_string_key == "Name")        thruster_class::name = temp_string_data;
-                    if (temp_string_key == "Active")      thruster_class::name = temp_bool_data;
-                    if (temp_string_key == "Level")       thruster_class::name = temp_int_data;
-                    if (temp_string_key == "Level_1")     thruster_class::name = temp_float_data;
-                    if (temp_string_key == "Level_2")     thruster_class::name = temp_float_data;
-                    if (temp_string_key == "Level_3")     thruster_class::name = temp_float_data;
-                    if (temp_string_key == "Experience")  thruster_class::name = temp_float_data;
-                    if (temp_string_key == "Image")       thruster_class::name = temp_int_data;
-                    if (temp_string_key == "Thrust")      thruster_class::name = temp_float_data;
-                    if (temp_string_key == "Frame")       thruster_class::name = temp_int_data;
-                    if (temp_string_key == "Frame_Max")   thruster_class::name = temp_int_data;
+                    if (temp_string_key == "Name")        thruster_class::name       = temp_string_data;
+                    if (temp_string_key == "Active")      thruster_class::active     = temp_bool_data;
+                    if (temp_string_key == "Level")       thruster_class::level      = temp_int_data;
+                    if (temp_string_key == "Level_1")     thruster_class::level_1    = temp_float_data;
+                    if (temp_string_key == "Level_2")     thruster_class::level_2    = temp_float_data;
+                    if (temp_string_key == "Level_3")     thruster_class::level_3    = temp_float_data;
+                    if (temp_string_key == "Experience")  thruster_class::experience = temp_float_data;
+                    if (temp_string_key == "Image")       thruster_class::image      = temp_int_data;
+                    if (temp_string_key == "Thrust")      thruster_class::thrust     = temp_float_data;
+                    if (temp_string_key == "Frame")       thruster_class::frame      = temp_int_data;
+                    if (temp_string_key == "Frame_Max")   thruster_class::frame_max  = temp_int_data;
                 }
             }
         }

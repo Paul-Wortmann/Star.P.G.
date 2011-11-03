@@ -1,0 +1,14 @@
+# --------------- #
+#|   Shield 00   |#
+# _______________ #
+
+Name          = "Shield 00 "
+Active        = 0
+Level         = 0
+Level_1       = 256
+Level_2       = 512
+Level_3       = 1024
+Experience    = 0
+Image         = 0
+Absorption    = 0.0005
+

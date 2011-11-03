@@ -1450,7 +1450,7 @@
 1317473275 source:c:\_git_\star.p.g\src\bullets.cpp
 	"bullets.hpp"
 
-1320147963 c:\_git_\star.p.g\src\shields.hpp
+1320312331 c:\_git_\star.p.g\src\shields.hpp
 	<string>
 
 1320311322 c:\_git_\star.p.g\src\thrusters.hpp
@@ -1462,7 +1462,7 @@
 	"shields.hpp"
 	"game.hpp"
 
-1320311963 source:c:\_git_\star.p.g\src\thrusters.cpp
+1320312529 source:c:\_git_\star.p.g\src\thrusters.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>

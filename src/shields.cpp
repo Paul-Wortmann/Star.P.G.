@@ -22,6 +22,11 @@
  * @date 2011-10-01
  */
 
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
 #include "load_resources.hpp"
 #include "shields.hpp"
 #include "game.hpp"
@@ -42,51 +47,95 @@ void init_shields(bool re_init)
     }
     else
     {
+        game_o.shield[0].load("data/configuration/shields/shield_00.txt");
         game_o.shield[0].name             = game_o.language.text.shield_name_00;
-        game_o.shield[0].active           = false;
-        game_o.shield[0].level            = 0;
-        game_o.shield[0].level_1          = 256;
-        game_o.shield[0].level_2          = 512;
-        game_o.shield[0].level_3          = 1024;
-        game_o.shield[0].experience       = 0;
         game_o.shield[0].image            = texture.shield_000.ref_number;
-        game_o.shield[0].absorption       = 0.0005f;
+        game_o.shield[1].load("data/configuration/shields/shield_01.txt");
         game_o.shield[1].name             = game_o.language.text.shield_name_01;
-        game_o.shield[1].active           = false;
-        game_o.shield[1].level            = 0;
-        game_o.shield[1].level_1          = 512;
-        game_o.shield[1].level_2          = 1024;
-        game_o.shield[1].level_3          = 2048;
-        game_o.shield[1].experience       = 0;
         game_o.shield[1].image            = texture.shield_001.ref_number;
-        game_o.shield[1].absorption       = 0.0010f;
+        game_o.shield[2].load("data/configuration/shields/shield_02.txt");
         game_o.shield[2].name             = game_o.language.text.shield_name_02;
-        game_o.shield[2].active           = false;
-        game_o.shield[2].level            = 0;
-        game_o.shield[2].level_1          = 1024;
-        game_o.shield[2].level_2          = 2048;
-        game_o.shield[2].level_3          = 4096;
-        game_o.shield[2].experience       = 0;
         game_o.shield[2].image            = texture.shield_002.ref_number;
-        game_o.shield[2].absorption       = 0.0015f;
+        game_o.shield[3].load("data/configuration/shields/shield_03.txt");
         game_o.shield[3].name             = game_o.language.text.shield_name_03;
-        game_o.shield[3].active           = false;
-        game_o.shield[3].level            = 0;
-        game_o.shield[3].level_1          = 2048;
-        game_o.shield[3].level_2          = 4096;
-        game_o.shield[3].level_3          = 8192;
-        game_o.shield[3].experience       = 0;
         game_o.shield[3].image            = texture.shield_003.ref_number;
-        game_o.shield[3].absorption       = 0.0020f;
+        game_o.shield[4].load("data/configuration/shields/shield_04.txt");
         game_o.shield[4].name             = game_o.language.text.shield_name_04;
-        game_o.shield[4].active           = false;
-        game_o.shield[4].level            = 0;
-        game_o.shield[4].level_1          = 4096;
-        game_o.shield[4].level_2          = 8192;
-        game_o.shield[4].level_3          = 16384;
-        game_o.shield[4].experience       = 0;
         game_o.shield[4].image            = texture.shield_004.ref_number;
-        game_o.shield[4].absorption       = 0.0025f;
     }
 };
 
+void shield_class::load(std::string file_name)
+{
+    char           temp_char_UTF8   = ' ';
+    short          temp_char_UTF16  = ' ';
+    int            temp_char_UTF32  = ' ';
+    float          temp_float_data;
+    int            temp_int_data;
+    bool           temp_bool_data;
+    std::string    temp_string_data;
+    std::string    temp_string_key;
+    std::string    temp_string_value;
+    int            count;
+    std::string    data_line;
+    std::ifstream  script_file(file_name.c_str(),std::ios::in);
+    if (script_file.is_open())
+    {
+        while ( script_file.good() )
+        {
+            getline(script_file,data_line);
+            if (data_line.length() > 0)
+            {
+                if ('\r' == data_line.at(data_line.length()-1))
+                {
+                    data_line = data_line.substr(0, data_line.length()-1);
+                }
+            }
+            {
+                temp_char_UTF32 = data_line[0];
+                if((temp_char_UTF32 != '#') && (data_line.length() > 2))
+                {
+                    temp_char_UTF32   = '#';
+                    temp_string_key   = "";
+                    temp_string_value = "";
+                    count = 0;
+                    while(temp_char_UTF32 != ' ')
+                    {
+                        temp_char_UTF32 = data_line[count];
+                        if(temp_char_UTF32 != ' ') temp_string_key += temp_char_UTF32;
+                        count++;
+                        if(count > data_line.length()) (temp_char_UTF32 = ' ');
+                    }
+                    while((temp_char_UTF32 == ' ') || (temp_char_UTF32 == '='))
+                    {
+                        temp_char_UTF32 = data_line[count];
+                        count++;
+                        if(count > data_line.length()) (temp_char_UTF32 = '#');
+                    }
+                    count--;
+                    while(count < (data_line.length()-1))
+                    {
+                        temp_char_UTF32  = data_line[count];
+                        if (temp_char_UTF32 != '"') temp_string_value += temp_char_UTF32;
+                        count++;
+                    }
+                    temp_string_data = temp_string_value.c_str();
+                    temp_float_data  = (float) atof(temp_string_value.c_str());
+                    temp_int_data    = (int)   atoi(temp_string_value.c_str());
+                    if (temp_int_data == 1) temp_bool_data = true;
+                    else temp_bool_data = false;
+                    if (temp_string_key == "Name")        shield_class::name       = temp_string_data;
+                    if (temp_string_key == "Active")      shield_class::active     = temp_bool_data;
+                    if (temp_string_key == "Level")       shield_class::level      = temp_int_data;
+                    if (temp_string_key == "Level_1")     shield_class::level_1    = temp_float_data;
+                    if (temp_string_key == "Level_2")     shield_class::level_2    = temp_float_data;
+                    if (temp_string_key == "Level_3")     shield_class::level_3    = temp_float_data;
+                    if (temp_string_key == "Experience")  shield_class::experience = temp_float_data;
+                    if (temp_string_key == "Image")       shield_class::image      = temp_int_data;
+                    if (temp_string_key == "Absorption")  shield_class::absorption = temp_float_data;
+                }
+            }
+        }
+        script_file.close();
+    }
+};

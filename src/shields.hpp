@@ -41,6 +41,7 @@ class shield_class
     float        experience;
     int          image;
     float        absorption;
+    void         load(std::string file_name);
 };
 
 void init_shields(bool re_init);
