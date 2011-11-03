@@ -48,12 +48,13 @@ int init_game(bool re_init)
     game.pdie_active                         = false;
     game.nlvl_active                         = false;
 
+    game_o.difficulty                        =  0;
     game_o.anc_enabled                       =  false;
     game_o.fps_enabled                       =  false;
     game_o.npc_damage_duration               =  10;
     game_o.exp_rate                          =  5;
     game_o.coin_spawn_rate                   =  665.36 * 5;
-    game_o.wexp_spawn_rate                   =  665.36 * 10;
+    game_o.wexp_spawn_rate                   =  665.36 * 7.5;
     game_o.npc_spawn_rate                    =  256;
     game_o.npc_spawn_rate_count              =  0;
     game_o.paused.active                     =  false;
@@ -262,10 +263,10 @@ int process_game(void)
     if  (random(game_o.powerup[1 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health power-up
     if ((random(game_o.powerup[8 ].spawn_rate) <= 5)&& (!boss_level())) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb power-up
 
-    if ((game_o.current_level >=  4) && (random(game_o.powerup[9 ].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn support ship 0 power-up
-    if ((game_o.current_level >=  7) && (random(game_o.powerup[10].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),10);//spawn support ship 1 power-up
-    if ((game_o.current_level >= 11) && (random(game_o.powerup[11].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),11);//spawn support ship 2 power-up
-    if ((game_o.current_level >= 15) && (random(game_o.powerup[12].spawn_rate) <= 2)) spawn_powerup(1.0f,random_GLcoord(),12);//spawn support ship 3 power-up
+    if ((game_o.current_level >=  4) && (random(game_o.powerup[9 ].spawn_rate) <= 0)) spawn_powerup(1.0f,random_GLcoord(), 9);//spawn support ship 0 power-up
+    if ((game_o.current_level >=  7) && (random(game_o.powerup[10].spawn_rate) <= 0)) spawn_powerup(1.0f,random_GLcoord(),10);//spawn support ship 1 power-up
+    if ((game_o.current_level >= 11) && (random(game_o.powerup[11].spawn_rate) <= 0)) spawn_powerup(1.0f,random_GLcoord(),11);//spawn support ship 2 power-up
+    if ((game_o.current_level >= 15) && (random(game_o.powerup[12].spawn_rate) <= 0)) spawn_powerup(1.0f,random_GLcoord(),12);//spawn support ship 3 power-up
 
     if ((game_o.shield[game_o.player.front_shield].level  < 3) && (random(game_o.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),2);//spawn shield level power-up
     if ((game_o.thruster[game_o.player.thrusters].level   < 3) && (random(game_o.powerup[2].spawn_rate) == 5)) spawn_powerup(1.0f,random_GLcoord(),4);//spawn thruster level power-up
@@ -526,7 +527,7 @@ int process_game(void)
     }
     if ((game_o.level_end_time) && (game_o.level_end_phase == 1)) //level outro
     {
-        game_o.player.health = 0.100f;
+        game_o.player.health = game_o.player.max_health;
         process_player(1024);//warp player out
     }
     return(0);

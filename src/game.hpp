@@ -45,6 +45,7 @@
 
 struct game_type
 {
+    int                         difficulty;
     language_class              language;
     level_class                 level[MAX_LEVELS];
     debris_class                debris;
