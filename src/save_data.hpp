@@ -49,6 +49,7 @@ struct background_data_type
 
 struct save_data_type
 {
+   int                  current_level;
    int                  save_version;
    int                  npc_damage_duration;
    bool                 cheats_enabled;
@@ -71,7 +72,6 @@ struct save_data_type
    bool                 status_quit_active;
    int                  exp_rate;
    int                  level_locked[MAX_LEVELS];
-   int                  current_level;
    bool                 wave_spawnable;
    int                  score;
    int                  kills;

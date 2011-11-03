@@ -944,7 +944,7 @@
 
 1315053024 c:\_git_\star.p.g\src\rage\savegame.hpp
 
-1319951525 c:\_git_\star.p.g\src\save_data.hpp
+1320314846 c:\_git_\star.p.g\src\save_data.hpp
 	"core/core.hpp"
 	"core/savegame.hpp"
 	"game.hpp"
@@ -1457,7 +1457,12 @@
 	"core/core.hpp"
 	<string>
 
-1320288332 source:c:\_git_\star.p.g\src\shields.cpp
+1320313248 source:c:\_git_\star.p.g\src\shields.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
 	"load_resources.hpp"
 	"shields.hpp"
 	"game.hpp"
@@ -1516,7 +1521,7 @@
 	"game.hpp"
 	"misc.hpp"
 
-1317473594 c:\_git_\star.p.g\src\screen_rumble.hpp
+1320315217 c:\_git_\star.p.g\src\screen_rumble.hpp
 
 1317473275 source:c:\_git_\star.p.g\src\screen_rumble.cpp
 	"screen_rumble.hpp"

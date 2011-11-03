@@ -105,6 +105,8 @@ int init_game_level(int level_no)
     game_o.player.y_vel                      = 0.0f;
     game_o.player.health                     = game_o.player.max_health;
     game_o.player.shield                     = game_o.player.max_shield;
+    game_o.rumble.stop();
+    init_in_game_message_class();
     kill_active_npcs();
     init_npcs(0);
     init_active_npcs();

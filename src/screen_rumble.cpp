@@ -90,6 +90,11 @@ bool  rumble_class::start(void)
     rumble_class::active  = true;
 };
 
+bool  rumble_class::stop(void)
+{
+    rumble_class::active  = false;
+};
+
 bool  rumble_class::start(float magnitude, int duration)
 {
     rumble_class::init();
