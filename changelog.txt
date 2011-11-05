@@ -1,4 +1,10 @@
 V1.0 - (11-11-2011)
+Fixed lag on menu choice type buttons, when menu is dragged.
+Fixed 2 intermittent segfault bugs.
+Added mouse cursor auto hide.
+Created phrased-file loading support, now a lot of game data can easily be edited externally.
+Added multiple language support, included are the English and Japanese translations.
+Added shrapnel to explosions.
 Added more explosion sounds and made them random.
 Added Shield bar, and better on screen information.
 Converted thrusters to use particle engine.
@@ -11,9 +17,9 @@ Reworked all drawing code to go through texture_class::texture.xxx.draw();
 Improved rendering, angles are also now supported.
 Implemented per-generated sin/cos look up tables for faster calculations.
 Bosses now have large health bars.
-Removed some redundant game resources, loading should now be slightly faster.
+Removed redundant game resources, loading should now be slightly faster.
 Many tweaks and and a few bug fixes.
-LOC - 15143
+LOC - 16090
 
 V0.18 - (03-09-2011)
 Improved "support ships"
@@ -30,7 +36,7 @@ V0.17 - (02-08-2011)
 Touchscreen support, with on screen controls.
 Bomb power-ups now a stackable, usable item.
 Ship flashes and is immune briefly, on starting a level.
-Created a new backend framework. (RAGE)
+Created a new backend framework. (CORE)
 Improved IO, config, log, save/load, texture, sound and music systems.
 Re-wrote font system, now uses SDL_ttf.
 Star.P.G. now compiles and runs on Linux.

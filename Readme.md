@@ -17,7 +17,7 @@ Features
 --------
 - Multiple language support.
 - Customizable spaceship.
-- Particle engine.
+- Particle engine, fire, smoke and shrapnel.
 - Six unique experience based weapons with three levels, all
   having unique sounds, movements and power-ups.
 - Five different shields.
@@ -49,7 +49,7 @@ Usage
 - "Space"   ->    Fire weapon.
 - "B"       ->    Use a collected bomb.
 - "P"       ->    Pause.
-- "ESC"	    ->    Menu, Quit.
+- "ESC      ->    Menu, Quit.
 
 Compiling
 ---------
@@ -97,5 +97,6 @@ Contact
 Final words:
 ---------
 Although I could continue adding to this game and polishing it further, I have decided to cease working on this game from version 1.0. I may however add to the game in the future or create a sequel....but for now I wish to try my hand at making an Action RPG.
+There are still a variety of features I would like to add to Star.P.G., they may or may not be implemented in the future, and if they are implemented, it will be a long time till the next release of Star.P.G..
 I hope you enjoy this game as much as I have enjoyed creating it!
 Paul Wortmann. (RoboPaul)

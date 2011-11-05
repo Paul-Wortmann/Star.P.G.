@@ -1016,4 +1016,3 @@ int display_game(void)
     return(1);
 };
 
-
