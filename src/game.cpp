@@ -1002,13 +1002,13 @@ int display_game(void)
     if (game_o.p_weapon_level_up.active)        game_o.p_weapon_level_up.draw();
     if (game_o.d_level_end.active)              game_o.d_level_end.draw();
 
-    font.font_1.Write(185,185,185,64,-0.575f, 0.91f,game_o.language.text.UI_health_, (int)(game_o.player.health*1000));
-    font.font_1.Write(185,185,185,64,-0.355f, 0.91f,game_o.language.text.UI_shield_, (int)(game_o.player.shield*1000));
-    font.font_1.Write(185,185,185,64,-0.05f , 0.91f,game_o.language.text.UI_front);
-    font.font_1.Write(185,185,185,64, 0.25f , 0.91f,game_o.language.text.UI_side);
+    font.font_1.Write(185,185,185,64,-0.575f, 0.90f,6.0f,15.0f,game_o.language.text.UI_health_, (int)(game_o.player.health*1000));
+    font.font_1.Write(185,185,185,64,-0.355f, 0.90f,6.0f,15.0f,game_o.language.text.UI_shield_, (int)(game_o.player.shield*1000));
+    font.font_1.Write(185,185,185,64,-0.05f , 0.90f,game_o.language.text.UI_front);
+    font.font_1.Write(185,185,185,64, 0.25f , 0.90f,game_o.language.text.UI_side);
 
     font.font_1.Write(255,255,255,64,-0.98f,-0.95f,game_o.language.text.UI_score_, game_o.score);
-    font.font_1.Write(255,255,255,64,-0.98f,-0.91f,game_o.language.text.UI_kills_, game_o.kills);
+    font.font_1.Write(255,255,255,64,-0.98f,-0.89f,game_o.language.text.UI_kills_, game_o.kills);
     if (game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.50f, 0.95f,game_o.language.text.UI_active_NPCs_,  game_o.active_npc_count);
     if (game_o.fps_enabled &&  game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.50f, 0.90f,game_o.language.text.UI_FPS_,  game.FPS);
     if (game_o.fps_enabled && !game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.50f, 0.95f,game_o.language.text.UI_FPS_,  game.FPS);
