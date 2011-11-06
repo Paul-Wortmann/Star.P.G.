@@ -1007,8 +1007,8 @@ int display_game(void)
     font.font_1.Write(185,185,185,64,-0.05f , 0.90f,game_o.language.text.UI_front);
     font.font_1.Write(185,185,185,64, 0.25f , 0.90f,game_o.language.text.UI_side);
 
-    font.font_1.Write(255,255,255,64,-0.98f,-0.95f,game_o.language.text.UI_score_, game_o.score);
-    font.font_1.Write(255,255,255,64,-0.98f,-0.89f,game_o.language.text.UI_kills_, game_o.kills);
+    font.font_1.Write(255,255,255,64,-0.98f,-0.89f,6.0f,15.0f,game_o.language.text.UI_kills_, game_o.kills);
+    font.font_1.Write(255,255,255,64,-0.98f,-0.95f,4.0f,15.0f,game_o.language.text.UI_score_, game_o.score);
     if (game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.50f, 0.95f,game_o.language.text.UI_active_NPCs_,  game_o.active_npc_count);
     if (game_o.fps_enabled &&  game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.50f, 0.90f,game_o.language.text.UI_FPS_,  game.FPS);
     if (game_o.fps_enabled && !game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.50f, 0.95f,game_o.language.text.UI_FPS_,  game.FPS);
