@@ -157,7 +157,7 @@
 	<File name="src\language.hpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="6536" topLine="158" />
 	</File>
-	<File name="src\levels.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="src\levels.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor1 position="3145" topLine="58" />
 	</File>
 	<File name="src\levels.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -188,7 +188,7 @@
 		<Cursor1 position="924" topLine="19" />
 	</File>
 	<File name="src\powerups.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1273" topLine="0" />
+		<Cursor1 position="15599" topLine="279" />
 	</File>
 	<File name="src\powerups.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="948" topLine="65" />
@@ -200,10 +200,10 @@
 		<Cursor1 position="1078" topLine="28" />
 	</File>
 	<File name="src\save_data.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="2389" topLine="22" />
+		<Cursor1 position="9591" topLine="169" />
 	</File>
 	<File name="src\save_data.hpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="2272" topLine="37" />
+		<Cursor1 position="1396" topLine="44" />
 	</File>
 	<File name="src\screen_rumble.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="2919" topLine="64" />
@@ -215,7 +215,7 @@
 		<Cursor1 position="1046" topLine="13" />
 	</File>
 	<File name="src\support_ships.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="53137" topLine="612" />
+		<Cursor1 position="30040" topLine="0" />
 	</File>
 	<File name="src\support_ships.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1255" topLine="8" />

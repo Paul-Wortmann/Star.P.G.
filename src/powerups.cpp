@@ -313,6 +313,10 @@ int proccess_powerups(void)
                                 }
                                 game_o.supportship[0].active = true;
                                 if (game_o.difficulty > 0) game_o.supportship[0].level  = 0;
+                                else
+                                {
+                                    if (game_o.supportship[0].level < 0) game_o.supportship[0].level  = 0;
+                                }
                             }
                         }
                     break;
@@ -341,6 +345,10 @@ int proccess_powerups(void)
                                 }
                                 game_o.supportship[1].active = true;
                                 if (game_o.difficulty > 0) game_o.supportship[1].level  = 0;
+                                else
+                                {
+                                    if (game_o.supportship[1].level < 0) game_o.supportship[1].level  = 0;
+                                }
                             }
                         }
                     break;
@@ -369,6 +377,10 @@ int proccess_powerups(void)
                                 }
                                 game_o.supportship[2].active = true;
                                 if (game_o.difficulty > 0) game_o.supportship[2].level  = 0;
+                                else
+                                {
+                                    if (game_o.supportship[2].level < 0) game_o.supportship[2].level  = 0;
+                                }
                             }
                         }
                     break;
@@ -398,6 +410,10 @@ int proccess_powerups(void)
                                 }
                                 game_o.supportship[3].active = true;
                                 if (game_o.difficulty > 0) game_o.supportship[3].level  = 0;
+                                else
+                                {
+                                    if (game_o.supportship[3].level < 0) game_o.supportship[3].level  = 0;
+                                }
                             }
                         }
                     break;

@@ -14,13 +14,13 @@ Level_5       = 0.0
 Level_6       = 0.0
 Image         = 0
 Sound         = 25
-Damage        = 0.2575
+Damage        = 4.2575
 Speed         = 0.1375
 Health        = 10
 ROF           = 8
 Movement      = 0
 Wave_Size     = 0.125
 Wave_Velocity = 0.0035
-Width         = 0.05
+Width         = 0.45
 Height        = 0.05
 
