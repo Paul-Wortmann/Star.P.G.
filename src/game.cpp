@@ -732,6 +732,7 @@ int display_game(void)
     {//player thrusters
         draw_thrusters();
         /*
+        this is used if sprite sheet animated thrusters are used
         if (game_o.thruster[game_o.player.thrusters].image == texture.thrusters_000.ref_number) texture.thrusters_000.draw(true,game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,90.0f,temp_r,temp_g,temp_b,temp_a,game_o.thruster[game_o.player.thrusters].frame);
         if (game_o.thruster[game_o.player.thrusters].image == texture.thrusters_001.ref_number) texture.thrusters_001.draw(true,game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width/2,game_o.player.height,90.0f,temp_r,temp_g,temp_b,temp_a,game_o.thruster[game_o.player.thrusters].frame);
         if (game_o.thruster[game_o.player.thrusters].image == texture.thrusters_002.ref_number) texture.thrusters_002.draw(true,game_o.player.x_pos-0.190f,game_o.player.y_pos, 0.035f,game_o.player.width,game_o.player.height,90.0f,temp_r,temp_g,temp_b,temp_a,game_o.thruster[game_o.player.thrusters].frame);
@@ -740,7 +741,7 @@ int display_game(void)
     }
     //player starship
     if (game_o.player.image == texture.ship_025.ref_number) texture.ship_025.draw(true,game_o.player.x_pos,game_o.player.y_pos, 0.030f,game_o.player.width,game_o.player.height,270.0f,temp_r,temp_g,temp_b,temp_a);
-
+    // if player ship image can change, add image choices above.
     if (game_o.player.front_weapon > -1)//player starship front weapon
     {
         if (game_o.player.front_weapon == 0)
