@@ -49,6 +49,7 @@ void init_thrusters(bool re_init)
     {
         game_o.thruster[0].load("data/configuration/thrusters/thruster_00.txt");
         game_o.thruster[0].name           = game_o.language.text.thruster_name_00;
+        game_o.thruster[0].active         = false;
         game_o.thruster[0].image          = texture.thrusters_000.ref_number;
         game_o.thruster[0].frame_max      = texture.thrusters_000.frame_max;
         game_o.thruster[0].fire.init();
@@ -60,6 +61,7 @@ void init_thrusters(bool re_init)
 
         game_o.thruster[1].load("data/configuration/thrusters/thruster_01.txt");
         game_o.thruster[1].name           = game_o.language.text.thruster_name_01;
+        game_o.thruster[1].active         = false;
         game_o.thruster[1].image          = texture.thrusters_001.ref_number;
         game_o.thruster[1].frame_max      = texture.thrusters_001.frame_max;
         game_o.thruster[1].fire.init();
@@ -71,6 +73,7 @@ void init_thrusters(bool re_init)
 
         game_o.thruster[2].load("data/configuration/thrusters/thruster_02.txt");
         game_o.thruster[2].name           = game_o.language.text.thruster_name_02;
+        game_o.thruster[2].active         = false;
         game_o.thruster[2].image          = texture.thrusters_002.ref_number;
         game_o.thruster[2].frame_max      = texture.thrusters_002.frame_max;
         game_o.thruster[2].fire.init();
@@ -91,6 +94,19 @@ void init_thrusters(bool re_init)
         game_o.thruster[3].smoke.init();
         game_o.thruster[3].smoke.set_emitter_image(texture.particle_002.ref_number);
         game_o.thruster[3].smoke.load("data/configuration/particle_systems/thruster_003_smoke.txt");
+/*
+        game_o.thruster[4].load("data/configuration/thrusters/thruster_04.txt");
+        game_o.thruster[4].name           = game_o.language.text.thruster_name_04;
+        game_o.thruster[4].active         = true;
+        game_o.thruster[4].image          = texture.thrusters_004.ref_number;
+        game_o.thruster[4].frame_max      = texture.thrusters_004.frame_max;
+        game_o.thruster[4].fire.init();
+        game_o.thruster[4].fire.set_emitter_image(texture.particle_000.ref_number);
+        game_o.thruster[4].fire.load("data/configuration/particle_systems/thruster_004_fire.txt");
+        game_o.thruster[4].smoke.init();
+        game_o.thruster[4].smoke.set_emitter_image(texture.particle_002.ref_number);
+        game_o.thruster[4].smoke.load("data/configuration/particle_systems/thruster_004_smoke.txt");
+*/
     }
 };
 

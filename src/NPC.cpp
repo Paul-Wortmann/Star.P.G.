@@ -164,375 +164,389 @@ void init_enemies(bool re_init)
         game_o.enemy[ 0].load("data/configuration/enemies/enemy_00.txt");
         game_o.enemy[ 0].name        = game_o.language.text.enemy_name_00;
         game_o.enemy[ 0].image       = texture.ship_000.ref_number;
-        game_o.enemy[ 0].speed       = (game_o.projectile[game_o.enemy[ 0].weapon_1].speed/2) + game_o.enemy[ 0].speed;
+        game_o.enemy[ 0].max_speed   = (game_o.projectile[game_o.enemy[ 0].weapon_1].speed/2) + game_o.enemy[ 0].max_speed;
         game_o.enemy[ 1].load("data/configuration/enemies/enemy_01.txt");
         game_o.enemy[ 1].name        = game_o.language.text.enemy_name_01;
         game_o.enemy[ 1].image       = texture.ship_001.ref_number;
-        game_o.enemy[ 1].speed       = (game_o.projectile[game_o.enemy[ 1].weapon_1].speed/2) + game_o.enemy[ 1].speed;
+        game_o.enemy[ 1].max_speed   = (game_o.projectile[game_o.enemy[ 1].weapon_1].speed/2) + game_o.enemy[ 1].max_speed;
         game_o.enemy[ 2].load("data/configuration/enemies/enemy_02.txt");
         game_o.enemy[ 2].name        = game_o.language.text.enemy_name_02;
         game_o.enemy[ 2].image       = texture.ship_002.ref_number;
-        game_o.enemy[ 2].speed       = (game_o.projectile[game_o.enemy[ 2].weapon_1].speed/2) + game_o.enemy[ 2].speed;
+        game_o.enemy[ 2].max_speed   = (game_o.projectile[game_o.enemy[ 2].weapon_1].speed/2) + game_o.enemy[ 2].max_speed;
         game_o.enemy[ 3].load("data/configuration/enemies/enemy_03.txt");
         game_o.enemy[ 3].name        = game_o.language.text.enemy_name_03;
         game_o.enemy[ 3].image       = texture.ship_003.ref_number;
-        game_o.enemy[ 3].speed       = (game_o.projectile[game_o.enemy[ 3].weapon_1].speed/2) + game_o.enemy[ 3].speed;
+        game_o.enemy[ 3].max_speed   = (game_o.projectile[game_o.enemy[ 3].weapon_1].speed/2) + game_o.enemy[ 3].max_speed;
         game_o.enemy[ 4].load("data/configuration/enemies/enemy_04.txt");
         game_o.enemy[ 4].name        = game_o.language.text.enemy_name_04;
         game_o.enemy[ 4].image       = texture.ship_004.ref_number;
-        game_o.enemy[ 4].speed       = (game_o.projectile[game_o.enemy[ 4].weapon_1].speed/2) + game_o.enemy[ 4].speed;
+        game_o.enemy[ 4].max_speed   = (game_o.projectile[game_o.enemy[ 4].weapon_1].speed/2) + game_o.enemy[ 4].max_speed;
         game_o.enemy[ 5].load("data/configuration/enemies/enemy_05.txt");
         game_o.enemy[ 5].name        = game_o.language.text.enemy_name_05;
         game_o.enemy[ 5].image       = texture.ship_005.ref_number;
-        game_o.enemy[ 5].speed       = (game_o.projectile[game_o.enemy[ 5].weapon_1].speed/2) + game_o.enemy[ 5].speed;
+        game_o.enemy[ 5].max_speed   = (game_o.projectile[game_o.enemy[ 5].weapon_1].speed/2) + game_o.enemy[ 5].max_speed;
         game_o.enemy[ 6].load("data/configuration/enemies/enemy_06.txt");
         game_o.enemy[ 6].name        = game_o.language.text.enemy_name_06;
         game_o.enemy[ 6].image       = texture.ship_006.ref_number;
-        game_o.enemy[ 6].speed       = (game_o.projectile[game_o.enemy[ 6].weapon_1].speed/2) + game_o.enemy[ 6].speed;
+        game_o.enemy[ 6].max_speed   = (game_o.projectile[game_o.enemy[ 6].weapon_1].speed/2) + game_o.enemy[ 6].max_speed;
         game_o.enemy[ 7].load("data/configuration/enemies/enemy_07.txt");
         game_o.enemy[ 7].name        = game_o.language.text.enemy_name_07;
         game_o.enemy[ 7].image       = texture.ship_007.ref_number;
-        game_o.enemy[ 7].speed       = (game_o.projectile[game_o.enemy[ 7].weapon_1].speed/2) + game_o.enemy[ 7].speed;
+        game_o.enemy[ 7].max_speed   = (game_o.projectile[game_o.enemy[ 7].weapon_1].speed/2) + game_o.enemy[ 7].max_speed;
         game_o.enemy[ 8].load("data/configuration/enemies/enemy_08.txt");
         game_o.enemy[ 8].name        = game_o.language.text.enemy_name_08;
         game_o.enemy[ 8].image       = texture.ship_008.ref_number;
-        game_o.enemy[ 8].speed       = (game_o.projectile[game_o.enemy[ 8].weapon_1].speed/2) + game_o.enemy[ 8].speed;
+        game_o.enemy[ 8].max_speed   = (game_o.projectile[game_o.enemy[ 8].weapon_1].speed/2) + game_o.enemy[ 8].max_speed;
         game_o.enemy[ 9].load("data/configuration/enemies/enemy_09.txt");
         game_o.enemy[ 9].name        = game_o.language.text.enemy_name_09;
         game_o.enemy[ 9].image       = texture.ship_009.ref_number;
-        game_o.enemy[ 9].speed       = (game_o.projectile[game_o.enemy[ 9].weapon_1].speed/2) + game_o.enemy[ 9].speed;
+        game_o.enemy[ 9].max_speed   = (game_o.projectile[game_o.enemy[ 9].weapon_1].speed/2) + game_o.enemy[ 9].max_speed;
         game_o.enemy[10].load("data/configuration/enemies/enemy_10.txt");
         game_o.enemy[10].name        = game_o.language.text.enemy_name_10;
         game_o.enemy[10].image       = texture.ship_010.ref_number;
-        game_o.enemy[10].speed       = (game_o.projectile[game_o.enemy[10].weapon_1].speed/2) + game_o.enemy[10].speed;
+        game_o.enemy[10].max_speed   = (game_o.projectile[game_o.enemy[10].weapon_1].speed/2) + game_o.enemy[10].max_speed;
         game_o.enemy[11].load("data/configuration/enemies/enemy_11.txt");
         game_o.enemy[11].name        = game_o.language.text.enemy_name_11;
         game_o.enemy[11].image       = texture.ship_011.ref_number;
-        game_o.enemy[11].speed       = (game_o.projectile[game_o.enemy[11].weapon_1].speed/2) + game_o.enemy[11].speed;
+        game_o.enemy[11].max_speed   = (game_o.projectile[game_o.enemy[11].weapon_1].speed/2) + game_o.enemy[11].max_speed;
         game_o.enemy[12].load("data/configuration/enemies/enemy_12.txt");
         game_o.enemy[12].name        = game_o.language.text.enemy_name_12;
         game_o.enemy[12].image       = texture.ship_012.ref_number;
-        game_o.enemy[12].speed       = (game_o.projectile[game_o.enemy[12].weapon_1].speed/2) + game_o.enemy[12].speed;
+        game_o.enemy[12].max_speed   = (game_o.projectile[game_o.enemy[12].weapon_1].speed/2) + game_o.enemy[12].max_speed;
         game_o.enemy[13].load("data/configuration/enemies/enemy_13.txt");
         game_o.enemy[13].name        = game_o.language.text.enemy_name_13;
         game_o.enemy[13].image       = texture.ship_013.ref_number;
-        game_o.enemy[13].speed       = (game_o.projectile[game_o.enemy[13].weapon_1].speed/2) + game_o.enemy[13].speed;
+        game_o.enemy[13].max_speed   = (game_o.projectile[game_o.enemy[13].weapon_1].speed/2) + game_o.enemy[13].max_speed;
         game_o.enemy[14].load("data/configuration/enemies/enemy_14.txt");
         game_o.enemy[14].name        = game_o.language.text.enemy_name_14;
         game_o.enemy[14].image       = texture.ship_014.ref_number;
-        game_o.enemy[14].speed       = (game_o.projectile[game_o.enemy[14].weapon_1].speed/2) + game_o.enemy[14].speed;
+        game_o.enemy[14].max_speed   = (game_o.projectile[game_o.enemy[14].weapon_1].speed/2) + game_o.enemy[14].max_speed;
         game_o.enemy[15].load("data/configuration/enemies/enemy_15.txt");
         game_o.enemy[15].name        = game_o.language.text.enemy_name_15;
         game_o.enemy[15].image       = texture.ship_015.ref_number;
-        game_o.enemy[15].speed       = (game_o.projectile[game_o.enemy[15].weapon_1].speed/2) + game_o.enemy[15].speed;
+        game_o.enemy[15].max_speed   = (game_o.projectile[game_o.enemy[15].weapon_1].speed/2) + game_o.enemy[15].max_speed;
         game_o.enemy[16].load("data/configuration/enemies/enemy_16.txt");
         game_o.enemy[16].name        = game_o.language.text.enemy_name_16;
         game_o.enemy[16].image       = texture.ship_016.ref_number;
-        game_o.enemy[16].speed       = (game_o.projectile[game_o.enemy[16].weapon_1].speed/2) + game_o.enemy[16].speed;
+        game_o.enemy[16].max_speed   = (game_o.projectile[game_o.enemy[16].weapon_1].speed/2) + game_o.enemy[16].max_speed;
         game_o.enemy[17].load("data/configuration/enemies/enemy_17.txt");
         game_o.enemy[17].name        = game_o.language.text.enemy_name_17;
         game_o.enemy[17].image       = texture.ship_017.ref_number;
-        game_o.enemy[17].speed       = (game_o.projectile[game_o.enemy[17].weapon_1].speed/2) + game_o.enemy[17].speed;
+        game_o.enemy[17].max_speed   = (game_o.projectile[game_o.enemy[17].weapon_1].speed/2) + game_o.enemy[17].max_speed;
         game_o.enemy[18].load("data/configuration/enemies/enemy_18.txt");
         game_o.enemy[18].name        = game_o.language.text.enemy_name_18;
         game_o.enemy[18].image       = texture.ship_018.ref_number;
-        game_o.enemy[18].speed       = (game_o.projectile[game_o.enemy[18].weapon_1].speed/2) + game_o.enemy[18].speed;
+        game_o.enemy[18].max_speed   = (game_o.projectile[game_o.enemy[18].weapon_1].speed/2) + game_o.enemy[18].max_speed;
         game_o.enemy[19].load("data/configuration/enemies/enemy_19.txt");
         game_o.enemy[19].name        = game_o.language.text.enemy_name_19;
         game_o.enemy[19].image       = texture.ship_019.ref_number;
-        game_o.enemy[19].speed       = (game_o.projectile[game_o.enemy[19].weapon_1].speed/2) + game_o.enemy[19].speed;
+        game_o.enemy[19].max_speed   = (game_o.projectile[game_o.enemy[19].weapon_1].speed/2) + game_o.enemy[19].max_speed;
         game_o.enemy[20].load("data/configuration/enemies/enemy_20.txt");
         game_o.enemy[20].name        = game_o.language.text.enemy_name_20;
         game_o.enemy[20].image       = texture.ship_020.ref_number;
-        game_o.enemy[20].speed       = (game_o.projectile[game_o.enemy[20].weapon_1].speed/2) + game_o.enemy[20].speed;
+        game_o.enemy[20].max_speed   = (game_o.projectile[game_o.enemy[20].weapon_1].speed/2) + game_o.enemy[20].max_speed;
         game_o.enemy[21].load("data/configuration/enemies/enemy_21.txt");
         game_o.enemy[21].name        = game_o.language.text.enemy_name_21;
         game_o.enemy[21].image       = texture.ship_021.ref_number;
-        game_o.enemy[21].speed       = (game_o.projectile[game_o.enemy[21].weapon_1].speed/2) + game_o.enemy[21].speed;
+        game_o.enemy[21].max_speed   = (game_o.projectile[game_o.enemy[21].weapon_1].speed/2) + game_o.enemy[21].max_speed;
         game_o.enemy[22].load("data/configuration/enemies/enemy_22.txt");
         game_o.enemy[22].name        = game_o.language.text.enemy_name_22;
         game_o.enemy[22].image       = texture.ship_002.ref_number;
-        game_o.enemy[22].speed       = (game_o.projectile[game_o.enemy[22].weapon_1].speed/2) + game_o.enemy[22].speed;
+        game_o.enemy[22].max_speed   = (game_o.projectile[game_o.enemy[22].weapon_1].speed/2) + game_o.enemy[22].max_speed;
         game_o.enemy[23].load("data/configuration/enemies/enemy_23.txt");
         game_o.enemy[23].name        = game_o.language.text.enemy_name_23;
         game_o.enemy[23].image       = texture.ship_023.ref_number;
-        game_o.enemy[23].speed       = (game_o.projectile[game_o.enemy[23].weapon_1].speed/2) + game_o.enemy[23].speed;
+        game_o.enemy[23].max_speed   = (game_o.projectile[game_o.enemy[23].weapon_1].speed/2) + game_o.enemy[23].max_speed;
         game_o.enemy[24].load("data/configuration/enemies/enemy_24.txt");
         game_o.enemy[24].name        = game_o.language.text.enemy_name_24;
         game_o.enemy[24].image       = texture.ship_024.ref_number;
-        game_o.enemy[24].speed       = (game_o.projectile[game_o.enemy[24].weapon_1].speed/2) + game_o.enemy[24].speed;
+        game_o.enemy[24].max_speed   = (game_o.projectile[game_o.enemy[24].weapon_1].speed/2) + game_o.enemy[24].max_speed;
     }
 };
 
 /*----------------------------------------------------------------------------*/
 int init_active_npcs(void)
 {
-   for(int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
-   {
-      game_o.active_npc[npc_count].number = -1;
-      game_o.active_npc[npc_count].active = false;
-   }
-   return(0);
+    for(int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+    {
+        game_o.active_npc[npc_count].number = -1;
+        game_o.active_npc[npc_count].active = false;
+    }
+    return(0);
 }
 /*----------------------------------------------------------------------------*/
 int check_active_npcs(void)
 {
-   for(int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
-   {
-      if ((game_o.active_npc[npc_count].active) && (!game_o.npc[game_o.active_npc[npc_count].number].active)) game_o.active_npc[npc_count].active = false;
-   }
+    for(int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+    {
+        if ((game_o.active_npc[npc_count].active) && (!game_o.npc[game_o.active_npc[npc_count].number].active)) game_o.active_npc[npc_count].active = false;
+    }
 }
 /*----------------------------------------------------------------------------*/
 int sort_active_npcs(void)
 {
-   check_active_npcs();
+    check_active_npcs();
 /*
-   int  npc_num = 0;
-   bool done = false;
-   for(int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
-   {
-      if (!game_o.active_npc[npc_count].active)
-      {
-         npc_num = npc_count;
-         while ((npc_num < MAX_NPCS) && (!done))
-         {
-            game_o.active_npc[npc_num].active = game_o.active_npc[npc_num+1].active;
-            game_o.active_npc[npc_num].number = game_o.active_npc[npc_num+1].number;
-            npc_num++;
-         }
-      }
-   }
-   return(0);
+    int  npc_num = 0;
+    bool done = false;
+    for(int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+    {
+        if (!game_o.active_npc[npc_count].active)
+        {
+            npc_num = npc_count;
+            while ((npc_num < MAX_NPCS) && (!done))
+            {
+                game_o.active_npc[npc_num].active = game_o.active_npc[npc_num+1].active;
+                game_o.active_npc[npc_num].number = game_o.active_npc[npc_num+1].number;
+                npc_num++;
+            }
+        }
+    }
+    return(0);
 */
 }
 /*----------------------------------------------------------------------------*/
 int add_active_npc  (int npc_num)
 {
-   bool spawn_done = 0;
-   for  (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
-   {
-       if (!spawn_done && !game_o.active_npc[npc_count].active)
-       {
-           game_o.active_npc[npc_count].active  = true;
-           game_o.active_npc[npc_count].number  = npc_num;
-           game_o.active_npc_count++;
-           spawn_done = 1;
-       }
-   }
-   return(0);
+    bool spawn_done = 0;
+    for  (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+    {
+        if (!spawn_done && !game_o.active_npc[npc_count].active)
+        {
+            game_o.active_npc[npc_count].active  = true;
+            game_o.active_npc[npc_count].number  = npc_num;
+            game_o.active_npc_count++;
+            spawn_done = 1;
+        }
+    }
+    return(0);
 }
 /*----------------------------------------------------------------------------*/
 int del_active_npc  (int npc_num)
 {
-   for(int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
-   {
-       if (game_o.active_npc[npc_count].number == npc_num)
-       {
-           game_o.active_npc[npc_count].active  = false;
-           game_o.active_npc[npc_count].number  = -1;
-           game_o.active_npc_count--;
-           if (game_o.active_npc_count < 0) game_o.active_npc_count = 0;
-       }
-   }
-   sort_active_npcs();
-   return(0);
+    for(int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+    {
+        if (game_o.active_npc[npc_count].number == npc_num)
+        {
+            game_o.active_npc[npc_count].active  = false;
+            game_o.active_npc[npc_count].number  = -1;
+            game_o.active_npc_count--;
+            if (game_o.active_npc_count < 0) game_o.active_npc_count = 0;
+        }
+    }
+    sort_active_npcs();
+    return(0);
 }
 /*----------------------------------------------------------------------------*/
 int spawn_npc(float x_position, float y_position, int type_npc, int type_formation, float x_formation_ofset, float y_formation_ofset)
 {
-   bool  spawn_done = 0;
-   for  (int npc_num = 0; npc_num < MAX_NPCS; npc_num++)
-   {
-       if (!spawn_done and !game_o.npc[npc_num].active)
-       {
-          game_o.npc[npc_num].active              = true;
-          game_o.npc[npc_num].damaged             = 0;
-          game_o.npc[npc_num].type_npc            = type_npc;
-          game_o.npc[npc_num].x_pos               = x_position;
-          game_o.npc[npc_num].y_pos               = y_position;
-          game_o.npc[npc_num].formation_wave_no   = get_next_active_wave();
-          game_o.npc[npc_num].formation_wave_axis = y_position;
-          game_o.npc[npc_num].formation_target    = game_o.player.y_pos;
-          game_o.npc[npc_num].formation_type      = type_formation;
-          game_o.npc[npc_num].formation_ofset_x   = x_formation_ofset;
-          game_o.npc[npc_num].formation_ofset_y   = y_formation_ofset;
-          game_o.npc[npc_num].weapon_1            = game_o.enemy[game_o.npc[npc_num].type_npc].weapon_1;
-          game_o.npc[npc_num].projectiles         = game_o.enemy[game_o.npc[npc_num].type_npc].projectiles;
-          game_o.npc[npc_num].health              = game_o.enemy[game_o.npc[npc_num].type_npc].health;
-          game_o.npc[npc_num].width               = game_o.enemy[game_o.npc[npc_num].type_npc].width;
-          game_o.npc[npc_num].height              = game_o.enemy[game_o.npc[npc_num].type_npc].height;
-          game_o.npc[npc_num].x_speed             = game_o.enemy[game_o.npc[npc_num].type_npc].speed;
-          game_o.npc[npc_num].y_speed             = game_o.enemy[game_o.npc[npc_num].type_npc].speed;
-          game_o.npc[npc_num].movement            = game_o.enemy[game_o.npc[npc_num].type_npc].movement;
-          game_o.npc[npc_num].x_direction         = 1;
-          game_o.npc[npc_num].y_direction         = 1;
-          spawn_done = 1;
-          add_active_npc(npc_num);
-       }
-   }
-   return(1);
+    bool  spawn_done = 0;
+    for  (int npc_num = 0; npc_num < MAX_NPCS; npc_num++)
+    {
+        if (!spawn_done and !game_o.npc[npc_num].active)
+        {
+            game_o.npc[npc_num].active              = true;
+            game_o.npc[npc_num].damaged             = 0;
+            game_o.npc[npc_num].type_npc            = type_npc;
+            game_o.npc[npc_num].x_pos               = x_position+game_o.enemy[game_o.npc[npc_num].type_npc].width;
+            game_o.npc[npc_num].y_pos               = y_position;
+            game_o.npc[npc_num].formation_wave_no   = get_next_active_wave();
+            game_o.npc[npc_num].formation_wave_axis = y_position;
+            game_o.npc[npc_num].formation_target    = game_o.player.y_pos;
+            game_o.npc[npc_num].formation_type      = type_formation;
+            game_o.npc[npc_num].formation_ofset_x   = x_formation_ofset;
+            game_o.npc[npc_num].formation_ofset_y   = y_formation_ofset;
+            game_o.npc[npc_num].weapon_1            = game_o.enemy[game_o.npc[npc_num].type_npc].weapon_1;
+            game_o.npc[npc_num].weapon_2            = game_o.enemy[game_o.npc[npc_num].type_npc].weapon_2;
+            game_o.npc[npc_num].projectiles         = game_o.enemy[game_o.npc[npc_num].type_npc].projectiles;
+            game_o.npc[npc_num].health              = game_o.enemy[game_o.npc[npc_num].type_npc].health;
+            game_o.npc[npc_num].width               = game_o.enemy[game_o.npc[npc_num].type_npc].width;
+            game_o.npc[npc_num].height              = game_o.enemy[game_o.npc[npc_num].type_npc].height;
+            game_o.npc[npc_num].x_speed             = game_o.enemy[game_o.npc[npc_num].type_npc].speed;
+            game_o.npc[npc_num].y_speed             = game_o.enemy[game_o.npc[npc_num].type_npc].speed;
+            game_o.npc[npc_num].max_speed           = game_o.enemy[game_o.npc[npc_num].type_npc].max_speed;
+            game_o.npc[npc_num].acceleration        = game_o.enemy[game_o.npc[npc_num].type_npc].acceleration;
+            game_o.npc[npc_num].angle               = game_o.enemy[game_o.npc[npc_num].type_npc].start_angle;
+            game_o.npc[npc_num].movement            = game_o.enemy[game_o.npc[npc_num].type_npc].movement;
+            game_o.npc[npc_num].x_direction         = 1;
+            game_o.npc[npc_num].y_direction         = 1;
+            spawn_done = 1;
+            add_active_npc(npc_num);
+        }
+    }
+    return(1);
 }
 /*----------------------------------------------------------------------------*/
 int kill_npc(int npc_num)
 {
-   game_o.npc[npc_num].active     = false;
-   game_o.npc[npc_num].x_pos      = -2.0f;
-   game_o.npc[npc_num].y_pos      = -2.0f;
-   del_active_npc(npc_num);
-   return(0);
+    game_o.npc[npc_num].active     = false;
+    game_o.npc[npc_num].x_pos      = -2.0f;
+    game_o.npc[npc_num].y_pos      = -2.0f;
+    del_active_npc(npc_num);
+    return(0);
 }
 /*----------------------------------------------------------------------------*/
 int kill_active_npcs(void)
 {
-   for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) //kill all npcs
-   {
-       if (game_o.npc[npc_count].active) kill_npc(npc_count);
-   }
+    for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) //kill all npcs
+    {
+        if (game_o.npc[npc_count].active) kill_npc(npc_count);
+    }
 }
 /*----------------------------------------------------------------------------*/
 int init_npcs(int type_npc)
 {
-   for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
-   {
-      game_o.npc[npc_count].active              = false;
-      game_o.npc[npc_count].damaged             = 0;
-      game_o.npc[npc_count].type_npc            = type_npc;
-      game_o.npc[npc_count].x_pos               = -2.0f;
-      game_o.npc[npc_count].y_pos               = -2.0f;
-      game_o.npc[npc_count].formation_wave_axis = 0.0f;
-      game_o.npc[npc_count].formation_wave_no   = 0;
-      game_o.npc[npc_count].formation_type      = 0;
-      game_o.npc[npc_count].formation_ofset_x   = 0.0f;
-      game_o.npc[npc_count].formation_ofset_y   = 0.0f;
-      game_o.npc[npc_count].weapon_1             = game_o.enemy[game_o.npc[npc_count].type_npc].weapon_1;
-      game_o.npc[npc_count].projectiles         = game_o.enemy[game_o.npc[npc_count].type_npc].projectiles;
-      game_o.npc[npc_count].health              = game_o.enemy[game_o.npc[npc_count].type_npc].health;
-      game_o.npc[npc_count].width               = game_o.enemy[game_o.npc[npc_count].type_npc].width;
-      game_o.npc[npc_count].height              = game_o.enemy[game_o.npc[npc_count].type_npc].height;
-      game_o.npc[npc_count].x_speed             = game_o.enemy[game_o.npc[npc_count].type_npc].speed;
-      game_o.npc[npc_count].y_speed             = game_o.enemy[game_o.npc[npc_count].type_npc].speed;
-      game_o.npc[npc_count].movement            = game_o.enemy[game_o.npc[npc_count].type_npc].movement;
-      game_o.npc[npc_count].x_direction         = 1;
-      game_o.npc[npc_count].y_direction         = 1;
-   }
-   init_npc_bullets();
-   init_npc_bullets2();
-   return(0);
+    for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+    {
+        game_o.npc[npc_count].active              = false;
+        game_o.npc[npc_count].damaged             = 0;
+        game_o.npc[npc_count].type_npc            = type_npc;
+        game_o.npc[npc_count].x_pos               = -2.0f;
+        game_o.npc[npc_count].y_pos               = -2.0f;
+        game_o.npc[npc_count].formation_wave_axis = 0.0f;
+        game_o.npc[npc_count].formation_wave_no   = 0;
+        game_o.npc[npc_count].formation_type      = 0;
+        game_o.npc[npc_count].formation_ofset_x   = 0.0f;
+        game_o.npc[npc_count].formation_ofset_y   = 0.0f;
+        game_o.npc[npc_count].weapon_1            = game_o.enemy[game_o.npc[npc_count].type_npc].weapon_1;
+        game_o.npc[npc_count].weapon_2            = game_o.enemy[game_o.npc[npc_count].type_npc].weapon_2;
+        game_o.npc[npc_count].projectiles         = game_o.enemy[game_o.npc[npc_count].type_npc].projectiles;
+        game_o.npc[npc_count].health              = game_o.enemy[game_o.npc[npc_count].type_npc].health;
+        game_o.npc[npc_count].width               = game_o.enemy[game_o.npc[npc_count].type_npc].width;
+        game_o.npc[npc_count].height              = game_o.enemy[game_o.npc[npc_count].type_npc].height;
+        game_o.npc[npc_count].x_speed             = game_o.enemy[game_o.npc[npc_count].type_npc].speed;
+        game_o.npc[npc_count].y_speed             = game_o.enemy[game_o.npc[npc_count].type_npc].speed;
+        game_o.npc[npc_count].max_speed           = game_o.enemy[game_o.npc[npc_count].type_npc].max_speed;
+        game_o.npc[npc_count].acceleration        = game_o.enemy[game_o.npc[npc_count].type_npc].acceleration;
+        game_o.npc[npc_count].angle               = game_o.enemy[game_o.npc[npc_count].type_npc].start_angle;
+        game_o.npc[npc_count].movement            = game_o.enemy[game_o.npc[npc_count].type_npc].movement;
+        game_o.npc[npc_count].x_direction         = 1;
+        game_o.npc[npc_count].y_direction         = 1;
+    }
+    init_npc_bullets();
+    init_npc_bullets2();
+    return(0);
 }
+
 /*----------------------------------------------------------------------------*/
 int proccess_npcs(void)
 {
-   for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
-   {
-      if  (game_o.npc[npc_count].damaged > 0) game_o.npc[npc_count].damaged--;
-      else game_o.npc[npc_count].damaged = 0;
-      if (game_o.npc[npc_count].active)
-      {
-         if (game_o.npc[npc_count].movement == 0)//straight line from right to left
-         {
-            game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
-            if (game_o.npc[npc_count].x_pos < -1.0f) kill_npc(npc_count);
-         }
-         if (game_o.npc[npc_count].movement == 1)//home in on player
-         {
-            game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
-            if (game_o.npc[npc_count].x_pos < -1.0f) kill_npc(npc_count);
-            if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) < game_o.player.y_pos) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
-            if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) > game_o.player.y_pos) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
-         }
-         if (game_o.npc[npc_count].movement == 2)// move up and down,avoid player and stay far right
-         {
-            game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
-            if (game_o.npc[npc_count].x_pos < ((1.0f) - (game_o.npc[npc_count].width/2))) game_o.npc[npc_count].x_pos = ((1.0f)- (game_o.npc[npc_count].width/2));
-            if (((game_o.player.y_pos + (game_o.player.height/2)) > (game_o.npc[npc_count].y_pos - (game_o.npc[npc_count].height/2))) && ((game_o.player.y_pos - (game_o.player.height/2)) < (game_o.npc[npc_count].y_pos + (game_o.npc[npc_count].height/2))))
+    for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+    {
+        if  (game_o.npc[npc_count].damaged > 0) game_o.npc[npc_count].damaged--;
+        else game_o.npc[npc_count].damaged = 0;
+        if (game_o.npc[npc_count].active)
+        {
+            game_o.npc[npc_count].x_speed += game_o.npc[npc_count].acceleration;
+            if (game_o.npc[npc_count].x_speed > game_o.npc[npc_count].max_speed) game_o.npc[npc_count].x_speed = game_o.npc[npc_count].max_speed;
+            game_o.npc[npc_count].y_speed += game_o.npc[npc_count].acceleration;
+            if (game_o.npc[npc_count].y_speed > game_o.npc[npc_count].max_speed) game_o.npc[npc_count].y_speed = game_o.npc[npc_count].max_speed;
+            if (game_o.npc[npc_count].movement == 0)//straight line from right to left
             {
-               if (game_o.npc[npc_count].y_pos > game_o.player.y_pos) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
-               if (game_o.npc[npc_count].y_pos < game_o.player.y_pos) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
+                game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
+                if (game_o.npc[npc_count].x_pos < -1.0f-game_o.npc[npc_count].width) kill_npc(npc_count);
             }
-            else
+            if (game_o.npc[npc_count].movement == 1)//home in on player
             {
+                game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
+                if (game_o.npc[npc_count].x_pos < -1.0f-game_o.npc[npc_count].width) kill_npc(npc_count);
+                if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) < game_o.player.y_pos) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
+                if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) > game_o.player.y_pos) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
+            }
+            if (game_o.npc[npc_count].movement == 2)// move up and down,avoid player and stay far right
+            {
+                game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
+                if (game_o.npc[npc_count].x_pos < ((1.0f) - (game_o.npc[npc_count].width/2))) game_o.npc[npc_count].x_pos = ((1.0f)- (game_o.npc[npc_count].width/2));
+                if (((game_o.player.y_pos + (game_o.player.height/2)) > (game_o.npc[npc_count].y_pos - (game_o.npc[npc_count].height/2))) && ((game_o.player.y_pos - (game_o.player.height/2)) < (game_o.npc[npc_count].y_pos + (game_o.npc[npc_count].height/2))))
+                {
+                    if (game_o.npc[npc_count].y_pos > game_o.player.y_pos) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
+                    if (game_o.npc[npc_count].y_pos < game_o.player.y_pos) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
+                }
+                else
+                {
+                    if (game_o.npc[npc_count].y_direction ==  1) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
+                    if (game_o.npc[npc_count].y_direction == -1) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
+                }
+                if ((game_o.npc[npc_count].y_pos - (game_o.npc[npc_count].height/2)) < -1.0f)
+                {
+                    game_o.npc[npc_count].y_pos = ((-1.0f) + (game_o.npc[npc_count].height/2));
+                    game_o.npc[npc_count].y_direction *= -1;
+                }
+                if ((game_o.npc[npc_count].y_pos + (game_o.npc[npc_count].height/2)) >  1.0f)
+                {
+                    game_o.npc[npc_count].y_pos = (( 1.0f) - (game_o.npc[npc_count].height/2));
+                    game_o.npc[npc_count].y_direction *= -1;
+                }
+            }
+            if (game_o.npc[npc_count].movement == 3)// avoid player till border then home in on player
+            {
+                game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
+                if (game_o.npc[npc_count].x_pos < -1.0f-game_o.npc[npc_count].width) kill_npc(npc_count);
+                if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) > game_o.player.y_pos) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
+                if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) < game_o.player.y_pos) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
+                if (((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) - (game_o.npc[npc_count].height/2)) < -1.0f) game_o.npc[npc_count].movement = 1;
+                if (((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) + (game_o.npc[npc_count].height/2)) >  1.0f) game_o.npc[npc_count].movement = 1;
+            }
+            if (game_o.npc[npc_count].movement == 4)// home in on player and then move to border
+            {
+                game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
+                if (game_o.npc[npc_count].x_pos <  -1.0f-game_o.npc[npc_count].width) kill_npc(npc_count);
+                if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) <  game_o.player.y_pos) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
+                if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) >  game_o.player.y_pos) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
+                if (((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) <= (game_o.player.y_pos+game_o.player.height)) && ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) >= (game_o.player.y_pos-game_o.player.height))) game_o.npc[npc_count].movement = 3;
+            }
+            if (game_o.npc[npc_count].movement == 5)// move in an oscillating sine wave
+            {
+                game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
+                if (game_o.npc[npc_count].x_pos <  -1.0f-game_o.npc[npc_count].width) kill_npc(npc_count);
                 if (game_o.npc[npc_count].y_direction ==  1) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
                 if (game_o.npc[npc_count].y_direction == -1) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
+                if ((game_o.npc[npc_count].y_pos - (game_o.npc[npc_count].height/2)) < (game_o.npc[npc_count].formation_wave_axis - game_o.level[game_o.current_level].wave[game_o.npc[npc_count].formation_wave_no].wave_size)) game_o.npc[npc_count].y_direction *= -1;
+                if ((game_o.npc[npc_count].y_pos + (game_o.npc[npc_count].height/2)) > (game_o.npc[npc_count].formation_wave_axis + game_o.level[game_o.current_level].wave[game_o.npc[npc_count].formation_wave_no].wave_size)) game_o.npc[npc_count].y_direction *= -1;
             }
-            if ((game_o.npc[npc_count].y_pos - (game_o.npc[npc_count].height/2)) < -1.0f)
+            if (game_o.npc[npc_count].movement == 6)// move in a faster oscillating sine wave
             {
-               game_o.npc[npc_count].y_pos = ((-1.0f) + (game_o.npc[npc_count].height/2));
-               game_o.npc[npc_count].y_direction *= -1;
+                game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
+                if (game_o.npc[npc_count].x_pos <  -1.0f-game_o.npc[npc_count].width) kill_npc(npc_count);
+                if (game_o.npc[npc_count].y_direction ==  1) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed*2;
+                if (game_o.npc[npc_count].y_direction == -1) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed*2;
+                if ((game_o.npc[npc_count].y_pos - (game_o.npc[npc_count].height/2)) < (game_o.npc[npc_count].formation_wave_axis - game_o.level[game_o.current_level].wave[game_o.npc[npc_count].formation_wave_no].wave_size)) game_o.npc[npc_count].y_direction *= -1;
+                if ((game_o.npc[npc_count].y_pos + (game_o.npc[npc_count].height/2)) > (game_o.npc[npc_count].formation_wave_axis + game_o.level[game_o.current_level].wave[game_o.npc[npc_count].formation_wave_no].wave_size)) game_o.npc[npc_count].y_direction *= -1;
             }
-            if ((game_o.npc[npc_count].y_pos + (game_o.npc[npc_count].height/2)) >  1.0f)
+            if (game_o.npc[npc_count].movement == 7)// home in on position player was in when spawned
             {
-               game_o.npc[npc_count].y_pos = (( 1.0f) - (game_o.npc[npc_count].height/2));
-               game_o.npc[npc_count].y_direction *= -1;
+                game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
+                if (game_o.npc[npc_count].x_pos <  -1.0f-game_o.npc[npc_count].width) kill_npc(npc_count);
+                if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) < game_o.npc[npc_count].formation_target) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
+                if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) > game_o.npc[npc_count].formation_target) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
             }
-         }
-         if (game_o.npc[npc_count].movement == 3)// avoid player till border then home in on player
-         {
-            game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
-            if (game_o.npc[npc_count].x_pos < -1.0f) kill_npc(npc_count);
-            if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) > game_o.player.y_pos) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
-            if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) < game_o.player.y_pos) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
-            if (((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) - (game_o.npc[npc_count].height/2)) < -1.0f) game_o.npc[npc_count].movement = 1;
-            if (((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) + (game_o.npc[npc_count].height/2)) >  1.0f) game_o.npc[npc_count].movement = 1;
-         }
-         if (game_o.npc[npc_count].movement == 4)// home in on player and then move to border
-         {
-            game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
-            if (game_o.npc[npc_count].x_pos <  -1.0f) kill_npc(npc_count);
-            if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) <  game_o.player.y_pos) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
-            if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) >  game_o.player.y_pos) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
-            if (((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) <= (game_o.player.y_pos+game_o.player.height)) && ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) >= (game_o.player.y_pos-game_o.player.height))) game_o.npc[npc_count].movement = 3;
-         }
-         if (game_o.npc[npc_count].movement == 5)// move in an oscillating sine wave
-         {
-            game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
-            if (game_o.npc[npc_count].x_pos <  -1.0f) kill_npc(npc_count);
-            if (game_o.npc[npc_count].y_direction ==  1) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
-            if (game_o.npc[npc_count].y_direction == -1) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
-            if ((game_o.npc[npc_count].y_pos - (game_o.npc[npc_count].height/2)) < (game_o.npc[npc_count].formation_wave_axis - game_o.level[game_o.current_level].wave[game_o.npc[npc_count].formation_wave_no].wave_size)) game_o.npc[npc_count].y_direction *= -1;
-            if ((game_o.npc[npc_count].y_pos + (game_o.npc[npc_count].height/2)) > (game_o.npc[npc_count].formation_wave_axis + game_o.level[game_o.current_level].wave[game_o.npc[npc_count].formation_wave_no].wave_size)) game_o.npc[npc_count].y_direction *= -1;
-         }
-         if (game_o.npc[npc_count].movement == 6)// move in a faster oscillating sine wave
-         {
-            game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
-            if (game_o.npc[npc_count].x_pos <  -1.0f) kill_npc(npc_count);
-            if (game_o.npc[npc_count].y_direction ==  1) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed*2;
-            if (game_o.npc[npc_count].y_direction == -1) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed*2;
-            if ((game_o.npc[npc_count].y_pos - (game_o.npc[npc_count].height/2)) < (game_o.npc[npc_count].formation_wave_axis - game_o.level[game_o.current_level].wave[game_o.npc[npc_count].formation_wave_no].wave_size)) game_o.npc[npc_count].y_direction *= -1;
-            if ((game_o.npc[npc_count].y_pos + (game_o.npc[npc_count].height/2)) > (game_o.npc[npc_count].formation_wave_axis + game_o.level[game_o.current_level].wave[game_o.npc[npc_count].formation_wave_no].wave_size)) game_o.npc[npc_count].y_direction *= -1;
-         }
-         if (game_o.npc[npc_count].movement == 7)// home in on position player was in when spawned
-         {
-            game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
-            if (game_o.npc[npc_count].x_pos <  -1.0f) kill_npc(npc_count);
-            if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) < game_o.npc[npc_count].formation_target) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
-            if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) > game_o.npc[npc_count].formation_target) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
-         }
-         if (game_o.npc[npc_count].movement == 8)// move in an oscillating sine wave and stay far right
-         {
-            game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
-            if (game_o.npc[npc_count].x_pos < ((1.0f) - (game_o.npc[npc_count].width/2))) game_o.npc[npc_count].x_pos = ((1.0f)- (game_o.npc[npc_count].width/2));
-            if (game_o.npc[npc_count].y_direction ==  1) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
-            if (game_o.npc[npc_count].y_direction == -1) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
-            if ((game_o.npc[npc_count].y_pos) < (-1.0f + (game_o.npc[npc_count].height/2)))
+            if (game_o.npc[npc_count].movement == 8)// move in an oscillating sine wave and stay far right
             {
-                game_o.npc[npc_count].y_pos = (-1.0f + (game_o.npc[npc_count].height/2));
-                game_o.npc[npc_count].y_direction *= -1;
+                game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
+                if (game_o.npc[npc_count].x_pos < ((1.0f) - (game_o.npc[npc_count].width/2))) game_o.npc[npc_count].x_pos = ((1.0f)- (game_o.npc[npc_count].width/2));
+                if (game_o.npc[npc_count].y_direction ==  1) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
+                if (game_o.npc[npc_count].y_direction == -1) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
+                if ((game_o.npc[npc_count].y_pos) < (-1.0f + (game_o.npc[npc_count].height/2)))
+                {
+                    game_o.npc[npc_count].y_pos = (-1.0f + (game_o.npc[npc_count].height/2));
+                    game_o.npc[npc_count].y_direction *= -1;
+                }
+                if ((game_o.npc[npc_count].y_pos) > ( 1.0f - (game_o.npc[npc_count].height/2)))
+                {
+                    game_o.npc[npc_count].y_pos = ( 1.0f - (game_o.npc[npc_count].height/2));
+                    game_o.npc[npc_count].y_direction *= -1;
+                }
             }
-            if ((game_o.npc[npc_count].y_pos) > ( 1.0f - (game_o.npc[npc_count].height/2)))
-            {
-                game_o.npc[npc_count].y_pos = ( 1.0f - (game_o.npc[npc_count].height/2));
-                game_o.npc[npc_count].y_direction *= -1;
-            }
-         }
-      }
-   }
+        }
+    }
     proccess_npc_bullets();
     proccess_npc_bullets2();
 }
+
 /*----------------------------------------------------------------------------*/
 int spawn_npc_bullet_num(int npc_num, int weapon, int npc_bullet_num, int location)
 {
-   if (npc_bullet_num > MAX_BULLETS) npc_bullet_num  = MAX_BULLETS;
+   if (npc_bullet_num > MAX_BULLETS) npc_bullet_num    = MAX_BULLETS;
    game_o.npc[npc_num].bullet[npc_bullet_num].active   = true;
    game_o.npc[npc_num].bullet[npc_bullet_num].location = location;
    game_o.npc[npc_num].bullet[npc_bullet_num].warhead  = game_o.npc[npc_num].weapon_1;
@@ -638,7 +652,7 @@ int spawn_npc_bullet(int npc_num, int weapon, int location)
 /*----------------------------------------------------------------------------*/
 int kill_npc_bullet(int npc_num, int weapon, int npc_bullet_num)
 {
-  if (npc_bullet_num > MAX_BULLETS) npc_bullet_num = MAX_BULLETS;
+  if (npc_bullet_num > MAX_BULLETS) npc_bullet_num   = MAX_BULLETS;
   game_o.npc[npc_num].bullet[npc_bullet_num].active  = false;
   game_o.npc[npc_num].bullet[npc_bullet_num].x_pos   = -2.0f;
   game_o.npc[npc_num].bullet[npc_bullet_num].y_pos   = -2.0f;

@@ -8,7 +8,7 @@
 		<Cursor1 position="1107" topLine="11" />
 	</File>
 	<File name="src\PC.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="40333" topLine="0" />
+		<Cursor1 position="53885" topLine="816" />
 	</File>
 	<File name="src\PC.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1649" topLine="0" />
@@ -139,8 +139,8 @@
 	<File name="src\explosions.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1283" topLine="28" />
 	</File>
-	<File name="src\game.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="110261" topLine="981" />
+	<File name="src\game.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="3609" topLine="75" />
 	</File>
 	<File name="src\game.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1434" topLine="29" />
@@ -158,7 +158,7 @@
 		<Cursor1 position="6536" topLine="158" />
 	</File>
 	<File name="src\levels.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor1 position="3145" topLine="58" />
+		<Cursor1 position="3250" topLine="58" />
 	</File>
 	<File name="src\levels.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1021" topLine="0" />
@@ -170,7 +170,7 @@
 		<Cursor1 position="906" topLine="0" />
 	</File>
 	<File name="src\main.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="5465" topLine="0" />
+		<Cursor1 position="15823" topLine="309" />
 	</File>
 	<File name="src\main.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="940" topLine="2" />
@@ -221,10 +221,10 @@
 		<Cursor1 position="1255" topLine="8" />
 	</File>
 	<File name="src\thrusters.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1584" topLine="32" />
+		<Cursor1 position="5718" topLine="84" />
 	</File>
 	<File name="src\thrusters.hpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1078" topLine="18" />
+		<Cursor1 position="1035" topLine="13" />
 	</File>
 	<File name="src\version.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="908" topLine="0" />

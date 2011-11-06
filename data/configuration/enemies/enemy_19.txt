@@ -2,13 +2,13 @@
 #|  Enemy - 19   |#
 # _______________ #
 
-Name            = Enemy - 19 
+Name            = Haxorific 
 Image           = 19
 Sound           = 19
 Health          = 3000.0
-Speed           = 0.0
-Speed_Max       = 0.0
-Acceleration    = 0.0
+Speed           = 0.000125
+Speed_Max       = 0.003
+Acceleration    = 0.00025
 Start_Angle     = 270
 Movement        = 2
 Weapon_1        = 25

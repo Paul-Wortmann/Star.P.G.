@@ -65,7 +65,7 @@ void init_levels(void)
     game_o.level[24].load("data/configuration/levels/level_24.txt");
     for (int level_no_count = 0;level_no_count < (MAX_LEVELS); level_no_count++)
     {
-        game_o.level[level_no_count].locked = true;/// set to false to unlock all levels....for testing!
+        game_o.level[level_no_count].locked = false;/// set to false to unlock all levels....for testing!
     }
     game_o.level[0].locked = false;
 };

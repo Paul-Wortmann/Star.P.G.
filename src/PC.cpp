@@ -733,7 +733,7 @@ int process_player(int command)
             game_o.immune = false;
         }
    //level up our thrusters, only if used! :)
-    if ((command == 3) && (game_o.thruster[game_o.player.thrusters].level <= 2) && (game_o.player.thrusters >= 0))
+    if ((command == 3) && (game_o.player.thrusters >= 0) && (game_o.thruster[game_o.player.thrusters].level <= 2) && (game_o.player.thrusters >= 0))
     {
         game_o.thruster[game_o.player.thrusters].experience++;
         if (game_o.thruster[game_o.player.thrusters].level == 0)
@@ -766,36 +766,76 @@ int process_player(int command)
     }
     if (game_o.level_end_phase == 1)
     {
-        if (game_o.player.y_pos >  0.0f) game_o.player.y_pos -= (0.020 + game_o.thruster[game_o.player.thrusters].thrust);
-        if (game_o.player.y_pos <  0.0f) game_o.player.y_pos += (0.020 + game_o.thruster[game_o.player.thrusters].thrust);
-        game_o.player.x_pos += (0.020 + game_o.thruster[game_o.player.thrusters].thrust) + (game_o.level_end_count / 1000);
+        if (game_o.player.thrusters >= 0) // if we have thrusters
+        {
+            if (game_o.player.y_pos >  0.0f) game_o.player.y_pos -= (0.020 + game_o.thruster[game_o.player.thrusters].thrust);
+            if (game_o.player.y_pos <  0.0f) game_o.player.y_pos += (0.020 + game_o.thruster[game_o.player.thrusters].thrust);
+            game_o.player.x_pos += (0.020 + game_o.thruster[game_o.player.thrusters].thrust) + (game_o.level_end_count / 1000);
+        }
+        else // if we don't have thrusters
+        {
+            if (game_o.player.y_pos >  0.0f) game_o.player.y_pos -= (0.020);
+            if (game_o.player.y_pos <  0.0f) game_o.player.y_pos += (0.020);
+            game_o.player.x_pos += (0.020 + (game_o.level_end_count / 1000));
+        }
     }
     else
     {
-        switch (command)
+        if (game_o.player.thrusters >= 0) // if we have thrusters
         {
-            case 1://Up
-                game_o.player.y_dir =  1;
-                game_o.player.y_vel += (0.0025f + game_o.thruster[game_o.player.thrusters].thrust + (0.0001f*game_o.thruster[game_o.player.thrusters].level));
-                if (game_o.player.y_vel > MAX_VELOCITY) game_o.player.y_vel = MAX_VELOCITY;
-            break;
-            case 2://Down
-                game_o.player.y_dir = -1;
-                game_o.player.y_vel -= (0.0025f + game_o.thruster[game_o.player.thrusters].thrust + (0.0001f*game_o.thruster[game_o.player.thrusters].level));
-                if (game_o.player.y_vel < (-1*MAX_VELOCITY)) game_o.player.y_vel = (-1*MAX_VELOCITY);
-            break;
-            case 3://right
-                game_o.player.x_dir =  1;
-                game_o.player.x_vel += (0.0025f + game_o.thruster[game_o.player.thrusters].thrust + (0.0001f*game_o.thruster[game_o.player.thrusters].level));
-                if (game_o.player.x_vel > MAX_VELOCITY) game_o.player.x_vel = MAX_VELOCITY;
-            break;
-            case 4://Left
-                game_o.player.x_dir = -1;
-                game_o.player.x_vel -= (0.0025f + game_o.thruster[game_o.player.thrusters].thrust + (0.0001f*game_o.thruster[game_o.player.thrusters].level));
-                if (game_o.player.x_vel < (-1*MAX_VELOCITY)) game_o.player.x_vel = (-1*MAX_VELOCITY);
-            break;
-            default:
-            break;
+            switch (command)
+            {
+                case 1://Up
+                    game_o.player.y_dir =  1;
+                    game_o.player.y_vel += (0.0025f + game_o.thruster[game_o.player.thrusters].thrust + (0.0001f*game_o.thruster[game_o.player.thrusters].level));
+                    if (game_o.player.y_vel > MAX_VELOCITY) game_o.player.y_vel = MAX_VELOCITY;
+                break;
+                case 2://Down
+                    game_o.player.y_dir = -1;
+                    game_o.player.y_vel -= (0.0025f + game_o.thruster[game_o.player.thrusters].thrust + (0.0001f*game_o.thruster[game_o.player.thrusters].level));
+                    if (game_o.player.y_vel < (-1*MAX_VELOCITY)) game_o.player.y_vel = (-1*MAX_VELOCITY);
+                break;
+                case 3://right
+                    game_o.player.x_dir =  1;
+                    game_o.player.x_vel += (0.0025f + game_o.thruster[game_o.player.thrusters].thrust + (0.0001f*game_o.thruster[game_o.player.thrusters].level));
+                    if (game_o.player.x_vel > MAX_VELOCITY) game_o.player.x_vel = MAX_VELOCITY;
+                break;
+                case 4://Left
+                    game_o.player.x_dir = -1;
+                    game_o.player.x_vel -= (0.0025f + game_o.thruster[game_o.player.thrusters].thrust + (0.0001f*game_o.thruster[game_o.player.thrusters].level));
+                    if (game_o.player.x_vel < (-1*MAX_VELOCITY)) game_o.player.x_vel = (-1*MAX_VELOCITY);
+                break;
+                default:
+                break;
+            }
+        }
+        else // if we don't have thrusters
+        {
+            switch (command)
+            {
+                case 1://Up
+                    game_o.player.y_dir =  1;
+                    game_o.player.y_vel += (0.0025f + (0.0001f));
+                    if (game_o.player.y_vel > MAX_VELOCITY) game_o.player.y_vel = MAX_VELOCITY;
+                break;
+                case 2://Down
+                    game_o.player.y_dir = -1;
+                    game_o.player.y_vel -= (0.0025f + (0.0001f));
+                    if (game_o.player.y_vel < (-1*MAX_VELOCITY)) game_o.player.y_vel = (-1*MAX_VELOCITY);
+                break;
+                case 3://right
+                    game_o.player.x_dir =  1;
+                    game_o.player.x_vel += (0.0025f + (0.0001f));
+                    if (game_o.player.x_vel > MAX_VELOCITY) game_o.player.x_vel = MAX_VELOCITY;
+                break;
+                case 4://Left
+                    game_o.player.x_dir = -1;
+                    game_o.player.x_vel -= (0.0025f + (0.0001));
+                    if (game_o.player.x_vel < (-1*MAX_VELOCITY)) game_o.player.x_vel = (-1*MAX_VELOCITY);
+                break;
+                default:
+                break;
+            }
         }
         if (game_o.player.y_dir ==  1)
         {
@@ -818,10 +858,10 @@ int process_player(int command)
             if (game_o.player.x_vel > 0.0f) game_o.player.x_vel  = 0.0f;
         };
         game_o.player.y_pos += game_o.player.y_vel;
-        if (game_o.player.y_pos >  (1.0f -(game_o.player.height/2))) game_o.player.y_pos = (1.0f -(game_o.player.height/2));
-        if (game_o.player.y_pos < -(1.0f -(game_o.player.height/2))) game_o.player.y_pos = -(1.0f -(game_o.player.height/2));
+        if (game_o.player.y_pos >  (1.0f - (game_o.player.height/2))) game_o.player.y_pos = (1.0f -(game_o.player.height/2));
+        if (game_o.player.y_pos < -(1.0f - (game_o.player.height/2))) game_o.player.y_pos = -(1.0f -(game_o.player.height/2));
         game_o.player.x_pos += game_o.player.x_vel;
-        if (game_o.player.x_pos >  (1.0f -(game_o.player.width/2))) game_o.player.x_pos = (1.0f -(game_o.player.width/2));
+        if (game_o.player.x_pos >  (1.0f - (game_o.player.width/2))) game_o.player.x_pos = (1.0f -(game_o.player.width/2));
         if (game_o.player.x_pos < -(1.0f - (game_o.player.width/2) - thruster_offset())) game_o.player.x_pos = -(1.0f -(game_o.player.width/2) - thruster_offset());
     }
     if (!game_o.immune)

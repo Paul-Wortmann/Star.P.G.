@@ -52,35 +52,34 @@ class enemy_class
 
 struct npc_type
 {
-   bool          active;
-   int           damaged;
-   int           type_npc;
-   int           weapon_1;
-   int           weapon_2;
-   int           projectiles;
-   float         x_pos;
-   float         y_pos;
-   int           formation_wave_no;
-   float         formation_wave_size;
-   float         formation_wave_axis;
-   float         formation_target;
-   int           formation_type;
-   float         formation_ofset_x;
-   float         formation_ofset_y;
-   float         health;
-   float         width;
-   float         height;
-   float         x_speed;
-   float         y_speed;
-        float         speed;
-        float         max_speed;
-        float         acceleration;
-        float         angle;
-   int           movement;
-   int           x_direction;
-   int           y_direction;
-   bullet_type   bullet [MAX_BULLETS];
-   bullet_type   bullet2[MAX_BULLETS];
+    bool          active;
+    int           damaged;
+    int           type_npc;
+    int           weapon_1;
+    int           weapon_2;
+    int           projectiles;
+    float         x_pos;
+    float         y_pos;
+    int           formation_wave_no;
+    float         formation_wave_size;
+    float         formation_wave_axis;
+    float         formation_target;
+    int           formation_type;
+    float         formation_ofset_x;
+    float         formation_ofset_y;
+    float         health;
+    float         width;
+    float         height;
+    float         x_speed;
+    float         y_speed;
+    float         max_speed;
+    float         acceleration;
+    float         angle;
+    int           movement;
+    int           x_direction;
+    int           y_direction;
+    bullet_type   bullet [MAX_BULLETS];
+    bullet_type   bullet2[MAX_BULLETS];
 };
 
 struct active_npc_type

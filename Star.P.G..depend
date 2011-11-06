@@ -641,7 +641,7 @@
 
 1309768119 c:\_git_\star.p.g\src\graphics.h
 
-1320569855 source:c:\_git_\star.p.g\src\game.cpp
+1320574771 source:c:\_git_\star.p.g\src\game.cpp
 	<SDL/SDL.h>
 	"core/core.hpp"
 	"load_resources.hpp"
@@ -673,7 +673,7 @@
 
 1310910430 hpp"
 
-1320555503 source:c:\_git_\star.p.g\src\levels.cpp
+1320577141 source:c:\_git_\star.p.g\src\levels.cpp
 	<fstream>
 	<stdio.h>
 	<stdlib.h>
@@ -685,7 +685,7 @@
 
 1309768119 c:\_git_\star.p.g\src\levels.h
 
-1320156503 source:c:\_git_\star.p.g\src\main.cpp
+1320576097 source:c:\_git_\star.p.g\src\main.cpp
 	<locale>
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
@@ -1397,7 +1397,7 @@
 1320147925 c:\_git_\star.p.g\src\projectiles.hpp
 	<string>
 
-1320289961 source:c:\_git_\star.p.g\src\npc.cpp
+1320579276 source:c:\_git_\star.p.g\src\npc.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -1409,10 +1409,10 @@
 	"game.hpp"
 	"misc.hpp"
 
-1320148095 c:\_git_\star.p.g\src\npc.hpp
+1320578741 c:\_git_\star.p.g\src\npc.hpp
 	"bullets.hpp"
 
-1319544840 source:c:\_git_\star.p.g\src\pc.cpp
+1320576931 source:c:\_git_\star.p.g\src\pc.cpp
 	"core/core.hpp"
 	"PC.hpp"
 	"NPC.hpp"
@@ -1453,7 +1453,7 @@
 1320312331 c:\_git_\star.p.g\src\shields.hpp
 	<string>
 
-1320311322 c:\_git_\star.p.g\src\thrusters.hpp
+1320584042 c:\_git_\star.p.g\src\thrusters.hpp
 	"core/core.hpp"
 	<string>
 
@@ -1467,7 +1467,7 @@
 	"shields.hpp"
 	"game.hpp"
 
-1320312529 source:c:\_git_\star.p.g\src\thrusters.cpp
+1320576629 source:c:\_git_\star.p.g\src\thrusters.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>

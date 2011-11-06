@@ -2,13 +2,13 @@
 #|  Enemy - 15   |#
 # _______________ #
 
-Name            = Enemy - 15 
+Name            = Paganite 
 Image           = 15
 Sound           = 15
 Health          = 2500.0
-Speed           = 0.0
-Speed_Max       = 0.0
-Acceleration    = 0.0
+Speed           = 0.000125
+Speed_Max       = 0.003
+Acceleration    = 0.00025
 Start_Angle     = 270
 Movement        = 2
 Weapon_1        = 21

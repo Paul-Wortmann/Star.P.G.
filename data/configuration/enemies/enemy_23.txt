@@ -2,13 +2,13 @@
 #|  Enemy - 23   |#
 # _______________ #
 
-Name            = Enemy - 23 
+Name            = Robonoid 
 Image           = 23
 Sound           = 23
 Health          = 6000.0
-Speed           = 0.0
-Speed_Max       = 0.0
-Acceleration    = 0.0
+Speed           = 0.000125
+Speed_Max       = 0.003
+Acceleration    = 0.00025
 Start_Angle     = 270
 Movement        = 8
 Weapon_1        = 29

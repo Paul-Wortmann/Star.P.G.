@@ -2,13 +2,13 @@
 #|  Enemy - 11   |#
 # _______________ #
 
-Name            = Enemy - 11 
+Name            = Dediun 
 Image           = 11
 Sound           = 11
 Health          = 2000.0
-Speed           = 0.0
-Speed_Max       = 0.0
-Acceleration    = 0.0
+Speed           = 0.000125
+Speed_Max       = 0.003
+Acceleration    = 0.00025
 Start_Angle     = 270
 Movement        = 2
 Weapon_1        = 17
