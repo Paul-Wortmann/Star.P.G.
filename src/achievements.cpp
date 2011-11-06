@@ -38,20 +38,20 @@ void init_achievements(void)
 {
     game_o.achivement.score                  = 0;
     game_o.achivement.kills                  = 0;
-    game_o.achivement.score_level_1          = 625;
-    game_o.achivement.score_level_2          = 1250;
-    game_o.achivement.score_level_3          = 2500;
-    game_o.achivement.score_level_4          = 5000;
-    game_o.achivement.score_level_5          = 10000;
-    game_o.achivement.score_level_6          = 20000;
-    game_o.achivement.score_level_7          = 40000;
+    game_o.achivement.score_level_1          = 1647;
+    game_o.achivement.score_level_2          = 4941;
+    game_o.achivement.score_level_3          = 14823;
+    game_o.achivement.score_level_4          = 44469;
+    game_o.achivement.score_level_5          = 133407;
+    game_o.achivement.score_level_6          = 400221;
+    game_o.achivement.score_level_7          = 1200663;
     game_o.achivement.kills_level_1          = 128;
     game_o.achivement.kills_level_2          = 256;
     game_o.achivement.kills_level_3          = 512;
     game_o.achivement.kills_level_4          = 1024;
     game_o.achivement.kills_level_5          = 2048;
     game_o.achivement.kills_level_6          = 4096;
-    game_o.achivement.kills_level_7          = 8192;
+    game_o.achivement.kills_level_7          = 6192;
 };
 
 void achievement_score_process(void)
