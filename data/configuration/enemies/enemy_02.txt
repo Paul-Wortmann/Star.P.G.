@@ -2,15 +2,18 @@
 #|  Enemy - 02   |#
 # _______________ #
 
-Name        = Enemy 02 
-Image       = 2
-Sound       = 2
-Health      = 15.0
-Speed       = 0.00075
-Movement    = 5
-Weapon_1    = 8
-Weapon_2    = 0
-Projectiles = 3
-Width       = 0.225
-Height      = 0.225
+Name            = Enemy 02 
+Image           = 2
+Sound           = 2
+Health          = 15.0
+Speed           = 0.0000
+Speed_Max       = 0.00075
+Acceleration    = 0.000075
+Start_Angle     = 270
+Movement        = 5
+Weapon_1        = 8
+Weapon_2        = 0
+Projectiles     = 3
+Width           = 0.225
+Height          = 0.225
 

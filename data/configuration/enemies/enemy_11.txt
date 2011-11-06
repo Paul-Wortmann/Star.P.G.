@@ -2,15 +2,18 @@
 #|  Enemy - 11   |#
 # _______________ #
 
-Name        = Enemy - 11 
-Image       = 11
-Sound       = 11
-Health      = 2000.0
-Speed       = 0.0
-Movement    = 2
-Weapon_1    = 17
-Weapon_2    = 0
-Projectiles = 9
-Width       = 0.4
-Height      = 0.8
+Name            = Enemy - 11 
+Image           = 11
+Sound           = 11
+Health          = 2000.0
+Speed           = 0.0
+Speed_Max       = 0.0
+Acceleration    = 0.0
+Start_Angle     = 270
+Movement        = 2
+Weapon_1        = 17
+Weapon_2        = 0
+Projectiles     = 9
+Width           = 0.4
+Height          = 0.8
 

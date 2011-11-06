@@ -2,15 +2,18 @@
 #|  Enemy - 13   |#
 # _______________ #
 
-Name        = Enemy - 13 
-Image       = 13
-Sound       = 13
-Health      = 120.0
-Speed       = 0.0
-Movement    = 0
-Weapon_1    = 19
-Weapon_2    = 0
-Projectiles = 3
-Width       = 0.1
-Height      = 0.2
+Name            = Enemy - 13 
+Image           = 13
+Sound           = 13
+Health          = 120.0
+Speed           = 0.0
+Speed_Max       = 0.0
+Acceleration    = 0.0
+Start_Angle     = 270
+Movement        = 0
+Weapon_1        = 19
+Weapon_2        = 0
+Projectiles     = 3
+Width           = 0.1
+Height          = 0.2
 

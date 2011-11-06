@@ -2,15 +2,18 @@
 #|  Enemy - 06   |#
 # _______________ #
 
-Name        = Enemy - 06 
-Image       = 6
-Sound       = 6
-Health      = 70.0
-Speed       = 0.0
-Movement    = 4
-Weapon_1    = 12
-Weapon_2    = 0
-Projectiles = 6
-Width       = 0.225
-Height      = 0.225
+Name            = Enemy - 06 
+Image           = 6
+Sound           = 6
+Health          = 70.0
+Speed           = 0.0
+Speed_Max       = 0.0
+Acceleration    = 0.0
+Start_Angle     = 270
+Movement        = 4
+Weapon_1        = 12
+Weapon_2        = 0
+Projectiles     = 6
+Width           = 0.225
+Height          = 0.225
 

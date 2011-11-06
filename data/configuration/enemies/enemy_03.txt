@@ -2,14 +2,17 @@
 #|  Enemy - 03   |#
 # _______________ #
 
-Name        = Cantidious 
-Image       = 3
-Sound       = 3
-Health      = 100.0
-Speed       = 0.0
-Movement    = 8
-Weapon_1    = 9
-Weapon_2    = 0
-Projectiles = 6
-Width       = 0.4
-Height      = 0.8
+Name            = Cantidious 
+Image           = 3
+Sound           = 3
+Health          = 100.0
+Speed           = 0.0
+Speed_Max       = 0.0
+Acceleration    = 0.0
+Start_Angle     = 270
+Movement        = 8
+Weapon_1        = 9
+Weapon_2        = 0
+Projectiles     = 6
+Width           = 0.4
+Height          = 0.8

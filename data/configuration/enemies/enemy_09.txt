@@ -2,15 +2,18 @@
 #|  Enemy - 09   |#
 # _______________ #
 
-Name        = Enemy - 09 
-Image       = 9
-Sound       = 9
-Health      = 100.0
-Speed       = 0.0
-Movement    = 1
-Weapon_1    = 15
-Weapon_2    = 0
-Projectiles = 4
-Width       = 0.25
-Height      = 0.25
+Name            = Enemy - 09 
+Image           = 9
+Sound           = 9
+Health          = 100.0
+Speed           = 0.0
+Speed_Max       = 0.0
+Acceleration    = 0.0
+Start_Angle     = 270
+Movement        = 1
+Weapon_1        = 15
+Weapon_2        = 0
+Projectiles     = 4
+Width           = 0.25
+Height          = 0.25
 

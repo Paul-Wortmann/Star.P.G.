@@ -110,6 +110,18 @@ void enemy_class::load(std::string file_name)
                     {
                         enemy_class::speed = temp_float_data;
                     }
+                    if (temp_string_key == "Speed_Max")
+                    {
+                        enemy_class::max_speed = temp_float_data;
+                    }
+                    if (temp_string_key == "Acceleration")
+                    {
+                        enemy_class::acceleration = temp_float_data;
+                    }
+                    if (temp_string_key == "Start_Angle")
+                    {
+                        enemy_class::start_angle = temp_float_data;
+                    }
                     if (temp_string_key == "Movement")
                     {
                         enemy_class::movement = temp_int_data;

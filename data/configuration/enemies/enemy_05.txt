@@ -2,15 +2,18 @@
 #|  Enemy - 05   |#
 # _______________ #
 
-Name        = Enemy - 05 
-Image       = 5
-Sound       = 5
-Health      = 30.0
-Speed       = 0.0005
-Movement    = 3
-Weapon_1    = 11
-Weapon_2    = 0
-Projectiles = 4
-Width       = 0.15
-Height      = 0.15
+Name            = Enemy - 05 
+Image           = 5
+Sound           = 5
+Health          = 30.0
+Speed           = 0.0
+Speed_Max       = 0.0005
+Acceleration    = 0.00005
+Start_Angle     = 270
+Movement        = 3
+Weapon_1        = 11
+Weapon_2        = 0
+Projectiles     = 4
+Width           = 0.15
+Height          = 0.15
 

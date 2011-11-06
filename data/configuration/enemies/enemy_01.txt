@@ -2,15 +2,18 @@
 #|  Enemy - 01   |#
 # _______________ #
 
-Name        = Enemy 01 
-Image       = 1
-Sound       = 1
-Health      = 10.0
-Speed       = 0.002
-Movement    = 7
-Weapon_1    = 7
-Weapon_2    = 0
-Projectiles = 2
-Width       = 0.15
-Height      = 0.15
+Name            = Enemy 01 
+Image           = 1
+Sound           = 1
+Health          = 10.0
+Speed           = 0.0000
+Speed_Max       = 0.002
+Acceleration    = 0.0002
+Start_Angle     = 270
+Movement        = 7
+Weapon_1        = 7
+Weapon_2        = 0
+Projectiles     = 2
+Width           = 0.15
+Height          = 0.15
 

@@ -2,14 +2,17 @@
 #|  Enemy - 04   |#
 # _______________ #
 
-Name        = Enemy - 04 
-Image       = 4
-Sound       = 4
-Health      = 50.0
-Speed       = 0.003
-Movement    = 5
-Weapon_1    = 10
-Weapon_2    = 0
-Projectiles = 2
-Width       = 0.2
-Height      = 0.2
+Name            = Enemy - 04 
+Image           = 4
+Sound           = 4
+Health          = 50.0
+Speed           = 0.0
+Speed_Max       = 0.003
+Acceleration    = 0.0003
+Start_Angle     = 270
+Movement        = 5
+Weapon_1        = 10
+Weapon_2        = 0
+Projectiles     = 2
+Width           = 0.2
+Height          = 0.2

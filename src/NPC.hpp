@@ -38,6 +38,9 @@ class enemy_class
         int           sound;
         float         health;
         float         speed;
+        float         max_speed;
+        float         acceleration;
+        float         start_angle;
         int           movement;
         int           weapon_1;
         int           weapon_2;
@@ -69,6 +72,10 @@ struct npc_type
    float         height;
    float         x_speed;
    float         y_speed;
+        float         speed;
+        float         max_speed;
+        float         acceleration;
+        float         angle;
    int           movement;
    int           x_direction;
    int           y_direction;

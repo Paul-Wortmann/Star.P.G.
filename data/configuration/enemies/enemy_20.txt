@@ -2,15 +2,18 @@
 #|  Enemy - 20   |#
 # _______________ #
 
-Name        = Enemy - 20 
-Image       = 20
-Sound       = 20
-Health      = 150.0
-Speed       = 0.0
-Movement    = 1
-Weapon_1    = 26
-Weapon_2    = 0
-Projectiles = 2
-Width       = 0.2
-Height      = 0.2
+Name            = Enemy - 20 
+Image           = 20
+Sound           = 20
+Health          = 150.0
+Speed           = 0.0
+Speed_Max       = 0.0
+Acceleration    = 0.0
+Start_Angle     = 270
+Movement        = 1
+Weapon_1        = 26
+Weapon_2        = 0
+Projectiles     = 2
+Width           = 0.2
+Height          = 0.2
 
