@@ -78,7 +78,7 @@ outro_00.mod from http://modarchive.org/ (modmon.mod)
   Fonts
 ---------
 
-Font_001 from ? (Arial)
+Font_001 from http://cooltext.com (epkgobld.ttf)
 Font_002 from http://cooltext.com (Battlestar.ttf)
 
 ---------------------------
