@@ -106,6 +106,7 @@ int  init_npc_bullets     (void);
 int  proccess_npc_bullets (void);
 int  init_npc_bullets2    (void);
 int  proccess_npc_bullets2(void);
+void draw_npcs            (void);
 
 #endif //NPC_H
 

@@ -64,10 +64,11 @@ class supportship_class
         int         spawn_bullet(int  location, int direction_x, int direction_y);
 };
 
-void  init_supportships       (int number_of_ships, float x_pos, float y_pos);
-void  process_supportships    (bool spawn_bullet);
-void  kill_supportship_bullets(void);
-void  draw_supportships       (void);
-void  pos_supportships        (float x_pos, float y_pos);
+void  init_supportships        (int number_of_ships, float x_pos, float y_pos);
+void  process_supportships     (bool spawn_bullet);
+void  kill_supportship_bullets (void);
+void  draw_supportships        (void);
+void  pos_supportships         (float x_pos, float y_pos);
+void  draw_supportships_bullets(void);
 
 #endif //SUPPORT_SHIPS_H

@@ -431,6 +431,7 @@ int init_npcs(int type_npc)
 /*----------------------------------------------------------------------------*/
 int proccess_npcs(void)
 {
+    float temp_angle = 0.0f;
     for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
     {
         if  (game_o.npc[npc_count].damaged > 0) game_o.npc[npc_count].damaged--;
@@ -441,17 +442,27 @@ int proccess_npcs(void)
             if (game_o.npc[npc_count].x_speed > game_o.npc[npc_count].max_speed) game_o.npc[npc_count].x_speed = game_o.npc[npc_count].max_speed;
             game_o.npc[npc_count].y_speed += game_o.npc[npc_count].acceleration;
             if (game_o.npc[npc_count].y_speed > game_o.npc[npc_count].max_speed) game_o.npc[npc_count].y_speed = game_o.npc[npc_count].max_speed;
-            if (game_o.npc[npc_count].movement == 0)//straight line from right to left
+            if (game_o.npc[npc_count].movement == 0)//straight line from right to left (depending on enemy angle)
             {
-                game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
+                temp_angle = game.physics.degrees_to_radians(game_o.npc[npc_count].angle);
+                game_o.npc[npc_count].x_pos = game.physics.move_speed_angle_2D_x(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].x_speed,temp_angle);
+                game_o.npc[npc_count].y_pos = game.physics.move_speed_angle_2D_y(game_o.npc[npc_count].y_pos,game_o.npc[npc_count].y_speed,temp_angle);
                 if (game_o.npc[npc_count].x_pos < -1.0f-game_o.npc[npc_count].width) kill_npc(npc_count);
             }
             if (game_o.npc[npc_count].movement == 1)//home in on player
             {
-                game_o.npc[npc_count].x_pos -= game_o.npc[npc_count].x_speed;
+                temp_angle = game.physics.line_angle(game_o.player.x_pos,game_o.player.y_pos,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos);
+                temp_angle = game.physics.radians_to_degrees(temp_angle);
+                if (temp_angle <   0.0f) temp_angle += 360.0f;
+                if (temp_angle > 360.0f) temp_angle -= 360.0f;
+                temp_angle = 270.0f - temp_angle;
+                if (temp_angle <   0.0f) temp_angle += 360.0f;
+                if (temp_angle > 360.0f) temp_angle -= 360.0f;
+                game_o.npc[npc_count].angle = temp_angle;
+                temp_angle = game.physics.degrees_to_radians(temp_angle);
+                game_o.npc[npc_count].x_pos = game.physics.move_speed_angle_2D_x(game_o.npc[npc_count].x_pos,game_o.npc[npc_count].x_speed,temp_angle);
+                game_o.npc[npc_count].y_pos = game.physics.move_speed_angle_2D_y(game_o.npc[npc_count].y_pos,game_o.npc[npc_count].y_speed,temp_angle);
                 if (game_o.npc[npc_count].x_pos < -1.0f-game_o.npc[npc_count].width) kill_npc(npc_count);
-                if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) < game_o.player.y_pos) game_o.npc[npc_count].y_pos += game_o.npc[npc_count].y_speed;
-                if ((game_o.npc[npc_count].y_pos-game_o.npc[npc_count].formation_ofset_y) > game_o.player.y_pos) game_o.npc[npc_count].y_pos -= game_o.npc[npc_count].y_speed;
             }
             if (game_o.npc[npc_count].movement == 2)// move up and down,avoid player and stay far right
             {
@@ -477,6 +488,7 @@ int proccess_npcs(void)
                     game_o.npc[npc_count].y_pos = (( 1.0f) - (game_o.npc[npc_count].height/2));
                     game_o.npc[npc_count].y_direction *= -1;
                 }
+                if (game_o.npc[npc_count].x_pos < -1.0f-game_o.npc[npc_count].width) game_o.npc[npc_count].x_pos = 1.0f+game_o.npc[npc_count].width;
             }
             if (game_o.npc[npc_count].movement == 3)// avoid player till border then home in on player
             {
@@ -548,6 +560,7 @@ int spawn_npc_bullet_num(int npc_num, int weapon, int npc_bullet_num, int locati
 {
    if (npc_bullet_num > MAX_BULLETS) npc_bullet_num    = MAX_BULLETS;
    game_o.npc[npc_num].bullet[npc_bullet_num].active   = true;
+   game_o.npc[npc_num].bullet[npc_bullet_num].angle    = game_o.npc[npc_num].angle;
    game_o.npc[npc_num].bullet[npc_bullet_num].location = location;
    game_o.npc[npc_num].bullet[npc_bullet_num].warhead  = game_o.npc[npc_num].weapon_1;
    if (location == 0) game_o.npc[npc_num].bullet[npc_bullet_num].x_pos = (game_o.npc[npc_num].x_pos - (game_o.npc[npc_num].width/3));  // 1   straight - top
@@ -661,74 +674,89 @@ int kill_npc_bullet(int npc_num, int weapon, int npc_bullet_num)
 /*----------------------------------------------------------------------------*/
 int init_npc_bullets(void)
 {
-   for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
-   {
-      for (int bullet_count = 0; bullet_count < MAX_BULLETS; bullet_count++)
-      {
-         game_o.npc[npc_count].bullet[bullet_count].active   = false;
-         game_o.npc[npc_count].bullet[bullet_count].x_pos    = -2.0f;
-         game_o.npc[npc_count].bullet[bullet_count].y_pos    = -2.0f;
-         game_o.npc[npc_count].bullet[bullet_count].x_speed  = game_o.enemy[game_o.npc[npc_count].type_npc].speed;
-         game_o.npc[npc_count].bullet[bullet_count].y_speed  = game_o.enemy[game_o.npc[npc_count].type_npc].speed;
-         game_o.npc[npc_count].bullet[bullet_count].width    = 0.05f;
-         game_o.npc[npc_count].bullet[bullet_count].height   = 0.05f;
-         game_o.npc[npc_count].bullet[bullet_count].warhead  = game_o.enemy[game_o.npc[npc_count].type_npc].weapon_1;
-         game_o.npc[npc_count].bullet[bullet_count].location = 0;
-      }
-   }
-   return(0);
+    for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+    {
+        for (int bullet_count = 0; bullet_count < MAX_BULLETS; bullet_count++)
+        {
+            game_o.npc[npc_count].bullet[bullet_count].active          = false;
+            game_o.npc[npc_count].bullet[bullet_count].x_pos           = -2.0f;
+            game_o.npc[npc_count].bullet[bullet_count].y_pos           = -2.0f;
+            game_o.npc[npc_count].bullet[bullet_count].max_speed       = game_o.enemy[game_o.npc[npc_count].type_npc].speed;
+            game_o.npc[npc_count].bullet[bullet_count].x_speed         = game_o.npc[npc_count].bullet[bullet_count].max_speed;
+            game_o.npc[npc_count].bullet[bullet_count].y_speed         = game_o.npc[npc_count].bullet[bullet_count].max_speed;
+            game_o.npc[npc_count].bullet[bullet_count].acceleration    = 0.0f;
+            game_o.npc[npc_count].bullet[bullet_count].angle           = game_o.enemy[game_o.npc[npc_count].type_npc].start_angle;
+            game_o.npc[npc_count].bullet[bullet_count].width           = 0.05f;
+            game_o.npc[npc_count].bullet[bullet_count].height          = 0.05f;
+            game_o.npc[npc_count].bullet[bullet_count].warhead         = game_o.enemy[game_o.npc[npc_count].type_npc].weapon_1;
+            game_o.npc[npc_count].bullet[bullet_count].location        = 0;
+        }
+    }
+    return(0);
 }
 /*----------------------------------------------------------------------------*/
 int proccess_npc_bullets(void)
 {
-   for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
-   {
-      for (int bullet_count = 0; bullet_count < MAX_BULLETS; bullet_count++)
-      {
-         if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].movement == 0) //bullet moves in "straight" lines
-         {
-            if (game_o.npc[npc_count].bullet[bullet_count].active) game_o.npc[npc_count].bullet[bullet_count].x_pos -= game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed;
-            if (game_o.npc[npc_count].bullet[bullet_count].location == 3) game_o.npc[npc_count].bullet[bullet_count].y_pos += (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed / 1);
-            if (game_o.npc[npc_count].bullet[bullet_count].location == 4) game_o.npc[npc_count].bullet[bullet_count].y_pos += (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed / 2);
-            if (game_o.npc[npc_count].bullet[bullet_count].location == 5) game_o.npc[npc_count].bullet[bullet_count].y_pos += (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed / 3);
-            if (game_o.npc[npc_count].bullet[bullet_count].location == 6) game_o.npc[npc_count].bullet[bullet_count].y_pos -= (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed / 3);
-            if (game_o.npc[npc_count].bullet[bullet_count].location == 7) game_o.npc[npc_count].bullet[bullet_count].y_pos -= (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed / 2);
-            if (game_o.npc[npc_count].bullet[bullet_count].location == 8) game_o.npc[npc_count].bullet[bullet_count].y_pos -= (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed / 1);
-         }
-         if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].movement == 1) //bullet homes in on player
-         {
-            if (game_o.npc[npc_count].bullet[bullet_count].active) game_o.npc[npc_count].bullet[bullet_count].x_pos -= game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed;
+    float temp_angle = 0.0f;
+    for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
+    {
+        for (int bullet_count = 0; bullet_count < MAX_BULLETS; bullet_count++)
+        {
             if (game_o.npc[npc_count].bullet[bullet_count].active)
             {
-                if (game_o.npc[npc_count].bullet[bullet_count].x_pos > game_o.player.x_pos)
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].movement == 0) //bullet moves in a "straight" line (dependent on angle)
                 {
-                   if (game_o.npc[npc_count].bullet[bullet_count].y_pos > game_o.player.y_pos) game_o.npc[npc_count].bullet[bullet_count].y_pos -= (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed/2);
-                   if (game_o.npc[npc_count].bullet[bullet_count].y_pos < game_o.player.y_pos) game_o.npc[npc_count].bullet[bullet_count].y_pos += (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed/2);
+                    if (game_o.npc[npc_count].bullet[bullet_count].location == 5) temp_angle =  264.0f;
+                    if (game_o.npc[npc_count].bullet[bullet_count].location == 4) temp_angle =  266.0f;
+                    if (game_o.npc[npc_count].bullet[bullet_count].location == 3) temp_angle =  268.0f;
+                    if (game_o.npc[npc_count].bullet[bullet_count].location == 2) temp_angle =  270.0f;
+                    if (game_o.npc[npc_count].bullet[bullet_count].location == 1) temp_angle =  270.0f;
+                    if (game_o.npc[npc_count].bullet[bullet_count].location == 0) temp_angle =  270.0f;
+                    if (game_o.npc[npc_count].bullet[bullet_count].location == 8) temp_angle =  272.0f;
+                    if (game_o.npc[npc_count].bullet[bullet_count].location == 7) temp_angle =  274.0f;
+                    if (game_o.npc[npc_count].bullet[bullet_count].location == 6) temp_angle =  276.0f;
+                    temp_angle -= 270.0f;
+                    temp_angle += game_o.npc[npc_count].bullet[bullet_count].angle;
+                    temp_angle = game.physics.degrees_to_radians(temp_angle);
+                    game_o.npc[npc_count].bullet[bullet_count].x_pos = game.physics.move_speed_angle_2D_x(game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed,temp_angle);
+                    game_o.npc[npc_count].bullet[bullet_count].y_pos = game.physics.move_speed_angle_2D_y(game_o.npc[npc_count].bullet[bullet_count].y_pos,game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed,temp_angle);
                 }
-            }
-         }
-         if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].movement == 2) //bullet moves in a wave pattern
-         {
-             if (game_o.npc[npc_count].bullet[bullet_count].active) game_o.npc[npc_count].bullet[bullet_count].x_pos -= game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed;
-             game_o.npc[npc_count].bullet[bullet_count].wave_count += game_o.npc[npc_count].bullet[bullet_count].wave_speed;
-             if (game_o.npc[npc_count].bullet[bullet_count].wave_count >= game_o.npc[npc_count].bullet[bullet_count].wave_height)
-             {
-                game_o.npc[npc_count].bullet[bullet_count].wave_count = 0.0f;
-                game_o.npc[npc_count].bullet[bullet_count].wave_direction = !game_o.npc[npc_count].bullet[bullet_count].wave_direction;
-             }
-            if (game_o.npc[npc_count].bullet[bullet_count].wave_direction == true) game_o.npc[npc_count].bullet[bullet_count].y_pos += game_o.npc[npc_count].bullet[bullet_count].wave_speed;
-            else game_o.npc[npc_count].bullet[bullet_count].y_pos -= game_o.npc[npc_count].bullet[bullet_count].wave_speed;
-         }
-         if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].movement == 3) //bullet super homes in on player
-         {
-           if (game_o.npc[npc_count].bullet[bullet_count].active)
-            {
-                if (game_o.npc[npc_count].bullet[bullet_count].y_pos > game_o.player.y_pos) game_o.npc[npc_count].bullet[bullet_count].y_pos -= (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed/2);
-                if (game_o.npc[npc_count].bullet[bullet_count].y_pos < game_o.player.y_pos) game_o.npc[npc_count].bullet[bullet_count].y_pos += (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed/2);
-                if (game_o.npc[npc_count].bullet[bullet_count].x_pos > game_o.player.x_pos) game_o.npc[npc_count].bullet[bullet_count].x_pos -= (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed/2);
-                if (game_o.npc[npc_count].bullet[bullet_count].x_pos < game_o.player.x_pos) game_o.npc[npc_count].bullet[bullet_count].x_pos += (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed/2);
-            }
-         }
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].movement == 1) //bullet homes in on player
+                {
+                    temp_angle = game.physics.line_angle(game_o.player.x_pos,game_o.player.y_pos,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos);
+                    temp_angle = game.physics.radians_to_degrees(temp_angle);
+                    if (temp_angle <   0.0f) temp_angle += 360.0f;
+                    if (temp_angle > 360.0f) temp_angle -= 360.0f;
+                    temp_angle = 270.0f - temp_angle;
+                    if (temp_angle <   0.0f) temp_angle += 360.0f;
+                    if (temp_angle > 360.0f) temp_angle -= 360.0f;
+                    game_o.npc[npc_count].bullet[bullet_count].angle = temp_angle;
+                    temp_angle = game.physics.degrees_to_radians(temp_angle);
+                    game_o.npc[npc_count].bullet[bullet_count].x_pos = game.physics.move_speed_angle_2D_x(game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed,temp_angle);
+                    game_o.npc[npc_count].bullet[bullet_count].y_pos = game.physics.move_speed_angle_2D_y(game_o.npc[npc_count].bullet[bullet_count].y_pos,game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed,temp_angle);
+                }
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].movement == 2) //bullet moves in a wave pattern
+                {
+                    if (game_o.npc[npc_count].bullet[bullet_count].active) game_o.npc[npc_count].bullet[bullet_count].x_pos -= game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed;
+                    game_o.npc[npc_count].bullet[bullet_count].wave_count += game_o.npc[npc_count].bullet[bullet_count].wave_speed;
+                    if (game_o.npc[npc_count].bullet[bullet_count].wave_count >= game_o.npc[npc_count].bullet[bullet_count].wave_height)
+                    {
+                        game_o.npc[npc_count].bullet[bullet_count].wave_count = 0.0f;
+                        game_o.npc[npc_count].bullet[bullet_count].wave_direction = !game_o.npc[npc_count].bullet[bullet_count].wave_direction;
+                    }
+                    if (game_o.npc[npc_count].bullet[bullet_count].wave_direction == true) game_o.npc[npc_count].bullet[bullet_count].y_pos += game_o.npc[npc_count].bullet[bullet_count].wave_speed;
+                    else game_o.npc[npc_count].bullet[bullet_count].y_pos -= game_o.npc[npc_count].bullet[bullet_count].wave_speed;
+                }
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].movement == 3) //bullet super homes in on player
+                {
+                    if (game_o.npc[npc_count].bullet[bullet_count].active)
+                    {
+                        if (game_o.npc[npc_count].bullet[bullet_count].y_pos > game_o.player.y_pos) game_o.npc[npc_count].bullet[bullet_count].y_pos -= (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed/2);
+                        if (game_o.npc[npc_count].bullet[bullet_count].y_pos < game_o.player.y_pos) game_o.npc[npc_count].bullet[bullet_count].y_pos += (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed/2);
+                        if (game_o.npc[npc_count].bullet[bullet_count].x_pos > game_o.player.x_pos) game_o.npc[npc_count].bullet[bullet_count].x_pos -= (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed/2);
+                        if (game_o.npc[npc_count].bullet[bullet_count].x_pos < game_o.player.x_pos) game_o.npc[npc_count].bullet[bullet_count].x_pos += (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed/2);
+                    }
+                }
          if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].movement == 4) //bullet homes in on player and moves in a wave pattern
          {
             if (game_o.npc[npc_count].bullet[bullet_count].active) game_o.npc[npc_count].bullet[bullet_count].x_pos -= game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].speed;
@@ -792,6 +820,7 @@ int proccess_npc_bullets(void)
          }
       }
    }
+   }
    return(0);
 }
 /*----------------------------------------------------------------------------*/
@@ -822,6 +851,107 @@ int  proccess_npc_bullets2(void)
 
 };
 
+void draw_npcs(void)
+{
+    float temp_r     = 1.0f;
+    float temp_g     = 1.0f;
+    float temp_b     = 1.0f;
+    float temp_a     = 1.0f;
+    float z_pos      = 0.05f;
+    float temp_angle = 0.00f;
+    for (int npc_count = MAX_NPCS-1;npc_count >=0;npc_count--)  // npcs
+    {
+        for (int bullet_count = MAX_BULLETS-1;bullet_count >=0;bullet_count--)  // npcs bullets
+        {
+            if (game_o.npc[npc_count].bullet[bullet_count].active)
+            {
+                temp_angle = 360.0f - game_o.npc[npc_count].bullet[bullet_count].angle;
+                z_pos = 0.05f + (0.0001*bullet_count);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_000.ref_number) texture.projectile_000.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_001.ref_number) texture.projectile_001.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_002.ref_number) texture.projectile_002.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_003.ref_number) texture.projectile_003.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_004.ref_number) texture.projectile_004.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_005.ref_number) texture.projectile_005.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_006.ref_number) texture.projectile_006.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_007.ref_number) texture.projectile_007.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_008.ref_number) texture.projectile_008.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_009.ref_number) texture.projectile_009.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_010.ref_number) texture.projectile_010.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_011.ref_number) texture.projectile_011.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_012.ref_number) texture.projectile_012.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_013.ref_number) texture.projectile_013.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_014.ref_number) texture.projectile_014.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_015.ref_number) texture.projectile_015.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_016.ref_number) texture.projectile_016.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_017.ref_number) texture.projectile_017.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_018.ref_number) texture.projectile_018.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_019.ref_number) texture.projectile_019.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_020.ref_number) texture.projectile_020.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_021.ref_number) texture.projectile_021.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_022.ref_number) texture.projectile_022.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_023.ref_number) texture.projectile_023.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_024.ref_number) texture.projectile_024.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_025.ref_number) texture.projectile_025.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_026.ref_number) texture.projectile_026.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_027.ref_number) texture.projectile_027.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_028.ref_number) texture.projectile_028.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_029.ref_number) texture.projectile_029.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_030.ref_number) texture.projectile_030.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_031.ref_number) texture.projectile_031.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_032.ref_number) texture.projectile_032.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_033.ref_number) texture.projectile_033.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+                if (game_o.projectile[game_o.npc[npc_count].bullet[bullet_count].warhead].image == texture.projectile_034.ref_number) texture.projectile_034.draw(true,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,z_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height,180.0f);
+            }
+        }
+        z_pos = 0.04f + (0.0001*npc_count); // npc's
+        if (game_o.npc[npc_count].active)
+        {
+            temp_angle = 360.0f - game_o.npc[npc_count].angle;
+            if (game_o.npc[npc_count].damaged > (game_o.npc_damage_duration/5))
+            {
+                temp_r = 1.0f;
+                temp_g = 0.0f;
+                temp_b = 0.0f;
+                temp_a = 0.6f;
+            }
+            else
+            {
+                temp_r = 1.0f;
+                temp_g = 1.0f;
+                temp_b = 1.0f;
+                temp_a = 1.0f;
+            }
+            //ps. width and height are used in reverse as values are swapped somewhere.
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_000.ref_number) texture.ship_000.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_001.ref_number) texture.ship_001.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_002.ref_number) texture.ship_002.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_003.ref_number) texture.ship_003.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_004.ref_number) texture.ship_004.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_005.ref_number) texture.ship_005.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_006.ref_number) texture.ship_006.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_007.ref_number) texture.ship_007.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_008.ref_number) texture.ship_008.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_009.ref_number) texture.ship_009.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_010.ref_number) texture.ship_010.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_011.ref_number) texture.ship_011.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_012.ref_number) texture.ship_012.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_013.ref_number) texture.ship_013.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_014.ref_number) texture.ship_014.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_015.ref_number) texture.ship_015.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_016.ref_number) texture.ship_016.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_017.ref_number) texture.ship_017.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_018.ref_number) texture.ship_018.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_019.ref_number) texture.ship_019.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_020.ref_number) texture.ship_020.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_021.ref_number) texture.ship_021.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_022.ref_number) texture.ship_022.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_023.ref_number) texture.ship_023.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_024.ref_number) texture.ship_024.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+            if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_025.ref_number) texture.ship_025.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
+        }
+    }
+};
 
 
 

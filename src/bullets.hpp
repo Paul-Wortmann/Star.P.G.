@@ -29,25 +29,28 @@ const int   MAX_BULLETS        = 128;
 
 struct bullet_type
 {
-   int   warhead; //projectile
-   bool  active;
-   int   location;
-   float x_pos;
-   float y_pos;
-   int   x_dir;
-   int   y_dir;
-   float x_speed;
-   float y_speed;
-   float width;
-   float height;
-   bool  straight;
-   bool  homeing_00;
-   bool  homeing_01;
-   bool  wave;
-   float wave_height;
-   float wave_count;
-   float wave_speed;
-   bool  wave_direction;
+    int           warhead; //projectile
+    bool          active;
+    int           location;
+    float         x_pos;
+    float         y_pos;
+    int           x_dir;
+    int           y_dir;
+    float         x_speed;
+    float         y_speed;
+    float         max_speed;
+    float         acceleration;
+    float         angle;
+    float         width;
+    float         height;
+    bool          straight;
+    bool          homeing_00;
+    bool          homeing_01;
+    bool          wave;
+    float         wave_height;
+    float         wave_count;
+    float         wave_speed;
+    bool          wave_direction;
 };
 
 #endif //BULLETS_H

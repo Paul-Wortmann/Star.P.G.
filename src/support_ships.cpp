@@ -155,9 +155,10 @@ void  process_supportships(bool spawn_bullet)
 
 void supportship_class::process(bool spawn_bullet)
 {
+    float temp_angle      =  0.0f;
     int   random_temp     =  0;
     int   target_id       = -1;
-    float target_distance = 10.0f;
+    float target_distance =  10.0f;
     float temp_distance   =  0.0f;
     float x_temp_velocity =  0.0f;
     float y_temp_velocity =  0.0f;
@@ -254,7 +255,7 @@ void supportship_class::process(bool spawn_bullet)
                             supportship_class::bullet[bullet_count].y_pos  = 2.0f;
                         }
                     break;
-                    case 1:
+                    case 1: // homing bullets
                         target_id       = -1;
                         target_distance = 10.0f;
                         temp_distance   =  0.0f;
@@ -272,28 +273,17 @@ void supportship_class::process(bool spawn_bullet)
                         }
                         if (game_o.active_npc_count > 0)
                         {
-                            //calculate new vector / bullet speed
-                            x_temp_velocity = (game_o.player.x_pos+2)-(game_o.npc[target_id].x_pos-2);
-                            if (x_temp_velocity < 0) x_temp_velocity *= -1;
-                            y_temp_velocity = (game_o.player.y_pos+2)-(game_o.npc[target_id].y_pos-2);
-                            if (y_temp_velocity < 0) y_temp_velocity *= -1;
-                            if (x_temp_velocity < y_temp_velocity)
-                            {
-                                x_temp_velocity = ((x_temp_velocity/y_temp_velocity) * game_o.projectile[supportship_class::bullet[bullet_count].warhead].speed) + game_o.projectile[supportship_class::bullet[bullet_count].warhead].speed;
-                                y_temp_velocity = game_o.projectile[supportship_class::bullet[bullet_count].warhead].speed;
-                            }
-                            else
-                            {
-                                y_temp_velocity = ((x_temp_velocity/y_temp_velocity) * game_o.projectile[supportship_class::bullet[bullet_count].warhead].speed) + game_o.projectile[supportship_class::bullet[bullet_count].warhead].speed;
-                                x_temp_velocity = game_o.projectile[supportship_class::bullet[bullet_count].warhead].speed;
-                            }
-                            if (supportship_class::bullet[bullet_count].x_pos < game_o.npc[target_id].x_pos)
-                            {
-                                supportship_class::bullet[bullet_count].x_pos += x_temp_velocity;
-                                if (supportship_class::bullet[bullet_count].y_pos < game_o.npc[target_id].y_pos) supportship_class::bullet[bullet_count].y_pos += y_temp_velocity;
-                                if (supportship_class::bullet[bullet_count].y_pos > game_o.npc[target_id].y_pos) supportship_class::bullet[bullet_count].y_pos -= y_temp_velocity;
-                            }
-                            else supportship_class::bullet[bullet_count].x_pos += x_temp_velocity;
+                            temp_angle = game.physics.line_angle(game_o.npc[target_id].x_pos,game_o.npc[target_id].y_pos,supportship_class::bullet[bullet_count].x_pos,supportship_class::bullet[bullet_count].y_pos);
+                            temp_angle = game.physics.radians_to_degrees(temp_angle);
+                            if (temp_angle <   0.0f) temp_angle += 360.0f;
+                            if (temp_angle > 360.0f) temp_angle -= 360.0f;
+                            temp_angle = 270.0f - temp_angle;
+                            if (temp_angle <   0.0f) temp_angle += 360.0f;
+                            if (temp_angle > 360.0f) temp_angle -= 360.0f;
+                            supportship_class::bullet[bullet_count].angle = temp_angle;
+                            temp_angle = game.physics.degrees_to_radians(temp_angle);
+                            supportship_class::bullet[bullet_count].x_pos = game.physics.move_speed_angle_2D_x(supportship_class::bullet[bullet_count].x_pos,game_o.projectile[supportship_class::bullet[bullet_count].warhead].speed,temp_angle);
+                            supportship_class::bullet[bullet_count].y_pos = game.physics.move_speed_angle_2D_y(supportship_class::bullet[bullet_count].y_pos,game_o.projectile[supportship_class::bullet[bullet_count].warhead].speed,temp_angle);
                         }
                         else
                         {
@@ -703,6 +693,61 @@ void  pos_supportships        (float x_pos, float y_pos)
             game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y = y_pos;
         };
     };
+};
+
+void  draw_supportships_bullets(void)
+{
+    float temp_angle = 0.0f;
+    float z_pos      = 0.05f;
+    for (int supportship_count = 0;supportship_count < MAX_SUPPORTSHIPS;supportship_count++)//display support ship bullets
+    {
+        for (int bullet_count = 0;bullet_count < MAX_BULLETS;bullet_count++)
+        {
+            if (game_o.supportship[supportship_count].bullet[bullet_count].active)
+            {
+                temp_angle = 180.0f - game_o.supportship[supportship_count].bullet[bullet_count].angle;
+                if (temp_angle > 360.0f) temp_angle -= 360.0f;
+                if (temp_angle < 360.0f) temp_angle += 360.0f;
+                temp_angle = game.physics.degrees_to_radians(temp_angle);
+                z_pos = 0.05f + (0.001*bullet_count);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_000.ref_number) texture.projectile_000.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_001.ref_number) texture.projectile_001.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_002.ref_number) texture.projectile_002.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_003.ref_number) texture.projectile_003.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_004.ref_number) texture.projectile_004.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_005.ref_number) texture.projectile_005.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_006.ref_number) texture.projectile_006.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_007.ref_number) texture.projectile_007.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_008.ref_number) texture.projectile_008.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_009.ref_number) texture.projectile_009.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_010.ref_number) texture.projectile_010.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_011.ref_number) texture.projectile_011.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_012.ref_number) texture.projectile_012.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_013.ref_number) texture.projectile_013.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_014.ref_number) texture.projectile_014.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_015.ref_number) texture.projectile_015.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_016.ref_number) texture.projectile_016.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_017.ref_number) texture.projectile_017.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_018.ref_number) texture.projectile_018.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_019.ref_number) texture.projectile_019.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_020.ref_number) texture.projectile_020.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_021.ref_number) texture.projectile_021.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_022.ref_number) texture.projectile_022.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_023.ref_number) texture.projectile_023.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_024.ref_number) texture.projectile_024.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_025.ref_number) texture.projectile_025.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_026.ref_number) texture.projectile_026.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_027.ref_number) texture.projectile_027.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_028.ref_number) texture.projectile_028.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_029.ref_number) texture.projectile_029.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_030.ref_number) texture.projectile_030.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_031.ref_number) texture.projectile_031.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_032.ref_number) texture.projectile_032.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_033.ref_number) texture.projectile_033.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+                if (game_o.projectile[game_o.supportship[supportship_count].bullet[bullet_count].warhead].image == texture.projectile_034.ref_number) texture.projectile_034.draw(true,game_o.supportship[supportship_count].bullet[bullet_count].x_pos,game_o.supportship[supportship_count].bullet[bullet_count].y_pos,z_pos,game_o.supportship[supportship_count].bullet[bullet_count].width,game_o.supportship[supportship_count].bullet[bullet_count].height,temp_angle);
+            }
+        }
+    }
 };
 
 

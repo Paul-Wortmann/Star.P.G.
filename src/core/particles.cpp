@@ -99,7 +99,7 @@ void  particle_class::process(void)
             /*
             // uncomment to have particles move in a circle / blow in a direction.
             // can go the other direction if you change ++ to --
-            particle_class::direction++;
+            particle_class::direction++; //  particle_class::direction += particle_class::direction_speed;
             if (particle_class::direction > 360) particle_class::direction = 0;
             */
         }
