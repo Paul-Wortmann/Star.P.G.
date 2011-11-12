@@ -19,7 +19,7 @@ Implemented per-generated sin/cos look up tables for faster calculations.
 Bosses now have large health bars.
 Removed redundant game resources, loading should now be slightly faster.
 Many tweaks and and a few bug fixes.
-LOC - 16090
+LOC - 16652
 
 V0.18 - (03-09-2011)
 Improved "support ships"

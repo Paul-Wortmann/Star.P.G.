@@ -208,7 +208,7 @@ int main(int argc, char *argv[])
             game.game_resume = true;
             if (game.process_ready) process_game();
             display_game();
-            if(game.config.Display_Touchscreen)
+            if ((game.config.Display_Touchscreen) && (game.process_ready))
             {
                 if(game.physics.point_in_quadrangle(-0.875f,0.2f,-0.550f,0.2f,game.io.mouse_x,game.io.mouse_y)) game.io.left = true;
                 if(game.physics.point_in_quadrangle(-0.475f,0.2f,-0.550f,0.2f,game.io.mouse_x,game.io.mouse_y)) game.io.right = true;
@@ -235,7 +235,7 @@ int main(int argc, char *argv[])
                 SDL_WarpMouse(game.graphics.gl_to_res(game_over_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(game_over_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
                 game.log.File_Write("User terminated due to insufficient health...better luck next time buddy!");
             }
-        if (game.io.escape)
+        if ((game.io.escape) && (game.process_ready))
         {
             sound.menu_select_01.play();
             game.music_next_track        = true;
@@ -256,7 +256,7 @@ int main(int argc, char *argv[])
             game_o.bomb_delay_count++;
             if (game_o.bomb_delay_count > game_o.bomb_delay) game_o.bomb_delay_count = game_o.bomb_delay;
         }
-        if (game.io.key_b)//user pressed "b" for bomb
+        if ((game.io.key_b) && (game.process_ready))//user pressed "b" for bomb
         {
             if ((game_o.number_bombs > 0) && (game_o.bomb_delay_count >= game_o.bomb_delay))
             {
@@ -276,6 +276,7 @@ int main(int argc, char *argv[])
             game.menu_level  = 11;
             SDL_WarpMouse(game.graphics.gl_to_res(pause_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(pause_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
         };
+        /*
         //if (game_o.cheats_enabled == true)
         {
             if (game.io.key_0) game_o.victory_kills = game_o.level_kills;  //complete level
@@ -300,6 +301,7 @@ int main(int argc, char *argv[])
                 if (!game_o.rumble.active) game_o.rumble.start(); // shake the screen about.
             }
         }
+        */
         if (game.io.shoot)
         {
            process_supportships(true);
@@ -318,10 +320,13 @@ int main(int argc, char *argv[])
         {
             process_supportships(false);
         }
-        if (game.io.up)    process_player(1);
-        if (game.io.down)  process_player(2);
-        if (game.io.right) process_player(3);
-        if (game.io.left)  process_player(4);
+        if (game.process_ready)
+        {
+            if (game.io.up)    process_player(1);
+            if (game.io.down)  process_player(2);
+            if (game.io.right) process_player(3);
+            if (game.io.left)  process_player(4);
+        }
      }
 //*********************************** Game paused *****************************************
         if (game.game_paused)
