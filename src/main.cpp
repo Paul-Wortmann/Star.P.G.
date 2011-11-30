@@ -68,10 +68,10 @@ int main(int argc, char *argv[])
     game.log.File_Clear();
     for (int count = 0; count < (argc+1); count++)
     {
-        game.log.File_Write(argv[count]);
+        //game.log.File_Write(argv[count]);
         if (argv[count] == "cheat") game_o.cheats_enabled = true;
     }
-    game_o.cheats_enabled = true; /// test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //game_o.cheats_enabled = true; /// test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     game.log.File_Write("------------------");
     game.log.File_Write("| Star.P.G V1.0 |");
@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
     game.log.File_Write("Starting up!");
     game.log.File_Write("");
     game.log.File_Write("------------------\n");
-    if (game_o.cheats_enabled) game.log.File_Write("Cheating enabled!\n");
+    //if (game_o.cheats_enabled) game.log.File_Write("Cheating enabled!\n");
     game.config.File_Set("Star.P.G..cfg");
     game.config.Set_Defaults();
     game.log.File_Write("Loading config...");
@@ -269,12 +269,26 @@ int main(int argc, char *argv[])
         }
         if (game.io.pause)
         {
-            game_o.paused.spawn();
-            game.game_paused = true;
-            game.game_active = false;
-            game.io.pause    = false;
-            game.menu_level  = 11;
-            SDL_WarpMouse(game.graphics.gl_to_res(pause_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(pause_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+            if (!game.game_paused)
+            {
+                game_o.paused.spawn();
+                game.game_paused = true;
+                game.game_active = false;
+                game.io.pause    = false;
+                game.menu_level  = 11;
+                SDL_WarpMouse(game.graphics.gl_to_res(pause_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(pause_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                game.config.menu_delay_count = 0;
+                while (game.config.menu_delay_count < (game.config.menu_delay*16))
+                {
+                    game.config.menu_delay_count++;
+                }
+            }
+            else
+            {
+                game.menu_active = false;
+                game.game_paused = false;
+                game.game_active = true;
+            }
         };
         /*
         //if (game_o.cheats_enabled == true)
@@ -331,6 +345,12 @@ int main(int argc, char *argv[])
 //*********************************** Game paused *****************************************
         if (game.game_paused)
         {
+            if ((game.io.pause) && (game.process_ready))
+            {
+                game.menu_active = false;
+                game.game_paused = false;
+                game.game_active = true;
+            }
             if (game.music_next_track)
             {
                 game.music_next_track = false;
@@ -399,10 +419,6 @@ int main(int argc, char *argv[])
     game.log.File_Write("\n");
     game.log.File_Write("Shutting down...");
     game.log.File_Write("---------------\n");
-    game.log.File_Write("Unloading fonts...");
-    TTF_Quit();
-    game.log.File_Write("Shutting down audio system...");
-    Mix_CloseAudio();
 //    game.log.File_Write("PhysicsFS deinit...");
 //    PHYSFS_deinit();
     game.log.File_Write("SDL deinit...");
