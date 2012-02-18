@@ -341,7 +341,31 @@ int main(int argc, char *argv[])
             if (game.io.right) process_player(3);
             if (game.io.left)  process_player(4);
         }
-     }
+        if ((game.io.key_1) && (game_o.projectile[ 0].active))
+        {
+            game_o.player.front_weapon = 0;
+        }
+        if ((game.io.key_2) && (game_o.projectile[ 1].active))
+        {
+            game_o.player.front_weapon = 1;
+        }
+        if ((game.io.key_3) && (game_o.projectile[ 2].active))
+        {
+            game_o.player.front_weapon = 2;
+        }
+        if ((game.io.key_4) && (game_o.projectile[ 3].active))
+        {
+            game_o.player.front_weapon = 3;
+        }
+        if ((game.io.key_5) && (game_o.projectile[ 4].active))
+        {
+            game_o.player.front_weapon = 4;
+        }
+        if ((game.io.key_6) && (game_o.projectile[ 5].active))
+        {
+            game_o.player.front_weapon = 5;
+        }
+    }
 //*********************************** Game paused *****************************************
         if (game.game_paused)
         {
