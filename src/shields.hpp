@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2011 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
+ * Copyright (C) 2010-2012 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
  * This file is part of Star.P.G.
  *
  * Star.P.G. is free software: you can redistribute it and/or modify

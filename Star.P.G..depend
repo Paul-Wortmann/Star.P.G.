@@ -685,7 +685,7 @@
 
 1309768119 c:\_git_\star.p.g\src\levels.h
 
-1321750720 source:c:\_git_\star.p.g\src\main.cpp
+1322652377 source:c:\_git_\star.p.g\src\main.cpp
 	<locale>
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
@@ -1601,7 +1601,7 @@
 	"../load_resources.hpp"
 	"background.hpp"
 
-1320155717 source:c:\_git_\star.p.g\src\core\config.cpp
+1322739845 source:c:\_git_\star.p.g\src\core\config.cpp
 	<fstream>
 	<stdio.h>
 	<stdlib.h>
