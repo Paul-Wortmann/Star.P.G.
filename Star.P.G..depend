@@ -685,8 +685,7 @@
 
 1309768119 c:\_git_\star.p.g\src\levels.h
 
-1329586954 source:c:\_git_\star.p.g\src\main.cpp
-	<locale>
+1336199518 source:c:\_git_\star.p.g\src\main.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
 	<SDL/SDL_ttf.h>

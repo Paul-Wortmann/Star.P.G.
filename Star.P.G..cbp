@@ -19,14 +19,11 @@
 					<Add library="mingw32" />
 					<Add library="SDLmain" />
 					<Add library="SDL" />
-					<Add library="opengl32" />
-					<Add library="SDL_mixer" />
 					<Add library="SDL_image" />
-					<Add library="glu32" />
-					<Add library="freetype" />
-					<Add library="SDL_net" />
+					<Add library="SDL_mixer" />
 					<Add library="SDL_ttf" />
-					<Add library="GL" />
+					<Add library="SDL_net" />
+					<Add library="opengl32" />
 					<Add directory="\host\Program Files (x86)\CodeBlocks\MinGW\lib" />
 					<Add directory="\usr\lib" />
 				</Linker>
