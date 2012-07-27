@@ -40,6 +40,11 @@ extern  menu_class       next_level_menu;
 
 int init_game(bool re_init)
 {
+    //------ setup menu background -----------
+    game.background.set_data ( 1, 1, 0, 1.0f, 0.0f, 0.0005f, 0.00040f, texture.menu_background_001.ref_number);
+    game.background.set_data ( 2, 1, 1, 0.0f, 1.0f, 0.0010f, 0.00095f, texture.menu_background_000.ref_number);
+    game.background.set_movement_type(BOUNCE);
+    //----------------------------------------
     game.game_paused                         = false;
     game.game_active                         = false;
     game.game_resume                         = false;
