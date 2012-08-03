@@ -1,4 +1,8 @@
-V1.01 - (xx-xx-2012)
+V1.02 - (12-12-2012)
+Many tweaks and and a few bug fixes.
+LOC - xxxxx
+
+V1.01 - (04-08-2012)
 Menu background now resets after death.
 Assigned keys 1-6 to allow user to change weapons.
 More vissable projectiles for first level, enemy_00.
@@ -9,7 +13,7 @@ Fixed SIGFAULT segmentation fault caused by inpropper SDL shutdown.
 Removed "locale" header due to c++ runtime issues on win64 systems.
 Added tutorial for windows developers to assist in setting up Code::Blocks with SDL and MinGW.
 Many tweaks and and a few bug fixes.
-LOC - 16251
+LOC - 16254
 
 V1.0 - (11-11-2011)
 Fixed lag on menu choice type buttons, when menu is dragged.

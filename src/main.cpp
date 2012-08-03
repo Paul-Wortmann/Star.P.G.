@@ -52,7 +52,7 @@ extern menu_class        game_over_menu;
 extern menu_class        next_level_menu;
 extern menu_class        outro_menu;
 
-const char App_Name[] = ("Star.P.G V1.0 - www.physhexgames.co.nr");
+const char App_Name[] = ("Star.P.G V1.01 - www.physhexgames.co.nr");
 const char App_Icon[] = "data/icon.bmp";
 
 Uint32                   colorkey;
@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
     //game_o.cheats_enabled = true; /// test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     game.log.File_Write("------------------");
-    game.log.File_Write("| Star.P.G V1.0 |");
+    game.log.File_Write("| Star.P.G V1.01 |");
     game.log.File_Write("------------------\n");
     game.log.File_Write("Starting up!");
     game.log.File_Write("");
