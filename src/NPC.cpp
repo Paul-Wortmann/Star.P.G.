@@ -36,8 +36,8 @@
 extern  sound_type       sound;
 extern  music_type       music;
 extern  texture_type     texture;
-extern  game_type  game_o;
-extern  game_class game;
+extern  game_type        game_o;
+extern  game_class       game;
 
 void enemy_class::load(std::string file_name)
 {
