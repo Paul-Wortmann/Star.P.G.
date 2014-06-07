@@ -54,7 +54,7 @@ void font_class::Set_File(std::string filename, int pt_size)
     font_class::font_data = TTF_OpenFont(filename.c_str(), pt_size);
 };
 
-bool font_class::Write(int r,int g,int b,int a,float x,float y,std::string text,int int_data)
+bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,std::string text,int int_data)
 {
     GLuint texture_data;
     GLenum texture_format;
@@ -98,7 +98,7 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,std::string text,
     return(true);
 };
 
-bool font_class::Write(int r,int g,int b,int a,float x,float y,std::string text,float float_data)
+bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,std::string text,float float_data)
 {
     GLuint texture_data;
     GLenum texture_format;
@@ -142,7 +142,7 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,std::string text,
     return(true);
 };
 
-bool font_class::Write(int r,int g,int b,int a,float x,float y,std::string text)
+bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,std::string text)
 {
     GLuint texture_data;
     GLenum texture_format;
@@ -182,7 +182,7 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,std::string text)
     return(true);
 };
 
-bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text)
+bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,float ws,float hs,std::string text)
 {
     GLuint texture_data;
     GLenum texture_format;
@@ -226,7 +226,7 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs
 
 
 
-bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,int int_data)
+bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,float ws,float hs,std::string text,int int_data)
 {
     GLuint             texture_data;
     GLenum             texture_format;
@@ -273,7 +273,7 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs
     return(true);
 };
 
-bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,float float_data)
+bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,float ws,float hs,std::string text,float float_data)
 {
     GLuint             texture_data;
     GLenum             texture_format;
@@ -320,7 +320,7 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs
     return(true);
 };
 
-bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,int int_data,std::string text_2)
+bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,float ws,float hs,std::string text,int int_data,std::string text_2)
 {
     GLuint             texture_data;
     GLenum             texture_format;
@@ -368,7 +368,7 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs
     return(true);
 };
 
-bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,float float_data,std::string text_2)
+bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,float ws,float hs,std::string text,float float_data,std::string text_2)
 {
     GLuint             texture_data;
     GLenum             texture_format;

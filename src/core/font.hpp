@@ -36,14 +36,14 @@ class font_class
        ~font_class(void);
         void Set_File(std::string filename);
         void Set_File(std::string filename, int pt_size);
-        bool Write(int r,int g,int b,int a,float x,float y,std::string text,int int_data);
-        bool Write(int r,int g,int b,int a,float x,float y,std::string text,float float_data);
-        bool Write(int r,int g,int b,int a,float x,float y,std::string text);
-        bool Write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text);
-        bool Write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,int int_data);
-        bool Write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,float float_data);
-        bool Write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,int int_data,std::string text_2);
-        bool Write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,float float_data,std::string text_2);
+        bool Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,std::string text,int int_data);
+        bool Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,std::string text,float float_data);
+        bool Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,std::string text);
+        bool Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,float ws,float hs,std::string text);
+        bool Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,float ws,float hs,std::string text,int int_data);
+        bool Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,float ws,float hs,std::string text,float float_data);
+        bool Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,float ws,float hs,std::string text,int int_data,std::string text_2);
+        bool Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,float ws,float hs,std::string text,float float_data,std::string text_2);
 };
 
 #endif //FONT_H
