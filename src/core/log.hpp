@@ -34,7 +34,7 @@ class log_file_class
     public:
               log_file_class(void);
              ~log_file_class(void);
-        bool File_Set(const char *Log_File);
+        bool File_Set(const char *file_name);
         bool File_Clear(void);
         bool File_Delete(void);
         bool File_Write(const char  log_data[]);

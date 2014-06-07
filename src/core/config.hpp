@@ -58,7 +58,7 @@ class config_file_class
              ~config_file_class(void);
         void  process          (bool set_active);
         bool  File_Set         (std::string file_name);
-        bool  Set_Defaults     (void);
+        void  Set_Defaults     (void);
         bool  File_Clear       (void);
         bool  File_Delete      (void);
         bool  File_Write_Data  (std::string config_comment);

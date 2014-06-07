@@ -62,7 +62,7 @@ int get_next_active_wave(void)
     return(temp_int);
 }
 /*----------------------------------------------------------------------------*/
-int spawn_wave(void)
+void spawn_wave(void)
 {
    float temp_float = 0.0f;
    int   wave_count = get_next_active_wave();
@@ -208,7 +208,7 @@ int spawn_wave(void)
    }
 }
 /*----------------------------------------------------------------------------*/
-int   process_waves(void)
+void  process_waves(void)
 {
     for(int wave_count = 0;wave_count < MAX_WAVES;wave_count++)
     {

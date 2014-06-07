@@ -129,8 +129,6 @@ void draw_thrusters(void)
 
 void thruster_class::load(std::string file_name)
 {
-    char           temp_char_UTF8   = ' ';
-    short          temp_char_UTF16  = ' ';
     int            temp_char_UTF32  = ' ';
     float          temp_float_data;
     int            temp_int_data;
@@ -155,7 +153,7 @@ void thruster_class::load(std::string file_name)
             }
             {
                 temp_char_UTF32 = data_line[0];
-                if((temp_char_UTF32 != '#') && (data_line.length() > 2))
+                if((temp_char_UTF32 != '#') && ((int)data_line.length() > 2))
                 {
                     temp_char_UTF32   = '#';
                     temp_string_key   = "";
@@ -166,16 +164,16 @@ void thruster_class::load(std::string file_name)
                         temp_char_UTF32 = data_line[count];
                         if(temp_char_UTF32 != ' ') temp_string_key += temp_char_UTF32;
                         count++;
-                        if(count > data_line.length()) (temp_char_UTF32 = ' ');
+                        if(count > (int)data_line.length()) (temp_char_UTF32 = ' ');
                     }
                     while((temp_char_UTF32 == ' ') || (temp_char_UTF32 == '='))
                     {
                         temp_char_UTF32 = data_line[count];
                         count++;
-                        if(count > data_line.length()) (temp_char_UTF32 = '#');
+                        if(count > (int)data_line.length()) (temp_char_UTF32 = '#');
                     }
                     count--;
-                    while(count < (data_line.length()-1))
+                    while(count < ((int)data_line.length()-1))
                     {
                         temp_char_UTF32  = data_line[count];
                         if (temp_char_UTF32 != '"') temp_string_value += temp_char_UTF32;

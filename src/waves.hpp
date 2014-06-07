@@ -42,8 +42,8 @@ struct wave_class
 };
 
 int   init_waves          (void);
-int   spawn_wave          (void);
+void  spawn_wave          (void);
 int   get_next_active_wave(void);
-int   process_waves       (void);
+void  process_waves       (void);
 
 #endif //WAVES_H

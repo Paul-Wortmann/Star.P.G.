@@ -32,7 +32,7 @@ class save_game_class
     public:
               save_game_class(void);
              ~save_game_class(void);
-        bool  Assign_File(std::string file_name);
+        void  Assign_File(std::string file_name);
         bool  Save(void);
         bool  Load(void);
         bool  Delete(void);

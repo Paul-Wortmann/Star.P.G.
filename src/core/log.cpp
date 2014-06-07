@@ -39,9 +39,9 @@ log_file_class::~log_file_class(void)
 
 };
 
-bool log_file_class::File_Set(const char *Log_File)
+bool log_file_class::File_Set(const char *file_name)
 {
-    log_file_class::Log_File = Log_File;
+    log_file_class::Log_File = file_name;
     return(true);
 };
 

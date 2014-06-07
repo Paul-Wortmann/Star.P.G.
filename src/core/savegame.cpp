@@ -41,7 +41,7 @@ save_game_class::~save_game_class(void)
 
 };
 
-bool save_game_class::Assign_File(std::string file_name)
+void save_game_class::Assign_File(std::string file_name)
 {
     save_game_class::save_file_name = file_name;
 };
