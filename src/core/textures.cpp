@@ -55,7 +55,7 @@ texture_class::texture_class()
         texture_class::frame[frame_count].active = false;
         texture_class::frame[frame_count].data   = 0;
     }
-};
+}
 
 texture_class::~texture_class()
 {
@@ -63,7 +63,7 @@ texture_class::~texture_class()
     {
         if (texture_class::frame[frame_count].active) glDeleteTextures(1, &texture_class::frame[frame_count].data);
     }
-};
+}
 
 bool texture_class::load_image(std::string file_name, int index_number)
 {
@@ -75,8 +75,6 @@ bool texture_class::load_image(std::string file_name, int index_number)
     if (image_surface = IMG_Load(file_name.c_str()))
     {
         return_value = true;
-        if ((image_surface->w & (image_surface->w - 1)) != 0 );
-        if ((image_surface->h & (image_surface->h - 1)) != 0 );
         number_of_colors = image_surface->format->BytesPerPixel;
         if (number_of_colors == 4)
         {
@@ -130,8 +128,6 @@ bool texture_class::load_spritesheet(std::string file_name, int index_number, in
     if (sprite_sheet = IMG_Load(file_name.c_str()))
     {
         return_value = true;
-        if ((sprite_sheet->w & (sprite_sheet->w - 1)) != 0 );
-        if ((sprite_sheet->h & (sprite_sheet->h - 1)) != 0 );
         frames_x = sprite_sheet->w / texture_class::width;
         frames_y = sprite_sheet->h / texture_class::height;
         num_sprites = frames_x * frames_y;

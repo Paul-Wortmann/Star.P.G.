@@ -89,23 +89,23 @@ struct active_npc_type
 };
 
 void init_enemies         (bool re_init);
-int  kill_active_npcs     (void);
-int  init_active_npcs     (void);
-int  check_active_npcs    (void);
-int  sort_active_npcs     (void);
-int  add_active_npc       (int npc_num);
-int  del_active_npc       (int npc_num);
-int  spawn_npc            (float x_position, float y_position, int type_npc, int type_formation, float x_formation_ofset, float y_formation_ofset);
-int  kill_npc             (int npc_num);
-int  init_npcs            (int type_npc);
-int  proccess_npcs        (void);
-int  spawn_npc_bullet_num (int npc_num, int weapon, int npc_bullet_num, int location);
-int  spawn_npc_bullet     (int npc_num, int weapon, int location);
-int  kill_npc_bullet      (int npc_num, int weapon, int npc_bullet_num);
+void kill_active_npcs     (void);
+void init_active_npcs     (void);
+void check_active_npcs    (void);
+void sort_active_npcs     (void);
+void add_active_npc       (int npc_num);
+void del_active_npc       (int npc_num);
+void spawn_npc            (float x_position, float y_position, int type_npc, int type_formation, float x_formation_ofset, float y_formation_ofset);
+void kill_npc             (int npc_num);
+void init_npcs            (int type_npc);
+void proccess_npcs        (void);
+int  spawn_npc_bullet_num (int npc_num, int npc_bullet_num, int location);
+int  spawn_npc_bullet     (int npc_num, int location);
+int  kill_npc_bullet      (int npc_num, int npc_bullet_num);
 int  init_npc_bullets     (void);
 int  proccess_npc_bullets (void);
 int  init_npc_bullets2    (void);
-int  proccess_npc_bullets2(void);
+void proccess_npc_bullets2(void);
 void draw_npcs            (void);
 
 #endif //NPC_H

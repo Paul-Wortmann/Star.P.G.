@@ -39,11 +39,11 @@ struct rumble_class
         float max_y;
         float speed_x;
         float speed_y;
-        bool  init(void);
-        bool  process(void);
-        bool  start(void);
-        bool  stop(void);
-        bool  start(float magnitude, int duration);
+        void  init(void);
+        void  process(void);
+        void  start(void);
+        void  stop(void);
+        void  start(float magnitude, int duration);
 };
 
 #endif //SCREEN_RUMBLE_H

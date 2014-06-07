@@ -24,7 +24,7 @@
 
 #include "screen_rumble.hpp"
 
-bool  rumble_class::init(void)
+void  rumble_class::init(void)
 {
     rumble_class::active       = false;
     rumble_class::maximum      = 200;
@@ -39,7 +39,7 @@ bool  rumble_class::init(void)
     rumble_class::speed_y      = 0.01f;
 };
 
-bool  rumble_class::process(void)
+void  rumble_class::process(void)
 {
     if(rumble_class::active)
     {
@@ -84,18 +84,18 @@ bool  rumble_class::process(void)
     }
 };
 
-bool  rumble_class::start(void)
+void  rumble_class::start(void)
 {
     rumble_class::init();
     rumble_class::active  = true;
 };
 
-bool  rumble_class::stop(void)
+void  rumble_class::stop(void)
 {
     rumble_class::active  = false;
 };
 
-bool  rumble_class::start(float magnitude, int duration)
+void  rumble_class::start(float magnitude, int duration)
 {
     rumble_class::init();
     rumble_class::active       = true;

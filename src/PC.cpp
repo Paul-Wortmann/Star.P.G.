@@ -35,7 +35,7 @@ extern  texture_type     texture;
 extern  game_type  game_o;
 extern  game_class game;
 
-int   init_player            (void)
+void  init_player            (void)
 {
     game_o.player.shield                     =  0.100f;
     game_o.player.shield_regen_rate          =  0.000025f;
@@ -363,7 +363,7 @@ int kill_player_bullet(void)
         kill_player_bullet(num_player_bullets);
     }
     return(1);
-};
+}
 
 /*----------------------------------------------------------------------------*/
 int kill_player_bullet(int player_bullet_num)
@@ -395,7 +395,7 @@ void init_player_bullets(void)
 }
 
 /*----------------------------------------------------------------------------*/
-int proccess_player_bullets(void)
+void proccess_player_bullets(void)
 {
    int   random_temp     =  0;
    int   target_id       = -1;
@@ -680,7 +680,7 @@ int proccess_player_bullets(void)
                      }
                         spawn_explosion(game_o.npc[npc_count].bullet[npc_bullet_num].x_pos,game_o.npc[npc_count].bullet[npc_bullet_num].y_pos,0.25f);
                         kill_player_bullet(player_bullet_num);
-                        kill_npc_bullet(npc_count,1,npc_bullet_num);
+                        kill_npc_bullet(npc_count,npc_bullet_num);
                         game_o.score += game_o.npc[npc_count].type_npc + 1;
                         game_o.level_score += game_o.npc[npc_count].type_npc + 1;;
                      }
@@ -697,7 +697,7 @@ float thruster_offset(void)
 {
    if (game_o.player.thrusters < 0) return(0.0f);
    else return(0.03f);
-};
+}
 
 /*----------------------------------------------------------------------------*/
 int process_player(int command)

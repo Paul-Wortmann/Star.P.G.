@@ -34,7 +34,7 @@ extern  texture_type     texture;
 extern  game_type        game_o;
 extern  game_class       game;
 
-void supportship_class::init(int supportship_number, int number_of_ships, float x_pos, float y_pos)
+void supportship_class::init(int supportship_number, int number_ships, float x_pos, float y_pos)
 {
     supportship_class::follow_distance    = 0.05f;
     supportship_class::follow             = false;
@@ -42,7 +42,7 @@ void supportship_class::init(int supportship_number, int number_of_ships, float 
     supportship_class::rotate_follow      = false;
     supportship_class::side_follow        = false;
     supportship_class::movement_speed     = 0.005f;
-    supportship_class::number_of_ships    = number_of_ships;
+    supportship_class::number_of_ships    = number_ships;
     supportship_class::rate_of_fire       = 8;
     supportship_class::rate_of_fire_count = 0;
     supportship_class::active             = false;
@@ -69,11 +69,11 @@ void supportship_class::init(int supportship_number, int number_of_ships, float 
     }
 };
 
-void  init_supportships(int number_of_ships, float x_pos, float y_pos)
+void  init_supportships(int number_ships, float x_pos, float y_pos)
 {
    for (int supportship_count = 0;supportship_count < MAX_SUPPORTSHIPS-1;supportship_count++)
    {
-       game_o.supportship[supportship_count].init(supportship_count,number_of_ships,x_pos,y_pos);
+       game_o.supportship[supportship_count].init(supportship_count,number_ships,x_pos,y_pos);
    }
     game_o.supportship[0].side_follow               = true;
     game_o.supportship[0].number_of_ships           = 2;
@@ -153,15 +153,13 @@ void  process_supportships(bool spawn_bullet)
    }
 };
 
-void supportship_class::process(bool spawn_bullet)
+void supportship_class::process(bool bullet_to_spawn)
 {
     float temp_angle      =  0.0f;
     int   random_temp     =  0;
     int   target_id       = -1;
     float target_distance =  10.0f;
     float temp_distance   =  0.0f;
-    float x_temp_velocity =  0.0f;
-    float y_temp_velocity =  0.0f;
     if (supportship_class::active)
     {
         if (supportship_class::rate_of_fire_count > supportship_class::rate_of_fire)//rof spawn bullets
@@ -169,19 +167,19 @@ void supportship_class::process(bool spawn_bullet)
             supportship_class::rate_of_fire_count = 0;
             if (supportship_class::follow)
             {
-                if ((supportship_class::level >= 0) && (spawn_bullet))
+                if ((supportship_class::level >= 0) && (bullet_to_spawn))
                 {
                     supportship_class::spawn_bullet(0,0,0);
                     supportship_class::spawn_bullet(1,1,1);
                 }
-                if ((supportship_class::level >= 1) && (spawn_bullet))
+                if ((supportship_class::level >= 1) && (bullet_to_spawn))
                 {
                     supportship_class::spawn_bullet(0,2,2);
                     supportship_class::spawn_bullet(1,3,3);
                     supportship_class::spawn_bullet(2,2,2);
                     supportship_class::spawn_bullet(3,3,3);
                 }
-                if ((supportship_class::level >= 2) && (spawn_bullet))
+                if ((supportship_class::level >= 2) && (bullet_to_spawn))
                 {
                     supportship_class::spawn_bullet(0,4,4);
                     supportship_class::spawn_bullet(1,5,5);
@@ -195,7 +193,7 @@ void supportship_class::process(bool spawn_bullet)
             {
                 for (int supportship_level_count = 0;supportship_level_count < MAX_SUPPORTSHIP_LEVELS-1;supportship_level_count++)
                 {
-                    if ((supportship_class::level >= supportship_level_count) && (spawn_bullet))
+                    if ((supportship_class::level >= supportship_level_count) && (bullet_to_spawn))
                     {
                         supportship_class::spawn_bullet(supportship_level_count,0,0);
                     }
@@ -203,19 +201,19 @@ void supportship_class::process(bool spawn_bullet)
             }
             if (supportship_class::side_follow)
             {
-                if ((supportship_class::level >= 0) && (spawn_bullet))
+                if ((supportship_class::level >= 0) && (bullet_to_spawn))
                 {
                     supportship_class::spawn_bullet(0,0,0);
                     supportship_class::spawn_bullet(1,1,1);
                 }
-                if ((supportship_class::level >= 1) && (spawn_bullet))
+                if ((supportship_class::level >= 1) && (bullet_to_spawn))
                 {
                     supportship_class::spawn_bullet(0,2,2);
                     supportship_class::spawn_bullet(1,3,3);
                     supportship_class::spawn_bullet(2,2,2);
                     supportship_class::spawn_bullet(3,3,3);
                 }
-                if ((supportship_class::level >= 2) && (spawn_bullet))
+                if ((supportship_class::level >= 2) && (bullet_to_spawn))
                 {
                     supportship_class::spawn_bullet(0,4,4);
                     supportship_class::spawn_bullet(1,5,5);
@@ -229,7 +227,7 @@ void supportship_class::process(bool spawn_bullet)
             {
                 for (int supportship_level_count = 0;supportship_level_count < MAX_SUPPORTSHIP_LEVELS-1;supportship_level_count++)
                 {
-                    if ((supportship_class::level >= supportship_level_count) && (spawn_bullet))
+                    if ((supportship_class::level >= supportship_level_count) && (bullet_to_spawn))
                     {
                         supportship_class::spawn_bullet(supportship_level_count,0,0);
                     }
@@ -494,7 +492,7 @@ void supportship_class::process(bool spawn_bullet)
                             supportship_class::bullet[bullet_count].active = false;
                             supportship_class::bullet[bullet_count].x_pos  = 2.0f;
                             supportship_class::bullet[bullet_count].y_pos  = 2.0f;
-                            kill_npc_bullet(npc_count,1,npc_bullet_num);
+                            kill_npc_bullet(npc_count,npc_bullet_num);
                             game_o.score += game_o.npc[npc_count].type_npc + 1;
                             game_o.level_score += game_o.npc[npc_count].type_npc + 1;;
                         }
@@ -506,10 +504,9 @@ void supportship_class::process(bool spawn_bullet)
     // movement
     for (int supportship_count = 0;supportship_count < MAX_SUPPORTSHIPS-1;supportship_count++)
     {
-        int supportship_level_count = 0;
         if (game_o.supportship[supportship_count].follow)/// follow
         {
-            supportship_level_count = 0;
+            int supportship_level_count = 0;
             if (game_o.supportship[supportship_count].active)
             {
                 temp_distance = game.physics.distance_2D(game_o.player.x_pos,game_o.player.y_pos,game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y);
@@ -573,7 +570,7 @@ void supportship_class::process(bool spawn_bullet)
         }
         if (game_o.supportship[supportship_count].side_follow)/// side - follow
         {
-            supportship_level_count = 0;
+            int supportship_level_count = 0;
             if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x < game_o.player.x_pos)                             game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x += game_o.supportship[supportship_count].movement_speed;
             if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x > game_o.player.x_pos)                             game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x -= game_o.supportship[supportship_count].movement_speed;
             if (game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y < game_o.player.y_pos-((game_o.player.height/3)*2)) game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y += game_o.supportship[supportship_count].movement_speed;
@@ -627,14 +624,13 @@ void kill_supportship_bullets(void)
 void  draw_supportships       (void)
 {
     float z_pos = 0.001f;
-    int supportship_level_count = 0;
     for (int count = 0;count < MAX_SUPPORTSHIPS;count++)
     {
         if (game_o.supportship[count].active)
         {
             if (game_o.supportship[count].follow) //support ships - follow
             {
-                supportship_level_count = 0;
+                int supportship_level_count = 0;
                 if (game_o.supportship[count].image == texture.sideship_00.ref_number) texture.sideship_00.draw(true,game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,z_pos,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
                 if (game_o.supportship[count].image == texture.sideship_01.ref_number) texture.sideship_01.draw(true,game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,z_pos,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
                 if (game_o.supportship[count].image == texture.sideship_02.ref_number) texture.sideship_02.draw(true,game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,z_pos,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
@@ -668,7 +664,7 @@ void  draw_supportships       (void)
             }
             if (game_o.supportship[count].side_follow) //support ships - side_follow
             {
-                supportship_level_count = 0;
+                int supportship_level_count = 0;
                 if (game_o.supportship[count].image == texture.sideship_00.ref_number) texture.sideship_00.draw(true,game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,z_pos,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
                 if (game_o.supportship[count].image == texture.sideship_01.ref_number) texture.sideship_01.draw(true,game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,z_pos,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);
                 if (game_o.supportship[count].image == texture.sideship_02.ref_number) texture.sideship_02.draw(true,game_o.supportship[count].supportship_pos[supportship_level_count].pos_x,game_o.supportship[count].supportship_pos[supportship_level_count].pos_y,z_pos,game_o.supportship[count].width,game_o.supportship[count].height,270.0f);

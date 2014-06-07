@@ -55,15 +55,15 @@ struct player_class
     bullet_type    bullet[MAX_BULLETS];
 };
 
-int   init_player            (void);
+void  init_player            (void);
 float thruster_offset        (void);
-int   process_player         (int command);
+int  process_player         (int command);
 
 int  spawn_player_bullet_num (int player_bullet_num, int location);
 int  spawn_player_bullet     (int position);
 int  kill_player_bullet      (void);
 int  kill_player_bullet      (int player_bullet_num);
 void init_player_bullets     (void);
-int  proccess_player_bullets (void);
+void proccess_player_bullets (void);
 
 #endif //PC_H

@@ -767,7 +767,8 @@ bool proc_textures(void)
     texture.shrapnel_05.process();
     texture.shrapnel_06.process();
     texture.shrapnel_07.process();
-};
+    return(true);
+}
 
 bool load_fonts(void)
 {
@@ -776,7 +777,7 @@ bool load_fonts(void)
     font.font_2.Set_File("data/fonts/font_002.ttf");font_count++;
     game.log.File_Write("Font files loaded -> ",font_count);
     return(true);
-};
+}
 
 bool loading_screen_display(std::string file_name)
 {
@@ -787,12 +788,13 @@ bool loading_screen_display(std::string file_name)
     loading_screen.draw(false,0.0f,0.0f,0.9f,2.0f,2.0f);
     SDL_GL_SwapBuffers();
     return(true);
-};
+}
 
 bool draw_texture(bool r, int texture_number, float x, float y, float z, float w, float h)
 {
     draw_texture(r,texture_number,x,y,z,w,h,0.0f);
-};
+    return(true);
+}
 
 bool draw_texture(bool r, int texture_number, float x, float y, float z, float w, float h, float angle)
 {

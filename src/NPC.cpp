@@ -44,7 +44,6 @@ void enemy_class::load(std::string file_name)
     char         temp_char = ' ';
     float        temp_float_data;
     int          temp_int_data;
-    bool         temp_bool_data;
     std::string  temp_string_data;
     std::string  temp_string_key;
     std::string  temp_string_value;
@@ -58,7 +57,7 @@ void enemy_class::load(std::string file_name)
             getline(script_file,data_line);
             {
                 temp_char = data_line[0];
-                if((temp_char != '#') && (data_line.length() > 2))
+                if((temp_char != '#') && ((int)data_line.length() > 2))
                 {
                     temp_char         = '#';
                     temp_string_key   = "";
@@ -69,13 +68,13 @@ void enemy_class::load(std::string file_name)
                         temp_char = data_line[count];
                         if(temp_char != ' ') temp_string_key += temp_char;
                         count++;
-                        if(count > data_line.length()) (temp_char = ' ');
+                        if(count > (int)data_line.length()) (temp_char = ' ');
                     }
                     while((temp_char == ' ') || (temp_char == '='))
                     {
                         temp_char = data_line[count];
                         count++;
-                        if(count > data_line.length()) (temp_char = '#');
+                        if(count > (int)data_line.length()) (temp_char = '#');
                     }
                     count--;
                     while(temp_char != ' ')
@@ -83,13 +82,11 @@ void enemy_class::load(std::string file_name)
                         temp_char = data_line[count];
                         if(temp_char != ' ') temp_string_value += temp_char;
                         count++;
-                        if(count > data_line.length()) (temp_char = ' ');
+                        if(count > (int)data_line.length()) (temp_char = ' ');
                     }
                     temp_string_data = temp_string_value.c_str();
                     temp_float_data  = atof(temp_string_value.c_str());
                     temp_int_data    = atoi(temp_string_value.c_str());
-                    if (temp_int_data == 1) temp_bool_data = true;
-                    else temp_bool_data = false;
                     if (temp_string_key == "Name")
                     {
                         enemy_class::name = temp_string_data;
@@ -265,17 +262,16 @@ void init_enemies(bool re_init)
 };
 
 /*----------------------------------------------------------------------------*/
-int init_active_npcs(void)
+void init_active_npcs(void)
 {
     for(int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
     {
         game_o.active_npc[npc_count].number = -1;
         game_o.active_npc[npc_count].active = false;
     }
-    return(0);
 }
 /*----------------------------------------------------------------------------*/
-int check_active_npcs(void)
+void check_active_npcs(void)
 {
     for(int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
     {
@@ -283,7 +279,7 @@ int check_active_npcs(void)
     }
 }
 /*----------------------------------------------------------------------------*/
-int sort_active_npcs(void)
+void sort_active_npcs(void)
 {
     check_active_npcs();
 /*
@@ -306,7 +302,7 @@ int sort_active_npcs(void)
 */
 }
 /*----------------------------------------------------------------------------*/
-int add_active_npc  (int npc_num)
+void add_active_npc  (int npc_num)
 {
     bool spawn_done = 0;
     for  (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
@@ -319,10 +315,9 @@ int add_active_npc  (int npc_num)
             spawn_done = 1;
         }
     }
-    return(0);
 }
 /*----------------------------------------------------------------------------*/
-int del_active_npc  (int npc_num)
+void del_active_npc  (int npc_num)
 {
     for(int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
     {
@@ -335,10 +330,9 @@ int del_active_npc  (int npc_num)
         }
     }
     sort_active_npcs();
-    return(0);
 }
 /*----------------------------------------------------------------------------*/
-int spawn_npc(float x_position, float y_position, int type_npc, int type_formation, float x_formation_ofset, float y_formation_ofset)
+void spawn_npc(float x_position, float y_position, int type_npc, int type_formation, float x_formation_ofset, float y_formation_ofset)
 {
     bool  spawn_done = 0;
     for  (int npc_num = 0; npc_num < MAX_NPCS; npc_num++)
@@ -374,19 +368,17 @@ int spawn_npc(float x_position, float y_position, int type_npc, int type_formati
             add_active_npc(npc_num);
         }
     }
-    return(1);
 }
 /*----------------------------------------------------------------------------*/
-int kill_npc(int npc_num)
+void kill_npc(int npc_num)
 {
     game_o.npc[npc_num].active     = false;
     game_o.npc[npc_num].x_pos      = -2.0f;
     game_o.npc[npc_num].y_pos      = -2.0f;
     del_active_npc(npc_num);
-    return(0);
 }
 /*----------------------------------------------------------------------------*/
-int kill_active_npcs(void)
+void kill_active_npcs(void)
 {
     for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++) //kill all npcs
     {
@@ -394,7 +386,7 @@ int kill_active_npcs(void)
     }
 }
 /*----------------------------------------------------------------------------*/
-int init_npcs(int type_npc)
+void init_npcs(int type_npc)
 {
     for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
     {
@@ -425,11 +417,10 @@ int init_npcs(int type_npc)
     }
     init_npc_bullets();
     init_npc_bullets2();
-    return(0);
 }
 
 /*----------------------------------------------------------------------------*/
-int proccess_npcs(void)
+void proccess_npcs(void)
 {
     float temp_angle = 0.0f;
     for (int npc_count = 0; npc_count < MAX_NPCS; npc_count++)
@@ -556,7 +547,7 @@ int proccess_npcs(void)
 }
 
 /*----------------------------------------------------------------------------*/
-int spawn_npc_bullet_num(int npc_num, int weapon, int npc_bullet_num, int location)
+int spawn_npc_bullet_num(int npc_num, int npc_bullet_num, int location)
 {
    if (npc_bullet_num > MAX_BULLETS) npc_bullet_num    = MAX_BULLETS;
    game_o.npc[npc_num].bullet[npc_bullet_num].active   = true;
@@ -649,21 +640,21 @@ int spawn_npc_bullet_num(int npc_num, int weapon, int npc_bullet_num, int locati
    return(0);
 }
 /*----------------------------------------------------------------------------*/
-int spawn_npc_bullet(int npc_num, int weapon, int location)
+int spawn_npc_bullet(int npc_num, int location)
 {
    bool spawn_done = 0;
    for (int npc_bullet_num = 0; npc_bullet_num < MAX_BULLETS; npc_bullet_num++)
    {
        if (!spawn_done and !game_o.npc[npc_num].bullet[npc_bullet_num].active)
        {
-           spawn_npc_bullet_num(npc_num,1,npc_bullet_num,location);
+           spawn_npc_bullet_num(npc_num,npc_bullet_num,location);
            spawn_done = 1;
        }
    }
  return(0);
 }
 /*----------------------------------------------------------------------------*/
-int kill_npc_bullet(int npc_num, int weapon, int npc_bullet_num)
+int kill_npc_bullet(int npc_num, int npc_bullet_num)
 {
   if (npc_bullet_num > MAX_BULLETS) npc_bullet_num   = MAX_BULLETS;
   game_o.npc[npc_num].bullet[npc_bullet_num].active  = false;
@@ -777,12 +768,12 @@ int proccess_npc_bullets(void)
                 else game_o.npc[npc_count].bullet[bullet_count].y_pos -= game_o.npc[npc_count].bullet[bullet_count].wave_speed;
             }
          }
-         if (game_o.npc[npc_count].bullet[bullet_count].x_pos < (-1.0f - game_o.npc[npc_count].bullet[bullet_count].width)) kill_npc_bullet(npc_count,1,bullet_count);
+         if (game_o.npc[npc_count].bullet[bullet_count].x_pos < (-1.0f - game_o.npc[npc_count].bullet[bullet_count].width)) kill_npc_bullet(npc_count,bullet_count);
          // check player starship / npc bullet collisions...
          if ((game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.height,game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,game_o.npc[npc_count].bullet[bullet_count].width,game_o.npc[npc_count].bullet[bullet_count].height)) && (!game_o.immune))
          {
             spawn_explosion(game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,0.125f);
-            kill_npc_bullet(npc_count,1,bullet_count);
+            kill_npc_bullet(npc_count,bullet_count);
             sound.shield_hit.play();//player shield hit
             game_o.player.shield -= (0.005f+game_o.shield[game_o.player.front_shield].absorption+(0.0001f*game_o.shield[game_o.player.front_shield].level));
             if (game_o.player.shield < 0.0f) game_o.player.health += game_o.player.shield;
@@ -844,12 +835,12 @@ int  init_npc_bullets2    (void)
       }
    }
    return(0);
-};
+}
 
-int  proccess_npc_bullets2(void)
+void  proccess_npc_bullets2(void)
 {
 
-};
+}
 
 void draw_npcs(void)
 {

@@ -122,28 +122,28 @@ int init_powerups(void)
 /*----------------------------------------------------------------------------*/
 int proccess_powerups(void)
 {
-    for (int count = 1; count < MAX_POWERUPS; count++)
+    for (int powerup_count = 1; powerup_count < MAX_POWERUPS; powerup_count++)
     {
-        if (game_o.powerup[count].active)
+        if (game_o.powerup[powerup_count].active)
         {
-            game_o.powerup[count].x_pos -= game_o.powerup[count].speed;
-            if (game_o.powerup[count].x_pos <= (-1.0f - game_o.powerup[count].width)) kill_powerup(count);
-            if (game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.height,game_o.powerup[count].x_pos,game_o.powerup[count].y_pos,game_o.powerup[count].width,game_o.powerup[count].height))
+            game_o.powerup[powerup_count].x_pos -= game_o.powerup[powerup_count].speed;
+            if (game_o.powerup[powerup_count].x_pos <= (-1.0f - game_o.powerup[powerup_count].width)) kill_powerup(powerup_count);
+            if (game.physics.quadrangle_collision(game_o.player.x_pos,game_o.player.y_pos,game_o.player.width,game_o.player.height,game_o.powerup[powerup_count].x_pos,game_o.powerup[powerup_count].y_pos,game_o.powerup[powerup_count].width,game_o.powerup[powerup_count].height))
             {
-                if (count ==  1) sound.powerup_01.play();
-                if (count ==  2) sound.powerup_02.play();
-                if (count ==  3) sound.powerup_03.play();
-                if (count ==  4) sound.powerup_04.play();
-                if (count ==  5) sound.powerup_05.play();
-                if (count ==  6) sound.powerup_06.play();
-                if (count ==  7) sound.powerup_07.play();
-                if (count ==  8) sound.powerup_08.play();
-                if (count ==  9) sound.powerup_09.play();
-                if (count == 10) sound.powerup_10.play();
-                if (count == 11) sound.powerup_11.play();
-                if (count == 12) sound.powerup_12.play();
-                kill_powerup(count);
-                switch (count)
+                if (powerup_count ==  1) sound.powerup_01.play();
+                if (powerup_count ==  2) sound.powerup_02.play();
+                if (powerup_count ==  3) sound.powerup_03.play();
+                if (powerup_count ==  4) sound.powerup_04.play();
+                if (powerup_count ==  5) sound.powerup_05.play();
+                if (powerup_count ==  6) sound.powerup_06.play();
+                if (powerup_count ==  7) sound.powerup_07.play();
+                if (powerup_count ==  8) sound.powerup_08.play();
+                if (powerup_count ==  9) sound.powerup_09.play();
+                if (powerup_count == 10) sound.powerup_10.play();
+                if (powerup_count == 11) sound.powerup_11.play();
+                if (powerup_count == 12) sound.powerup_12.play();
+                kill_powerup(powerup_count);
+                switch (powerup_count)
                 {
                     case 1: //health 100%
                         {
@@ -425,7 +425,7 @@ int proccess_powerups(void)
 };
 
 /*----------------------------------------------------------------------------*/
-int  use_bomb_powerup(void)
+void  use_bomb_powerup(void)
 {
     Mix_Volume(-1,(game.config.Audio_Sound_Volume/2));
     if (!boss_level())
@@ -481,8 +481,8 @@ int  use_bomb_powerup(void)
             if (game_o.npc[npc_count].bullet[bullet_count].active)
             {
                 spawn_explosion(game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,0.125f);
-                kill_npc_bullet(npc_count,1,bullet_count);
-                kill_npc_bullet(npc_count,2,bullet_count);
+                kill_npc_bullet(npc_count,bullet_count);
+                kill_npc_bullet(npc_count,bullet_count);
             }
         }
     }

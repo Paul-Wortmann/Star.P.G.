@@ -62,14 +62,18 @@ SDL_Surface             *App_Icon_Surface;
 //----------------------------------- Main -------------------------------------
 int main(int argc, char *argv[])
 {
+    std::string cheat_string = "cheat";
     //std::locale::global( std::locale( "" ) );
     events_init();
     game.log.File_Set("Star.P.G..log");
     game.log.File_Clear();
-    for (int count = 0; count < (argc+1); count++)
+    if (argc > 1)
     {
-        //game.log.File_Write(argv[count]);
-        if (argv[count] == "cheat") game_o.cheats_enabled = true;
+        for (int count = 0; count < (argc+1); count++)
+        {
+            //game.log.File_Write(argv[count]);
+            if (cheat_string.compare(argv[count]) == 0) game_o.cheats_enabled = true;
+        }
     }
     //game_o.cheats_enabled = true; /// test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -93,14 +97,16 @@ int main(int argc, char *argv[])
     //PHYSFS_addToSearchPath("Star.P.G..spg", 1);
 //----------------------------------- SDL Video --------------------------------
     game.log.File_Write("Starting SDL...");
-    putenv("SDL_VIDEO_WINDOW_POS");
-    putenv("SDL_VIDEO_CENTERED=1");
+    char SDL_VID_WIN_POS[] = "SDL_VIDEO_WINDOW_POS";
+    char SDL_VID_CENTERD[] = "SDL_VIDEO_CENTERED=1";
+    putenv(SDL_VID_WIN_POS);
+    putenv(SDL_VID_CENTERD);
     getenv("SDL_VIDEO_WINDOW_POS");
     getenv("SDL_VIDEO_CENTERED");
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTTHREAD);
     game.log.File_Write("Starting OpenGL...");
     if (game.config.Display_Fullscreen) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
-    else SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL/* | SDL_NOFRAME/* | SDL_FULLSCREEN */);
+    else SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL/* | SDL_NOFRAME */);
     SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
     App_Icon_Surface = SDL_LoadBMP(App_Icon);
     colorkey = SDL_MapRGB(App_Icon_Surface->format, 255, 0, 255);
@@ -117,9 +123,6 @@ int main(int argc, char *argv[])
     Mix_VolumeMusic(game.config.Audio_Music_Volume);
     game.log.File_Write("Initializing joystick / gamepad...");
     SDL_Init(SDL_INIT_JOYSTICK);
-    SDL_Joystick *joystick;
-    SDL_JoystickEventState(SDL_ENABLE);
-    joystick = SDL_JoystickOpen(0);
     game.log.File_Write("Initializing game system...");
     init_game(false);
     game.log.File_Write("Initializing projectiles...");

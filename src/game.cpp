@@ -311,75 +311,75 @@ int process_game(void)
             {
                 if (game_o.npc[npc_count].projectiles == 1)
                 {
-                    spawn_npc_bullet(npc_count,1,1);
+                    spawn_npc_bullet(npc_count,1);
                 }
                 if (game_o.npc[npc_count].projectiles == 2)
                 {
-                    spawn_npc_bullet(npc_count,1,0);
-                    spawn_npc_bullet(npc_count,1,2);
+                    spawn_npc_bullet(npc_count,0);
+                    spawn_npc_bullet(npc_count,2);
                 }
                 if (game_o.npc[npc_count].projectiles == 3)
                 {
-                    spawn_npc_bullet(npc_count,1,0);
-                    spawn_npc_bullet(npc_count,1,1);
-                    spawn_npc_bullet(npc_count,1,2);
+                    spawn_npc_bullet(npc_count,0);
+                    spawn_npc_bullet(npc_count,1);
+                    spawn_npc_bullet(npc_count,2);
                 }
                 if (game_o.npc[npc_count].projectiles == 4)
                 {
-                    spawn_npc_bullet(npc_count,1,0);
-                    spawn_npc_bullet(npc_count,1,2);
-                    spawn_npc_bullet(npc_count,1,5);
-                    spawn_npc_bullet(npc_count,1,6);
+                    spawn_npc_bullet(npc_count,0);
+                    spawn_npc_bullet(npc_count,2);
+                    spawn_npc_bullet(npc_count,5);
+                    spawn_npc_bullet(npc_count,6);
                 }
                 if (game_o.npc[npc_count].projectiles == 5)
                 {
-                    spawn_npc_bullet(npc_count,1,1);
-                    spawn_npc_bullet(npc_count,1,5);
-                    spawn_npc_bullet(npc_count,1,6);
-                    spawn_npc_bullet(npc_count,1,7);
-                    spawn_npc_bullet(npc_count,1,8);
+                    spawn_npc_bullet(npc_count,1);
+                    spawn_npc_bullet(npc_count,5);
+                    spawn_npc_bullet(npc_count,6);
+                    spawn_npc_bullet(npc_count,7);
+                    spawn_npc_bullet(npc_count,8);
                 }
                 if (game_o.npc[npc_count].projectiles == 6)
                 {
-                    spawn_npc_bullet(npc_count,1,0);
-                    spawn_npc_bullet(npc_count,1,2);
-                    spawn_npc_bullet(npc_count,1,3);
-                    spawn_npc_bullet(npc_count,1,5);
-                    spawn_npc_bullet(npc_count,1,6);
-                    spawn_npc_bullet(npc_count,1,8);
+                    spawn_npc_bullet(npc_count,0);
+                    spawn_npc_bullet(npc_count,2);
+                    spawn_npc_bullet(npc_count,3);
+                    spawn_npc_bullet(npc_count,5);
+                    spawn_npc_bullet(npc_count,6);
+                    spawn_npc_bullet(npc_count,8);
                 }
                 if (game_o.npc[npc_count].projectiles == 7)
                 {
-                    spawn_npc_bullet(npc_count,1,1);
-                    spawn_npc_bullet(npc_count,1,3);
-                    spawn_npc_bullet(npc_count,1,4);
-                    spawn_npc_bullet(npc_count,1,5);
-                    spawn_npc_bullet(npc_count,1,6);
-                    spawn_npc_bullet(npc_count,1,7);
-                    spawn_npc_bullet(npc_count,1,8);
+                    spawn_npc_bullet(npc_count,1);
+                    spawn_npc_bullet(npc_count,3);
+                    spawn_npc_bullet(npc_count,4);
+                    spawn_npc_bullet(npc_count,5);
+                    spawn_npc_bullet(npc_count,6);
+                    spawn_npc_bullet(npc_count,7);
+                    spawn_npc_bullet(npc_count,8);
                 }
                 if (game_o.npc[npc_count].projectiles == 8)
                 {
-                    spawn_npc_bullet(npc_count,1,0);
-                    spawn_npc_bullet(npc_count,1,2);
-                    spawn_npc_bullet(npc_count,1,3);
-                    spawn_npc_bullet(npc_count,1,4);
-                    spawn_npc_bullet(npc_count,1,5);
-                    spawn_npc_bullet(npc_count,1,6);
-                    spawn_npc_bullet(npc_count,1,7);
-                    spawn_npc_bullet(npc_count,1,8);
+                    spawn_npc_bullet(npc_count,0);
+                    spawn_npc_bullet(npc_count,2);
+                    spawn_npc_bullet(npc_count,3);
+                    spawn_npc_bullet(npc_count,4);
+                    spawn_npc_bullet(npc_count,5);
+                    spawn_npc_bullet(npc_count,6);
+                    spawn_npc_bullet(npc_count,7);
+                    spawn_npc_bullet(npc_count,8);
                 }
                 if (game_o.npc[npc_count].projectiles == 9)
                 {
-                    spawn_npc_bullet(npc_count,1,0);
-                    spawn_npc_bullet(npc_count,1,1);
-                    spawn_npc_bullet(npc_count,1,2);
-                    spawn_npc_bullet(npc_count,1,3);
-                    spawn_npc_bullet(npc_count,1,4);
-                    spawn_npc_bullet(npc_count,1,5);
-                    spawn_npc_bullet(npc_count,1,6);
-                    spawn_npc_bullet(npc_count,1,7);
-                    spawn_npc_bullet(npc_count,1,8);
+                    spawn_npc_bullet(npc_count,0);
+                    spawn_npc_bullet(npc_count,1);
+                    spawn_npc_bullet(npc_count,2);
+                    spawn_npc_bullet(npc_count,3);
+                    spawn_npc_bullet(npc_count,4);
+                    spawn_npc_bullet(npc_count,5);
+                    spawn_npc_bullet(npc_count,6);
+                    spawn_npc_bullet(npc_count,7);
+                    spawn_npc_bullet(npc_count,8);
                 }
                 if (game_o.npc[npc_count].bullet[0].warhead ==  0) sound.projectile_000.play();
                 if (game_o.npc[npc_count].bullet[0].warhead ==  1) sound.projectile_001.play();
@@ -439,7 +439,7 @@ int process_game(void)
                 if (game_o.npc[npc_count].bullet[bullet_count].active)
                 {
                     spawn_explosion(game_o.npc[npc_count].bullet[bullet_count].x_pos,game_o.npc[npc_count].bullet[bullet_count].y_pos,0.125f);
-                    kill_npc_bullet(npc_count,1,bullet_count);
+                    kill_npc_bullet(npc_count,bullet_count);
                 }
             }
         }

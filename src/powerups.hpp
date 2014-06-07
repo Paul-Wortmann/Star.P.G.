@@ -74,7 +74,7 @@ int  kill_powerup(int type_powerup);
 int  kill_powerups(void);
 int  init_powerups(void);
 int  proccess_powerups(void);
-int  use_bomb_powerup(void);
+void use_bomb_powerup(void);
 
 int  spawn_coin(float x_position, float y_position, int coin_value);
 int  kill_coin(int coin_num);

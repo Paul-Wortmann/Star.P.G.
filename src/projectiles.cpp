@@ -59,10 +59,10 @@ void projectile_class::init(void)
     projectile_class::height        = 0.075f;
 };
 
-void projectile_class::init(std::string name,bool active,int exp,int lvl,float l1,float l2,float l3,float l4,float l5,float l6,int img,int snd,float dmg,float spd,float hlth,int rof,int mov,float ws,float wv,float s)
+void projectile_class::init(std::string set_name,bool set_active,int exp,int lvl,float l1,float l2,float l3,float l4,float l5,float l6,int img,int snd,float dmg,float spd,float hlth,int rof,int mov,float ws,float wv)
 {
-    projectile_class::name          = name;
-    projectile_class::active        = active;
+    projectile_class::name          = set_name;
+    projectile_class::active        = set_active;
     projectile_class::level         = lvl;
     projectile_class::experience    = exp;
     projectile_class::level_1       = l1;
@@ -84,9 +84,9 @@ void projectile_class::init(std::string name,bool active,int exp,int lvl,float l
     projectile_class::height        = 0.075f;
 };
 
-void projectile_class::init(bool active,int exp,int lvl)
+void projectile_class::init(bool set_active,int exp,int lvl)
 {
-    projectile_class::active        = active;
+    projectile_class::active        = set_active;
     projectile_class::level         = lvl;
     projectile_class::experience    = exp;
 };
@@ -110,7 +110,7 @@ void projectile_class::load(std::string file_name)
             getline(projectile_file,data_line);
             {
                 temp_char = data_line[0];
-                if((temp_char != '#') && (data_line.length() > 2))
+                if((temp_char != '#') && ((int)data_line.length() > 2))
                 {
                     temp_char         = '#';
                     temp_string_key   = "";
@@ -121,13 +121,13 @@ void projectile_class::load(std::string file_name)
                         temp_char = data_line[count];
                         if(temp_char != ' ') temp_string_key += temp_char;
                         count++;
-                        if(count > data_line.length()) (temp_char = ' ');
+                        if(count > (int)data_line.length()) (temp_char = ' ');
                     }
                     while((temp_char == ' ') || (temp_char == '='))
                     {
                         temp_char = data_line[count];
                         count++;
-                        if(count > data_line.length()) (temp_char = '#');
+                        if(count > (int)data_line.length()) (temp_char = '#');
                     }
                     count--;
                     while(temp_char != ' ')
@@ -135,7 +135,7 @@ void projectile_class::load(std::string file_name)
                         temp_char = data_line[count];
                         if(temp_char != ' ') temp_string_value += temp_char;
                         count++;
-                        if(count > data_line.length()) (temp_char = ' ');
+                        if(count > (int)data_line.length()) (temp_char = ' ');
                     }
                     temp_string_data = temp_string_value.c_str();
                     temp_float_data  = atof(temp_string_value.c_str());

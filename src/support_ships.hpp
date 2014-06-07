@@ -58,13 +58,13 @@ class supportship_class
         float                height;
         bullet_type          bullet[MAX_BULLETS];
 
-        void        init        (int  supportship_count, int number_of_ships, float x_pos, float y_pos);
-        void        process     (bool spawn_bullet);
+        void        init        (int  supportship_count, int number_ships, float x_pos, float y_pos);
+        void        process     (bool bullet_to_spawn);
         void        kill_bullets(void);
         int         spawn_bullet(int  location, int direction_x, int direction_y);
 };
 
-void  init_supportships        (int number_of_ships, float x_pos, float y_pos);
+void  init_supportships        (int number_ships, float x_pos, float y_pos);
 void  process_supportships     (bool spawn_bullet);
 void  kill_supportship_bullets (void);
 void  draw_supportships        (void);
