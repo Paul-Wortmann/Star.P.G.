@@ -72,7 +72,7 @@ bool texture_class::load_image(std::string file_name, int index_number)
     GLint           number_of_colors;
     bool            return_value = false;
     texture_class::ref_number = index_number;
-    if (image_surface = IMG_Load(file_name.c_str()))
+    if ((image_surface = IMG_Load(file_name.c_str())))
     {
         return_value = true;
         number_of_colors = image_surface->format->BytesPerPixel;
@@ -103,18 +103,19 @@ bool texture_class::load_image(std::string file_name, int index_number)
     }
     if ( image_surface ) SDL_FreeSurface( image_surface );
     return(return_value);
-};
+}
 
 bool texture_class::load_spritesheet(std::string file_name, int index_number)
 {
     texture_class::load_spritesheet(file_name,index_number,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT);
-};
+    return(true);
+}
 
-bool texture_class::load_spritesheet(std::string file_name, int index_number, int width, int height)
+bool texture_class::load_spritesheet(std::string file_name, int index_number, int w, int h)
 {
     texture_class::ref_number = index_number;
-    texture_class::width      = width;
-    texture_class::height     = height;
+    texture_class::width      = w;
+    texture_class::height     = h;
     int             frames_x;
     int             frames_y;
     int             frame_number = 0;
@@ -125,7 +126,7 @@ bool texture_class::load_spritesheet(std::string file_name, int index_number, in
     GLenum          texture_format;
     GLint           number_of_colors;
     bool            return_value = false;
-    if (sprite_sheet = IMG_Load(file_name.c_str()))
+    if ((sprite_sheet = IMG_Load(file_name.c_str())))
     {
         return_value = true;
         frames_x = sprite_sheet->w / texture_class::width;
@@ -207,7 +208,7 @@ void texture_class::process(void)
     }
 };
 
-void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height)
+void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float w, float h)
 {
     if (rumble)
     {
@@ -218,56 +219,56 @@ void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, flo
     glBindTexture( GL_TEXTURE_2D, texture_class::frame[texture_class::frame_num].data);
     glLoadIdentity();
     glBegin( GL_QUADS );
-    glTexCoord2i( 0, 1 );glVertex3f(game.physics.rotate_point_2D_x(pos_x, pos_y, pos_x-(width/2),pos_y-(height/2),texture_class::angle), game.physics.rotate_point_2D_y(pos_x,pos_y,pos_x-(width/2),pos_y-(height/2), texture_class::angle), pos_z);
-    glTexCoord2i( 0, 0 );glVertex3f(game.physics.rotate_point_2D_x(pos_x, pos_y, pos_x-(width/2),pos_y+(height/2),texture_class::angle), game.physics.rotate_point_2D_y(pos_x,pos_y,pos_x-(width/2),pos_y+(height/2), texture_class::angle), pos_z);
-    glTexCoord2i( 1, 0 );glVertex3f(game.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+(width/2),pos_y+(height/2),texture_class::angle), game.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+(width/2),pos_y+(height/2), texture_class::angle), pos_z);
-    glTexCoord2i( 1, 1 );glVertex3f(game.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+(width/2),pos_y-(height/2),texture_class::angle), game.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+(width/2),pos_y-(height/2), texture_class::angle), pos_z);
+    glTexCoord2i( 0, 1 );glVertex3f(game.physics.rotate_point_2D_x(pos_x, pos_y, pos_x-(w/2),pos_y-(h/2),texture_class::angle), game.physics.rotate_point_2D_y(pos_x,pos_y,pos_x-(w/2),pos_y-(h/2), texture_class::angle), pos_z);
+    glTexCoord2i( 0, 0 );glVertex3f(game.physics.rotate_point_2D_x(pos_x, pos_y, pos_x-(w/2),pos_y+(h/2),texture_class::angle), game.physics.rotate_point_2D_y(pos_x,pos_y,pos_x-(w/2),pos_y+(h/2), texture_class::angle), pos_z);
+    glTexCoord2i( 1, 0 );glVertex3f(game.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+(w/2),pos_y+(h/2),texture_class::angle), game.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+(w/2),pos_y+(h/2), texture_class::angle), pos_z);
+    glTexCoord2i( 1, 1 );glVertex3f(game.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+(w/2),pos_y-(h/2),texture_class::angle), game.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+(w/2),pos_y-(h/2), texture_class::angle), pos_z);
     glEnd();
     glPopMatrix();
 };
 
-void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, int   angle)
+void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float w, float h, int a)
 {
-    texture_class::angle = game.physics.degrees_to_radians(angle);
-    texture_class::draw(rumble,pos_x,pos_y,pos_z,width,height);
+    texture_class::angle = game.physics.degrees_to_radians(a);
+    texture_class::draw(rumble,pos_x,pos_y,pos_z,w,h);
 };
 
-void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, float angle)
+void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float w, float h, float a)
 {
-    texture_class::angle = angle;
-    texture_class::draw(rumble,pos_x,pos_y,pos_z,width,height);
+    texture_class::angle = a;
+    texture_class::draw(rumble,pos_x,pos_y,pos_z,w,h);
 };
 
-void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, float angle, float alpha)
+void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float w, float h, float a, float alpha)
 {
-    texture_class::angle = angle;
+    texture_class::angle = a;
     glColor4f (1.0f, 1.0f, 1.0f, alpha);
-    texture_class::draw(rumble,pos_x,pos_y,pos_z,width,height);
+    texture_class::draw(rumble,pos_x,pos_y,pos_z,w,h);
     glColor4f (1.0f, 1.0f, 1.0f,1.0f);
 };
 
-void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, float angle, float red, float green, float blue, float alpha)
+void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float w, float h, float a, float red, float green, float blue, float alpha)
 {
-    texture_class::angle = angle;
+    texture_class::angle = a;
     glColor4f (red, green, blue, alpha);
-    texture_class::draw(rumble,pos_x,pos_y,pos_z,width,height);
+    texture_class::draw(rumble,pos_x,pos_y,pos_z,w,h);
     glColor4f (1.0f, 1.0f, 1.0f,1.0f);
 };
 
-void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, float angle, float red, float green, float blue, float alpha, int frame)
+void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float w, float h, float a, float red, float green, float blue, float alpha, int f)
 {
-    texture_class::frame_num = frame;
-    texture_class::angle     = angle;
+    texture_class::frame_num = f;
+    texture_class::angle     = a;
     glColor4f (red, green, blue, alpha);
-    texture_class::draw(rumble,pos_x,pos_y,pos_z,width,height);
+    texture_class::draw(rumble,pos_x,pos_y,pos_z,w,h);
     glColor4f (1.0f, 1.0f, 1.0f,1.0f);
 };
 
-void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, float angle, int frame)
+void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float w, float h, float a, int f)
 {
-    texture_class::frame_num = frame;
-    texture_class::angle     = angle;
-    texture_class::draw(rumble,pos_x,pos_y,pos_z,width,height);
+    texture_class::frame_num = f;
+    texture_class::angle     = a;
+    texture_class::draw(rumble,pos_x,pos_y,pos_z,w,h);
 };
 
 

@@ -195,12 +195,7 @@ language_class::language_class(void)
 
 void language_class::load(std::string file_name)
 {
-    char           temp_char_UTF8   = ' ';
-    short          temp_char_UTF16  = ' ';
     int            temp_char_UTF32  = ' ';
-    float          temp_float_data;
-    int            temp_int_data;
-    bool           temp_bool_data;
     std::string    temp_string_data;
     std::string    temp_string_key;
     std::string    temp_string_value;
@@ -214,14 +209,14 @@ void language_class::load(std::string file_name)
             getline(script_file,data_line);
             if (data_line.length() > 0)
             {
-                if ('\r' == data_line.at(data_line.length()-1))
+                if ('\r' == data_line.at((int)data_line.length()-1))
                 {
-                    data_line = data_line.substr(0, data_line.length()-1);
+                    data_line = data_line.substr(0, (int)data_line.length()-1);
                 }
             }
             {
                 temp_char_UTF32 = data_line[0];
-                if((temp_char_UTF32 != '#') && (data_line.length() > 2))
+                if((temp_char_UTF32 != '#') && ((int)data_line.length() > 2))
                 {
                     temp_char_UTF32   = '#';
                     temp_string_key   = "";
@@ -232,26 +227,22 @@ void language_class::load(std::string file_name)
                         temp_char_UTF32 = data_line[count];
                         if(temp_char_UTF32 != ' ') temp_string_key += temp_char_UTF32;
                         count++;
-                        if(count > data_line.length()) (temp_char_UTF32 = ' ');
+                        if(count > (int)data_line.length()) (temp_char_UTF32 = ' ');
                     }
                     while((temp_char_UTF32 == ' ') || (temp_char_UTF32 == '='))
                     {
                         temp_char_UTF32 = data_line[count];
                         count++;
-                        if(count > data_line.length()) (temp_char_UTF32 = '#');
+                        if(count > (int)data_line.length()) (temp_char_UTF32 = '#');
                     }
                     count--;
-                    while(count < (data_line.length()-1))
+                    while(count < ((int)data_line.length()-1))
                     {
                         temp_char_UTF32  = data_line[count];
                         if (temp_char_UTF32 != '"') temp_string_value += temp_char_UTF32;
                         count++;
                     }
                     temp_string_data = temp_string_value.c_str();
-                    temp_float_data  = (float) atof(temp_string_value.c_str());
-                    temp_int_data    = (int)   atoi(temp_string_value.c_str());
-                    if (temp_int_data == 1) temp_bool_data = true;
-                    else temp_bool_data = false;
                     if (temp_string_key == "Main_Menu")             language_class::text.main_menu             = temp_string_data;
                     if (temp_string_key == "Star_Map")              language_class::text.star_map              = temp_string_data;
                     if (temp_string_key == "Customize_Starship")    language_class::text.customize_starship    = temp_string_data;
