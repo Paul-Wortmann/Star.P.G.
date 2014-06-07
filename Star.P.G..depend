@@ -16,11 +16,13 @@
 	<vector>
 	<string>
 
-1311350378 
+1329573753 
 
 1286187896 source:c:\paul\2010-c++_game_projects\star.p.g\config.cpp
 	<fstream>
 	"config.h"
+
+1329573753 
 
 1293529461 c:\paul\2010-c++_game_projects\star.p.g\config.h
 
@@ -91,7 +93,7 @@
 1286693770 source:c:\paul\2010-c++_game_projects\star.p.g\physics.cpp
 	"physics.h"
 
-1310912103 "
+1329573754 "
 
 1286109968 source:c:\paul\2010-c++_game_projects\star.p.g\savegame.cpp
 	<fstream>
@@ -135,7 +137,7 @@
 1286698870 source:c:\paul\2010-c++_game_projects\star.p.g\star.p.g._private.rc
 	<windows.h>
 
-1312296043 >
+1312623429 >
 
 1293298027 c:\paul\2010-c++_game_projects\star.p.g\version.h
 
@@ -625,7 +627,7 @@
 	<fstream>
 	"config.hpp"
 
-1312301642 p"
+1329573753 p"
 
 1309782914 c:\_git_\star.p.g\src\config.h
 
@@ -671,7 +673,7 @@
 	"RAGE/rage.hpp"
 	"graphics.hpp"
 
-1310910430 hpp"
+1329573753 hpp"
 
 1329573753 source:c:\_git_\star.p.g\src\levels.cpp
 	<fstream>
@@ -738,7 +740,7 @@
 1310897251 source:c:\_git_\star.p.g\src\network.cpp
 	"network.hpp"
 
-1310897251 pp"
+1329573754 pp"
 
 1310047339 source:c:\_git_\star.p.g\src\physics.cpp
 	"physics.hpp"
@@ -760,7 +762,7 @@
 	"textures.hpp"
 	"RAGE/rage.hpp"
 
-1311166803 .hpp"
+1329573753 .hpp"
 
 1310897251 source:c:\_git_\star.p.g\src\timer.cpp
 	"SDL/SDL.h"
@@ -858,6 +860,8 @@
 	"io.hpp"
 	"background.hpp"
 
+1329573753 d.hpp"
+
 1315053024 c:\_git_\star.p.g\src\rage\config.hpp
 	<string>
 
@@ -939,7 +943,7 @@
 	"core.hpp"
 	"../save_data.hpp"
 
-1311166784 ata.hpp"
+1329573753 ata.hpp"
 
 1315053024 c:\_git_\star.p.g\src\rage\savegame.hpp
 
@@ -959,7 +963,7 @@
 1315053024 c:\_git_\star.p.g\src\rage\font.hpp
 	<SDL/SDL_ttf.h>
 
-1312199199 tf.h>
+1329573753 tf.h>
 
 1317472569 source:c:\_git_\star.p.g\src\rage\font.cpp
 	<SDL/SDL_ttf.h>
@@ -1174,7 +1178,7 @@
 	"core.hpp"
 	"../load_resources.hpp"
 
-1312447645 esources.hpp"
+1329573753 esources.hpp"
 
 1329573753 c:\_git_\star.p.g\src\menu_system.hpp
 
@@ -1525,6 +1529,8 @@
 1329573526 source:c:\_git_\star.p.g\src\screen_rumble.cpp
 	"screen_rumble.hpp"
 
+1329573526 mble.hpp"
+
 1315053024 c:\_git_\star.p.g\src\rage\core.hpp
 	"log.hpp"
 	"config.hpp"
@@ -1704,4 +1710,404 @@
 	"language.hpp"
 	"menu_system.hpp"
 	"core/core.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/achievements.cpp
+	"core/core.hpp"
+	"achievements.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/core.hpp
+	"log.hpp"
+	"config.hpp"
+	"graphics.hpp"
+	"physics.hpp"
+	"network.hpp"
+	"timer.hpp"
+	"sound.hpp"
+	"savegame.hpp"
+	"font.hpp"
+	"menu.hpp"
+	"io.hpp"
+	"background.hpp"
+	"particles.hpp"
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/log.hpp
+	<string>
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/config.hpp
+	<string>
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/graphics.hpp
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/physics.hpp
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/network.hpp
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/timer.hpp
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/sound.hpp
+	<SDL/SDL_mixer.h>
+	<string>
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/savegame.hpp
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/font.hpp
+	<SDL/SDL_ttf.h>
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/menu.hpp
+	<string>
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/io.hpp
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/background.hpp
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/particles.hpp
+	<string>
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/achievements.hpp
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/load_resources.hpp
+	"core/core.hpp"
+	"core/sound.hpp"
+	"core/music.hpp"
+	"core/textures.hpp"
+	"core/font.hpp"
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/music.hpp
+	<SDL/SDL_mixer.h>
+	<string>
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/textures.hpp
+	<GL/gl.h>
+	<string>
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/game.hpp
+	<string>
+	<SDL/SDL.h>
+	"PC.hpp"
+	"NPC.hpp"
+	"waves.hpp"
+	"levels.hpp"
+	"shields.hpp"
+	"powerups.hpp"
+	"thrusters.hpp"
+	"explosions.hpp"
+	"projectiles.hpp"
+	"achievements.hpp"
+	"support_ships.hpp"
+	"in_game_messages.hpp"
+	"screen_rumble.hpp"
+	"debris.hpp"
+	"language.hpp"
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/PC.hpp
+	"bullets.hpp"
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/bullets.hpp
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/NPC.hpp
+	"bullets.hpp"
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/waves.hpp
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/levels.hpp
+	"waves.hpp"
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/shields.hpp
+	<string>
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/powerups.hpp
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/thrusters.hpp
+	"core/core.hpp"
+	<string>
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/explosions.hpp
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/projectiles.hpp
+	<string>
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/support_ships.hpp
+	"bullets.hpp"
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/in_game_messages.hpp
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/screen_rumble.hpp
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/debris.hpp
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/language.hpp
+	<string>
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/misc.hpp
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/bullets.cpp
+	"bullets.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/core/background.cpp
+	"core.hpp"
+	"../load_resources.hpp"
+	"background.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/core/config.cpp
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	"config.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/core/core.cpp
+	"core.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/core/font.cpp
+	<SDL/SDL_ttf.h>
+	<SDL/SDL_ttf.h>
+	<GL/gl.h>
+	<string>
+	<sstream>
+	"core.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/core/graphics.cpp
+	<GL/gl.h>
+	"core.hpp"
+	"graphics.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/core/io.cpp
+	<SDL/SDL.h>
+	"core.hpp"
+	"../game.hpp"
+	"io.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/core/log.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"log.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/core/menu.cpp
+	"menu.hpp"
+	"core.hpp"
+	"../load_resources.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/core/music.cpp
+	"music.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/core/network.cpp
+	"network.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/core/particles.cpp
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"particles.hpp"
+	"core.hpp"
+	"../load_resources.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/core/physics.cpp
+	"physics.hpp"
+	<math.h>
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/core/savegame.cpp
+	<fstream>
+	"savegame.hpp"
+	"core.hpp"
+	"../save_data.hpp"
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/save_data.hpp
+	"core/core.hpp"
+	"core/savegame.hpp"
+	"game.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/core/sound.cpp
+	"core.hpp"
+	"sound.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/core/textures.cpp
+	<GL/gl.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	"textures.hpp"
+	"core.hpp"
+	"../load_resources.hpp"
+	"../game.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/core/timer.cpp
+	"SDL/SDL.h"
+	"timer.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/debris.cpp
+	"debris.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/explosions.cpp
+	"core/core.hpp"
+	"explosions.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/game.cpp
+	<SDL/SDL.h>
+	"core/core.hpp"
+	"load_resources.hpp"
+	"menu_system.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/menu_system.hpp
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/in_game_messages.cpp
+	"in_game_messages.hpp"
+	"core/core.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/language.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"misc.hpp"
+	"language.hpp"
+	"menu_system.hpp"
+	"core/core.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/levels.cpp
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"load_resources.hpp"
+	"core/core.hpp"
+	"levels.hpp"
+	"game.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/load_resources.cpp
+	<SDL/SDL.h>
+	"load_resources.hpp"
+	"core/core.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/main.cpp
+	<SDL/SDL.h>
+	<SDL/SDL_main.h>
+	<SDL/SDL_ttf.h>
+	<SDL/SDL_net.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_opengl.h>
+	<GL/gl.h>
+	"core/core.hpp"
+	"load_resources.hpp"
+	"misc.hpp"
+	"main.hpp"
+	"menu_system.hpp"
+	"game.hpp"
+	"levels.hpp"
+	"version.h"
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/main.hpp
+
+1402123118 /media/paul/Data_0/_git_/Star.P.G./src/version.h
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/menu_system.cpp
+	"menu_system.hpp"
+	"game.hpp"
+	"core/core.hpp"
+	"load_resources.hpp"
+	"levels.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/misc.cpp
+	<time.h>
+	<stdlib.h>
+	<math.h>
+	<string>
+	<algorithm>
+	<sstream>
+	<fstream>
+	"misc.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/NPC.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"core/core.hpp"
+	"NPC.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/PC.cpp
+	"core/core.hpp"
+	"PC.hpp"
+	"NPC.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/powerups.cpp
+	"core/core.hpp"
+	"powerups.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/projectiles.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"load_resources.hpp"
+	"core/core.hpp"
+	"projectiles.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/save_data.cpp
+	"save_data.hpp"
+	"core/core.hpp"
+	"game.hpp"
+	"levels.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/screen_rumble.cpp
+	"screen_rumble.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/shields.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"load_resources.hpp"
+	"shields.hpp"
+	"game.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/support_ships.cpp
+	"core/core.hpp"
+	"support_ships.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/thrusters.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"load_resources.hpp"
+	"thrusters.hpp"
+	"game.hpp"
+
+1402123118 source:/media/paul/Data_0/_git_/Star.P.G./src/waves.cpp
+	"core/core.hpp"
+	"waves.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
 

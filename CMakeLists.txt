@@ -1,8 +1,8 @@
-Project ("Frost and Flame")
+Project ("Star.P.G.")
 cmake_minimum_required (VERSION 2.8)
 
-Set (PACKAGE "FROST_AND_FLAME")
-Set (VERSION "0.30")
+Set (PACKAGE "STAR_P_G")
+Set (VERSION "1.01")
 
 
 # Default definitions
@@ -34,7 +34,7 @@ elseif(CMAKE_BUILD_TYPE STREQUAL "Debug")
 endif()
 
 set(BINDIR  "games"             CACHE STRING "Directory from CMAKE_INSTALL_PREFIX where game executable will be installed.")
-set(DATADIR "share/games/frost_and_flame" CACHE STRING "Directory from CMAKE_INSTALL_PREFIX where game data files will be installed.")
+set(DATADIR "share/games/star_p_g" CACHE STRING "Directory from CMAKE_INSTALL_PREFIX where game data files will be installed.")
 
 If(NOT IS_ABSOLUTE "${DATADIR}")
 	add_definitions(-DDATA_INSTALL_DIR="${CMAKE_INSTALL_PREFIX}/${DATADIR}")
@@ -46,40 +46,40 @@ EndIf(NOT IS_ABSOLUTE "${DATADIR}")
 
 Include(FindPkgConfig)
 
-PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
-If (NOT SDL2_FOUND)
-    Message (ERROR "Couldn't find SDL2 development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-dev' package.")
-Else (NOT SDL2_FOUND)
-    INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS})
-EndIf (NOT SDL2_FOUND)
+PKG_SEARCH_MODULE(SDL REQUIRED sdl)
+If (NOT SDL_FOUND)
+    Message (ERROR "Couldn't find SDL development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-dev' package.")
+Else (NOT SDL_FOUND)
+    INCLUDE_DIRECTORIES(${SDL_INCLUDE_DIRS})
+EndIf (NOT SDL_FOUND)
 
-PKG_SEARCH_MODULE(SDL2IMAGE REQUIRED SDL2_image)
-If (NOT SDL2IMAGE_FOUND)
-    Message (ERROR "Couldn't find SDL2-image development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-image-dev' package.")
-Else (NOT SDL2IMAGE_FOUND)
-    INCLUDE_DIRECTORIES(${SDL2IMAGE_INCLUDE_DIRS})
-EndIf (NOT SDL2IMAGE_FOUND)
+PKG_SEARCH_MODULE(SDLIMAGE REQUIRED SDL_image)
+If (NOT SDLIMAGE_FOUND)
+    Message (ERROR "Couldn't find SDL-image development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-image-dev' package.")
+Else (NOT SDLIMAGE_FOUND)
+    INCLUDE_DIRECTORIES(${SDLIMAGE_INCLUDE_DIRS})
+EndIf (NOT SDLIMAGE_FOUND)
 
-PKG_SEARCH_MODULE(SDL2MIXER REQUIRED SDL2_mixer)
-If (NOT SDL2MIXER_FOUND)
-    Message (ERROR "Couldn't find SDL2-mixer development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-mixer-dev' package.")
-Else (NOT SDL2MIXER_FOUND)
-    INCLUDE_DIRECTORIES(${SDL2MIXER_INCLUDE_DIRS})
-EndIf (NOT SDL2MIXER_FOUND)
+PKG_SEARCH_MODULE(SDLMIXER REQUIRED SDL_mixer)
+If (NOT SDLMIXER_FOUND)
+    Message (ERROR "Couldn't find SDL-mixer development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-mixer-dev' package.")
+Else (NOT SDLMIXER_FOUND)
+    INCLUDE_DIRECTORIES(${SDLMIXER_INCLUDE_DIRS})
+EndIf (NOT SDLMIXER_FOUND)
 
- PKG_SEARCH_MODULE(SDL2NET REQUIRED SDL2_net)
- If (NOT SDL2NET_FOUND)
-     Message (ERROR "Couldn't find SDL2_net development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-net-dev' package.")
- Else (NOT SDL2NET_FOUND)
-     INCLUDE_DIRECTORIES(${SDL2NET_INCLUDE_DIRS})
- EndIf (NOT SDL2NET_FOUND)
+ PKG_SEARCH_MODULE(SDLNET REQUIRED SDL_net)
+ If (NOT SDLNET_FOUND)
+     Message (ERROR "Couldn't find SDL_net development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-net-dev' package.")
+ Else (NOT SDLNET_FOUND)
+     INCLUDE_DIRECTORIES(${SDLNET_INCLUDE_DIRS})
+ EndIf (NOT SDLNET_FOUND)
 
-PKG_SEARCH_MODULE(SDL2TTF REQUIRED SDL2_ttf)
-If (NOT SDL2TTF_FOUND)
-    Message (ERROR "Couldn't find SDL2-ttf development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-ttf-dev' package.")
-Else (NOT SDL2TTF_FOUND)
-    INCLUDE_DIRECTORIES(${SDL2TTF_INCLUDE_DIRS})
-EndIf (NOT SDL2TTF_FOUND)
+PKG_SEARCH_MODULE(SDLTTF REQUIRED SDL_ttf)
+If (NOT SDLTTF_FOUND)
+    Message (ERROR "Couldn't find SDL-ttf development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-ttf-dev' package.")
+Else (NOT SDLTTF_FOUND)
+    INCLUDE_DIRECTORIES(${SDLTTF_INCLUDE_DIRS})
+EndIf (NOT SDLTTF_FOUND)
 
 #PKG_SEARCH_MODULE(PHYSFS REQUIRED PhysFS)
 #If (NOT PHYSFS_FOUND)
@@ -116,90 +116,59 @@ include_directories(/usr/include)
 
 # Sources
 
-Set (FROST_AND_FLAME_SOURCES
-	./source/core/background.cpp
-	./source/core/command_line_parser.cpp
-	./source/core/config.cpp
-	./source/core/core.cpp
-	./source/core/effect_manager.cpp
-	./source/core/event_manager.cpp
-	./source/core/file.cpp
-	./source/core/font_manager.cpp
-	./source/core/graphics_engine.cpp
-	./source/core/graphics_engine_GL.cpp
-	./source/core/graphics_engine_GL_legacy.cpp
-	./source/core/graphics_engine_vao_manager.cpp
-	./source/core/item_manager.cpp
-	./source/core/item_manager.cpp
-	./source/core/loader_fmx.cpp
-	./source/core/loader_md2.cpp
-	./source/core/loader_obj.cpp
-	./source/core/loader_tmx.cpp
-	./source/core/log.cpp
-	./source/core/map_2D.cpp
-	./source/core/map_3D.cpp
-	./source/core/map_main.cpp
-	./source/core/map_environment_manager.cpp
-	./source/core/map_gen.cpp
-	./source/core/map_gen_BSP.cpp
-	./source/core/map_gen_CA.cpp
-	./source/core/map_gen_M1.cpp
-	./source/core/map_gen_RC.cpp
-	./source/core/math.cpp
-	./source/core/misc.cpp
-	./source/core/music_manager.cpp
-	./source/core/network.cpp
-	./source/core/object_manager.cpp
-	./source/core/particles.cpp
-	./source/core/pathfinding.cpp
-	./source/core/physics.cpp
-	./source/core/savegame.cpp
-	./source/core/sound_manager.cpp
-	./source/core/spell_manager.cpp
-	./source/core/texture_manager.cpp
-	./source/core/timer.cpp
-	#./source/core/types.cpp
-	./source/core/vector.cpp
-	./source/UI/action_bar.cpp
-	./source/UI/character_window.cpp
-	./source/UI/equipment_window.cpp
-	./source/UI/inventory_window.cpp
-	./source/UI/menu_game_load.cpp
-	./source/UI/menu_game_new.cpp
-	./source/UI/menu_game_save.cpp
-	./source/UI/menu_help.cpp
-	./source/UI/menu_main.cpp
-	./source/UI/menu_options.cpp
-	./source/UI/player_profile.cpp
-	./source/UI/quest_log_window.cpp
-	./source/UI/skillbook_window.cpp
-	./source/UI/UI_cursor.cpp
-	./source/UI/UI_loading_screen.cpp
-	./source/UI/UI_manager.cpp
-	./source/UI/UI_types.cpp
-	./source/game/effects.cpp
-	./source/game/game.cpp
-	./source/game/items.cpp
-	./source/game/language.cpp
-	./source/game/npc.cpp
-	./source/game/player.cpp
-	./source/game/save_data.cpp
-	./source/game/spells.cpp
-	./source/main.cpp
+Set (STAR_P_G_SOURCES
+	./src/core/background.cpp
+	./src/core/config.cpp
+	./src/core/core.cpp
+	./src/core/font.cpp
+	./src/core/graphics.cpp
+	./src/core/io.cpp
+	./src/core/log.cpp
+	./src/core/menu.cpp
+	./src/core/music.cpp
+	./src/core/network.cpp
+	./src/core/particles.cpp
+	./src/core/physics.cpp
+	./src/core/savegame.cpp
+	./src/core/sound.cpp
+	./src/core/textures.cpp
+	./src/core/timer.cpp
+	./src/achievements.cpp
+	./src/bullets.cpp
+	./src/debris.cpp
+	./src/explosions.cpp
+	./src/game.cpp
+	./src/in_game_messages.cpp
+	./src/language.cpp
+	./src/levels.cpp
+	./src/load_resources.cpp
+	./src/main.cpp
+	./src/menu_system.cpp
+	./src/misc.cpp
+	./src/NPC.cpp
+	./src/PC.cpp
+	./src/powerups.cpp
+	./src/projectiles.cpp
+	./src/save_data.cpp
+	./src/screen_rumble.cpp
+	./src/shields.cpp
+	./src/support_ships.cpp
+	./src/thrusters.cpp
+	./src/waves.cpp
 )
 
 # Add icon and file info to executable for Windows systems
 IF (WIN32)
-  SET(FROST_AND_FLAME_SOURCES
-    ${FROST_AND_FLAME_SOURCES}
+  SET(STAR_P_G_SOURCES
+    ${STAR_P_G_SOURCES}
     ./source/icon.rc
     )
 ENDIF (WIN32)
 
-Add_Executable (frost_and_flame ${FROST_AND_FLAME_SOURCES})
+Add_Executable (star_p_g ${STAR_P_G_SOURCES})
 
 link_directories( /path/to/PHYSFSlibs/)
 
-Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS}  ${PHYSFS_LIBRARY} ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES} ${SDL2NET_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
+Target_Link_Libraries (star_p_g ${CMAKE_LD_FLAGS}  ${PHYSFS_LIBRARY} ${SDL_LIBRARIES} ${SDLIMAGE_LIBRARIES} ${SDLMIXER_LIBRARIES} ${SDLTTF_LIBRARIES} ${SDLNET_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
 
 

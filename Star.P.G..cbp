@@ -24,8 +24,8 @@
 					<Add library="SDL_ttf" />
 					<Add library="SDL_net" />
 					<Add library="opengl32" />
-					<Add directory="\host\Program Files (x86)\CodeBlocks\MinGW\lib" />
-					<Add directory="\usr\lib" />
+					<Add directory="/host/Program Files (x86)/CodeBlocks/MinGW/lib" />
+					<Add directory="/usr/lib" />
 				</Linker>
 			</Target>
 			<Target title="Linux">
@@ -44,107 +44,107 @@
 					<Add library="SDL_net" />
 					<Add library="SDL_ttf" />
 					<Add library="GL" />
-					<Add library="\usr\lib\mesa\libGL.so" />
-					<Add directory="\host\Program Files (x86)\CodeBlocks\MinGW\lib" />
-					<Add directory="\usr\lib" />
+					<Add directory="/host/Program Files (x86)/CodeBlocks/MinGW/lib" />
+					<Add directory="/usr/lib" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wno-write-strings" />
-			<Add directory='&quot;C:\Program Files (x86)\CodeBlocks\MinGW\include&quot;' />
+			<Add directory='&quot;C:/Program Files (x86)/CodeBlocks/MinGW/include&quot;' />
 		</Compiler>
 		<Linker>
-			<Add directory='&quot;C:\Program Files (x86)\CodeBlocks\MinGW\lib&quot;' />
+			<Add directory='&quot;C:/Program Files (x86)/CodeBlocks/MinGW/lib&quot;' />
 		</Linker>
-		<Unit filename="src\NPC.cpp" />
-		<Unit filename="src\NPC.hpp" />
-		<Unit filename="src\PC.cpp" />
-		<Unit filename="src\PC.hpp" />
-		<Unit filename="src\Star.P.G._private.h" />
-		<Unit filename="src\Star.P.G._private.rc">
+		<Unit filename="CMakeLists.txt" />
+		<Unit filename="src/NPC.cpp" />
+		<Unit filename="src/NPC.hpp" />
+		<Unit filename="src/PC.cpp" />
+		<Unit filename="src/PC.hpp" />
+		<Unit filename="src/Star.P.G._private.h" />
+		<Unit filename="src/Star.P.G._private.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="src\achievements.cpp" />
-		<Unit filename="src\achievements.hpp" />
-		<Unit filename="src\bullets.cpp" />
-		<Unit filename="src\bullets.hpp" />
-		<Unit filename="src\core\background.cpp" />
-		<Unit filename="src\core\background.hpp" />
-		<Unit filename="src\core\config.cpp" />
-		<Unit filename="src\core\config.hpp" />
-		<Unit filename="src\core\core.cpp" />
-		<Unit filename="src\core\core.hpp" />
-		<Unit filename="src\core\font.cpp" />
-		<Unit filename="src\core\font.hpp" />
-		<Unit filename="src\core\graphics.cpp" />
-		<Unit filename="src\core\graphics.hpp" />
-		<Unit filename="src\core\io.cpp" />
-		<Unit filename="src\core\io.hpp" />
-		<Unit filename="src\core\log.cpp" />
-		<Unit filename="src\core\log.hpp" />
-		<Unit filename="src\core\menu.cpp" />
-		<Unit filename="src\core\menu.hpp" />
-		<Unit filename="src\core\music.cpp" />
-		<Unit filename="src\core\music.hpp" />
-		<Unit filename="src\core\network.cpp" />
-		<Unit filename="src\core\network.hpp" />
-		<Unit filename="src\core\particles.cpp" />
-		<Unit filename="src\core\particles.hpp" />
-		<Unit filename="src\core\physics.cpp" />
-		<Unit filename="src\core\physics.hpp" />
-		<Unit filename="src\core\savegame.cpp" />
-		<Unit filename="src\core\savegame.hpp" />
-		<Unit filename="src\core\sound.cpp" />
-		<Unit filename="src\core\sound.hpp" />
-		<Unit filename="src\core\textures.cpp" />
-		<Unit filename="src\core\textures.hpp" />
-		<Unit filename="src\core\timer.cpp" />
-		<Unit filename="src\core\timer.hpp" />
-		<Unit filename="src\debris.cpp" />
-		<Unit filename="src\debris.hpp" />
-		<Unit filename="src\explosions.cpp" />
-		<Unit filename="src\explosions.hpp" />
-		<Unit filename="src\game.cpp" />
-		<Unit filename="src\game.hpp" />
-		<Unit filename="src\in_game_messages.cpp" />
-		<Unit filename="src\in_game_messages.hpp" />
-		<Unit filename="src\language.cpp" />
-		<Unit filename="src\language.hpp" />
-		<Unit filename="src\levels.cpp" />
-		<Unit filename="src\levels.hpp" />
-		<Unit filename="src\load_resources.cpp" />
-		<Unit filename="src\load_resources.hpp" />
-		<Unit filename="src\main.cpp" />
-		<Unit filename="src\main.hpp" />
-		<Unit filename="src\menu_system.cpp" />
-		<Unit filename="src\menu_system.hpp" />
-		<Unit filename="src\misc.cpp" />
-		<Unit filename="src\misc.hpp" />
-		<Unit filename="src\powerups.cpp" />
-		<Unit filename="src\powerups.hpp" />
-		<Unit filename="src\projectiles.cpp" />
-		<Unit filename="src\projectiles.hpp" />
-		<Unit filename="src\save_data.cpp" />
-		<Unit filename="src\save_data.hpp" />
-		<Unit filename="src\screen_rumble.cpp" />
-		<Unit filename="src\screen_rumble.hpp" />
-		<Unit filename="src\shields.cpp" />
-		<Unit filename="src\shields.hpp" />
-		<Unit filename="src\support_ships.cpp" />
-		<Unit filename="src\support_ships.hpp" />
-		<Unit filename="src\thrusters.cpp" />
-		<Unit filename="src\thrusters.hpp" />
-		<Unit filename="src\version.h" />
-		<Unit filename="src\waves.cpp" />
-		<Unit filename="src\waves.hpp" />
+		<Unit filename="src/achievements.cpp" />
+		<Unit filename="src/achievements.hpp" />
+		<Unit filename="src/bullets.cpp" />
+		<Unit filename="src/bullets.hpp" />
+		<Unit filename="src/core/background.cpp" />
+		<Unit filename="src/core/background.hpp" />
+		<Unit filename="src/core/config.cpp" />
+		<Unit filename="src/core/config.hpp" />
+		<Unit filename="src/core/core.cpp" />
+		<Unit filename="src/core/core.hpp" />
+		<Unit filename="src/core/font.cpp" />
+		<Unit filename="src/core/font.hpp" />
+		<Unit filename="src/core/graphics.cpp" />
+		<Unit filename="src/core/graphics.hpp" />
+		<Unit filename="src/core/io.cpp" />
+		<Unit filename="src/core/io.hpp" />
+		<Unit filename="src/core/log.cpp" />
+		<Unit filename="src/core/log.hpp" />
+		<Unit filename="src/core/menu.cpp" />
+		<Unit filename="src/core/menu.hpp" />
+		<Unit filename="src/core/music.cpp" />
+		<Unit filename="src/core/music.hpp" />
+		<Unit filename="src/core/network.cpp" />
+		<Unit filename="src/core/network.hpp" />
+		<Unit filename="src/core/particles.cpp" />
+		<Unit filename="src/core/particles.hpp" />
+		<Unit filename="src/core/physics.cpp" />
+		<Unit filename="src/core/physics.hpp" />
+		<Unit filename="src/core/savegame.cpp" />
+		<Unit filename="src/core/savegame.hpp" />
+		<Unit filename="src/core/sound.cpp" />
+		<Unit filename="src/core/sound.hpp" />
+		<Unit filename="src/core/textures.cpp" />
+		<Unit filename="src/core/textures.hpp" />
+		<Unit filename="src/core/timer.cpp" />
+		<Unit filename="src/core/timer.hpp" />
+		<Unit filename="src/debris.cpp" />
+		<Unit filename="src/debris.hpp" />
+		<Unit filename="src/explosions.cpp" />
+		<Unit filename="src/explosions.hpp" />
+		<Unit filename="src/game.cpp" />
+		<Unit filename="src/game.hpp" />
+		<Unit filename="src/in_game_messages.cpp" />
+		<Unit filename="src/in_game_messages.hpp" />
+		<Unit filename="src/language.cpp" />
+		<Unit filename="src/language.hpp" />
+		<Unit filename="src/levels.cpp" />
+		<Unit filename="src/levels.hpp" />
+		<Unit filename="src/load_resources.cpp" />
+		<Unit filename="src/load_resources.hpp" />
+		<Unit filename="src/main.cpp" />
+		<Unit filename="src/main.hpp" />
+		<Unit filename="src/menu_system.cpp" />
+		<Unit filename="src/menu_system.hpp" />
+		<Unit filename="src/misc.cpp" />
+		<Unit filename="src/misc.hpp" />
+		<Unit filename="src/powerups.cpp" />
+		<Unit filename="src/powerups.hpp" />
+		<Unit filename="src/projectiles.cpp" />
+		<Unit filename="src/projectiles.hpp" />
+		<Unit filename="src/save_data.cpp" />
+		<Unit filename="src/save_data.hpp" />
+		<Unit filename="src/screen_rumble.cpp" />
+		<Unit filename="src/screen_rumble.hpp" />
+		<Unit filename="src/shields.cpp" />
+		<Unit filename="src/shields.hpp" />
+		<Unit filename="src/support_ships.cpp" />
+		<Unit filename="src/support_ships.hpp" />
+		<Unit filename="src/thrusters.cpp" />
+		<Unit filename="src/thrusters.hpp" />
+		<Unit filename="src/version.h" />
+		<Unit filename="src/waves.cpp" />
+		<Unit filename="src/waves.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
 			<debugger />
 			<AutoVersioning>
 				<Scheme minor_max="100" build_max="0" rev_max="0" rev_rand_max="10" build_times_to_increment_minor="100" />
-				<Settings autoincrement="0" date_declarations="1" update_manifest="1" do_auto_increment="0" ask_to_increment="0" language="C++" svn="0" svn_directory="" header_path="version.h" />
+				<Settings autoincrement="0" date_declarations="1" use_define="0" update_manifest="1" do_auto_increment="0" ask_to_increment="0" language="C++" svn="0" svn_directory="" header_path="version.h" />
 				<Changes_Log show_changes_editor="1" app_title="released version %M.%m.%b of %p" changeslog_path="ChangesLog.txt" />
 				<Code header_guard="VERSION_H" namespace="AutoVersion" prefix="" />
 			</AutoVersioning>
