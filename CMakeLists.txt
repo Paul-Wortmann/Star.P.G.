@@ -74,20 +74,13 @@ EndIf (NOT SDLMIXER_FOUND)
     INCLUDE_DIRECTORIES(${SDLNET_INCLUDE_DIRS})
  EndIf (NOT SDLNET_FOUND)
 
-PKG_SEARCH_MODULE(SDLTTF REQUIRED SDL_ttf)
-#Find_Package (SDL_ttf REQUIRED)
-If (NOT SDLTTF_FOUND)
-    Message (ERROR "Couldn't find SDL-ttf development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-ttf2.0-dev' package.")
-Else (NOT SDLTTF_FOUND)
+find_package (SDL_ttf REQUIRED)
+If (SDLTTF_FOUND)
     Include_Directories (${SDLTTF_INCLUDE_DIRS})
-EndIf (NOT SDLTTF_FOUND)
-
-#PKG_SEARCH_MODULE(PHYSFS REQUIRED PhysFS)
-#If (NOT PHYSFS_FOUND)
-#    Message (ERROR "Couldn't find PhysicsFS development files. On Debian-based systems (such as Ubuntu) you should install the 'libphysfs-dev' package.")
-#Else (NOT PHYSFS_FOUND)
-#    INCLUDE_DIRECTORIES(${PHYSFS_INCLUDE_DIRS})
-#EndIf (NOT PHYSFS_FOUND)
+    link_directories(${SDLTTF_LIBRARY})
+Else (SDLTTF_FOUND)
+    Message (ERROR "Couldn't find SDL-ttf development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-ttf2.0-dev' package.")
+EndIf (SDLTTF_FOUND)
 
 find_package(PhysFS REQUIRED)
 if (PHYSFS_FOUND)
@@ -170,6 +163,6 @@ Add_Executable (star_p_g ${STAR_P_G_SOURCES})
 
 link_directories( /path/to/PHYSFSlibs/)
 
-Target_Link_Libraries (star_p_g ${CMAKE_LD_FLAGS}  ${PHYSFS_LIBRARY} ${SDL_LIBRARIES} ${SDLIMAGE_LIBRARIES} ${SDLMIXER_LIBRARIES} ${SDLTTF_LIBRARIES} ${SDLNET_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
+Target_Link_Libraries (star_p_g ${CMAKE_LD_FLAGS}  ${PHYSFS_LIBRARY} ${SDL_LIBRARIES} ${SDLIMAGE_LIBRARIES} ${SDLMIXER_LIBRARIES} ${SDLTTF_LIBRARY} ${SDLNET_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
 
 
