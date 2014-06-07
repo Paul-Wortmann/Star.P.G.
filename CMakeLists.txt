@@ -74,11 +74,11 @@ EndIf (NOT SDLMIXER_FOUND)
      INCLUDE_DIRECTORIES(${SDLNET_INCLUDE_DIRS})
  EndIf (NOT SDLNET_FOUND)
 
-PKG_SEARCH_MODULE(SDLTTF REQUIRED SDL_ttf)
+Find_Package (SDL_ttf REQUIRED)
 If (NOT SDLTTF_FOUND)
     Message (ERROR "Couldn't find SDL-ttf development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-ttf2.0-dev' package.")
 Else (NOT SDLTTF_FOUND)
-    INCLUDE_DIRECTORIES(${SDLTTF_INCLUDE_DIRS})
+	  Include_Directories (${SDLTTF_INCLUDE_DIR})
 EndIf (NOT SDLTTF_FOUND)
 
 #PKG_SEARCH_MODULE(PHYSFS REQUIRED PhysFS)
