@@ -48,7 +48,7 @@ struct game_type
     int                         difficulty;
     language_class              language;
     level_class                 level[MAX_LEVELS];
-    debris_class                debris;
+    debris_struct               debris;
     bool                        level_end_rumble;
     rumble_class                rumble;
     int                         npc_damage_duration;

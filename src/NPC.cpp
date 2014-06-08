@@ -42,20 +42,20 @@ extern  game_class       game;
 void enemy_class::load(std::string file_name)
 {
     char         temp_char = ' ';
-    float        temp_float_data;
-    int          temp_int_data;
     std::string  temp_string_data;
     std::string  temp_string_key;
     std::string  temp_string_value;
-    int          count;
     std::string  data_line;
     std::fstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
     if (script_file.is_open())
     {
+        float temp_float_data;
+        int   temp_int_data;
         while ( script_file.good() )
         {
             getline(script_file,data_line);
             {
+                int count = 0;
                 temp_char = data_line[0];
                 if((temp_char != '#') && ((int)data_line.length() > 2))
                 {

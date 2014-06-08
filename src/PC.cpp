@@ -99,260 +99,260 @@ int spawn_player_bullet_num(int player_bullet_num, int location)
 /*----------------------------------------------------------------------------*/
 int spawn_player_bullet(int position)
 {
-   bool spawn_done = 0;
-   int  player_bullet_num;
-   if (((position == 0) && (game_o.player.front_weapon > -1)) || ((position == 1) && (game_o.player.side_weapon > -1)))
-   {
-      if (position == 0)//front weapon
-      {
-         if (game_o.player.front_weapon ==  0) sound.projectile_000.play();
-         if (game_o.player.front_weapon ==  1) sound.projectile_001.play();
-         if (game_o.player.front_weapon ==  2) sound.projectile_002.play();
-         if (game_o.player.front_weapon ==  3) sound.projectile_003.play();
-         if (game_o.player.front_weapon ==  4) sound.projectile_004.play();
-         if (game_o.player.front_weapon ==  5) sound.projectile_005.play();
-         if (game_o.player.front_weapon ==  6) sound.projectile_006.play();
-         if (game_o.player.front_weapon ==  7) sound.projectile_007.play();
-         if (game_o.player.front_weapon ==  8) sound.projectile_008.play();
-         if (game_o.player.front_weapon ==  9) sound.projectile_009.play();
-         if (game_o.player.front_weapon == 10) sound.projectile_010.play();
-         if (game_o.player.front_weapon == 11) sound.projectile_011.play();
-         if (game_o.player.front_weapon == 12) sound.projectile_012.play();
-         if (game_o.player.front_weapon == 13) sound.projectile_013.play();
-         if (game_o.player.front_weapon == 14) sound.projectile_014.play();
-         if (game_o.player.front_weapon == 15) sound.projectile_015.play();
-         if (game_o.player.front_weapon == 16) sound.projectile_016.play();
-         if (game_o.player.front_weapon == 17) sound.projectile_017.play();
-         if (game_o.player.front_weapon == 18) sound.projectile_018.play();
-         if (game_o.player.front_weapon == 19) sound.projectile_019.play();
-         if (game_o.player.front_weapon == 20) sound.projectile_020.play();
-         if (game_o.player.front_weapon == 21) sound.projectile_021.play();
-         if (game_o.player.front_weapon == 22) sound.projectile_022.play();
-         if (game_o.player.front_weapon == 23) sound.projectile_023.play();
-         if (game_o.player.front_weapon == 24) sound.projectile_024.play();
-         if (game_o.player.front_weapon == 25) sound.projectile_025.play();
-         if (game_o.player.front_weapon == 26) sound.projectile_026.play();
-         if (game_o.player.front_weapon == 27) sound.projectile_027.play();
-         if (game_o.player.front_weapon == 28) sound.projectile_028.play();
-         if (game_o.player.front_weapon == 29) sound.projectile_029.play();
-         if (game_o.player.front_weapon == 30) sound.projectile_030.play();
-         if (game_o.projectile[game_o.player.front_weapon].level == 0)
-         {
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+    bool spawn_done = 0;
+    if (((position == 0) && (game_o.player.front_weapon > -1)) || ((position == 1) && (game_o.player.side_weapon > -1)))
+    {
+        int  player_bullet_num;
+        if (position == 0)//front weapon
+        {
+            if (game_o.player.front_weapon ==  0) sound.projectile_000.play();
+            if (game_o.player.front_weapon ==  1) sound.projectile_001.play();
+            if (game_o.player.front_weapon ==  2) sound.projectile_002.play();
+            if (game_o.player.front_weapon ==  3) sound.projectile_003.play();
+            if (game_o.player.front_weapon ==  4) sound.projectile_004.play();
+            if (game_o.player.front_weapon ==  5) sound.projectile_005.play();
+            if (game_o.player.front_weapon ==  6) sound.projectile_006.play();
+            if (game_o.player.front_weapon ==  7) sound.projectile_007.play();
+            if (game_o.player.front_weapon ==  8) sound.projectile_008.play();
+            if (game_o.player.front_weapon ==  9) sound.projectile_009.play();
+            if (game_o.player.front_weapon == 10) sound.projectile_010.play();
+            if (game_o.player.front_weapon == 11) sound.projectile_011.play();
+            if (game_o.player.front_weapon == 12) sound.projectile_012.play();
+            if (game_o.player.front_weapon == 13) sound.projectile_013.play();
+            if (game_o.player.front_weapon == 14) sound.projectile_014.play();
+            if (game_o.player.front_weapon == 15) sound.projectile_015.play();
+            if (game_o.player.front_weapon == 16) sound.projectile_016.play();
+            if (game_o.player.front_weapon == 17) sound.projectile_017.play();
+            if (game_o.player.front_weapon == 18) sound.projectile_018.play();
+            if (game_o.player.front_weapon == 19) sound.projectile_019.play();
+            if (game_o.player.front_weapon == 20) sound.projectile_020.play();
+            if (game_o.player.front_weapon == 21) sound.projectile_021.play();
+            if (game_o.player.front_weapon == 22) sound.projectile_022.play();
+            if (game_o.player.front_weapon == 23) sound.projectile_023.play();
+            if (game_o.player.front_weapon == 24) sound.projectile_024.play();
+            if (game_o.player.front_weapon == 25) sound.projectile_025.play();
+            if (game_o.player.front_weapon == 26) sound.projectile_026.play();
+            if (game_o.player.front_weapon == 27) sound.projectile_027.play();
+            if (game_o.player.front_weapon == 28) sound.projectile_028.play();
+            if (game_o.player.front_weapon == 29) sound.projectile_029.play();
+            if (game_o.player.front_weapon == 30) sound.projectile_030.play();
+            if (game_o.projectile[game_o.player.front_weapon].level == 0)
             {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,1);
-                  spawn_done = 1;
-               }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,1);
+                        spawn_done = 1;
+                    }
+                }
             }
-         }
-         if (game_o.projectile[game_o.player.front_weapon].level == 1)
-         {
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+            if (game_o.projectile[game_o.player.front_weapon].level == 1)
             {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,0);
-                  spawn_done = 1;
-               }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,0);
+                        spawn_done = 1;
+                    }
+                }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,2);
+                        spawn_done = 1;
+                    }
+                }
             }
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+            if (game_o.projectile[game_o.player.front_weapon].level >= 2)
             {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,2);
-                  spawn_done = 1;
-               }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,0);
+                        spawn_done = 1;
+                    }
+                }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,1);
+                        spawn_done = 1;
+                    }
+                }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,2);
+                        spawn_done = 1;
+                    }
+                }
             }
-         }
-         if (game_o.projectile[game_o.player.front_weapon].level >= 2)
-         {
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+        }
+        if (position == 1)//side weapon
+        {
+            if (game_o.player.side_weapon ==  0) sound.projectile_000.play();
+            if (game_o.player.side_weapon ==  1) sound.projectile_001.play();
+            if (game_o.player.side_weapon ==  2) sound.projectile_002.play();
+            if (game_o.player.side_weapon ==  3) sound.projectile_003.play();
+            if (game_o.player.side_weapon ==  4) sound.projectile_004.play();
+            if (game_o.player.side_weapon ==  5) sound.projectile_005.play();
+            if (game_o.player.side_weapon ==  6) sound.projectile_006.play();
+            if (game_o.player.side_weapon ==  7) sound.projectile_007.play();
+            if (game_o.player.side_weapon ==  8) sound.projectile_008.play();
+            if (game_o.player.side_weapon ==  9) sound.projectile_009.play();
+            if (game_o.player.side_weapon == 10) sound.projectile_010.play();
+            if (game_o.player.side_weapon == 11) sound.projectile_011.play();
+            if (game_o.player.side_weapon == 12) sound.projectile_012.play();
+            if (game_o.player.side_weapon == 13) sound.projectile_013.play();
+            if (game_o.player.side_weapon == 14) sound.projectile_014.play();
+            if (game_o.player.side_weapon == 15) sound.projectile_015.play();
+            if (game_o.player.side_weapon == 16) sound.projectile_016.play();
+            if (game_o.player.side_weapon == 17) sound.projectile_017.play();
+            if (game_o.player.side_weapon == 18) sound.projectile_018.play();
+            if (game_o.player.side_weapon == 19) sound.projectile_019.play();
+            if (game_o.player.side_weapon == 20) sound.projectile_020.play();
+            if (game_o.player.side_weapon == 21) sound.projectile_021.play();
+            if (game_o.player.side_weapon == 22) sound.projectile_022.play();
+            if (game_o.player.side_weapon == 23) sound.projectile_023.play();
+            if (game_o.player.side_weapon == 24) sound.projectile_024.play();
+            if (game_o.player.side_weapon == 25) sound.projectile_025.play();
+            if (game_o.player.side_weapon == 26) sound.projectile_026.play();
+            if (game_o.player.side_weapon == 27) sound.projectile_027.play();
+            if (game_o.player.side_weapon == 28) sound.projectile_028.play();
+            if (game_o.player.side_weapon == 29) sound.projectile_029.play();
+            if (game_o.player.side_weapon == 30) sound.projectile_030.play();
+            if (game_o.projectile[game_o.player.side_weapon].level == 0)
             {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,0);
-                  spawn_done = 1;
-               }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,4);
+                        spawn_done = 1;
+                    }
+                }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,7);
+                        spawn_done = 1;
+                    }
+                }
             }
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+            if (game_o.projectile[game_o.player.side_weapon].level == 1)
             {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,1);
-                  spawn_done = 1;
-               }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,3);
+                        spawn_done = 1;
+                    }
+                }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,5);
+                        spawn_done = 1;
+                    }
+                }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,6);
+                        spawn_done = 1;
+                    }
+                }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,8);
+                        spawn_done = 1;
+                    }
+                }
             }
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+            if (game_o.projectile[game_o.player.side_weapon].level >= 2)
             {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,2);
-                  spawn_done = 1;
-               }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,4);
+                        spawn_done = 1;
+                    }
+                }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,7);
+                        spawn_done = 1;
+                    }
+                }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,3);
+                        spawn_done = 1;
+                    }
+                }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,5);
+                        spawn_done = 1;
+                    }
+                }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,6);
+                        spawn_done = 1;
+                    }
+                }
+                spawn_done = 0;
+                for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
+                {
+                    if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
+                    {
+                        spawn_player_bullet_num(player_bullet_num,8);
+                        spawn_done = 1;
+                    }
+                }
             }
-         }
-      }
-      if (position == 1)//side weapon
-      {
-         if (game_o.player.side_weapon ==  0) sound.projectile_000.play();
-         if (game_o.player.side_weapon ==  1) sound.projectile_001.play();
-         if (game_o.player.side_weapon ==  2) sound.projectile_002.play();
-         if (game_o.player.side_weapon ==  3) sound.projectile_003.play();
-         if (game_o.player.side_weapon ==  4) sound.projectile_004.play();
-         if (game_o.player.side_weapon ==  5) sound.projectile_005.play();
-         if (game_o.player.side_weapon ==  6) sound.projectile_006.play();
-         if (game_o.player.side_weapon ==  7) sound.projectile_007.play();
-         if (game_o.player.side_weapon ==  8) sound.projectile_008.play();
-         if (game_o.player.side_weapon ==  9) sound.projectile_009.play();
-         if (game_o.player.side_weapon == 10) sound.projectile_010.play();
-         if (game_o.player.side_weapon == 11) sound.projectile_011.play();
-         if (game_o.player.side_weapon == 12) sound.projectile_012.play();
-         if (game_o.player.side_weapon == 13) sound.projectile_013.play();
-         if (game_o.player.side_weapon == 14) sound.projectile_014.play();
-         if (game_o.player.side_weapon == 15) sound.projectile_015.play();
-         if (game_o.player.side_weapon == 16) sound.projectile_016.play();
-         if (game_o.player.side_weapon == 17) sound.projectile_017.play();
-         if (game_o.player.side_weapon == 18) sound.projectile_018.play();
-         if (game_o.player.side_weapon == 19) sound.projectile_019.play();
-         if (game_o.player.side_weapon == 20) sound.projectile_020.play();
-         if (game_o.player.side_weapon == 21) sound.projectile_021.play();
-         if (game_o.player.side_weapon == 22) sound.projectile_022.play();
-         if (game_o.player.side_weapon == 23) sound.projectile_023.play();
-         if (game_o.player.side_weapon == 24) sound.projectile_024.play();
-         if (game_o.player.side_weapon == 25) sound.projectile_025.play();
-         if (game_o.player.side_weapon == 26) sound.projectile_026.play();
-         if (game_o.player.side_weapon == 27) sound.projectile_027.play();
-         if (game_o.player.side_weapon == 28) sound.projectile_028.play();
-         if (game_o.player.side_weapon == 29) sound.projectile_029.play();
-         if (game_o.player.side_weapon == 30) sound.projectile_030.play();
-         if (game_o.projectile[game_o.player.side_weapon].level == 0)
-         {
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
-            {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,4);
-                  spawn_done = 1;
-               }
-            }
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
-            {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,7);
-                  spawn_done = 1;
-               }
-            }
-         }
-         if (game_o.projectile[game_o.player.side_weapon].level == 1)
-         {
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
-            {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,3);
-                  spawn_done = 1;
-               }
-            }
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
-            {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,5);
-                  spawn_done = 1;
-               }
-            }
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
-            {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,6);
-                  spawn_done = 1;
-               }
-            }
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
-            {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,8);
-                  spawn_done = 1;
-               }
-            }
-         }
-         if (game_o.projectile[game_o.player.side_weapon].level >= 2)
-         {
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
-            {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,4);
-                  spawn_done = 1;
-               }
-            }
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
-            {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,7);
-                  spawn_done = 1;
-               }
-            }
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
-            {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,3);
-                  spawn_done = 1;
-               }
-            }
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
-            {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,5);
-                  spawn_done = 1;
-               }
-            }
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
-            {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,6);
-                  spawn_done = 1;
-               }
-            }
-            spawn_done = 0;
-            for  (player_bullet_num = 0; player_bullet_num < MAX_BULLETS;player_bullet_num++)
-            {
-               if (!spawn_done and !game_o.player.bullet[player_bullet_num].active)
-               {
-                  spawn_player_bullet_num(player_bullet_num,8);
-                  spawn_done = 1;
-               }
-            }
-         }
-      }
-   }
- return(spawn_done);
+        }
+    }
+    return(spawn_done);
 }
 
 /*----------------------------------------------------------------------------*/
@@ -733,7 +733,7 @@ int process_player(int command)
             game_o.immune = false;
         }
    //level up our thrusters, only if used! :)
-    if ((command == 3) && (game_o.player.thrusters >= 0) && (game_o.thruster[game_o.player.thrusters].level <= 2) && (game_o.player.thrusters >= 0))
+    if ((command == 3) && (game_o.player.thrusters >= 0) && (game_o.thruster[game_o.player.thrusters].level <= 2))
     {
         game_o.thruster[game_o.player.thrusters].experience++;
         if (game_o.thruster[game_o.player.thrusters].level == 0)

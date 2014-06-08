@@ -27,7 +27,7 @@
 
 const int   MAX_DEBRIS        = 128;
 
-class debris_class
+struct debris_struct
 {
    int   x_dir;
    int   y_dir;

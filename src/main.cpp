@@ -430,7 +430,7 @@ int main(int argc, char *argv[])
         }
 //---------------------------- code for end of main loop -----------------------
         game.FPS = (game.timer.getticks() - game.LastTicks);
-        if ((game.timer.getticks() - game.LastTicks) >= 1000/90)
+        if ((game.timer.getticks() - game.LastTicks) >= 2)
         {
             game.LastTicks = game.timer.getticks();
             game.process_ready = true;
