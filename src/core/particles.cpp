@@ -57,12 +57,12 @@ void  particle_class::init(void)
     particle_class::color_b         = 1.0f;
     particle_class::TTL             = 1.0f;
     particle_class::TTL_rate        = 0.0025f;
-};
+}
 
 void  particle_class::kill(void)
 {
     particle_class::active          = false;
-};
+}
 
 void  particle_class::process(void)
 {
@@ -104,33 +104,33 @@ void  particle_class::process(void)
             */
         }
     }
-};
+}
 
 void emitter_class::set_emitter_pos      (float x  , float y  , float z  )
 {
     emitter_class::pos_x                 = x;
     emitter_class::pos_y                 = y;
     emitter_class::pos_z                 = z;
-};
+}
 
 void emitter_class::set_emitter_state    (bool  set_active, bool set_always_on, int ttl)
 {
     emitter_class::active                = set_active;
     emitter_class::always_on             = set_always_on;
     emitter_class::TTL                   = ttl;
-};
+}
 
 void emitter_class::set_emitter_image    (int i_ref)
 {
     emitter_class::image_reference       = i_ref;
-};
+}
 
 void emitter_class::set_emitter_image    (int i_ref, float w  , float h  )
 {
     emitter_class::image_reference       = i_ref;
     emitter_class::image_width           = w;
     emitter_class::image_height          = h;
-};
+}
 
 void emitter_class::set_emitter_movement (float vm , float ax , float ay , float az , float dr , int   sr , float fx , float fy , float fz )
 {
@@ -143,13 +143,13 @@ void emitter_class::set_emitter_movement (float vm , float ax , float ay , float
     emitter_class::force_x               = fx;
     emitter_class::force_y               = fy;
     emitter_class::force_z               = fz;
-};
+}
 
 void emitter_class::set_emitter_rotation(float r  , float rr )
 {
     emitter_class::rotation              = r;
     emitter_class::rotation_rate         = rr;
-};
+}
 
 void emitter_class::set_emitter_rates    (int   sf , int   sfc, float pr , int sq)
 {
@@ -157,7 +157,7 @@ void emitter_class::set_emitter_rates    (int   sf , int   sfc, float pr , int s
     emitter_class::spawn_frequency_count = sfc;
     emitter_class::particle_TTL_rate     = pr;
     emitter_class::spawn_quantity        = sq;
-};
+}
 
 void emitter_class::set_emitter_color    (float csr, float csg, float csb, float cer, float ceg, float ceb)
 {
@@ -171,21 +171,21 @@ void emitter_class::set_emitter_color    (float csr, float csg, float csb, float
     emitter_class::color_rate_r          = (csr - cer) / (1.0f / pr);
     emitter_class::color_rate_g          = (csg - ceg) / (1.0f / pr);
     emitter_class::color_rate_b          = (csb - ceb) / (1.0f / pr);
-};
+}
 
 void emitter_class::set_emitter_velocity (float vx , float vy , float vz )
 {
     emitter_class::velocity_x            = vx;
     emitter_class::velocity_y            = vy;
     emitter_class::velocity_z            = vz;
-};
+}
 
 void emitter_class::set_emitter_size     (float sx , float sy , float sz )
 {
     emitter_class::size_x = sx;
     emitter_class::size_y = sy;
     emitter_class::size_z = sz;
-};
+}
 
 void  emitter_class::init(void)
 {
@@ -226,7 +226,7 @@ void  emitter_class::init(void)
     emitter_class::color_rate_r          = 0.0f;
     emitter_class::color_rate_g          = 0.0f;
     emitter_class::color_rate_b          = 0.0f;
-};
+}
 
 void  emitter_class::kill(void)
 {
@@ -235,7 +235,7 @@ void  emitter_class::kill(void)
         emitter_class::particle[particle_count].kill();
     }
     emitter_class::active          = false;
-};
+}
 
 
 void  emitter_class::process(void)
@@ -309,7 +309,7 @@ void  emitter_class::process(void)
             emitter_class::particle[particle_count].color_b -= emitter_class::color_rate_b;
         }
     }
-};
+}
 
 void  emitter_class::draw(void)
 {
@@ -345,9 +345,9 @@ void  emitter_class::draw(void)
                 if (emitter_class::image_reference == texture.shrapnel_06.ref_number) texture.shrapnel_06.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,emitter_class::particle[particle_count].rotation,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
                 if (emitter_class::image_reference == texture.shrapnel_07.ref_number) texture.shrapnel_07.draw(true,emitter_class::particle[particle_count].pos_x,emitter_class::particle[particle_count].pos_y,emitter_class::particle[particle_count].pos_z,emitter_class::image_width,emitter_class::image_height,emitter_class::particle[particle_count].rotation,emitter_class::particle[particle_count].color_r,emitter_class::particle[particle_count].color_g,emitter_class::particle[particle_count].color_b,emitter_class::particle[particle_count].TTL);
             }
-        };
-    };
-};
+        }
+    }
+}
 
 void  emitter_class::load(std::string file_name)
 {
@@ -566,7 +566,7 @@ void  emitter_class::load(std::string file_name)
     emitter_class::color_rate_r = (emitter_class::color_start_r - emitter_class::color_end_r) / (1.0f / emitter_class::particle_TTL_rate);
     emitter_class::color_rate_g = (emitter_class::color_start_g - emitter_class::color_end_g) / (1.0f / emitter_class::particle_TTL_rate);
     emitter_class::color_rate_b = (emitter_class::color_start_b - emitter_class::color_end_b) / (1.0f / emitter_class::particle_TTL_rate);
-};
+}
 
 
 

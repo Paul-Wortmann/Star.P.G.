@@ -57,7 +57,7 @@ void projectile_class::init(void)
     projectile_class::wave_velocity = 0.00015f;
     projectile_class::width         = 0.075f;
     projectile_class::height        = 0.075f;
-};
+}
 
 void projectile_class::init(std::string set_name,bool set_active,int exp,int lvl,float l1,float l2,float l3,float l4,float l5,float l6,int img,int snd,float dmg,float spd,float hlth,int rof,int mov,float ws,float wv)
 {
@@ -82,14 +82,14 @@ void projectile_class::init(std::string set_name,bool set_active,int exp,int lvl
     projectile_class::wave_velocity = wv;
     projectile_class::width         = 0.075f;
     projectile_class::height        = 0.075f;
-};
+}
 
 void projectile_class::init(bool set_active,int exp,int lvl)
 {
     projectile_class::active        = set_active;
     projectile_class::level         = lvl;
     projectile_class::experience    = exp;
-};
+}
 
 void projectile_class::load(std::string file_name)
 {
@@ -231,7 +231,7 @@ void projectile_class::load(std::string file_name)
         }
         projectile_file.close();
     }
-};
+}
 
 void init_projectiles(bool re_init)
 {
@@ -386,7 +386,7 @@ void init_projectiles(bool re_init)
         game_o.projectile[34].image = texture.projectile_034.ref_number;
         game_o.projectile[34].sound = sound.projectile_034.ref_number;
     }
-};
+}
 
 
 

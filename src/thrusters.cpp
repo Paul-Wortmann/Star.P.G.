@@ -108,7 +108,7 @@ void init_thrusters(bool re_init)
         game_o.thruster[4].smoke.load("data/configuration/particle_systems/thruster_004_smoke.txt");
 */
     }
-};
+}
 
 void proc_thrusters(void)
 {
@@ -119,13 +119,13 @@ void proc_thrusters(void)
         game_o.thruster[thruster_count].frame++;
         if (game_o.thruster[thruster_count].frame > game_o.thruster[thruster_count].frame_max) game_o.thruster[thruster_count].frame = 0;
     }
-};
+}
 
 void draw_thrusters(void)
 {
     game_o.thruster[game_o.player.thrusters].smoke.draw();
     game_o.thruster[game_o.player.thrusters].fire.draw();
-};
+}
 
 void thruster_class::load(std::string file_name)
 {
@@ -200,4 +200,4 @@ void thruster_class::load(std::string file_name)
         }
         script_file.close();
     }
-};
+}

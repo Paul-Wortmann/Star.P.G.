@@ -35,7 +35,7 @@ int seed_rand(void)
 {
    srand(time(0));
    return(1);
-};
+}
 
 double random_double(void)
 {
@@ -106,18 +106,18 @@ bool file_exists(const char* file_name)
     }
     else return(false);
     return(true);
-};
+}
 
 int round_double(double x)
 {
 	return (int)(x + 0.5);
-};
+}
 
 int nextpoweroftwo(int x)
 {
 	double logbase2 = log(x) / log(2);
 	return round(pow(2,ceil(logbase2)));
-};
+}
 
 std::wstring StringToWString(const std::string& s)
 {

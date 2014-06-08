@@ -34,17 +34,17 @@ extern save_data_type save_data;
 save_game_class::save_game_class(void)
 {
 
-};
+}
 
 save_game_class::~save_game_class(void)
 {
 
-};
+}
 
 void save_game_class::Assign_File(std::string file_name)
 {
     save_game_class::save_file_name = file_name;
-};
+}
 
 bool save_game_class::Save(void)
 {
@@ -57,7 +57,7 @@ bool save_game_class::Save(void)
     }
     else return(false);
     return(true);
-};
+}
 
 bool save_game_class::Load(void)
 {
@@ -70,19 +70,19 @@ bool save_game_class::Load(void)
     }
     else return(false);
     return(true);
-};
+}
 
 bool  save_game_class::Delete(void)
 {
   if( remove(save_game_class::save_file_name.c_str()) != 0 ) return(false);
   else return(true);
-};
+}
 
 bool save_game_class::File_Exists(void)
 {
   std::ifstream ifile(save_game_class::save_file_name.c_str());
   return ifile;
-};
+}
 
 
 

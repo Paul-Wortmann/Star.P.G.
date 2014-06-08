@@ -32,18 +32,18 @@
 log_file_class::log_file_class(void)
 {
 
-};
+}
 
 log_file_class::~log_file_class(void)
 {
 
-};
+}
 
 bool log_file_class::File_Set(const char *file_name)
 {
     log_file_class::Log_File = file_name;
     return(true);
-};
+}
 
 bool log_file_class::File_Clear(void)
 {
@@ -51,13 +51,13 @@ bool log_file_class::File_Clear(void)
     if (logfile.is_open()) logfile.close();
     else return(false);
     return(true);
-};
+}
 
 bool log_file_class::File_Delete(void)
 {
   if( remove(log_file_class::Log_File) != 0 ) return(false);
   else return(true);
-};
+}
 
 bool log_file_class::File_Write(const char  log_data[])
 {
@@ -70,7 +70,7 @@ bool log_file_class::File_Write(const char  log_data[])
     }
     else return(false);
     return(true);
-};
+}
 
 bool log_file_class::File_Write(std::string log_data)
 {
@@ -83,7 +83,7 @@ bool log_file_class::File_Write(std::string log_data)
     }
     else return(false);
     return(true);
-};
+}
 
 bool log_file_class::File_Write(std::string log_data, int   log_data_int)
 {
@@ -97,7 +97,7 @@ bool log_file_class::File_Write(std::string log_data, int   log_data_int)
     }
     else return(false);
     return(true);
-};
+}
 
 bool log_file_class::File_Write(std::string log_data, float log_data_float)
 {
@@ -111,7 +111,7 @@ bool log_file_class::File_Write(std::string log_data, float log_data_float)
     }
     else return(false);
     return(true);
-};
+}
 
 bool log_file_class::File_Write(std::string log_data, bool  log_data_bool)
 {
@@ -126,7 +126,7 @@ bool log_file_class::File_Write(std::string log_data, bool  log_data_bool)
     }
     else return(false);
     return(true);
-};
+}
 
 bool log_file_class::File_Write(int   log_data)
 {
@@ -139,7 +139,7 @@ bool log_file_class::File_Write(int   log_data)
     }
     else return(false);
     return(true);
-};
+}
 
 bool log_file_class::File_Write(float log_data)
 {
@@ -152,7 +152,7 @@ bool log_file_class::File_Write(float log_data)
     }
     else return(false);
     return(true);
-};
+}
 
 bool log_file_class::File_Write(bool  log_data)
 {
@@ -166,7 +166,7 @@ bool log_file_class::File_Write(bool  log_data)
     }
     else return(false);
     return(true);
-};
+}
 
 bool log_file_class::File_Write(std::string log_data_1, std::string log_data_2)
 {
@@ -180,7 +180,7 @@ bool log_file_class::File_Write(std::string log_data_1, std::string log_data_2)
     }
     else return(false);
     return(true);
-};
+}
 
 bool log_file_class::File_Write(std::string log_data_1, const char log_data_2[])
 {
@@ -194,7 +194,7 @@ bool log_file_class::File_Write(std::string log_data_1, const char log_data_2[])
     }
     else return(false);
     return(true);
-};
+}
 
 bool log_file_class::File_Write(std::wstring log_data_1, std::wstring log_data_2)
 {
@@ -208,5 +208,5 @@ bool log_file_class::File_Write(std::wstring log_data_1, std::wstring log_data_2
     }
     else return(false);
     return(true);
-};
+}
 

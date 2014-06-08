@@ -34,9 +34,9 @@ game_class::game_class(void)
     music_track      = -1;
     process_ready    = true;
     music_next_track = true;
-};
+}
 
 game_class::~game_class(void)
 {
 
-};
+}

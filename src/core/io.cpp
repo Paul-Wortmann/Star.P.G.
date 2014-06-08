@@ -131,7 +131,7 @@ bool events_init(void)
    game.io.left                       = false;
    game.io.right                      = false;
    return(true);
-};
+}
 
 bool events_process(void)
 {

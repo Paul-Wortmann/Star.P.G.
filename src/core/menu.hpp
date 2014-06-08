@@ -385,7 +385,7 @@ class menu_class
         void  set_title_data(float x, float y, float z, float w, float h, std::string menu_title);
         bool  mouse_over_title(void);
         bool  mouse_click_title(void);
-        float set_buttons_auto(void);
+        void  set_buttons_auto(void);
         void  set_image_arrow_normal(int image_ref_no);
         void  set_image_arrow_highlighted(int image_ref_no);
         void  set_image_arrow_disabled(int image_ref_no);
@@ -418,7 +418,7 @@ class menu_class
         bool  get_button_choice_enabled(int button_number, int choice_number);
         int   mouse_over_button_choice(int button_number);
         int   mouse_click_button_choice(int button_number);
-        void  set_button_slider_data(int button_number, int position_data, std::string text_label_data, bool active_data, bool enabled_data);
+        void  set_button_slider_data(int button_number, int position_data);
         int   mouse_over_button_slider(int button_number);
         int   mouse_click_button_slider(int button_number);
         void  set_toggle_data(int button_number, bool bool_data);

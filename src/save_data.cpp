@@ -165,7 +165,7 @@ void update_save_data(void)
     }
     save_data.background.movement_type = game.background.get_movement_type();
     save_data.save_version = 100;
-};
+}
 
 void update_game_data(void)
 {
@@ -299,7 +299,7 @@ void update_game_data(void)
         game_o.active_npc[count] = save_data.active_npc[count];
     }
     save_data.save_version = 1;
-};
+}
 
 
 

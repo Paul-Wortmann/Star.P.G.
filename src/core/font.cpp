@@ -37,22 +37,22 @@ extern game_class  game;
 font_class::font_class(void)
 {
 
-};
+}
 
 font_class::~font_class(void)
 {
     TTF_CloseFont(font_class::font_data);
-};
+}
 
 void font_class::Set_File(std::string filename)
 {
     font_class::font_data = TTF_OpenFont(filename.c_str(), 12);
-};
+}
 
 void font_class::Set_File(std::string filename, int pt_size)
 {
     font_class::font_data = TTF_OpenFont(filename.c_str(), pt_size);
-};
+}
 
 bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,std::string text,int int_data)
 {
@@ -96,7 +96,7 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     glDeleteTextures(1, &texture_data);
     SDL_FreeSurface(font_string);
     return(true);
-};
+}
 
 bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,std::string text,float float_data)
 {
@@ -140,7 +140,7 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     glDeleteTextures(1, &texture_data);
     SDL_FreeSurface(font_string);
     return(true);
-};
+}
 
 bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,std::string text)
 {
@@ -180,7 +180,7 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     glDeleteTextures(1, &texture_data);
     SDL_FreeSurface(font_string);
     return(true);
-};
+}
 
 bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,float ws,float hs,std::string text)
 {
@@ -222,7 +222,7 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     glDeleteTextures(1, &texture_data);
     SDL_FreeSurface(font_string);
     return(true);
-};
+}
 
 
 
@@ -271,7 +271,7 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     glDeleteTextures(1, &texture_data);
     SDL_FreeSurface(font_string);
     return(true);
-};
+}
 
 bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,float ws,float hs,std::string text,float float_data)
 {
@@ -318,7 +318,7 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     glDeleteTextures(1, &texture_data);
     SDL_FreeSurface(font_string);
     return(true);
-};
+}
 
 bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,float ws,float hs,std::string text,int int_data,std::string text_2)
 {
@@ -366,7 +366,7 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     glDeleteTextures(1, &texture_data);
     SDL_FreeSurface(font_string);
     return(true);
-};
+}
 
 bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,float ws,float hs,std::string text,float float_data,std::string text_2)
 {
@@ -414,4 +414,4 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     glDeleteTextures(1, &texture_data);
     SDL_FreeSurface(font_string);
     return(true);
-};
+}

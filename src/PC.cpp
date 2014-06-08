@@ -56,7 +56,7 @@ void  init_player            (void)
     game_o.player.side_weapon                =  0;
     game_o.player.front_shield               = -1;
     game_o.player.thrusters                  = -1;
-};
+}
 
 /*----------------------------------------------------------------------------*/
 int spawn_player_bullet_num(int player_bullet_num, int location)
@@ -841,22 +841,22 @@ int process_player(int command)
         {
             if (game_o.player.y_vel > 0.0f) game_o.player.y_vel -= 0.00025f;
             if (game_o.player.y_vel < 0.0f) game_o.player.y_vel  = 0.0f;
-        };
+        }
         if (game_o.player.y_dir == -1)
         {
             if (game_o.player.y_vel < 0.0f) game_o.player.y_vel += 0.00025f;
             if (game_o.player.y_vel > 0.0f) game_o.player.y_vel  = 0.0f;
-        };
+        }
         if (game_o.player.x_dir ==  1)
         {
             if (game_o.player.x_vel > 0.0f) game_o.player.x_vel -= 0.00025f;
             if (game_o.player.x_vel < 0.0f) game_o.player.x_vel  = 0.0f;
-        };
+        }
         if (game_o.player.x_dir == -1)
         {
             if (game_o.player.x_vel < 0.0f) game_o.player.x_vel += 0.00025f;
             if (game_o.player.x_vel > 0.0f) game_o.player.x_vel  = 0.0f;
-        };
+        }
         game_o.player.y_pos += game_o.player.y_vel;
         if (game_o.player.y_pos >  (1.0f - (game_o.player.height/2))) game_o.player.y_pos = (1.0f -(game_o.player.height/2));
         if (game_o.player.y_pos < -(1.0f - (game_o.player.height/2))) game_o.player.y_pos = -(1.0f -(game_o.player.height/2));
@@ -888,5 +888,5 @@ int process_player(int command)
         }
     }
    return(0);
-};
+}
 

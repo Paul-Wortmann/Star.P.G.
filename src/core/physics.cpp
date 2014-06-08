@@ -30,7 +30,7 @@
 {
     physics_class::generate_sin_table();
     physics_class::generate_cos_table();
-};
+}
 
 bool  physics_class::cube_collision        (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2)
 {
@@ -73,7 +73,7 @@ bool  physics_class::point_in_quadrangle  (float qx, float qw, float qy, float q
 {
     if ((px > (qx-(qw/2))) && (px < (qx+(qw/2))) && (py > (qy-(qh/2))) && (py < (qy+(qh/2)))) return(true);
     else return(false);
-};
+}
 
 bool  physics_class::point_in_diamond     (float dx, float dw, float dws, float dy, float dh, float dhs, float px, float py)
 {
@@ -86,27 +86,27 @@ bool  physics_class::point_in_diamond     (float dx, float dw, float dws, float 
     if  ((px > (dx - (dw/(dws*2))+ty)) && (px < (dx + (dw/(dws*2))-ty)) &&
          (py > (dy - (dh/(dhs*2))+tx)) && (py < (dy + (dh/(dhs*2))-tx))) return(true);
     else return(false);
-};
+}
 
 float  physics_class::line_slope_2D(float x1, float y1, float x2, float y2)
 {
     return((y2-y1)/(x2-x1));
-};
+}
 
 float  physics_class::line_angle(float x1, float y1, float x2, float y2)
 {
     return(atan2(y2 - y1, x2 - x1));
-};
+}
 
 float  physics_class::line_point_2D_x(float x1, float distance, float angle)
 {
     return(x1 + distance*physics_class::cos_table[(int)angle]);
-};
+}
 
 float physics_class::line_point_2D_y(float y1, float distance, float angle)
 {
     return(y1 + distance*physics_class::sin_table[(int)angle]);
-};
+}
 
 float  physics_class::rotate_point_2D_x(float cx,float cy,float px,float py,int angle)
 {
@@ -121,34 +121,34 @@ float  physics_class::rotate_point_2D_y(float cx,float cy,float px,float py,int 
 float  physics_class::move_speed_angle_2D_x    (float  x, float s,  float dr)
 {
     return(x + (s*physics_class::sin_table[(int)physics_class::radians_to_degrees(dr)]));
-};
+}
 
 float  physics_class::move_speed_angle_2D_y    (float  y, float s,  float dr)
 {
     return(y + (s*physics_class::cos_table[(int)physics_class::radians_to_degrees(dr)]));
-};
+}
 
 float  physics_class::degrees_to_radians   (float degrees)
 {
     return(degrees * (M_PI/180));
-};
+}
 
 float  physics_class::radians_to_degrees   (float radians)
 {
     return(radians * (180/M_PI));
-};
+}
 
 void   physics_class::generate_sin_table   (void)
 {
     for(int sin_count = 0; sin_count < 360; sin_count++)
         physics_class::sin_table[sin_count] = sin(sin_count* (M_PI/180));
-};
+}
 
 void   physics_class::generate_cos_table   (void)
 {
     for(int cos_count = 0; cos_count < 360; cos_count++)
         physics_class::cos_table[cos_count] = cos(cos_count* (M_PI/180));
-};
+}
 
 
 

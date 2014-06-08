@@ -57,12 +57,12 @@ void  init_in_game_message_class  (void)
     game_o.p_vortex_thrusters.init     (texture.vortex_thrusters.ref_number);
     game_o.p_weapon_level_up.init      (texture.weapon_level_up.ref_number);
     game_o.d_level_end.init            (texture.level_completed.ref_number);
-};
+}
 
 void  in_game_message_class::set_image  (int image_ref)
 {
     in_game_message_class::image  = image_ref;
-};
+}
 
 void  in_game_message_class::init  (int image_ref)
 {
@@ -70,26 +70,26 @@ void  in_game_message_class::init  (int image_ref)
     in_game_message_class::alpha  = 3.0f;
     in_game_message_class::count  = 0.00125f;
     in_game_message_class::image  = image_ref;
-};
+}
 
 void  in_game_message_class::init  (void)
 {
     in_game_message_class::active = false;
     in_game_message_class::alpha  = 3.0f;
     in_game_message_class::count  = 0.00125f;
-};
+}
 
 void  in_game_message_class::kill  (void)
 {
     in_game_message_class::active = false;
-};
+}
 
 void  in_game_message_class::spawn (void)
 {
     in_game_message_class::active = true;
     in_game_message_class::alpha  = 3.0f;
     in_game_message_class::count  = 0.00125f;
-};
+}
 
 void  in_game_message_class::draw  (void)
 {
@@ -118,7 +118,7 @@ void  in_game_message_class::draw  (void)
     if (in_game_message_class::image == texture.vortex_thrusters.ref_number)      texture.vortex_thrusters.draw     (false, 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
     if (in_game_message_class::image == texture.weapon_level_up.ref_number)       texture.weapon_level_up.draw      (false, 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
     if (in_game_message_class::image == texture.level_completed.ref_number)       texture.level_completed.draw      (false, 0.0f, 0.0f, 0.0001f, 1.0f, 0.5f,0.0f,in_game_message_class::alpha);
-};
+}
 
 void  in_game_message_class::process(void)
 {
@@ -127,6 +127,6 @@ void  in_game_message_class::process(void)
       in_game_message_class::alpha  -= 0.025f;
       if (in_game_message_class::alpha <= 0) in_game_message_class::kill();
    }
-};
+}
 
 

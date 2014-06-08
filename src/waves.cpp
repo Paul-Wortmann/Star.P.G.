@@ -50,7 +50,7 @@ int  init_waves     (void)
         game_o.level[game_o.current_level].wave[wave_count].spawn_pattern  = 0;
     }
     return(0);
-};
+}
 /*----------------------------------------------------------------------------*/
 int get_next_active_wave(void)
 {

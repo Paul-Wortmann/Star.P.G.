@@ -46,7 +46,7 @@ int spawn_powerup(float x_position, float y_position, int type_powerup)
         game_o.powerup[type_powerup].speed      = 0.0025f;
     }
     return(0);
-};
+}
 /*----------------------------------------------------------------------------*/
 int kill_powerup(int type_powerup)
 {
@@ -57,7 +57,7 @@ int kill_powerup(int type_powerup)
     game_o.powerup[type_powerup].height      = 0.10f;
     game_o.powerup[type_powerup].speed      = 0.0025f;
     return(0);
-};
+}
 /*----------------------------------------------------------------------------*/
 int kill_powerups(void)
 {
@@ -71,7 +71,7 @@ int kill_powerups(void)
         game_o.powerup[count].speed      = 0.0025f;
     }
     return(0);
-};
+}
 /*----------------------------------------------------------------------------*/
 int init_powerups(void)
 {
@@ -118,7 +118,7 @@ int init_powerups(void)
     game_o.powerup[11].spawn_rate = 65000;//side helper ship 2
     game_o.powerup[12].spawn_rate = 65000;//side helper ship 3
     return(0);
-};
+}
 /*----------------------------------------------------------------------------*/
 int proccess_powerups(void)
 {
@@ -422,7 +422,7 @@ int proccess_powerups(void)
         }
     }
    return(0);
-};
+}
 
 /*----------------------------------------------------------------------------*/
 void  use_bomb_powerup(void)
@@ -487,7 +487,7 @@ void  use_bomb_powerup(void)
         }
     }
     Mix_Volume(-1,game.config.Audio_Sound_Volume);
-};
+}
 
 /*----------------------------------------------------------------------------*/
 int spawn_coin(float x_position, float y_position, int coin_value)

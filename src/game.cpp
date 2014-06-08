@@ -103,7 +103,7 @@ int init_game(bool re_init)
     init_levels();
     init_explosions();
     return(0);
-};
+}
 
 
 /*----------------------------------------------------------------------------*/
@@ -536,7 +536,7 @@ int process_game(void)
         process_player(1024);//warp player out
     }
     return(0);
-};
+}
 /*----------------------------------------------------------------------------*/
 int display_game(void)
 {
@@ -891,5 +891,5 @@ int display_game(void)
     if (game_o.fps_enabled && !game_o.anc_enabled) font.font_1.Write(255,255,255,64, 0.50f, 0.95f,game_o.language.text.UI_FPS_,  game.FPS);
     glPopMatrix();
     return(1);
-};
+}
 

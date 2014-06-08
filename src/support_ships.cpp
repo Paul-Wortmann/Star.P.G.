@@ -56,7 +56,7 @@ void supportship_class::init(int supportship_number, int number_ships, float x_p
         supportship_class::supportship_pos[supportship_count].active  = false;
         supportship_class::supportship_pos[supportship_count].pos_x   = x_pos;
         supportship_class::supportship_pos[supportship_count].pos_y   = y_pos;
-    };
+    }
     for (int bullet_count = 0;bullet_count < MAX_BULLETS-1;bullet_count++)
     {
         supportship_class::bullet[bullet_count].active = false;
@@ -67,7 +67,7 @@ void supportship_class::init(int supportship_number, int number_ships, float x_p
         if (supportship_number == 2) supportship_class::bullet[bullet_count].warhead = 33;
         if (supportship_number == 3) supportship_class::bullet[bullet_count].warhead = 34;
     }
-};
+}
 
 void  init_supportships(int number_ships, float x_pos, float y_pos)
 {
@@ -91,7 +91,7 @@ void  init_supportships(int number_ships, float x_pos, float y_pos)
     game_o.supportship[3].number_of_ships           = 1;
     game_o.supportship[3].movement_speed            = 0.0025f;
     game_o.supportship[3].supportship_pos[0].active = true;
-};
+}
 
 int supportship_class::spawn_bullet(int location, int direction_x, int direction_y)
 {
@@ -143,7 +143,7 @@ int supportship_class::spawn_bullet(int location, int direction_x, int direction
     }
     if (done) return(1);
     else return(0);
-};
+}
 
 void  process_supportships(bool spawn_bullet)
 {
@@ -151,7 +151,7 @@ void  process_supportships(bool spawn_bullet)
    {
         game_o.supportship[supportship_count].process(spawn_bullet);
    }
-};
+}
 
 void supportship_class::process(bool bullet_to_spawn)
 {
@@ -601,7 +601,7 @@ void supportship_class::process(bool bullet_to_spawn)
         }
         ///end
     }
-};
+}
 
 void supportship_class::kill_bullets(void)
 {
@@ -611,7 +611,7 @@ void supportship_class::kill_bullets(void)
         supportship_class::bullet[bullet_count].x_pos  = 2.0f;
         supportship_class::bullet[bullet_count].y_pos  = 2.0f;
     }
-};
+}
 
 void kill_supportship_bullets(void)
 {
@@ -619,7 +619,7 @@ void kill_supportship_bullets(void)
     {
         game_o.supportship[supportship_count].kill_bullets();
     }
-};
+}
 
 void  draw_supportships       (void)
 {
@@ -677,7 +677,7 @@ void  draw_supportships       (void)
             }
         }
     }
-};
+}
 
 void  pos_supportships        (float x_pos, float y_pos)
 {
@@ -687,9 +687,9 @@ void  pos_supportships        (float x_pos, float y_pos)
         {
             game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_x = x_pos;
             game_o.supportship[supportship_count].supportship_pos[supportship_level_count].pos_y = y_pos;
-        };
-    };
-};
+        }
+    }
+}
 
 void  draw_supportships_bullets(void)
 {
@@ -744,7 +744,7 @@ void  draw_supportships_bullets(void)
             }
         }
     }
-};
+}
 
 
 

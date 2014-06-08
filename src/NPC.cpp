@@ -148,7 +148,7 @@ void enemy_class::load(std::string file_name)
         }
         script_file.close();
     }
-};
+}
 
 void init_enemies(bool re_init)
 {
@@ -259,7 +259,7 @@ void init_enemies(bool re_init)
         game_o.enemy[24].image       = texture.ship_024.ref_number;
         game_o.enemy[24].max_speed   = (game_o.projectile[game_o.enemy[24].weapon_1].speed/2) + game_o.enemy[24].max_speed;
     }
-};
+}
 
 /*----------------------------------------------------------------------------*/
 void init_active_npcs(void)
@@ -942,7 +942,7 @@ void draw_npcs(void)
             if (game_o.enemy[game_o.npc[npc_count].type_npc].image == texture.ship_025.ref_number) texture.ship_025.draw(true,game_o.npc[npc_count].x_pos,game_o.npc[npc_count].y_pos,z_pos,game_o.npc[npc_count].height,game_o.npc[npc_count].width,temp_angle,temp_r,temp_g,temp_b,temp_a);
         }
     }
-};
+}
 
 
 

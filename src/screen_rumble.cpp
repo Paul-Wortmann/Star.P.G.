@@ -37,7 +37,7 @@ void  rumble_class::init(void)
     rumble_class::max_y        = 0.01f;
     rumble_class::speed_x      = 0.0155f;
     rumble_class::speed_y      = 0.01f;
-};
+}
 
 void  rumble_class::process(void)
 {
@@ -48,7 +48,7 @@ void  rumble_class::process(void)
         {
             rumble_class::counter = 0;
             rumble_class::active  = false;
-        };
+        }
         if (rumble_class::direction_x  == 0)
         {
             rumble_class::counter_x   += rumble_class::speed_x;
@@ -82,18 +82,18 @@ void  rumble_class::process(void)
             }
         }
     }
-};
+}
 
 void  rumble_class::start(void)
 {
     rumble_class::init();
     rumble_class::active  = true;
-};
+}
 
 void  rumble_class::stop(void)
 {
     rumble_class::active  = false;
-};
+}
 
 void  rumble_class::start(float magnitude, int duration)
 {
@@ -104,7 +104,7 @@ void  rumble_class::start(float magnitude, int duration)
     rumble_class::max_y        = magnitude/3;
     rumble_class::speed_x      = magnitude/2;
     rumble_class::speed_y      = magnitude/6;
-};
+}
 
 
 

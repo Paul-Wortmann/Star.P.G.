@@ -191,7 +191,7 @@ language_class::language_class(void)
     language_class::text.projectile_name_33    = "Support-Ship Weapon 3 ";
     language_class::text.projectile_name_34    = "Support-Ship Weapon 4 ";
     language_class::text.menu_item_unavailable = "Unavailable    ";
-};
+}
 
 void language_class::load(std::string file_name)
 {
@@ -401,4 +401,4 @@ void language_class::load(std::string file_name)
         }
         script_file.close();
     }
-};
+}

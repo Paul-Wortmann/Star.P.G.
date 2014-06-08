@@ -39,7 +39,7 @@ bool load_resources(void)
     load_textures();
     load_fonts();
     return(true);
-};
+}
 
 bool load_sounds(void)
 {
@@ -110,7 +110,7 @@ bool load_sounds(void)
 
     game.log.File_Write("Sound files loaded -> ",sfx_count);
     return(true);
-};
+}
 
 bool load_music(void)
 {
@@ -150,7 +150,7 @@ bool load_music(void)
 
     game.log.File_Write("Music files loaded -> ",music_count);
     return(true);
-};
+}
 
 bool load_textures(void)
 {
@@ -469,7 +469,7 @@ bool load_textures(void)
 
     game.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
-};
+}
 
 bool proc_textures(void)
 {
@@ -1094,7 +1094,7 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == texture.shrapnel_07.ref_number) texture.shrapnel_07.draw(r,x,y,z,w,h,angle);
 
     return(true);
-};
+}
 
 
 

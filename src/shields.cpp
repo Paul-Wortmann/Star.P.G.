@@ -63,7 +63,7 @@ void init_shields(bool re_init)
         game_o.shield[4].name             = game_o.language.text.shield_name_04;
         game_o.shield[4].image            = texture.shield_004.ref_number;
     }
-};
+}
 
 void shield_class::load(std::string file_name)
 {
@@ -136,4 +136,4 @@ void shield_class::load(std::string file_name)
         }
         script_file.close();
     }
-};
+}

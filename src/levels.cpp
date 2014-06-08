@@ -68,7 +68,7 @@ void init_levels(void)
         game_o.level[level_no_count].locked = true;/// set to false to unlock all levels....for testing!
     }
     game_o.level[0].locked = false;
-};
+}
 
 int unlock_levels(void)
 {
@@ -132,7 +132,7 @@ int init_game_level(int level_no)
     game_o.victory_spawened                  = game_o.level[game_o.current_level].victory_spawened;
     init_npcs(game_o.level[game_o.current_level].NPC_type);
     return(0);
-};
+}
 
 void set_level_background(int layer_number, int image_reference)
 {
@@ -174,7 +174,7 @@ void set_level_background(int layer_number, int image_reference)
     if (image_reference == 29) game.background.set_data (layer_number, 1, 1, background_offset, 0.0f, background_speed, background_speed, texture.background_029.ref_number);
     if (image_reference == 30) game.background.set_data (layer_number, 1, 1, background_offset, 0.0f, background_speed, background_speed, texture.background_030.ref_number);
     if (image_reference == 31) game.background.set_data (layer_number, 1, 1, background_offset, 0.0f, background_speed, background_speed, texture.background_031.ref_number);
-};
+}
 
 void level_class::load(std::string file_name)
 {
@@ -671,7 +671,7 @@ void level_class::load(std::string file_name)
         }
         level_file.close();
     }
-};
+}
 
 bool level_completed(void)
 {
@@ -706,4 +706,4 @@ bool boss_level(void)
 {
     if (game_o.level[game_o.current_level].BOSS) return (true);
     else return (false);
-};
+}

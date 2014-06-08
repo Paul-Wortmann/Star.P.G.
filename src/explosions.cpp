@@ -111,7 +111,7 @@ int spawn_explosion(float x_position, float y_position, float size)
         }
     }
     return(0);
-};
+}
 
 int kill_explosion(int explosion_num)
 {
@@ -121,7 +121,7 @@ int kill_explosion(int explosion_num)
     game_o.explosion[explosion_num].size      = 0.0f;
     game_o.explosion[explosion_num].shrapnel.kill();
     return(0);
-};
+}
 
 int init_explosions(void)
 {
@@ -140,7 +140,7 @@ int init_explosions(void)
         game_o.explosion[count].shrapnel.init();
     }
     return(0);
-};
+}
 
 int proccess_explosions(void)
 {
@@ -165,7 +165,7 @@ int proccess_explosions(void)
         }
     }
     return(0);
-};
+}
 
 void draw_explosions(void)
 {
@@ -182,6 +182,6 @@ void draw_explosions(void)
             if (game_o.explosion[count].image == texture.explosion_03.ref_number) texture.explosion_03.draw(true,game_o.explosion[count].x_pos,game_o.explosion[count].y_pos,z_pos,game_o.explosion[count].width,game_o.explosion[count].height,0.0f,game_o.explosion[count].frame);
         }
     }
-};
+}
 
 

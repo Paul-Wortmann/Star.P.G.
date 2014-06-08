@@ -28,28 +28,28 @@
 music_class::music_class()
 {
     music_class::music_data = NULL;
-};
+}
 
 music_class::~music_class()
 {
     Mix_HaltMusic();
     Mix_FreeMusic(music_class::music_data);
-};
+}
 
 void music_class::play(void)
 {
     Mix_PlayMusic(music_class::music_data,-1);
-};
+}
 
 void music_class::load(std::string file_name)
 {
     music_class::music_data = Mix_LoadMUS(file_name.c_str());
-};
+}
 
 void music_class::load(std::string file_name, int reference_number)
 {
     music_class::ref_number = reference_number;
     music_class::music_data = Mix_LoadMUS(file_name.c_str());
-};
+}
 
 

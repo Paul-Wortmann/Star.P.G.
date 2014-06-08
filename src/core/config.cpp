@@ -61,12 +61,12 @@ config_file_class::config_file_class(void)
     if ((config_file_class::Display_X_Resolution == 1920) && (config_file_class::Display_Y_Resolution == 1080)) config_file_class::Display_resolution = 7;
     config_file_class::mouse_resolution_x   = config_file_class::Display_X_Resolution;
     config_file_class::mouse_resolution_y   = config_file_class::Display_Y_Resolution;
-};
+}
 
 config_file_class::~config_file_class(void)
 {
 
-};
+}
 
 void config_file_class::process(bool set_active)
 {
@@ -84,13 +84,13 @@ void config_file_class::process(bool set_active)
             config_file_class::mouse_autohide_timer_count = config_file_class::mouse_autohide_timer;
         }
     }
-};
+}
 
 bool config_file_class::File_Set(std::string file_name)
 {
     config_file_class::Config_File = file_name.c_str();
     return(true);
-};
+}
 
 void  config_file_class::Set_Defaults (void)
 {
@@ -124,7 +124,7 @@ void  config_file_class::Set_Defaults (void)
     if ((config_file_class::Display_X_Resolution == 1920) && (config_file_class::Display_Y_Resolution == 1080)) config_file_class::Display_resolution = 7;
     config_file_class::mouse_resolution_x   = config_file_class::Display_X_Resolution;
     config_file_class::mouse_resolution_y   = config_file_class::Display_Y_Resolution;
-};
+}
 
 bool config_file_class::File_Clear(void)
 {
@@ -132,13 +132,13 @@ bool config_file_class::File_Clear(void)
     if (configfile.is_open()) configfile.close();
     else return(false);
     return(true);
-};
+}
 
 bool config_file_class::File_Delete(void)
 {
   if( remove(config_file_class::Config_File) != 0 ) return(false);
   else return(true);
-};
+}
 
 bool  config_file_class::File_Write_Data  (std::string config_comment)
 {
@@ -152,7 +152,7 @@ bool  config_file_class::File_Write_Data  (std::string config_comment)
     }
     else return(false);
     return(true);
-};
+}
 
 bool  config_file_class::File_Write_Data  (std::string config_key, int config_data_int)
 {
@@ -167,7 +167,7 @@ bool  config_file_class::File_Write_Data  (std::string config_key, int config_da
     }
     else return(false);
     return(true);
-};
+}
 
 bool  config_file_class::File_Write_Data  (std::string config_key, bool config_data_bool)
 {
@@ -183,7 +183,7 @@ bool  config_file_class::File_Write_Data  (std::string config_key, bool config_d
     }
     else return(false);
     return(true);
-};
+}
 
 bool  config_file_class::File_Write_Data  (std::string config_key, std::string config_string_bool)
 {
@@ -198,7 +198,7 @@ bool  config_file_class::File_Write_Data  (std::string config_key, std::string c
     }
     else return(false);
     return(true);
-};
+}
 
 bool  config_file_class::File_Write   (void)
 {
@@ -217,7 +217,7 @@ bool  config_file_class::File_Write   (void)
     config_file_class::File_Write_Data("Audio_Sound_Volume  ",config_file_class::Audio_Sound_Volume);
     config_file_class::File_Write_Data("Language            ",config_file_class::language);
     return(true);
-};
+}
 
 bool config_file_class::Process_Data(std::string data_line)
 {
@@ -309,7 +309,7 @@ bool config_file_class::Process_Data(std::string data_line)
         }
     }
     return(true);
-};
+}
 
 bool config_file_class::File_Read(void)
 {
@@ -336,5 +336,5 @@ bool config_file_class::File_Read(void)
     config_file_class::mouse_resolution_x   = config_file_class::Display_X_Resolution;
     config_file_class::mouse_resolution_y   = config_file_class::Display_Y_Resolution;
     return(true);
-};
+}
 

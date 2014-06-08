@@ -34,17 +34,17 @@ background_class::background_class       (void)
     {
         background_class::layer[layer_count].active      = false;
     }
-};
+}
 
 void background_class::set_movement_type (int type_data)
 {
     background_class::movemennt_type = type_data;
-};
+}
 
 int   background_class::get_movement_type (void)
 {
     return(background_class::movemennt_type);
-};
+}
 
 void background_class::set_data          (int layer_number, int dx, int dy, float px, float py, float srx, float sry, int image_ref)
 {
@@ -56,57 +56,57 @@ void background_class::set_data          (int layer_number, int dx, int dy, floa
     background_class::layer[layer_number].scroll_rate_x = srx;
     background_class::layer[layer_number].scroll_rate_y = sry;
     background_class::layer[layer_number].image         = image_ref;
-};
+}
 
 void background_class::set_image         (int layer_number, int image_ref)
 {
     background_class::layer[layer_number].image       = image_ref;
-};
+}
 
 void background_class::set_active        (int layer_number,bool bool_data)
 {
     background_class::layer[layer_number].active = bool_data;
-};
+}
 
 bool background_class::get_active        (int layer_number)
 {
     return(background_class::layer[layer_number].active);
-};
+}
 
 float background_class::get_scroll_x     (int layer_number)
 {
     return(background_class::layer[layer_number].scroll_rate_x);
-};
+}
 
 float background_class::get_scroll_y     (int layer_number)
 {
     return(background_class::layer[layer_number].scroll_rate_y);
-};
+}
 
 int   background_class::get_image(int layer_number)
 {
     return(background_class::layer[layer_number].image);
-};
+}
 
 int   background_class::get_dir_x(int layer_number)
 {
     return(background_class::layer[layer_number].dir_x);
-};
+}
 
 int   background_class::get_dir_y(int layer_number)
 {
     return(background_class::layer[layer_number].dir_y);
-};
+}
 
 float background_class::get_pos_x(int layer_number)
 {
     return(background_class::layer[layer_number].pos_x);
-};
+}
 
 float background_class::get_pos_y(int layer_number)
 {
     return(background_class::layer[layer_number].pos_y);
-};
+}
 
 bool  background_class::scroll_up        (void)
 {
@@ -118,7 +118,7 @@ bool  background_class::scroll_up        (void)
         else return_value = true;
     }
     return(return_value);
-};
+}
 
 bool  background_class::scroll_down      (void)
 {
@@ -130,7 +130,7 @@ bool  background_class::scroll_down      (void)
         else return_value = true;
     }
     return(return_value);
-};
+}
 
 
 void background_class::process           (void)
@@ -169,7 +169,7 @@ void background_class::process           (void)
             if (background_class::layer[layer_count].pos_x <= -4.0f) background_class::layer[layer_count].pos_x = 4.0f;
         }
     }
-};
+}
 
 void background_class::draw             (void)
 {

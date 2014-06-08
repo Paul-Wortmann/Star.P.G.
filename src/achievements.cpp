@@ -52,7 +52,7 @@ void init_achievements(void)
     game_o.achivement.kills_level_5          = 2048;
     game_o.achivement.kills_level_6          = 4096;
     game_o.achivement.kills_level_7          = 6192;
-};
+}
 
 void achievement_score_process(void)
 {
@@ -92,7 +92,7 @@ void achievement_score_process(void)
       game_o.achivement.score = 7;
       game_o.a_score.spawn();
    };
-};
+}
 
 
 void achievement_kills_process(void)
@@ -133,5 +133,5 @@ void achievement_kills_process(void)
       game_o.achivement.kills = 7;
       game_o.a_kills.spawn();
    };
-};
+}
 

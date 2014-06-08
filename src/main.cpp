@@ -52,7 +52,7 @@ extern menu_class        game_over_menu;
 extern menu_class        next_level_menu;
 extern menu_class        outro_menu;
 
-const char App_Name[] = ("Star.P.G V1.01 - www.physhexgames.co.nr");
+const char App_Name[] = "Star.P.G V1.01 - www.physhexgames.co.nr";
 const char App_Icon[] = "data/icon.bmp";
 
 Uint32                   colorkey;
