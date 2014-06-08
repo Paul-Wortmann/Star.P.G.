@@ -1757,7 +1757,7 @@
 1402201042 /media/paul/Data_0/_git_/Star.P.G./src/core/menu.hpp
 	<string>
 
-1402203412 /media/paul/Data_0/_git_/Star.P.G./src/core/io.hpp
+1402238090 /media/paul/Data_0/_git_/Star.P.G./src/core/io.hpp
 
 1402123118 /media/paul/Data_0/_git_/Star.P.G./src/core/background.hpp
 
@@ -1855,7 +1855,7 @@
 	<stdlib.h>
 	"config.hpp"
 
-1402203384 source:/media/paul/Data_0/_git_/Star.P.G./src/core/core.cpp
+1402238548 source:/media/paul/Data_0/_git_/Star.P.G./src/core/core.cpp
 	"core.hpp"
 
 1402200375 source:/media/paul/Data_0/_git_/Star.P.G./src/core/font.cpp

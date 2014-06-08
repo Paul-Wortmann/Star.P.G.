@@ -293,8 +293,8 @@ int main(int argc, char *argv[])
                 game.game_active = true;
             }
         };
-        /*
-        //if (game_o.cheats_enabled == true)
+
+        if (game_o.cheats_enabled == true)
         {
             if (game.io.key_0) game_o.victory_kills = game_o.level_kills;  //complete level
             if (game.io.key_1) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health power-up
@@ -318,7 +318,7 @@ int main(int argc, char *argv[])
                 if (!game_o.rumble.active) game_o.rumble.start(); // shake the screen about.
             }
         }
-        */
+
         if (game.io.shoot)
         {
            process_supportships(true);

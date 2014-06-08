@@ -25,9 +25,8 @@
 #ifndef IO_H
 #define IO_H
 
-class io_type
+struct io_type
 {
-    public:
     bool      joystick_button_0;
     bool      joystick_button_1;
     bool      joystick_button_2;
