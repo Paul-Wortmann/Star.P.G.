@@ -28,12 +28,22 @@ game_class        game;
 
 game_class::game_class(void)
 {
-    menu_level       = 1;
-    FPS              = 0;
-    LastTicks        = 0;
-    music_track      = -1;
-    process_ready    = true;
-    music_next_track = true;
+    game_class::GAME_VERSION_MAJOR = 1;
+    game_class::GAME_VERSION_MINOR = 2;
+    game_class::game_paused        = false;
+    game_class::game_active        = false;
+    game_class::game_resume        = false;
+    game_class::menu_active        = false;
+    game_class::pdie_active        = false;
+    game_class::nlvl_active        = false;
+    game_class::outr_active        = false;
+    game_class::status_quit_active = false;
+    game_class::menu_level         = 1;
+    game_class::FPS                = 0;
+    game_class::LastTicks          = 0;
+    game_class::music_track        = -1;
+    game_class::process_ready      = true;
+    game_class::music_next_track   = true;
 }
 
 game_class::~game_class(void)
