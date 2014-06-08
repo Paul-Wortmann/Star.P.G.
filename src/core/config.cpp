@@ -29,6 +29,7 @@
 
 config_file_class::config_file_class(void)
 {
+    config_file_class::Config_File                = "";
     config_file_class::mouse_autohide             = false;
     config_file_class::mouse_autohide_timer       = 128;
     config_file_class::mouse_autohide_timer_count = 0;
@@ -222,17 +223,15 @@ bool  config_file_class::File_Write   (void)
 bool config_file_class::Process_Data(std::string data_line)
 {
     char        temp_char = ' ';
-    int         temp_int;
     std::string temp_string_key;
     std::string temp_string_value;
-    int         count;
-
     temp_char = data_line[0];
     if(temp_char == '#') return(false);
     else
     {
         temp_char = '#';
-        count = 0;
+        int temp_int = 0;
+        int count = 0;
         while(temp_char != ' ')
         {
             temp_char = data_line[count];

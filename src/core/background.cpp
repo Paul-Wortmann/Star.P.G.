@@ -30,6 +30,7 @@ extern texture_type texture;
 
 background_class::background_class       (void)
 {
+    background_class::movemennt_type = SCROLL;
     for(int layer_count = 1; layer_count < MAX_LAYERS+1; layer_count++)
     {
         background_class::layer[layer_count].active      = false;
@@ -160,7 +161,7 @@ void background_class::process           (void)
                 if (background_class::layer[layer_count].pos_y > 1.0f) background_class::layer[layer_count].dir_y = 0;
             }
         }
-    };
+    }
     if (background_class::get_movement_type() == SCROLL)
     {
         for(int layer_count = 1; layer_count < MAX_LAYERS+1; layer_count++)

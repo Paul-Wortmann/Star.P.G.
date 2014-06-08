@@ -55,14 +55,13 @@ void enemy_class::load(std::string file_name)
         {
             getline(script_file,data_line);
             {
-                int count = 0;
                 temp_char = data_line[0];
                 if((temp_char != '#') && ((int)data_line.length() > 2))
                 {
                     temp_char         = '#';
                     temp_string_key   = "";
                     temp_string_value = "";
-                    count = 0;
+                    int count = 0;
                     while(temp_char != ' ')
                     {
                         temp_char = data_line[count];
