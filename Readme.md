@@ -1,5 +1,5 @@
-![Star.P.G.]
-(http://www.weebly.com/uploads/5/9/6/4/596446/2412660.png?312)
+
+![Star.P.G.](http://www.weebly.com/uploads/5/9/6/4/596446/2412660.png?312)
 
 README file for Star.P.G.
 =============================
