@@ -24,6 +24,7 @@
 
 
 #include <fstream>
+#include <sys/stat.h>
 #include "savegame.hpp"
 #include "core.hpp"
 #include "../save_data.hpp"
@@ -80,8 +81,8 @@ bool  save_game_class::Delete(void)
 
 bool save_game_class::File_Exists(void)
 {
-  std::ifstream ifile(save_game_class::save_file_name.c_str());
-  return ifile;
+    struct stat buffer;
+    return (stat(save_game_class::save_file_name.c_str(), &buffer) == 0);
 }
 
 

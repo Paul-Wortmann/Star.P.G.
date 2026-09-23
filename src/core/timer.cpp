@@ -23,7 +23,7 @@
  */
 
 
-#include "SDL/SDL.h"
+#include <SDL2/SDL.h>
 #include "timer.hpp"
 
 timer_class::timer_class()
@@ -59,4 +59,3 @@ int timer_class::getticks()
     if (running == true) return SDL_GetTicks() - startticks;
     else return 0;
 }
-

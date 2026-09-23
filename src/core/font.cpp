@@ -22,8 +22,7 @@
  * @date 2011-10-01
  */
 
-#include <SDL/SDL_ttf.h>
-#include <SDL/SDL_ttf.h>
+#include <SDL2/SDL_ttf.h>
 #include <GL/gl.h>
 #include <string>
 #include <sstream>
@@ -34,6 +33,18 @@
 
 extern game_class  game;
 
+/* -------------------------------------------------------------------------
+ * Internal helper: pick the correct GL pixel format for an SDL_Surface.
+ * SDL2_ttf always returns ARGB8888 (byte order B,G,R,A on little-endian),
+ * so GL_BGRA is normally the right choice, but we detect it from the
+ * Rmask so this also works on big-endian platforms.
+ * ---------------------------------------------------------------------- */
+static GLenum gl_format_for_surface(SDL_Surface *s)
+{
+    if (s->format->Rmask == 0x000000ff) return GL_RGBA;
+    return GL_BGRA;
+}
+
 font_class::font_class(void)
 {
 
@@ -41,7 +52,7 @@ font_class::font_class(void)
 
 font_class::~font_class(void)
 {
-    TTF_CloseFont(font_class::font_data);
+    if (font_class::font_data) TTF_CloseFont(font_class::font_data);
 }
 
 void font_class::Set_File(std::string filename)
@@ -66,16 +77,17 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     temp_string << int_data;
     text = text + temp_string.str();
     write_data = text.c_str();
-    SDL_Color font_color = {b,g,r,a};
+    SDL_Color font_color = {r,g,b,a};
     SDL_Surface *font_string = TTF_RenderUTF8_Blended(font_class::font_data,write_data,font_color);
+    if (!font_string) return(false);
     width  = ((font_string->w / game.config.Display_X_Resolution ) -1);
     height = ((font_string->h / game.config.Display_Y_Resolution ) -1);
     if(width  < 0)  width  *= -1;
     if(height < 0)  height *= -1;
     width  = width  / 8.0f;
     height = height / 16.0f;
-    nOfColors = font_string->format->BytesPerPixel;
-    texture_format = GL_RGBA;
+    nOfColors      = font_string->format->BytesPerPixel;
+    texture_format = gl_format_for_surface(font_string);
     glPushMatrix();
     glGenTextures( 1, &texture_data);
     glBindTexture( GL_TEXTURE_2D, texture_data);
@@ -83,7 +95,10 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+    glPixelStorei(GL_UNPACK_ALIGNMENT,   1);
+    glPixelStorei(GL_UNPACK_ROW_LENGTH,  font_string->pitch / font_string->format->BytesPerPixel);
     glTexImage2D( GL_TEXTURE_2D, 0, nOfColors, font_string->w, font_string->h, 0, texture_format, GL_UNSIGNED_BYTE, font_string->pixels );
+    glPixelStorei(GL_UNPACK_ROW_LENGTH,  0);
     glBindTexture(GL_TEXTURE_2D, texture_data);
     glLoadIdentity();
     glBegin( GL_QUADS );
@@ -110,16 +125,17 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     temp_string << float_data;
     text = text + temp_string.str();
     write_data = text.c_str();
-    SDL_Color font_color = {b,g,r,a};
+    SDL_Color font_color = {r,g,b,a};
     SDL_Surface *font_string = TTF_RenderUTF8_Blended(font_class::font_data,write_data,font_color);
+    if (!font_string) return(false);
     width  = ((font_string->w / game.config.Display_X_Resolution ) -1);
     height = ((font_string->h / game.config.Display_Y_Resolution ) -1);
     if(width  < 0)  width  *= -1;
     if(height < 0)  height *= -1;
     width  = width  / 8.0f;
     height = height / 16.0f;
-    nOfColors = font_string->format->BytesPerPixel;
-    texture_format = GL_RGBA;
+    nOfColors      = font_string->format->BytesPerPixel;
+    texture_format = gl_format_for_surface(font_string);
     glPushMatrix();
     glGenTextures( 1, &texture_data);
     glBindTexture( GL_TEXTURE_2D, texture_data);
@@ -127,7 +143,10 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+    glPixelStorei(GL_UNPACK_ALIGNMENT,   1);
+    glPixelStorei(GL_UNPACK_ROW_LENGTH,  font_string->pitch / font_string->format->BytesPerPixel);
     glTexImage2D( GL_TEXTURE_2D, 0, nOfColors, font_string->w, font_string->h, 0, texture_format, GL_UNSIGNED_BYTE, font_string->pixels );
+    glPixelStorei(GL_UNPACK_ROW_LENGTH,  0);
     glBindTexture(GL_TEXTURE_2D, texture_data);
     glLoadIdentity();
     glBegin( GL_QUADS );
@@ -150,16 +169,17 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     float  width;
     float  height;
     const char *write_data = text.c_str();
-    SDL_Color font_color = {b,g,r,a};
+    SDL_Color font_color = {r,g,b,a};
     SDL_Surface *font_string = TTF_RenderUTF8_Blended(font_class::font_data,write_data,font_color);
+    if (!font_string) return(false);
     width  = ((font_string->w / game.config.Display_X_Resolution) -1);
     height = ((font_string->h / game.config.Display_Y_Resolution) -1);
     if(width  < 0)  width  *= -1;
     if(height < 0)  height *= -1;
     width  = width  / 8.0f;
     height = height / 16.0f;
-    nOfColors = font_string->format->BytesPerPixel;
-    texture_format = GL_RGBA;
+    nOfColors      = font_string->format->BytesPerPixel;
+    texture_format = gl_format_for_surface(font_string);
     glPushMatrix();
     glGenTextures( 1, &texture_data);
     glBindTexture( GL_TEXTURE_2D, texture_data);
@@ -167,7 +187,10 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+    glPixelStorei(GL_UNPACK_ALIGNMENT,   1);
+    glPixelStorei(GL_UNPACK_ROW_LENGTH,  font_string->pitch / font_string->format->BytesPerPixel);
     glTexImage2D( GL_TEXTURE_2D, 0, nOfColors, font_string->w, font_string->h, 0, texture_format, GL_UNSIGNED_BYTE, font_string->pixels );
+    glPixelStorei(GL_UNPACK_ROW_LENGTH,  0);
     glBindTexture(GL_TEXTURE_2D, texture_data);
     glLoadIdentity();
     glBegin( GL_QUADS );
@@ -190,8 +213,9 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     float  width;
     float  height;
     const  char* write_data = text.c_str();
-    SDL_Color font_color = {b,g,r,a};
+    SDL_Color font_color = {r,g,b,a};
     SDL_Surface *font_string = TTF_RenderUTF8_Blended(font_class::font_data,write_data,font_color);
+    if (!font_string) return(false);
     width  = ((font_string->w / game.config.Display_X_Resolution) -1);
     height = ((font_string->h / game.config.Display_Y_Resolution) -1);
     if(width  < 0)  width  *= -1;
@@ -200,8 +224,8 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     if (hs == 0) hs = height;
     width  = width  / ws;
     height = height / hs;
-    nOfColors = font_string->format->BytesPerPixel;
-    texture_format = GL_RGBA;
+    nOfColors      = font_string->format->BytesPerPixel;
+    texture_format = gl_format_for_surface(font_string);
     glPushMatrix();
     glGenTextures( 1, &texture_data);
     glBindTexture( GL_TEXTURE_2D, texture_data);
@@ -209,7 +233,10 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+    glPixelStorei(GL_UNPACK_ALIGNMENT,   1);
+    glPixelStorei(GL_UNPACK_ROW_LENGTH,  font_string->pitch / font_string->format->BytesPerPixel);
     glTexImage2D( GL_TEXTURE_2D, 0, nOfColors, font_string->w, font_string->h, 0, texture_format, GL_UNSIGNED_BYTE, font_string->pixels );
+    glPixelStorei(GL_UNPACK_ROW_LENGTH,  0);
     glBindTexture(GL_TEXTURE_2D, texture_data);
     glLoadIdentity();
     glBegin( GL_QUADS );
@@ -224,8 +251,6 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     return(true);
 }
 
-
-
 bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned char a,float x,float y,float ws,float hs,std::string text,int int_data)
 {
     GLuint             texture_data;
@@ -239,8 +264,9 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     temp_string << int_data;
     string_data += temp_string.str();
     write_data = string_data.c_str();
-    SDL_Color font_color = {b,g,r,a};
+    SDL_Color font_color = {r,g,b,a};
     SDL_Surface *font_string = TTF_RenderUTF8_Blended(font_class::font_data,write_data,font_color);
+    if (!font_string) return(false);
     width  = ((font_string->w / game.config.Display_X_Resolution) -1);
     height = ((font_string->h / game.config.Display_Y_Resolution) -1);
     if(width  < 0)  width  *= -1;
@@ -249,8 +275,8 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     if (hs == 0) hs = height;
     width  = width  / ws;
     height = height / hs;
-    nOfColors = font_string->format->BytesPerPixel;
-    texture_format = GL_RGBA;
+    nOfColors      = font_string->format->BytesPerPixel;
+    texture_format = gl_format_for_surface(font_string);
     glPushMatrix();
     glGenTextures( 1, &texture_data);
     glBindTexture( GL_TEXTURE_2D, texture_data);
@@ -258,7 +284,10 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+    glPixelStorei(GL_UNPACK_ALIGNMENT,   1);
+    glPixelStorei(GL_UNPACK_ROW_LENGTH,  font_string->pitch / font_string->format->BytesPerPixel);
     glTexImage2D( GL_TEXTURE_2D, 0, nOfColors, font_string->w, font_string->h, 0, texture_format, GL_UNSIGNED_BYTE, font_string->pixels );
+    glPixelStorei(GL_UNPACK_ROW_LENGTH,  0);
     glBindTexture(GL_TEXTURE_2D, texture_data);
     glLoadIdentity();
     glBegin( GL_QUADS );
@@ -286,8 +315,9 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     temp_string << float_data;
     string_data += temp_string.str();
     write_data = string_data.c_str();
-    SDL_Color font_color = {b,g,r,a};
+    SDL_Color font_color = {r,g,b,a};
     SDL_Surface *font_string = TTF_RenderUTF8_Blended(font_class::font_data,write_data,font_color);
+    if (!font_string) return(false);
     width  = ((font_string->w / game.config.Display_X_Resolution) -1);
     height = ((font_string->h / game.config.Display_Y_Resolution) -1);
     if(width  < 0)  width  *= -1;
@@ -296,8 +326,8 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     if (hs == 0) hs = height;
     width  = width  / ws;
     height = height / hs;
-    nOfColors = font_string->format->BytesPerPixel;
-    texture_format = GL_RGBA;
+    nOfColors      = font_string->format->BytesPerPixel;
+    texture_format = gl_format_for_surface(font_string);
     glPushMatrix();
     glGenTextures( 1, &texture_data);
     glBindTexture( GL_TEXTURE_2D, texture_data);
@@ -305,7 +335,10 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+    glPixelStorei(GL_UNPACK_ALIGNMENT,   1);
+    glPixelStorei(GL_UNPACK_ROW_LENGTH,  font_string->pitch / font_string->format->BytesPerPixel);
     glTexImage2D( GL_TEXTURE_2D, 0, nOfColors, font_string->w, font_string->h, 0, texture_format, GL_UNSIGNED_BYTE, font_string->pixels );
+    glPixelStorei(GL_UNPACK_ROW_LENGTH,  0);
     glBindTexture(GL_TEXTURE_2D, texture_data);
     glLoadIdentity();
     glBegin( GL_QUADS );
@@ -334,8 +367,9 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     string_data += temp_string.str();
     string_data += text_2;
     write_data = string_data.c_str();
-    SDL_Color font_color = {b,g,r,a};
+    SDL_Color font_color = {r,g,b,a};
     SDL_Surface *font_string = TTF_RenderUTF8_Blended(font_class::font_data,write_data,font_color);
+    if (!font_string) return(false);
     width  = ((font_string->w / game.config.Display_X_Resolution) -1);
     height = ((font_string->h / game.config.Display_Y_Resolution) -1);
     if(width  < 0)  width  *= -1;
@@ -344,8 +378,8 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     if (hs == 0) hs = height;
     width  = width  / ws;
     height = height / hs;
-    nOfColors = font_string->format->BytesPerPixel;
-    texture_format = GL_RGBA;
+    nOfColors      = font_string->format->BytesPerPixel;
+    texture_format = gl_format_for_surface(font_string);
     glPushMatrix();
     glGenTextures( 1, &texture_data);
     glBindTexture( GL_TEXTURE_2D, texture_data);
@@ -353,7 +387,10 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+    glPixelStorei(GL_UNPACK_ALIGNMENT,   1);
+    glPixelStorei(GL_UNPACK_ROW_LENGTH,  font_string->pitch / font_string->format->BytesPerPixel);
     glTexImage2D( GL_TEXTURE_2D, 0, nOfColors, font_string->w, font_string->h, 0, texture_format, GL_UNSIGNED_BYTE, font_string->pixels );
+    glPixelStorei(GL_UNPACK_ROW_LENGTH,  0);
     glBindTexture(GL_TEXTURE_2D, texture_data);
     glLoadIdentity();
     glBegin( GL_QUADS );
@@ -382,8 +419,9 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     string_data += temp_string.str();
     string_data += text_2;
     write_data  = string_data.c_str();
-    SDL_Color font_color = {b,g,r,a};
+    SDL_Color font_color = {r,g,b,a};
     SDL_Surface *font_string = TTF_RenderUTF8_Blended(font_class::font_data,write_data,font_color);
+    if (!font_string) return(false);
     width  = ((font_string->w / game.config.Display_X_Resolution) -1);
     height = ((font_string->h / game.config.Display_Y_Resolution) -1);
     if(width  < 0)  width  *= -1;
@@ -392,8 +430,8 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     if (hs == 0) hs = height;
     width  = width  / ws;
     height = height / hs;
-    nOfColors = font_string->format->BytesPerPixel;
-    texture_format = GL_RGBA;
+    nOfColors      = font_string->format->BytesPerPixel;
+    texture_format = gl_format_for_surface(font_string);
     glPushMatrix();
     glGenTextures( 1, &texture_data);
     glBindTexture( GL_TEXTURE_2D, texture_data);
@@ -401,7 +439,10 @@ bool font_class::Write(unsigned char r,unsigned char g,unsigned char b,unsigned 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+    glPixelStorei(GL_UNPACK_ALIGNMENT,   1);
+    glPixelStorei(GL_UNPACK_ROW_LENGTH,  font_string->pitch / font_string->format->BytesPerPixel);
     glTexImage2D( GL_TEXTURE_2D, 0, nOfColors, font_string->w, font_string->h, 0, texture_format, GL_UNSIGNED_BYTE, font_string->pixels );
+    glPixelStorei(GL_UNPACK_ROW_LENGTH,  0);
     glBindTexture(GL_TEXTURE_2D, texture_data);
     glLoadIdentity();
     glBegin( GL_QUADS );

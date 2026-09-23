@@ -47,6 +47,9 @@ extern  game_type                game_o;
         menu_class               outro_menu(1);
         menu_class               pause_menu(1);
 
+// Defined in main.cpp - needed for SDL_WarpMouseInWindow() / SDL_SetWindowFullscreen() / SDL_SetWindowSize()
+extern  SDL_Window      *g_window;
+
 int init_menu   (void)
 {
     //------ setup menu background -----------
@@ -1172,8 +1175,9 @@ int process_menu(void)
             case 4://Toggle Full-screen
                 options_menu.set_toggle_data(4,!options_menu.get_toggle_data(4));
                 game.config.Display_Fullscreen   = !game.config.Display_Fullscreen;
-                if (game.config.Display_Fullscreen) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
-                else                                SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL);
+                // SDL2: SDL_SetVideoMode() -> SDL_SetWindowFullscreen()
+                SDL_SetWindowFullscreen(g_window,
+                    game.config.Display_Fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
                 game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
                 load_textures();
             break;
@@ -1311,8 +1315,10 @@ int process_menu(void)
             }
             game.config.mouse_resolution_x   = game.config.Display_X_Resolution;
             game.config.mouse_resolution_y   = game.config.Display_Y_Resolution;
-            if (game.config.Display_Fullscreen) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
-            else                                SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL);
+            // SDL2: SDL_SetVideoMode() -> SDL_SetWindowSize() (+ optional fullscreen)
+            SDL_SetWindowSize(g_window, game.config.Display_X_Resolution, game.config.Display_Y_Resolution);
+            if (game.config.Display_Fullscreen)
+                SDL_SetWindowFullscreen(g_window, SDL_WINDOW_FULLSCREEN_DESKTOP);
             game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
             load_textures();
         }
@@ -1337,7 +1343,9 @@ int process_menu(void)
                 game.log.File_Write("Entering main menu, from game over menu. - button 1 selected.");
                 main_menu.set_keyboard_delay_count(0);
                 main_menu.set_mouse_delay_count(0);
-                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                SDL_WarpMouseInWindow(g_window,
+                    game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),
+                    game.config.mouse_resolution_y - game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
             break;
             case 65533://menu choice changed
                 sound.menu_move_01.play();
@@ -1355,7 +1363,9 @@ int process_menu(void)
                 game.log.File_Write("Entering main menu, from game over menu. - button 1 selected.");
                 main_menu.set_keyboard_delay_count(0);
                 main_menu.set_mouse_delay_count(0);
-                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                SDL_WarpMouseInWindow(g_window,
+                    game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),
+                    game.config.mouse_resolution_y - game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
             break;
             case 65535://Return to main menu
                 sound.menu_select_01.play();
@@ -1370,7 +1380,9 @@ int process_menu(void)
                 game.log.File_Write("Entering main menu, from game over menu. - button 1 selected.");
                 main_menu.set_keyboard_delay_count(0);
                 main_menu.set_mouse_delay_count(0);
-                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                SDL_WarpMouseInWindow(g_window,
+                    game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),
+                    game.config.mouse_resolution_y - game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
             break;
             default:
             break;
@@ -1415,7 +1427,9 @@ int process_menu(void)
                     game.background.set_active( 3,false);
                     game.background.set_active( 4,false);
                     game.background.set_movement_type(BOUNCE);
-                    SDL_WarpMouse(game.graphics.gl_to_res(outro_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(outro_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                    SDL_WarpMouseInWindow(g_window,
+                        game.graphics.gl_to_res(outro_menu.get_button_x_pos(1),game.config.mouse_resolution_x),
+                        game.config.mouse_resolution_y - game.graphics.gl_to_res(outro_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
                     game.io.space  = false;
                     game.io.enter  = false;
                     game.io.select = false;
@@ -1468,7 +1482,9 @@ int process_menu(void)
                     game.background.set_active( 3,false);
                     game.background.set_active( 4,false);
                     game.background.set_movement_type(BOUNCE);
-                    SDL_WarpMouse(game.graphics.gl_to_res(outro_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(outro_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                    SDL_WarpMouseInWindow(g_window,
+                        game.graphics.gl_to_res(outro_menu.get_button_x_pos(1),game.config.mouse_resolution_x),
+                        game.config.mouse_resolution_y - game.graphics.gl_to_res(outro_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
                     game.io.space  = false;
                     game.io.enter  = false;
                     game.io.select = false;
@@ -1518,7 +1534,9 @@ int process_menu(void)
                     game.background.set_active( 3,false);
                     game.background.set_active( 4,false);
                     game.background.set_movement_type(BOUNCE);
-                    SDL_WarpMouse(game.graphics.gl_to_res(outro_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(outro_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                    SDL_WarpMouseInWindow(g_window,
+                        game.graphics.gl_to_res(outro_menu.get_button_x_pos(1),game.config.mouse_resolution_x),
+                        game.config.mouse_resolution_y - game.graphics.gl_to_res(outro_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
                     game.io.space  = false;
                     game.io.enter  = false;
                     game.io.select = false;
@@ -1559,7 +1577,9 @@ int process_menu(void)
                 game.nlvl_active             = false;
                 game.io.escape               = false;
                 game.music_next_track        = true;
-                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                SDL_WarpMouseInWindow(g_window,
+                    game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),
+                    game.config.mouse_resolution_y - game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
                 game.io.space  = false;
                 game.io.enter  = false;
                 game.io.select = false;
@@ -1582,7 +1602,9 @@ int process_menu(void)
                 game.nlvl_active             = false;
                 game.io.escape               = false;
                 game.music_next_track        = true;
-                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                SDL_WarpMouseInWindow(g_window,
+                    game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),
+                    game.config.mouse_resolution_y - game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
                 game.io.space  = false;
                 game.io.enter  = false;
                 game.io.select = false;
@@ -1602,7 +1624,9 @@ int process_menu(void)
                 game.nlvl_active             = false;
                 game.io.escape               = false;
                 game.music_next_track        = true;
-                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                SDL_WarpMouseInWindow(g_window,
+                    game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),
+                    game.config.mouse_resolution_y - game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
                 game.io.space  = false;
                 game.io.enter  = false;
                 game.io.select = false;
@@ -1629,7 +1653,9 @@ int process_menu(void)
                 game.io.escape        = false;
                 game.io.select        = false;
                 game.io.pause         = false;
-                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                SDL_WarpMouseInWindow(g_window,
+                    game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),
+                    game.config.mouse_resolution_y - game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
                 game.io.space  = false;
                 game.io.enter  = false;
                 game.io.select = false;
@@ -1648,7 +1674,9 @@ int process_menu(void)
                 game.io.escape        = false;
                 game.io.select        = false;
                 game.io.pause         = false;
-                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                SDL_WarpMouseInWindow(g_window,
+                    game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),
+                    game.config.mouse_resolution_y - game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
                 game.io.space  = false;
                 game.io.enter  = false;
                 game.io.select = false;
@@ -1664,7 +1692,9 @@ int process_menu(void)
                 game.io.escape        = false;
                 game.io.select        = false;
                 game.io.pause         = false;
-                SDL_WarpMouse(game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                SDL_WarpMouseInWindow(g_window,
+                    game.graphics.gl_to_res(main_menu.get_button_x_pos(1),game.config.mouse_resolution_x),
+                    game.config.mouse_resolution_y - game.graphics.gl_to_res(main_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
                 game.io.space  = false;
                 game.io.enter  = false;
                 game.io.select = false;
@@ -1694,7 +1724,7 @@ int diplay_menu (void)
         if (game.menu_level == 8) texture.logo_red.draw(false,0.0f,0.875f,0.0f,1.8f,0.25f);
         if (game.menu_level >= 9) texture.logo.draw    (false,0.0f,0.875f,0.0f,1.8f,0.25f);
     }
-    font.font_1.Write(255,255,255,64,-0.98f,-0.98f,2,8,"www.PhysHexGames.co.nr");
+    font.font_1.Write(255,255,255,64,-0.98f,-0.98f,1.6,8.4,"github.com/Paul-Wortmann/Star.P.G.");
 /*-----------------------------------------------------------------------------*/
     if (game.menu_level == 8) //Player death screen
     {

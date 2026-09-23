@@ -22,7 +22,7 @@
  * @date 2011-10-01
  */
 
-#include <SDL/SDL.h>
+#include <SDL2/SDL.h>
 #include "load_resources.hpp"
 #include "core/core.hpp"
 
@@ -31,6 +31,9 @@ extern game_class        game;
        music_type        music;
        texture_type      texture;
        font_type         font;
+
+// Defined in main.cpp - needed for SDL_GL_SwapWindow()
+extern SDL_Window       *g_window;
 
 bool load_resources(void)
 {
@@ -782,11 +785,11 @@ bool load_fonts(void)
 bool loading_screen_display(std::string file_name)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    SDL_GL_SwapBuffers();
+    SDL_GL_SwapWindow(g_window);            // was SDL_GL_SwapBuffers();
     texture_class loading_screen;
     loading_screen.load_image(file_name,0);
     loading_screen.draw(false,0.0f,0.0f,0.9f,2.0f,2.0f);
-    SDL_GL_SwapBuffers();
+    SDL_GL_SwapWindow(g_window);            // was SDL_GL_SwapBuffers();
     return(true);
 }
 
@@ -1095,7 +1098,3 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
 
     return(true);
 }
-
-
-
-

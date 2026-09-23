@@ -23,12 +23,12 @@
  */
 
 //#include <locale>
-#include <SDL/SDL.h>
-#include <SDL/SDL_main.h>
-#include <SDL/SDL_ttf.h>
-#include <SDL/SDL_net.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_opengl.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_main.h>
+#include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_net.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_opengl.h>
 #include <GL/gl.h>
 //#include <physfs.h>
 #include "core/core.hpp"
@@ -52,11 +52,19 @@ extern menu_class        game_over_menu;
 extern menu_class        next_level_menu;
 extern menu_class        outro_menu;
 
-const char App_Name[] = "Star.P.G V1.01 - www.physhexgames.co.nr";
+const char App_Name[] = "Star.P.G V1.20";
 const char App_Icon[] = "data/icon.bmp";
 
 Uint32                   colorkey;
 SDL_Surface             *App_Icon_Surface;
+
+/* =========================================================================
+ * SDL2 requires us to keep the window and GL context alive for the whole
+ * lifetime of the program, so we expose them as globals (used by
+ * load_resources.cpp, menu_system.cpp etc. via "extern").
+ * ========================================================================= */
+SDL_Window              *g_window     = NULL;
+SDL_GLContext            g_gl_context = NULL;
 
 
 //----------------------------------- Main -------------------------------------
@@ -91,37 +99,79 @@ int main(int argc, char *argv[])
     game.config.File_Read();
     game.log.File_Write("Loading language file -> data/configuration/languages/"+game.config.language+".txt");
     game_o.language.load("data/configuration/languages/"+game.config.language+".txt");
- //----------------------------------- Start the PhysicsFS ----------------------
+//----------------------------------- Start the PhysicsFS ----------------------
     //game.log.File_Write("Starting PhysicsFS...");
     //PHYSFS_init(argv[0]);
     //PHYSFS_addToSearchPath("Star.P.G..spg", 1);
 //----------------------------------- SDL Video --------------------------------
     game.log.File_Write("Starting SDL...");
-    char SDL_VID_WIN_POS[] = "SDL_VIDEO_WINDOW_POS";
-    char SDL_VID_CENTERD[] = "SDL_VIDEO_CENTERED=1";
-    putenv(SDL_VID_WIN_POS);
-    putenv(SDL_VID_CENTERD);
-    getenv("SDL_VIDEO_WINDOW_POS");
-    getenv("SDL_VIDEO_CENTERED");
-    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTTHREAD);
+    // SDL_INIT_EVENTTHREAD was removed in SDL2
+    SDL_Init(SDL_INIT_VIDEO);
+
     game.log.File_Write("Starting OpenGL...");
-    if (game.config.Display_Fullscreen) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
-    else SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL/* | SDL_NOFRAME */);
-    SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
+
+    // ---- Set all GL attributes BEFORE creating the window / context ----
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+    // This code uses fixed-function OpenGL (glBegin/glEnd), so we need
+    // the compatibility profile. (On macOS this is capped at 2.1.)
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
+                        SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
+
+    // ---- Create the window ----
+    Uint32 win_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN;
+    if (game.config.Display_Fullscreen)
+        win_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
+
+    g_window = SDL_CreateWindow(
+        App_Name,
+        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+        game.config.Display_X_Resolution,
+        game.config.Display_Y_Resolution,
+        win_flags);
+
+    if (!g_window)
+    {
+        game.log.File_Write("Failed to create SDL window!");
+        SDL_Quit();
+        return(1);
+    }
+
+    // ---- Create the GL context ----
+    g_gl_context = SDL_GL_CreateContext(g_window);
+    if (!g_gl_context)
+    {
+        game.log.File_Write("Failed to create GL context!");
+        SDL_DestroyWindow(g_window);
+        SDL_Quit();
+        return(1);
+    }
+
+    // Enable vsync (0 = immediate, 1 = vsync, -1 = adaptive)
+    SDL_GL_SetSwapInterval(1);
+
+    // ---- Window icon ----
     App_Icon_Surface = SDL_LoadBMP(App_Icon);
-    colorkey = SDL_MapRGB(App_Icon_Surface->format, 255, 0, 255);
-    SDL_SetColorKey(App_Icon_Surface, SDL_SRCCOLORKEY, colorkey);
-    SDL_WM_SetIcon(App_Icon_Surface,NULL);
-    SDL_WM_SetCaption(App_Name, 0);
+    if (App_Icon_Surface)
+    {
+        colorkey = SDL_MapRGB(App_Icon_Surface->format, 255, 0, 255);
+        SDL_SetColorKey(App_Icon_Surface, SDL_TRUE, colorkey);
+        SDL_SetWindowIcon(g_window, App_Icon_Surface);
+        SDL_FreeSurface(App_Icon_Surface);
+    }
+    // SDL_WM_SetCaption is deprecated; title was already set in CreateWindow.
     //SDL_ShowCursor(SDL_DISABLE);
 //----------------------------------- SDL Audio --------------------------------
     game.log.File_Write("Starting sound system...");
     SDL_Init(SDL_INIT_AUDIO);
+    Mix_OpenAudio(game.config.Audio_Rate, AUDIO_S16SYS, 2, game.config.Audio_Buffers);
     Mix_AllocateChannels(game.config.Audio_Channels);
-    Mix_OpenAudio(game.config.Audio_Rate, AUDIO_S16, 2, game.config.Audio_Buffers);
-    Mix_Volume(-1,game.config.Audio_Sound_Volume);
+    Mix_Volume(-1, game.config.Audio_Sound_Volume);
     Mix_VolumeMusic(game.config.Audio_Music_Volume);
     game.log.File_Write("Initializing joystick / gamepad...");
+    // NOTE: SDL_INIT_JOYSTICK is already called in events_init().
     SDL_Init(SDL_INIT_JOYSTICK);
     game.log.File_Write("Initializing game system...");
     init_game(false);
@@ -135,7 +185,7 @@ int main(int argc, char *argv[])
     init_npcs(0);
     game_o.current_level = 0;
     game.log.File_Write("Initializing OpenGL...");
-    game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
+    game.graphics.init_gl(game.config.Display_X_Resolution, game.config.Display_Y_Resolution);
     seed_rand();
     TTF_Init();
     game.log.File_Write("Loading resources...");
@@ -235,7 +285,9 @@ int main(int argc, char *argv[])
                 game.background.set_active( 3, false);
                 game.background.set_active( 4, false);
                 game.background.set_movement_type(BOUNCE);
-                SDL_WarpMouse(game.graphics.gl_to_res(game_over_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(game_over_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                SDL_WarpMouseInWindow(g_window,
+                    game.graphics.gl_to_res(game_over_menu.get_button_x_pos(1),game.config.mouse_resolution_x),
+                    game.config.mouse_resolution_y - game.graphics.gl_to_res(game_over_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
                 game.log.File_Write("User terminated due to insufficient health...better luck next time buddy!");
             }
         if ((game.io.escape) && (game.process_ready))
@@ -279,7 +331,9 @@ int main(int argc, char *argv[])
                 game.game_active = false;
                 game.io.pause    = false;
                 game.menu_level  = 11;
-                SDL_WarpMouse(game.graphics.gl_to_res(pause_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(pause_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+                SDL_WarpMouseInWindow(g_window,
+                    game.graphics.gl_to_res(pause_menu.get_button_x_pos(1),game.config.mouse_resolution_x),
+                    game.config.mouse_resolution_y - game.graphics.gl_to_res(pause_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
                 game.config.menu_delay_count = 0;
                 while (game.config.menu_delay_count < (game.config.menu_delay*16))
                 {
@@ -436,7 +490,9 @@ int main(int argc, char *argv[])
             game.process_ready = true;
         }
         else game.process_ready = false;
-        SDL_GL_SwapBuffers();
+
+        // SDL2: SDL_GL_SwapBuffers() -> SDL_GL_SwapWindow()
+        SDL_GL_SwapWindow(g_window);
     }
 //----------------------------------- Exit -------------------------------------
     game.log.File_Write("Saving configuration...");
@@ -449,7 +505,10 @@ int main(int argc, char *argv[])
 //    game.log.File_Write("PhysicsFS deinit...");
 //    PHYSFS_deinit();
     game.log.File_Write("SDL deinit...");
+
+    // ---- Cleanup SDL2 resources ----
+    if (g_gl_context) SDL_GL_DeleteContext(g_gl_context);
+    if (g_window)     SDL_DestroyWindow(g_window);
     SDL_Quit();
     return(0);
 }
-

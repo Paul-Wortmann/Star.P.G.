@@ -23,6 +23,7 @@
  */
 
 #include <GL/gl.h>
+#include <SDL2/SDL_opengl.h>
 #include "core.hpp"
 #include "graphics.hpp"
 
@@ -75,4 +76,3 @@ int   graphics_class::init_gl(int x_res, int y_res)
   glEnable(GL_TEXTURE_2D);
   return(0);
 }
-

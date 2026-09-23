@@ -23,8 +23,8 @@
  */
 
 #include <GL/gl.h>
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include "textures.hpp"
 #include "core.hpp"
 #include "../load_resources.hpp"
@@ -270,6 +270,3 @@ void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, flo
     texture_class::angle     = a;
     texture_class::draw(rumble,pos_x,pos_y,pos_z,w,h);
 }
-
-
-

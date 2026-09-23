@@ -22,7 +22,7 @@
  * @date 2011-10-01
  */
 
-#include <SDL/SDL_ttf.h>
+#include <SDL2/SDL_ttf.h>
 
 #ifndef FONT_H
 #define FONT_H

@@ -23,7 +23,7 @@
  */
 
 
-#include <SDL/SDL.h>
+#include <SDL2/SDL.h>
 #include "core/core.hpp"
 #include "load_resources.hpp"
 #include "menu_system.hpp"
@@ -37,6 +37,9 @@ extern  font_type        font;
 extern  game_class       game;
 extern  menu_class       next_level_menu;
         game_type        game_o;
+
+// Defined in main.cpp - needed for SDL_WarpMouseInWindow()
+extern  SDL_Window      *g_window;
 
 int init_game(bool re_init)
 {
@@ -263,7 +266,10 @@ int process_game(void)
         game.background.set_active( 3, false);
         game.background.set_active( 4, false);
         game.background.set_movement_type(BOUNCE);
-        SDL_WarpMouse(game.graphics.gl_to_res(next_level_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(next_level_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+        // SDL2: SDL_WarpMouse() -> SDL_WarpMouseInWindow(g_window, x, y)
+        SDL_WarpMouseInWindow(g_window,
+            game.graphics.gl_to_res(next_level_menu.get_button_x_pos(1),game.config.mouse_resolution_x),
+            game.config.mouse_resolution_y - game.graphics.gl_to_res(next_level_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
     }
     if  (random(game_o.powerup[1 ].spawn_rate) <= 5) spawn_powerup(1.0f,random_GLcoord(), 1);//spawn health power-up
     if ((random(game_o.powerup[8 ].spawn_rate) <= 5)&& (!boss_level())) spawn_powerup(1.0f,random_GLcoord(), 8);//spawn bomb power-up
@@ -892,4 +898,3 @@ int display_game(void)
     glPopMatrix();
     return(1);
 }
-

@@ -26,7 +26,7 @@
 #define GAME_H
 
 #include <string>
-#include <SDL/SDL.h>
+#include <SDL2/SDL.h>
 #include "PC.hpp"
 #include "NPC.hpp"
 #include "waves.hpp"

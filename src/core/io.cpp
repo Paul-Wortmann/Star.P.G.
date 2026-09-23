@@ -22,7 +22,7 @@
  * @date 2011-10-01
  */
 
-#include <SDL/SDL.h>
+#include <SDL2/SDL.h>
 #include "core.hpp"
 #include "../game.hpp"
 #include "io.hpp"
@@ -34,14 +34,15 @@ extern game_class         game;
 bool events_init(void)
 {
    SDL_Init(SDL_INIT_JOYSTICK);
-   SDL_Joystick *joystick;
-   SDL_JoystickEventState(SDL_ENABLE);
-   joystick = SDL_JoystickOpen(0);
-   if (SDL_JoystickOpened(0) == 1)
+
+   // SDL2: always guard against there being no joystick present.
+   if (SDL_NumJoysticks() > 0)
    {
-      game.config.joystick_enabled        = true;
-      game.io.joystick_sensitivity        = 6400;
-      game.config.joystick_no_buttons     = SDL_JoystickNumButtons(joystick);
+      SDL_Joystick *joystick = SDL_JoystickOpen(0);
+      SDL_JoystickEventState(SDL_ENABLE);
+      game.config.joystick_enabled    = true;
+      game.io.joystick_sensitivity    = 6400;
+      game.config.joystick_no_buttons = SDL_JoystickNumButtons(joystick);
    }
    else
    {
@@ -49,6 +50,7 @@ bool events_init(void)
       game.io.joystick_sensitivity    = 0;
       game.config.joystick_no_buttons = 0;
    }
+
    game.io.mouse_button_delay         = 32;
    game.io.mouse_button_delay_count   = 0;
    game.io.keyboard_delay             = 24;
@@ -449,8 +451,3 @@ bool events_process(void)
     if ((game.io.joystick_right) || (game.io.key_right)) game.io.right  = true; else game.io.right  = false;
     return(true);
 }
-
-
-
-
-
