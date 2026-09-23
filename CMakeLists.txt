@@ -1,168 +1,218 @@
-Project ("Star.P.G.")
-cmake_minimum_required (VERSION 2.8)
+# ===========================================================================
+#  Star.P.G. — CMake build (SDL2)
+# ===========================================================================
+cmake_minimum_required(VERSION 3.10)
 
-Set (PACKAGE "STAR_P_G")
-Set (VERSION "1.01")
+project(Star.P.G. VERSION 1.01 LANGUAGES CXX)
 
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Default definitions
-if (NOT MSVC)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wunused -Wshadow -Woverloaded-virtual -Wunreachable-code")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-math-errno -fno-exceptions -ffast-math")
-  set(CMAKE_LD_FLAGS "-fwhole-program")
-endif (NOT MSVC)
-
-if (CMAKE_CXX_COMPILER MATCHES "clang")
-  # clang needs lstdc++ linked explicitly:
-  set(CMAKE_LD_FLAGS "${CMAKE_LD_FLAGS} -lstdc++")
-elseif (NOT MSVC)
-  # assume gcc:
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-enforce-eh-specs")
-endif ()
-
-if(CMAKE_BUILD_TYPE STREQUAL "Release")
-  set(CMAKE_CXX_FLAGS_RELEASE "-O2 -g0")
-elseif(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
-  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g")
-elseif(CMAKE_BUILD_TYPE STREQUAL "MinSizeRel")
-  set(CMAKE_CXX_FLAGS_MINSIZEREL "-Os -g0")
-elseif(CMAKE_BUILD_TYPE STREQUAL "Debug")
-  set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g3 -pg")
-  set(CMAKE_EXE_LINKER_FLAGS_DEBUG "-pg")
-  set(CMAKE_SHARED_LINKER_FLAGS_DEBUG "-pg")
-  set(CMAKE_MODULE_LINKER_FLAGS_DEBUG "-pg")
+# ---------------------------------------------------------------------------
+#  Compiler flags
+# ---------------------------------------------------------------------------
+if(NOT MSVC)
+    add_compile_options(
+        -Wall
+        -Wextra
+        -Wunused
+        -Wshadow
+        -Woverloaded-virtual
+        -Wunreachable-code
+        -fno-math-errno
+        -fno-exceptions
+        -ffast-math
+    )
+    if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+        add_compile_options(-fno-enforce-eh-specs)
+    endif()
 endif()
 
-set(BINDIR  "games"             CACHE STRING "Directory from CMAKE_INSTALL_PREFIX where game executable will be installed.")
-set(DATADIR "share/games/star_p_g" CACHE STRING "Directory from CMAKE_INSTALL_PREFIX where game data files will be installed.")
+# ---------------------------------------------------------------------------
+#  Install locations (used by the optional install() rules at the bottom)
+# ---------------------------------------------------------------------------
+set(BINDIR  "games"                CACHE STRING
+    "Directory from CMAKE_INSTALL_PREFIX where the game executable is installed.")
+set(DATADIR "share/games/star_p_g" CACHE STRING
+    "Directory from CMAKE_INSTALL_PREFIX where the game data files are installed.")
 
-If(NOT IS_ABSOLUTE "${DATADIR}")
-	add_definitions(-DDATA_INSTALL_DIR="${CMAKE_INSTALL_PREFIX}/${DATADIR}")
-Else(NOT IS_ABSOLUTE "${DATADIR}")
-	add_definitions(-DDATA_INSTALL_DIR="${DATADIR}")
-EndIf(NOT IS_ABSOLUTE "${DATADIR}")
+if(NOT IS_ABSOLUTE "${DATADIR}")
+    add_definitions(-DDATA_INSTALL_DIR="${CMAKE_INSTALL_PREFIX}/${DATADIR}")
+else()
+    add_definitions(-DDATA_INSTALL_DIR="${DATADIR}")
+endif()
 
-# Detect missing dependencies
+# ---------------------------------------------------------------------------
+#  Dependencies
+#
+#  SDL2 and its sibling libraries all ship pkg-config .pc files on every
+#  mainstream platform (Linux, BSD, macOS via Homebrew/MacPorts, MSYS2,
+#  MinGW-w64), so pkg-config is the most portable way to find them.
+# ---------------------------------------------------------------------------
+find_package(PkgConfig REQUIRED)
 
-Include(FindPkgConfig)
+pkg_check_modules(SDL2       REQUIRED sdl2)
+pkg_check_modules(SDL2_IMAGE REQUIRED SDL2_image)
+pkg_check_modules(SDL2_MIXER REQUIRED SDL2_mixer)
+pkg_check_modules(SDL2_NET   REQUIRED SDL2_net)
+pkg_check_modules(SDL2_TTF   REQUIRED SDL2_ttf)
 
-PKG_SEARCH_MODULE(SDL REQUIRED sdl)
-If (NOT SDL_FOUND)
-    Message (ERROR "Couldn't find SDL development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-dev' package.")
-Else (NOT SDL_FOUND)
-    INCLUDE_DIRECTORIES(${SDL_INCLUDE_DIRS})
-EndIf (NOT SDL_FOUND)
+if(NOT SDL2_FOUND)
+    message(FATAL_ERROR
+        "Couldn't find SDL2 development files. On Debian/Ubuntu install "
+        "'libsdl2-dev'; on Fedora 'SDL2-devel'; on Arch 'sdl2'.")
+endif()
 
-PKG_SEARCH_MODULE(SDLIMAGE REQUIRED SDL_image)
-If (NOT SDLIMAGE_FOUND)
-    Message (ERROR "Couldn't find SDL-image development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-image1.2-dev' package.")
-Else (NOT SDLIMAGE_FOUND)
-    INCLUDE_DIRECTORIES(${SDLIMAGE_INCLUDE_DIRS})
-EndIf (NOT SDLIMAGE_FOUND)
+if(NOT SDL2_IMAGE_FOUND)
+    message(FATAL_ERROR
+        "Couldn't find SDL2_image development files. On Debian/Ubuntu install "
+        "'libsdl2-image-dev'; on Fedora 'SDL2_image-devel'; on Arch 'sdl2_image'.")
+endif()
 
-PKG_SEARCH_MODULE(SDLMIXER REQUIRED SDL_mixer)
-If (NOT SDLMIXER_FOUND)
-    Message (ERROR "Couldn't find SDL-mixer development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-mixer1.2-dev' package.")
-Else (NOT SDLMIXER_FOUND)
-    INCLUDE_DIRECTORIES(${SDLMIXER_INCLUDE_DIRS})
-EndIf (NOT SDLMIXER_FOUND)
+if(NOT SDL2_MIXER_FOUND)
+    message(FATAL_ERROR
+        "Couldn't find SDL2_mixer development files. On Debian/Ubuntu install "
+        "'libsdl2-mixer-dev'; on Fedora 'SDL2_mixer-devel'; on Arch 'sdl2_mixer'.")
+endif()
 
- PKG_SEARCH_MODULE(SDLNET REQUIRED SDL_net)
- If (NOT SDLNET_FOUND)
-    Message (ERROR "Couldn't find SDL_net development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-net-dev1.2' package.")
- Else (NOT SDLNET_FOUND)
-    INCLUDE_DIRECTORIES(${SDLNET_INCLUDE_DIRS})
- EndIf (NOT SDLNET_FOUND)
+if(NOT SDL2_NET_FOUND)
+    message(FATAL_ERROR
+        "Couldn't find SDL2_net development files. On Debian/Ubuntu install "
+        "'libsdl2-net-dev'; on Fedora 'SDL2_net-devel'; on Arch 'sdl2_net'.")
+endif()
 
-find_package (SDL_ttf REQUIRED)
-If (SDLTTF_FOUND)
-    Include_Directories (${SDLTTF_INCLUDE_DIRS})
-    link_directories(${SDLTTF_LIBRARY})
-Else (SDLTTF_FOUND)
-    Message (ERROR "Couldn't find SDL-ttf development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-ttf2.0-dev' package.")
-EndIf (SDLTTF_FOUND)
+if(NOT SDL2_TTF_FOUND)
+    message(FATAL_ERROR
+        "Couldn't find SDL2_ttf development files. On Debian/Ubuntu install "
+        "'libsdl2-ttf-dev'; on Fedora 'SDL2_ttf-devel'; on Arch 'sdl2_ttf'.")
+endif()
 
-find_package(PhysFS REQUIRED)
-if (PHYSFS_FOUND)
-  INCLUDE_DIRECTORIES(${PHYSFS_INCLUDE_DIR})
-  link_directories(${PHYSFS_LIBRARY})
-Else (PHYSFS_FOUND)
-   Message (FATAL_ERROR "Couldn't find libphysfs development files. On Debian-based systems (such as Ubuntu) you should install the 'libphysfs-dev' package.")
-endif (PHYSFS_FOUND)
-
+# OpenGL — for the fixed-function rendering used throughout the game
 find_package(OpenGL REQUIRED)
-if (OPENGL_FOUND)
-  INCLUDE_DIRECTORIES(${OPENGL_INCLUDE_DIR})
-  link_directories(${OPENGL_LIBRARIES})
-Else (OPENGL_FOUND)
-  Message (FATAL_ERROR "Couldn't find OpenGl development files. On Debian-based systems (such as Ubuntu) you should install the OpenGL development package.")
-endif (OPENGL_FOUND)
+if(NOT OPENGL_FOUND)
+    message(FATAL_ERROR
+        "Couldn't find OpenGL development files. On Debian/Ubuntu install "
+        "'libgl1-mesa-dev'; on Fedora 'mesa-libGL-devel'.")
+endif()
 
-PKG_SEARCH_MODULE(GLEW REQUIRED glew)
-If (NOT GLEW_FOUND)
-    Message (ERROR "Couldn't find glew development files. On Debian-based systems (such as Ubuntu) you should install the 'libglew-dev' package.")
-Else (NOT GLEW_FOUND)
-    INCLUDE_DIRECTORIES(${GLEW_INCLUDE_DIRS})
-    #link_directories(${GLEW_LIBRARIES})
-EndIf (NOT GLEW_FOUND)
+# GLEW — used for extension loading
+pkg_check_modules(GLEW REQUIRED glew)
+if(NOT GLEW_FOUND)
+    message(FATAL_ERROR
+        "Couldn't find GLEW development files. On Debian/Ubuntu install "
+        "'libglew-dev'; on Fedora 'glew-devel'.")
+endif()
 
-include_directories(/usr/include)
+# PhysFS — currently unused by the source tree (main.cpp has the calls
+# commented out). Detected opportunistically; the build does not depend on it.
+pkg_check_modules(PHYSFS physfs)
 
-# Sources
-
-Set (STAR_P_G_SOURCES
-	./src/core/background.cpp
-	./src/core/config.cpp
-	./src/core/core.cpp
-	./src/core/font.cpp
-	./src/core/graphics.cpp
-	./src/core/io.cpp
-	./src/core/log.cpp
-	./src/core/menu.cpp
-	./src/core/music.cpp
-	./src/core/network.cpp
-	./src/core/particles.cpp
-	./src/core/physics.cpp
-	./src/core/savegame.cpp
-	./src/core/sound.cpp
-	./src/core/textures.cpp
-	./src/core/timer.cpp
-	./src/achievements.cpp
-	./src/bullets.cpp
-	./src/debris.cpp
-	./src/explosions.cpp
-	./src/game.cpp
-	./src/in_game_messages.cpp
-	./src/language.cpp
-	./src/levels.cpp
-	./src/load_resources.cpp
-	./src/main.cpp
-	./src/menu_system.cpp
-	./src/misc.cpp
-	./src/NPC.cpp
-	./src/PC.cpp
-	./src/powerups.cpp
-	./src/projectiles.cpp
-	./src/save_data.cpp
-	./src/screen_rumble.cpp
-	./src/shields.cpp
-	./src/support_ships.cpp
-	./src/thrusters.cpp
-	./src/waves.cpp
+# ---------------------------------------------------------------------------
+#  Sources
+# ---------------------------------------------------------------------------
+set(STAR_P_G_SOURCES
+    src/core/background.cpp
+    src/core/config.cpp
+    src/core/core.cpp
+    src/core/font.cpp
+    src/core/graphics.cpp
+    src/core/io.cpp
+    src/core/log.cpp
+    src/core/menu.cpp
+    src/core/music.cpp
+    src/core/network.cpp
+    src/core/particles.cpp
+    src/core/physics.cpp
+    src/core/savegame.cpp
+    src/core/sound.cpp
+    src/core/textures.cpp
+    src/core/timer.cpp
+    src/achievements.cpp
+    src/debris.cpp
+    src/explosions.cpp
+    src/game.cpp
+    src/in_game_messages.cpp
+    src/language.cpp
+    src/levels.cpp
+    src/load_resources.cpp
+    src/main.cpp
+    src/menu_system.cpp
+    src/misc.cpp
+    src/NPC.cpp
+    src/PC.cpp
+    src/powerups.cpp
+    src/projectiles.cpp
+    src/save_data.cpp
+    src/screen_rumble.cpp
+    src/shields.cpp
+    src/support_ships.cpp
+    src/thrusters.cpp
+    src/waves.cpp
 )
 
-# Add icon and file info to executable for Windows systems
-IF (WIN32)
-  SET(STAR_P_G_SOURCES
-    ${STAR_P_G_SOURCES}
-    ./source/icon.rc
-    )
-ENDIF (WIN32)
+# Windows icon + version resource
+if(WIN32)
+    list(APPEND STAR_P_G_SOURCES src/icon.rc)
+endif()
 
-Add_Executable (star_p_g ${STAR_P_G_SOURCES})
+# ---------------------------------------------------------------------------
+#  Target
+# ---------------------------------------------------------------------------
+add_executable(star_p_g ${STAR_P_G_SOURCES})
 
-link_directories( /path/to/PHYSFSlibs/)
+# --- include paths ---------------------------------------------------------
+target_include_directories(star_p_g PRIVATE
+    ${SDL2_INCLUDE_DIRS}
+    ${SDL2_IMAGE_INCLUDE_DIRS}
+    ${SDL2_MIXER_INCLUDE_DIRS}
+    ${SDL2_NET_INCLUDE_DIRS}
+    ${SDL2_TTF_INCLUDE_DIRS}
+    ${GLEW_INCLUDE_DIRS}
+    ${OPENGL_INCLUDE_DIRS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
 
-Target_Link_Libraries (star_p_g ${CMAKE_LD_FLAGS}  ${PHYSFS_LIBRARY} ${SDL_LIBRARIES} ${SDLIMAGE_LIBRARIES} ${SDLMIXER_LIBRARIES} ${SDLTTF_LIBRARY} ${SDLNET_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
+# --- library search paths (mostly needed on Windows / non-standard prefixes)
+target_link_directories(star_p_g PRIVATE
+    ${SDL2_LIBRARY_DIRS}
+    ${SDL2_IMAGE_LIBRARY_DIRS}
+    ${SDL2_MIXER_LIBRARY_DIRS}
+    ${SDL2_NET_LIBRARY_DIRS}
+    ${SDL2_TTF_LIBRARY_DIRS}
+    ${GLEW_LIBRARY_DIRS}
+    ${OPENGL_LIBRARY_DIRS}
+)
 
+# --- link ------------------------------------------------------------------
+target_link_libraries(star_p_g PRIVATE
+    ${SDL2_LIBRARIES}
+    ${SDL2_IMAGE_LIBRARIES}
+    ${SDL2_MIXER_LIBRARIES}
+    ${SDL2_NET_LIBRARIES}
+    ${SDL2_TTF_LIBRARIES}
+    ${GLEW_LIBRARIES}
+    ${OPENGL_LIBRARIES}
+)
 
+# Optional: link PhysFS only if it was actually found
+if(PHYSFS_FOUND)
+    target_include_directories(star_p_g PRIVATE ${PHYSFS_INCLUDE_DIRS})
+    target_link_libraries(star_p_g PRIVATE ${PHYSFS_LIBRARIES})
+    target_compile_definitions(star_p_g PRIVATE HAVE_PHYSFS=1)
+endif()
+
+# ---------------------------------------------------------------------------
+#  Install rules (optional — comment out if you don't `make install`)
+# ---------------------------------------------------------------------------
+install(TARGETS star_p_g
+        RUNTIME DESTINATION ${BINDIR})
+
+install(DIRECTORY data
+        DESTINATION ${DATADIR}
+        OPTIONAL)
+
+install(DIRECTORY save
+        DESTINATION ${DATADIR}
+        OPTIONAL)
+        
