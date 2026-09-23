@@ -29,6 +29,12 @@
 #include "core/savegame.hpp"
 #include "game.hpp"
 
+// The version written into every save file.  Bump this whenever the layout
+// of save_data_type changes so that old, incompatible saves are rejected
+// rather than being silently misinterpreted.
+const int   SAVE_VERSION      = 200;
+const int   SAVE_NAME_LENGTH  = 64;
+
 struct layer_type
 {
     bool  active;
@@ -45,6 +51,104 @@ struct background_data_type
 {
     layer_type  layer[MAX_LAYERS+1];
     int         movement_type;
+};
+
+/* ---------------------------------------------------------------------------
+ * POD mirror types
+ * ---------------------------------------------------------------------------
+ * The runtime classes enemy_class, projectile_class, shield_class,
+ * thruster_class and explosion_class cannot be written to disk verbatim
+ * because they contain std::string members (which hold pointers) and/or
+ * emitter_class members (which contain a ~160 KB particle array).  These
+ * mirror structs hold only trivially-copyable data; names are stored as
+ * fixed-length char arrays, and emitters are dropped entirely (they are
+ * re-initialised from their config files on load).
+ * ------------------------------------------------------------------------- */
+struct save_enemy_type
+{
+    char  name[SAVE_NAME_LENGTH];
+    int   image;
+    int   sound;
+    float health;
+    float speed;
+    float max_speed;
+    float acceleration;
+    float start_angle;
+    int   movement;
+    int   weapon_1;
+    int   weapon_2;
+    int   projectiles;
+    float width;
+    float height;
+};
+
+struct save_projectile_type
+{
+    char  name[SAVE_NAME_LENGTH];
+    bool  active;
+    int   level;
+    float experience;
+    float level_1;
+    float level_2;
+    float level_3;
+    float level_4;
+    float level_5;
+    float level_6;
+    int   image;
+    float width;
+    float height;
+    int   sound;
+    float damage;
+    float health;
+    float speed;
+    int   rate_of_fire;
+    int   movement;
+    float wave_size;
+    float wave_velocity;
+};
+
+struct save_shield_type
+{
+    char  name[SAVE_NAME_LENGTH];
+    bool  active;
+    int   level;
+    float level_1;
+    float level_2;
+    float level_3;
+    float experience;
+    int   image;
+    float absorption;
+};
+
+struct save_thruster_type
+{
+    char  name[SAVE_NAME_LENGTH];
+    bool  active;
+    int   level;
+    float level_1;
+    float level_2;
+    float level_3;
+    float experience;
+    int   image;
+    float thrust;
+    int   frame;
+    int   frame_max;
+};
+
+struct save_explosion_type
+{
+    bool  active;
+    int   image;
+    int   frame;
+    int   frame_max;
+    float frame_delay;
+    float frame_delay_count;
+    float frame_delay_max;
+    float x_pos;
+    float y_pos;
+    float width;
+    float height;
+    float size;
 };
 
 struct save_data_type
@@ -101,12 +205,12 @@ struct save_data_type
     int                  npc_projectile_spawn_rate;
     player_class         player;
     supportship_class    supportship[MAX_SUPPORTSHIPS];
-    enemy_class          enemy[MAX_ENEMYS];
+    save_enemy_type      enemy[MAX_ENEMYS];
     npc_type             npc[MAX_NPCS];
-    projectile_class     projectile[MAX_PROJECTILES];
-    shield_class         shield[MAX_SHIELDS];
-    thruster_class       thruster[MAX_THRUSTERS];
-    explosion_class      explosion[MAX_EXPLOSIONS];
+    save_projectile_type projectile[MAX_PROJECTILES];
+    save_shield_type     shield[MAX_SHIELDS];
+    save_thruster_type   thruster[MAX_THRUSTERS];
+    save_explosion_type  explosion[MAX_EXPLOSIONS];
     powerup_type         powerup[MAX_POWERUPS];
     coin_type            coin[MAX_COINS];
     wexp_type            wexp[MAX_WEXPS];
@@ -120,4 +224,3 @@ void update_save_data(void);
 void update_game_data(void);
 
 #endif // SAVE_DATA_H
-

@@ -22,7 +22,6 @@
  * @date 2011-10-01
  */
 
-
 #include <fstream>
 #include <sys/stat.h>
 #include "savegame.hpp"
@@ -67,6 +66,12 @@ bool save_game_class::Load(void)
     {
         savegamefile.read(reinterpret_cast<char*>(&save_data), sizeof(save_data));
         savegamefile.close();
+
+        // Reject saves written by a previous, incompatible build.
+        // (Without this check, a save file whose on-disk layout differs
+        // from the current struct layout is silently read as garbage.)
+        if (save_data.save_version != SAVE_VERSION) return(false);
+
         update_game_data();
     }
     else return(false);
@@ -84,7 +89,3 @@ bool save_game_class::File_Exists(void)
     struct stat buffer;
     return (stat(save_game_class::save_file_name.c_str(), &buffer) == 0);
 }
-
-
-
-
